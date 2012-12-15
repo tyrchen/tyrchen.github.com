@@ -2,10 +2,10 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://yoursite.com
-title: My Octopress Blog
-subtitle: A blogging framework for hackers.
-author: Your Name
+url: http://tyrchen.github.com
+title: 陈天的博客
+subtitle: 关于创业, python, meteor等的一切
+author: Tyr Chen
 simple_search: http://google.com/search
 description:
 
