@@ -89,3 +89,10 @@ $ meteor
 1. [http://meteor.com](http://meteor.com)
 1. [Meteor文档](http://docs.meteor.com)
 1. [Meteor Roadmap](https://trello.com/board/meteor-roadmap/508721606e02bb9d570016ae)
+
+# 小宝的照片
+
+依旧例，还是上一张小宝的当天照片以飨读者。
+
+{% img http://tyrchen.github.com/images/photos/baby20121216-1.jpg %}
+
