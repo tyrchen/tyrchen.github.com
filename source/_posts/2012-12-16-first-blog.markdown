@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "第一篇博客"
+title: "第一篇博客: 用octopress搭建"
 date: 2012-12-16 04:15
 comments: true
-categories: [工具]
+categories: [tools, opensource]
 ---
 # 引子
 
@@ -13,19 +13,23 @@ categories: [工具]
 
 免责声明：如果你不知道什么是shell, github, 不能很快地掌握一种非常简单的标记语言(markdown)，那么本文不适合你。类似于 [wordpress](http://wordpress.com) 所见即所得的博客系统对你更有价值。[octopress][1]适合于黑客。
 
+<!-- more -->
+
 # 什么是github pages? 
 
 开源项目需要sell自己。项目的介绍，帮助和API文档都是很好的宣传工具。在没有github pages的日子里，项目只能自建站点或者使用第三方来存放能让用户立即阅读的文档。github看到了这一需求，将一个静态页面hosting的系统巧妙地与github本身结合起来，通过一个特殊的branch (gh-pages) 为项目提供文档hosting。除此之外，个人也有branding自己的需求，于是，只要你创建一个名为 yourname.github.com 的repository，github会自动为其提供同域名的hosting服务。
 
 更多有关github pages的文档，见：[http://pages.github.com/](http://pages.github.com/)。
 
+# 为什么用github pages?
+
+用github pages搭建博客，你可以享受到免费的服务器，免费的流量和相对不错的服务体验。另外，这是一种搭建博客的全新体验，不用数据库，一切改动都由git追踪，随时随地查看你的博文历史，近乎0成本迁移到任意服务器。动心了么？读下去吧。
+
 # 什么是octopress?
 
 octopress提供了一组自动化的工具和模版帮助用户简化博客系统的创建。octopress生成的博客系统可以被方便地部署到github pages及heroku，当然，由于生成的是静态文件，你也可以将其部署到任何一个你自己的vhost或server。
 
 octopress的安装文档见：[http://octopress.org/docs/setup/](http://octopress.org/docs/setup/)。本文接下来的部分会详细介绍如何用github pages和octopress部署一个自己的博客，及简单介绍如何进行写作。
-
-<!-- more -->
 
 # 安装
 
