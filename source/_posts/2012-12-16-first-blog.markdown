@@ -162,9 +162,9 @@ $ git push origin source
 
 ### 撰写博文
 
-博客系统搭建好之后，如何撰写博文呢？通过之前的步骤想必你对octopress的精髓有所了解，yes，没有所见即所得的编辑器让你撰写博文，你要做的是使用 ```rake new_post``` 命令创建一篇新的文章，然后使用称手的markdown编辑器进行编辑即可。可选择的markdown编辑器很多，vim，sublime text 2，textmate 2等等。我个人喜欢在osx下使用sublime text 2。（需要安装Markdown Edit，不会安装？？请google ^_^）
+博客系统搭建好之后，如何撰写博文呢？通过之前的步骤想必你对octopress的精髓有所了解，yes，没有所见即所得的编辑器让你撰写博文，你要做的是使用 ```rake new_post``` 命令创建一篇新的文章，然后使用称手的markdown编辑器进行编辑即可。可选择的markdown编辑器很多，vim，sublime text 2，textmate 2等等。我个人喜欢在osx下使用sublime text 2。（需要安装Markdown Edit，不会安装？？请google ^_^ ）
 
-基本的语法我就不多说了，浪费篇幅。看看这篇博文的源文件，你就掌握了markdown的大部分用法。（如果你第一反应是 鼠标右键->查看源文件，那么我被你打败了，我说的是markdown的源文件 ^_^）
+基本的语法我就不多说了，浪费篇幅。看看这篇博文的源文件，你就掌握了markdown的大部分用法。（如果你第一反应是 鼠标右键->查看源文件，那么我被你打败了，我说的是markdown的源文件 ^_^ ）
 
 还是不知道怎么看？好吧，[猛击这个链接](https://raw.github.com/tyrchen/tyrchen.github.com/source/source/_posts/2012-12-16-first-blog.markdown)
 
