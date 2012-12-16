@@ -161,7 +161,7 @@ $ git push origin source
 
 基本的语法我就不多说了，浪费篇幅。看看这篇博文的源文件，你就掌握了markdown的大部分用法。（如果你第一反应是 鼠标右键->查看源文件，那么我被你打败了，我说的是markdown的源文件 ^_^）
 
-还是不知道怎么看？好吧，[猛击这个链接]（https://raw.github.com/tyrchen/tyrchen.github.com/source/source/_posts/2012-12-16-first-blog.markdown）
+还是不知道怎么看？好吧，[猛击这个链接](https://raw.github.com/tyrchen/tyrchen.github.com/source/source/_posts/2012-12-16-first-blog.markdown)
 
 # 后记
 
