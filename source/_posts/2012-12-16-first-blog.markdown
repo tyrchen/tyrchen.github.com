@@ -197,6 +197,68 @@ $ rake generate
 
 注意你对已有主题的汉化会被覆盖，请确保提交所有更改前你merge了你的改动。
 
+## 添加多说
+
+由于github pages只支持静态文件，所以类似评论这样的功能就只能使用第三方工具。octopress自带disqus的评论系统，但其对国内用户不够友好，另外加载速度也不快。国内disqus的copycat是duoshuo，于是照猫画虎，添加多说的支持进来：
+
+首先在 ```source/post/``` 下创建duoshuo.html:
+
+{% raw %}
+``` html duoshuo.html
+{% if site.duoshuo_name %}
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"{{ site.duoshuo_name }}"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+{% endif %}
+```
+{% endraw %}
+
+然后在 ```source/_layouts/post.html```，将对应的disqus代码改为：
+
+{% raw %}
+``` html
+{% if site.duoshuo_name and page.comments == true %}
+  <section id="comment">
+    <h1>发表评论</h1>
+    {% include post/duoshuo.html %}
+  </section>
+{% endif %}
+```
+{% endraw %}
+
+在 ```source/_config.yml``` 里，添加：
+
+``` yaml
+# Duoshuo comments
+duoshuo_name: your_duoshuo_name
+```
+
+应该就可以了。可以使用如下命令测试：
+
+```
+$ rake generate
+$ rake preview
+```
+
+## 添加百度统计
+
+百度统计可以将生成的script直接添加到 ```source/post/after_footer.html``` 就可以。很简单，这里就不详述。
+
+## 更新中
+
+本博文会不断修改，不断更新。作者会尽量保持这篇博文和其使用的博客系统保持文档上的一致。
+
 # 后记
 
 断断续续写了两个小时，期间还哄了下满月的小宝，拍下了一堆她满月的照片，选一张出来，算是对你耐心读完本文的奖励：
