@@ -3,7 +3,7 @@ layout: post
 title: "第一篇博客"
 date: 2012-12-16 04:15
 comments: true
-categories: [github pages, octopress, blog]
+categories: [工具]
 ---
 # 引子
 
@@ -178,6 +178,20 @@ $ echo 'blog.yourdomain.com' >> CNAME
 
 ## 设置博客
 
+打开```_config.yml```，按照 [http://octopress.org/docs/configuring/](http://octopress.org/docs/configuring/) 的说明进行设置即可。注意把不需要的asides都删除，免得加载不必要的js，拖累访问速度。如果想把你自己的微博个人秀加在侧栏，请参考：[http://clark1231.iteye.com/blog/1553939](http://clark1231.iteye.com/blog/1553939)。
+
+## 使用主题
+
+本文使用了 [https://github.com/amelandri/darkstripes](https://github.com/amelandri/darkstripes) 的主题。使用方法很简单：
+
+```
+$ cd octopress
+$ git clone git://github.com/amelandri/darkstripes.git .themes/darkstripes
+$ rake install['darkstripes']
+$ rake generate
+```
+
+注意你对已有主题的汉化会被覆盖，请确保提交所有更改前你merge了你的改动。
 
 # 后记
 
