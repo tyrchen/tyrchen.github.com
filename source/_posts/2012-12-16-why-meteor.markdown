@@ -32,7 +32,7 @@ ember在backbone的思想上更近了一大步，通过内置的data binding API
 
 而Meteor则另辟蹊跷，通过reactivity context和dependency巧妙地支持了reactivity（据作者说核心代码就几十行），使用者几乎感受不到代码的变化。
 
-Meteor另一个很贴心的点是零部署。开发web app有点小头疼的点是打包和部署。比如说，把less转成css，coffee转成javascript，然后混淆，压缩，虽然有些自动化的工具可以简化这部分工作，可还免不了相应的配置和一些脚本工作。在开发环境下，meteor会自动替你加载js/css，如果你是用了coffee/less (sass)，只要add了相应的smart package，meteor会自动帮你处理；开发完毕后要部署，只需要运行 ```meteor bundle```，系统自动会将相关的资源打包，只要目标系统上有相应版本的nodejs，meteor和mongodb，就能运行一个标准的production版本。
+Meteor另一个很贴心的点是零部署。开发web app有点小头疼的点是打包和部署。比如说，把less转成css，coffee转成javascript，然后混淆，压缩，虽然有些自动化的工具可以简化这部分工作，可还免不了相应的配置和一些脚本工作。在开发环境下，meteor会自动替你加载js/css，如果你使用了coffee/less (sass)，只要add了相应的smart package，meteor会自动帮你处理；开发完毕后要部署，只需要运行 ```meteor bundle```，系统自动会将相关的资源打包，只要目标系统上有相应版本的nodejs，meteor和mongodb，就能运行一个标准的production版本。
 
 以下是meteor官网上的介绍，当你真正使用meteor后，会发现还真不是吹牛。
 
@@ -79,10 +79,10 @@ $ meteor
 
 大纲如下：
 
-* Meteor入门指南 - 如何安装，基本元素和包管理 -- 2012.12.23前
-* 第一个Meteor App: 正字系统（leaderboard变种） -- 2012.12.30前
-* Meteor的权限和用户账号系统 -- 2013.01.06前
-* 将Meteor部署到自己的服务器 -- 2013.01.13前
+* **Meteor入门指南 - 如何安装，基本元素和包管理** -- 2012.12.23前
+* **第一个Meteor App: 正字系统（leaderboard变种）** -- 2012.12.30前
+* **Meteor的权限和用户账号系统** -- 2013.01.06前
+* **将Meteor部署到自己的服务器** -- 2013.01.13前
 
 # Reference
 
