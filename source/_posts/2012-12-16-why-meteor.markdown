@@ -14,6 +14,8 @@ Meteor的官网( http://meteor.com )这样介绍这个框架：
 
 **top-quality web apps** 我们放下不表，**fraction of the time** 的提法很新颖，看来这个框架的目标是解放程序猿，少花时间多办事。虽然具体的演化路径我不得而知，但从网络上的各种蛛丝马迹来看，Meteor吸收了google wave, asana等平台背后的开发工具的精髓，逐渐演进出了目前的版本。Meteor的幕后团队相当强悍：他们大多毕业于MIT，是成功的创业家，也是一流的工程师，其中一个开发者还是神器 [etherpad]( http://etherpad.net) 的作者。
 
+<!-- more -->
+
 ## Meteor究竟有什么NB的地方？
 
 首先，Meteor构架与nodejs之上。这使得 **One Language** 成为可能，同时可依托nodejs上诸如soket.io这样强大的类库内置 **realtime**，**Date on the Wire** 等特性。
