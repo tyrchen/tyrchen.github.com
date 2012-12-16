@@ -3,7 +3,7 @@
 # ----------------------- #
 
 url: http://tyrchen.github.com
-title: 陈天的博客
+title: 觅珠人
 subtitle: 关于创业, 思考, 人生，技术，开源项目等的一切
 author: Tyr Chen
 simple_search: http://google.com/search
@@ -95,7 +95,7 @@ delicious_user:
 delicious_count: 3
 
 # Disqus Comments
-disqus_short_name:
+disqus_short_name: 
 disqus_show_comment_count: false
 
 # Google Analytics
@@ -103,4 +103,8 @@ google_analytics_tracking_id:
 
 # Facebook Like
 facebook_like: false
+
+# Duoshuo comments
+duoshuo_name: tyrchen
+duoshuo_show_comment_count: true
 
