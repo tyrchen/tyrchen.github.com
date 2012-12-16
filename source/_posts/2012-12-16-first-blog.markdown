@@ -77,6 +77,7 @@ Repository url:
 请输入：```git@github.com:yourname/yourname.github.com.git``` (将yourname替换成你的github登录名)
 
 这个步骤rake会做很多事情：
+
 1. 在.git/config中替换origin为你输入的repository，并把原来的origin写到octopress中。
 1. 创建新的branch source并切换到这个branch。
 1. 在生成的_deploy目录下，初始化git repository为你的repository。
@@ -162,6 +163,21 @@ $ git push origin source
 基本的语法我就不多说了，浪费篇幅。看看这篇博文的源文件，你就掌握了markdown的大部分用法。（如果你第一反应是 鼠标右键->查看源文件，那么我被你打败了，我说的是markdown的源文件 ^_^）
 
 还是不知道怎么看？好吧，[猛击这个链接](https://raw.github.com/tyrchen/tyrchen.github.com/source/source/_posts/2012-12-16-first-blog.markdown)
+
+# 个性化
+
+## 添加个人域名
+
+在octopress目录下：
+
+```
+$ echo 'blog.yourdomain.com' >> CNAME
+```
+
+然后在你的DNS服务商，如 [dnspod.cn](http://dnspod.cn)，添加相应的CNAME指向 yourname.github.com。如果你要使用顶级域名，如 ```http://yourdomain.com``` 访问你的博客，则需要使用A记录指向 ```207.97.227.245```。详细内容请参考：[http://octopress.org/docs/deploying/github/](http://octopress.org/docs/deploying/github/)。
+
+## 设置博客
+
 
 # 后记
 
