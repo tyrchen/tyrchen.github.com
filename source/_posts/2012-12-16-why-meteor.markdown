@@ -1,12 +1,13 @@
 ---
 layout: post
-title: "为什么是Meteor - 它和我们熟悉的框架有何不同？"
+title: "为什么是Meteor"
+subtitle: "它和我们熟悉的框架有何不同？"
 date: 2012-12-16 14:29
 comments: true
 categories: [meteor]
 ---
 
-# Meteor是什么？
+## Meteor是什么？
 
 Meteor的官网( http://meteor.com )这样介绍这个框架：
 
@@ -16,7 +17,7 @@ Meteor的官网( http://meteor.com )这样介绍这个框架：
 
 <!-- more -->
 
-## Meteor究竟有什么NB的地方？
+### Meteor究竟有什么NB的地方？
 
 首先，Meteor构架与nodejs之上。这使得 **One Language** 成为可能，同时可依托nodejs上诸如soket.io这样强大的类库内置 **realtime**，**Date on the Wire** 等特性。
 
@@ -51,7 +52,7 @@ Meteor另一个很贴心的点是零部署。开发web app有点小头疼的点�
 > 1. Embrace the Ecosystem. Meteor is open source and integrates, rather than replaces, existing open source tools and frameworks.
 Simplicity Equals Productivity. The best way to make something seem simple is to have it actually be simple. Accomplish this through clean, classically beautiful APIs.
 
-# Meteor入门范例
+## Meteor入门范例
 
 废话说那么多，是骡子是马，不如拿出来溜溜。以下是meteor create --example leaderboard产生的代码，很好懂，借花献佛。先看DOM结构，meteor目前仅支持 [handlebar](http://http://handlebarsjs.com/) 做为template engine。
 
@@ -73,7 +74,7 @@ $ meteor
 
 然后打开浏览器，访问：http://localhost:3000。
 
-# 敬请期待
+## 敬请期待
 
 从meteor 0.3.8版本开始学习和使用，到目前的0.5.2，我对meteor虽不敢说已经通盘掌握，也能够做一些稍微复杂的项目。接下来我会撰写一系列的文章，从本文提到的例子leaderboard的增强版开始，由浅入深，探讨如何通过学习meteor的架构和API，使用meteor做一些有意思的项目。
 
@@ -84,13 +85,13 @@ $ meteor
 * **Meteor的权限和用户账号系统** -- 2013.01.06前
 * **将Meteor部署到自己的服务器** -- 2013.01.13前
 
-# Reference
+## Reference
 
 1. [http://meteor.com](http://meteor.com)
 1. [Meteor文档](http://docs.meteor.com)
 1. [Meteor Roadmap](https://trello.com/board/meteor-roadmap/508721606e02bb9d570016ae)
 
-# 小宝的照片
+## 小宝的照片
 
 依旧例，还是上一张小宝的当天照片以飨读者。
 
