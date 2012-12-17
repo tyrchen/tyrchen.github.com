@@ -59,7 +59,7 @@ default_asides: [asides/weibo.html, asides/recent_posts.html, asides/github.html
 
 # Github repositories
 github_user: tyrchen
-github_repo_count: 0
+github_repo_count: 5
 github_show_profile_link: true
 github_skip_forks: true
 
