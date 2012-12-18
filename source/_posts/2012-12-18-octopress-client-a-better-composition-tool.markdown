@@ -15,7 +15,7 @@ categories:
 
 说不的程序猿不是好的产品经理。octopress已经为程序猿提供了一套 ```rake``` 的自动化工具。在这个基础之上，再提供一套和谐的工具给用户不就可以了么？是谁规定一定要搭建 ```ruby``` 环境才能搭建octopress博客？又是谁规定一定要会基本的 ```git``` 语法和 ```shell``` 命令才能使用octopress？
 
-<!-- mroe -->
+<!-- more -->
 
 ## Octopress客户端 —— Atanasoff
 
