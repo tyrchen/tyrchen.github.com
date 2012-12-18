@@ -95,5 +95,5 @@ $ meteor
 
 依旧例，还是上一张小宝的当天照片以飨读者。
 
-{% img http://tyrchen.github.com/images/photos/baby20121216-1.jpg %}
+{% img /images/photos/baby20121216-1.jpg %}
 

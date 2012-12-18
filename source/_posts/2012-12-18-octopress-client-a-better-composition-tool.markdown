@@ -4,7 +4,7 @@ title: "产品随想：octopress客户端 —— Atanasoff"
 subtitle: "解放程序猿的那双懒惰的手"
 date: 2012-12-18 08:26
 comments: true
-categories: 
+categories: [technology]
 ---
 
 ## 引子
@@ -106,7 +106,9 @@ python / django对我而言是最佳的选择，但我会考虑尝试nodejs。
 
 [6] 协同工作软件的思想基石。 参见wikipedia下的介绍：[operational transformation](http://en.wikipedia.org/wiki/Operational_transformation) 
 
-## 后记
+## 小宝的照片
 
-今日小宝的照片随后送上。
+昨日小宝洗完澡，躺着就睡着了。
+
+{% img /images/photos/baby20121217.jpg %}
 
