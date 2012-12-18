@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "产品随想：octopress客户端"
+title: "产品随想：octopress客户端 —— Atanasoff"
 subtitle: "解放程序猿的那双懒惰的手"
 date: 2012-12-18 08:26
 comments: true
