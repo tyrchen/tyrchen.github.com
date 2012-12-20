@@ -7,7 +7,7 @@
         <h1 class="entry-title"><a href="{{ root_url }}{{ post.url }}">{% if site.titlecase %}{{ post.title | titlecase }}{% else %}{{ post.title }}{% endif %}</a>
           {% comment %}
           {% if post.subtitle %}
-          <br/><small> —— {{ post.subtitle }} </small>
+          <br/><small> — {{ post.subtitle }} </small>
           {% endif %}
           {% endcomment %}
         </h1>
@@ -17,10 +17,10 @@
       {% if page.external-url %}
         <h1 class="entry-title external"><a href="{{ page.external-url }}">{% if site.titlecase %}{{ page.title | titlecase }} <span>&rArr;</span>{% else %}{{ page.title }}{% endif %}</a>
         </h1>
-        {% else %}
+      {% else %}
         <h1 class="entry-title">{% if site.titlecase %}{{ page.title | titlecase }}{% else %}{{ page.title }}{% endif %}
           {% if page.subtitle %}
-          <br/><small> —— {{ page.subtitle }} </small>
+          <br/><small> — {{ page.subtitle }} </small>
           {% endif %}
         </h1>
       {% endif %}
@@ -44,5 +44,6 @@
     </footer>
   {% endif %}
 {% else %}
+{% include post/baidu_share.html %}
 <div class="entry-content">{{ content }}</div>
 {% endif %}

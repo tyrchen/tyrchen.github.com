@@ -108,3 +108,6 @@ facebook_like: false
 duoshuo_name: tyrchen
 duoshuo_show_comment_count: true
 
+# Baidu share buttons
+baidu_share_button: true
+
