@@ -25,6 +25,18 @@ single: true
     </p>
   </footer>
 </article>
+{% if site.related_posts.size > 0 %}
+<article class="archives">
+  <div class="related-posts">
+    <h2>相关文章</h2>
+    <ul>
+    {% for post in site.related_posts limit:site.recent_posts %}
+      <li><h4 class="title"><a href="{{ root_url }}{{ post.url }}">{{post.title}} - {{post.subtitle}}</a></h4></li>
+    {% endfor %}
+  </ul>
+  </div>
+</article>
+{% endif %}
 {% if site.duoshuo_name and page.comments == true %}
   <section id="comment">
     <h1>发表评论</h1>

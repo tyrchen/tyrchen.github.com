@@ -4,6 +4,7 @@ title: "第一篇博客: 用octopress搭建博客系统"
 date: 2012-12-16 04:15
 comments: true
 categories: [tools, opensource]
+tags: [octopress]
 ---
 ## 引子
 

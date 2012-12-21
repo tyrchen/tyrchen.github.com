@@ -5,6 +5,7 @@ subtitle: "它和我们熟悉的框架有何不同？"
 date: 2012-12-16 14:29
 comments: true
 categories: [meteor]
+tags: [meteor]
 ---
 
 ## Meteor是什么？

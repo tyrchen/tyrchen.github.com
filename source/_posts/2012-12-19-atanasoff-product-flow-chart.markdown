@@ -4,7 +4,8 @@ title: "进一步思考Atanasoff (Octopress client)"
 subtitle: "产品流程图"
 date: 2012-12-19 21:57
 comments: true
-categories: [technology] 
+categories: [technology]
+tags: [atanasoff]
 ---
 
 ## 引子

@@ -5,6 +5,7 @@ subtitle: "解放程序猿的那双懒惰的手"
 date: 2012-12-18 08:26
 comments: true
 categories: [technology]
+tags: [atanasoff]
 ---
 
 ## 引子
@@ -105,6 +106,10 @@ python / django对我而言是最佳的选择，但我会考虑尝试nodejs。
 [5] 随便google了下，似乎有 [JsonDiffPatch](https://github.com/benjamine/JsonDiffPatch) 可以尝试
 
 [6] 协同工作软件的思想基石。 参见wikipedia下的介绍：[operational transformation](http://en.wikipedia.org/wiki/Operational_transformation) 
+
+## 后续文章
+
+* [进一步思考Atanasoff (Octopress Client)](/blog/2012/12/19/atanasoff-product-flow-chart/)
 
 ## 小宝的照片
 
