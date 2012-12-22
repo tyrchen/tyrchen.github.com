@@ -176,7 +176,7 @@ $ git push origin source
 在octopress目录下：
 
 ```
-$ echo 'blog.yourdomain.com' >> CNAME
+$ echo 'blog.yourdomain.com' >> source/CNAME
 ```
 
 然后在你的DNS服务商，如 [dnspod.cn](http://dnspod.cn)，添加相应的CNAME指向 yourname.github.com。如果你要使用顶级域名，如 ```http://yourdomain.com``` 访问你的博客，则需要使用A记录指向 ```207.97.227.245```。详细内容请参考：[http://octopress.org/docs/deploying/github/](http://octopress.org/docs/deploying/github/)。
