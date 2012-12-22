@@ -6,7 +6,7 @@ date: 2012-12-21 08:55
 comments: true
 categories: [meteor]
 tags: [meteor]
-published: false
+published: true
 ---
 
 ## 安装
