@@ -208,4 +208,4 @@ Liquid::Template.register_tag('reveal', Jekyll::RevealTag)
 
 依旧例，放上小宝今日照片一张：
 
-{% img images/photos/baby20121226.jpg %}
+{% img /images/photos/baby20121226.jpg %}
