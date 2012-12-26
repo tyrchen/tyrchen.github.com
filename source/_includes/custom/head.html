@@ -1,3 +1,14 @@
 <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+{% if page.slides %}
+<link rel="stylesheet" href="{{ root_url }}/stylesheets/reveal/reveal.min.css">
+<link rel="stylesheet" href="{{ root_url }}/stylesheets/reveal/theme/default.css" id="theme">
+
+<!-- For syntax highlighting -->
+<link rel="stylesheet" href="{{ root_url }}/stylesheets/reveal/zenburn.css">
+
+<!--[if lt IE 9]>
+<script src="{{ root_url }}/javascripts/html5shiv.js"></script>
+<![endif]-->
+{% endif %}

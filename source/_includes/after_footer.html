@@ -6,3 +6,7 @@
 {% endcomment %}
 {% include baidu_tongji.html %}
 {% include custom/after_footer.html %}
+{% if page.slides %}
+<script src="{{ root_url }}/javascripts/head.min.js"></script>
+<script src="{{ root_url }}/javascripts/reveal.min.js"></script>
+{% endif %}

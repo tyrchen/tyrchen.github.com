@@ -17,6 +17,7 @@ deploy_branch  = "master"
 
 public_dir      = "public"    # compiled site directory
 source_dir      = "source"    # source file directory
+slide_dir       = "slides"
 blog_index_dir  = 'source'    # directory for your blog's index page (if you put your index in source/blog/index.html, set this to 'source/blog')
 deploy_dir      = "_deploy"   # deploy directory (for Github pages deployment)
 stash_dir       = "_stash"    # directory to stash posts for speedy generation
@@ -150,6 +151,42 @@ task :new_page, :filename do |t, args|
   end
 end
 
+# usage rake new_slide[my-new-slide] or rake new_slide[my-new-slide.html] or rake new_slide (defaults to "new-slide.markdown")
+desc "Create a new slide in #{source_dir}/#{slide_dir}/(filename)/index.#{new_page_ext}"
+task :new_slide, :filename do |t, args|
+  raise "### You haven't set anything up yet. First run `rake install` to set up an Octopress theme." unless File.directory?(source_dir)
+  args.with_defaults(:filename => 'new-slide')
+  page_dir = [source_dir, slide_dir] # [source_dir]
+  if args.filename.downcase =~ /(^.+\/)?(.+)/
+    filename, dot, extension = $2.rpartition('.').reject(&:empty?)         # Get filename and extension
+    title = filename
+    page_dir.concat($1.downcase.sub(/^\//, '').split('/')) unless $1.nil?  # Add path to page_dir Array
+    if extension.nil?
+      page_dir << filename
+      filename = "index"
+    end
+    extension ||= new_page_ext
+    page_dir = page_dir.map! { |d| d = d.to_url }.join('/')                # Sanitize path
+    filename = filename.downcase.to_url
+
+    mkdir_p page_dir
+    file = "#{page_dir}/#{filename}.#{extension}"
+    if File.exist?(file)
+      abort("rake aborted!") if ask("#{file} already exists. Do you want to overwrite?", ['y', 'n']) == 'n'
+    end
+    puts "Creating new page: #{file}"
+    open(file, 'w') do |page|
+      page.puts "---"
+      page.puts "layout: slides"
+      page.puts "title: \"#{title}\""
+      page.puts "date: #{Time.now.strftime('%Y-%m-%d %H:%M')}"
+      page.puts "theme: beige"
+      page.puts "---"
+    end
+  else
+    puts "Syntax error: #{args.filename} contains unsupported characters"
+  end
+end
 # usage rake isolate[my-post]
 desc "Move all other posts than the one currently being worked on to a temporary stash location (stash) so regenerating the site happens much more quickly."
 task :isolate, :filename do |t, args|
