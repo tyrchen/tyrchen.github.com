@@ -11,6 +11,24 @@ tags: [octopress]
 
 简单看了下octopress的代码，似乎不是太难，只要创造一个新的用于slide的layout，然后提供一条用于撰写slide的rake命令就可以。那还犹豫什么？挽起袖子，开干！
 
+补记：下面的内容适合那些想深入了解octopress plugin做法的人，如果你非代码控，可以在你的octopress根目录下使用如下代码一键安装（仅在osx下测试过，应该对2.x版本均有效，有问题微博@或私信我）：
+
+```
+$ curl http://sh.tchen.me/install/octopress_reveal.sh | sh
+```
+
+如果见到这样的文字：
+
+> reveal.js for octopress has been installed! To get started fast:
+>
+>  $ rake new_slide["Your slide name"]
+>
+>  $ vim source/slides/your-slide-name/index.markdown
+>
+> ...
+
+就说明安装成功了。
+
 <!--more -->
 
 ## Slide layout
