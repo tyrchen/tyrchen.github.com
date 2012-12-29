@@ -160,4 +160,5 @@ You may ask why I wrote this in English, is it a kind of show-off? No. There are
 
 As usual, here's lingxi's latest photo:
 
+{% img /images/photos/baby20121227.jpg %}
 {% img /images/photos/baby20121228.jpg %}
