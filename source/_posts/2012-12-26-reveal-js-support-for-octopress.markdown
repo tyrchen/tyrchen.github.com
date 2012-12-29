@@ -5,6 +5,7 @@ date: 2012-12-26 21:10
 comments: true
 categories: [tools, octopress]
 tags: [octopress]
+
 ---
 
 [reveal.js](https://github.com/hakimel/reveal.js)是一个NB的HTML presention framework，可以使用一些简单地HTML标签撰写出效果很赞的演示稿，并通过互联网传播。具体效果可以看[这里](http://lab.hakim.se/reveal-js/)。本文不是介绍如何使用或者撰写使用reveal.js的演示稿，这些可以通过reveal.js的文档很快速地掌握。作者比较好奇的是，既然octopress能够生成静态Html，那么如何很方便地将reveal.js集成到octopress中，让blog和presentation能够更好地结合起来？？

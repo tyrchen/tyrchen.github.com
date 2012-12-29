@@ -5,3 +5,45 @@ h1 small {
 	font-size: 0.6em;
 	padding-left: 20px;
 }
+
+h1 small {
+	font-size: 0.6em;
+	padding-left: 20px;
+}
+* + table {
+	width: 100%;
+  border-style:solid;
+  border-width:1px;
+  border-color:#e7e3e7;
+  margin: 10px 0px;
+}
+ 
+* + table th, * + table td {
+  border-style:dashed;
+  border-width:1px;
+  border-color:#e7e3e7;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+ 
+* + table th {
+  border-style:solid;
+  font-weight:bold;
+  background: url("/images/noise.png?1330434582") repeat scroll left top #F7F3F7;
+}
+
+* + table td {
+	padding: 3px 8px;
+} 
+
+* + table th[align="left"], * + table td[align="left"] {
+  text-align:left;
+}
+ 
+* + table th[align="right"], * + table td[align="right"] {
+  text-align:right;
+}
+ 
+* + table th[align="center"], * + table td[align="center"] {
+  text-align:center;
+}
