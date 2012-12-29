@@ -12,7 +12,7 @@ If you ask what the biggest lesson I've learned, I would say - the only thing un
 
 * We lose a key team member and it hurt me a lot.
 * We acquired fresh blood and that was a great shot.
-* We had to cut down the size of the team to move faster. Believe me, I felt much more paintful than anyone else. For the whole month I was in anguish until everyone found their new journey.
+* We had to cut down the size of the team to move faster. Believe me, I felt much more paintful than anyone else. For the whole month I was in anguish until everyone paved to their new journey.
 * We built a series of city guide apps, which got passionate responses from our users. One of the app, Hong Kong Travel Guide, held a position of No. 1 in travel leaderboard of Hong Kong app market for a period, which was a wonderful thing considering that we spent __$0__ to market it.
 * We successfully built our next gen software and would launch it formally early next year.
 
@@ -155,6 +155,7 @@ As self-employed, I took 0 or low salary for the past 2 years for the good of th
 ## Epilogue
 
 You may ask why I wrote this in English, is it a kind of show-off? No. There are two reasons:
+
 1. This blog is written for myself. It's not intended to get other's comments.
 1. Just before I started to write, I got an inspiration - I've not used English for quite a long time, why not write it in English to see what's the current status? 
 
