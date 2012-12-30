@@ -31,7 +31,7 @@ single: true
     <h2>相关文章</h2>
     <ul>
     {% for post in site.related_posts limit:site.recent_posts %}
-      <li><h4 class="title"><a href="{{ root_url }}{{ post.url }}">{{post.title}} - {{post.subtitle}}</a></h4></li>
+      <li><h4 class="title"><a href="{{ root_url }}{{ post.url }}">{{post.title}}{% if post.subtitle %} - {{post.subtitle}}{% endif %}</a></h4></li>
     {% endfor %}
   </ul>
   </div>
