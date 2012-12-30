@@ -3,7 +3,8 @@ layout: post
 title: "Retrospect of the year 2012"
 date: 2012-12-28 14:56
 comments: true
-categories: 
+categories: [retro]
+tags: [english, retro]
 ---
 
 The year 2012 was an unusal year. As a sophomore in the self-employed battlefield, I experienced a lot this year, and learned my lessons. 
@@ -13,7 +14,7 @@ If you ask what the biggest lesson I've learned, I would say - the only thing un
 * We lose a key team member and it hurt me a lot.
 * We acquired fresh blood and that was a great shot.
 * We had to cut down the size of the team to move faster. Believe me, I felt much more paintful than anyone else. For the whole month I was in anguish until everyone paved to their new journey.
-* We built a series of city guide apps, which got passionate responses from our users. One of the app, Hong Kong Travel Guide, held a position of No. 1 in travel leaderboard of Hong Kong app market for a period, which was a wonderful thing considering that we spent __$0__ to market it.
+* We built a series of city guide apps, which got passionate responses from our users. One of the apps, Hong Kong Travel Guide, held a position of No. 1 in travel leaderboard of Hong Kong app market for a period, which was a wonderful thing considering that we spent __$0__ to market it.
 * We successfully built our next gen software and would launch it formally early next year.
 
 <!-- more -->
@@ -23,7 +24,7 @@ There were several great changes on me:
 * I finished one of the greatest upgrade in my life - my lovely baby, lingxi, born at the end of this year.
 * I read tens of books but most of them were not in CS field. This year I began to be obsessed by philosophy and literature of the pre-Qin period, so I read quite a few on that.
 * I started using Meteor, a great nodejs framework for next gen web applications. By using Meteor, I spent about 5 nights on creating a collaboration tool for my team. Now this tool, called teamspark, is the defacto collaboration software of the team.
-* I started blogging again. This time, by using octopress and sublime, I was totally immersed in the happy and joyous composing state.
+* I started blogging again. This time, by using octopress and sublime, I was totally immersed in the joyous composing state.
 * I changed my little red elf Palio to a medium-sized car. For my baby, of course.
 
 Just like what I've done for the past years, this retrospection will be divided into several parts, including work, study, life and finance. I'll try to make it more personal.
@@ -45,13 +46,15 @@ Cuba     | 58      | 157502 | an obsoleted platform
 
 Note: 
 
-[1] to get git diff you made
+[1] to get git diff you made:
 
 ```
 $ git log --author="YOUR NAME" --pretty=tformat: --numstat | gawk '{ add += $1 ; subs += $2 ; loc += $1 - $2 } END { printf "added lines: %s removed lines : %s total lines: %s\n",add,subs,loc }'
 ```
 
-[2] to get commits you made
+this requires gawk. Use ```apt-get``` (ubuntu) or ```brew``` (osx) to install it in case you didn't have it.
+
+[2] to get commits you made:
 
 ```
 $ git shortlog --numbered --summary
@@ -116,7 +119,7 @@ For javascript,
 * I mastered the technique of seamlessly deploying.
 * Though we switched our major server for [tukeq.com](http://tukeq.com) from AWS to local IDC (you know the reason) and removed almost all services outside mainland China (such as cloudflare) for about a year, I still payed close attenttion to technologies used by AWS, Cloudflare, Mixpanel, Optimizely, etc.
 * I switched DB server from mongodb back to mysql for company's projects but mongodb is still my favorite for personal projects.
-* "Generate to static" technology like Jekyll caught my attention, and I did spend quite a few time on it.
+* "Generate to static" technology like [Jekyll](https://github.com/mojombo/jekyll) caught my attention, and I did spend quite a few time on it.
 * I picked up my C / assembly / Makefile experience again, and use makefile in my projects for a kind of automation.
 * I started to read several hot open source code like redis which in pure C.
 
