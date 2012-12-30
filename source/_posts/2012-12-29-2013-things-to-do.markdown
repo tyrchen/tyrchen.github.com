@@ -1,0 +1,106 @@
+---
+layout: post
+title: "2013要做的事"
+date: 2012-12-29 21:07
+comments: true
+categories: [plan]
+tags: [plan]
+---
+
+2013是很重要的一年。我需要静下心来好好思考一下有了孩子后，人生的下一个十年该怎么走？这个问题不是岁末写写博客的时候就能想通的。不过有一点是毋庸置疑的：就小宝的教育而言，好父母胜过好老师，家庭教育优于学校教育。所以不管怎样，先用知识武装自己总是没错，否则日后教导小宝也是有心无力。伊索寓言有这么一则：
+
+小蟹与母蟹
+
+母蟹对小蟹说：你不要横着爬，为什么不直着走呢？ 小蟹答道：妈妈，请您亲自教我怎样直走，我将照着您的样子走。 可母蟹根本不会直走，于是小蟹说她笨。
+
+这就是说：
+
+> 教育者自己必须正直地生活，正直地走，才能去教导别人。
+
+废话莫说，先列提纲，想想下一年我要读的书，要做的项目和要留下的文字。还有很多旁的事，too personal，sometimes naive，就不在这里道来。
+
+<!--more-->
+
+## 读书
+
+列了十多本书作为明年的读物，名单有可能随着阅读的进度变动。但原则不变：即读点经史子集和各种小故事；读点软件哲学和开发思想。
+
+### 经史子集
+
+* 胡适先生的 [中国哲学史大纲](http://www.amazon.cn/gp/product/B0039XN6U6/ref=oh_details_o00_s00_i03)
+* 梁启超先生的 [跟大师学国学：读书指南](http://www.amazon.cn/gp/product/B0044KMELK/ref=oh_details_o00_s00_i02)
+* 梁启超先生的 [梁启超传记五种](http://www.amazon.cn/gp/product/B001TI53FE/ref=oh_details_o00_s00_i00)。内含《管子传》、《王荆公传》、《袁崇焕传》三本我最想看的。
+* 按照《跟大师学国学:读书指南》的介绍，看几本经史子集。
+
+### 软件开发
+
+#### Philosophy
+
+* [More Joel on Software](http://www.amazon.com/More-Joel-Software-Occasionally-Developers/dp/B002KE5SLU/ref=sr_1_1?s=books&ie=UTF8&qid=1356792282&sr=1-1&keywords=more+joel+on+software)
+* [软件开发者路线图：从学徒到高手](http://www.amazon.cn/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E8%80%85%E8%B7%AF%E7%BA%BF%E5%9B%BE-%E4%BB%8E%E5%AD%A6%E5%BE%92%E5%88%B0%E9%AB%98%E6%89%8B-%E8%83%A1%E4%BD%9B/dp/B00418596M/ref=sr_1_1?s=books&ie=UTF8&qid=1356787138&sr=1-1)
+* [The Developer's Code](http://www.amazon.com/Developers-Code-Ka-Wai-Cheung/dp/1934356794/ref=sr_1_13?s=books&ie=UTF8&qid=1356789020&sr=1-13&keywords=programming+philosophy)
+
+#### Testing
+
+* [The Basics of Hacking and Penetration Testing: Ethical Hacking and Penetration Testing Made Easy](http://www.amazon.com/Basics-Hacking-Penetration-Testing-Syngress/dp/1597496553/ref=sr_1_5?s=books&ie=UTF8&qid=1356789572&sr=1-5&keywords=testing)
+* [Specification by Example: How Successful Teams Deliver the Right Software](http://www.amazon.com/Specification-Example-Successful-Deliver-Software/dp/1617290084/ref=sr_1_2?s=books&ie=UTF8&qid=1356833455&sr=1-2&keywords=BDD)
+* [How Google Tests Software](http://www.amazon.com/Google-Tests-Software-James-Whittaker/dp/0321803027/ref=sr_1_6?s=books&ie=UTF8&qid=1356789847&sr=1-6&keywords=unit+testing)
+
+#### Startup
+
+* [Running Lean: Iterate from Plan A to a Plan That Works](http://www.amazon.com/Running-Lean-Iterate-Plan-Works/dp/1449305172/ref=sr_1_10?s=books&ie=UTF8&qid=1356790947&sr=1-10&keywords=startup)
+
+#### Programming
+
+* [Getting Started with Meteor.js JavaScript Framework](http://www.amazon.com/Getting-Meteor-js-JavaScript-Framework-ebook/dp/B00ATYE3Z0/ref=sr_1_1?s=books&ie=UTF8&qid=1356792612&sr=1-1&keywords=meteor)
+
+### 其他
+
+* 伊索寓言
+* 弟子规
+* 少年Pi的奇幻漂流
+* 搜神记
+
+### 有空看看
+
+* [Agile Testing: A Practical Guide for Testers and Agile Teams](http://www.amazon.com/Agile-Testing-Practical-Guide-Testers/dp/0321534468/ref=sr_1_11?s=books&ie=UTF8&qid=1356789847&sr=1-11&keywords=unit+testing)
+* [Smashing Node.js: JavaScript Everywhere](http://www.amazon.com/Smashing-Node-js-JavaScript-Everywhere-Magazine/dp/1119962595/ref=sr_1_4?s=books&ie=UTF8&qid=1356791126&sr=1-4&keywords=nodejs)
+* [近代中国史学十论](http://www.amazon.cn/%E8%BF%91%E4%BB%A3%E4%B8%AD%E5%9B%BD%E5%8F%B2%E5%AD%A6%E5%8D%81%E8%AE%BA/dp/B0099MT1JG/ref=sr_1_1?ie=UTF8&qid=1356825834&sr=8-1)
+* [人间词话](http://www.amazon.cn/s/ref=nb_sb_ss_i_0_4?__mk_zh_CN=%E4%BA%9A%E9%A9%AC%E9%80%8A%E7%BD%91%E7%AB%99&url=search-alias%3Ddigital-text&field-keywords=%E4%BA%BA%E9%97%B4%E8%AF%8D%E8%AF%9D)
+
+## 开发
+
+### django1.5 & python3
+
+* 继续在django和python上探索。看看requests的源码。在合适的时机将目前的系统迁移到django 1.5。
+* 找个个人小项目用django1.5实现。
+
+### meteor & nodejs
+
+* 重构teamspark代码，将撰写部分用markdown替换。重新考虑整体的UI。
+* omniGraffle做design，express+jade+less+coffee+mocha+jasny做开发，搞个可用的小项目。主要目的是掌握omniGraffle的使用，体验mocha和 [Behavior Driven Development](http://en.wikipedia.org/wiki/Behavior-driven_development)。
+* 阅读meteor源码，掌握 [Reactivity Programming](http://en.wikipedia.org/wiki/Reactive_programming) 的精髓；学习meteor如何在保持实时性的同时能提供很棒的performance和scalability。（注：teamspark performance不好是因为还不太理解这个框架，设计上有缺陷）。
+
+### 其他
+
+* 继续看redis源码，写几篇代码总结。
+* 有空好好研究下 [etherpad](http://http://etherpad.org) 和 [share.js](http://sharejs.org/)，搞清楚 [Operational Transformation](http://en.wikipedia.org/wiki/Operational_transformation)，并考虑其应用场景。
+
+## 写作
+
+### 博客
+
+* 自己的博客保持每周1-2篇的更新频率，以技术文章为主。
+* 小宝的博客保持每周2-3篇的更新频率，以短故事为主。
+
+### 连载
+
+* Meteor进行时：每月一篇文章
+* BDD: 每月一篇文章，前期主要围绕mocha。
+* 产品开发进行时：不定期更新，介绍自己的某个个人产品开发的全过程。
+
+
+
+
+
+
