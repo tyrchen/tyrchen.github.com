@@ -10,6 +10,11 @@ h1 small {
 	font-size: 0.6em;
 	padding-left: 20px;
 }
+
+article h2, article h3, article header h1 {
+  font-weight: bold;
+}
+
 * + table {
 	width: 100%;
   border-style:solid;

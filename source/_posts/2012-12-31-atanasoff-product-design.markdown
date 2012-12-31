@@ -8,7 +8,7 @@ categories: [technology]
 tags: [atanasoff]
 ---
 
-[之前的文章](http://tchen.me/blog/2012/12/19/atanasoff-product-flow-chart/)把atanasoff的主要流程思考了一下，这几天在元旦期间考虑下atanasoff的实现。
+[之前的文章](http://tchen.me/blog/2012/12/19/atanasoff-product-flow-chart/)把atanasoff的主要流程思考了一下，元旦期间考虑下atanasoff的实现。
 
 ## 交互
 
@@ -53,6 +53,7 @@ Field       | Description
 :-----------|:--------------------------------
 title       | post的title
 location    | property. 该post在磁盘中的路径
+
 
 ### API (以 ```/api/v1/``` 开始)
 
@@ -101,7 +102,7 @@ Url                 | parameters             | Functionality
 ### 依赖的库
 
 * github API和第三方登录：[node-github](https://github.com/ajaxorg/node-github)
-* git lib用户提交代码和读取commit log：(node-gitteh)[https://github.com/libgit2/node-gitteh]。libgit2的nodejs binding。貌似现在不支持写入。
+* git lib用户提交代码和读取commit log：[node-gitteh](https://github.com/libgit2/node-gitteh)。libgit2的nodejs binding。貌似现在不支持写入。
 
 ## 后记
 
@@ -109,4 +110,4 @@ Url                 | parameters             | Functionality
 
 依旧例，上小宝照片一张。
 
-{% img /images/photos/baby20130101.jpg %}
+{% img /images/photos/baby20121231.jpg %}
