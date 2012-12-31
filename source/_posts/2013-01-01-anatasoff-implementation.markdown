@@ -5,7 +5,7 @@ date: 2013-01-01 21:46
 comments: true
 categories: [technology]
 tags: [atanasoff]
-published: [false]
+published: false
 ---
 
 ## 搭建环境
