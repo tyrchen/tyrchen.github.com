@@ -17,7 +17,7 @@ tags: [atanasoff]
 说**不**的程序猿不是好的产品经理。octopress已经为程序猿提供了一套 ```rake``` 的自动化工具。在这个基础之上，再提供一套简洁的工具让用户摆脱繁杂的设置和命令不就可以了么？是谁规定一定要搭建 ```ruby``` 环境才能搭建octopress博客？又是谁规定一定要会基本的 ```git``` 语法和 ```shell``` 命令才能使用octopress？
 
 于是就有了接下来的思考：一个Octopress客户端。
-为了行文方便，我暂且将这个产品称之为 **Atanasoff** [1]。我喜欢命名，因为我知道一旦一个产品有了名字，它就有了血肉，有了生命。
+为了行文方便，我暂且将这个产品称之为 **Atanasoff** [1]。我喜欢命名，因为一旦一个产品有了名字，它就有了血肉，有了生命。
 
 <!-- more -->
 
@@ -53,6 +53,8 @@ Atanasoff的用户须以github第三方登录，且创建了username.github.com.
 
 另外，提供图片上传和文件上传功能，上传的文件按类型放在repo相应的目录下，客户端同时生成对应的markdown语句插入到文章中合适的位置，方便用户展示图片或提供下载链接。
 
+用户也可以脱离atanasoff撰写博客。提交的时候，让github trigger一个webhook，由atanasoff的api处理并自动generate和push博客。
+
 ### 部署
 
 用户可以一键将写好的博文部署到github pages上。为性能计，部署的频率以5分钟为单位，不允许用户太频繁的部署。（因为 ```rake gen_deploy``` 是个相对较重的操作）。
@@ -75,7 +77,7 @@ python / django对我而言是最佳的选择，但我会考虑尝试nodejs。
 * 当用户设置好后，clone他的repository，切换到source并检查是否有source/post，没有的话xfork [4] 出一个设置好的系统版本。
 * 服务器使用socket.io推送post目录下的所有markdown文件（先考虑posts，以后考虑pages），及依据config生成的字典。
 * ```rake``` 命令使用background task完成。
-* 定期同步的文章内容可以记录在临时文件中并使用 diff / patch 的思想进行同步 [5]。由于这样的同步往往在自己的设备之间进行，不存在同时修改的情况，所以目前之版本无opertional transformation [6] 之必要。日后如有需要，可以添加 [etherpad](http://http://etherpad.org/) 的支持。
+* 定期同步的文章内容可以记录在临时文件中并使用 diff / patch 的思想进行同步 [5]。由于这样的同步往往在自己的设备之间进行，不存在同时修改的情况，所以目前之版本无operational transformation [6] 之必要。日后如有需要，可以添加 [etherpad](http://http://etherpad.org/) 的支持。
 
 
 ### 产品用途
@@ -106,10 +108,6 @@ python / django对我而言是最佳的选择，但我会考虑尝试nodejs。
 [5] 随便google了下，似乎有 [JsonDiffPatch](https://github.com/benjamine/JsonDiffPatch) 可以尝试
 
 [6] 协同工作软件的思想基石。 参见wikipedia下的介绍：[operational transformation](http://en.wikipedia.org/wiki/Operational_transformation) 
-
-## 后续文章
-
-* [进一步思考Atanasoff (Octopress Client)](/blog/2012/12/19/atanasoff-product-flow-chart/)
 
 ## 小宝的照片
 

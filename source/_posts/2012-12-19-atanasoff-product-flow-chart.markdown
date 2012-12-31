@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "进一步思考Atanasoff (Octopress client)"
+title: "进一步思考Atanasoff (Octopress client) (1)"
 subtitle: "产品流程图"
 date: 2012-12-19 21:57
 comments: true
