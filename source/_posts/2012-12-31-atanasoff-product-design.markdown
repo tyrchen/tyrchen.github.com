@@ -16,6 +16,7 @@ tags: [atanasoff]
 
 {% img /images/charts/atanasoff-pages.jpg %}
 
+<!--more-->
 ### 主要页面元素
 
 {% img /images/charts/atanasoff-widgets.jpg %}
