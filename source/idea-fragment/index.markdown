@@ -61,3 +61,12 @@ optimizely的技术看上去很有意思，自己有空琢磨下，做个类似�
 ## 个人简历大荟萃
 
 制作类似 [resume.github.com](http://resume.github.com) 这样的简历生成器。
+
+## 将Atanasoff变成个人知识管理和写作平台
+
+可以让用户记日记，写书，写演示文稿，写使用帮助。只要将任何按一定格式撰写的内容拽到dropbox中，就能在网站上和各种设备上以特定的模版展示出来。在任何设备上也可以通过网页端或者app端撰写，撰写的内容也会出现在用户的dropbox folder里。
+
+每个目录一个站点。站点以 username.atanasoff.com/site/的形式发布，用户可以绑定自己的域名。
+
+
+

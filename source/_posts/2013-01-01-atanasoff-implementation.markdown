@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Anatasoff实现摘要"
+title: "Atanasoff实现摘要"
 date: 2013-01-01 21:46
 comments: true
 categories: [technology]
@@ -88,6 +88,12 @@ $ mocha --compilers coffee:coffee-script
 
 注意mocha最新的版本已经不默认处理coffeescript了，所以直接运行 ```mocha``` 不会运行任何test。
 
+如果想mocha一直监控test目录的变化：
+
+```
+mocha -w -G --compilers coffee:coffee-script
+```
+
 ### 客户端包管理 - [bower](http://twitter.github.com/bower/)
 
 安装bower：
@@ -104,6 +110,15 @@ $ bower install bootstrap
 $ bower install underscore
 $ bower install ace
 ```
+
+### i18n
+
+找到了一个node的i18n package：[i18-node](https://github.com/mashpie/i18n-node)。
+
+先把 ```"i18n": "*"``` 添加到 ```package.json```，然后运行 ```npm install``` 安装。
+
+
+
 
 {% comment %}
 开启一个新的项目时，代码结构非常重要。不合理的结构会让一个项目在代码规模逐渐趋于庞大的时候变得举步维艰，难以修改，之前做过的几个django项目我就走过不少弯路。可惜，现在但凡tutorial，都尽量保持简单，
