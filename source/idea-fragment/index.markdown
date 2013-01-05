@@ -1,11 +1,4 @@
----
-layout: page
-title: "想法碎片"
-date: 2012-12-20 09:28
-comments: true
-sharing: true
-footer: true
----
+
 
 [http://zh.wikipedia.org/wiki/Category:%E8%AE%A1%E7%AE%97%E6%9C%BA%E9%A2%86%E5%9F%9F%E5%85%88%E9%A9%B1%E8%80%85](http://zh.wikipedia.org/wiki/Category:%E8%AE%A1%E7%AE%97%E6%9C%BA%E9%A2%86%E5%9F%9F%E5%85%88%E9%A9%B1%E8%80%85)
 
