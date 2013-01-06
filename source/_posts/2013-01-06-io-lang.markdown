@@ -1,0 +1,295 @@
+---
+layout: post
+title: "有意思的Io语言（一）"
+date: 2013-01-06 23:05
+comments: true
+categories: [Io, technology]
+tags: [Io, lang]
+---
+
+## 开胃酒
+
+最近写了不少javascript，对原型语言有了浓厚的兴趣。听闻原型语言中有一清丽脱俗，小桥简单的语言，叫Io，随即花了点时间研究下。
+
+不看不知道，一看吓一跳。Io这门语言没有关键字，万事万物皆为消息，程序员要做的无非是把消息串联起来，传递，处理。
+
+根据 [维基百科](http://zh.wikipedia.org/zh-cn/Io_(%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80)) 的定义，IO语言主要吸取了这些语言的如下特点：
+
+* Smalltalk——所有的变量均为对象、所有的消息都是动态的；
+* Self——基于原型的面向对象设计
+* NewtonScript——差异化继承
+* Act1——并发行为和特征
+* LISP——code is a runtime inspectable/modifiable tree
+* Lua——小巧且具有可嵌入能力
+
+在osx下用 ```brew``` 安装很简单（想必ubuntu用apt-get也不难）：
+
+```
+$ brew install io
+```
+
+接下来在命令行中运行 ```io``` 即可进入到交互界面。我们先拿个hello world练练手：
+
+``` io
+$ io
+Io 20110905
+Io> "hello world!" println
+hello world!
+==> hello world!
+```
+
+<!-- more -->
+
+## 冷盘
+
+### 对象创建
+
+通过hello world，我们初窥Io的门径。println做为消息被发送给对象，消息接受者（object）在左，消息（method）在右。我们看看Io的对象创建：
+
+``` io
+Io> Animal := Object clone
+==>  Animal_0x7fbdd1e19490:
+  type             = "Animal"
+```
+
+了解javascript的同学都知道，原型语言无所谓类，一些皆对象。新的对象由老对象克隆而成，生生息息、永不停息。对象一般都有其数据和方法。例如Animal对象可以有name（数据），和talk(方法)，在Io中，由于一切皆消息，所以对象的数据和方法有个应景的名字：消息槽（slot）。我们为Animal定义其slot：
+
+``` io
+Io> Animal name := "Animal"
+==> Animal
+Io> Animal talk := method("Wow" println)
+==> method(
+    "Wow" println
+)
+Io> Animal talk
+Wow
+==> Wow
+Io> Animal name
+==> Animal
+Io> Duck := Animal clone
+==>  Duck_0x7fbdd2841420:
+  type             = "Duck"
+
+Io> Duck name = "Duck"
+==> Duck
+Io> Duck talk := method("Quaaaaaack!" println)
+==> method(
+    "Quaaaaaack!" println
+)
+Io> Duck talk
+Quaaaaaack!
+==> Quaaaaaack!
+Io> Duck walk := method("walking..." println)
+==> method(
+    "walking..." println
+)
+Io> Duck walk
+walking...
+==> walking...
+```
+
+slot创建需要使用 ```:=```，而修改已有slot可用 ```=```。slot可以定义，也可以使用。对于 ```Duck talk```，我的理解是，向Duck对象传递talk消息。如果Duck定义了talk slot，就是能够响应该消息，否则不能。为了证实这一点，也为了更好地介绍Io，我们来玩点花活：
+
+```
+Io> Duck hello
+
+  Exception: Duck does not respond to 'hello'
+  ---------
+  Duck hello                           Command Line 1
+
+Io> Object hello := method("Hello world" println)
+==> method(
+    "Hello world" println
+)
+Io> Duck hello
+Hello world
+==> Hello world
+o> Animal hello = method("Hello animal" println)
+==> method(
+    "Hello animal" println
+)
+Io> Duck hello
+Hello animal
+==> Hello animal
+```
+
+因为之前我们没有定义Duck对象的slot hello，所以Duck无法响应hello消息。我们当然可以对Duck定义hello slot，但如果想更通用一些，我们可以定义Object上的hello slot。之后我们再对Duck发送hello消息，就可以正常接收了。
+
+这个小例子说明Io（也许也是原型模型）的一个重要特点：如果对象无法响应某消息，则它会把该消息发送给自己的原型，直到消息得到处理或者抛出异常。
+
+你也许会说，面向对象的程序语言如Python不也是这样么？子类未定义的函数，会一直回溯父类直至其得到执行或者抛出异常。是的，表面上看上去一样，但背后的__思想__和实现机制大为不同。函数->执行在执行者和被执行者在字面上是高耦合的，是单线程同步的思想；消息和接收消息的对象在字面上是低耦合，是协同异步的思想。
+
+### List, Map
+
+这是每种语言几乎都有的类型，也几乎是每种语言最重要的东西。因为懂得人多，代码一看就能通，这里就不详细说。
+
+``` io
+Io> languages := list("Ruby", "Python", "C", "Javascript", "Io")
+==> list(Ruby, Python, C, Javascript, Io)
+Io> languages size
+==> 5
+Io> languages pop
+==> Io
+Io> languages append("Io")
+==> list(Ruby, Python, C, Javascript, Io)
+Io> l := List clone
+==> list()
+Io> l isEmpty
+==> true
+Io> languages foreach(i, v, write(i, ":", v, ";"))
+0:F#;1:Ruby;2:Python;3:C;4:Javascript;5:Io;==> nil
+Io> numbers := list(1,2,3,4,5)
+==> list(1, 2, 3, 4, 5)
+Io> numbers select(isOdd)
+==> list(1, 3, 5)
+Io> numbers map(x, x * 2)
+==> list(2, 4, 6, 8, 10)
+Io> hobby := Map clone
+==>  Map_0x7fd332071240:
+
+Io> hobby atPut("games", list("starcraft", "counter attack"))
+==>  Map_0x7fd332071240:
+
+Io> hobby atPut("reading", "book")
+==>  Map_0x7fd332071240:
+
+Io> hobby asObject
+==>  Object_0x7fd33208f080:
+  games            = list(starcraft, counter attack)
+  reading          = "book"
+
+Io> hobby keys
+==> list(reading, games)
+Io> hobby size
+==> 2
+```
+
+## 主菜
+
+喝了开胃酒，尝了冷盘，就该今天的主菜。从上面的诸多例子中我们已经能够了解到Io的一些入门级的特性。语法虽然不难，但是我们想搞清楚几件事：
+
+* 基本类型是对象么？
+* list()究竟是什么东西？method？语法糖？
+* numbers map(x, x*2)怎么理解消息的传递？
+* 既然Io号称没有关键字，那么 :=，* 这样的运算符究竟是什么？
+
+我们一个个来研究。
+
+### 基本类型
+
+我们先看看整数：
+
+``` io
+Io> 1 proto
+==> 0
+Io> 1 type
+==> Number
+Io> Number proto
+==>  Object_0x7fd548403ff0:
+```
+
+由此可见，数字是Object衍生出来的，其他基本类型，如true/false，也是如此。这样我们可以为数字定义很多有意思的消息，就像ruby程序员常干的那样：
+
+```
+Io> Number days := method(self * 24)
+==> method(
+    self * 24
+)
+Io> 1 days
+==> 24
+Io> Number ago := method(self * -1)
+==> method(
+    self * - 1
+)
+Io> 2 days ago
+==> -48
+```
+
+有那么点意思吧，通过定义和组织消息，我们可以很轻松地定义DSL。
+
+### list()究竟是什么东西？method？语法糖？
+
+list是对象，clone自List对象；List对象来源于Object对象。看上去list做了些有趣的事情使得它更像是个语法糖。不知道为何对于Map，Io不提供类似的快速生成对象的语法。
+
+``` io
+Io> list() type
+==> List
+Io> List proto
+==>  Object_0x7f81bbc03ff0:
+```
+
+自己尝试着实现了个list的Python的语法糖：
+
+``` io
+Io> squareBrackets := method(  arr := list();  call message arguments foreach(arg, arr push(call sender doMessage(arg)));  arr)
+Io> l := [1,2]
+==> list(1, 2)
+Io> l1 := [1,2,[1,2,3],"abc"]
+==> list(1, 2, list(1, 2, 3), abc)
+```
+
+这里用到了消息反射，下次再深入探讨。
+
+
+### numbers map(x, x*2)怎么理解消息的传递？
+
+在Io中，运算符也是消息，只不过表现形式特殊些（非字母，不用括号调用）。如果将 ```x*2``` 写成 ```x *(2)``` 就好理解很多。所以这句话的消息传递是：消息*(2)传递给x，消息map(x, x*2)传递给numbers这个list对象。
+
+### 什么是运算符
+
+如上文所述，Io的运算符其实就是消息，我们可以查看当前的运算符，也可以自己定义：
+
+```
+Io> OperatorTable
+==> OperatorTable_0x7f9da04761e0:
+Operators
+  0   ? @ @@
+  1   **
+  2   % * /
+  3   + -
+  4   << >>
+  5   < <= > >=
+  6   != ==
+  7   &
+  8   ^
+  9   |
+  10  && and
+  11  or ||
+  12  ..
+  13  %= &= *= += -= /= <<= >>= ^= |=
+  14  return
+
+Assign Operators
+  ::= newSlot
+  :=  setSlot
+  =   updateSlot
+
+To add a new operator: OperatorTable addOperator("+", 4) and implement the + message.
+To add a new assign operator: OperatorTable addAssignOperator("=", "updateSlot") and implement the updateSlot message.
+```
+
+注意：之前我们常用但没有解释过的 ```:=``` 其实就是__setSlot__消息，而 ```=```是__updateSlot__消息，这就是为何 ```=``` 不能创建只能修改已有slot的原因了。
+
+在结束本次大餐之前，我们再吃点有意思的东西：
+
+``` io
+Io> Number oldDiv := Number getSlot("/")
+==> Number_/()
+Io> Number / := method(x, if(x==0, 0, self oldDiv(x))
+... )
+==> method(x,
+    if(x == 0, 0, self oldDiv(x))
+)
+Io> (10 / 5) print
+2==> 2
+Io> (10 / 0) print
+0==> 0
+```
+
+代码很简单，不解释。
+
+## 餐后甜点
+
+依旧是小宝的照片：
+
+{% img /images/photos/baby20130107.jpg %}
