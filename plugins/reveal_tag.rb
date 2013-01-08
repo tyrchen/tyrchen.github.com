@@ -30,7 +30,8 @@ module Jekyll
     def render(context)
       output = super
       if @url
-        reveal = "<embed src='#{@url}' allowFullScreen='true' width='#{@width}' height='#{@height}' align='middle'></embed>"
+        reveal = "<embed src='#{@url}' allowFullScreen='true' width='#{@width}' height='#{@height}' align='middle'></embed><br/><a href='#{@url}' target='_blank'>Fullscreen</a>"
+
       else
         "Error processing input, expected syntax: {% reveal url/to/presentation [width height] %}"
       end
