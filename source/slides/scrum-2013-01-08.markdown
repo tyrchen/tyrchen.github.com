@@ -1,0 +1,128 @@
+---
+layout: slides
+title: "Cayman 1.1"
+date: 2013-01-08 08:14
+theme: beige
+---
+
+<section>
+# Cayman 1.1
+
+<br/>
+
+## Tyr Chen
+
+2013.01.08
+</section>
+
+<section>
+## 主要目标
+
+* 更有价值的地图
+* 更方便地协同编辑
+* 更好用的撰写工具
+* 更可用的整理功能
+* 分享
+
+</section>
+
+<section>
+<section>
+## 更有价值的地图
+
+<iframe width="900" height="150" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=zh-CN&amp;geocode=&amp;q=%E5%B7%B4%E9%BB%8E&amp;aq=&amp;sll=37.0625,-95.677068&amp;sspn=53.035373,105.820313&amp;ie=UTF8&amp;hq=&amp;hnear=%E6%B3%95%E5%9B%BD%E6%B3%95%E5%85%B0%E8%A5%BF%E5%B2%9B%E5%B7%B4%E9%BB%8E&amp;ll=48.856614,2.352222&amp;spn=0.021742,0.05167&amp;t=m&amp;z=14&amp;output=embed"></iframe>
+
+<p></p>
+
+* 恢复地图模式
+* 让用户决定笔记的地图
+* 恢复PDF中的地图
+
+
+</section>
+
+<section>
+## 地图功能详述
+
+* 用户可以自行决定笔记的地图
+  * 可以通过鼠标操作在地图上打1-8个坐标
+  * 可以添加或删除自己有权限的笔记上的坐标
+* 笔记的地图会汇总到分类下的地图
+* 分类下的地图会汇总到地图模式下的地图
+* 分类下的地图会被输出到PDF中
+
+</section>
+
+
+<section>
+## 地图信息的保存
+
+* 简单派：embedded field
+* 复杂派：separate table
+
+各有利弊。问题是：查看某一地点下的笔记的集合有无太大的价值？
+ 
+</section>
+</section>
+
+<section>
+## 更方便地协同编辑
+
+* 对于笔记
+  * 公开/私有
+* 对于笔记本
+  * 公开/私有
+  * 谁可修改和添加笔记本
+
+</section>
+
+<section>
+## 更好的撰写工具
+
+* 剪辑器中撰写仍然保持轻量
+* 阅读器中需要更好用的撰写工具
+  * 能够输出一致简洁的html代码（方便PDF生成）
+  * 基本的编辑功能可用，好用
+  * 用户可以无障碍地撰写大段图文
+</section>
+
+<section>
+## 更可用的整理功能
+
+* 恢复笔记批量分类功能
+* 提供笔记合并功能
+
+</section>
+
+<section>
+## 分享
+
+* 允许用户方便地把笔记和笔记本分享到社交网络
+* PDF可以同步到用户的网盘（实验）
+
+</section>
+
+</section>
+
+<section>
+## Simple Roadmap
+
+* 需求敲定后两周左右时间内完成：
+  * 撰写
+  * 协同编辑
+  * 分享
+  * 地图和整理功能的UI
+* 在此基础上完成：
+
+  * 地图编辑：~两周
+  * 整理：~一周
+
+Notice: 各部分代码使用各自独立的branch，完成后可以合并到devel进行测试。期间线上的bug在master上解决。
+</section>
+
+统计信息
+
+用户私信
+
+邀请用户做可用性测试
+
