@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="本博客提供我个人的想法，创意，经验，心得。你不必认同博主观点。" />
+    <meta name="keywords" content="创业, 思想, 点子, 经验, python, erlang, node, javascript, 服务器, devops, meteor" />
+    <meta name="author" content="Tyr Chen" />
+
+    <!-- Output DocPad produced meta elements -->
+    
+
+    <!-- Styles -->
+    <link  rel="stylesheet" href="/assets/css/app.css" /><link  rel="stylesheet" href="/assets/css/animate.css" /><link  rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700|Yanone+Kaffeesatz:200,300,400,700|Raleway:200,300,400,500,700" /><link  rel="stylesheet" href="/assets/css/font-awesome.css" /><link  rel="stylesheet" href="/assets/css/solarized_dark.css" /><link  rel="stylesheet" href="/assets/css/theme.css" />
+
+    <link href="/assets/favicon.ico" rel="shortcut icon">
+    <link href="/assets/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    @javascript html5shiv respond.min
+    <![endif]-->
+
+    <title>为什么是Meteor | 觅珠人 | Tyr Chen的个人博客 | 创意 | 心得 | 经验</title>
+
+</head>
+
+<body>
+
+<!-- Contact Modal -->
+<div aria-hidden='true' aria-labelledby='contactModalLabel' class='modal fade' id='contactModal' role='dialog' tabindex='-1'>
+    <div class='modal-dialog'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <button aria-hidden='true' class='close' data-dismiss='modal' type='button'>×</button>
+                <h4 class='modal-title'>Contact Us Form</h4>
+            </div>
+            <div class='modal-body'>
+                <form action='#' role='form'>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Name</label>
+                                <input class='form-control' placeholder='your username' type='text'>
+                            </div>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Email</label>
+                                <input class='form-control' placeholder='your password' type='text'>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-12'>
+                                <label class='control-label' for=''>Your Message</label>
+                                <textarea class='form-control' name='' rows='4'></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class='modal-footer'>
+                <button class='btn btn-default' data-dismiss='modal' type='button'>Cancel</button>
+                <button class='btn btn-primary' type='button'>Send Message</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="header-image-wrapper">
+  <img alt="" src="/assets/images/backgrounds/page-header-bg-1.jpg">
+</div>
+
+<div class='header-main'>
+    <div class='container'>
+        <nav class='navbar navbar-default' role='navigation'>
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class='navbar-header'>
+                <button class='navbar-toggle' data-target='.navbar-ex1-collapse' data-toggle='collapse' type='button'>
+                    <span class='sr-only'>Toggle navigation</span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                </button>
+                <a class='navbar-brand' href='/'>
+                    <img alt='' height='45px' src='/assets/images/tyr.png'> <span>觅珠人</span>
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class='collapse navbar-collapse navbar-ex1-collapse'>
+
+                <ul class='nav navbar-nav navbar-right'>
+                    <li class="">
+                        <a href="/">首页</a>
+                    </li>
+                    
+                        
+                        <li
+                            about="/pages/posts.html"
+                            class=""
+                        >
+                            <a href="/pages/posts.html">
+                                文章随笔
+                            </a>
+                        </li>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                        <li
+                            about="/pages/canvases.html"
+                            class=""
+                        >
+                            <a href="/pages/canvases.html">
+                                奇思妙想
+                            </a>
+                        </li>
+                        
+                    
+                        
+                        <li
+                            about="/pages/aboutme.html"
+                            class=""
+                        >
+                            <a href="/pages/aboutme.html">
+                                关于我
+                            </a>
+                        </li>
+                        
+                    
+                    <!--
+                    <li>
+                        <a data-toggle='modal' href='#contactModal'>联系我</a>
+                    </li>
+                    -->
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+</div>
+
+<div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+
+<div class='container'>
+  <div class='row'>
+    <div class="col-md-3">
+      <div class="post-side-bar">
+        <div class="widget widget-cats tags">
+          <h4 class="widget-title">标签</h4>
+          <ul>
+          
+            <li><a href='/tags/meteor.html'>meteor</a></li>
+          
+            <li><a href='/tags/tool.html'>tool</a></li>
+          
+          </ul>
+        </div>
+        <div class="widget widget-cats">
+          <h4 class="widget-title">
+            相关文章
+          </h4>
+          <ul>
+            
+            
+              <li><a href="/posts/2012-12-16-first-blog.html">第一篇博客: 用octopress搭建博客系统</a></li>
+            
+              <li><a href="/posts/2012-12-21-meteor-basics.html">Meteor基础入门</a></li>
+            
+              <li><a href="/posts/2012-12-26-reveal-js-support-for-octopress.html">Octopress支持reveal.js撰写slides</a></li>
+            
+              <li><a href="/posts/2013-01-09-auto-deploy-with-github-webhooks.html">用Github Webhooks实现自动部署</a></li>
+            
+              <li><a href="/posts/2013-01-21-why-use-wintersmith-to-replace-octopress.html">为什么要使用wintersmith取代octopress</a></li>
+            
+              <li><a href="/posts/2013-02-04-teamspark-open-sourced.html">Teamspark及Meteor杂谈</a></li>
+            
+            
+          </ul>
+        </div>
+      </div>
+    </div>      
+    <div class='col-md-9'>
+      <div class='post-single'>
+        <!--
+        <div class='pre-post-meta'>
+          <span>
+            <i class='icon-reorder'></i>
+            in
+            <a href='#'>Web Development</a>
+          </span>
+          <span>
+            <i class='icon-user'></i>
+            by
+            <a href='#'>Tyr Chen</a>
+          </span>
+          <span>
+            <i class='icon-bookmark'></i>
+            12 分钟
+          </span>
+        </div>
+        -->
+        <h1 class='has-sub-header'>为什么是Meteor</h1>
+        <div class='post-single-meta'>
+          <span class='meta-item'>
+            <i class='icon-calendar'></i>
+            11个月前
+          </span>
+          <!--
+          <span class='meta-item'>
+            <a href='#'>
+              <i class='icon-comments'></i>
+              24
+            </a>
+          </span>
+          <span class='meta-item'>
+            <a href='#'>
+              <i class='icon-heart'></i>
+              15
+            </a>
+          </span>
+          -->
+          <span class="meta-item">
+          	
+            <i class='icon-time'></i>
+            12 分钟
+          </span>
+        </div>
+        <h2>Meteor是什么？</h2>
+<p>Meteor的官网( <a href="http://meteor.com">http://meteor.com</a> )这样介绍这个框架：</p>
+<blockquote>
+<p>Meteor is an open-source platform for building top-quality web apps in a fraction of the time, whether you&#39;re an expert developer or just getting started.</p>
+</blockquote>
+<p><strong>top-quality web apps</strong> 我们放下不表，<strong>fraction of the time</strong> 的提法很新颖，看来这个框架的目标是解放程序猿，少花时间多办事。虽然具体的演化路径我不得而知，但从网络上的各种蛛丝马迹来看，Meteor吸收了google wave, asana等平台背后的开发工具的精髓，逐渐演进出了目前的版本。Meteor的幕后团队相当强悍：他们大多毕业于MIT，是成功的创业家，也是一流的工程师，其中一个开发者还是神器 <a href="http://etherpad.net">etherpad</a> 的作者。</p>
+<!--more-->
+
+<h3>Meteor究竟有什么NB的地方？</h3>
+<p>首先，Meteor构架与nodejs之上。这使得 <strong>One Language</strong> 成为可能，同时可依托nodejs上诸如soket.io这样强大的类库内置 <strong>realtime</strong>，<strong>Date on the Wire</strong> 等特性。</p>
+<p>在一种语言的基础上，Meteor统一了服务器端和客户端的数据访问，提出 <strong>Database Everywhere</strong>，一套DB API大大减轻了开发负担，不用再做server data JSON client data的转换（想想你的django 或者rails app，在这上面花了多少功夫？）。</p>
+<p>为了让app达到最佳的用户体验，Meteor还提供了 <strong>Latency Compensation</strong>，客户端对数据的更新即时反应到UI，如果更新被服务器reject，再rollback。大多数情况下，用户会得到极佳的类似本地数据库的体验。</p>
+<p>Meteor最让人叫绝的是其 <strong>Full Stack Reactivity</strong>。关于reactivity programming的详细介绍，请参考 <a href="http://en.wikipedia.org/wiki/Reactive_programming">Reactivity Programming</a>，这里不展开。简言之，当数据发生改变的时候，所有依赖该数据的地方自动发生相应的改变。</p>
+<p>用过backbone的同学都知道，当model发生改变的时候，我们需要通过注册相应的事件，显式更新对应的DOM，如果数据在页面中多处被渲染，则每处对应的DOM需挨个更新。</p>
+<p>ember在backbone的思想上更近了一大步，通过内置的data binding API，让数据和DOM能够双向绑定，程序猿不用再花心思去考虑DOM的更新。然而，蹩脚的API调用（所有对binding的数据的访问需要通过getter和setter，你懂的）和DOM中无处不在的script垃圾让ember既不简约也不优雅。</p>
+<p>而Meteor则另辟蹊跷，通过reactivity context和dependency巧妙地支持了reactivity（据作者说核心代码就几十行），使用者几乎感受不到代码的变化。</p>
+<p>Meteor另一个很贴心的点是零部署。开发web app有点小头疼的点是打包和部署。比如说，把less转成css，coffee转成javascript，然后混淆，压缩，虽然有些自动化的工具可以简化这部分工作，可还免不了相应的配置和一些脚本工作。在开发环境下，meteor会自动替你加载js/css，如果你使用了coffee/less (sass)，只要add了相应的smart package，meteor会自动帮你处理；开发完毕后要部署，只需要运行 <code>meteor bundle</code>，系统自动会将相关的资源打包，只要目标系统上有相应版本的nodejs，meteor和mongodb，就能运行一个标准的production版本。</p>
+<p>以下是meteor官网上的介绍，当你真正使用meteor后，会发现还真不是吹牛。</p>
+<blockquote>
+<h2>Seven Principles of Meteor</h2>
+<ol>
+<li><p>Data on the Wire. Don&#39;t send HTML over the network. Send data and let the client decide how to render it.</p>
+</li>
+<li><p>One Language. Write both the client and the server parts of your interface in JavaScript.</p>
+</li>
+<li><p>Database Everywhere. Use the same transparent API to access your database from the client or the server.</p>
+</li>
+<li><p>Latency Compensation. On the client, use prefetching and model simulation to make it look like you have a zero-latency connection to the database.</p>
+</li>
+<li><p>Full Stack Reactivity. Make realtime the default. All layers, from database to template, should make an event-driven interface available.</p>
+</li>
+<li><p>Embrace the Ecosystem. Meteor is open source and integrates, rather than replaces, existing open source tools and frameworks.
+Simplicity Equals Productivity. The best way to make something seem simple is to have it actually be simple. Accomplish this through clean, classically beautiful APIs.</p>
+</li>
+</ol>
+</blockquote>
+<h2>Meteor入门范例</h2>
+<p>废话说那么多，是骡子是马，不如拿出来溜溜。以下是meteor create --example leaderboard产生的代码，很好懂，借花献佛。先看DOM结构，meteor目前仅支持 <a href="http://http://handlebarsjs.com/">handlebar</a> 做为template engine。</p>
+<pre><code>&lt;head&gt;
+  &lt;title&gt;Leaderboard&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div id=&quot;outer&quot;&gt;
+    {{&gt; leaderboard}}
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;template name=&quot;leaderboard&quot;&gt;
+  &lt;div class=&quot;leaderboard&quot;&gt;
+    {{#each players}}
+      {{&gt; player}}
+    {{/each}}
+  &lt;/div&gt;
+  {{#if selected_name}}
+  &lt;div class=&quot;details&quot;&gt;
+    &lt;div class=&quot;name&quot;&gt;{{selected_name}}&lt;/div&gt;
+    &lt;input type=&quot;button&quot; class=&quot;inc&quot; value=&quot;Give 5 points&quot; /&gt;
+  &lt;/div&gt;
+  {{/if}}
+  {{#unless selected_name}}
+  &lt;div class=&quot;none&quot;&gt;Click a player to select&lt;/div&gt;
+  {{/unless}}
+&lt;/template&gt;
+&lt;template name=&quot;player&quot;&gt;
+  &lt;div class=&quot;player {{selected}}&quot;&gt;
+    &lt;span class=&quot;name&quot;&gt;{{name}}&lt;/span&gt;
+    &lt;span class=&quot;score&quot;&gt;{{score}}&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre>
+<p>可以看到html被简化了不少，不用显式应用js/css。这段代码很好懂。再看看javascript，也是leaderboard的核心功能。javascript文件主要实现了template的事件及数据的CRUD。</p>
+<pre><code>// Set up a collection to contain player information. On the server,
+// it is backed by a MongoDB collection named &quot;players&quot;.
+Players = new Meteor.Collection(&quot;players&quot;);
+if (Meteor.isClient) {
+  Template.leaderboard.players = function () {
+    return Players.find({}, {sort: {score: -1, name: 1}});
+  };
+  Template.leaderboard.selected_name = function () {
+    var player = Players.findOne(Session.get(&quot;selected_player&quot;));
+    return player &amp;&amp; player.name;
+  };
+  Template.player.selected = function () {
+    return Session.equals(&quot;selected_player&quot;, this._id) ? &quot;selected&quot; : &#39;&#39;;
+  };
+  Template.leaderboard.events({
+    &#39;click input.inc&#39;: function () {
+      Players.update(Session.get(&quot;selected_player&quot;), {$inc: {score: 5}});
+    }
+  });
+  Template.player.events({
+    &#39;click&#39;: function () {
+      Session.set(&quot;selected_player&quot;, this._id);
+    }
+  });
+}
+// On server startup, create some players if the database is empty.
+if (Meteor.isServer) {
+  Meteor.startup(function () {
+    if (Players.find().count() === 0) {
+      var names = [&quot;Ada Lovelace&quot;,
+                   &quot;Grace Hopper&quot;,
+                   &quot;Marie Curie&quot;,
+                   &quot;Carl Friedrich Gauss&quot;,
+                   &quot;Nikola Tesla&quot;,
+                   &quot;Claude Shannon&quot;];
+      for (var i = 0; i &lt; names.length; i++)
+        Players.insert({name: names[i], score: Math.floor(Math.random()*10)*5});
+    }
+  });
+}</code></pre>
+<p>不到50行代码，提供了从model创建与fixture setup，到渲染模版和事件处理。想想用现有的任何一个框架，实现同样的功能，需要多少代码？</p>
+<p>要运行以上范例，安装好meteor后，仅需：</p>
+<pre><code>$ meteor create --example leaderboard
+$ cd leaderboard
+$ meteor</code></pre>
+<p>然后打开浏览器，访问：<a href="http://localhost:3000。">http://localhost:3000。</a></p>
+<h2>敬请期待</h2>
+<p>从meteor 0.3.8版本开始学习和使用，到目前的0.5.2，我对meteor虽不敢说已经通盘掌握，也能够做一些稍微复杂的项目。接下来我会撰写一系列的文章，从本文提到的例子leaderboard的增强版开始，由浅入深，探讨如何通过学习meteor的架构和API，使用meteor做一些有意思的项目。</p>
+<p>大纲如下：</p>
+<ul>
+<li><strong><a href="/posts/2012-12-21-meteor-basics.html">Meteor入门指南 - 如何安装，基本元素和包管理</a></strong> -- 2012.12.23前</li>
+<li><strong>第一个Meteor App: 正字系统（leaderboard变种）</strong> -- 2012.12.30前（delayed）</li>
+<li><strong>Meteor的权限和用户账号系统</strong> -- 2013.01.06前（2013.01.13）</li>
+<li><strong>将Meteor部署到自己的服务器</strong> -- 2013.01.13前（2013.01.20）</li>
+</ul>
+<h2>Reference</h2>
+<ol>
+<li><a href="http://meteor.com"><a href="http://meteor.com">http://meteor.com</a></a></li>
+<li><a href="http://docs.meteor.com">Meteor文档</a></li>
+<li><a href="https://trello.com/board/meteor-roadmap/508721606e02bb9d570016ae">Meteor Roadmap</a></li>
+</ol>
+<h2>小宝的照片</h2>
+<p>依旧例，还是上一张小宝的当天照片以飨读者。</p>
+<p><img src="/assets/files/photos/baby20121216-1.jpg" alt="小宝"></p>
+
+        <div class='under-post'>
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+                
+                  <div class='pull-left'>
+                    <a class='read-previous-link' href='/posts/2012-12-16-first-blog.html'>
+                      <i class='icon-angle-left'></i>
+                      上一篇
+                    </a>
+                  </div>                  
+                
+                
+                  <div class='pull-right'>
+                    <a class='read-next-link' href='/posts/2012-12-18-octopress-client-a-better-composition-tool.html'>
+                      下一篇
+                      <i class='icon-angle-right'></i>
+                    </a>
+                  </div>
+                         
+            
+          
+            
+          
+          
+          <div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-facebook'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-twitter'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-linkedin'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+        </div>
+      </div>
+    </div>
+      
+  </div>
+  <div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+  
+  <div class="ds-thread">
+    <script>
+        var duoshuoQuery = {short_name:"tyrchen"};
+        (function() {
+          var ds = document.createElement('script');
+          ds.type = 'text/javascript';ds.async = true;
+          ds.src = 'http://static.duoshuo.com/embed.js';
+          ds.charset = 'UTF-8';
+          (document.getElementsByTagName('head')[0]
+          || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+  </div>
+
+</div>
+
+<footer id="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="footer-menu">
+                    <li><a href="/pages/privacy">隐私策略</a></li>
+                    <li><a href="/pages/license">版权说明</a></li>
+                    <li><a href="/pages/disclaimer">免责声明</a></li>
+                    <li><a href="#">联系我们</a></li>
+                </ul>
+                <div class="copyright">
+                    2013 &copy; Tyr Chen. 保留一切权利.
+                </div>
+            </div>
+            <div class="col-md-6">
+                <ul class="footer-social">
+                    <li><a href="#"><i class="icon-facebook"></i></a></li>
+                    <li><a href="#"><i class="icon-twitter"></i></a></li>
+                    <li><a href="#"><i class="icon-dribbble"></i></a></li>
+                    <li><a href="#"><i class="icon-linkedin"></i></a></li>
+                    <li><a href="#"><i class="icon-google-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- Scripts -->
+<script defer="defer"  src="/assets/js/jquery.js"></script><script defer="defer"  src="/assets/js/bootstrap.min.js"></script><script defer="defer"  src="/assets/js/jquery.visible.min.js"></script><script defer="defer"  src="/assets/js/jquery.isotope.min.js"></script><script defer="defer"  src="/assets/js/jquery.knob.js"></script><script defer="defer"  src="/assets/js/jquery.scrollUp.min.js"></script><script defer="defer"  src="/assets/js/highlight.pack.js"></script><script defer="defer"  src="/assets/js/application.js"></script>
+
+
+</body>
+
+</html>

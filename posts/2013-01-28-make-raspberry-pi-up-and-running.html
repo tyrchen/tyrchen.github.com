@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="本博客提供我个人的想法，创意，经验，心得。你不必认同博主观点。" />
+    <meta name="keywords" content="创业, 思想, 点子, 经验, python, erlang, node, javascript, 服务器, devops, meteor" />
+    <meta name="author" content="Tyr Chen" />
+
+    <!-- Output DocPad produced meta elements -->
+    
+
+    <!-- Styles -->
+    <link  rel="stylesheet" href="/assets/css/app.css" /><link  rel="stylesheet" href="/assets/css/animate.css" /><link  rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700|Yanone+Kaffeesatz:200,300,400,700|Raleway:200,300,400,500,700" /><link  rel="stylesheet" href="/assets/css/font-awesome.css" /><link  rel="stylesheet" href="/assets/css/solarized_dark.css" /><link  rel="stylesheet" href="/assets/css/theme.css" />
+
+    <link href="/assets/favicon.ico" rel="shortcut icon">
+    <link href="/assets/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    @javascript html5shiv respond.min
+    <![endif]-->
+
+    <title>Make raspberry pi up and running | 觅珠人 | Tyr Chen的个人博客 | 创意 | 心得 | 经验</title>
+
+</head>
+
+<body>
+
+<!-- Contact Modal -->
+<div aria-hidden='true' aria-labelledby='contactModalLabel' class='modal fade' id='contactModal' role='dialog' tabindex='-1'>
+    <div class='modal-dialog'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <button aria-hidden='true' class='close' data-dismiss='modal' type='button'>×</button>
+                <h4 class='modal-title'>Contact Us Form</h4>
+            </div>
+            <div class='modal-body'>
+                <form action='#' role='form'>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Name</label>
+                                <input class='form-control' placeholder='your username' type='text'>
+                            </div>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Email</label>
+                                <input class='form-control' placeholder='your password' type='text'>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-12'>
+                                <label class='control-label' for=''>Your Message</label>
+                                <textarea class='form-control' name='' rows='4'></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class='modal-footer'>
+                <button class='btn btn-default' data-dismiss='modal' type='button'>Cancel</button>
+                <button class='btn btn-primary' type='button'>Send Message</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="header-image-wrapper">
+  <img alt="" src="/assets/files/posts/raspberry_pi.jpg">
+</div>
+
+<div class='header-main'>
+    <div class='container'>
+        <nav class='navbar navbar-default' role='navigation'>
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class='navbar-header'>
+                <button class='navbar-toggle' data-target='.navbar-ex1-collapse' data-toggle='collapse' type='button'>
+                    <span class='sr-only'>Toggle navigation</span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                </button>
+                <a class='navbar-brand' href='/'>
+                    <img alt='' height='45px' src='/assets/images/tyr.png'> <span>觅珠人</span>
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class='collapse navbar-collapse navbar-ex1-collapse'>
+
+                <ul class='nav navbar-nav navbar-right'>
+                    <li class="">
+                        <a href="/">首页</a>
+                    </li>
+                    
+                        
+                        <li
+                            about="/pages/posts.html"
+                            class=""
+                        >
+                            <a href="/pages/posts.html">
+                                文章随笔
+                            </a>
+                        </li>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                        <li
+                            about="/pages/canvases.html"
+                            class=""
+                        >
+                            <a href="/pages/canvases.html">
+                                奇思妙想
+                            </a>
+                        </li>
+                        
+                    
+                        
+                        <li
+                            about="/pages/aboutme.html"
+                            class=""
+                        >
+                            <a href="/pages/aboutme.html">
+                                关于我
+                            </a>
+                        </li>
+                        
+                    
+                    <!--
+                    <li>
+                        <a data-toggle='modal' href='#contactModal'>联系我</a>
+                    </li>
+                    -->
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+</div>
+
+<div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+
+<div class='container'>
+  <div class='row'>
+    <div class="col-md-3">
+      <div class="post-side-bar">
+        <div class="widget widget-cats tags">
+          <h4 class="widget-title">标签</h4>
+          <ul>
+          
+            <li><a href='/tags/raspberry.html'>raspberry</a></li>
+          
+            <li><a href='/tags/hacker.html'>hacker</a></li>
+          
+          </ul>
+        </div>
+        <div class="widget widget-cats">
+          <h4 class="widget-title">
+            相关文章
+          </h4>
+          <ul>
+            
+            
+            
+          </ul>
+        </div>
+      </div>
+    </div>      
+    <div class='col-md-9'>
+      <div class='post-single'>
+        <!--
+        <div class='pre-post-meta'>
+          <span>
+            <i class='icon-reorder'></i>
+            in
+            <a href='#'>Web Development</a>
+          </span>
+          <span>
+            <i class='icon-user'></i>
+            by
+            <a href='#'>Tyr Chen</a>
+          </span>
+          <span>
+            <i class='icon-bookmark'></i>
+            10 分钟
+          </span>
+        </div>
+        -->
+        <h1 class='has-sub-header'>Make raspberry pi up and running</h1>
+        <div class='post-single-meta'>
+          <span class='meta-item'>
+            <i class='icon-calendar'></i>
+            9个月前
+          </span>
+          <!--
+          <span class='meta-item'>
+            <a href='#'>
+              <i class='icon-comments'></i>
+              24
+            </a>
+          </span>
+          <span class='meta-item'>
+            <a href='#'>
+              <i class='icon-heart'></i>
+              15
+            </a>
+          </span>
+          -->
+          <span class="meta-item">
+          	
+            <i class='icon-time'></i>
+            10 分钟
+          </span>
+        </div>
+        <h2>引子</h2>
+<p>心仪很久的Raspberry Pi model B终于到手。拆开相当原始的包装后，就两页说明书和一块电路板，连条电源线也没有（不过$35就能搞到这样一个好东东，你还能要求什么呢）。</p>
+<p><img src="/assets/files/snapshots/rasp.jpg" alt="Raspberry Pi"></p>
+<p>板子上清晰地刻着 <code>MADE IN CHINA</code>，这年头，电子产品不made in china你都不好意思拿出来卖。</p>
+<p>由于本文并非评测文章，有关Raspberry的详细说明，规格等信息请移步 <a href="http://www.raspberrypi.org/">官网</a>，接下来准备好SD卡，咱们来安装系统，让Pi跑起来！</p>
+<!--more-->
+
+
+<h2>热身活动</h2>
+<p>我们的目标是安装官网的Raspbian “wheezy”，他是一个debian的variant，为Pi特别优化。</p>
+<pre><code>$ wget http://downloads.raspberrypi.org/images/raspbian/2012-12-16-wheezy-raspbian/2012-12-16-wheezy-raspbian.zip
+$ unzip 2012-12-16-wheezy-raspbian/2012-12-16-wheezy-raspbian.zip</code></pre>
+<p>注意，以上链接可能并非最新，请使用 <a href="http://www.raspberrypi.org/downloads">http://www.raspberrypi.org/downloads</a> 页面中的最新版本。</p>
+<p>接下来需要一张SD卡装系统。由于没有准备，临时找了张几年前的4G卡。事实证明，这会要了你的老命，因为接下来的工作相当地IO intensive。建议使用class 10 16G SD卡，毕竟现在这样一张卡也就几十，一顿饭钱。</p>
+<blockquote>
+<p>免责声明1：以下操作仅在osx上测试，linux用户请自行使用对应命令，且自负后果</p>
+<p>免责声明2：以下操作具有风险，请非hacker自觉离开，如不慎损坏您的数据，作者不负连带责任</p>
+</blockquote>
+<p>把卡插到笔记本的读卡器上，备份好数据。</p>
+<p>在osx下运行：</p>
+<pre><code>$ diskutil list</code></pre>
+<p>ubuntu下：</p>
+<pre><code>$ cat /proc/partitions</code></pre>
+<p>找到你的sd卡对应的disk，我的是disk1。接下来是危险且耗时的命令，osx和ubuntu应该是相同的：</p>
+<pre><code>sudo dd if=/Users/tchen/software/2012-12-16-wheezy-raspbian.img of=/dev/disk1</code></pre>
+<p>注意请将img的路径替换成你刚刚解压出来的文件路径。另外一定要确保of指定的磁盘是SD卡，否则后果不堪想象。</p>
+<p>接下来可以去洗个澡，然后悠闲地上网冲浪，因为这将是一个非常漫长的时刻（我的卡花了至少半小时），屏幕不会有进度条，没有任何反应，只有出错或者成功才有输出。</p>
+<p>如果失败了，换张卡再试试。我试了4G和2G的古董卡各一张，都没问题。</p>
+<h2>点亮你的Pi</h2>
+<p>一块如此精巧的电路板在手中把玩半天，你却不能点亮它进入到hacker world，心里一定很不爽。不过，经历了地狱般的等待后，终于，SD卡烧好了，你迫不及待地将其插入Pi，然后...然后...等等，电源线呢？</p>
+<p>呵呵，你终于想起来包装里没有电源线。说明书上说要用一个5v/1000mA的电源通过micro USB口接入。如果你有iphone的话，iphone充电器能够提供5v/1000mA的输出，剩下的，就是找根一头micro USB一头USB的线，基本上你家里会有这东西：旧手机的数据线，音箱数据线，etc.</p>
+<blockquote>
+<p>注意，以下步骤不是必须，Pi缺省是打开ssh的，所以只要知道IP，就可以ssh上去配置，我只是觉得这样挺好玩，更有感觉一些</p>
+</blockquote>
+<p>接通电源前你还需要至少接个USB键盘和有HDMI接口的显示器。前者好搞定，甭管有线无线，一般家里都有个键盘鼠标神马的（我家有个无线的键鼠套装，用于HTPC，可以用）。带HDMI接口的显示器不好找，这年头用台式机越来越少。不过，现在的电视一般都带HDMI，只好屈就一下它做为Pi的display。一切电缆连好之后，就可以插入电源了。Pi没有开机键，点亮后就开始启动，屏幕上左上角应该会出现一个大大的树莓，下面就是标准的debian输出，玩过linux的人都不陌生。一分钟左右的时间，进入到如下画面：
+<img src="/assets/files/snapshots/rasp_up.jpg" alt="Raspberry bootup menu"></p>
+<p>有这些配置项：
+<img src="/assets/files/snapshots/rasp_menu.jpg" alt="Raspberry bootup menu"></p>
+<p>你要做的最重要的两项是：</p>
+<ul>
+<li>expand_rootfs</li>
+<li>ssh</li>
+</ul>
+<p>前者能充分利用SD卡的所有空间，后者打开ssh。然后退出config，选择不重启，进入到shell中。在shell请运行 <code>ifconfg</code> 获取Pi的IP地址。</p>
+<p>如果没联显示器神马的，点亮后，可以到你的路由器上查找attached devices，排除那些你熟悉的，剩下的那个就是Pi了。可以ssh上去进行配置（假设Pi的IP是10.0.0.3)：</p>
+<pre><code>$ ssh pi@10.0.0.3 (password: raspberry)
+Linux raspberrypi 3.2.27+ #250 PREEMPT Thu Oct 18 19:03:02 BST 2012 armv6l
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Sun Jan 27 19:15:27 2013 from 10.18.92.137
+$ sudo rasp-config</code></pre>
+<p>这样也能进行基本配置。记得改密码哦。</p>
+<h2>Make It Easy</h2>
+<p>Hacker厌烦琐碎的工作。接下来，我们让Pi的使用变得舒服一些。首先，在路由器上添加一个MAC binding，把Pi的MAC地址和一个固定IP绑定起来，比如说10.0.0.3（取决于你路由器上的DHCP设置）。这样，就不会某次重启时IP突然变成其他IP，还得大费周章去寻。</p>
+<p>接下来让ssh变得轻松些。每次输IP，还要敲密码，挺不爽，设置用密钥登入吧。假设你已经用 <code>ssh-keygen</code> 生成了密钥（如果没有，请生成）。</p>
+<pre><code>$ ssh-copy-id -i ~/.ssh/id_rsa.pub pi@10.0.0.3</code></pre>
+<p>注：osx需先用brew安装ssh-copy-id: <code>brew install ssh-copy-id</code>。</p>
+<p>完成后，编辑下~/.ssh/config，在文件最后加入如下内容：</p>
+<pre><code>Host pi
+  HostName 10.0.0.3
+  user pi</code></pre>
+<p>试试 <code>ssh pi</code>，一键登入的感觉如何？</p>
+<h2>Hacker&#39;s Time</h2>
+<p>你已经能自如登入一台700MHz（还可以最多超频到1GHz），512MB内存的全功能PC上，最赞的是这台PC只有信用卡大小。接下来能干很多事，比如说，搭个服务器。先跑个web server玩玩：</p>
+<pre><code>$ sudo aptitude update # 这是个好习惯，保先嘛
+$ sudo aptitude install nginx 
+$ sudo aptitude install git
+$ sudo aptitude install vim</code></pre>
+<p>然后写个html文件测试，你也可以使用我写的一个小toy - cleanmyass（记得先生成rsa key，并将公钥上传到github）：</p>
+<pre><code>$ git clone git@github.com:tyrchen/cleanmyass.git</code></pre>
+<p>然后如此配置nginx：</p>
+<pre><code>server {
+  listen 80;
+  server_name pi.tchen.me; # you can change this to your domain.
+  access_log /var/log/nginx/cleanmyass.access.log;
+  error_log /var/log/nginx/cleanmyass.error.log;
+  location / {
+    root /home/pi/deployment/www/cleanmyass;
+  }
+}</code></pre>
+<p>接下来在你的笔记本上为 <code>/etc/hosts</code> 里添加指向 <code>pi.tchen.me</code> 的IP。</p>
+<p>然后试试打开浏览器：<a href="http://pi.tchen.me/。">http://pi.tchen.me/。</a></p>
+<p><img src="/assets/files/snapshots/cleanmyass.jpg" alt="帮你擦屁股"></p>
+<p>呵呵，小小的恶作剧。这个页面会自动帮你从一些主要的网站自动登出，比如微博。如果你在网吧上网，可能需要这么个玩意儿。</p>
+<p>至此，Pi可以履行一个web server的职责了。</p>
+<p>如果你需要更强力的server端支持，比如说nodejs，可以</p>
+<pre><code>$ sudo aptitude install nodejs</code></pre>
+<p>不过这样获得的版本太低，是0.6.9。可以自己下载源码编译最新的0.8.18（撰文时最新的版本）。可惜Pi的CPU弱了写，做这样computing intensive的活儿还是有些慢，我的编译阶段花了一个多小时。如果你嫌慢，可以在笔记本上搞一套ARM的cross compiler，为Pi来编译软件。我正琢磨着要不要建一套这样的系统呢，否则想要最新的软件这样编译下去会死人的。</p>
+<p>当然，Pi的力量不仅限于此。现在很后悔当时读在职研究生没读个硬件设计相关的专业，否则现在也许能用Pi做个r2d2神马滴，多NB~</p>
+<p>OK，到目前为止你的Pi已经成为一台不错的超低功耗Web服务器，这也许是你的数字小家的第一步。接下来我们看看别人都用Pi做些什么，不要被自己那微不足道的成功迷了眼：</p>
+<p><a href="http://linuxtoy.org/archives/cool-ideas-for-raspberry-pi.html">http://linuxtoy.org/archives/cool-ideas-for-raspberry-pi.html</a></p>
+<h2>延伸阅读</h2>
+<p>人性是贪婪的，看到Pi提供HDMI接口并号称支持1080p，你自然会想到能不能用它装一个 <a href="http://xbmc.org/">XBMC</a>。有个18岁的小伙子已经想到了这一点，并做了一个相当棒的能够一键安装的系统。OK，欢迎来到 <a href="http://www.raspbmc.com/">http://www.raspbmc.com/</a> 的世界。</p>
+<p>安装raspbmc是一种享受（除了速度慢了点）。你要做的就是在笔记本上插入SD卡，然后运行：</p>
+<pre><code>$ wget http://svn.stmlabs.com/svn/raspbmc/testing/installers/python/install.py
+$ chmod +x install.py 
+$ sudo python install.py</code></pre>
+<p>按照提示下一步就好。</p>
+<p>接下来把SD卡插入Pi，连上internet和电视，启动，等待3-5小时（取决于你的网速），最终XBMC会被自动安装成功。这是安装后的效果：</p>
+<p><img src="/assets/files/snapshots/rasp_bmc.jpg" alt="raspberry bmc"></p>
+<p>可惜里面的服务大部分都被伟大的长城墙了，所以安完后我也不知道那他来干什么用，只是觉得很cool而已。哈哈，hacker&#39;s joy.</p>
+<h2>后记</h2>
+<p>依旧献上小宝的萌照：</p>
+<p><img src="/assets/files/photos/baby20130128-1.jpg" alt="小宝">
+<img src="/assets/files/photos/baby20130128-2.jpg" alt="小宝"></p>
+
+        <div class='under-post'>
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+                
+                  <div class='pull-left'>
+                    <a class='read-previous-link' href='/posts/2013-01-25-bootstrap-a-new-web-app.html'>
+                      <i class='icon-angle-left'></i>
+                      上一篇
+                    </a>
+                  </div>                  
+                
+                
+                  <div class='pull-right'>
+                    <a class='read-next-link' href='/posts/2013-02-03-observation-about-align-and-fit.html'>
+                      下一篇
+                      <i class='icon-angle-right'></i>
+                    </a>
+                  </div>
+                         
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-facebook'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-twitter'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-linkedin'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+        </div>
+      </div>
+    </div>
+      
+  </div>
+  <div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+  
+  <div class="ds-thread">
+    <script>
+        var duoshuoQuery = {short_name:"tyrchen"};
+        (function() {
+          var ds = document.createElement('script');
+          ds.type = 'text/javascript';ds.async = true;
+          ds.src = 'http://static.duoshuo.com/embed.js';
+          ds.charset = 'UTF-8';
+          (document.getElementsByTagName('head')[0]
+          || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+  </div>
+
+</div>
+
+<footer id="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="footer-menu">
+                    <li><a href="/pages/privacy">隐私策略</a></li>
+                    <li><a href="/pages/license">版权说明</a></li>
+                    <li><a href="/pages/disclaimer">免责声明</a></li>
+                    <li><a href="#">联系我们</a></li>
+                </ul>
+                <div class="copyright">
+                    2013 &copy; Tyr Chen. 保留一切权利.
+                </div>
+            </div>
+            <div class="col-md-6">
+                <ul class="footer-social">
+                    <li><a href="#"><i class="icon-facebook"></i></a></li>
+                    <li><a href="#"><i class="icon-twitter"></i></a></li>
+                    <li><a href="#"><i class="icon-dribbble"></i></a></li>
+                    <li><a href="#"><i class="icon-linkedin"></i></a></li>
+                    <li><a href="#"><i class="icon-google-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- Scripts -->
+<script defer="defer"  src="/assets/js/jquery.js"></script><script defer="defer"  src="/assets/js/bootstrap.min.js"></script><script defer="defer"  src="/assets/js/jquery.visible.min.js"></script><script defer="defer"  src="/assets/js/jquery.isotope.min.js"></script><script defer="defer"  src="/assets/js/jquery.knob.js"></script><script defer="defer"  src="/assets/js/jquery.scrollUp.min.js"></script><script defer="defer"  src="/assets/js/highlight.pack.js"></script><script defer="defer"  src="/assets/js/application.js"></script>
+
+
+</body>
+
+</html>

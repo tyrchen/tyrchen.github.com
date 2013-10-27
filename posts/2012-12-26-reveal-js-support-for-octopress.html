@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="本博客提供我个人的想法，创意，经验，心得。你不必认同博主观点。" />
+    <meta name="keywords" content="创业, 思想, 点子, 经验, python, erlang, node, javascript, 服务器, devops, meteor" />
+    <meta name="author" content="Tyr Chen" />
+
+    <!-- Output DocPad produced meta elements -->
+    
+
+    <!-- Styles -->
+    <link  rel="stylesheet" href="/assets/css/app.css" /><link  rel="stylesheet" href="/assets/css/animate.css" /><link  rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700|Yanone+Kaffeesatz:200,300,400,700|Raleway:200,300,400,500,700" /><link  rel="stylesheet" href="/assets/css/font-awesome.css" /><link  rel="stylesheet" href="/assets/css/solarized_dark.css" /><link  rel="stylesheet" href="/assets/css/theme.css" />
+
+    <link href="/assets/favicon.ico" rel="shortcut icon">
+    <link href="/assets/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    @javascript html5shiv respond.min
+    <![endif]-->
+
+    <title>Octopress支持reveal.js撰写slides | 觅珠人 | Tyr Chen的个人博客 | 创意 | 心得 | 经验</title>
+
+</head>
+
+<body>
+
+<!-- Contact Modal -->
+<div aria-hidden='true' aria-labelledby='contactModalLabel' class='modal fade' id='contactModal' role='dialog' tabindex='-1'>
+    <div class='modal-dialog'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <button aria-hidden='true' class='close' data-dismiss='modal' type='button'>×</button>
+                <h4 class='modal-title'>Contact Us Form</h4>
+            </div>
+            <div class='modal-body'>
+                <form action='#' role='form'>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Name</label>
+                                <input class='form-control' placeholder='your username' type='text'>
+                            </div>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Email</label>
+                                <input class='form-control' placeholder='your password' type='text'>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-12'>
+                                <label class='control-label' for=''>Your Message</label>
+                                <textarea class='form-control' name='' rows='4'></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class='modal-footer'>
+                <button class='btn btn-default' data-dismiss='modal' type='button'>Cancel</button>
+                <button class='btn btn-primary' type='button'>Send Message</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="header-image-wrapper">
+  <img alt="" src="/assets/images/backgrounds/page-header-bg-1.jpg">
+</div>
+
+<div class='header-main'>
+    <div class='container'>
+        <nav class='navbar navbar-default' role='navigation'>
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class='navbar-header'>
+                <button class='navbar-toggle' data-target='.navbar-ex1-collapse' data-toggle='collapse' type='button'>
+                    <span class='sr-only'>Toggle navigation</span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                </button>
+                <a class='navbar-brand' href='/'>
+                    <img alt='' height='45px' src='/assets/images/tyr.png'> <span>觅珠人</span>
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class='collapse navbar-collapse navbar-ex1-collapse'>
+
+                <ul class='nav navbar-nav navbar-right'>
+                    <li class="">
+                        <a href="/">首页</a>
+                    </li>
+                    
+                        
+                        <li
+                            about="/pages/posts.html"
+                            class=""
+                        >
+                            <a href="/pages/posts.html">
+                                文章随笔
+                            </a>
+                        </li>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                        <li
+                            about="/pages/canvases.html"
+                            class=""
+                        >
+                            <a href="/pages/canvases.html">
+                                奇思妙想
+                            </a>
+                        </li>
+                        
+                    
+                        
+                        <li
+                            about="/pages/aboutme.html"
+                            class=""
+                        >
+                            <a href="/pages/aboutme.html">
+                                关于我
+                            </a>
+                        </li>
+                        
+                    
+                    <!--
+                    <li>
+                        <a data-toggle='modal' href='#contactModal'>联系我</a>
+                    </li>
+                    -->
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+</div>
+
+<div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+
+<div class='container'>
+  <div class='row'>
+    <div class="col-md-3">
+      <div class="post-side-bar">
+        <div class="widget widget-cats tags">
+          <h4 class="widget-title">标签</h4>
+          <ul>
+          
+            <li><a href='/tags/octopress.html'>octopress</a></li>
+          
+            <li><a href='/tags/tool.html'>tool</a></li>
+          
+          </ul>
+        </div>
+        <div class="widget widget-cats">
+          <h4 class="widget-title">
+            相关文章
+          </h4>
+          <ul>
+            
+            
+              <li><a href="/posts/2012-12-16-first-blog.html">第一篇博客: 用octopress搭建博客系统</a></li>
+            
+              <li><a href="/posts/2012-12-16-why-meteor.html">为什么是Meteor</a></li>
+            
+              <li><a href="/posts/2012-12-21-meteor-basics.html">Meteor基础入门</a></li>
+            
+              <li><a href="/posts/2013-01-09-auto-deploy-with-github-webhooks.html">用Github Webhooks实现自动部署</a></li>
+            
+              <li><a href="/posts/2013-01-21-why-use-wintersmith-to-replace-octopress.html">为什么要使用wintersmith取代octopress</a></li>
+            
+              <li><a href="/posts/2013-02-04-teamspark-open-sourced.html">Teamspark及Meteor杂谈</a></li>
+            
+            
+          </ul>
+        </div>
+      </div>
+    </div>      
+    <div class='col-md-9'>
+      <div class='post-single'>
+        <!--
+        <div class='pre-post-meta'>
+          <span>
+            <i class='icon-reorder'></i>
+            in
+            <a href='#'>Web Development</a>
+          </span>
+          <span>
+            <i class='icon-user'></i>
+            by
+            <a href='#'>Tyr Chen</a>
+          </span>
+          <span>
+            <i class='icon-bookmark'></i>
+            16 分钟
+          </span>
+        </div>
+        -->
+        <h1 class='has-sub-header'>Octopress支持reveal.js撰写slides</h1>
+        <div class='post-single-meta'>
+          <span class='meta-item'>
+            <i class='icon-calendar'></i>
+            10个月前
+          </span>
+          <!--
+          <span class='meta-item'>
+            <a href='#'>
+              <i class='icon-comments'></i>
+              24
+            </a>
+          </span>
+          <span class='meta-item'>
+            <a href='#'>
+              <i class='icon-heart'></i>
+              15
+            </a>
+          </span>
+          -->
+          <span class="meta-item">
+          	
+            <i class='icon-time'></i>
+            16 分钟
+          </span>
+        </div>
+        <p><a href="https://github.com/hakimel/reveal.js">reveal.js</a>是一个NB的HTML presention framework，可以使用一些简单地HTML标签撰写出效果很赞的演示稿，并通过互联网传播。具体效果可以看<a href="http://lab.hakim.se/reveal-js/">这里</a>。本文不是介绍如何使用或者撰写使用reveal.js的演示稿，这些可以通过reveal.js的文档很快速地掌握。作者比较好奇的是，既然octopress能够生成静态Html，那么如何很方便地将reveal.js集成到octopress中，让blog和presentation能够更好地结合起来？？</p>
+<!--more-->
+
+<p>简单看了下octopress的代码，似乎不是太难，只要创造一个新的用于slide的layout，然后提供一条用于撰写slide的rake命令就可以。那还犹豫什么？挽起袖子，开干！</p>
+<p>补记：下面的内容适合那些想深入了解octopress plugin做法的人，如果你非代码控，可以在你的octopress根目录下使用如下代码一键安装（仅在osx下测试过，应该对2.x版本均有效，有问题微博@或私信我）：</p>
+<pre><code>$ curl http://sh.tchen.me/install/octopress_reveal.sh | sh</code></pre>
+<p>如果见到这样的文字：</p>
+<blockquote>
+<p>reveal.js for octopress has been installed! To get started fast:</p>
+<p> $ rake new_slide[&quot;Your slide name&quot;]</p>
+<p> $ vim source/slides/your-slide-name/index.markdown</p>
+<p>...</p>
+</blockquote>
+<p>就说明安装成功了。</p>
+<h2>Slide layout</h2>
+<p>在 <code>source/_layouts</code> 下，创建一个新的slides.html做为presentation页面的layout（代码有点长）:</p>
+<pre><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}&lt;/title&gt;
+    &lt;meta name=&quot;author&quot; content=&quot;{{ site.author }}&quot;&gt;
+
+    {% capture description %}{% if page.description %}{{ page.description }}{% else %}{{ content | raw_content }}{% endif %}{% endcapture %}
+    &lt;meta name=&quot;description&quot; content=&quot;{{ description | strip_html | condense_spaces | truncate:150 }}&quot;&gt;
+    {% if page.keywords %}&lt;meta name=&quot;keywords&quot; content=&quot;{{ page.keywords }}&quot;&gt;{% endif %}
+
+    &lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot; /&gt;
+    &lt;meta name=&quot;apple-mobile-web-app-status-bar-style&quot; content=&quot;black-translucent&quot; /&gt;
+
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;{{ root_url }}/stylesheets/reveal/reveal.min.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;{{ root_url }}/stylesheets/reveal/theme/{{page.theme}}.css&quot; id=&quot;theme&quot;&gt;
+
+    &lt;!-- For syntax highlighting --&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;{{ root_url }}/stylesheets/reveal/zenburn.css&quot;&gt;
+
+    &lt;!-- If the query includes &#39;print-pdf&#39;, use the PDF print sheet --&gt;
+    &lt;script&gt;
+      document.write( &#39;&lt;link rel=&quot;stylesheet&quot; href=&quot;{{ root_url }}/stylesheets/reveal/print/&#39; + ( window.location.search.match( /print-pdf/gi ) ? &#39;pdf&#39; : &#39;paper&#39; ) + &#39;.css&quot; type=&quot;text/css&quot; media=&quot;print&quot;&gt;&#39; );
+    &lt;/script&gt;
+
+    &lt;!--[if lt IE 9]&gt;
+    &lt;script src=&quot;{{ root_url }}/javascripts/html5shiv.js&quot;&gt;&lt;/script&gt;
+    &lt;![endif]--&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;
+
+    &lt;div class=&quot;reveal&quot;&gt;
+
+      &lt;!-- Any section element inside of this container is displayed as a slide --&gt;
+      &lt;div class=&quot;slides&quot;&gt;
+        {{ content }}
+      &lt;/div&gt;
+
+    &lt;/div&gt;
+
+    &lt;script src=&quot;{{ root_url }}/javascripts/reveal/head.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;{{ root_url }}/javascripts/reveal/reveal.min.js&quot;&gt;&lt;/script&gt;
+
+    &lt;script&gt;
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || &#39;default&#39;, // default/cube/page/concave/zoom/linear/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: &#39;{{ root_url }}/javascripts/reveal/plugin/classList.js&#39;, condition: function() { return !document.body.classList; } },
+          { src: &#39;{{ root_url }}/javascripts/reveal/plugin/markdown/showdown.js&#39;, condition: function() { return !!document.querySelector( &#39;[data-markdown]&#39; ); } },
+          { src: &#39;{{ root_url }}/javascripts/reveal/plugin/markdown/markdown.js&#39;, condition: function() { return !!document.querySelector( &#39;[data-markdown]&#39; ); } },
+          { src: &#39;{{ root_url }}/javascripts/reveal/plugin/highlight/highlight.js&#39;, async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: &#39;{{ root_url }}/javascripts/reveal/plugin/zoom-js/zoom.js&#39;, async: true, condition: function() { return !!document.body.classList; } },
+          { src: &#39;{{ root_url }}/javascripts/reveal/plugin/notes/notes.js&#39;, async: true, condition: function() { return !!document.body.classList; } }
+          // { src: &#39;{{ root_url }}/javascripts/reveal/plugin/remotes/remotes.js&#39;, async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+    &lt;/script&gt;
+
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>具体代码我就不解释了，大部分内容源自reveal.js repo的index.html，我只是对于octopress做了必要的修改。注意，要使layout中的css/js生效，请将reveal.js下的相应文件拷到octopress对应的目录下。</p>
+<p>有了这个模版，撰写presentation的用户就不必关心slide页面的具体设置，甚至不需要知道有reveal.js这回事。</p>
+<h2>rake new_slide</h2>
+<p>接下来就是自动化生成新的slide文件。我们希望能够像撰写blog或者page那样，<code>rake new_post</code> 或 <code>rake new_page</code> 就可以生成新的slide。</p>
+<p>对比着new_page，依葫芦画瓢，在Rakefile里添加代码如下：</p>
+<pre><code># usage rake new_slide[my-new-slide] or rake new_slide[my-new-slide.html] or rake new_slide (defaults to &quot;new-slide.markdown&quot;)
+desc &quot;Create a new slide in #{source_dir}/#{slide_dir}/(filename)/index.#{new_page_ext}&quot;
+task :new_slide, :filename do |t, args|
+  raise &quot;### You haven&#39;t set anything up yet. First run `rake install` to set up an Octopress theme.&quot; unless File.directory?(source_dir)
+  args.with_defaults(:filename =&gt; &#39;new-slide&#39;)
+  page_dir = [source_dir, slide_dir] # [source_dir]
+  if args.filename.downcase =~ /(^.+\/)?(.+)/
+    filename, dot, extension = $2.rpartition(&#39;.&#39;).reject(&amp;:empty?)         # Get filename and extension
+    title = filename
+    page_dir.concat($1.downcase.sub(/^\//, &#39;&#39;).split(&#39;/&#39;)) unless $1.nil?  # Add path to page_dir Array
+    if extension.nil?
+      page_dir &lt;&lt; filename
+      filename = &quot;index&quot;
+    end
+    extension ||= new_page_ext
+    page_dir = page_dir.map! { |d| d = d.to_url }.join(&#39;/&#39;)                # Sanitize path
+    filename = filename.downcase.to_url
+
+    mkdir_p page_dir
+    file = &quot;#{page_dir}/#{filename}.#{extension}&quot;
+    if File.exist?(file)
+      abort(&quot;rake aborted!&quot;) if ask(&quot;#{file} already exists. Do you want to overwrite?&quot;, [&#39;y&#39;, &#39;n&#39;]) == &#39;n&#39;
+    end
+    puts &quot;Creating new page: #{file}&quot;
+    open(file, &#39;w&#39;) do |page|
+      page.puts &quot;---&quot;
+      page.puts &quot;layout: slides&quot;
+      page.puts &quot;title: \&quot;#{title}\&quot;&quot;
+      page.puts &quot;date: #{Time.now.strftime(&#39;%Y-%m-%d %H:%M&#39;)}&quot;
+      page.puts &quot;theme: beige&quot;
+      page.puts &quot;---&quot;
+    end
+  else
+    puts &quot;Syntax error: #{args.filename} contains unsupported characters&quot;
+  end
+end</code></pre>
+<p>运行这条命令，会在slides目录下自动生成指定的presentation的skeleton。接下来要做的就是在正文中填写一个个section了。注意：section里的代码可以是markdown，因为octopress在编译时会自动扫描markdown并编译成对应的html。</p>
+<p>到这里，你的octopress blog已经支持presentation文档的撰写了，还不使用 <code>rake new_slide[&quot;my first slide&quot;]</code> 尝试撰写一个？？</p>
+<h2>如果我想把presentation嵌入到我的博客中呢？</h2>
+<p>把presentation像下面这样嵌入到blog中其实是我的最大需求。它直接促成了这篇文章中所述的所有内容的产生。</p>
+<p>{% reveal /slides/my-first-slide 640 480 %}</p>
+<p>这个究竟该怎么做？其实很简单，写个plugin就能搞定。在 <code>plugin</code> 目录下创建 <code>reveal_tag.rb</code>，填入以下代码：</p>
+<pre><code># Title: Simple Reveal presentation tag for Jekyll
+# Author: Tyr Chen http://tchen.me
+# Description: output embedd tag for reveal js presentation
+#
+# Syntax { % reveal url/to/presentation [width height] % }
+#
+# Example:
+# { % reveal http://site.com/presentation.html 640 480 % }
+#
+# Output:
+# &lt;embed src=&quot;http://site.com/presentation.html&quot; allowFullScreen=&quot;true&quot; width=&quot;640&quot; height=&quot;480&quot; align=&quot;middle&quot;&gt;&lt;/embed&gt;
+#
+
+module Jekyll
+
+  class RevealTag &lt; Liquid::Tag
+    @url = nil
+    @height = &#39;&#39;
+    @width = &#39;&#39;
+
+    def initialize(tag_name, markup, tokens)
+      if markup =~ /((https?:\/\/|\/)(\S+))(\s+(\d+)\s(\d+))?/i
+        @url  = $1
+        @width  = $5
+        @height = $6
+      end
+      super
+    end
+
+    def render(context)
+      output = super
+      if @url
+        reveal = &quot;&lt;embed src=&#39;#{@url}&#39; allowFullScreen=&#39;true&#39; width=&#39;#{@width}&#39; height=&#39;#{@height}&#39; align=&#39;middle&#39;&gt;&lt;/embed&gt;&quot;
+      else
+        &quot;Error processing input, expected syntax: {% reveal url/to/presentation [width height] %}&quot;
+      end
+    end
+  end
+end
+
+Liquid::Template.register_tag(&#39;reveal&#39;, Jekyll::RevealTag)</code></pre>
+<p>就可以在博文中使用 <code>reveal</code> 很方便地嵌入做好地presentation了。具体怎么写，看代码注释。</p>
+<h2>后记</h2>
+<p>有空的话我会将本文提到的内容制作成octopress的一个plugin，方便大家使用。</p>
+<p>依旧例，放上小宝今日照片一张：</p>
+<p><img src="/assets/files/photos/baby20121226.jpg" alt="小宝"></p>
+
+        <div class='under-post'>
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+                
+                  <div class='pull-left'>
+                    <a class='read-previous-link' href='/posts/2012-12-21-meteor-basics.html'>
+                      <i class='icon-angle-left'></i>
+                      上一篇
+                    </a>
+                  </div>                  
+                
+                
+                  <div class='pull-right'>
+                    <a class='read-next-link' href='/posts/2012-12-28-retrospect-of-the-year-2012.html'>
+                      下一篇
+                      <i class='icon-angle-right'></i>
+                    </a>
+                  </div>
+                         
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-facebook'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-twitter'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-linkedin'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+        </div>
+      </div>
+    </div>
+      
+  </div>
+  <div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+  
+  <div class="ds-thread">
+    <script>
+        var duoshuoQuery = {short_name:"tyrchen"};
+        (function() {
+          var ds = document.createElement('script');
+          ds.type = 'text/javascript';ds.async = true;
+          ds.src = 'http://static.duoshuo.com/embed.js';
+          ds.charset = 'UTF-8';
+          (document.getElementsByTagName('head')[0]
+          || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+  </div>
+
+</div>
+
+<footer id="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="footer-menu">
+                    <li><a href="/pages/privacy">隐私策略</a></li>
+                    <li><a href="/pages/license">版权说明</a></li>
+                    <li><a href="/pages/disclaimer">免责声明</a></li>
+                    <li><a href="#">联系我们</a></li>
+                </ul>
+                <div class="copyright">
+                    2013 &copy; Tyr Chen. 保留一切权利.
+                </div>
+            </div>
+            <div class="col-md-6">
+                <ul class="footer-social">
+                    <li><a href="#"><i class="icon-facebook"></i></a></li>
+                    <li><a href="#"><i class="icon-twitter"></i></a></li>
+                    <li><a href="#"><i class="icon-dribbble"></i></a></li>
+                    <li><a href="#"><i class="icon-linkedin"></i></a></li>
+                    <li><a href="#"><i class="icon-google-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- Scripts -->
+<script defer="defer"  src="/assets/js/jquery.js"></script><script defer="defer"  src="/assets/js/bootstrap.min.js"></script><script defer="defer"  src="/assets/js/jquery.visible.min.js"></script><script defer="defer"  src="/assets/js/jquery.isotope.min.js"></script><script defer="defer"  src="/assets/js/jquery.knob.js"></script><script defer="defer"  src="/assets/js/jquery.scrollUp.min.js"></script><script defer="defer"  src="/assets/js/highlight.pack.js"></script><script defer="defer"  src="/assets/js/application.js"></script>
+
+
+</body>
+
+</html>

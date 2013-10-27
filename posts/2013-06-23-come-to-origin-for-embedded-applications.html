@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="本博客提供我个人的想法，创意，经验，心得。你不必认同博主观点。" />
+    <meta name="keywords" content="创业, 思想, 点子, 经验, python, erlang, node, javascript, 服务器, devops, meteor" />
+    <meta name="author" content="Tyr Chen" />
+
+    <!-- Output DocPad produced meta elements -->
+    
+
+    <!-- Styles -->
+    <link  rel="stylesheet" href="/assets/css/app.css" /><link  rel="stylesheet" href="/assets/css/animate.css" /><link  rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700|Yanone+Kaffeesatz:200,300,400,700|Raleway:200,300,400,500,700" /><link  rel="stylesheet" href="/assets/css/font-awesome.css" /><link  rel="stylesheet" href="/assets/css/solarized_dark.css" /><link  rel="stylesheet" href="/assets/css/theme.css" />
+
+    <link href="/assets/favicon.ico" rel="shortcut icon">
+    <link href="/assets/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    @javascript html5shiv respond.min
+    <![endif]-->
+
+    <title>Come to Origins for Embedded Applications | 觅珠人 | Tyr Chen的个人博客 | 创意 | 心得 | 经验</title>
+
+</head>
+
+<body>
+
+<!-- Contact Modal -->
+<div aria-hidden='true' aria-labelledby='contactModalLabel' class='modal fade' id='contactModal' role='dialog' tabindex='-1'>
+    <div class='modal-dialog'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <button aria-hidden='true' class='close' data-dismiss='modal' type='button'>×</button>
+                <h4 class='modal-title'>Contact Us Form</h4>
+            </div>
+            <div class='modal-body'>
+                <form action='#' role='form'>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Name</label>
+                                <input class='form-control' placeholder='your username' type='text'>
+                            </div>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Email</label>
+                                <input class='form-control' placeholder='your password' type='text'>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-12'>
+                                <label class='control-label' for=''>Your Message</label>
+                                <textarea class='form-control' name='' rows='4'></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class='modal-footer'>
+                <button class='btn btn-default' data-dismiss='modal' type='button'>Cancel</button>
+                <button class='btn btn-primary' type='button'>Send Message</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="header-image-wrapper">
+  <img alt="" src="/assets/files/posts/embeddedsystem.jpg">
+</div>
+
+<div class='header-main'>
+    <div class='container'>
+        <nav class='navbar navbar-default' role='navigation'>
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class='navbar-header'>
+                <button class='navbar-toggle' data-target='.navbar-ex1-collapse' data-toggle='collapse' type='button'>
+                    <span class='sr-only'>Toggle navigation</span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                </button>
+                <a class='navbar-brand' href='/'>
+                    <img alt='' height='45px' src='/assets/images/tyr.png'> <span>觅珠人</span>
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class='collapse navbar-collapse navbar-ex1-collapse'>
+
+                <ul class='nav navbar-nav navbar-right'>
+                    <li class="">
+                        <a href="/">首页</a>
+                    </li>
+                    
+                        
+                        <li
+                            about="/pages/posts.html"
+                            class=""
+                        >
+                            <a href="/pages/posts.html">
+                                文章随笔
+                            </a>
+                        </li>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                        <li
+                            about="/pages/canvases.html"
+                            class=""
+                        >
+                            <a href="/pages/canvases.html">
+                                奇思妙想
+                            </a>
+                        </li>
+                        
+                    
+                        
+                        <li
+                            about="/pages/aboutme.html"
+                            class=""
+                        >
+                            <a href="/pages/aboutme.html">
+                                关于我
+                            </a>
+                        </li>
+                        
+                    
+                    <!--
+                    <li>
+                        <a data-toggle='modal' href='#contactModal'>联系我</a>
+                    </li>
+                    -->
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+</div>
+
+<div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+
+<div class='container'>
+  <div class='row'>
+    <div class="col-md-3">
+      <div class="post-side-bar">
+        <div class="widget widget-cats tags">
+          <h4 class="widget-title">标签</h4>
+          <ul>
+          
+            <li><a href='/tags/architecture.html'>architecture</a></li>
+          
+            <li><a href='/tags/technology.html'>technology</a></li>
+          
+          </ul>
+        </div>
+        <div class="widget widget-cats">
+          <h4 class="widget-title">
+            相关文章
+          </h4>
+          <ul>
+            
+            
+              <li><a href="/posts/2012-12-18-octopress-client-a-better-composition-tool.html">产品随想：octopress客户端 —— Atanasoff</a></li>
+            
+              <li><a href="/posts/2012-12-31-atanasoff-product-design.html">进一步思考Atanasoff (Octopress client) (2)</a></li>
+            
+              <li><a href="/posts/2013-02-18-sdn-elementatory-introduction.html">SDN浅谈</a></li>
+            
+              <li><a href="/posts/2013-02-21-openflow-introduction.html">Openflow简介</a></li>
+            
+              <li><a href="/posts/2013-04-08-trying-to-extract-the-thoughts-behind-lockitron.html">胡思乱想之Lockitron的技术架构</a></li>
+            
+              <li><a href="/posts/2013-04-25-engineering-environment-for-smart-team.html">自动化的高效团队开发环境</a></li>
+            
+              <li><a href="/posts/2013-06-10-use-scrapyd-to-serve-scrapy-projects.html">用scrapyd来提供crawler服务</a></li>
+            
+              <li><a href="/posts/2013-06-12-use-makefile-to-automate-deployment.html">使用Makefile自动化部署</a></li>
+            
+              <li><a href="/posts/2013-07-18-c-grammar-you-cannot-imagine.html">你无法想象的C语法</a></li>
+            
+              <li><a href="/posts/2013-07-22-why-should-c-programmers-learn-erlang.html">Why should C programmers learn Erlang?</a></li>
+            
+            
+          </ul>
+        </div>
+      </div>
+    </div>      
+    <div class='col-md-9'>
+      <div class='post-single'>
+        <!--
+        <div class='pre-post-meta'>
+          <span>
+            <i class='icon-reorder'></i>
+            in
+            <a href='#'>Web Development</a>
+          </span>
+          <span>
+            <i class='icon-user'></i>
+            by
+            <a href='#'>Tyr Chen</a>
+          </span>
+          <span>
+            <i class='icon-bookmark'></i>
+            18 分钟
+          </span>
+        </div>
+        -->
+        <h1 class='has-sub-header'>Come to Origins for Embedded Applications</h1>
+        <div class='post-single-meta'>
+          <span class='meta-item'>
+            <i class='icon-calendar'></i>
+            4个月前
+          </span>
+          <!--
+          <span class='meta-item'>
+            <a href='#'>
+              <i class='icon-comments'></i>
+              24
+            </a>
+          </span>
+          <span class='meta-item'>
+            <a href='#'>
+              <i class='icon-heart'></i>
+              15
+            </a>
+          </span>
+          -->
+          <span class="meta-item">
+          	
+            <i class='icon-time'></i>
+            18 分钟
+          </span>
+        </div>
+        <h2>The problem</h2>
+<p>Recently I did a web application to make easy GNATS report for my team. I use scrapy to crawl the GNATS web pages for people&#39;s issues every 4 hours, then add the crawled data into mongodb. A set of simple-to-use RESTful APIs written with nodejs can provide easy access to the data (<a href="http://api.jcnrd.us/gnats/tchen.json">try it out</a>, but only viewable internally in Juniper). Then a django application consumes the APIs and wraps them into a not-so-bad user interface, thanks to twitter bootstrap and a set of javascript frameworks and libraries. You can look at the ultimate application here: <a href="http://gnats.jcnrd.us/groups/branch-team/">GNATS report system</a>.</p>
+<!--more-->
+
+<p>What I want to emphosize is, I did all these stuffs in less than a full week, and then a working edition is there. I&#39;ve not counted the code, maybe a few thousands line of python, coffescript, css and html code.</p>
+<p>Here comes the problem - I can never be so productive when writing code for the datapath of JUNOS, or any embedded systems I&#39;ve been working with. Why is it?</p>
+<p>Then I began to compare the differences for my web application and the data path application, say NAT for embedded systems, to find the magic.</p>
+<h3>Web application</h3>
+<ul>
+<li>Almost all the software is running at user mode. Even the most mission critical, throughput sensitive applications, like DBMS, web server, are working in user mode.</li>
+<li>Great frameworks there for you to achieve your goal. They have really nice layering with separation of concerns beared in mind. You don&#39;t need to know the details about the underlying layers, just focus what your application is required to do.</li>
+<li>There&#39;re good conventions for you to follow, so that even the not so experienced engineer can write good-quality, working code.</li>
+<li>You can for sure scale up, and it is not that difficult to scale out.</li>
+</ul>
+<h3>Applications for embedded systems</h3>
+<ul>
+<li>Usually your code is running in kernel mode (especially the data path code), even if it is not required to.</li>
+<li>No good framework and people who&#39;re working on architecture may be not aware of how important a good framework means to the applications.</li>
+<li>No separation of concerns. As a developer, you need to master the complexity of the whole system to write correct code, even if for not so underlying application like NAT, you have to care about locking, CPU, session, etc., which, in my opinion, should not be exposed to you.</li>
+<li>No good convention to follow so that people tend to write code in a very different style and even very bad code (long switch case with duplicated code everywhere).</li>
+<li>Scale up is not so easy, scale out is a disaster.</li>
+</ul>
+<p>Yes you can argue the embedded systems are much more complicated, but making not so complicated things complex is much easier than making it simple, right? If you think about a whole web systems, you need to deal with web server, db server, message queue server, cache server, etc., and each of them expose every detail to you and you have to learn all of them, who can write web applications so easy?</p>
+<p>You may also argue that performance is everything so we had to sacreface almost everything. But is it really the right way of doing it, considering the hardware is getting a lot better and better than 15 years ago? 15 years ago, web applications are also written in C or equivalent, in terms of performance I guess? But what about now? Our mind should change with the era. Furthermore, is it easier to write the architecture right firstly then optimize it afterwards? Or it is easier to optmize the application firstly even if making a lots of things in a mess then evolve the whole mess? The answer is transparent.</p>
+<p>So here&#39;s my point - let&#39;s try to make the architecture right with a framework with usability for developer bear in mind.</p>
+<h2>The solution</h2>
+<p>Here I&#39;ll try to come out a crazy data plane framework. I don&#39;t even know if it works but it is a good stress test for your brian when you&#39;re in a 12-hour flight with nothing else to do.</p>
+<h3>Engine</h3>
+<p>Engine is a very light-weight component like thread, but the memory footprint is much less and there&#39;s no data copy between engines. To boost the performance, multiple instance of the same engine could be run simutaneously.</p>
+<p>Engine is the minimum unit in the forwarding path, following <strong>open-close</strong> principle. An engine should do and only do one thing, it usually should not be changed when introducing a new feature. For example, you should not create a l3 forward engine which combined lots of stuffs in it. Instead, you should do something like a TTL engine, which just decrease the TTL of the given packet.</p>
+<p>An engine have an inqueue and outqueue to hold packet to be processed and to be sent to the next engine. The writer of the engine usually isn&#39;t aware of it. To move packet forward to the next engine, current engine just need to call API like this:</p>
+<pre><code>return next_engine();</code></pre>
+<p>This API will automatically calculate the next-to-call engine, and distribute to one of the not-so-busy instances of the engine.</p>
+<p>To write an engine, you basically need:</p>
+<ol>
+<li>UI/Configuration. Write a erlang script to subclass <code>Command</code> and implement methods like <code>set</code>, <code>get</code>, <code>debug</code>. Configuration is stored into memory based key-value database.</li>
+<li>Main logic. Subclass <code>Engine</code> and implement <code>c2s(pkt)</code> and <code>s2c(pkt)</code>. They will be called by <code>process(pkt)</code> based on the traffic direction.</li>
+<li>Insert engine into the right place of the global engine database.</li>
+</ol>
+<h3>Path</h3>
+<p>Path is a set of engines that packet will go through. Usually the first packet packet will trigger a session installation, which creates bidirection paths for the session.</p>
+<p>Path is organized as bitmap.</p>
+<p>The <code>next_engine()</code> API will work with path to decide the next engine, but the engine owner doesn&#39;t need to deal with path.</p>
+<h3>Session</h3>
+<p>Session is almost the same concept as what a typical firewall session is. It&#39;s 5-tuple based, bi-direction data structure that provides enough information for engines to process packets.</p>
+<p>Sessions are stored in a memory based key-value database. It can be queried and modified by database API.</p>
+<p>After session lookup, each packet data structure will have a copy of the matched session. Except invalidation, normally engines should not modify sessions in database. Only session lookup engine could modify session - e.g. the sequence number, the statistics info, etc.</p>
+<p>There are two session classes: <code>SessionStore</code>, <code>Session</code>.</p>
+<p><code>SessionStore</code> has the static <code>match</code> method, if you inherit <code>SessionStore</code>, <code>get_key()</code> and <code>modify_on_match()</code> should be implemented. </p>
+<p><code>SessionStore</code> will be separated based on protocols.</p>
+<p><code>Session</code> has <code>execute()</code>, which will call the engine path attached to the direction that packet comes.</p>
+<h3>Tunnel</h3>
+<p><code>TunnelSessionStore</code> inherits <code>SessionStore</code>. <code>TunnelSession</code> inherits <code>Session</code>.</p>
+<p><code>TunnelEngine</code> inherits <code>Engine</code>, which <code>c2s()</code> calls <code>encap(pkt)</code>, <code>s2c()</code> calls <code>decap(pkt)</code>. So you need to implement <code>encap()</code> and <code>decap()</code>.</p>
+<h2>The next step</h2>
+<p>There are much more to consider, for example, TCP Proxy, ALG, IDP, AI, QoS, etc. But unfortunately my flight is almost over and I need to release my brian for something more relex.</p>
+<p>DPDkit can zero-copy the packet from driver to user space. This is a great news for this idea.</p>
+<p>I&#39;m struggling for a while about the langyages I should choose. To me, golang is too young, python/ruby is too simple, and c/c++ is just naive to do it. Erlang, on the contrary, seems to be a smart choice for it.</p>
+<p>I know little about erlang. You can see my previous psudo code are all in c/python. I don&#39;t even know if erlang supports OOP (I guess so). What I think it is the right choice is because:</p>
+<ul>
+<li>string concatenation is O(1), which is rooted in its language essense of erlang. Think about fragmentation and reassemble you&#39;ll see how efficient it is.</li>
+<li>Processes are really, really light-weighted to spawn tens of thousands in a shot.</li>
+<li>You have no chance to mess things up through shared memory. The only way for communication is messaging, which is quite efficient without copying (hope my memory is correct).</li>
+<li>Erlang has its own key value realtime database called mnesia which could be used as configuration or even session stores (hopefully it is better than berkeley DB).</li>
+</ul>
+<p>So the next step is to learn erlang, and to try to write a framework, which by adding an engine, I can make the basic pass-through TCP traffic work without any issue.</p>
+<p>Don&#39;t laugh at me if you&#39;re expert. It is not an architecture spec. I just let my thought fly and record it faithfully.</p>
+<!--
+
+这不是说做web application要比做embedded system简单得多，而是一种思维方式和做事方法上的不同。我们做个简单的比较：
+
+### Internet application
+
+* 所有依赖的软件几乎都运行在user mode。
+* 你可以用很多的工具和框架来达到目的。你可以用nodejs和mongodb来提供api和数据的持久化；用django提供view和controller；bootstrap实现前端展现。所有这些基础结构都开源且运行良好。
+* 良好的层次划分和Separation of Concerns让你从不用担心死锁，也不用去考虑这段代码运行在哪个CPU上，你只需知道只要我遵循相应的convention，就能写出质量不错，能正常工作的代码。
+* 可以scale up，也比较容易scale out。
+
+### Application for embedded system
+
+* 很多时候不需要运行在kernel mode的代码被运行到了kernel mode。
+* 没有现成的framework（或者即使有，也没有人愿用）。
+* 没有separation of concerns。作为一个开发者，你需要对整个系统的复杂度了解得非常透彻，即使做NAT这样相对不那么复杂的应用，你也不得不关心锁，CPU，session这些本不需要暴露给你的东西。
+* 没有convention可言，每个人写出来的代码都有不同的风格。
+
+
+-->
+        <div class='under-post'>
+          
+          
+            
+          
+            
+          
+            
+          
+            
+                
+                  <div class='pull-left'>
+                    <a class='read-previous-link' href='/posts/2013-06-21-entrepreneurship-in-bay-area.html'>
+                      <i class='icon-angle-left'></i>
+                      上一篇
+                    </a>
+                  </div>                  
+                
+                
+                  <div class='pull-right'>
+                    <a class='read-next-link' href='/posts/2013-07-18-c-grammar-you-cannot-imagine.html'>
+                      下一篇
+                      <i class='icon-angle-right'></i>
+                    </a>
+                  </div>
+                         
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-facebook'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-twitter'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-linkedin'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+        </div>
+      </div>
+    </div>
+      
+  </div>
+  <div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+  
+  <div class="ds-thread">
+    <script>
+        var duoshuoQuery = {short_name:"tyrchen"};
+        (function() {
+          var ds = document.createElement('script');
+          ds.type = 'text/javascript';ds.async = true;
+          ds.src = 'http://static.duoshuo.com/embed.js';
+          ds.charset = 'UTF-8';
+          (document.getElementsByTagName('head')[0]
+          || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+  </div>
+
+</div>
+
+<footer id="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="footer-menu">
+                    <li><a href="/pages/privacy">隐私策略</a></li>
+                    <li><a href="/pages/license">版权说明</a></li>
+                    <li><a href="/pages/disclaimer">免责声明</a></li>
+                    <li><a href="#">联系我们</a></li>
+                </ul>
+                <div class="copyright">
+                    2013 &copy; Tyr Chen. 保留一切权利.
+                </div>
+            </div>
+            <div class="col-md-6">
+                <ul class="footer-social">
+                    <li><a href="#"><i class="icon-facebook"></i></a></li>
+                    <li><a href="#"><i class="icon-twitter"></i></a></li>
+                    <li><a href="#"><i class="icon-dribbble"></i></a></li>
+                    <li><a href="#"><i class="icon-linkedin"></i></a></li>
+                    <li><a href="#"><i class="icon-google-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- Scripts -->
+<script defer="defer"  src="/assets/js/jquery.js"></script><script defer="defer"  src="/assets/js/bootstrap.min.js"></script><script defer="defer"  src="/assets/js/jquery.visible.min.js"></script><script defer="defer"  src="/assets/js/jquery.isotope.min.js"></script><script defer="defer"  src="/assets/js/jquery.knob.js"></script><script defer="defer"  src="/assets/js/jquery.scrollUp.min.js"></script><script defer="defer"  src="/assets/js/highlight.pack.js"></script><script defer="defer"  src="/assets/js/application.js"></script>
+
+
+</body>
+
+</html>

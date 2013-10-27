@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="本博客提供我个人的想法，创意，经验，心得。你不必认同博主观点。" />
+    <meta name="keywords" content="创业, 思想, 点子, 经验, python, erlang, node, javascript, 服务器, devops, meteor" />
+    <meta name="author" content="Tyr Chen" />
+
+    <!-- Output DocPad produced meta elements -->
+    
+
+    <!-- Styles -->
+    <link  rel="stylesheet" href="/assets/css/app.css" /><link  rel="stylesheet" href="/assets/css/animate.css" /><link  rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700|Yanone+Kaffeesatz:200,300,400,700|Raleway:200,300,400,500,700" /><link  rel="stylesheet" href="/assets/css/font-awesome.css" /><link  rel="stylesheet" href="/assets/css/solarized_dark.css" /><link  rel="stylesheet" href="/assets/css/theme.css" />
+
+    <link href="/assets/favicon.ico" rel="shortcut icon">
+    <link href="/assets/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    @javascript html5shiv respond.min
+    <![endif]-->
+
+    <title>Why should C programmers learn Erlang? | 觅珠人 | Tyr Chen的个人博客 | 创意 | 心得 | 经验</title>
+
+</head>
+
+<body>
+
+<!-- Contact Modal -->
+<div aria-hidden='true' aria-labelledby='contactModalLabel' class='modal fade' id='contactModal' role='dialog' tabindex='-1'>
+    <div class='modal-dialog'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <button aria-hidden='true' class='close' data-dismiss='modal' type='button'>×</button>
+                <h4 class='modal-title'>Contact Us Form</h4>
+            </div>
+            <div class='modal-body'>
+                <form action='#' role='form'>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Name</label>
+                                <input class='form-control' placeholder='your username' type='text'>
+                            </div>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Email</label>
+                                <input class='form-control' placeholder='your password' type='text'>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-12'>
+                                <label class='control-label' for=''>Your Message</label>
+                                <textarea class='form-control' name='' rows='4'></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class='modal-footer'>
+                <button class='btn btn-default' data-dismiss='modal' type='button'>Cancel</button>
+                <button class='btn btn-primary' type='button'>Send Message</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="header-image-wrapper">
+  <img alt="" src="/assets/files/posts/erlang.jpg">
+</div>
+
+<div class='header-main'>
+    <div class='container'>
+        <nav class='navbar navbar-default' role='navigation'>
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class='navbar-header'>
+                <button class='navbar-toggle' data-target='.navbar-ex1-collapse' data-toggle='collapse' type='button'>
+                    <span class='sr-only'>Toggle navigation</span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                </button>
+                <a class='navbar-brand' href='/'>
+                    <img alt='' height='45px' src='/assets/images/tyr.png'> <span>觅珠人</span>
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class='collapse navbar-collapse navbar-ex1-collapse'>
+
+                <ul class='nav navbar-nav navbar-right'>
+                    <li class="">
+                        <a href="/">首页</a>
+                    </li>
+                    
+                        
+                        <li
+                            about="/pages/posts.html"
+                            class=""
+                        >
+                            <a href="/pages/posts.html">
+                                文章随笔
+                            </a>
+                        </li>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                        <li
+                            about="/pages/canvases.html"
+                            class=""
+                        >
+                            <a href="/pages/canvases.html">
+                                奇思妙想
+                            </a>
+                        </li>
+                        
+                    
+                        
+                        <li
+                            about="/pages/aboutme.html"
+                            class=""
+                        >
+                            <a href="/pages/aboutme.html">
+                                关于我
+                            </a>
+                        </li>
+                        
+                    
+                    <!--
+                    <li>
+                        <a data-toggle='modal' href='#contactModal'>联系我</a>
+                    </li>
+                    -->
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+</div>
+
+<div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+
+<div class='container'>
+  <div class='row'>
+    <div class="col-md-3">
+      <div class="post-side-bar">
+        <div class="widget widget-cats tags">
+          <h4 class="widget-title">标签</h4>
+          <ul>
+          
+            <li><a href='/tags/erlang.html'>erlang</a></li>
+          
+            <li><a href='/tags/lang.html'>lang</a></li>
+          
+            <li><a href='/tags/technology.html'>technology</a></li>
+          
+          </ul>
+        </div>
+        <div class="widget widget-cats">
+          <h4 class="widget-title">
+            相关文章
+          </h4>
+          <ul>
+            
+            
+              <li><a href="/posts/2012-12-31-atanasoff-product-design.html">进一步思考Atanasoff (Octopress client) (2)</a></li>
+            
+              <li><a href="/posts/2013-04-08-trying-to-extract-the-thoughts-behind-lockitron.html">胡思乱想之Lockitron的技术架构</a></li>
+            
+              <li><a href="/posts/2013-01-06-io-lang.html">有意思的Io语言（一）</a></li>
+            
+              <li><a href="/posts/2013-02-18-sdn-elementatory-introduction.html">SDN浅谈</a></li>
+            
+              <li><a href="/posts/2013-02-21-openflow-introduction.html">Openflow简介</a></li>
+            
+              <li><a href="/posts/2012-12-18-octopress-client-a-better-composition-tool.html">产品随想：octopress客户端 —— Atanasoff</a></li>
+            
+              <li><a href="/posts/2013-04-25-engineering-environment-for-smart-team.html">自动化的高效团队开发环境</a></li>
+            
+              <li><a href="/posts/2013-06-10-use-scrapyd-to-serve-scrapy-projects.html">用scrapyd来提供crawler服务</a></li>
+            
+              <li><a href="/posts/2013-06-12-use-makefile-to-automate-deployment.html">使用Makefile自动化部署</a></li>
+            
+              <li><a href="/posts/2013-06-23-come-to-origin-for-embedded-applications.html">Come to Origins for Embedded Applications</a></li>
+            
+              <li><a href="/posts/2013-07-18-c-grammar-you-cannot-imagine.html">你无法想象的C语法</a></li>
+            
+            
+          </ul>
+        </div>
+      </div>
+    </div>      
+    <div class='col-md-9'>
+      <div class='post-single'>
+        <!--
+        <div class='pre-post-meta'>
+          <span>
+            <i class='icon-reorder'></i>
+            in
+            <a href='#'>Web Development</a>
+          </span>
+          <span>
+            <i class='icon-user'></i>
+            by
+            <a href='#'>Tyr Chen</a>
+          </span>
+          <span>
+            <i class='icon-bookmark'></i>
+            47 分钟
+          </span>
+        </div>
+        -->
+        <h1 class='has-sub-header'>Why should C programmers learn Erlang?</h1>
+        <div class='post-single-meta'>
+          <span class='meta-item'>
+            <i class='icon-calendar'></i>
+            3个月前
+          </span>
+          <!--
+          <span class='meta-item'>
+            <a href='#'>
+              <i class='icon-comments'></i>
+              24
+            </a>
+          </span>
+          <span class='meta-item'>
+            <a href='#'>
+              <i class='icon-heart'></i>
+              15
+            </a>
+          </span>
+          -->
+          <span class="meta-item">
+          	
+            <i class='icon-time'></i>
+            47 分钟
+          </span>
+        </div>
+        <h2>Prologue</h2>
+<p>If somebody says X language is better than Y language, usually there will be a fierce quarrel between two sides. If you&#39;re using certain language for a long time, you will be the evangelist of that language, and try to protect it unconsciously. Admitted or not, you have been trapped in a tunnel, that what you can see is constraint greatly. &quot;The Shawshank Redemption&quot; gives a good footnote on it:</p>
+<p><img src="/assets/files/snapshots/institutionalized.jpg" alt="institutionalized"></p>
+<blockquote>
+<p>[Red] These walls are funny. First you hate &#39;em, then you get used to &#39;em. Enough time passes, you get so you depend on them. That&#39;s institutionalized.</p>
+</blockquote>
+<p>So before we&#39;re institutionalized too deep, let&#39;s learn something completely different - a language that not derived from C family, a language that leads you to a totally different mindset.</p>
+<p>Erlang seems to be a good candidate.</p>
+<!-- more -->
+
+<h2>Why Erlang?</h2>
+<p>Erlang is a languages more than 20 years old, developed initially by Ericsson, for the purpose of their &quot;next-gen&quot; switch. It&#39;s a really weird language with &quot;clumsy&quot; grammar which mixed with the functional programming into Prolog. However it adopts almost the best design philosophy, which is still ahead of the current era at least 10 years. Let me show you gradually.</p>
+<h3>No side effects (almost)</h3>
+<p>As a functional programming language, Erlang eliminates the shared states. Variables can only be bound to, but not changed. </p>
+<pre><code>1&gt; X = 1.
+1
+2&gt; X = X + 1.
+** exception error: no match of right hand side value 2
+3&gt; X = 2.
+** exception error: no match of right hand side value 2</code></pre>
+<p>This makes sure that you can write functions that has no side effects - which means, with the same parameters, even if you call the function a thousand times the return value is the same. Writing code that has no side effects is a fundamental advantage in Erlang, it has these benefits:</p>
+<ul>
+<li>There&#39;s (almost) no critical sections you need to protect. Think of C code under concurrent environment, you have to use various synchronous primitives to prevent data from corruption. Poor synchronization leads to poor performance and instability of the system. This is a great headache for C programmers.</li>
+<li>It makes low level optimization easier. The compiler can aggressively optimize the register usage since it knows once a variable is set it will not be changed.</li>
+<li>It makes garbage collection easier. Think of poor Java VM. To determine if a variable is garbage or not is not a easy thing since it might be reference by others, and it might be used or changed later. But Erlang not. A variable is only in the scope of the outer function. Nobody else will use it. Nobody will change it. (read more about <a href="http://stackoverflow.com/questions/10221907/garbage-collection-and-memory-management-in-erlang">Erlang garbage collection</a> if you&#39;re interested).</li>
+</ul>
+<h3>Asynchronous / Concurrent built in language</h3>
+<p>Erlang has built-in support of concurrent / asynchronous in its language. The theory backed Erlang&#39;s idea is <a href="http://en.wikipedia.org/wiki/Actor_model">Actor Model</a>. This is a great vision in 1986 since at that time multi-core, multi-thread, or even SMP is not a known terminology.</p>
+<h4>Light weighted process</h4>
+<p>To support concurrent, Erlang has its own light weighted process on its VM. You can spawn tens of thousands of processes simultaneously without hitting the limitation of the OS. Furthermore, the creation of the processes are super-fast - <a href="http://www.lshift.net/blog/2006/09/10/how-fast-can-Erlang-create-processes">350,000Hz for an old Pentium 4 CPU</a>. The memory footprint of Erlang process is quite small - in the granularity of kilobytes (minimum ~300 bytes), rather than megabytes for OS level processes. As for scheduler, Erlang support soft realtime scheduler, and the cost of context switch is very low - <a href="http://stackoverflow.com/questions/2708033/technically-why-is-processes-in-Erlang-more-efficient-than-os-threads">Switching between processes, takes about 16 instructions and 20 nanoseconds on a modern processor</a>. If you&#39;re interested in scheduling, read <a href="http://jlouisramblings.blogspot.com/2013/01/how-Erlang-does-scheduling.html">how Erlang does scheduling</a>.</p>
+<h4>Message passing</h4>
+<p>Erlang use message passing for inter process communication, which inherits the idea of Actor model. Each process has its own mailbox to hold messages that cannot be processed immediately.</p>
+<p>With built-in process and message passing between processes, Erlang made itself full asynchronous.</p>
+<h4>Example</h4>
+<pre><code>-module(echo_server).
+-export([rpc/2, loop/0]).
+
+rpc(Pid, Request) -&gt;
+    Pid ! {self(), Request},
+    receive
+        Response -&gt;
+            Response
+    end.
+
+loop() -&gt;
+    receive
+        {From, {message, Message}} -&gt;
+            From ! {ok, Message},
+            loop();
+        {From, Request} -&gt;
+            From ! {error, Request},
+            loop()
+    end.
+
+%% in shell:
+
+1&gt; c(echo_server).
+{ok,echo_server}
+2&gt;  Pid = spawn(fun echo_server:loop/0).
+&lt;0.42.0&gt;
+3&gt; echo_server:rpc(Pid, {message, &quot;Hello world!&quot;}).
+{ok,&quot;Hello world!&quot;}
+4&gt; echo_server:rpc(Pid, {message1, &quot;Hello world!&quot;}).
+{error,{message1,&quot;Hello world!&quot;}}</code></pre>
+<p>Hope you&#39;re not overwhelmed by the grammar and the details on functional programming. I&#39;m not going to go into details of this code - it basically create a echo server then send message to the echo server. By using <code>spawn</code>, <code>!</code> (keyword for message passing) and <code>receive</code> we created echo server with only several lines of code. Think about how you achieve this by using C, Java, Python, Ruby or node.js. You will find the beauty of Erlang.</p>
+<p>As actor model is so important to the concurrent world, modern languages like Golang support it in the language level as well. I&#39;m not familiar with Golang, but as it does allow you share memory, doing concurrent in Golang may still need synchronous primitives. Furthermore, I don&#39;t think Golang support software real-time since this is the goal of Erlang but not the goal for Golang.</p>
+<p>For other languages, such as Java, Python and Ruby, who supports Actor model in the form of the library, I doubt its efficiency. Only putting coroutine and it&#39;s scheduler in the VM level, you can get the maximum performance.</p>
+<h3>Scale out</h3>
+<p>From previous example we can see that you&#39;re more likely to write loosely coupled applications in Erlang. With the built-in concurrency support, Erlang application is fairly easy to scale out. You can distribute your code from one node to multiple nodes, to different machines in same LAN, or even to servers in the other side of Internet, with only a little extra coding cost. This is because:</p>
+<ol>
+<li>Erlang allows you to spawn process in a remote node.</li>
+<li>Erlang allows you to interact with remote process, just like what you do for local process.</li>
+</ol>
+<p>With a little change of previous program (added a new function), we can distribute it in two different Erlang nodes:</p>
+<pre><code>start() -&gt; register(?MODULE, spawn(fun loop/0)).</code></pre>
+<pre><code>➜  Erlang-programming-examples  erl -sname weasley
+Erlang R16B (erts-5.10.1) [source] [64-bit] [smp:8:8] [async-threads:10] [hipe] [kernel-poll:false] [dtrace]
+
+Eshell V5.10.1  (abort with ^G)
+(weasley@cnrd-tchen-mbp)1&gt; c(echo_server).
+{ok,echo_server}
+(weasley@cnrd-tchen-mbp)2&gt; echo_server:start().
+true
+
+➜  Erlang-programming-examples  erl -sname potter
+Erlang R16B (erts-5.10.1) [source] [64-bit] [smp:8:8] [async-threads:10] [hipe] [kernel-poll:false] [dtrace]
+
+Eshell V5.10.1  (abort with ^G)
+(potter@cnrd-tchen-mbp)1&gt; rpc:call(&#39;weasley@cnrd-tchen-mbp&#39;, echo_server, rpc, [{message, &quot;Hurry up, Harry!&quot;}]).
+{ok,&quot;Hurry up, Harry!&quot;}</code></pre>
+<h3>Hot code reload</h3>
+<p>This is really a dream feature every system programmer wants. Think about all kinds of tedious hot patching solutions you provided to your customer. It&#39;s about hacking, dirtiness and limitations. But Erlang, on the contrary, supports hot code reload in an elegant manner.</p>
+<p>Still use the echo server as an example, let&#39;s revise the code so that we could swap the code later:</p>
+<pre><code>-module(echo_server_general).
+-export([start/2, rpc/2, swap_code/2]).
+
+start(Name, Mod) -&gt;
+    register(Name, spawn(fun() -&gt; loop(Name, Mod) end)).
+
+swap_code(Name, Mod) -&gt;
+    rpc(Name, {swap_code, Mod}).
+
+rpc(Name, Request) -&gt;
+    Name ! {self(), Request},
+    receive
+        {Name, Response} -&gt; Response
+    end.
+
+loop(Name, Mod) -&gt;
+    receive
+        {From, {swap_code, NewMod}} -&gt;
+            From ! {Name, ack},
+            loop(Name, NewMod);
+        {From, Request} -&gt;
+            Response  = Mod:handle(Request),
+            From ! {Name, Response},
+            loop(Name, Mod)
+    end.
+
+-module(echo_server).
+-export([echo/2, handle/1]).
+
+echo(Name, Message) -&gt; echo_server_general:rpc(Name, {echo, Message}).
+
+handle({echo, Message}) -&gt; {ok, Message}.
+
+%% shell output
+
+(weasley@cnrd-tchen-mbp)1&gt; echo_server_general:start(s, echo_server).
+true
+(weasley@cnrd-tchen-mbp)2&gt; echo_server:echo(s, &quot;hello world&quot;).
+{ok,&quot;hello world&quot;}</code></pre>
+<p>Now the new requirement comes - our echo_server need to capitalize the first letter of the message and echo it back. Normally we need to shutdown the server, replace it with the new code, then restart the server again. You don&#39;t need to do so in Erlang.</p>
+<pre><code>%% revised echo_server.erl
+-module(echo_server).
+-export([echo/2, handle/1]).
+
+echo(Name, Message) -&gt; echo_server_general:rpc(Name, {echo, Message}).
+
+handle({echo, Message}) -&gt; {ok, capfirst(Message)}.
+
+capfirst([H|T]) when H &gt;= $a, H =&lt; $z -&gt;
+    [H + ($A - $a)|T];
+capfirst(Others) -&gt; Others.
+
+%% shell output
+(weasley@cnrd-tchen-mbp)4&gt; c(echo_server).
+{ok,echo_server}
+(weasley@cnrd-tchen-mbp)5&gt; echo_server_general:swap_code(s, echo_server).
+ack
+(weasley@cnrd-tchen-mbp)6&gt; echo_server:echo(s, &quot;hello world&quot;).
+{ok,&quot;Hello world&quot;}</code></pre>
+<p>Hot code reload is greatly useful not only for high availability of running software, but also very useful for software development life cycle. You don&#39;t need to waste lots of time to shutdown, load, and boot a big system for verifying a few lines of change.</p>
+<p>I read several articles which claim hot code reload is not so useful in real world. People fears about the chaos of module versions of the hot reloaded software. Understandable. People tend to fear about unknown, and things that beyond their knowledge and vision. The power of the hot code reload will be discovered a decade later, when there&#39;s corresponding software management tools and theory appears. Erlang is too ahead its time that after more than 20 years its philosophy is still ahead of time.</p>
+<h3>Fault Tolerance</h3>
+<p>The industry dreams on nine nines (99.9999999%) of system availability. However, software is made by people. People will make mistakes. Murphy&#39;s law says anything can go wrong will go wrong. So we can not avoid mistakes. Instead of getting us out of mistakes, a more important question is: how could our software survive with all kinds of mistakes?</p>
+<p>Other languages train people to use defensive programming to try to protect your software from crash, but Erlang&#39;s philosophy is &quot;let it crash&quot;. Why?</p>
+<p>If someone built a house for you that as long as one of the window breaks the house will fall completely, will you stay in the house? Absolutely no. You need a house that you can still live in it though window is broken. You can later ask expert to fix it.</p>
+<p>This is the difference between applications written in C and in Erlang. Crash is not a serious problem if you know how to recover from the crash. In Erlang: </p>
+<ul>
+<li>a process crashing will not impact unrelated processes.</li>
+<li>crashed process will notify the processes linked to it.</li>
+<li>supervisor could be used to recover from the crash, e.g. restart the crashed process.</li>
+</ul>
+<h3>Speed</h3>
+<p>the performance of Erlang code has some drawbacks compared with C:</p>
+<ul>
+<li>the code runs on top of VM</li>
+<li>runtime type deduction</li>
+<li>pattern matching</li>
+<li>...</li>
+</ul>
+<p>So how slow is Erlang? Inspired by this <a href="http://stackoverflow.com/questions/6964392/speed-comparison-with-project-euler-c-vs-python-vs-Erlang-vs-haskell">post</a>, I did the following tests in my mbp:</p>
+<pre><code>➜  comparison  time ./euler12.bin
+842161320
+./euler12.bin  5.90s user 0.01s system 99% cpu 5.910 total
+➜  comparison  time erl -noshell -s euler12 solve
+842161320
+erl -noshell -s euler12 solve  11.09s user 0.19s system 100% cpu 11.269 total
+➜  comparison  time pypy euler12.py
+842161320
+pypy euler12.py  9.92s user 0.05s system 96% cpu 10.305 total
+➜  comparison  time ./euler12.py
+842161320
+./euler12.py  66.32s user 0.04s system 99% cpu 1:06.43 total</code></pre>
+<p>We can see that C code is almost 2x faster than Erlang. This is not bad for Erlang, considering the benefits it brings. Think about a I/O intensive situation. Think about concurrent or distributed situation. Erlang wins for sure.</p>
+<p>Sooner or later one DIE will have a thousand cores. Even if nowadays Erlang cannot excel in performance, it will in future.</p>
+<h3>Adoption</h3>
+<p>There are quite a few famous software built with Erlang:</p>
+<ul>
+<li><a href="http://couchdb.apache.org/">couchDB</a>. A NoSQL database. </li>
+<li><a href="http://www.rabbitmq.com/">RabbitMQ</a>. A distributed message queue system.</li>
+<li><a href="http://www.ejabberd.im/">ejabberd</a>. An instant message server.</li>
+<li><a href="http://www.adelcogroup.com/EricssonAXD301.htm">AXD301 ATM switch</a>. Probably the only system in this planet reached nine nines. It hasn&#39;t been shutdown for 20 years.</li>
+<li>And a lot more companies, including Amazon, Facebook, Yahoo!, T-Mobile, use Erlang in their systems, see <a href="http://stackoverflow.com/questions/1636455/where-is-Erlang-used-and-why">Where is Erlang used and why?</a></li>
+</ul>
+<h2>How to learn Erlang?</h2>
+<p>Erlang is really difficult to learn. But once you mastered it, you&#39;re the king. I like the words from Evan Miller, the creator of Erlang Web MVC framwork <a href="http://www.chicagoboss.org/">Chicago Boss</a>, in a good article named <a href="http://www.evanmiller.org/joy-of-erlang.html">Joy of erlang</a>:</p>
+<blockquote>
+<p>In the movie Avatar, there&#39;s this big badass bird-brained pterodactyl thing called a Toruk that the main character must learn to ride in order to regain the trust of the blue people. As a general rule, Toruks do not like to be ridden, but if you fight one, subdue it, and then link your Blue Man ponytail to the Toruk&#39;s ptero-tail, you get to own the thing for life. Owning a Toruk is awesome; it&#39;s like owning a flying car you can control with your mind, which comes in handy when battling large chemical companies, impressing future colleagues, or delivering a pizza. But learning to ride a Toruk is dangerous, and very few people succeed.</p>
+</blockquote>
+<p><img src="/assets/files/snapshots/toruk.jpg" alt="toruk"></p>
+<p>It reflects perfectly how hard I learned Erlang. BTW, I&#39;ve far from conquering it. </p>
+<p>Before learning Erlang, I have good master of C, Python and Javascript, programmed a little bit on C++, Java and Ruby. You can see my brain is filled with <a href="http://en.wikipedia.org/wiki/Imperative_programming">Imperative programming</a>. So the biggest challenges for me is to get used to functional programming, which implies <strong>mind change</strong>.</p>
+<h3>No state change for variables</h3>
+<p>Variables can only be bound to but not changed. Suddenly I found I could not program.</p>
+<p>For example, to implement upper(str) without using any helper function, such as map().</p>
+<p>In Python, it&#39;s super easy and pretty straight forward:</p>
+<pre><code>def upper(str):
+    str1 = &#39;&#39;
+    for c in str:
+        str1 += c.upper()
+    return str1</code></pre>
+<p>But in erlang, without changing the internal state, how can I achieve it?</p>
+<p>The ingredient is accumulator. Bear this paradigm in mind when writing Erlang code. The code looks like this:</p>
+<pre><code>upper(S) -&gt;
+    upper(S, []).
+
+upper([], N) -&gt;
+    lists:reverse(N);
+upper([H|T], N) when H &gt; $a, H =&lt; $z -&gt;
+    upper(T, [H + ($A - $a)|N]);
+upper([H|T], N) -&gt;
+    upper(T, [H|N]).</code></pre>
+<p>The function itself doesn&#39;t have any internal state change, but we have achieved the same goal by having an accumulator passed as a parameter. This is a fundamental paradigm in functional programming world. <strong>Master it or die</strong>.</p>
+<h3>Pattern matching</h3>
+<p>Pattern matching makes Erlang program beautiful and easy to understand. In C, a function is unique inside its scope. You cannot define a <code>fun(x)</code> firstly, then define <code>fun(x, y)</code> later. But in Erlang, there&#39;s no such limitation. You could define as many as functions as long as their parameters are different, you could also define as many as <a href="http://www.erlang.org/doc/reference_manual/functions.html">clauses</a> for a function as long as their patterns are different. Take the above <code>upper()</code> function as an example. You call <code>upper(&quot;#hello&quot;)</code>:</p>
+<ul>
+<li>as there&#39;s only one parameter, the call matches with <code>upper(S)</code>, so we call <code>upper(&quot;#hello&quot;, [])</code>.</li>
+<li>For <code>upper(&quot;#hello&quot;, [])</code>, as &quot;#hello&quot; cannot match [], and the first char &quot;#&quot; doesn&#39;t match with the guard condition, the call matched <code>upper([H|T], N)</code>, so it calls <code>upper(&quot;hello&quot;, [$#])</code>.</li>
+<li>The following calls all matched with <code>upper([H|T], N) when H &gt; $a, H =&lt; $z</code>, and it will change the char to uppercase. So the call sequence is:<pre><code>upper(&quot;ello&quot;, [$H, $#])
+upper(&quot;llo&quot;, [$E, $H, $#])
+upper(&quot;lo&quot;, [$L, $E, $H, $#])
+upper(&quot;o&quot;, [$L, $L, $E, $H, $#])
+upper([], [$O, $L, $L, $E, $H, $#])</code></pre>
+</li>
+<li>for <code>upper([], [$O, $L, $L, $E, $H, $#])</code>, it matches <code>upper([], N)</code>, <code>lists:reverse(N)</code> is returned.</li>
+</ul>
+<p>Pattern matching allows you to break your code logic into pieces, as a result, the body of each clause of a function is much smaller and more readable. That&#39;s why usually you see a C function is more than a hundred lines of code but an Erlang function clause usually takes no more than twenty lines of code.</p>
+<p>Note that the sequence of the clauses are important. Erlang executes the first matched clause.</p>
+<h3>The magic of recursive</h3>
+<p>When studying C programming, I was trained that recursion is a poison that you should use as little as possible. But in functional programming world, recursion is another fundamental paradigm.</p>
+<p>Look back into the code I&#39;ve written in this article so far. Do you see regular loop? No. But how about recursive function? Everywhere. Recursion replaces for/while loop, making a clean iteration or looping solution. Why? Think about the for loop in C. It involves with state change - for every step you change the iterating factor until it match the exiting criteria. But Erlang doesn&#39;t allow internal state change, so it uses recursion to replace normal for/while loop.</p>
+<p>But you have doubts.</p>
+<h4>The performance of recursion is poor</h4>
+<p>This is a pseudo-proposition. </p>
+<p>Let me give you an example. The common sense is that passing parameters by registers is much faster than by stack. Intel CPU relies on stack push/pop so much for function calls since it has fewer general purpose registers than RISC CPUs. To boost performance it introduces the register stack so that push/pop operation is lightening-y fast - as fast as using registers.</p>
+<p>Let&#39;s come back to recursion. We use little recursion in C, according to 80/20 principle, there&#39;s no immediate need to optimize it, right? But for Erlang, recursion is the lifeline of the code. How dare the compiler not to optimize it? So your intuition is wrong - recursion is not necessarily slow. Yes it is slow in C, but very fast in Erlang. </p>
+<h4>It usually leads to stack overflow</h4>
+<p>Not exactly if you program in a right way. Erlang optimize the stack specially for <a href="https://en.wikipedia.org/wiki/Tail_call">tail recursion</a>. Let me give you an example:</p>
+<pre><code>fac(1) -&gt; 1;
+fac(N) when N &gt; 0 -&gt; N * fac(N-1).</code></pre>
+<p>This is not a tail recursion since the stack must be kept for calculation.</p>
+<p>Let&#39;s make it a tail recursion one:</p>
+<pre><code>fac1(N) -&gt; fac1(N, 1).
+
+fac1(1, M) -&gt; M;
+fac1(N, M) when N &gt; 0 -&gt; fac1(N-1, N * M).</code></pre>
+<p>Each time a function call is made we can safely drop the stack of the last call, this is tail recursion.</p>
+<p>The benefit of tail recursion is that you need only to keep a very small, constant memory footprint for recursion. So there&#39;s no worry about stack overflow for long running recursive programs.</p>
+<p>In Erlang, you should program the code with tail recursion as long as it is possible.</p>
+<h3>Functional programming in mind</h3>
+<p>Pay attention to the data that could be recursively accessed, such as list (including string). List could be processed like this:</p>
+<pre><code>retrieve([H|T]) -&gt; {H, T}.
+
+%% or even
+retrieve1([H1, H2|T]) -&gt; {H1, H2, T}</code></pre>
+<p>Bear map/reduce in mind.</p>
+<p>Focus on algorithm, think how you achieve it with math formula. Then it should be easy to write it down with Erlang. Divide and conquer your problem. Do not get into details.</p>
+<p>Let&#39;s take atoi(S) as an example.</p>
+<p>The formula:</p>
+<pre><code>
+         |- S[0] is &#39;-&#39;:  -1 * atoi(s[1:], 0)
+atoi(S) -+
+         |- else:         atoi(S, 0)
+
+              |- S is []:       Acc
+atoi(S, Acc) -+- S[X] is digit: atoi(S[X+1:], 10 * Acc + digit(S))
+              |- else:          Acc</code></pre>
+<p>Thus we could write code like this:</p>
+<pre><code>-module(math).
+-export([atoi/1]).
+
+atoi([$-|S]) -&gt;
+    -1 * atoi(S, 0);
+atoi(S) -&gt;
+    atoi(S, 0).
+
+atoi([], Acc) -&gt; Acc;
+atoi([H|T], Acc) when H &gt;= $0, H =&lt; $9 -&gt;
+    atoi(T, 10 * Acc + (H - $0));
+atoi(_S, Acc) -&gt; Acc.</code></pre>
+<p>Think of how you write C code for <code>atoi()</code>. The Erlang program is close to what your algorithm is. You can make it correct almost on your first try.</p>
+<h3>Embrace processes</h3>
+<p>Process is not hard to use if you&#39;re willing to use it. It helps organize your system in a loosely coupled and asynchronous way. You just need to get used to it. Treat process as worker, as object, or anything you could analog.</p>
+<h3>Let it fail</h3>
+<p>For C programmer, normally you should write code that covers every possible value of the parameters. But Erlang not. Take this example:</p>
+<pre><code>%% good code
+fac(N) when is_integer(N), N &gt; 0 -&gt; fac(N, 1).
+
+fac(1, Acc) -&gt; Acc;
+fac(N, Acc) -&gt; fac(N-1, Acc * N).
+
+%% bad code
+fac(N) when is_integer(N), N &gt; 0 -&gt; fac(N, 1).
+fac(N)                           -&gt; {error, &quot;argument must be positive integer&quot;}
+
+fac(1, Acc) -&gt; Acc;
+fac(N, Acc) -&gt; fac(N-1, Acc * N).</code></pre>
+<p>Execute the good code with bad parameter will cause exception, like the following:</p>
+<pre><code>1&gt; c(math).
+{ok,math}
+2&gt; math:fac(10).
+3628800
+3&gt; math:fac(-10).
+** exception error: no function clause matching math:fac(-10) (math.erl, line 14)</code></pre>
+<p>Should we write code to process the negative integer? YES in C, NO in Erlang. The bade code saves the process from exception but it leads unnecessary handling for the caller. Caller needs to add extra code to handle this pointless return value, which only makes the system more complicated. Let the exception happen. Let the process crash. Handle exception only in the place that need to handle it.</p>
+<h2>Materials to learn Erlang</h2>
+<p>Congratulations! After reading this long article now it&#39;s your turn to conquer your Toruk. Here&#39;s your weapon:</p>
+<ol>
+<li><strong>Joe Armstrong</strong>&#39;s book <strong>&quot;Programming Erlang - software for a concurrent world&quot;</strong>. The best way to learn a language is to read the book of the language&#39;s father. I highly recommend you to read this book thoroughly, especially the chapters regarding with sequential programming, concurrent programming and OTP.</li>
+<li><a href="http://www.erlang.org/doc/">Erlang doc</a>. Read on when you have doubts.</li>
+<li>Implement in Erlang for the problems you&#39;re facing in day-to-day work. For example:<ul>
+<li>Count the words for a given file.</li>
+<li>Implement cloc (giving a directory, count the lines of code for different languages).</li>
+<li>Write a message server that keeps top N unread messages in memory while keeping the rest in mnesia.</li>
+<li>Write a markdown interpreter.</li>
+<li>Write a web framework based on mochiweb.</li>
+<li>Write a L3/L4 firewall that handles symmetric NAT translation (to focus on the problem itself you should use the data from tcpdump).</li>
+</ul>
+</li>
+<li>Read open source software, such as ranch, cowboy, boss_db, etc.</li>
+</ol>
+<p>Hope you have fun!</p>
+
+        <div class='under-post'>
+          
+          
+            
+          
+            
+                
+                  <div class='pull-left'>
+                    <a class='read-previous-link' href='/posts/2013-07-18-c-grammar-you-cannot-imagine.html'>
+                      <i class='icon-angle-left'></i>
+                      上一篇
+                    </a>
+                  </div>                  
+                
+                
+                  <div class='pull-right'>
+                    <a class='read-next-link' href='/posts/2013-07-27-the-remains-of-the-day.html'>
+                      下一篇
+                      <i class='icon-angle-right'></i>
+                    </a>
+                  </div>
+                         
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-facebook'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-twitter'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-linkedin'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+        </div>
+      </div>
+    </div>
+      
+  </div>
+  <div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+  
+  <div class="ds-thread">
+    <script>
+        var duoshuoQuery = {short_name:"tyrchen"};
+        (function() {
+          var ds = document.createElement('script');
+          ds.type = 'text/javascript';ds.async = true;
+          ds.src = 'http://static.duoshuo.com/embed.js';
+          ds.charset = 'UTF-8';
+          (document.getElementsByTagName('head')[0]
+          || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+  </div>
+
+</div>
+
+<footer id="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="footer-menu">
+                    <li><a href="/pages/privacy">隐私策略</a></li>
+                    <li><a href="/pages/license">版权说明</a></li>
+                    <li><a href="/pages/disclaimer">免责声明</a></li>
+                    <li><a href="#">联系我们</a></li>
+                </ul>
+                <div class="copyright">
+                    2013 &copy; Tyr Chen. 保留一切权利.
+                </div>
+            </div>
+            <div class="col-md-6">
+                <ul class="footer-social">
+                    <li><a href="#"><i class="icon-facebook"></i></a></li>
+                    <li><a href="#"><i class="icon-twitter"></i></a></li>
+                    <li><a href="#"><i class="icon-dribbble"></i></a></li>
+                    <li><a href="#"><i class="icon-linkedin"></i></a></li>
+                    <li><a href="#"><i class="icon-google-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- Scripts -->
+<script defer="defer"  src="/assets/js/jquery.js"></script><script defer="defer"  src="/assets/js/bootstrap.min.js"></script><script defer="defer"  src="/assets/js/jquery.visible.min.js"></script><script defer="defer"  src="/assets/js/jquery.isotope.min.js"></script><script defer="defer"  src="/assets/js/jquery.knob.js"></script><script defer="defer"  src="/assets/js/jquery.scrollUp.min.js"></script><script defer="defer"  src="/assets/js/highlight.pack.js"></script><script defer="defer"  src="/assets/js/application.js"></script>
+
+
+</body>
+
+</html>

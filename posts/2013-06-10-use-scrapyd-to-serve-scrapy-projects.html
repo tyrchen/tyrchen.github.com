@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="本博客提供我个人的想法，创意，经验，心得。你不必认同博主观点。" />
+    <meta name="keywords" content="创业, 思想, 点子, 经验, python, erlang, node, javascript, 服务器, devops, meteor" />
+    <meta name="author" content="Tyr Chen" />
+
+    <!-- Output DocPad produced meta elements -->
+    
+
+    <!-- Styles -->
+    <link  rel="stylesheet" href="/assets/css/app.css" /><link  rel="stylesheet" href="/assets/css/animate.css" /><link  rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700|Yanone+Kaffeesatz:200,300,400,700|Raleway:200,300,400,500,700" /><link  rel="stylesheet" href="/assets/css/font-awesome.css" /><link  rel="stylesheet" href="/assets/css/solarized_dark.css" /><link  rel="stylesheet" href="/assets/css/theme.css" />
+
+    <link href="/assets/favicon.ico" rel="shortcut icon">
+    <link href="/assets/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    @javascript html5shiv respond.min
+    <![endif]-->
+
+    <title>用scrapyd来提供crawler服务 | 觅珠人 | Tyr Chen的个人博客 | 创意 | 心得 | 经验</title>
+
+</head>
+
+<body>
+
+<!-- Contact Modal -->
+<div aria-hidden='true' aria-labelledby='contactModalLabel' class='modal fade' id='contactModal' role='dialog' tabindex='-1'>
+    <div class='modal-dialog'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <button aria-hidden='true' class='close' data-dismiss='modal' type='button'>×</button>
+                <h4 class='modal-title'>Contact Us Form</h4>
+            </div>
+            <div class='modal-body'>
+                <form action='#' role='form'>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Name</label>
+                                <input class='form-control' placeholder='your username' type='text'>
+                            </div>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Email</label>
+                                <input class='form-control' placeholder='your password' type='text'>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-12'>
+                                <label class='control-label' for=''>Your Message</label>
+                                <textarea class='form-control' name='' rows='4'></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class='modal-footer'>
+                <button class='btn btn-default' data-dismiss='modal' type='button'>Cancel</button>
+                <button class='btn btn-primary' type='button'>Send Message</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="header-image-wrapper">
+  <img alt="" src="/assets/files/posts/spider.jpg">
+</div>
+
+<div class='header-main'>
+    <div class='container'>
+        <nav class='navbar navbar-default' role='navigation'>
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class='navbar-header'>
+                <button class='navbar-toggle' data-target='.navbar-ex1-collapse' data-toggle='collapse' type='button'>
+                    <span class='sr-only'>Toggle navigation</span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                </button>
+                <a class='navbar-brand' href='/'>
+                    <img alt='' height='45px' src='/assets/images/tyr.png'> <span>觅珠人</span>
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class='collapse navbar-collapse navbar-ex1-collapse'>
+
+                <ul class='nav navbar-nav navbar-right'>
+                    <li class="">
+                        <a href="/">首页</a>
+                    </li>
+                    
+                        
+                        <li
+                            about="/pages/posts.html"
+                            class=""
+                        >
+                            <a href="/pages/posts.html">
+                                文章随笔
+                            </a>
+                        </li>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                        <li
+                            about="/pages/canvases.html"
+                            class=""
+                        >
+                            <a href="/pages/canvases.html">
+                                奇思妙想
+                            </a>
+                        </li>
+                        
+                    
+                        
+                        <li
+                            about="/pages/aboutme.html"
+                            class=""
+                        >
+                            <a href="/pages/aboutme.html">
+                                关于我
+                            </a>
+                        </li>
+                        
+                    
+                    <!--
+                    <li>
+                        <a data-toggle='modal' href='#contactModal'>联系我</a>
+                    </li>
+                    -->
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+</div>
+
+<div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+
+<div class='container'>
+  <div class='row'>
+    <div class="col-md-3">
+      <div class="post-side-bar">
+        <div class="widget widget-cats tags">
+          <h4 class="widget-title">标签</h4>
+          <ul>
+          
+            <li><a href='/tags/scrapy.html'>scrapy</a></li>
+          
+            <li><a href='/tags/crawler.html'>crawler</a></li>
+          
+            <li><a href='/tags/technology.html'>technology</a></li>
+          
+          </ul>
+        </div>
+        <div class="widget widget-cats">
+          <h4 class="widget-title">
+            相关文章
+          </h4>
+          <ul>
+            
+            
+              <li><a href="/posts/2012-12-18-octopress-client-a-better-composition-tool.html">产品随想：octopress客户端 —— Atanasoff</a></li>
+            
+              <li><a href="/posts/2012-12-31-atanasoff-product-design.html">进一步思考Atanasoff (Octopress client) (2)</a></li>
+            
+              <li><a href="/posts/2013-02-18-sdn-elementatory-introduction.html">SDN浅谈</a></li>
+            
+              <li><a href="/posts/2013-02-21-openflow-introduction.html">Openflow简介</a></li>
+            
+              <li><a href="/posts/2013-04-08-trying-to-extract-the-thoughts-behind-lockitron.html">胡思乱想之Lockitron的技术架构</a></li>
+            
+              <li><a href="/posts/2013-04-25-engineering-environment-for-smart-team.html">自动化的高效团队开发环境</a></li>
+            
+              <li><a href="/posts/2013-06-12-use-makefile-to-automate-deployment.html">使用Makefile自动化部署</a></li>
+            
+              <li><a href="/posts/2013-06-23-come-to-origin-for-embedded-applications.html">Come to Origins for Embedded Applications</a></li>
+            
+              <li><a href="/posts/2013-07-18-c-grammar-you-cannot-imagine.html">你无法想象的C语法</a></li>
+            
+              <li><a href="/posts/2013-07-22-why-should-c-programmers-learn-erlang.html">Why should C programmers learn Erlang?</a></li>
+            
+            
+          </ul>
+        </div>
+      </div>
+    </div>      
+    <div class='col-md-9'>
+      <div class='post-single'>
+        <!--
+        <div class='pre-post-meta'>
+          <span>
+            <i class='icon-reorder'></i>
+            in
+            <a href='#'>Web Development</a>
+          </span>
+          <span>
+            <i class='icon-user'></i>
+            by
+            <a href='#'>Tyr Chen</a>
+          </span>
+          <span>
+            <i class='icon-bookmark'></i>
+            6 分钟
+          </span>
+        </div>
+        -->
+        <h1 class='has-sub-header'>用scrapyd来提供crawler服务</h1>
+        <div class='post-single-meta'>
+          <span class='meta-item'>
+            <i class='icon-calendar'></i>
+            5个月前
+          </span>
+          <!--
+          <span class='meta-item'>
+            <a href='#'>
+              <i class='icon-comments'></i>
+              24
+            </a>
+          </span>
+          <span class='meta-item'>
+            <a href='#'>
+              <i class='icon-heart'></i>
+              15
+            </a>
+          </span>
+          -->
+          <span class="meta-item">
+          	
+            <i class='icon-time'></i>
+            6 分钟
+          </span>
+        </div>
+        <p>这是一篇即兴的短文，主要是为了记录我用 <code>scrapyd</code> 的心得。</p>
+<p>之前做数据抓取，总是一个scrapy project做一个deploy，很不方便，一个一个更新起来也很麻烦，总觉得能有更好的方法去处理。今早看了看scrapyd，觉得这就是我想要的东西。</p>
+<!--more-->
+
+<h2>目标</h2>
+<p>假设你有两个scrapy project：</p>
+<ul>
+<li>alpha: 其spider是alpha-spider。</li>
+<li>beta: 其spider是beta-spider。</li>
+</ul>
+<p>你想将其做成service，在一台ubuntu server（gryffindoe）上每周定期运行。</p>
+<h2>前提</h2>
+<p>在gryffindoe上，安装scrapyd：</p>
+<section>
+<pre><code> $ lsb_release -cs
+ quantal
+ $ # 将 deb http://archive.scrapy.org/ubuntu quantal main 添加到sources.list中
+ $ sudo vim /etc/apt/sources.list
+ $ # 安装key
+ $ curl -s http://archive.scrapy.org/ubuntu/archive.key | sudo apt-key add -
+ $ sudo apt-get update
+ $ apt-cache search scrapyd
+ scrapyd-0.16 - Scrapy Service
+ scrapyd-0.17 - Scrapy Service
+ $ # 安装最新版本
+ $ sudo apt-get isntall scrapyd-0.17</code></pre>
+</section>
+<p>安装完成后，scrapyd就自动在gryffindoe上运行了。</p>
+<h2>部署scrapy项目</h2>
+<p>scrapyd默认运行在6800端口，假设gryffindoe的域名是 <code>gryffindoe.com</code>，在你的alpha项目中，编辑 <code>scrapy.cfg</code>:</p>
+<section>
+<pre><code> [deploy:gryffindoe]
+ url = http://gryffindoe.com:6800/
+ project = alpha</code></pre>
+</section>
+<p>然后你可以在你的scrapy项目下查看在gryffindoe上的scrapyd的状态：</p>
+<section>
+<pre><code> $ # 查看当前scrapyd配置
+ $ scrapy deploy -l
+ gryffindoe                http://gryffindoe.com:6800/
+ $ # 查看当前scrapyd上部署好的项目，现在还没有
+ $ scrapy deploy -L gryffindoe</code></pre>
+</section>
+<p>接着我们把 <code>alpha</code> 部署到 <code>gryffindoe</code>:</p>
+<section>
+<pre><code> $ scrapy deploy graffindoe -p alpha
+ Building egg of alpha-1370823198
+ &#39;build/scripts-2.7&#39; does not exist -- can&#39;t clean it
+ zip_safe flag not set; analyzing archive contents...
+ Deploying alpha-1370823198 to http://gryffindoe.com:6800/addversion.json
+ Server response (200):
+ {&quot;status&quot;: &quot;ok&quot;, &quot;project&quot;: &quot;alpha&quot;, &quot;version&quot;: &quot;1370823198&quot;, &quot;spiders&quot;: 1}
+ $ scrapy deploy -L gryffindoe
+ alpha</code></pre>
+</section>
+<p>大功告成。进入到另一个project <code>beta</code> 的目录下，如法炮制:</p>
+<section>
+<pre><code> $ scrapy deploy graffindoe -p beta
+ Building egg of beta-1370823198
+ &#39;build/scripts-2.7&#39; does not exist -- can&#39;t clean it
+ zip_safe flag not set; analyzing archive contents...
+ Deploying beta-1370823198 to http://gryffindoe.com:6800/addversion.json
+ Server response (200):
+ {&quot;status&quot;: &quot;ok&quot;, &quot;project&quot;: &quot;beta&quot;, &quot;version&quot;: &quot;1370823198&quot;, &quot;spiders&quot;: 1}
+ $ scrapy deploy -L gryffindoe
+ alpha
+ beta</code></pre>
+</section>
+<p>现在你打开 <code>http://gryffindeo.com:6800/</code>，应该有如下显示：</p>
+<section>
+<p> Scrapyd</p>
+<p> Available projects: alpha, beta</p>
+<p> Jobs
+ Items
+ Logs
+ Documentation</p>
+</section>
+<h2>运行spider</h2>
+<p>接下来我们可以远程指定要运行的spider了，很简单，页面上提示可以直接使用scrapyd的json API:</p>
+<section>
+<pre><code> $ curl http://localhost:6800/schedule.json -d project=default -d spider=somespider</code></pre>
+</section>
+<p>对于project <code>alpha</code>下的spider <code>alpha-spider</code>:</p>
+<section>
+<pre><code> $ curl http://localhost:6800/schedule.json -d project=alpha -d spider=alpha-spider</code></pre>
+</section>
+<p>这样，alpha-spider就开始运行了。你可以打开 <code>http://gryffindeo.com:6800/</code> 查看运行状态。</p>
+<p>如果要定期运行spider，把这条命令加到cronjob里就可以了。</p>
+<p>送上六一给小宝的礼物一枚：</p>
+<p><embed src="http://player.youku.com/player.php/sid/XNTY0NzQ5NDA0/v.swf" allowFullScreen="true" quality="high" width="660" height="500" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed><br/></p>
+
+        <div class='under-post'>
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+                
+                  <div class='pull-left'>
+                    <a class='read-previous-link' href='/posts/2013-05-09-why-every-developer-should-use-mac.html'>
+                      <i class='icon-angle-left'></i>
+                      上一篇
+                    </a>
+                  </div>                  
+                
+                
+                  <div class='pull-right'>
+                    <a class='read-next-link' href='/posts/2013-06-12-use-makefile-to-automate-deployment.html'>
+                      下一篇
+                      <i class='icon-angle-right'></i>
+                    </a>
+                  </div>
+                         
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-facebook'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-twitter'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-linkedin'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+        </div>
+      </div>
+    </div>
+      
+  </div>
+  <div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+  
+  <div class="ds-thread">
+    <script>
+        var duoshuoQuery = {short_name:"tyrchen"};
+        (function() {
+          var ds = document.createElement('script');
+          ds.type = 'text/javascript';ds.async = true;
+          ds.src = 'http://static.duoshuo.com/embed.js';
+          ds.charset = 'UTF-8';
+          (document.getElementsByTagName('head')[0]
+          || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+  </div>
+
+</div>
+
+<footer id="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="footer-menu">
+                    <li><a href="/pages/privacy">隐私策略</a></li>
+                    <li><a href="/pages/license">版权说明</a></li>
+                    <li><a href="/pages/disclaimer">免责声明</a></li>
+                    <li><a href="#">联系我们</a></li>
+                </ul>
+                <div class="copyright">
+                    2013 &copy; Tyr Chen. 保留一切权利.
+                </div>
+            </div>
+            <div class="col-md-6">
+                <ul class="footer-social">
+                    <li><a href="#"><i class="icon-facebook"></i></a></li>
+                    <li><a href="#"><i class="icon-twitter"></i></a></li>
+                    <li><a href="#"><i class="icon-dribbble"></i></a></li>
+                    <li><a href="#"><i class="icon-linkedin"></i></a></li>
+                    <li><a href="#"><i class="icon-google-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- Scripts -->
+<script defer="defer"  src="/assets/js/jquery.js"></script><script defer="defer"  src="/assets/js/bootstrap.min.js"></script><script defer="defer"  src="/assets/js/jquery.visible.min.js"></script><script defer="defer"  src="/assets/js/jquery.isotope.min.js"></script><script defer="defer"  src="/assets/js/jquery.knob.js"></script><script defer="defer"  src="/assets/js/jquery.scrollUp.min.js"></script><script defer="defer"  src="/assets/js/highlight.pack.js"></script><script defer="defer"  src="/assets/js/application.js"></script>
+
+
+</body>
+
+</html>

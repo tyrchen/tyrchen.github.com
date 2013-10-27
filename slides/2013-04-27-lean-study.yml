@@ -1,0 +1,130 @@
+layout: impress
+theme: simple
+title: Productivity Tools
+intro: <section><h1>Productivity Tools</h1></section>
+date: 2013-04-27 08:12
+tags: [productivity]
+slides:
+  - y: -3000
+    jade: |
+      h2 Productivity Tools
+      br
+      h4 2013-04-27 by Tyr Chen
+      br
+      small 
+        | Tools I used for my professional and personal study
+  - x: 1000
+    y: -3000
+    rotate: 90
+    classes: ['slide']
+    jade: |
+      h2 Essential tools:
+      ul
+        li Mac Book Pro
+        li Evernote
+        li Sublime Text 2
+        li Markdown or reStructured Text
+        li Sphinx
+      br
+      p Principles guide what you do. Tactics show you how.
+      
+
+  - x: 2000
+    scale: 0.5
+    jade: |
+      p Buy Mac Book Pro (optional)
+      p It helps you to be <b>efficient</b>
+
+  - x: 2000
+    y: 800
+    classes: ['slide']
+    jade: |
+      h2 You want the reasons?
+      ul
+        li Best hardware
+        li Elegant, with sense of beauty in hw/sw
+        li Best shell and text editor
+      br
+      p Tell you a secret, I'm the tier-1 channel of Apple...
+
+  - x: 2000
+    y: 500
+    z: -1000
+    scale: 0.3
+    jade: |
+      p Use Evernote
+      p Keep what you saw and what you thought <b>organized</b>
+
+  - x: 2000
+    y: 1500
+    scale: 0.8
+    jade: |
+      img(src="/assets/img/charts/evernote.jpg")
+
+  - x: 2000
+    y: 2000
+    scale: 0.5
+    jade: |
+      img(src="/assets/img/charts/evernote-mobile.jpg")
+
+  - x: 3000
+    jade: |
+      p Sublime as your <b>TEXT</b> editor
+      p bundles, themes and advanced editing tactics!
+
+  - x: 3000
+    z: -1000
+    scale: 0.1
+    jade: |
+      img(src="/assets/img/charts/sublime.jpg")
+
+  - x: 3000
+    y: 600
+    scale: 0.6
+    jade: |
+      p Learn a markup language
+      p I use <b>markdown</b> for blogging, <b>reST</b> for my book
+
+  - x: 3000
+    y: 900
+    scale: 0.3
+    classes: ['slide']
+    jade: |
+      h2 Why markup language?
+      ul
+        li richer than pure text
+        li write once build many
+        li could be managed via SCM - e.g. git
+        li Google it yourselves to find the grammar
+
+  - x: 3000
+    y: 1200
+    scale: 0.5
+    jade: |
+      p Systematically build knowledge with <b>Sphinx</b>
+
+  - x: 3000
+    y: 1500
+    scale: 0.1
+    classes: ['slide']
+    jade: |
+      h2 Why Sphinx?
+      ul
+        li write in reST, build to 22 formats (including html and pdf)
+        li build cross reference, ToC, etc. automatically
+        li let you focus on content itself
+      h2 How to use it?
+      ul
+        li install python, then install Sphinx
+        li to generate PDF, install latex
+        li <code>sphinx-quickstart</code> will help you with bootstrap
+
+  - x: 4000
+    jade: |
+      img(src="/assets/img/charts/sphinx.jpg")
+
+  - x: 4000
+    y: 500
+    scale: 0.2
+    jade: |
+      h1 END & Thanks

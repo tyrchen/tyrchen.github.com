@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="本博客提供我个人的想法，创意，经验，心得。你不必认同博主观点。" />
+    <meta name="keywords" content="创业, 思想, 点子, 经验, python, erlang, node, javascript, 服务器, devops, meteor" />
+    <meta name="author" content="Tyr Chen" />
+
+    <!-- Output DocPad produced meta elements -->
+    
+
+    <!-- Styles -->
+    <link  rel="stylesheet" href="/assets/css/app.css" /><link  rel="stylesheet" href="/assets/css/animate.css" /><link  rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700|Yanone+Kaffeesatz:200,300,400,700|Raleway:200,300,400,500,700" /><link  rel="stylesheet" href="/assets/css/font-awesome.css" /><link  rel="stylesheet" href="/assets/css/solarized_dark.css" /><link  rel="stylesheet" href="/assets/css/theme.css" />
+
+    <link href="/assets/favicon.ico" rel="shortcut icon">
+    <link href="/assets/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    @javascript html5shiv respond.min
+    <![endif]-->
+
+    <title>文章随笔 | 觅珠人 | Tyr Chen的个人博客 | 创意 | 心得 | 经验</title>
+
+</head>
+
+<body>
+
+<!-- Contact Modal -->
+<div aria-hidden='true' aria-labelledby='contactModalLabel' class='modal fade' id='contactModal' role='dialog' tabindex='-1'>
+    <div class='modal-dialog'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <button aria-hidden='true' class='close' data-dismiss='modal' type='button'>×</button>
+                <h4 class='modal-title'>Contact Us Form</h4>
+            </div>
+            <div class='modal-body'>
+                <form action='#' role='form'>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Name</label>
+                                <input class='form-control' placeholder='your username' type='text'>
+                            </div>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Email</label>
+                                <input class='form-control' placeholder='your password' type='text'>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-12'>
+                                <label class='control-label' for=''>Your Message</label>
+                                <textarea class='form-control' name='' rows='4'></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class='modal-footer'>
+                <button class='btn btn-default' data-dismiss='modal' type='button'>Cancel</button>
+                <button class='btn btn-primary' type='button'>Send Message</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class='header-main'>
+    <div class='container'>
+        <nav class='navbar navbar-default' role='navigation'>
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class='navbar-header'>
+                <button class='navbar-toggle' data-target='.navbar-ex1-collapse' data-toggle='collapse' type='button'>
+                    <span class='sr-only'>Toggle navigation</span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                </button>
+                <a class='navbar-brand' href='/'>
+                    <img alt='' height='45px' src='/assets/images/tyr.png'> <span>觅珠人</span>
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class='collapse navbar-collapse navbar-ex1-collapse'>
+
+                <ul class='nav navbar-nav navbar-right'>
+                    <li class="">
+                        <a href="/">首页</a>
+                    </li>
+                    
+                        
+                        <li
+                            about="/pages/posts.html"
+                            class=""
+                        >
+                            <a href="/pages/posts.html">
+                                文章随笔
+                            </a>
+                        </li>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                        <li
+                            about="/pages/canvases.html"
+                            class=""
+                        >
+                            <a href="/pages/canvases.html">
+                                奇思妙想
+                            </a>
+                        </li>
+                        
+                    
+                        
+                        <li
+                            about="/pages/aboutme.html"
+                            class=""
+                        >
+                            <a href="/pages/aboutme.html">
+                                关于我
+                            </a>
+                        </li>
+                        
+                    
+                    <!--
+                    <li>
+                        <a data-toggle='modal' href='#contactModal'>联系我</a>
+                    </li>
+                    -->
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+</div>
+
+<div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+
+<div class='container'>
+
+    
+        <div class='row post-loop'>
+  <div class='col-md-2 col-md-offset-1'>
+    <div class='post-loop-author-info'>
+      <div class='author-avatar'>
+        <img alt='' src='/assets/images/tyr.png'>
+      </div>
+      <div class='author-meta'>
+        <h4 class='author-name'>Tyr Chen</h4>
+        <i class='icon-calendar'></i>
+        7个月前
+      </div>
+    </div>
+  </div>
+  <div class='col-md-8'>
+    <div class='post-loop-content'>
+      <h2 class='has-sub-header'>
+        <a href='/posts/2013-03-19-taking-baby-to-vacation.html'>带四个月大的宝宝去度假</a>
+      </h2>
+      <div class='post-loop-meta'>
+        <span class='hidden-mobile-ib tags'>
+          <i class='icon-reorder'></i>
+          
+            <a href='/tags/travel.html'>travel</a>
+          
+        </span>
+        <span>
+          <i class='icon-time'></i>
+          8 分钟
+        </span>
+        <!--
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-comments'></i>
+            24
+          </a>
+        </span>
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-heart'></i>
+            15
+          </a>
+        </span>
+        -->
+      </div>
+      <p>有时候觉得我跟我LP是奇葩。自从怀上孩子后，同事朋友们就告诉我们到两岁前就不要想有任何假期，好好看孩子是正途。可我们一点也没受到善意叮嘱的困扰，
+宝宝在娘胎里呆了3个月后，我们就不安分起来，去了两次北戴河，期间穿插着京郊各种周末度假地。也许是在娘胎里养得好，这孩子生下来就壮，看上去比同龄的小家伙大上一个月有余。所以，当宝宝满一百二十天的时候，LP说我们去三亚吧，我想都没想就同意了。花了一个晚上，我们就把一天后的机票酒店定好，准备出发。</p>
+<p>如题所示，本文的侧重点并非旅途的记录，而是如何带宝宝去度假。如果你也像我们一样愿意让自己的孩子更早地接触世界，独立发展自己的人格和三观，那么，也许本文对你能有一点点启发...</p>
+
+      <div class='under-post'>
+        <div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-facebook'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-twitter'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-linkedin'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+      </div>
+      <br/>
+      <div class='slogan-buttons'>
+          <a class='btn btn-primary btn-cta btn-lg animated-when-hover' data-animation-type="swing" href='/posts/2013-03-19-taking-baby-to-vacation.html'>
+              继续阅读 ->
+          </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+        <div class='row post-loop'>
+  <div class='col-md-2 col-md-offset-1'>
+    <div class='post-loop-author-info'>
+      <div class='author-avatar'>
+        <img alt='' src='/assets/images/tyr.png'>
+      </div>
+      <div class='author-meta'>
+        <h4 class='author-name'>Tyr Chen</h4>
+        <i class='icon-calendar'></i>
+        8个月前
+      </div>
+    </div>
+  </div>
+  <div class='col-md-8'>
+    <div class='post-loop-content'>
+      <h2 class='has-sub-header'>
+        <a href='/posts/2013-03-13-getting-a-google-io-ticket.html'>Google IO抢票记</a>
+      </h2>
+      <div class='post-loop-meta'>
+        <span class='hidden-mobile-ib tags'>
+          <i class='icon-reorder'></i>
+          
+            <a href='/tags/google.html'>google</a>
+          
+        </span>
+        <span>
+          <i class='icon-time'></i>
+          3 分钟
+        </span>
+        <!--
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-comments'></i>
+            24
+          </a>
+        </span>
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-heart'></i>
+            15
+          </a>
+        </span>
+        -->
+      </div>
+      <p>发篇酱油文。今晚10点抢票。Google IO。</p>
+<p>要能够正常抢到票，基本上你需要先有Google Plus和Google Wallet。Google Wallet需要你有一张双币信用卡，注册的时候账单信息选美国（因为没有中国可选），但地址填你的中文账单地址即可。注册成功后google会虚拟扣你1USD，没问题。</p>
+
+      <div class='under-post'>
+        <div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-facebook'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-twitter'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-linkedin'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+      </div>
+      <br/>
+      <div class='slogan-buttons'>
+          <a class='btn btn-primary btn-cta btn-lg animated-when-hover' data-animation-type="swing" href='/posts/2013-03-13-getting-a-google-io-ticket.html'>
+              继续阅读 ->
+          </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+        <div class='row post-loop'>
+  <div class='col-md-2 col-md-offset-1'>
+    <div class='post-loop-author-info'>
+      <div class='author-avatar'>
+        <img alt='' src='/assets/images/tyr.png'>
+      </div>
+      <div class='author-meta'>
+        <h4 class='author-name'>Tyr Chen</h4>
+        <i class='icon-calendar'></i>
+        8个月前
+      </div>
+    </div>
+  </div>
+  <div class='col-md-8'>
+    <div class='post-loop-content'>
+      <h2 class='has-sub-header'>
+        <a href='/posts/2013-03-08-career-path-for-software-engineer.html'>软件工程师的职业生涯</a>
+      </h2>
+      <div class='post-loop-meta'>
+        <span class='hidden-mobile-ib tags'>
+          <i class='icon-reorder'></i>
+          
+            <a href='/tags/career.html'>career</a>
+          
+            <a href='/tags/thought.html'>thought</a>
+          
+        </span>
+        <span>
+          <i class='icon-time'></i>
+          8 分钟
+        </span>
+        <!--
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-comments'></i>
+            24
+          </a>
+        </span>
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-heart'></i>
+            15
+          </a>
+        </span>
+        -->
+      </div>
+      <p>今早（3/8）跟人聊起工程师的职业生涯，突然想起前些日子看的一篇长微博：一个IBM人的离职泪（回头翻微博，作者已经删除那条内容）。内容已经记不太清了，唯一记得的是这哥们14年被promote 11次，跨过了从屌丝到中产的几乎所有band。这是一种职业生涯的典型，姑且称之为从一而终型；与之相对的，就是打一枪换一个地方，每个公司都涉足不深，但行业里基本都混了个脸熟，朋友遍天下，这是机会主义型。</p>
+
+      <div class='under-post'>
+        <div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-facebook'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-twitter'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-linkedin'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+      </div>
+      <br/>
+      <div class='slogan-buttons'>
+          <a class='btn btn-primary btn-cta btn-lg animated-when-hover' data-animation-type="swing" href='/posts/2013-03-08-career-path-for-software-engineer.html'>
+              继续阅读 ->
+          </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+        <div class='row post-loop'>
+  <div class='col-md-2 col-md-offset-1'>
+    <div class='post-loop-author-info'>
+      <div class='author-avatar'>
+        <img alt='' src='/assets/images/tyr.png'>
+      </div>
+      <div class='author-meta'>
+        <h4 class='author-name'>Tyr Chen</h4>
+        <i class='icon-calendar'></i>
+        8个月前
+      </div>
+    </div>
+  </div>
+  <div class='col-md-8'>
+    <div class='post-loop-content'>
+      <h2 class='has-sub-header'>
+        <a href='/posts/2013-02-06-Making-a-next-generation-home-security-device.html'>创建下一代家用防火墙vMars</a>
+      </h2>
+      <div class='post-loop-meta'>
+        <span class='hidden-mobile-ib tags'>
+          <i class='icon-reorder'></i>
+          
+            <a href='/tags/firewall.html'>firewall</a>
+          
+            <a href='/tags/thought.html'>thought</a>
+          
+            <a href='/tags/startup.html'>startup</a>
+          
+        </span>
+        <span>
+          <i class='icon-time'></i>
+          9 分钟
+        </span>
+        <!--
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-comments'></i>
+            24
+          </a>
+        </span>
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-heart'></i>
+            15
+          </a>
+        </span>
+        -->
+      </div>
+      <blockquote>
+<p>2013-03-05 作者按：这是个胡思乱想的产品，写于2013-02-06，我尝试者把我系统领域的知识和互联网上的实践结合起来，看看能擦出什么火花。一直keep private，是想有朝一日做成自己的下一个创业项目。但最近的精力放在这上的很少，目前可预见的一年内自己也没有能耐去handle这样一个项目（主要是涉及的链条太广）。所以干脆将其open，或许可以激发能干成这事的人。</p>
+</blockquote>
+
+      <div class='under-post'>
+        <div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-facebook'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-twitter'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-linkedin'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+      </div>
+      <br/>
+      <div class='slogan-buttons'>
+          <a class='btn btn-primary btn-cta btn-lg animated-when-hover' data-animation-type="swing" href='/posts/2013-02-06-Making-a-next-generation-home-security-device.html'>
+              继续阅读 ->
+          </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+        <div class='row post-loop'>
+  <div class='col-md-2 col-md-offset-1'>
+    <div class='post-loop-author-info'>
+      <div class='author-avatar'>
+        <img alt='' src='/assets/images/tyr.png'>
+      </div>
+      <div class='author-meta'>
+        <h4 class='author-name'>Tyr Chen</h4>
+        <i class='icon-calendar'></i>
+        8个月前
+      </div>
+    </div>
+  </div>
+  <div class='col-md-8'>
+    <div class='post-loop-content'>
+      <h2 class='has-sub-header'>
+        <a href='/posts/2013-02-21-openflow-introduction.html'>Openflow简介</a>
+      </h2>
+      <div class='post-loop-meta'>
+        <span class='hidden-mobile-ib tags'>
+          <i class='icon-reorder'></i>
+          
+            <a href='/tags/SDN.html'>SDN</a>
+          
+            <a href='/tags/technology.html'>technology</a>
+          
+        </span>
+        <span>
+          <i class='icon-time'></i>
+          13 分钟
+        </span>
+        <!--
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-comments'></i>
+            24
+          </a>
+        </span>
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-heart'></i>
+            15
+          </a>
+        </span>
+        -->
+      </div>
+      <p><a href="/posts/2013-02-18-sdn-elementatory-introduction.html">上一篇文章</a>简单介绍了SDN及其应用场景，臆测的成分大些。本文谈谈SDN的基石：openflow。</p>
+<p>我们知道，SDN的核心是将control plane（下文统称controller）和data plane（下文统称oSwitch，openflow switch）分离，由一个中央集权的controller（好比一个军团的将领）指挥成百上千的oSwitch（好比千千万万的士兵），共同完成网络中数据的传输。而openflow，as a protocol，是这套体系正常运作的基石。</p>
+<p>本文难度稍大，可能不适合没有网络设备基础知识的读者阅读。我会在下节中稍微讲一些基础概念，如果无法理解，则不建议读下去。</p>
+
+      <div class='under-post'>
+        <div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-facebook'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-twitter'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-linkedin'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+      </div>
+      <br/>
+      <div class='slogan-buttons'>
+          <a class='btn btn-primary btn-cta btn-lg animated-when-hover' data-animation-type="swing" href='/posts/2013-02-21-openflow-introduction.html'>
+              继续阅读 ->
+          </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+        <div class='row post-loop'>
+  <div class='col-md-2 col-md-offset-1'>
+    <div class='post-loop-author-info'>
+      <div class='author-avatar'>
+        <img alt='' src='/assets/images/tyr.png'>
+      </div>
+      <div class='author-meta'>
+        <h4 class='author-name'>Tyr Chen</h4>
+        <i class='icon-calendar'></i>
+        8个月前
+      </div>
+    </div>
+  </div>
+  <div class='col-md-8'>
+    <div class='post-loop-content'>
+      <h2 class='has-sub-header'>
+        <a href='/posts/2013-02-18-sdn-elementatory-introduction.html'>SDN浅谈</a>
+      </h2>
+      <div class='post-loop-meta'>
+        <span class='hidden-mobile-ib tags'>
+          <i class='icon-reorder'></i>
+          
+            <a href='/tags/SDN.html'>SDN</a>
+          
+            <a href='/tags/technology.html'>technology</a>
+          
+        </span>
+        <span>
+          <i class='icon-time'></i>
+          10 分钟
+        </span>
+        <!--
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-comments'></i>
+            24
+          </a>
+        </span>
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-heart'></i>
+            15
+          </a>
+        </span>
+        -->
+      </div>
+      <p>SDN（Software Defined Network）是个有意思的概念。<a href="https://www.opennetworking.org">ONF</a>（Open Network Foundation）这样定义SDN：</p>
+<blockquote>
+<p>In the SDN architecture, the control and data planes are decoupled, network intelligence and state are <strong>logically</strong> centralized, and the underlying network infrastructure is abstracted from the applications.</p>
+</blockquote>
+<p><img src="/assets/files/snapshots/sdn-arch.jpg" alt="SDN architecture"></p>
+<p>用普通话说就是软件独立于硬件，让硬件标准化，软件平台化，信息中心化。</p>
+
+      <div class='under-post'>
+        <div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-facebook'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-twitter'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-linkedin'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+      </div>
+      <br/>
+      <div class='slogan-buttons'>
+          <a class='btn btn-primary btn-cta btn-lg animated-when-hover' data-animation-type="swing" href='/posts/2013-02-18-sdn-elementatory-introduction.html'>
+              继续阅读 ->
+          </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+        <div class='row post-loop'>
+  <div class='col-md-2 col-md-offset-1'>
+    <div class='post-loop-author-info'>
+      <div class='author-avatar'>
+        <img alt='' src='/assets/images/tyr.png'>
+      </div>
+      <div class='author-meta'>
+        <h4 class='author-name'>Tyr Chen</h4>
+        <i class='icon-calendar'></i>
+        9个月前
+      </div>
+    </div>
+  </div>
+  <div class='col-md-8'>
+    <div class='post-loop-content'>
+      <h2 class='has-sub-header'>
+        <a href='/posts/2013-02-04-teamspark-open-sourced.html'>Teamspark及Meteor杂谈</a>
+      </h2>
+      <div class='post-loop-meta'>
+        <span class='hidden-mobile-ib tags'>
+          <i class='icon-reorder'></i>
+          
+            <a href='/tags/meteor.html'>meteor</a>
+          
+            <a href='/tags/teamspark.html'>teamspark</a>
+          
+            <a href='/tags/tool.html'>tool</a>
+          
+            <a href='/tags/product.html'>product</a>
+          
+        </span>
+        <span>
+          <i class='icon-time'></i>
+          7 分钟
+        </span>
+        <!--
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-comments'></i>
+            24
+          </a>
+        </span>
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-heart'></i>
+            15
+          </a>
+        </span>
+        -->
+      </div>
+      <p>我终于厚着脸皮把Teamspark开源了。</p>
+<p>Teamspark是我做的一个协作软件。有关Teamspark的功能和使用方式见：<a href="http://tchen.me/teamspark/"><a href="http://tchen.me/teamspark/">http://tchen.me/teamspark/</a></a>。或者你也可以直接clone或fork <a href="http://github.com/tyrchen/teamspark/">Teamspark的github项目</a>。如果你想了解些关于Teamspark和Meteor的八卦，请继续阅读。</p>
+
+      <div class='under-post'>
+        <div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-facebook'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-twitter'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-linkedin'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+      </div>
+      <br/>
+      <div class='slogan-buttons'>
+          <a class='btn btn-primary btn-cta btn-lg animated-when-hover' data-animation-type="swing" href='/posts/2013-02-04-teamspark-open-sourced.html'>
+              继续阅读 ->
+          </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+        <div class='row post-loop'>
+  <div class='col-md-2 col-md-offset-1'>
+    <div class='post-loop-author-info'>
+      <div class='author-avatar'>
+        <img alt='' src='/assets/images/tyr.png'>
+      </div>
+      <div class='author-meta'>
+        <h4 class='author-name'>Tyr Chen</h4>
+        <i class='icon-calendar'></i>
+        9个月前
+      </div>
+    </div>
+  </div>
+  <div class='col-md-8'>
+    <div class='post-loop-content'>
+      <h2 class='has-sub-header'>
+        <a href='/posts/2013-02-03-observation-about-align-and-fit.html'>Align/Fit杂谈</a>
+      </h2>
+      <div class='post-loop-meta'>
+        <span class='hidden-mobile-ib tags'>
+          <i class='icon-reorder'></i>
+          
+            <a href='/tags/thought.html'>thought</a>
+          
+        </span>
+        <span>
+          <i class='icon-time'></i>
+          4 分钟
+        </span>
+        <!--
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-comments'></i>
+            24
+          </a>
+        </span>
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-heart'></i>
+            15
+          </a>
+        </span>
+        -->
+      </div>
+      <p>上周见了一个半年多没见的朋友。他依旧是一套很朴素的打扮，衣服还是一两年前的，和他几十万年薪的身价一点都不符。这就是典型的engineer，外表和内在一点也不align。</p>
+<p>由是我想到了创业，工作及人生。于是就瞎写了这篇文章。</p>
+
+      <div class='under-post'>
+        <div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-facebook'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-twitter'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-linkedin'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+      </div>
+      <br/>
+      <div class='slogan-buttons'>
+          <a class='btn btn-primary btn-cta btn-lg animated-when-hover' data-animation-type="swing" href='/posts/2013-02-03-observation-about-align-and-fit.html'>
+              继续阅读 ->
+          </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+        <div class='row post-loop'>
+  <div class='col-md-2 col-md-offset-1'>
+    <div class='post-loop-author-info'>
+      <div class='author-avatar'>
+        <img alt='' src='/assets/images/tyr.png'>
+      </div>
+      <div class='author-meta'>
+        <h4 class='author-name'>Tyr Chen</h4>
+        <i class='icon-calendar'></i>
+        9个月前
+      </div>
+    </div>
+  </div>
+  <div class='col-md-8'>
+    <div class='post-loop-content'>
+      <h2 class='has-sub-header'>
+        <a href='/posts/2013-01-28-make-raspberry-pi-up-and-running.html'>Make raspberry pi up and running</a>
+      </h2>
+      <div class='post-loop-meta'>
+        <span class='hidden-mobile-ib tags'>
+          <i class='icon-reorder'></i>
+          
+            <a href='/tags/raspberry.html'>raspberry</a>
+          
+            <a href='/tags/hacker.html'>hacker</a>
+          
+        </span>
+        <span>
+          <i class='icon-time'></i>
+          10 分钟
+        </span>
+        <!--
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-comments'></i>
+            24
+          </a>
+        </span>
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-heart'></i>
+            15
+          </a>
+        </span>
+        -->
+      </div>
+      <p>心仪很久的Raspberry Pi model B终于到手。拆开相当原始的包装后，就两页说明书和一块电路板，连条电源线也没有（不过$35就能搞到这样一个好东东，你还能要求什么呢）。</p>
+<p><img src="/assets/files/snapshots/rasp.jpg" alt="Raspberry Pi"></p>
+<p>板子上清晰地刻着 <code>MADE IN CHINA</code>，这年头，电子产品不made in china你都不好意思拿出来卖。</p>
+<p>由于本文并非评测文章，有关Raspberry的详细说明，规格等信息请移步 <a href="http://www.raspberrypi.org/">官网</a>，接下来准备好SD卡，咱们来安装系统，让Pi跑起来！</p>
+
+      <div class='under-post'>
+        <div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-facebook'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-twitter'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-linkedin'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+      </div>
+      <br/>
+      <div class='slogan-buttons'>
+          <a class='btn btn-primary btn-cta btn-lg animated-when-hover' data-animation-type="swing" href='/posts/2013-01-28-make-raspberry-pi-up-and-running.html'>
+              继续阅读 ->
+          </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+        <div class='row post-loop'>
+  <div class='col-md-2 col-md-offset-1'>
+    <div class='post-loop-author-info'>
+      <div class='author-avatar'>
+        <img alt='' src='/assets/images/tyr.png'>
+      </div>
+      <div class='author-meta'>
+        <h4 class='author-name'>Tyr Chen</h4>
+        <i class='icon-calendar'></i>
+        9个月前
+      </div>
+    </div>
+  </div>
+  <div class='col-md-8'>
+    <div class='post-loop-content'>
+      <h2 class='has-sub-header'>
+        <a href='/posts/2013-01-25-bootstrap-a-new-web-app.html'>后端工程师的逆袭：单枪匹马搭建一个新的Web App</a>
+      </h2>
+      <div class='post-loop-meta'>
+        <span class='hidden-mobile-ib tags'>
+          <i class='icon-reorder'></i>
+          
+            <a href='/tags/thought.html'>thought</a>
+          
+            <a href='/tags/startup.html'>startup</a>
+          
+        </span>
+        <span>
+          <i class='icon-time'></i>
+          6 分钟
+        </span>
+        <!--
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-comments'></i>
+            24
+          </a>
+        </span>
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-heart'></i>
+            15
+          </a>
+        </span>
+        -->
+      </div>
+      <p>小T是个很苦逼的后端工程师。他拥有通天的本领，从web server到db，从cache server到MQ，从assembly到Javascript，写得了算法，玩得了数据，十八般武艺样样精通。可惜，他生在一个矮矬穷靠边站，高富帅是宇宙中心的时代。看人家的产品一个个长得娇艳欲滴，自己的却蓬头垢面，心里那个郁闷。每每朋友刚一试用，产品的美妙还未体现，就被痛快枪毙。睡梦中，小T不知道把发明GUI，让屏幕充满色彩的那些家伙干掉多少回了，也不知道憧憬过多少次没有色彩，没有图形，满屏幕都是字符的世界 —— 每个用户都像hacker一样通过清脆的键盘敲击，进入一个又一个自己创建的产品。</p>
+
+      <div class='under-post'>
+        <div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-facebook'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-twitter'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-linkedin'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+      </div>
+      <br/>
+      <div class='slogan-buttons'>
+          <a class='btn btn-primary btn-cta btn-lg animated-when-hover' data-animation-type="swing" href='/posts/2013-01-25-bootstrap-a-new-web-app.html'>
+              继续阅读 ->
+          </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+    
+    
+<ul class="paginator text-center">
+    <!-- Previous Page Button -->
+    
+        <li><a href="/pages/posts.html">上一页</a></li>
+    
+
+    <!-- Page Number Buttons -->
+    
+        
+            <li><a href="/pages/posts.html">1</a></li>
+        
+    
+        
+            <li class="active"><span>2</span></li>
+        
+    
+        
+            <li><a href="/pages/posts.2.html">3</a></li>
+        
+    
+        
+            <li><a href="/pages/posts.3.html">4</a></li>
+        
+    
+
+    <!-- Next Page Button -->
+    
+        <li><a href="/pages/posts.2.html">下一页</a></li>
+    
+</ul>
+
+    
+</div>
+
+<footer id="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="footer-menu">
+                    <li><a href="/pages/privacy">隐私策略</a></li>
+                    <li><a href="/pages/license">版权说明</a></li>
+                    <li><a href="/pages/disclaimer">免责声明</a></li>
+                    <li><a href="#">联系我们</a></li>
+                </ul>
+                <div class="copyright">
+                    2013 &copy; Tyr Chen. 保留一切权利.
+                </div>
+            </div>
+            <div class="col-md-6">
+                <ul class="footer-social">
+                    <li><a href="#"><i class="icon-facebook"></i></a></li>
+                    <li><a href="#"><i class="icon-twitter"></i></a></li>
+                    <li><a href="#"><i class="icon-dribbble"></i></a></li>
+                    <li><a href="#"><i class="icon-linkedin"></i></a></li>
+                    <li><a href="#"><i class="icon-google-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- Scripts -->
+<script defer="defer"  src="/assets/js/jquery.js"></script><script defer="defer"  src="/assets/js/bootstrap.min.js"></script><script defer="defer"  src="/assets/js/jquery.visible.min.js"></script><script defer="defer"  src="/assets/js/jquery.isotope.min.js"></script><script defer="defer"  src="/assets/js/jquery.knob.js"></script><script defer="defer"  src="/assets/js/jquery.scrollUp.min.js"></script><script defer="defer"  src="/assets/js/highlight.pack.js"></script><script defer="defer"  src="/assets/js/application.js"></script>
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+layout: impress
+theme: simple
+title: Running Lean
+intro: <section><h1>Running Lean (unfinished)</h1></section>
+date: 2013-01-29 09:53
+tags: [startup, lean]
+slides:
+  - y: -3000
+    jade: |
+      h2 Running Lean (unfinished)
+      br
+      h4 2013-01-29 By Tyr Chen
+      br
+      small 
+        | As a summary for the book "Running Lean" <br/>
+        | Will be iterate again and again
+  - x: 1000
+    y: -3000
+    rotate: 90
+    classes: ['slide']
+    jade: |
+      h2 Essential steps:
+      ul
+        li Document your Plan A
+        li Identify the riskiest parts of your plan
+        li Systematically test your plan
+      br
+      p Principles guide what you do. Tactics show you how.
+      
+
+  - x: 2000
+    jade: |
+      p Document your Plan A
+      p with <strike>Formal Business Plan</strike> <b>Lean Canvas</b>
+
+  - x: 2000
+    y: 500
+    scale: 0.5
+    jade: |
+      img(src="/assets/img/snapshots/lean/lean_canvas.jpg")
+
+  - x: 2000
+    y: 500
+    z: -1000
+    scale: 0.3
+    jade: |
+      img(src="/assets/img/snapshots/lean/product_not_solution.jpg")
+
+  - x: 2000
+    y: 1500
+    scale: 1
+    jade: |
+      p Customers don't care about your <b>SOLUTION</b>
+      p They care about their <b>PROBLEMS</b>
+
+  - x: 3000
+    jade: |
+      p Identify your <b>riskiest</b> parts
+
+  - x: 3000
+    z: -1000
+    scale: 0.1
+    jade: |
+      p Building something <b>Nobody</b> wants.
+
+  - x: 3000
+    y: 600
+    scale: 0.5
+    jade: |
+      p Three stages of a startup
+      img(src="/assets/img/snapshots/lean/startup_steps.jpg")
+
+  - x: 3000
+    y: 900
+    scale: 0.5
+    jade: |
+      p Pivot or Optimize
+      img(src="/assets/img/snapshots/lean/product_market_fit.jpg")
+
+  - x: 3000
+    y: 1200
+    scale: 0.5
+    jade: |
+      p When to fund raising?
+      img(src="/assets/img/snapshots/lean/raise_funding.jpg")
+
+  - x: 3000
+    y: 1500
+    scale: 0.5
+    jade: |
+      p Lessons Learned
+      blockquote 
+        | Building low-burn startups by eliminating waste through the maximization 
+        | of existing resources before expending effort on the acquisition of new or 
+        | external resources.
+
+  - x: 4000
+    jade: |
+      p Systematically <b>Test</b> Your Plan
+
+  - x: 4000
+    y: 500
+    scale: 0.5
+    jade: |
+      p Build, Measure, Learn loop
+      img(src="/assets/img/snapshots/lean/build_measure_learn.jpg")

@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="本博客提供我个人的想法，创意，经验，心得。你不必认同博主观点。" />
+    <meta name="keywords" content="创业, 思想, 点子, 经验, python, erlang, node, javascript, 服务器, devops, meteor" />
+    <meta name="author" content="Tyr Chen" />
+
+    <!-- Output DocPad produced meta elements -->
+    
+
+    <!-- Styles -->
+    <link  rel="stylesheet" href="/assets/css/app.css" /><link  rel="stylesheet" href="/assets/css/animate.css" /><link  rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700|Yanone+Kaffeesatz:200,300,400,700|Raleway:200,300,400,500,700" /><link  rel="stylesheet" href="/assets/css/font-awesome.css" /><link  rel="stylesheet" href="/assets/css/solarized_dark.css" /><link  rel="stylesheet" href="/assets/css/theme.css" />
+
+    <link href="/assets/favicon.ico" rel="shortcut icon">
+    <link href="/assets/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    @javascript html5shiv respond.min
+    <![endif]-->
+
+    <title>有意思的Io语言（一） | 觅珠人 | Tyr Chen的个人博客 | 创意 | 心得 | 经验</title>
+
+</head>
+
+<body>
+
+<!-- Contact Modal -->
+<div aria-hidden='true' aria-labelledby='contactModalLabel' class='modal fade' id='contactModal' role='dialog' tabindex='-1'>
+    <div class='modal-dialog'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <button aria-hidden='true' class='close' data-dismiss='modal' type='button'>×</button>
+                <h4 class='modal-title'>Contact Us Form</h4>
+            </div>
+            <div class='modal-body'>
+                <form action='#' role='form'>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Name</label>
+                                <input class='form-control' placeholder='your username' type='text'>
+                            </div>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Email</label>
+                                <input class='form-control' placeholder='your password' type='text'>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-12'>
+                                <label class='control-label' for=''>Your Message</label>
+                                <textarea class='form-control' name='' rows='4'></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class='modal-footer'>
+                <button class='btn btn-default' data-dismiss='modal' type='button'>Cancel</button>
+                <button class='btn btn-primary' type='button'>Send Message</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="header-image-wrapper">
+  <img alt="" src="/assets/images/backgrounds/page-header-bg-1.jpg">
+</div>
+
+<div class='header-main'>
+    <div class='container'>
+        <nav class='navbar navbar-default' role='navigation'>
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class='navbar-header'>
+                <button class='navbar-toggle' data-target='.navbar-ex1-collapse' data-toggle='collapse' type='button'>
+                    <span class='sr-only'>Toggle navigation</span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                </button>
+                <a class='navbar-brand' href='/'>
+                    <img alt='' height='45px' src='/assets/images/tyr.png'> <span>觅珠人</span>
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class='collapse navbar-collapse navbar-ex1-collapse'>
+
+                <ul class='nav navbar-nav navbar-right'>
+                    <li class="">
+                        <a href="/">首页</a>
+                    </li>
+                    
+                        
+                        <li
+                            about="/pages/posts.html"
+                            class=""
+                        >
+                            <a href="/pages/posts.html">
+                                文章随笔
+                            </a>
+                        </li>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                        <li
+                            about="/pages/canvases.html"
+                            class=""
+                        >
+                            <a href="/pages/canvases.html">
+                                奇思妙想
+                            </a>
+                        </li>
+                        
+                    
+                        
+                        <li
+                            about="/pages/aboutme.html"
+                            class=""
+                        >
+                            <a href="/pages/aboutme.html">
+                                关于我
+                            </a>
+                        </li>
+                        
+                    
+                    <!--
+                    <li>
+                        <a data-toggle='modal' href='#contactModal'>联系我</a>
+                    </li>
+                    -->
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+</div>
+
+<div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+
+<div class='container'>
+  <div class='row'>
+    <div class="col-md-3">
+      <div class="post-side-bar">
+        <div class="widget widget-cats tags">
+          <h4 class="widget-title">标签</h4>
+          <ul>
+          
+            <li><a href='/tags/Io.html'>Io</a></li>
+          
+            <li><a href='/tags/lang.html'>lang</a></li>
+          
+          </ul>
+        </div>
+        <div class="widget widget-cats">
+          <h4 class="widget-title">
+            相关文章
+          </h4>
+          <ul>
+            
+            
+              <li><a href="/posts/2013-07-18-c-grammar-you-cannot-imagine.html">你无法想象的C语法</a></li>
+            
+              <li><a href="/posts/2013-07-22-why-should-c-programmers-learn-erlang.html">Why should C programmers learn Erlang?</a></li>
+            
+            
+          </ul>
+        </div>
+      </div>
+    </div>      
+    <div class='col-md-9'>
+      <div class='post-single'>
+        <!--
+        <div class='pre-post-meta'>
+          <span>
+            <i class='icon-reorder'></i>
+            in
+            <a href='#'>Web Development</a>
+          </span>
+          <span>
+            <i class='icon-user'></i>
+            by
+            <a href='#'>Tyr Chen</a>
+          </span>
+          <span>
+            <i class='icon-bookmark'></i>
+            11 分钟
+          </span>
+        </div>
+        -->
+        <h1 class='has-sub-header'>有意思的Io语言（一）</h1>
+        <div class='post-single-meta'>
+          <span class='meta-item'>
+            <i class='icon-calendar'></i>
+            10个月前
+          </span>
+          <!--
+          <span class='meta-item'>
+            <a href='#'>
+              <i class='icon-comments'></i>
+              24
+            </a>
+          </span>
+          <span class='meta-item'>
+            <a href='#'>
+              <i class='icon-heart'></i>
+              15
+            </a>
+          </span>
+          -->
+          <span class="meta-item">
+          	
+            <i class='icon-time'></i>
+            11 分钟
+          </span>
+        </div>
+        <h2>开胃酒</h2>
+<p>最近写了不少javascript，对原型语言有了浓厚的兴趣。听闻原型语言中有一清丽脱俗，小桥简单的语言，叫Io，随即花了点时间研究下。</p>
+<p>不看不知道，一看吓一跳。Io这门语言没有关键字，万事万物皆为消息，程序员要做的无非是把消息串联起来，传递，处理。</p>
+<p>根据 <a href="http://zh.wikipedia.org/zh-cn/Io_(%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80">维基百科</a>) 的定义，IO语言主要吸取了这些语言的如下特点：</p>
+<ul>
+<li>Smalltalk——所有的变量均为对象、所有的消息都是动态的；</li>
+<li>Self——基于原型的面向对象设计</li>
+<li>NewtonScript——差异化继承</li>
+<li>Act1——并发行为和特征</li>
+<li>LISP——code is a runtime inspectable/modifiable tree</li>
+<li>Lua——小巧且具有可嵌入能力</li>
+</ul>
+<!--more-->
+
+<p>在osx下用 <code>brew</code> 安装很简单（想必ubuntu用apt-get也不难）：</p>
+<pre><code>$ brew install io</code></pre>
+<p>接下来在命令行中运行 <code>io</code> 即可进入到交互界面。我们先拿个hello world练练手：</p>
+<pre><code>$ io
+Io 20110905
+Io&gt; &quot;hello world!&quot; println
+hello world!
+==&gt; hello world!</code></pre>
+<h2>冷盘</h2>
+<h3>对象创建</h3>
+<p>通过hello world，我们初窥Io的门径。println做为消息被发送给对象，消息接受者（object）在左，消息（method）在右。我们看看Io的对象创建：</p>
+<pre><code>Io&gt; Animal := Object clone
+==&gt;  Animal_0x7fbdd1e19490:
+  type             = &quot;Animal&quot;</code></pre>
+<p>了解javascript的同学都知道，原型语言无所谓类，一些皆对象。新的对象由老对象克隆而成，生生息息、永不停息。对象一般都有其数据和方法。例如Animal对象可以有name（数据），和talk(方法)，在Io中，由于一切皆消息，所以对象的数据和方法有个应景的名字：消息槽（slot）。我们为Animal定义其slot：</p>
+<pre><code>Io&gt; Animal name := &quot;Animal&quot;
+==&gt; Animal
+Io&gt; Animal talk := method(&quot;Wow&quot; println)
+==&gt; method(
+    &quot;Wow&quot; println
+)
+Io&gt; Animal talk
+Wow
+==&gt; Wow
+Io&gt; Animal name
+==&gt; Animal
+Io&gt; Duck := Animal clone
+==&gt;  Duck_0x7fbdd2841420:
+  type             = &quot;Duck&quot;
+
+Io&gt; Duck name = &quot;Duck&quot;
+==&gt; Duck
+Io&gt; Duck talk := method(&quot;Quaaaaaack!&quot; println)
+==&gt; method(
+    &quot;Quaaaaaack!&quot; println
+)
+Io&gt; Duck talk
+Quaaaaaack!
+==&gt; Quaaaaaack!
+Io&gt; Duck walk := method(&quot;walking...&quot; println)
+==&gt; method(
+    &quot;walking...&quot; println
+)
+Io&gt; Duck walk
+walking...
+==&gt; walking...</code></pre>
+<p>slot创建需要使用 <code>:=</code>，而修改已有slot可用 <code>=</code>。slot可以定义，也可以使用。对于 <code>Duck talk</code>，我的理解是，向Duck对象传递talk消息。如果Duck定义了talk slot，就是能够响应该消息，否则不能。为了证实这一点，也为了更好地介绍Io，我们来玩点花活：</p>
+<pre><code>Io&gt; Duck hello
+
+  Exception: Duck does not respond to &#39;hello&#39;
+  ---------
+  Duck hello                           Command Line 1
+
+Io&gt; Object hello := method(&quot;Hello world&quot; println)
+==&gt; method(
+    &quot;Hello world&quot; println
+)
+Io&gt; Duck hello
+Hello world
+==&gt; Hello world
+o&gt; Animal hello = method(&quot;Hello animal&quot; println)
+==&gt; method(
+    &quot;Hello animal&quot; println
+)
+Io&gt; Duck hello
+Hello animal
+==&gt; Hello animal</code></pre>
+<p>因为之前我们没有定义Duck对象的slot hello，所以Duck无法响应hello消息。我们当然可以对Duck定义hello slot，但如果想更通用一些，我们可以定义Object上的hello slot。之后我们再对Duck发送hello消息，就可以正常接收了。</p>
+<p>这个小例子说明Io（也许也是原型模型）的一个重要特点：如果对象无法响应某消息，则它会把该消息发送给自己的原型，直到消息得到处理或者抛出异常。</p>
+<p>你也许会说，面向对象的程序语言如Python不也是这样么？子类未定义的函数，会一直回溯父类直至其得到执行或者抛出异常。是的，表面上看上去一样，但背后的<strong>思想</strong>和实现机制大为不同。函数-&gt;执行在执行者和被执行者在字面上是高耦合的，是单线程同步的思想；消息和接收消息的对象在字面上是低耦合，是协同异步的思想。</p>
+<h3>List, Map</h3>
+<p>这是每种语言几乎都有的类型，也几乎是每种语言最重要的东西。因为懂得人多，代码一看就能通，这里就不详细说。</p>
+<pre><code>Io&gt; languages := list(&quot;Ruby&quot;, &quot;Python&quot;, &quot;C&quot;, &quot;Javascript&quot;, &quot;Io&quot;)
+==&gt; list(Ruby, Python, C, Javascript, Io)
+Io&gt; languages size
+==&gt; 5
+Io&gt; languages pop
+==&gt; Io
+Io&gt; languages append(&quot;Io&quot;)
+==&gt; list(Ruby, Python, C, Javascript, Io)
+Io&gt; l := List clone
+==&gt; list()
+Io&gt; l isEmpty
+==&gt; true
+Io&gt; languages foreach(i, v, write(i, &quot;:&quot;, v, &quot;;&quot;))
+0:F#;1:Ruby;2:Python;3:C;4:Javascript;5:Io;==&gt; nil
+Io&gt; numbers := list(1,2,3,4,5)
+==&gt; list(1, 2, 3, 4, 5)
+Io&gt; numbers select(isOdd)
+==&gt; list(1, 3, 5)
+Io&gt; numbers map(x, x * 2)
+==&gt; list(2, 4, 6, 8, 10)
+Io&gt; hobby := Map clone
+==&gt;  Map_0x7fd332071240:
+
+Io&gt; hobby atPut(&quot;games&quot;, list(&quot;starcraft&quot;, &quot;counter attack&quot;))
+==&gt;  Map_0x7fd332071240:
+
+Io&gt; hobby atPut(&quot;reading&quot;, &quot;book&quot;)
+==&gt;  Map_0x7fd332071240:
+
+Io&gt; hobby asObject
+==&gt;  Object_0x7fd33208f080:
+  games            = list(starcraft, counter attack)
+  reading          = &quot;book&quot;
+
+Io&gt; hobby keys
+==&gt; list(reading, games)
+Io&gt; hobby size
+==&gt; 2</code></pre>
+<h2>主菜</h2>
+<p>喝了开胃酒，尝了冷盘，就该今天的主菜。从上面的诸多例子中我们已经能够了解到Io的一些入门级的特性。语法虽然不难，但是我们想搞清楚几件事：</p>
+<ul>
+<li>基本类型是对象么？</li>
+<li>list()究竟是什么东西？method？语法糖？</li>
+<li>numbers map(x, x*2)怎么理解消息的传递？</li>
+<li>既然Io号称没有关键字，那么 :=，* 这样的运算符究竟是什么？</li>
+</ul>
+<p>我们一个个来研究。</p>
+<h3>基本类型</h3>
+<p>我们先看看整数：</p>
+<pre><code>Io&gt; 1 proto
+==&gt; 0
+Io&gt; 1 type
+==&gt; Number
+Io&gt; Number proto
+==&gt;  Object_0x7fd548403ff0:</code></pre>
+<p>由此可见，数字是Object衍生出来的，其他基本类型，如true/false，也是如此。这样我们可以为数字定义很多有意思的消息，就像ruby程序员常干的那样：</p>
+<pre><code>Io&gt; Number days := method(self * 24)
+==&gt; method(
+    self * 24
+)
+Io&gt; 1 days
+==&gt; 24
+Io&gt; Number ago := method(self * -1)
+==&gt; method(
+    self * - 1
+)
+Io&gt; 2 days ago
+==&gt; -48</code></pre>
+<p>有那么点意思吧，通过定义和组织消息，我们可以很轻松地定义DSL。</p>
+<h3>list()究竟是什么东西？method？语法糖？</h3>
+<p>list是对象，clone自List对象；List对象来源于Object对象。看上去list做了些有趣的事情使得它更像是个语法糖。不知道为何对于Map，Io不提供类似的快速生成对象的语法。</p>
+<pre><code>Io&gt; list() type
+==&gt; List
+Io&gt; List proto
+==&gt;  Object_0x7f81bbc03ff0:</code></pre>
+<p>自己尝试着实现了个list的Python的语法糖：</p>
+<pre><code>Io&gt; squareBrackets := method(  arr := list();  call message arguments foreach(arg, arr push(call sender doMessage(arg)));  arr)
+Io&gt; l := [1,2]
+==&gt; list(1, 2)
+Io&gt; l1 := [1,2,[1,2,3],&quot;abc&quot;]
+==&gt; list(1, 2, list(1, 2, 3), abc)</code></pre>
+<p>这里用到了消息反射，下次再深入探讨。</p>
+<h3>numbers map(x, x*2)怎么理解消息的传递？</h3>
+<p>在Io中，运算符也是消息，只不过表现形式特殊些（非字母，不用括号调用）。如果将 <code>x*2</code> 写成 <code>x *(2)</code> 就好理解很多。所以这句话的消息传递是：消息<em>(2)传递给x，消息map(x, x</em>2)传递给numbers这个list对象。</p>
+<h3>什么是运算符</h3>
+<p>如上文所述，Io的运算符其实就是消息，我们可以查看当前的运算符，也可以自己定义：</p>
+<pre><code>Io&gt; OperatorTable
+==&gt; OperatorTable_0x7f9da04761e0:
+Operators
+  0   ? @ @@
+  1   **
+  2   % * /
+  3   + -
+  4   &lt;&lt; &gt;&gt;
+  5   &lt; &lt;= &gt; &gt;=
+  6   != ==
+  7   &amp;
+  8   ^
+  9   |
+  10  &amp;&amp; and
+  11  or ||
+  12  ..
+  13  %= &amp;= *= += -= /= &lt;&lt;= &gt;&gt;= ^= |=
+  14  return
+
+Assign Operators
+  ::= newSlot
+  :=  setSlot
+  =   updateSlot
+
+To add a new operator: OperatorTable addOperator(&quot;+&quot;, 4) and implement the + message.
+To add a new assign operator: OperatorTable addAssignOperator(&quot;=&quot;, &quot;updateSlot&quot;) and implement the updateSlot message.</code></pre>
+<p>注意：之前我们常用但没有解释过的 <code>:=</code> 其实就是<strong>setSlot</strong>消息，而 <code>=</code>是<strong>updateSlot</strong>消息，这就是为何 <code>=</code> 不能创建只能修改已有slot的原因了。</p>
+<p>在结束本次大餐之前，我们再吃点有意思的东西：</p>
+<pre><code>Io&gt; Number oldDiv := Number getSlot(&quot;/&quot;)
+==&gt; Number_/()
+Io&gt; Number / := method(x, if(x==0, 0, self oldDiv(x))
+... )
+==&gt; method(x,
+    if(x == 0, 0, self oldDiv(x))
+)
+Io&gt; (10 / 5) print
+2==&gt; 2
+Io&gt; (10 / 0) print
+0==&gt; 0</code></pre>
+<p>代码很简单，不解释。</p>
+<h2>餐后甜点</h2>
+<p>依旧是小宝的照片：</p>
+<p><img src="/assets/files/photos/baby20130107.jpg" alt="小宝"></p>
+
+        <div class='under-post'>
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+                
+                  <div class='pull-left'>
+                    <a class='read-previous-link' href='/posts/2012-12-31-atanasoff-product-design.html'>
+                      <i class='icon-angle-left'></i>
+                      上一篇
+                    </a>
+                  </div>                  
+                
+                
+                  <div class='pull-right'>
+                    <a class='read-next-link' href='/posts/2013-01-09-auto-deploy-with-github-webhooks.html'>
+                      下一篇
+                      <i class='icon-angle-right'></i>
+                    </a>
+                  </div>
+                         
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-facebook'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-twitter'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-linkedin'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+        </div>
+      </div>
+    </div>
+      
+  </div>
+  <div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+  
+  <div class="ds-thread">
+    <script>
+        var duoshuoQuery = {short_name:"tyrchen"};
+        (function() {
+          var ds = document.createElement('script');
+          ds.type = 'text/javascript';ds.async = true;
+          ds.src = 'http://static.duoshuo.com/embed.js';
+          ds.charset = 'UTF-8';
+          (document.getElementsByTagName('head')[0]
+          || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+  </div>
+
+</div>
+
+<footer id="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="footer-menu">
+                    <li><a href="/pages/privacy">隐私策略</a></li>
+                    <li><a href="/pages/license">版权说明</a></li>
+                    <li><a href="/pages/disclaimer">免责声明</a></li>
+                    <li><a href="#">联系我们</a></li>
+                </ul>
+                <div class="copyright">
+                    2013 &copy; Tyr Chen. 保留一切权利.
+                </div>
+            </div>
+            <div class="col-md-6">
+                <ul class="footer-social">
+                    <li><a href="#"><i class="icon-facebook"></i></a></li>
+                    <li><a href="#"><i class="icon-twitter"></i></a></li>
+                    <li><a href="#"><i class="icon-dribbble"></i></a></li>
+                    <li><a href="#"><i class="icon-linkedin"></i></a></li>
+                    <li><a href="#"><i class="icon-google-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- Scripts -->
+<script defer="defer"  src="/assets/js/jquery.js"></script><script defer="defer"  src="/assets/js/bootstrap.min.js"></script><script defer="defer"  src="/assets/js/jquery.visible.min.js"></script><script defer="defer"  src="/assets/js/jquery.isotope.min.js"></script><script defer="defer"  src="/assets/js/jquery.knob.js"></script><script defer="defer"  src="/assets/js/jquery.scrollUp.min.js"></script><script defer="defer"  src="/assets/js/highlight.pack.js"></script><script defer="defer"  src="/assets/js/application.js"></script>
+
+
+</body>
+
+</html>

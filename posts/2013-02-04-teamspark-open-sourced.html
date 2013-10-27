@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="本博客提供我个人的想法，创意，经验，心得。你不必认同博主观点。" />
+    <meta name="keywords" content="创业, 思想, 点子, 经验, python, erlang, node, javascript, 服务器, devops, meteor" />
+    <meta name="author" content="Tyr Chen" />
+
+    <!-- Output DocPad produced meta elements -->
+    
+
+    <!-- Styles -->
+    <link  rel="stylesheet" href="/assets/css/app.css" /><link  rel="stylesheet" href="/assets/css/animate.css" /><link  rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700|Yanone+Kaffeesatz:200,300,400,700|Raleway:200,300,400,500,700" /><link  rel="stylesheet" href="/assets/css/font-awesome.css" /><link  rel="stylesheet" href="/assets/css/solarized_dark.css" /><link  rel="stylesheet" href="/assets/css/theme.css" />
+
+    <link href="/assets/favicon.ico" rel="shortcut icon">
+    <link href="/assets/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    @javascript html5shiv respond.min
+    <![endif]-->
+
+    <title>Teamspark及Meteor杂谈 | 觅珠人 | Tyr Chen的个人博客 | 创意 | 心得 | 经验</title>
+
+</head>
+
+<body>
+
+<!-- Contact Modal -->
+<div aria-hidden='true' aria-labelledby='contactModalLabel' class='modal fade' id='contactModal' role='dialog' tabindex='-1'>
+    <div class='modal-dialog'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <button aria-hidden='true' class='close' data-dismiss='modal' type='button'>×</button>
+                <h4 class='modal-title'>Contact Us Form</h4>
+            </div>
+            <div class='modal-body'>
+                <form action='#' role='form'>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Name</label>
+                                <input class='form-control' placeholder='your username' type='text'>
+                            </div>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Email</label>
+                                <input class='form-control' placeholder='your password' type='text'>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-12'>
+                                <label class='control-label' for=''>Your Message</label>
+                                <textarea class='form-control' name='' rows='4'></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class='modal-footer'>
+                <button class='btn btn-default' data-dismiss='modal' type='button'>Cancel</button>
+                <button class='btn btn-primary' type='button'>Send Message</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="header-image-wrapper">
+  <img alt="" src="/assets/files/posts/teamspark.jpg">
+</div>
+
+<div class='header-main'>
+    <div class='container'>
+        <nav class='navbar navbar-default' role='navigation'>
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class='navbar-header'>
+                <button class='navbar-toggle' data-target='.navbar-ex1-collapse' data-toggle='collapse' type='button'>
+                    <span class='sr-only'>Toggle navigation</span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                </button>
+                <a class='navbar-brand' href='/'>
+                    <img alt='' height='45px' src='/assets/images/tyr.png'> <span>觅珠人</span>
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class='collapse navbar-collapse navbar-ex1-collapse'>
+
+                <ul class='nav navbar-nav navbar-right'>
+                    <li class="">
+                        <a href="/">首页</a>
+                    </li>
+                    
+                        
+                        <li
+                            about="/pages/posts.html"
+                            class=""
+                        >
+                            <a href="/pages/posts.html">
+                                文章随笔
+                            </a>
+                        </li>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                        <li
+                            about="/pages/canvases.html"
+                            class=""
+                        >
+                            <a href="/pages/canvases.html">
+                                奇思妙想
+                            </a>
+                        </li>
+                        
+                    
+                        
+                        <li
+                            about="/pages/aboutme.html"
+                            class=""
+                        >
+                            <a href="/pages/aboutme.html">
+                                关于我
+                            </a>
+                        </li>
+                        
+                    
+                    <!--
+                    <li>
+                        <a data-toggle='modal' href='#contactModal'>联系我</a>
+                    </li>
+                    -->
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+</div>
+
+<div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+
+<div class='container'>
+  <div class='row'>
+    <div class="col-md-3">
+      <div class="post-side-bar">
+        <div class="widget widget-cats tags">
+          <h4 class="widget-title">标签</h4>
+          <ul>
+          
+            <li><a href='/tags/meteor.html'>meteor</a></li>
+          
+            <li><a href='/tags/teamspark.html'>teamspark</a></li>
+          
+            <li><a href='/tags/tool.html'>tool</a></li>
+          
+            <li><a href='/tags/product.html'>product</a></li>
+          
+          </ul>
+        </div>
+        <div class="widget widget-cats">
+          <h4 class="widget-title">
+            相关文章
+          </h4>
+          <ul>
+            
+            
+              <li><a href="/posts/2012-12-16-first-blog.html">第一篇博客: 用octopress搭建博客系统</a></li>
+            
+              <li><a href="/posts/2012-12-16-why-meteor.html">为什么是Meteor</a></li>
+            
+              <li><a href="/posts/2012-12-18-octopress-client-a-better-composition-tool.html">产品随想：octopress客户端 —— Atanasoff</a></li>
+            
+              <li><a href="/posts/2012-12-19-atanasoff-product-flow-chart.html">进一步思考Atanasoff (Octopress client) (1)</a></li>
+            
+              <li><a href="/posts/2012-12-21-meteor-basics.html">Meteor基础入门</a></li>
+            
+              <li><a href="/posts/2012-12-26-reveal-js-support-for-octopress.html">Octopress支持reveal.js撰写slides</a></li>
+            
+              <li><a href="/posts/2013-01-09-auto-deploy-with-github-webhooks.html">用Github Webhooks实现自动部署</a></li>
+            
+              <li><a href="/posts/2013-01-21-why-use-wintersmith-to-replace-octopress.html">为什么要使用wintersmith取代octopress</a></li>
+            
+            
+          </ul>
+        </div>
+      </div>
+    </div>      
+    <div class='col-md-9'>
+      <div class='post-single'>
+        <!--
+        <div class='pre-post-meta'>
+          <span>
+            <i class='icon-reorder'></i>
+            in
+            <a href='#'>Web Development</a>
+          </span>
+          <span>
+            <i class='icon-user'></i>
+            by
+            <a href='#'>Tyr Chen</a>
+          </span>
+          <span>
+            <i class='icon-bookmark'></i>
+            7 分钟
+          </span>
+        </div>
+        -->
+        <h1 class='has-sub-header'>Teamspark及Meteor杂谈</h1>
+        <div class='post-single-meta'>
+          <span class='meta-item'>
+            <i class='icon-calendar'></i>
+            9个月前
+          </span>
+          <!--
+          <span class='meta-item'>
+            <a href='#'>
+              <i class='icon-comments'></i>
+              24
+            </a>
+          </span>
+          <span class='meta-item'>
+            <a href='#'>
+              <i class='icon-heart'></i>
+              15
+            </a>
+          </span>
+          -->
+          <span class="meta-item">
+          	
+            <i class='icon-time'></i>
+            7 分钟
+          </span>
+        </div>
+        <p>我终于厚着脸皮把Teamspark开源了。</p>
+<p>Teamspark是我做的一个协作软件。有关Teamspark的功能和使用方式见：<a href="http://tchen.me/teamspark/"><a href="http://tchen.me/teamspark/">http://tchen.me/teamspark/</a></a>。或者你也可以直接clone或fork <a href="http://github.com/tyrchen/teamspark/">Teamspark的github项目</a>。如果你想了解些关于Teamspark和Meteor的八卦，请继续阅读。</p>
+<!--more-->
+
+<h2>杂谈/八卦</h2>
+<p>使用 <a href="http://Meteor.com">Meteor</a> 撰写Teamspark一晃已两个多月。仍然记得当初因太兴奋，挑灯夜战浑然不觉的场景。那时白天为途客圈的Cayman项目奋斗，晚上为Teamspark殚精竭虑。没别的原因，就是手头使用的协作工具中有太多太多的问题，而我们亟需一个靠谱好用的协作工具。</p>
+<p>Teamspark并不是我用Meteor的第一个项目。第一个项目是 <a href="http://github.com/tyrchen/zhengzi">途客圈正字系统</a>，用来“惩罚”犯了小错的团队成员。比如说写代码犯二。惩罚的方式是给全员买雪糕。正字系统可以保存犯错和惩罚的历史，立此存照，达到警示作用（结果我的正字最多）。在写正字系统的过程中，我认识到了Meteor的威力：50行简单易懂的javascript就构成了正字系统的雏形。</p>
+<p>在正字系统上尝到了甜头，我开始深入学习Meteor。正字系统诞生的时代还是Meteor 0.3.8的时代，那时只有很基本的权限管理，没有auth。所以当时尽管很火，Meteor还是只能用来写toy，想做个严肃的系统，对吾住，实现用户系统先！</p>
+<p>在社区里强大的呼声下，Meteor的开发者开始也意识到了这点。于是一个貌似是叫auth的branch被创建出来，然后是相当active的development。好一阵我都在这个branch上厮混，不断尝鲜。当Meteor team announce auth功能基本可用后，我开始了我的teamspark之旅。</p>
+<p>一周左右的业余开发，我做出了Teamspark的第一个版本。这是个MVP（Minimal Viarable Product）。仅仅包含以下功能：</p>
+<ul>
+<li>创建project</li>
+<li>创建和编辑spark</li>
+<li>评论和赞同spark</li>
+<li>按时间顺序浏览自己的spark和整个团队的spark（这对了解整个团队其他人干什么很有帮助）</li>
+</ul>
+<p>我把它介绍给我的团队，并利用我产品经理的特权，尝试强制大家使用。不过对Teamspark的使用效果，我开始并没有太大的信心。因为之前Redmine在team里被推行了大半年，最终也没获得编辑运营团队的认可，很多关于产品的沟通还是基于email。</p>
+<blockquote>
+<p>Lessons learned 1: </p>
+<p><strong>一切团队协作软件的最大竞争对手不是其他团队协作软件，而是email。</strong></p>
+</blockquote>
+<p>言归正传。很快我得到了正面的反馈：大家都说好用。但光说是没有用的，用户确实在使用才是王道。我默默关注着Teamspark上spark（一个spark可以是一个idea, task, bug, feature, etc.）被创建的数量，这才是黑猫白猫面前的那只耗子。很快地，sparks的数量破10，接着又很快破了50，100。最可喜的是，编辑和运营团队在其中的贡献达到了一半以上。各种各样的产品idea被激发出来，比以前通过email交流提高了至少一个量级。</p>
+<p>更有意思的是，我把Teamspark本身的管理和交流也放在Teamspark中。大家很快就贡献了不少想法，提交了很多bug。产品如果能够为自身的需要服务，那是再好不过的事情。比如说途客圈2.0的帮助，FAQ等信息也以笔记本的方式发布和呈现。</p>
+<blockquote>
+<p>Lessons learned 2:</p>
+<p><strong>产品能服务自身的需求，能让team成员主动Eat your own dog shit，这是产品成功的内部保证。</strong></p>
+</blockquote>
+<p>有了用户的支持，我自然动力大些。于是，根据反馈和需求，我先后做了如下功能：</p>
+<ul>
+<li>filter。当spark激增的时候，用户需要能看特定范围的spark。比如说三天内到期的，xxx发布的，优先级4以上的等等。</li>
+<li>sort。同上。需要除了按创建时间排序外，还能按优先级，更新时间等排序</li>
+<li>文件和图片上传。这样设计稿等产品文档需要大家的comment时就不需要来来回回发邮件了。</li>
+<li>用户激励。每个团队成员都能看到别人的积分（贡献）。积分主要以发表/完成数计算出。虽然一个团队内这么做有点多余，但是这个功能一上线后立刻在开发团队中引起了热捧：大家卯足劲就想让自己能够排在积分榜的前列。<blockquote>
+<p>Lessons learned 3：</p>
+<p><strong>日常工作中有很多激发大家潜能的机会，关键看你做不做，及怎么做。</strong></p>
+</blockquote>
+</li>
+<li>标签。可以给每一个spark打标签。系统会为每个project记录用户打过的标签。如果说project是强制的spark分类工具，tag就是一个非常灵活的组织spark的工具。</li>
+<li>搜索。直到spark的数量已经达好几百，内容的查找确实成为一个很大的瓶颈后我才开始做搜索。搜索是instant search，匹配部分或全部的任意如下内容：<ol>
+<li>spark ID</li>
+<li>spark title</li>
+<li>spark tags</li>
+</ol>
+</li>
+</ul>
+<p>在做Teamspark的过程中，基本上在不断走build-measure-learn的loop。收获不少。</p>
+<h2>Open Source or SaaS</h2>
+<p>在team内部得到某种认同后，我开始考虑Teamspark的商业化。在某天上班的路上，我用Evernote记录了当时的一些商业化想法：</p>
+<ul>
+<li>用户可申请加入一个team，也可等待管理员批准其成为team成员。免费team人数上限5人，可以建最多10个项目。再往上就提供类似github这样的分级收费制度。</li>
+<li>对于team，可以看到team简介，团队成员，以及管理员发布的最新动态。</li>
+<li>用户登入后可看到自己加入的团队，及最近访问的ream。进入到某个团队后，状态会保留直至用户退出该团队。</li>
+<li>使用全新设计的UI。</li>
+<li>为project和spark提供丰富的模版。</li>
+<li>spark的内容markdown化（这样可以支持各种模版的渲染，及更好支持代码highlight）。</li>
+<li>Inview加载以获取更好的速度。</li>
+<li>更好的performance<ul>
+<li>不Publish team列表</li>
+<li>仅Publish自己至少有读权限的项目</li>
+<li>仅Publish分配给自己的spark</li>
+</ul>
+</li>
+</ul>
+<p>但将Teamspark做成一个SaaS的服务不仅仅这么简单。需要考虑这些问题：</p>
+<ol>
+<li>Meteor还在0.5.x版本。离1.0似乎还有很长的路要走。将服务构建在一个并不稳定且没有经过大规模使用的framework下，对用户不负责。</li>
+<li>有很多安全问题待解决。最低的标准是一切数据皆需通过HTTPS传输。想想你公司内部的项目机密信息在不安全的信道上传输，是不是不寒而栗？像途客圈这样的非电商的toC业务对安全性的容忍度会高些，但Teamspark这样toB的业务对安全性是零容忍。因为一旦信息泄漏，对客户也许就是一场灾难。</li>
+</ol>
+<p>所以思来想去觉得现在还不是一个正确的将Teamspark商业化的点。</p>
+<p>如果不商业化，那就开源。对我而言，一个项目闭源又不商业化，只有一种可能：代码写得实在太矬且产品毫无价值。Teamspark虽然写得比较矬，但还是有点价值的。</p>
+<p>但是，做个有人用的开源项目不是件简单的事儿，要花费很多额外的功夫：</p>
+<ul>
+<li>项目的简易安装部署。我个人的经验是：安装部署麻烦，UI不好的开源项目，最容易被枪毙。</li>
+<li>项目的帮助文档。起码要给用户一个顺利使用的guide。</li>
+<li>找到合适的marketing channel。这年头，开源软件要冒尖，好看易用还远远不够，要找到合适的渠道去推销自己。对于teamspark，我决定尝试在hacker news上做marketing。</li>
+<li>持续更新，不断改进产品。一个停止更新的项目不会或者很难获取到新用户。</li>
+</ul>
+<p>尽管有以上种种额外工作，考虑再三，我还是决定把Teamspark开源。希望这对我而言是个好的开始。过去的几年间，我对开源社区的索取甚多，所写的的系统从头到脚都闪耀着开源软件的光芒。没有开源软件，我恐怕做不出来哪怕任何一个简单的web app。</p>
+<h2>后记</h2>
+<p>今早去医院看病（我的右手已经麻了一月有余，颈椎病），所以就啰啰嗦嗦写了以上这一堆废话。跟电脑打交道的亲们，平时要多注意保养自己的肩颈和双手，不要久坐，多外出活动。否则像我这样整天抬不起胳膊，半边肩酸疼，一只手几乎全麻，滋味很不好受。</p>
+<p>还是放上小宝一张照片：</p>
+<p><img src="/assets/files/photos/baby20130204.jpg" alt="小宝照片"></p>
+
+        <div class='under-post'>
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+                
+                  <div class='pull-left'>
+                    <a class='read-previous-link' href='/posts/2013-02-03-observation-about-align-and-fit.html'>
+                      <i class='icon-angle-left'></i>
+                      上一篇
+                    </a>
+                  </div>                  
+                
+                
+                  <div class='pull-right'>
+                    <a class='read-next-link' href='/posts/2013-02-18-sdn-elementatory-introduction.html'>
+                      下一篇
+                      <i class='icon-angle-right'></i>
+                    </a>
+                  </div>
+                         
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-facebook'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-twitter'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-linkedin'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+        </div>
+      </div>
+    </div>
+      
+  </div>
+  <div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+  
+  <div class="ds-thread">
+    <script>
+        var duoshuoQuery = {short_name:"tyrchen"};
+        (function() {
+          var ds = document.createElement('script');
+          ds.type = 'text/javascript';ds.async = true;
+          ds.src = 'http://static.duoshuo.com/embed.js';
+          ds.charset = 'UTF-8';
+          (document.getElementsByTagName('head')[0]
+          || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+  </div>
+
+</div>
+
+<footer id="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="footer-menu">
+                    <li><a href="/pages/privacy">隐私策略</a></li>
+                    <li><a href="/pages/license">版权说明</a></li>
+                    <li><a href="/pages/disclaimer">免责声明</a></li>
+                    <li><a href="#">联系我们</a></li>
+                </ul>
+                <div class="copyright">
+                    2013 &copy; Tyr Chen. 保留一切权利.
+                </div>
+            </div>
+            <div class="col-md-6">
+                <ul class="footer-social">
+                    <li><a href="#"><i class="icon-facebook"></i></a></li>
+                    <li><a href="#"><i class="icon-twitter"></i></a></li>
+                    <li><a href="#"><i class="icon-dribbble"></i></a></li>
+                    <li><a href="#"><i class="icon-linkedin"></i></a></li>
+                    <li><a href="#"><i class="icon-google-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- Scripts -->
+<script defer="defer"  src="/assets/js/jquery.js"></script><script defer="defer"  src="/assets/js/bootstrap.min.js"></script><script defer="defer"  src="/assets/js/jquery.visible.min.js"></script><script defer="defer"  src="/assets/js/jquery.isotope.min.js"></script><script defer="defer"  src="/assets/js/jquery.knob.js"></script><script defer="defer"  src="/assets/js/jquery.scrollUp.min.js"></script><script defer="defer"  src="/assets/js/highlight.pack.js"></script><script defer="defer"  src="/assets/js/application.js"></script>
+
+
+</body>
+
+</html>

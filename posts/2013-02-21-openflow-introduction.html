@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="本博客提供我个人的想法，创意，经验，心得。你不必认同博主观点。" />
+    <meta name="keywords" content="创业, 思想, 点子, 经验, python, erlang, node, javascript, 服务器, devops, meteor" />
+    <meta name="author" content="Tyr Chen" />
+
+    <!-- Output DocPad produced meta elements -->
+    
+
+    <!-- Styles -->
+    <link  rel="stylesheet" href="/assets/css/app.css" /><link  rel="stylesheet" href="/assets/css/animate.css" /><link  rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700|Yanone+Kaffeesatz:200,300,400,700|Raleway:200,300,400,500,700" /><link  rel="stylesheet" href="/assets/css/font-awesome.css" /><link  rel="stylesheet" href="/assets/css/solarized_dark.css" /><link  rel="stylesheet" href="/assets/css/theme.css" />
+
+    <link href="/assets/favicon.ico" rel="shortcut icon">
+    <link href="/assets/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    @javascript html5shiv respond.min
+    <![endif]-->
+
+    <title>Openflow简介 | 觅珠人 | Tyr Chen的个人博客 | 创意 | 心得 | 经验</title>
+
+</head>
+
+<body>
+
+<!-- Contact Modal -->
+<div aria-hidden='true' aria-labelledby='contactModalLabel' class='modal fade' id='contactModal' role='dialog' tabindex='-1'>
+    <div class='modal-dialog'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <button aria-hidden='true' class='close' data-dismiss='modal' type='button'>×</button>
+                <h4 class='modal-title'>Contact Us Form</h4>
+            </div>
+            <div class='modal-body'>
+                <form action='#' role='form'>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Name</label>
+                                <input class='form-control' placeholder='your username' type='text'>
+                            </div>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Email</label>
+                                <input class='form-control' placeholder='your password' type='text'>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-12'>
+                                <label class='control-label' for=''>Your Message</label>
+                                <textarea class='form-control' name='' rows='4'></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class='modal-footer'>
+                <button class='btn btn-default' data-dismiss='modal' type='button'>Cancel</button>
+                <button class='btn btn-primary' type='button'>Send Message</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="header-image-wrapper">
+  <img alt="" src="/assets/files/posts/sdn.jpg">
+</div>
+
+<div class='header-main'>
+    <div class='container'>
+        <nav class='navbar navbar-default' role='navigation'>
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class='navbar-header'>
+                <button class='navbar-toggle' data-target='.navbar-ex1-collapse' data-toggle='collapse' type='button'>
+                    <span class='sr-only'>Toggle navigation</span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                </button>
+                <a class='navbar-brand' href='/'>
+                    <img alt='' height='45px' src='/assets/images/tyr.png'> <span>觅珠人</span>
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class='collapse navbar-collapse navbar-ex1-collapse'>
+
+                <ul class='nav navbar-nav navbar-right'>
+                    <li class="">
+                        <a href="/">首页</a>
+                    </li>
+                    
+                        
+                        <li
+                            about="/pages/posts.html"
+                            class=""
+                        >
+                            <a href="/pages/posts.html">
+                                文章随笔
+                            </a>
+                        </li>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                        <li
+                            about="/pages/canvases.html"
+                            class=""
+                        >
+                            <a href="/pages/canvases.html">
+                                奇思妙想
+                            </a>
+                        </li>
+                        
+                    
+                        
+                        <li
+                            about="/pages/aboutme.html"
+                            class=""
+                        >
+                            <a href="/pages/aboutme.html">
+                                关于我
+                            </a>
+                        </li>
+                        
+                    
+                    <!--
+                    <li>
+                        <a data-toggle='modal' href='#contactModal'>联系我</a>
+                    </li>
+                    -->
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+</div>
+
+<div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+
+<div class='container'>
+  <div class='row'>
+    <div class="col-md-3">
+      <div class="post-side-bar">
+        <div class="widget widget-cats tags">
+          <h4 class="widget-title">标签</h4>
+          <ul>
+          
+            <li><a href='/tags/SDN.html'>SDN</a></li>
+          
+            <li><a href='/tags/technology.html'>technology</a></li>
+          
+          </ul>
+        </div>
+        <div class="widget widget-cats">
+          <h4 class="widget-title">
+            相关文章
+          </h4>
+          <ul>
+            
+            
+              <li><a href="/posts/2012-12-18-octopress-client-a-better-composition-tool.html">产品随想：octopress客户端 —— Atanasoff</a></li>
+            
+              <li><a href="/posts/2012-12-31-atanasoff-product-design.html">进一步思考Atanasoff (Octopress client) (2)</a></li>
+            
+              <li><a href="/posts/2013-02-18-sdn-elementatory-introduction.html">SDN浅谈</a></li>
+            
+              <li><a href="/posts/2013-04-08-trying-to-extract-the-thoughts-behind-lockitron.html">胡思乱想之Lockitron的技术架构</a></li>
+            
+              <li><a href="/posts/2013-04-25-engineering-environment-for-smart-team.html">自动化的高效团队开发环境</a></li>
+            
+              <li><a href="/posts/2013-06-10-use-scrapyd-to-serve-scrapy-projects.html">用scrapyd来提供crawler服务</a></li>
+            
+              <li><a href="/posts/2013-06-12-use-makefile-to-automate-deployment.html">使用Makefile自动化部署</a></li>
+            
+              <li><a href="/posts/2013-06-23-come-to-origin-for-embedded-applications.html">Come to Origins for Embedded Applications</a></li>
+            
+              <li><a href="/posts/2013-07-18-c-grammar-you-cannot-imagine.html">你无法想象的C语法</a></li>
+            
+              <li><a href="/posts/2013-07-22-why-should-c-programmers-learn-erlang.html">Why should C programmers learn Erlang?</a></li>
+            
+            
+          </ul>
+        </div>
+      </div>
+    </div>      
+    <div class='col-md-9'>
+      <div class='post-single'>
+        <!--
+        <div class='pre-post-meta'>
+          <span>
+            <i class='icon-reorder'></i>
+            in
+            <a href='#'>Web Development</a>
+          </span>
+          <span>
+            <i class='icon-user'></i>
+            by
+            <a href='#'>Tyr Chen</a>
+          </span>
+          <span>
+            <i class='icon-bookmark'></i>
+            13 分钟
+          </span>
+        </div>
+        -->
+        <h1 class='has-sub-header'>Openflow简介</h1>
+        <div class='post-single-meta'>
+          <span class='meta-item'>
+            <i class='icon-calendar'></i>
+            8个月前
+          </span>
+          <!--
+          <span class='meta-item'>
+            <a href='#'>
+              <i class='icon-comments'></i>
+              24
+            </a>
+          </span>
+          <span class='meta-item'>
+            <a href='#'>
+              <i class='icon-heart'></i>
+              15
+            </a>
+          </span>
+          -->
+          <span class="meta-item">
+          	
+            <i class='icon-time'></i>
+            13 分钟
+          </span>
+        </div>
+        <p><a href="/posts/2013-02-18-sdn-elementatory-introduction.html">上一篇文章</a>简单介绍了SDN及其应用场景，臆测的成分大些。本文谈谈SDN的基石：openflow。</p>
+<p>我们知道，SDN的核心是将control plane（下文统称controller）和data plane（下文统称oSwitch，openflow switch）分离，由一个中央集权的controller（好比一个军团的将领）指挥成百上千的oSwitch（好比千千万万的士兵），共同完成网络中数据的传输。而openflow，as a protocol，是这套体系正常运作的基石。</p>
+<p>本文难度稍大，可能不适合没有网络设备基础知识的读者阅读。我会在下节中稍微讲一些基础概念，如果无法理解，则不建议读下去。</p>
+<!--more-->
+
+<h2>网络基础知识</h2>
+<ul>
+<li>网络设备（下文统称device）的运作遵循 <a href="http://zh.wikipedia.org/wiki/OSI%E6%A8%A1%E5%9E%8B">ISO OSI 7层模型</a>，但网络设备本身一般只关心：port (physical layer)，ethernet/VLAN header (link layer) [1]，IP header (network layer) layer，TCP/UDP header (transport layer)。有些设备会继续深入到application layer，如IPS，这里略过不表。</li>
+<li>Ingress port：packets从device的哪个接口进入。</li>
+<li>Egress port：packets从device的哪个接口转发出去。</li>
+<li>Vlan：将局域网逻辑上分成不同的虚拟网络，网络之间相互隔离。详见 <a href="http://zh.wikipedia.org/wiki/Vlan">虚拟局域网</a>。</li>
+<li>Switch：根据destination MAC/vlan id转发packets的设备。一般会在网络中学习MAC地址和port的对应关系，构建一个二层转发表（forwarding database, or FDB）。</li>
+<li>Router：根据destination IP address转发packets的设备。一般会通过路由协议来学习网络中IP地址和port [2]的对应关系，构建一个三层转发表（routing table/forwarding information table, or RIB/FIB）。</li>
+<li>Firewall：根据5 tuple（src IP/src port/dst IP/dst port/protocol）及ingress port转发packets的设备。一般会通过配置静态策略（policy）来决定packets如何转发。在TCP/UDP连接建立时会创建session，构建一个四层转发表（session table）来使能双向数据的转发。</li>
+<li>unicast, broadcast, multicast这些概念就不多说，翻翻教科书就知道了。</li>
+<li>packets处理方法：<ul>
+<li>转发（可以是unicast, broadcast, multicast），总之把包转到egress port。</li>
+<li>丢弃：不满足转发要求，在device上丢弃，如找不到路由。</li>
+<li>enqueue：放入队列等待后续处理。比如要做traffic shaping。</li>
+<li>修改packet并reinject：根据规则对packet进行修改，如做source NAT（对源地址做网络地址转换），或者terminate VPN（将外层VPN包头去掉），再将packets以一个新的ingress port丢回device处理。</li>
+</ul>
+</li>
+</ul>
+<p>如果到这里还没有晕的话，可以继续读下去。</p>
+<h2>Openflow Packets处理</h2>
+<p>openflow定义了oSwitch端如何协同controller来处理网络中的packets。这包含两个部分：1) oSwitch端packets处理逻辑 2) oSwitch转发依据，即oSwitch和controller之间的protocol。本文重点讨论再oSwitch端，packets是如何处理的。</p>
+<h3>解决问题的思路</h3>
+<p>我们先放着openflow不表，看看网络设备（switch，router，firewall）进行packets处理的共性，如下图所示：
+<img src="/assets/files/charts/firewall-2.jpg" alt="network device packet processing"></p>
+<ul>
+<li>它们都有一张 <strong>table</strong>（或者叫database）做为决策依据。</li>
+<li>table建立的依据是一系列的 <strong>rule</strong>。</li>
+<li>packets到达时，尝试 <strong>match</strong> table中的某个entry。</li>
+<li>如果match不到任何entry，会尝试根据rule来创建entry，无法创建，就丢弃。</li>
+<li>如果match到，则根据entry中的 <strong>action</strong> 来决定后续的处理。</li>
+</ul>
+<p>这样做的好处是：</p>
+<ul>
+<li>低耦合，高内聚，每个部分解决一个问题。</li>
+<li>便于硬件化。如上图的TLU，TCU，TAU，为performance可以部分或全部硬件化。</li>
+</ul>
+<p>以相对复杂的firewall为例，看看packets实际是如何处理的：</p>
+<p>拓扑很简单：
+<img src="/assets/files/charts/firewall-1.jpg" alt="firewall session"></p>
+<ol>
+<li>client 1.1.1.1发起一个到server 2.2.2.2的SYN请求（TCP连接，端口为12345-&gt;80），firewall得到这个SYN packet后，进行Table Lookup，因为是第一次请求，所以找不到对应的entry。</li>
+<li>SYN packet进入到Table Creation Unit，查找有没有相关的rule来建立entry
+，结果找到一条，于是entry被创建出来，action是forward。</li>
+<li>SYN packet进入到Table Action Unit，按照entry的action进行处理，所以包被转发到2.2.2.2。</li>
+<li>服务器收到SYN packet后，发送SYN/ACK，SYN/ACK packet到达firewall，进行Table Lookup，找到一个entry。</li>
+<li>SYN packet进入到Table Action Unit，按照entry的action进行处理，所以包被转发给client。</li>
+</ol>
+<p>理解了这一思路后，openflow的packets处理方法就很容易明白了。</p>
+<h3>Flow Table</h3>
+<p>openflow关心从L1-L4的所有packet header，从这点上看，oSwitch端的很多处理和firewall很像。</p>
+<p><img src="/assets/files/charts/packet.jpg" alt="openflow packet"></p>
+<p>openflow定义了能够match L1-L4 的flow entry：</p>
+<p><img src="/assets/files/charts/openflow-entry.jpg" alt="openflow entry"></p>
+<p>其中，假定instructions使用64bit，那么整个entry大小为76bytes，如果能够支持1M的flow，那么flow table会消耗76M内存。</p>
+<p>当packets到达时，openflow是如何match并处理呢？openflow-spec的这张图讲的很明白，我就不多说了：</p>
+<p><img src="/assets/files/charts/openflow-match.jpg" alt="openflow match，截取自openflow-spec"></p>
+<p>openflow允许系统中存在一到多张flow table并且他们之间以一种pipeline的方式运行。</p>
+<p><img src="/assets/files/charts/openflow-pipeline.jpg" alt="openflow pipeline，截取自openflow-spec"></p>
+<p>什么情况下一个packet从一张flow table里出来，进入另一张flow table呢？有不少这样的case，我们说一个比较容易理解的。</p>
+<p>~假定flow table 1存放IPSec VPN tunnel的flow entry，flow table 2存放普通flow entry。当一个IPSec packet进入flow table 1后match对应的flow entry，其instruction为：1) decryption 2) FWD to flow table 2。当packet被解密，inner ip packet重见天日时，就可以用flow table 2中的flow entry进行转发。~</p>
+<pre><code>注：这个理解可能有些错误，因为openflow规定flow table是有序的，但这个VPN in的例子如果换成VPN out的例子则flow table的顺序正好相反，所以和openflow的spec violate...等笔者搞明白些再回过头来修订这个例子</code></pre>
+<p>Update:</p>
+<p>看Open vSwitch时想到一种multi table的模式：即L2，L3，L4各一张table。这说得过去，而且各个flow table是严格有序的。</p>
+<h3>Instructions</h3>
+<p>当packet match到一个flow entry后，要执行对应的instructions，openflow定义了如下instruction：</p>
+<ul>
+<li>Apply-Actions: 对packet立即执行某些action。</li>
+<li>Clear-Actions: 将packet上的action set清空。</li>
+<li>Write-Actions: 修改/添加packet上的action set。</li>
+<li>Write-Metadata: 修改flow entry的metadata。</li>
+<li>Goto-Table: 将packet转到另外一张flow table。</li>
+</ul>
+<p>单独理解instructions有些困难，请继续往下读。</p>
+<h3>Action Set</h3>
+<p>每个packet都有一个action set，初始时为空，当match flow entry时被修改。如果所有instruction都执行完，且没有后续的Goto-Table instruction时，packet上的action set被执行（<del>这里也有个疑问，set一般是无序的，但action的执行必定有序，执行的先后对结果影响很大，我们姑且认为是顺序执行吧</del>）。所以上述的instruction大部分实在操作packet上的action set，即定义我们如何进一步处理这个packet。</p>
+<p>Action的执行按照如下顺序：</p>
+<ol>
+<li>copy TTL inwards</li>
+<li>pop tag</li>
+<li>push tag</li>
+<li>copy TTL outwards</li>
+<li>decrement TTL</li>
+<li>modify packet (apply all set-field actions)</li>
+<li>qos</li>
+<li>group</li>
+<li>output</li>
+</ol>
+<p>具体action的列表和作用请参考openflow-spec的p13-16。</p>
+<p>我们举一个简单的例子，你在公司访问google.com（假定IP是203.208.46.200）。你的局域网IP是10.0.0.222，ISP分配给你公司的公网IP是22.22.22.22。对于这样一个很常见的网络访问，openflow需要应用如下actions：</p>
+<ul>
+<li>pop VLAN tag (if any)</li>
+<li>decrement TTL</li>
+<li>modify src IP from 10.0.0.222 to 22.22.22.22</li>
+<li>modify src port from X to Y</li>
+<li>output</li>
+</ul>
+<h2>Openflow Table Installation</h2>
+<p>上文详述了openflow的flow table如何定义，如何match和怎样处理packets，完全是data plane的事儿。读者一定有一个疑问，那么flow table是如何install到oSwtich中？</p>
+<p>这个问题的答案也是SDN的精华所在。我们知道，传统的网络设备，即使将data plane和control plane完全分离到不同的board上，还是在同一台设备中做决策（control plane）及执行决策（data plane）。flow table的installation是由每台网络设备自行决定。而openflow在这里将control plane完全分隔，在oSwitch/Controller之间运行protocol来传递消息，比如说：</p>
+<ol>
+<li>flow entry installation</li>
+<li>flow entry deletion</li>
+</ol>
+<p>我们用下图来诠释oSwitch和Controller间如何来协作进行packet forwarding：</p>
+<p><img src="/assets/files/charts/openflow-reactive.jpg" alt="openflow entry installation and forwarding"></p>
+<ol>
+<li>客户端发出一个packet，到达oSwitch。</li>
+<li>oSwitch match flow table失败，packet enqueue，同时发送flow entry inquiry给controller。</li>
+<li>Controller获取相关的路由信息。</li>
+<li>Controller发送flow entry到各个相关的oSwitch。</li>
+<li>packet被依次forward到下一个oSwitch，直至到达destination。</li>
+</ol>
+<p>当然，这是很被动的处理方式，first packet的latency会很高。其实也可以采取主动模式，Controller收集到拓扑信息后主动向各个oSwitch发送计算好的flow entries。</p>
+<p>具体protocol的细节就不在本文详述，看spec就好了。</p>
+<h2>参考文档</h2>
+<p>[1] open flow spec: <a href="http://www.openflow.org/documents/openflow-spec-v1.1.0.pdf">http://www.openflow.org/documents/openflow-spec-v1.1.0.pdf</a></p>
+<p>[2] open flow white paper: <a href="http://www.openflow.org/documents/openflow-wp-latest.pdf">http://www.openflow.org/documents/openflow-wp-latest.pdf</a></p>
+<h2>脚注</h2>
+<p>[1] 这里指LAN主要使用的link layer protocol；WAN不在本文讨论之列</p>
+<p>[2] interface更为准确，但这里就不引入新概念了</p>
+<h2>后记</h2>
+<p>送上小宝照片一枚。</p>
+<p><img src="/assets/files/photos/baby20130221.jpg" alt="小宝"></p>
+
+        <div class='under-post'>
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+                
+                  <div class='pull-left'>
+                    <a class='read-previous-link' href='/posts/2013-02-18-sdn-elementatory-introduction.html'>
+                      <i class='icon-angle-left'></i>
+                      上一篇
+                    </a>
+                  </div>                  
+                
+                
+                  <div class='pull-right'>
+                    <a class='read-next-link' href='/posts/2013-02-06-Making-a-next-generation-home-security-device.html'>
+                      下一篇
+                      <i class='icon-angle-right'></i>
+                    </a>
+                  </div>
+                         
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-facebook'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-twitter'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-linkedin'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+        </div>
+      </div>
+    </div>
+      
+  </div>
+  <div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+  
+  <div class="ds-thread">
+    <script>
+        var duoshuoQuery = {short_name:"tyrchen"};
+        (function() {
+          var ds = document.createElement('script');
+          ds.type = 'text/javascript';ds.async = true;
+          ds.src = 'http://static.duoshuo.com/embed.js';
+          ds.charset = 'UTF-8';
+          (document.getElementsByTagName('head')[0]
+          || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+  </div>
+
+</div>
+
+<footer id="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="footer-menu">
+                    <li><a href="/pages/privacy">隐私策略</a></li>
+                    <li><a href="/pages/license">版权说明</a></li>
+                    <li><a href="/pages/disclaimer">免责声明</a></li>
+                    <li><a href="#">联系我们</a></li>
+                </ul>
+                <div class="copyright">
+                    2013 &copy; Tyr Chen. 保留一切权利.
+                </div>
+            </div>
+            <div class="col-md-6">
+                <ul class="footer-social">
+                    <li><a href="#"><i class="icon-facebook"></i></a></li>
+                    <li><a href="#"><i class="icon-twitter"></i></a></li>
+                    <li><a href="#"><i class="icon-dribbble"></i></a></li>
+                    <li><a href="#"><i class="icon-linkedin"></i></a></li>
+                    <li><a href="#"><i class="icon-google-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- Scripts -->
+<script defer="defer"  src="/assets/js/jquery.js"></script><script defer="defer"  src="/assets/js/bootstrap.min.js"></script><script defer="defer"  src="/assets/js/jquery.visible.min.js"></script><script defer="defer"  src="/assets/js/jquery.isotope.min.js"></script><script defer="defer"  src="/assets/js/jquery.knob.js"></script><script defer="defer"  src="/assets/js/jquery.scrollUp.min.js"></script><script defer="defer"  src="/assets/js/highlight.pack.js"></script><script defer="defer"  src="/assets/js/application.js"></script>
+
+
+</body>
+
+</html>

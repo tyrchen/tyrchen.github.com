@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="本博客提供我个人的想法，创意，经验，心得。你不必认同博主观点。" />
+    <meta name="keywords" content="创业, 思想, 点子, 经验, python, erlang, node, javascript, 服务器, devops, meteor" />
+    <meta name="author" content="Tyr Chen" />
+
+    <!-- Output DocPad produced meta elements -->
+    
+
+    <!-- Styles -->
+    <link  rel="stylesheet" href="/assets/css/app.css" /><link  rel="stylesheet" href="/assets/css/animate.css" /><link  rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700|Yanone+Kaffeesatz:200,300,400,700|Raleway:200,300,400,500,700" /><link  rel="stylesheet" href="/assets/css/font-awesome.css" /><link  rel="stylesheet" href="/assets/css/solarized_dark.css" /><link  rel="stylesheet" href="/assets/css/theme.css" />
+
+    <link href="/assets/favicon.ico" rel="shortcut icon">
+    <link href="/assets/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    @javascript html5shiv respond.min
+    <![endif]-->
+
+    <title>lockitron | 觅珠人 | Tyr Chen的个人博客 | 创意 | 心得 | 经验</title>
+
+</head>
+
+<body>
+
+<!-- Contact Modal -->
+<div aria-hidden='true' aria-labelledby='contactModalLabel' class='modal fade' id='contactModal' role='dialog' tabindex='-1'>
+    <div class='modal-dialog'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <button aria-hidden='true' class='close' data-dismiss='modal' type='button'>×</button>
+                <h4 class='modal-title'>Contact Us Form</h4>
+            </div>
+            <div class='modal-body'>
+                <form action='#' role='form'>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Name</label>
+                                <input class='form-control' placeholder='your username' type='text'>
+                            </div>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Email</label>
+                                <input class='form-control' placeholder='your password' type='text'>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-12'>
+                                <label class='control-label' for=''>Your Message</label>
+                                <textarea class='form-control' name='' rows='4'></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class='modal-footer'>
+                <button class='btn btn-default' data-dismiss='modal' type='button'>Cancel</button>
+                <button class='btn btn-primary' type='button'>Send Message</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class='header-main'>
+    <div class='container'>
+        <nav class='navbar navbar-default' role='navigation'>
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class='navbar-header'>
+                <button class='navbar-toggle' data-target='.navbar-ex1-collapse' data-toggle='collapse' type='button'>
+                    <span class='sr-only'>Toggle navigation</span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                </button>
+                <a class='navbar-brand' href='/'>
+                    <img alt='' height='45px' src='/assets/images/tyr.png'> <span>觅珠人</span>
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class='collapse navbar-collapse navbar-ex1-collapse'>
+
+                <ul class='nav navbar-nav navbar-right'>
+                    <li class="">
+                        <a href="/">首页</a>
+                    </li>
+                    
+                        
+                        <li
+                            about="/pages/posts.html"
+                            class=""
+                        >
+                            <a href="/pages/posts.html">
+                                文章随笔
+                            </a>
+                        </li>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                        <li
+                            about="/pages/canvases.html"
+                            class=""
+                        >
+                            <a href="/pages/canvases.html">
+                                奇思妙想
+                            </a>
+                        </li>
+                        
+                    
+                        
+                        <li
+                            about="/pages/aboutme.html"
+                            class=""
+                        >
+                            <a href="/pages/aboutme.html">
+                                关于我
+                            </a>
+                        </li>
+                        
+                    
+                    <!--
+                    <li>
+                        <a data-toggle='modal' href='#contactModal'>联系我</a>
+                    </li>
+                    -->
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+</div>
+
+<div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+
+<div class="container">
+	<h2>lockitron</h2>
+	<table class="canvas">
+		<tr>
+			<td rowspan="2">
+				<div>
+					<h4>PROBLEM</h4>
+					<ul class="top">
+					
+						<li>家中无人，但有你信任的访客到访，无法为其开门</li>
+					
+						<li>丢失钥匙，无法进家门</li>
+					
+					</ul>
+					<h4>EXISTING ALTERNATIVES</h4>
+					<ul>
+					
+						<li>将备用钥匙放在门口一个隐蔽的地方（如脚垫下，花盆底）</li>
+					
+					</ul>
+					
+				</div>
+			</td>
+			<td>
+				<div>
+					<h4>SOLUTION</h4>
+					<ul>
+					
+						<li>在已有的门锁上安装特定硬件，可接收来自网络的信号，从而打开或关闭门锁</li>
+					
+						<li>客户通过手机</li>
+					
+					</ul>
+				</div>
+			</td>
+			<td class="small" rowspan="2" clospan="2">
+				<div>
+					<h4>UNIQUE VALUE PROPOSITION</h4>
+					<ul class="top">
+					
+						<li>Keyless entry using your phone</li>
+					
+						<li>Lock your door from anywhare in the world</li>
+											
+					</ul>
+
+				</div>
+			</td>
+			<td>
+				<div>
+					<h4>UNFAIR ADVANTAGE</h4>
+					<ul>
+					
+						<li>技术及专利</li>
+					
+					</ul>
+				</div>
+			</td>
+			<td rowspan="2">
+				<div>
+					<h4>CUSTOMER SEGMENTS</h4>
+					<ul class="top">
+					
+						<li>喜欢新奇事物的科技一族</li>
+					
+						<li>房东</li>
+					
+						<li>企业（用其取代门禁系统）</li>
+					
+					</ul>
+					<h4>EARLY ADOPTERS</h4>
+					<ul>
+					
+						<li>hackers</li>
+					
+						<li>喜欢很酷很时尚的东西（iPhone的第一批用户）</li>
+					
+						<li>家庭自动化爱好者</li>
+					
+						<li>airbnb玩家*</li>
+					
+					</ul>
+					
+				</div>
+			</td>			
+		</tr>
+		<tr>
+			<td>
+				<div>
+					<h4>KEY METRICS</h4>
+					<ul>
+					
+						<li>销售量</li>
+					
+						<li>退货率</li>
+					
+						<li>成品率</li>
+					
+					</ul>
+				</div>
+			</td>
+			<td>
+				<div>
+					<h4>CHANNELS</h4>
+					<ul>
+					
+						<li>kick starter</li>
+					
+						<li>在线商店</li>
+					
+						<li>BestBuy</li>
+					
+					</ul>
+				</div>
+			</td>			
+		</tr>
+		<tr>
+			<td colspan="3">
+				<div>
+					<h4>COST STRUCTURE</h4>
+					<ul>
+					
+						<li>BOM成本</li>
+					
+						<li>服务器成本</li>
+					
+						<li>软件开发成本（包括软件授权）</li>
+					
+						<li>人员成本</li>
+					
+					</ul>
+				</div>
+			</td>
+			<td colspan="3">
+				<div>
+					<h4>REVENUE STREAM</h4>
+					<ul>
+					
+						<li>销售硬件，每件$179</li>
+					
+					</ul>
+				</div>
+			</td>			
+		</tr>		
+	</table>
+	
+  <div class="ds-thread">
+    <script>
+        var duoshuoQuery = {short_name:"tyrchen"};
+        (function() {
+          var ds = document.createElement('script');
+          ds.type = 'text/javascript';ds.async = true;
+          ds.src = 'http://static.duoshuo.com/embed.js';
+          ds.charset = 'UTF-8';
+          (document.getElementsByTagName('head')[0]
+          || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+  </div>
+
+</div>
+
+<footer id="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="footer-menu">
+                    <li><a href="/pages/privacy">隐私策略</a></li>
+                    <li><a href="/pages/license">版权说明</a></li>
+                    <li><a href="/pages/disclaimer">免责声明</a></li>
+                    <li><a href="#">联系我们</a></li>
+                </ul>
+                <div class="copyright">
+                    2013 &copy; Tyr Chen. 保留一切权利.
+                </div>
+            </div>
+            <div class="col-md-6">
+                <ul class="footer-social">
+                    <li><a href="#"><i class="icon-facebook"></i></a></li>
+                    <li><a href="#"><i class="icon-twitter"></i></a></li>
+                    <li><a href="#"><i class="icon-dribbble"></i></a></li>
+                    <li><a href="#"><i class="icon-linkedin"></i></a></li>
+                    <li><a href="#"><i class="icon-google-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- Scripts -->
+<script defer="defer"  src="/assets/js/jquery.js"></script><script defer="defer"  src="/assets/js/bootstrap.min.js"></script><script defer="defer"  src="/assets/js/jquery.visible.min.js"></script><script defer="defer"  src="/assets/js/jquery.isotope.min.js"></script><script defer="defer"  src="/assets/js/jquery.knob.js"></script><script defer="defer"  src="/assets/js/jquery.scrollUp.min.js"></script><script defer="defer"  src="/assets/js/highlight.pack.js"></script><script defer="defer"  src="/assets/js/application.js"></script>
+
+
+
+
+
+</body>
+
+</html>

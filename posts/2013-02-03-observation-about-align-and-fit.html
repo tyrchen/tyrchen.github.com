@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="本博客提供我个人的想法，创意，经验，心得。你不必认同博主观点。" />
+    <meta name="keywords" content="创业, 思想, 点子, 经验, python, erlang, node, javascript, 服务器, devops, meteor" />
+    <meta name="author" content="Tyr Chen" />
+
+    <!-- Output DocPad produced meta elements -->
+    
+
+    <!-- Styles -->
+    <link  rel="stylesheet" href="/assets/css/app.css" /><link  rel="stylesheet" href="/assets/css/animate.css" /><link  rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700|Yanone+Kaffeesatz:200,300,400,700|Raleway:200,300,400,500,700" /><link  rel="stylesheet" href="/assets/css/font-awesome.css" /><link  rel="stylesheet" href="/assets/css/solarized_dark.css" /><link  rel="stylesheet" href="/assets/css/theme.css" />
+
+    <link href="/assets/favicon.ico" rel="shortcut icon">
+    <link href="/assets/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    @javascript html5shiv respond.min
+    <![endif]-->
+
+    <title>Align/Fit杂谈 | 觅珠人 | Tyr Chen的个人博客 | 创意 | 心得 | 经验</title>
+
+</head>
+
+<body>
+
+<!-- Contact Modal -->
+<div aria-hidden='true' aria-labelledby='contactModalLabel' class='modal fade' id='contactModal' role='dialog' tabindex='-1'>
+    <div class='modal-dialog'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <button aria-hidden='true' class='close' data-dismiss='modal' type='button'>×</button>
+                <h4 class='modal-title'>Contact Us Form</h4>
+            </div>
+            <div class='modal-body'>
+                <form action='#' role='form'>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Name</label>
+                                <input class='form-control' placeholder='your username' type='text'>
+                            </div>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Email</label>
+                                <input class='form-control' placeholder='your password' type='text'>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-12'>
+                                <label class='control-label' for=''>Your Message</label>
+                                <textarea class='form-control' name='' rows='4'></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class='modal-footer'>
+                <button class='btn btn-default' data-dismiss='modal' type='button'>Cancel</button>
+                <button class='btn btn-primary' type='button'>Send Message</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="header-image-wrapper">
+  <img alt="" src="/assets/files/posts/harmony.jpg">
+</div>
+
+<div class='header-main'>
+    <div class='container'>
+        <nav class='navbar navbar-default' role='navigation'>
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class='navbar-header'>
+                <button class='navbar-toggle' data-target='.navbar-ex1-collapse' data-toggle='collapse' type='button'>
+                    <span class='sr-only'>Toggle navigation</span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                </button>
+                <a class='navbar-brand' href='/'>
+                    <img alt='' height='45px' src='/assets/images/tyr.png'> <span>觅珠人</span>
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class='collapse navbar-collapse navbar-ex1-collapse'>
+
+                <ul class='nav navbar-nav navbar-right'>
+                    <li class="">
+                        <a href="/">首页</a>
+                    </li>
+                    
+                        
+                        <li
+                            about="/pages/posts.html"
+                            class=""
+                        >
+                            <a href="/pages/posts.html">
+                                文章随笔
+                            </a>
+                        </li>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                        <li
+                            about="/pages/canvases.html"
+                            class=""
+                        >
+                            <a href="/pages/canvases.html">
+                                奇思妙想
+                            </a>
+                        </li>
+                        
+                    
+                        
+                        <li
+                            about="/pages/aboutme.html"
+                            class=""
+                        >
+                            <a href="/pages/aboutme.html">
+                                关于我
+                            </a>
+                        </li>
+                        
+                    
+                    <!--
+                    <li>
+                        <a data-toggle='modal' href='#contactModal'>联系我</a>
+                    </li>
+                    -->
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+</div>
+
+<div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+
+<div class='container'>
+  <div class='row'>
+    <div class="col-md-3">
+      <div class="post-side-bar">
+        <div class="widget widget-cats tags">
+          <h4 class="widget-title">标签</h4>
+          <ul>
+          
+            <li><a href='/tags/thought.html'>thought</a></li>
+          
+          </ul>
+        </div>
+        <div class="widget widget-cats">
+          <h4 class="widget-title">
+            相关文章
+          </h4>
+          <ul>
+            
+            
+              <li><a href="/posts/2012-12-29-2013-things-to-do.html">2013要做的事</a></li>
+            
+              <li><a href="/posts/2013-01-25-bootstrap-a-new-web-app.html">后端工程师的逆袭：单枪匹马搭建一个新的Web App</a></li>
+            
+              <li><a href="/posts/2013-02-06-Making-a-next-generation-home-security-device.html">创建下一代家用防火墙vMars</a></li>
+            
+              <li><a href="/posts/2013-03-08-career-path-for-software-engineer.html">软件工程师的职业生涯</a></li>
+            
+              <li><a href="/posts/2013-05-09-why-every-developer-should-use-mac.html">why every developer should use mac</a></li>
+            
+              <li><a href="/posts/2013-07-27-the-remains-of-the-day.html">长日无痕</a></li>
+            
+            
+          </ul>
+        </div>
+      </div>
+    </div>      
+    <div class='col-md-9'>
+      <div class='post-single'>
+        <!--
+        <div class='pre-post-meta'>
+          <span>
+            <i class='icon-reorder'></i>
+            in
+            <a href='#'>Web Development</a>
+          </span>
+          <span>
+            <i class='icon-user'></i>
+            by
+            <a href='#'>Tyr Chen</a>
+          </span>
+          <span>
+            <i class='icon-bookmark'></i>
+            4 分钟
+          </span>
+        </div>
+        -->
+        <h1 class='has-sub-header'>Align/Fit杂谈</h1>
+        <div class='post-single-meta'>
+          <span class='meta-item'>
+            <i class='icon-calendar'></i>
+            9个月前
+          </span>
+          <!--
+          <span class='meta-item'>
+            <a href='#'>
+              <i class='icon-comments'></i>
+              24
+            </a>
+          </span>
+          <span class='meta-item'>
+            <a href='#'>
+              <i class='icon-heart'></i>
+              15
+            </a>
+          </span>
+          -->
+          <span class="meta-item">
+          	
+            <i class='icon-time'></i>
+            4 分钟
+          </span>
+        </div>
+        <p>上周见了一个半年多没见的朋友。他依旧是一套很朴素的打扮，衣服还是一两年前的，和他几十万年薪的身价一点都不符。这就是典型的engineer，外表和内在一点也不align。</p>
+<p>由是我想到了创业，工作及人生。于是就瞎写了这篇文章。</p>
+<!--more-->
+
+<h2>创业</h2>
+<p>创业其实就是一个不断寻求align的过程。</p>
+<p>做为founder，你的goal和co-founders的goal align，你们才能走到一起，才有了事业的起点。</p>
+<p>接下来找人。做为hiring manager，你要找到和公司/团队气质/文化align的人。这样才形成了团队。这个时候你并不需要最NB的人，而是最fit的人：他的经历/经验能够和你要解决的问题很好地align，无论是产品上，技术上还是运营上。</p>
+<p>团队有了，就能构建产品。产品必须和目标人群的问题或者说痛点align起来，产品才可能有人用。如何align？快速试错，快速小步调整。这是个循环，不断在align和re-align中痛苦摸索和前行。</p>
+<p>产品得到了某种程度的验证，获取了early adopter，接下来就是发展。发展需要钱。哥几个就算天天喝西北风，到这时也已近乎精尽人亡了。投资人是有钱的主儿，问题是你的拿钱的目的能否和投资人给钱的目的align。好在这时大家的目标相当align：增长！于是，钞票滚滚而来。</p>
+<p>有了钱你会发现比没钱时要更难过。因为花钱是一门大学问。俗话说把钱花到刀刃上，花出去的钱一定要和增长目标align。怎么align？很简单：</p>
+<ul>
+<li>A = (下轮融资所需数据-当前数据) / 每月新增的数据</li>
+<li>B = 当前所剩现金 / (月收入 - 月支出)</li>
+<li>A == B ??</li>
+</ul>
+<h2>求职</h2>
+<p>求职是件很有意思的事情。一边是就业者怀才不遇，慨伯乐不常有；另一边是招聘者蹉跎彷徨，叹千里马何处觅。说白了就是align/fit的问题。</p>
+<p>求职最要不得盲投。就业者将自己的简历如撒网般投向所有自己感兴趣的公司的HR信箱，叫盲投。盲投是典型的不align。分两种：</p>
+<ul>
+<li>JD/resume不align。你DB再NB，人家找的是FE，这怎么match？</li>
+<li>HR/candidate的目标不align。HR面对成千上万的简历，她的目标是快速排除不要的。你做为candidate，目标是拿到offer。不一致的目标下，被误杀的几率很大。尤其当她们进入关键字匹配模式时，瞳孔高度聚焦，满篇简历就只有那么几个词是清晰的，所以就算你拿过ACM，发过patent，如果这些不在关键词之列，照刷不误。</li>
+</ul>
+<p>求职最靠谱的途径是referral。无他，就是insider知道hiring manager究竟要招什么样的人，你是否fit，他先filter了一遍。当你被举荐过去的时候，你和hiring manager的goal就高度align了：适合这份工作的你要这份工作，而他要适合这份工作的人。</p>
+<h2>工作</h2>
+<p>在Juniper时，HR介绍过一个X model。就是说个人的职业历程和公司的发展是两条线，当两者交叉时，就是互相hire的机会。后面bla bla，与本文主题不符，略过几千字。</p>
+<p>所以不要认为公司hire你是给你机会，你同样也在给公司机会。</p>
+<p>所以，当你个人发展目标/速度与公司发展目标/速度不align时，公司会裁了你，无可厚非；当公司发展目标/速度与你个人目标/速度不align时，你可以炒了公司，天经地义。</p>
+<p>所以好的公司，如Google, Juniper会想尽一切办法为优秀人才提供发展的机会和空间，说白了就是将交叉产生的十字路口拓宽拓宽再拓宽。</p>
+<h2>人生</h2>
+<p>前些天和我的一个前老板聊起来，他说：一个男人能达到的高度由他背后的女人决定。我严重同意。这话可改改，成为普世原则：一个人能达到的高度由他的另一半决定。证明如下：</p>
+<ul>
+<li>你要创业。你媳妇说：你TM给我一边凉快去。于是你到一边凉快去了。本来你是上天指派的下一个盖子，但是你凉快去了。(1)</li>
+<li>你要创业。你媳妇说：你TM给我一边凉快去。你说我TM就要创。于是你义无反顾地跳下海。干劲十足的时候，媳妇冷眼旁观，说老娘看你TM还能坚持几天；垂头丧气的时候，媳妇冷冷一笑说你TM不是很能蹦哒么。几个回合下来，你fail掉了。本来你是上天指派的下一个jobs，但你只能去找工作了。(2)</li>
+<li>你要创业。你媳妇说：亲，我来养家。你甜蜜地创业去了。干劲十足的时候，媳妇给你摇旗呐喊，同时帮你冷静分析；垂头丧气时，媳妇还在摇旗呐喊，比你还坚信你能成功。你fail掉，媳妇说天将降大任于斯人也，说乘风破浪会有时。于是几个回合下来，你发现你成了下一个Abraham Lincoln。(3)</li>
+</ul>
+<p>综合(1)(2)(3)，证明完毕。你要与媳妇align，最好与家人都能align，方能大展宏图。委员长不总说攘外必先安内嘛。</p>
+<h2>后记</h2>
+<p>谨以此文献给创业616天来一直默默支持我的LP，没有你的支持，我撑不了这么久。:)</p>
+<p><img src="/assets/files/photos/baby20130203.jpg" alt="小宝和宝妈"></p>
+
+        <div class='under-post'>
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+                
+                  <div class='pull-left'>
+                    <a class='read-previous-link' href='/posts/2013-01-28-make-raspberry-pi-up-and-running.html'>
+                      <i class='icon-angle-left'></i>
+                      上一篇
+                    </a>
+                  </div>                  
+                
+                
+                  <div class='pull-right'>
+                    <a class='read-next-link' href='/posts/2013-02-04-teamspark-open-sourced.html'>
+                      下一篇
+                      <i class='icon-angle-right'></i>
+                    </a>
+                  </div>
+                         
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-facebook'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-twitter'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-linkedin'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+        </div>
+      </div>
+    </div>
+      
+  </div>
+  <div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+  
+  <div class="ds-thread">
+    <script>
+        var duoshuoQuery = {short_name:"tyrchen"};
+        (function() {
+          var ds = document.createElement('script');
+          ds.type = 'text/javascript';ds.async = true;
+          ds.src = 'http://static.duoshuo.com/embed.js';
+          ds.charset = 'UTF-8';
+          (document.getElementsByTagName('head')[0]
+          || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+  </div>
+
+</div>
+
+<footer id="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="footer-menu">
+                    <li><a href="/pages/privacy">隐私策略</a></li>
+                    <li><a href="/pages/license">版权说明</a></li>
+                    <li><a href="/pages/disclaimer">免责声明</a></li>
+                    <li><a href="#">联系我们</a></li>
+                </ul>
+                <div class="copyright">
+                    2013 &copy; Tyr Chen. 保留一切权利.
+                </div>
+            </div>
+            <div class="col-md-6">
+                <ul class="footer-social">
+                    <li><a href="#"><i class="icon-facebook"></i></a></li>
+                    <li><a href="#"><i class="icon-twitter"></i></a></li>
+                    <li><a href="#"><i class="icon-dribbble"></i></a></li>
+                    <li><a href="#"><i class="icon-linkedin"></i></a></li>
+                    <li><a href="#"><i class="icon-google-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- Scripts -->
+<script defer="defer"  src="/assets/js/jquery.js"></script><script defer="defer"  src="/assets/js/bootstrap.min.js"></script><script defer="defer"  src="/assets/js/jquery.visible.min.js"></script><script defer="defer"  src="/assets/js/jquery.isotope.min.js"></script><script defer="defer"  src="/assets/js/jquery.knob.js"></script><script defer="defer"  src="/assets/js/jquery.scrollUp.min.js"></script><script defer="defer"  src="/assets/js/highlight.pack.js"></script><script defer="defer"  src="/assets/js/application.js"></script>
+
+
+</body>
+
+</html>

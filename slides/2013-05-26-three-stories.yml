@@ -1,0 +1,74 @@
+layout: impress
+theme: simple
+title: Three Stories
+intro: <section><h1>Three Stories</h1></section>
+date: 2013-05-26 14:52
+tags: [culture]
+slides:
+  - y: -1000
+    jade: |
+      div(class="title")
+        h2 THREE STORIES
+        br
+        span(class="author")
+          i by
+          span(class="name")  <a href="http://weibo.com/tchen82">Tyr Chen</a>
+      
+  - x: 1000
+    y: -1000
+    rotate: 90
+    jade: |
+      p 1. Think <b>differently</b>
+      
+
+  - x: 500
+    y: -500
+    rotate: 90
+    scale: 0.2
+    jade: |
+      p Your assignments are ordinary
+      p but, you are <b>*UNIQUE*</b>
+
+  - x: 0
+    y: -2000
+    scale: 1
+    jade: |
+      embed(src="http://player.youku.com/player.php/sid/XMTU5NTg2NA==/v.swf",allowFullScreen="true", quality="high", width="800", height="640", align="middle", allowScriptAccess="always", type="application/x-shockwave-flash")
+
+  - x: 500
+    y: 500
+    jade: |
+      p 2. Embrace the <b>grey</b> areas
+      div
+        img(src="/assets/img/charts/grey_area1.png", height="300px", style="margin-right:10px")
+        img(src="/assets/img/charts/grey_area2.jpg", height="300px")
+
+
+  - x: 500
+    y: 500
+    z: -1000
+    scale: 0.05
+    jade: |
+      div
+        img(src="/assets/img/charts/stayhungry.jpg")
+
+  - x: 1000
+    y: 1000
+    rotate: 90
+    scale: 0.1
+    jade: |
+      p 3. Take <b>responsibilities</b>
+
+  - x: 1500
+    y: 1000
+    scale: 0.5
+    jade: |
+      img(src="/assets/img/charts/responsibility.jpg")
+
+
+  - x: 2000
+    y: 2000
+    scale: 0.2
+    jade: |
+      h1 Thanks
+      p Every engineer should use MAC

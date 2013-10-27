@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="本博客提供我个人的想法，创意，经验，心得。你不必认同博主观点。" />
+    <meta name="keywords" content="创业, 思想, 点子, 经验, python, erlang, node, javascript, 服务器, devops, meteor" />
+    <meta name="author" content="Tyr Chen" />
+
+    <!-- Output DocPad produced meta elements -->
+    
+
+    <!-- Styles -->
+    <link  rel="stylesheet" href="/assets/css/app.css" /><link  rel="stylesheet" href="/assets/css/animate.css" /><link  rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700|Yanone+Kaffeesatz:200,300,400,700|Raleway:200,300,400,500,700" /><link  rel="stylesheet" href="/assets/css/font-awesome.css" /><link  rel="stylesheet" href="/assets/css/solarized_dark.css" /><link  rel="stylesheet" href="/assets/css/theme.css" />
+
+    <link href="/assets/favicon.ico" rel="shortcut icon">
+    <link href="/assets/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    @javascript html5shiv respond.min
+    <![endif]-->
+
+    <title>进一步思考Atanasoff (Octopress client) (2) | 觅珠人 | Tyr Chen的个人博客 | 创意 | 心得 | 经验</title>
+
+</head>
+
+<body>
+
+<!-- Contact Modal -->
+<div aria-hidden='true' aria-labelledby='contactModalLabel' class='modal fade' id='contactModal' role='dialog' tabindex='-1'>
+    <div class='modal-dialog'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <button aria-hidden='true' class='close' data-dismiss='modal' type='button'>×</button>
+                <h4 class='modal-title'>Contact Us Form</h4>
+            </div>
+            <div class='modal-body'>
+                <form action='#' role='form'>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Name</label>
+                                <input class='form-control' placeholder='your username' type='text'>
+                            </div>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Email</label>
+                                <input class='form-control' placeholder='your password' type='text'>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-12'>
+                                <label class='control-label' for=''>Your Message</label>
+                                <textarea class='form-control' name='' rows='4'></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class='modal-footer'>
+                <button class='btn btn-default' data-dismiss='modal' type='button'>Cancel</button>
+                <button class='btn btn-primary' type='button'>Send Message</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="header-image-wrapper">
+  <img alt="" src="/assets/images/backgrounds/page-header-bg-1.jpg">
+</div>
+
+<div class='header-main'>
+    <div class='container'>
+        <nav class='navbar navbar-default' role='navigation'>
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class='navbar-header'>
+                <button class='navbar-toggle' data-target='.navbar-ex1-collapse' data-toggle='collapse' type='button'>
+                    <span class='sr-only'>Toggle navigation</span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                </button>
+                <a class='navbar-brand' href='/'>
+                    <img alt='' height='45px' src='/assets/images/tyr.png'> <span>觅珠人</span>
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class='collapse navbar-collapse navbar-ex1-collapse'>
+
+                <ul class='nav navbar-nav navbar-right'>
+                    <li class="">
+                        <a href="/">首页</a>
+                    </li>
+                    
+                        
+                        <li
+                            about="/pages/posts.html"
+                            class=""
+                        >
+                            <a href="/pages/posts.html">
+                                文章随笔
+                            </a>
+                        </li>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                        <li
+                            about="/pages/canvases.html"
+                            class=""
+                        >
+                            <a href="/pages/canvases.html">
+                                奇思妙想
+                            </a>
+                        </li>
+                        
+                    
+                        
+                        <li
+                            about="/pages/aboutme.html"
+                            class=""
+                        >
+                            <a href="/pages/aboutme.html">
+                                关于我
+                            </a>
+                        </li>
+                        
+                    
+                    <!--
+                    <li>
+                        <a data-toggle='modal' href='#contactModal'>联系我</a>
+                    </li>
+                    -->
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+</div>
+
+<div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+
+<div class='container'>
+  <div class='row'>
+    <div class="col-md-3">
+      <div class="post-side-bar">
+        <div class="widget widget-cats tags">
+          <h4 class="widget-title">标签</h4>
+          <ul>
+          
+            <li><a href='/tags/atanasoff.html'>atanasoff</a></li>
+          
+            <li><a href='/tags/technology.html'>technology</a></li>
+          
+          </ul>
+        </div>
+        <div class="widget widget-cats">
+          <h4 class="widget-title">
+            相关文章
+          </h4>
+          <ul>
+            
+            
+              <li><a href="/posts/2012-12-19-atanasoff-product-flow-chart.html">进一步思考Atanasoff (Octopress client) (1)</a></li>
+            
+              <li><a href="/posts/2013-04-25-engineering-environment-for-smart-team.html">自动化的高效团队开发环境</a></li>
+            
+              <li><a href="/posts/2013-02-18-sdn-elementatory-introduction.html">SDN浅谈</a></li>
+            
+              <li><a href="/posts/2013-02-21-openflow-introduction.html">Openflow简介</a></li>
+            
+              <li><a href="/posts/2013-04-08-trying-to-extract-the-thoughts-behind-lockitron.html">胡思乱想之Lockitron的技术架构</a></li>
+            
+              <li><a href="/posts/2012-12-18-octopress-client-a-better-composition-tool.html">产品随想：octopress客户端 —— Atanasoff</a></li>
+            
+              <li><a href="/posts/2013-06-10-use-scrapyd-to-serve-scrapy-projects.html">用scrapyd来提供crawler服务</a></li>
+            
+              <li><a href="/posts/2013-06-12-use-makefile-to-automate-deployment.html">使用Makefile自动化部署</a></li>
+            
+              <li><a href="/posts/2013-06-23-come-to-origin-for-embedded-applications.html">Come to Origins for Embedded Applications</a></li>
+            
+              <li><a href="/posts/2013-07-18-c-grammar-you-cannot-imagine.html">你无法想象的C语法</a></li>
+            
+              <li><a href="/posts/2013-07-22-why-should-c-programmers-learn-erlang.html">Why should C programmers learn Erlang?</a></li>
+            
+            
+          </ul>
+        </div>
+      </div>
+    </div>      
+    <div class='col-md-9'>
+      <div class='post-single'>
+        <!--
+        <div class='pre-post-meta'>
+          <span>
+            <i class='icon-reorder'></i>
+            in
+            <a href='#'>Web Development</a>
+          </span>
+          <span>
+            <i class='icon-user'></i>
+            by
+            <a href='#'>Tyr Chen</a>
+          </span>
+          <span>
+            <i class='icon-bookmark'></i>
+            6 分钟
+          </span>
+        </div>
+        -->
+        <h1 class='has-sub-header'>进一步思考Atanasoff (Octopress client) (2)</h1>
+        <div class='post-single-meta'>
+          <span class='meta-item'>
+            <i class='icon-calendar'></i>
+            10个月前
+          </span>
+          <!--
+          <span class='meta-item'>
+            <a href='#'>
+              <i class='icon-comments'></i>
+              24
+            </a>
+          </span>
+          <span class='meta-item'>
+            <a href='#'>
+              <i class='icon-heart'></i>
+              15
+            </a>
+          </span>
+          -->
+          <span class="meta-item">
+          	
+            <i class='icon-time'></i>
+            6 分钟
+          </span>
+        </div>
+        <p><a href="http://tchen.me/blog/2012/12/19/atanasoff-product-flow-chart/">之前的文章</a>把atanasoff的主要流程思考了一下，元旦期间考虑下atanasoff的实现。</p>
+<h2>交互</h2>
+<h3>整站结构</h3>
+<p><img src="/assets/files/charts/atanasoff-pages.jpg" alt="atanasoff整站结构"></p>
+<!--more-->
+
+<h3>主要页面元素</h3>
+<p><img src="/assets/files/charts/atanasoff-widgets.jpg" alt="atanasoff主要页面元素"></p>
+<h2>设计</h2>
+<h3>数据结构</h3>
+<h4>User</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">username</td>
+<td align="left">从github继承过来的username，不能修改</td>
+</tr>
+<tr>
+<td align="left">screen_name</td>
+<td align="left">从github继承过来，暂时不能修改</td>
+</tr>
+<tr>
+<td align="left">avatar</td>
+<td align="left">从github继承过来，暂时不能修改</td>
+</tr>
+<tr>
+<td align="left">total_blogs</td>
+<td align="left">博客总数</td>
+</tr>
+</tbody>
+</table>
+<h4>Blog</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">title</td>
+<td align="left">blog的title，与config中的title冗余</td>
+</tr>
+<tr>
+<td align="left">repo_name</td>
+<td align="left">github repo的名字</td>
+</tr>
+<tr>
+<td align="left">author</td>
+<td align="left">blog的作者</td>
+</tr>
+<tr>
+<td align="left">location</td>
+<td align="left">property. 该blog在磁盘中的路径</td>
+</tr>
+<tr>
+<td align="left">config</td>
+<td align="left">json-style配置文件，_config.yml的内部表现形式</td>
+</tr>
+<tr>
+<td align="left">locked</td>
+<td align="left">是否处于编辑状态</td>
+</tr>
+<tr>
+<td align="left">total_posts</td>
+<td align="left">文章总数</td>
+</tr>
+<tr>
+<td align="left">total_pages</td>
+<td align="left">页面总数</td>
+</tr>
+<tr>
+<td align="left">total_slides</td>
+<td align="left">演示文档总数</td>
+</tr>
+</tbody>
+</table>
+<h4>Post</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">title</td>
+<td align="left">post的title</td>
+</tr>
+<tr>
+<td align="left">location</td>
+<td align="left">property. 该post在磁盘中的路径</td>
+</tr>
+</tbody>
+</table>
+<h3>API (以 <code>/api/v1/</code> 开始)</h3>
+<h4>Blog</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Url</th>
+<th align="left">parameters</th>
+<th align="left">Functionality</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">/blogs/new/</td>
+<td align="left">P: repo_path, title</td>
+<td align="left">创建新的blog</td>
+</tr>
+<tr>
+<td align="left">/uname/blogs/</td>
+<td align="left">G: page</td>
+<td align="left">列出uname下的博客</td>
+</tr>
+<tr>
+<td align="left">/uname/bname/</td>
+<td align="left">G: type[post,page,slide]</td>
+<td align="left">列出bname下的文章</td>
+</tr>
+<tr>
+<td align="left">/uname/bname/config</td>
+<td align="left">G <br> PUT: config</td>
+<td align="left">获取或设置bname配置</td>
+</tr>
+</tbody>
+</table>
+<h4>Post</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Url</th>
+<th align="left">parameters</th>
+<th align="left">Functionality</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">/uname/bname/pname/</td>
+<td align="left">G <br> PUT: content</td>
+<td align="left">获取或设置文章正文</td>
+</tr>
+</tbody>
+</table>
+<h4>Activity</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Url</th>
+<th align="left">parameters</th>
+<th align="left">Functionality</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">/uname/activities/</td>
+<td align="left">G: page</td>
+<td align="left">列出uname下的活动</td>
+</tr>
+</tbody>
+</table>
+<h4>Web hooks</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Url</th>
+<th align="left">parameters</th>
+<th align="left">Functionality</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">/uname/bname/hook</td>
+<td align="left">: payload</td>
+<td align="left">generate博客</td>
+</tr>
+</tbody>
+</table>
+<p>需要学习下 <a href="https://help.github.com/articles/post-receive-hooks">Post-Receive Hooks</a>。</p>
+<h2>技术方案 (nodejs)</h2>
+<h3>Technical Stack</h3>
+<ul>
+<li>nginx做为web server</li>
+<li>express做为application server</li>
+<li>mongodb做为database server</li>
+<li>使用 <a href="https://github.com/visionmedia/mocha">mocha</a> 做BDD</li>
+<li>使用 <a href="http://jasny.github.com/bootstrap/index.html">jasny</a> 来bootstrap项目</li>
+<li>使用 <a href="http://jade-lang.com/">jade</a> 撰写模版</li>
+<li>使用 <a href="http://coffeescript.org">coffeescript</a> 写代码，<a href="http://lesscss.org">less</a> 写样式</li>
+</ul>
+<h3>依赖的库</h3>
+<ul>
+<li>github API和第三方登录：<a href="https://github.com/ajaxorg/node-github">node-github</a></li>
+<li>git lib用户提交代码和读取commit log：<a href="https://github.com/libgit2/node-gitteh">node-gitteh</a>。libgit2的nodejs binding。貌似现在不支持写入。</li>
+</ul>
+<h2>后记</h2>
+<p>元旦开工，但基本只有清晨和晚上有时间。争取3天下来做个能用的雏形。</p>
+<p>依旧例，上小宝照片一张。
+<img src="/assets/files/photos/baby20121231.jpg" alt="小宝"></p>
+
+        <div class='under-post'>
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+                
+                  <div class='pull-left'>
+                    <a class='read-previous-link' href='/posts/2012-12-29-2013-things-to-do.html'>
+                      <i class='icon-angle-left'></i>
+                      上一篇
+                    </a>
+                  </div>                  
+                
+                
+                  <div class='pull-right'>
+                    <a class='read-next-link' href='/posts/2013-01-06-io-lang.html'>
+                      下一篇
+                      <i class='icon-angle-right'></i>
+                    </a>
+                  </div>
+                         
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-facebook'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-twitter'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-linkedin'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+        </div>
+      </div>
+    </div>
+      
+  </div>
+  <div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+  
+  <div class="ds-thread">
+    <script>
+        var duoshuoQuery = {short_name:"tyrchen"};
+        (function() {
+          var ds = document.createElement('script');
+          ds.type = 'text/javascript';ds.async = true;
+          ds.src = 'http://static.duoshuo.com/embed.js';
+          ds.charset = 'UTF-8';
+          (document.getElementsByTagName('head')[0]
+          || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+  </div>
+
+</div>
+
+<footer id="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="footer-menu">
+                    <li><a href="/pages/privacy">隐私策略</a></li>
+                    <li><a href="/pages/license">版权说明</a></li>
+                    <li><a href="/pages/disclaimer">免责声明</a></li>
+                    <li><a href="#">联系我们</a></li>
+                </ul>
+                <div class="copyright">
+                    2013 &copy; Tyr Chen. 保留一切权利.
+                </div>
+            </div>
+            <div class="col-md-6">
+                <ul class="footer-social">
+                    <li><a href="#"><i class="icon-facebook"></i></a></li>
+                    <li><a href="#"><i class="icon-twitter"></i></a></li>
+                    <li><a href="#"><i class="icon-dribbble"></i></a></li>
+                    <li><a href="#"><i class="icon-linkedin"></i></a></li>
+                    <li><a href="#"><i class="icon-google-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- Scripts -->
+<script defer="defer"  src="/assets/js/jquery.js"></script><script defer="defer"  src="/assets/js/bootstrap.min.js"></script><script defer="defer"  src="/assets/js/jquery.visible.min.js"></script><script defer="defer"  src="/assets/js/jquery.isotope.min.js"></script><script defer="defer"  src="/assets/js/jquery.knob.js"></script><script defer="defer"  src="/assets/js/jquery.scrollUp.min.js"></script><script defer="defer"  src="/assets/js/highlight.pack.js"></script><script defer="defer"  src="/assets/js/application.js"></script>
+
+
+</body>
+
+</html>

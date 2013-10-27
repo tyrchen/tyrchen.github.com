@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="本博客提供我个人的想法，创意，经验，心得。你不必认同博主观点。" />
+    <meta name="keywords" content="创业, 思想, 点子, 经验, python, erlang, node, javascript, 服务器, devops, meteor" />
+    <meta name="author" content="Tyr Chen" />
+
+    <!-- Output DocPad produced meta elements -->
+    
+
+    <!-- Styles -->
+    <link  rel="stylesheet" href="/assets/css/app.css" /><link  rel="stylesheet" href="/assets/css/animate.css" /><link  rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700|Yanone+Kaffeesatz:200,300,400,700|Raleway:200,300,400,500,700" /><link  rel="stylesheet" href="/assets/css/font-awesome.css" /><link  rel="stylesheet" href="/assets/css/solarized_dark.css" /><link  rel="stylesheet" href="/assets/css/theme.css" />
+
+    <link href="/assets/favicon.ico" rel="shortcut icon">
+    <link href="/assets/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    @javascript html5shiv respond.min
+    <![endif]-->
+
+    <title>自动化的高效团队开发环境 | 觅珠人 | Tyr Chen的个人博客 | 创意 | 心得 | 经验</title>
+
+</head>
+
+<body>
+
+<!-- Contact Modal -->
+<div aria-hidden='true' aria-labelledby='contactModalLabel' class='modal fade' id='contactModal' role='dialog' tabindex='-1'>
+    <div class='modal-dialog'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <button aria-hidden='true' class='close' data-dismiss='modal' type='button'>×</button>
+                <h4 class='modal-title'>Contact Us Form</h4>
+            </div>
+            <div class='modal-body'>
+                <form action='#' role='form'>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Name</label>
+                                <input class='form-control' placeholder='your username' type='text'>
+                            </div>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Email</label>
+                                <input class='form-control' placeholder='your password' type='text'>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-12'>
+                                <label class='control-label' for=''>Your Message</label>
+                                <textarea class='form-control' name='' rows='4'></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class='modal-footer'>
+                <button class='btn btn-default' data-dismiss='modal' type='button'>Cancel</button>
+                <button class='btn btn-primary' type='button'>Send Message</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="header-image-wrapper">
+  <img alt="" src="/assets/files/posts/automation.jpg">
+</div>
+
+<div class='header-main'>
+    <div class='container'>
+        <nav class='navbar navbar-default' role='navigation'>
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class='navbar-header'>
+                <button class='navbar-toggle' data-target='.navbar-ex1-collapse' data-toggle='collapse' type='button'>
+                    <span class='sr-only'>Toggle navigation</span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                </button>
+                <a class='navbar-brand' href='/'>
+                    <img alt='' height='45px' src='/assets/images/tyr.png'> <span>觅珠人</span>
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class='collapse navbar-collapse navbar-ex1-collapse'>
+
+                <ul class='nav navbar-nav navbar-right'>
+                    <li class="">
+                        <a href="/">首页</a>
+                    </li>
+                    
+                        
+                        <li
+                            about="/pages/posts.html"
+                            class=""
+                        >
+                            <a href="/pages/posts.html">
+                                文章随笔
+                            </a>
+                        </li>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                        <li
+                            about="/pages/canvases.html"
+                            class=""
+                        >
+                            <a href="/pages/canvases.html">
+                                奇思妙想
+                            </a>
+                        </li>
+                        
+                    
+                        
+                        <li
+                            about="/pages/aboutme.html"
+                            class=""
+                        >
+                            <a href="/pages/aboutme.html">
+                                关于我
+                            </a>
+                        </li>
+                        
+                    
+                    <!--
+                    <li>
+                        <a data-toggle='modal' href='#contactModal'>联系我</a>
+                    </li>
+                    -->
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+</div>
+
+<div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+
+<div class='container'>
+  <div class='row'>
+    <div class="col-md-3">
+      <div class="post-side-bar">
+        <div class="widget widget-cats tags">
+          <h4 class="widget-title">标签</h4>
+          <ul>
+          
+            <li><a href='/tags/startup.html'>startup</a></li>
+          
+            <li><a href='/tags/technology.html'>technology</a></li>
+          
+            <li><a href='/tags/automation.html'>automation</a></li>
+          
+          </ul>
+        </div>
+        <div class="widget widget-cats">
+          <h4 class="widget-title">
+            相关文章
+          </h4>
+          <ul>
+            
+            
+              <li><a href="/canvases/2013-04-04-lean-canvas-example.html">Lean Canvas Example</a></li>
+            
+              <li><a href="/posts/2012-12-18-octopress-client-a-better-composition-tool.html">产品随想：octopress客户端 —— Atanasoff</a></li>
+            
+              <li><a href="/posts/2012-12-31-atanasoff-product-design.html">进一步思考Atanasoff (Octopress client) (2)</a></li>
+            
+              <li><a href="/posts/2013-01-09-auto-deploy-with-github-webhooks.html">用Github Webhooks实现自动部署</a></li>
+            
+              <li><a href="/posts/2013-01-25-bootstrap-a-new-web-app.html">后端工程师的逆袭：单枪匹马搭建一个新的Web App</a></li>
+            
+              <li><a href="/posts/2013-02-06-Making-a-next-generation-home-security-device.html">创建下一代家用防火墙vMars</a></li>
+            
+              <li><a href="/posts/2013-02-18-sdn-elementatory-introduction.html">SDN浅谈</a></li>
+            
+              <li><a href="/posts/2013-02-21-openflow-introduction.html">Openflow简介</a></li>
+            
+              <li><a href="/posts/2013-04-08-trying-to-extract-the-thoughts-behind-lockitron.html">胡思乱想之Lockitron的技术架构</a></li>
+            
+              <li><a href="/posts/2013-06-10-use-scrapyd-to-serve-scrapy-projects.html">用scrapyd来提供crawler服务</a></li>
+            
+              <li><a href="/posts/2013-06-12-use-makefile-to-automate-deployment.html">使用Makefile自动化部署</a></li>
+            
+              <li><a href="/posts/2013-06-21-entrepreneurship-in-bay-area.html">湾区创业者</a></li>
+            
+              <li><a href="/posts/2013-06-23-come-to-origin-for-embedded-applications.html">Come to Origins for Embedded Applications</a></li>
+            
+              <li><a href="/posts/2013-07-18-c-grammar-you-cannot-imagine.html">你无法想象的C语法</a></li>
+            
+              <li><a href="/posts/2013-07-22-why-should-c-programmers-learn-erlang.html">Why should C programmers learn Erlang?</a></li>
+            
+            
+          </ul>
+        </div>
+      </div>
+    </div>      
+    <div class='col-md-9'>
+      <div class='post-single'>
+        <!--
+        <div class='pre-post-meta'>
+          <span>
+            <i class='icon-reorder'></i>
+            in
+            <a href='#'>Web Development</a>
+          </span>
+          <span>
+            <i class='icon-user'></i>
+            by
+            <a href='#'>Tyr Chen</a>
+          </span>
+          <span>
+            <i class='icon-bookmark'></i>
+            5 分钟
+          </span>
+        </div>
+        -->
+        <h1 class='has-sub-header'>自动化的高效团队开发环境</h1>
+        <div class='post-single-meta'>
+          <span class='meta-item'>
+            <i class='icon-calendar'></i>
+            6个月前
+          </span>
+          <!--
+          <span class='meta-item'>
+            <a href='#'>
+              <i class='icon-comments'></i>
+              24
+            </a>
+          </span>
+          <span class='meta-item'>
+            <a href='#'>
+              <i class='icon-heart'></i>
+              15
+            </a>
+          </span>
+          -->
+          <span class="meta-item">
+          	
+            <i class='icon-time'></i>
+            5 分钟
+          </span>
+        </div>
+        <h2>引子</h2>
+<p>这两天无意翻到几个月前的Evernote笔记，看到了当时对团队开发环境的一些想法。可惜后来种种，这一想法未能得到实践，只能将其完善后公诸于众，立此存照，日后有空可以一试。</p>
+<p>考虑这套开发环境是因为我们遇到了这些问题：</p>
+<ol>
+<li>开发人员的环境并不统一：dev在osx，ubuntu 11.10和ubuntu 12.04上工作，而ux在windows下工作，协调，解决问题不太方便，尤其是一个bug在A的系统出现，却在自己的环境下无法复用。</li>
+<li>无法即刻搭建和线上同版本的环境，解决线上问题。小团队节奏很快，当前的工作目录可能和线上版本差几天的代码（diff可能已经是巨量），所以当线上出问题时，將工作环境切换过去非常耗时（尤其是数据库发生变化时）。</li>
+<li>为新员工构建开发环境耗时且问题重重。这和第一点有些类似，即在ubuntu下工作的构建开发环境的流程在osx下会break。尤其是后期我们不断有开发人员转换系统到osx下。</li>
+</ol>
+<p>当时正好看到一篇关于 <a href="http://vagrantup.com">vagrant</a> 的文章，感觉这正是我想要的救命稻草。</p>
+<!--more-->
+
+<h2>理想的开发环境</h2>
+<p>我心目中理想的开发环境应该是这样子的：</p>
+<ul>
+<li>编辑环境和运行/测试环境分离。这意味着开发人员，不管是dev还是ux，可以使用任何她喜欢的系统进行内容的编辑，而其产出可以无缝地运行在另一个统一的环境。无缝是很重要的体验，如果分离意味着在两个系统显示地频繁切换，那还不如不分离；在此基础上的统一的环境则让大家在同一个上下文中交流。</li>
+<li>开发人员可以同时工作在好几个版本下。在途客圈，一个relase（或者一个scrum）以两周为周期，一周开发，一周测试，然后就上线，如图所示：
+<img src="/assets/files/charts/tukeq_iteration.jpg" alt="tukeq iteration"><br/>
+这意味着在任何一周，开发人员同时工作在3个不同的branch上，以week 3第一天为例：Dalian已经部署到线上，Edingburgh交付测试，而Florence正在开发中。开发人员能够无痛地在这三个环境中任意切换，就像任务调度一样，保存上下文，切换到另一个branch，开始工作。作为小团队，我们不希望甚至不可能将有限的人员切成三份来运作，所以应该通过工具支持这种开发状态。</li>
+<li>能很好地支持持续集成。<code>travis-ci.org</code> 跑跑开源项目还可以，但商业项目就免了，而且其每次构建都rebuild整套环境这个效率太低。</li>
+</ul>
+<h2>构建理想的开发环境</h2>
+<p>存在的问题和期望的解决方案已经摆出来了，接下来就是如何实现的问题。这种场景是典型的虚拟机大展拳脚的地方，VmWare会很欣慰地摆出VDI + vSphere的解决方案。不过小团队人少钱紧，自然只能寻找免费的替代品，即之前提到的 <code>vagrant</code>。</p>
+<h3>什么是vagrant?</h3>
+<p>我对它的不太确切的理解是：一套自动化创建，部署和使用虚拟机的工具。<code>vagrant</code> 原生支持 <code>virtualbox</code>，这就足够了。通过一系列CLI命令，我们可以很方便地操作虚拟机。</p>
+<ul>
+<li>创建并运行虚拟机：<pre><code>  $ vagrant box add lucid32 http://files.vagrantup.com/lucid32.box
+  $ vagrant init lucid32
+  $ vagrant up</code></pre>
+</li>
+<li>登入虚拟机：<pre><code>  $ vagrant ssh</code></pre>
+</li>
+<li>打包虚拟机：<pre><code>  $ vagrant package --vagrantfile Vagrantfile.pkg</code></pre>
+</li>
+</ul>
+<p>更详细的 <code>vagrant</code> 使用说明请参考其 <a href="http://docs-v1.vagrantup.com/v1/docs/getting-started/index.html">文档</a>，这里就不详细介绍。</p>
+<h3>如何使用Vagrant构建理想的开发环境</h3>
+<p>在这个模型中，大家交流的基础是虚拟机。虚拟机随时被创建，随时又销毁，有一个box服务器 <code>vagrant repo</code> 来统一存储所有box并提供上传/下载服务。box服务器提供两类box：</p>
+<ul>
+<li>基准box。每天半夜从github pull相应branch的代码，并辅以对应的database，自动打包成一个基准box。每个活跃的branch每天都会有一个新的基准box。基准box保存一周足矣。大家新的一天工作的基础是基准box。</li>
+<li>PR box。解决线上问题时，和QA，CI交流使用的box。</li>
+</ul>
+<p>任意一个box都是一个沙箱，它包含和线上环境同版本的操作系统，运行环境。同时里面有对应branch的代码库和数据库。数据库采用线上数据库的一个子集，可以让系统正常运行即可。box和用户的host OS间可以共享目录，比如说代码的目录，这样可以让用户通过host OS上的个性化编辑环境撰写代码。此外，box里的port和host OS的port要能一一映射，这样用户完全具有本地的测试体验。</p>
+<p>详细的环境和工作场景参见下图：</p>
+<p><img src="/assets/files/charts/environment.jpg" alt="dev environment"></p>
+<h3>适用场景</h3>
+<p>这样的开发环境能满足本地办公团队，甚至远程办公团队的需要。</p>
+<ul>
+<li>同一个地点办公的团队，<code>vagrant repo</code> 服务器可以放在本地，以获得最好的下载速度。</li>
+<li>异地办公或者服务于开源项目的松散团队，可以把 <code>bagrant repo</code> 放在一个公网服务器，让参与者都能访问（安全性不在本文讨论）。访问速度的问题可以通过本地缓存来解决，这样在多人下载同一个box时会有近乎本地访问的体验。</li>
+</ul>
+<h2>免责声明</h2>
+<p>如引文所述，本文想法尚未来得及实践，所以不保证能正常运行，所以 &quot;try it at your own risk&quot;。笔者个人觉得这个想法的靠谱率在 90% 以上。</p>
+<p>送上小宝的近照一张：</p>
+<p><img src="/assets/files/photos/baby20130427.jpg" alt="小宝近期照片"></p>
+
+        <div class='under-post'>
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+                
+                  <div class='pull-left'>
+                    <a class='read-previous-link' href='/posts/2013-04-08-trying-to-extract-the-thoughts-behind-lockitron.html'>
+                      <i class='icon-angle-left'></i>
+                      上一篇
+                    </a>
+                  </div>                  
+                
+                
+                  <div class='pull-right'>
+                    <a class='read-next-link' href='/posts/2013-05-09-why-every-developer-should-use-mac.html'>
+                      下一篇
+                      <i class='icon-angle-right'></i>
+                    </a>
+                  </div>
+                         
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-facebook'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-twitter'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-linkedin'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+        </div>
+      </div>
+    </div>
+      
+  </div>
+  <div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+  
+  <div class="ds-thread">
+    <script>
+        var duoshuoQuery = {short_name:"tyrchen"};
+        (function() {
+          var ds = document.createElement('script');
+          ds.type = 'text/javascript';ds.async = true;
+          ds.src = 'http://static.duoshuo.com/embed.js';
+          ds.charset = 'UTF-8';
+          (document.getElementsByTagName('head')[0]
+          || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+  </div>
+
+</div>
+
+<footer id="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="footer-menu">
+                    <li><a href="/pages/privacy">隐私策略</a></li>
+                    <li><a href="/pages/license">版权说明</a></li>
+                    <li><a href="/pages/disclaimer">免责声明</a></li>
+                    <li><a href="#">联系我们</a></li>
+                </ul>
+                <div class="copyright">
+                    2013 &copy; Tyr Chen. 保留一切权利.
+                </div>
+            </div>
+            <div class="col-md-6">
+                <ul class="footer-social">
+                    <li><a href="#"><i class="icon-facebook"></i></a></li>
+                    <li><a href="#"><i class="icon-twitter"></i></a></li>
+                    <li><a href="#"><i class="icon-dribbble"></i></a></li>
+                    <li><a href="#"><i class="icon-linkedin"></i></a></li>
+                    <li><a href="#"><i class="icon-google-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- Scripts -->
+<script defer="defer"  src="/assets/js/jquery.js"></script><script defer="defer"  src="/assets/js/bootstrap.min.js"></script><script defer="defer"  src="/assets/js/jquery.visible.min.js"></script><script defer="defer"  src="/assets/js/jquery.isotope.min.js"></script><script defer="defer"  src="/assets/js/jquery.knob.js"></script><script defer="defer"  src="/assets/js/jquery.scrollUp.min.js"></script><script defer="defer"  src="/assets/js/highlight.pack.js"></script><script defer="defer"  src="/assets/js/application.js"></script>
+
+
+</body>
+
+</html>

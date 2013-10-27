@@ -1,0 +1,54 @@
+layout: impress
+theme: simple
+title: 我第一个impress.js演示稿
+intro: <section><h1>我第一个impress.js演示稿</h1></section>
+date: 2013-01-26 18:54
+tags: [impress]
+slides:
+  - y: -1500
+    classes: ['slide']
+    jade: |
+      h2 这是impress.js的测试文稿
+      p 头两页是传统的演示效果
+  - x: 1000
+    y: -1500
+    classes: ['slide']
+    jade: |
+      h2 我们总是喜欢这么写
+      ul
+        li 这是第一点
+        li 这是第二点
+        li 这是第三点
+      p.center.big 是不是很boring
+      p.center 想换个口味？？
+
+  - y: 0
+    scale: 4
+    jade: |
+      span.try You can try
+      h1 impress.js
+
+  - x: 1000
+    y: 4000
+    rotate: 90
+    scale: 5
+    jade: |
+      p 这是个NB的presentation tool
+      p 使用html/css3创造出媲美
+        a(href="http://prezi.com") prezi
+        | 的好东东
+
+  - x: 4000
+    y: 4000
+    rotate: 180
+    scale: 6
+    jade: |
+      p 更好地展现你的<br/><b>伟大想法</b>
+
+  - x: 5000
+    y: 3700
+    z: -3000
+    rotate: 300
+    scale: 1
+    jade: |
+      p 和那些微不足道，但同样动人的点子

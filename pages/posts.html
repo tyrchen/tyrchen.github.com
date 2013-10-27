@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="本博客提供我个人的想法，创意，经验，心得。你不必认同博主观点。" />
+    <meta name="keywords" content="创业, 思想, 点子, 经验, python, erlang, node, javascript, 服务器, devops, meteor" />
+    <meta name="author" content="Tyr Chen" />
+
+    <!-- Output DocPad produced meta elements -->
+    
+
+    <!-- Styles -->
+    <link  rel="stylesheet" href="/assets/css/app.css" /><link  rel="stylesheet" href="/assets/css/animate.css" /><link  rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700|Yanone+Kaffeesatz:200,300,400,700|Raleway:200,300,400,500,700" /><link  rel="stylesheet" href="/assets/css/font-awesome.css" /><link  rel="stylesheet" href="/assets/css/solarized_dark.css" /><link  rel="stylesheet" href="/assets/css/theme.css" />
+
+    <link href="/assets/favicon.ico" rel="shortcut icon">
+    <link href="/assets/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    @javascript html5shiv respond.min
+    <![endif]-->
+
+    <title>文章随笔 | 觅珠人 | Tyr Chen的个人博客 | 创意 | 心得 | 经验</title>
+
+</head>
+
+<body>
+
+<!-- Contact Modal -->
+<div aria-hidden='true' aria-labelledby='contactModalLabel' class='modal fade' id='contactModal' role='dialog' tabindex='-1'>
+    <div class='modal-dialog'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <button aria-hidden='true' class='close' data-dismiss='modal' type='button'>×</button>
+                <h4 class='modal-title'>Contact Us Form</h4>
+            </div>
+            <div class='modal-body'>
+                <form action='#' role='form'>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Name</label>
+                                <input class='form-control' placeholder='your username' type='text'>
+                            </div>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Email</label>
+                                <input class='form-control' placeholder='your password' type='text'>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-12'>
+                                <label class='control-label' for=''>Your Message</label>
+                                <textarea class='form-control' name='' rows='4'></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class='modal-footer'>
+                <button class='btn btn-default' data-dismiss='modal' type='button'>Cancel</button>
+                <button class='btn btn-primary' type='button'>Send Message</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class='header-main'>
+    <div class='container'>
+        <nav class='navbar navbar-default' role='navigation'>
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class='navbar-header'>
+                <button class='navbar-toggle' data-target='.navbar-ex1-collapse' data-toggle='collapse' type='button'>
+                    <span class='sr-only'>Toggle navigation</span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                </button>
+                <a class='navbar-brand' href='/'>
+                    <img alt='' height='45px' src='/assets/images/tyr.png'> <span>觅珠人</span>
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class='collapse navbar-collapse navbar-ex1-collapse'>
+
+                <ul class='nav navbar-nav navbar-right'>
+                    <li class="">
+                        <a href="/">首页</a>
+                    </li>
+                    
+                        
+                        <li
+                            about="/pages/posts.html"
+                            class="active"
+                        >
+                            <a href="/pages/posts.html">
+                                文章随笔
+                            </a>
+                        </li>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                        <li
+                            about="/pages/canvases.html"
+                            class=""
+                        >
+                            <a href="/pages/canvases.html">
+                                奇思妙想
+                            </a>
+                        </li>
+                        
+                    
+                        
+                        <li
+                            about="/pages/aboutme.html"
+                            class=""
+                        >
+                            <a href="/pages/aboutme.html">
+                                关于我
+                            </a>
+                        </li>
+                        
+                    
+                    <!--
+                    <li>
+                        <a data-toggle='modal' href='#contactModal'>联系我</a>
+                    </li>
+                    -->
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+</div>
+
+<div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+
+<div class='container'>
+
+    
+        <div class='row post-loop'>
+  <div class='col-md-2 col-md-offset-1'>
+    <div class='post-loop-author-info'>
+      <div class='author-avatar'>
+        <img alt='' src='/assets/images/tyr.png'>
+      </div>
+      <div class='author-meta'>
+        <h4 class='author-name'>Tyr Chen</h4>
+        <i class='icon-calendar'></i>
+        3个月前
+      </div>
+    </div>
+  </div>
+  <div class='col-md-8'>
+    <div class='post-loop-content'>
+      <h2 class='has-sub-header'>
+        <a href='/posts/2013-07-27-the-remains-of-the-day.html'>长日无痕</a>
+      </h2>
+      <div class='post-loop-meta'>
+        <span class='hidden-mobile-ib tags'>
+          <i class='icon-reorder'></i>
+          
+            <a href='/tags/thought.html'>thought</a>
+          
+            <a href='/tags/career.html'>career</a>
+          
+        </span>
+        <span>
+          <i class='icon-time'></i>
+          17 分钟
+        </span>
+        <!--
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-comments'></i>
+            24
+          </a>
+        </span>
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-heart'></i>
+            15
+          </a>
+        </span>
+        -->
+      </div>
+      <p>又是一个闷热的周六，灰霾就像粘在天空一样，依旧笼罩着这个城市。带着小宝，我们三人游荡在蓝色港湾的儿童城中，为小家伙的未来打算着。老婆和丈母娘穿梭于一个又一个玩具店，而我，因为推着童车，不便走来走去，就带着小宝静静地欣赏楼下冰场里玩耍的孩子们。很快，我们的注意力就被冰场上两个正在进行对抗训练的小男孩吸引住了。小宝快乐地随着冰球转动脖子，双眼紧紧地捕捉着黑色的冰球，不时发出愉悦的『喝彩』；而我，默默地看着两位『男子汉』一次次跌倒，又一次次爬起，对抗虽然异常激烈，但任何一方都没有脏动作，这足以让真正的冰球赛场上的成年人汗颜。</p>
+
+      <div class='under-post'>
+        <div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-facebook'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-twitter'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-linkedin'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+      </div>
+      <br/>
+      <div class='slogan-buttons'>
+          <a class='btn btn-primary btn-cta btn-lg animated-when-hover' data-animation-type="swing" href='/posts/2013-07-27-the-remains-of-the-day.html'>
+              继续阅读 ->
+          </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+        <div class='row post-loop'>
+  <div class='col-md-2 col-md-offset-1'>
+    <div class='post-loop-author-info'>
+      <div class='author-avatar'>
+        <img alt='' src='/assets/images/tyr.png'>
+      </div>
+      <div class='author-meta'>
+        <h4 class='author-name'>Tyr Chen</h4>
+        <i class='icon-calendar'></i>
+        3个月前
+      </div>
+    </div>
+  </div>
+  <div class='col-md-8'>
+    <div class='post-loop-content'>
+      <h2 class='has-sub-header'>
+        <a href='/posts/2013-07-22-why-should-c-programmers-learn-erlang.html'>Why should C programmers learn Erlang?</a>
+      </h2>
+      <div class='post-loop-meta'>
+        <span class='hidden-mobile-ib tags'>
+          <i class='icon-reorder'></i>
+          
+            <a href='/tags/erlang.html'>erlang</a>
+          
+            <a href='/tags/lang.html'>lang</a>
+          
+            <a href='/tags/technology.html'>technology</a>
+          
+        </span>
+        <span>
+          <i class='icon-time'></i>
+          47 分钟
+        </span>
+        <!--
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-comments'></i>
+            24
+          </a>
+        </span>
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-heart'></i>
+            15
+          </a>
+        </span>
+        -->
+      </div>
+      <p>If somebody says X language is better than Y language, usually there will be a fierce quarrel between two sides. If you&#39;re using certain language for a long time, you will be the evangelist of that language, and try to protect it unconsciously. Admitted or not, you have been trapped in a tunnel, that what you can see is constraint greatly. &quot;The Shawshank Redemption&quot; gives a good footnote on it:</p>
+<p><img src="/assets/files/snapshots/institutionalized.jpg" alt="institutionalized"></p>
+<blockquote>
+<p>[Red] These walls are funny. First you hate &#39;em, then you get used to &#39;em. Enough time passes, you get so you depend on them. That&#39;s institutionalized.</p>
+</blockquote>
+<p>So before we&#39;re institutionalized too deep, let&#39;s learn something completely different - a language that not derived from C family, a language that leads you to a totally different mindset.</p>
+<p>Erlang seems to be a good candidate.</p>
+
+      <div class='under-post'>
+        <div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-facebook'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-twitter'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-linkedin'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+      </div>
+      <br/>
+      <div class='slogan-buttons'>
+          <a class='btn btn-primary btn-cta btn-lg animated-when-hover' data-animation-type="swing" href='/posts/2013-07-22-why-should-c-programmers-learn-erlang.html'>
+              继续阅读 ->
+          </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+        <div class='row post-loop'>
+  <div class='col-md-2 col-md-offset-1'>
+    <div class='post-loop-author-info'>
+      <div class='author-avatar'>
+        <img alt='' src='/assets/images/tyr.png'>
+      </div>
+      <div class='author-meta'>
+        <h4 class='author-name'>Tyr Chen</h4>
+        <i class='icon-calendar'></i>
+        3个月前
+      </div>
+    </div>
+  </div>
+  <div class='col-md-8'>
+    <div class='post-loop-content'>
+      <h2 class='has-sub-header'>
+        <a href='/posts/2013-07-18-c-grammar-you-cannot-imagine.html'>你无法想象的C语法</a>
+      </h2>
+      <div class='post-loop-meta'>
+        <span class='hidden-mobile-ib tags'>
+          <i class='icon-reorder'></i>
+          
+            <a href='/tags/c.html'>c</a>
+          
+            <a href='/tags/lang.html'>lang</a>
+          
+            <a href='/tags/technology.html'>technology</a>
+          
+        </span>
+        <span>
+          <i class='icon-time'></i>
+          9 分钟
+        </span>
+        <!--
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-comments'></i>
+            24
+          </a>
+        </span>
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-heart'></i>
+            15
+          </a>
+        </span>
+        -->
+      </div>
+      <p>看了berkeley网站上的文章<a href="http://www.cs.berkeley.edu/~necula/cil/cil016.html">Who Says C is Simple?</a>，顿感汗流浃背。如果招聘官按照这个题目去面试，我也就将将五十分。不过话说回来，这里所列的case都太偏门，走的是圣火令的武功路数，真正做工程的这么写代码就是欠揍。</p>
+<p>但是抱着学语言的态度，这里的题目如果你不懂都值得深究。我研究了下第四题 —— 这是让我比较困惑的一题。</p>
+<pre><code>// Functions and function pointers are implicitly converted to each other.
+int (*pf)(void);
+int f(void) {
+
+   pf = &amp;f; // This looks ok
+   pf = ***f; // Dereference a function?
+   pf(); // Invoke a function pointer?     
+   (****pf)();  // Looks strange but Ok
+   (***************f)(); // Also Ok             
+}</code></pre>
+
+      <div class='under-post'>
+        <div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-facebook'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-twitter'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-linkedin'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+      </div>
+      <br/>
+      <div class='slogan-buttons'>
+          <a class='btn btn-primary btn-cta btn-lg animated-when-hover' data-animation-type="swing" href='/posts/2013-07-18-c-grammar-you-cannot-imagine.html'>
+              继续阅读 ->
+          </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+        <div class='row post-loop'>
+  <div class='col-md-2 col-md-offset-1'>
+    <div class='post-loop-author-info'>
+      <div class='author-avatar'>
+        <img alt='' src='/assets/images/tyr.png'>
+      </div>
+      <div class='author-meta'>
+        <h4 class='author-name'>Tyr Chen</h4>
+        <i class='icon-calendar'></i>
+        4个月前
+      </div>
+    </div>
+  </div>
+  <div class='col-md-8'>
+    <div class='post-loop-content'>
+      <h2 class='has-sub-header'>
+        <a href='/posts/2013-06-23-come-to-origin-for-embedded-applications.html'>Come to Origins for Embedded Applications</a>
+      </h2>
+      <div class='post-loop-meta'>
+        <span class='hidden-mobile-ib tags'>
+          <i class='icon-reorder'></i>
+          
+            <a href='/tags/architecture.html'>architecture</a>
+          
+            <a href='/tags/technology.html'>technology</a>
+          
+        </span>
+        <span>
+          <i class='icon-time'></i>
+          18 分钟
+        </span>
+        <!--
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-comments'></i>
+            24
+          </a>
+        </span>
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-heart'></i>
+            15
+          </a>
+        </span>
+        -->
+      </div>
+      <p>Recently I did a web application to make easy GNATS report for my team. I use scrapy to crawl the GNATS web pages for people&#39;s issues every 4 hours, then add the crawled data into mongodb. A set of simple-to-use RESTful APIs written with nodejs can provide easy access to the data (<a href="http://api.jcnrd.us/gnats/tchen.json">try it out</a>, but only viewable internally in Juniper). Then a django application consumes the APIs and wraps them into a not-so-bad user interface, thanks to twitter bootstrap and a set of javascript frameworks and libraries. You can look at the ultimate application here: <a href="http://gnats.jcnrd.us/groups/branch-team/">GNATS report system</a>.</p>
+
+      <div class='under-post'>
+        <div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-facebook'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-twitter'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-linkedin'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+      </div>
+      <br/>
+      <div class='slogan-buttons'>
+          <a class='btn btn-primary btn-cta btn-lg animated-when-hover' data-animation-type="swing" href='/posts/2013-06-23-come-to-origin-for-embedded-applications.html'>
+              继续阅读 ->
+          </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+        <div class='row post-loop'>
+  <div class='col-md-2 col-md-offset-1'>
+    <div class='post-loop-author-info'>
+      <div class='author-avatar'>
+        <img alt='' src='/assets/images/tyr.png'>
+      </div>
+      <div class='author-meta'>
+        <h4 class='author-name'>Tyr Chen</h4>
+        <i class='icon-calendar'></i>
+        4个月前
+      </div>
+    </div>
+  </div>
+  <div class='col-md-8'>
+    <div class='post-loop-content'>
+      <h2 class='has-sub-header'>
+        <a href='/posts/2013-06-21-entrepreneurship-in-bay-area.html'>湾区创业者</a>
+      </h2>
+      <div class='post-loop-meta'>
+        <span class='hidden-mobile-ib tags'>
+          <i class='icon-reorder'></i>
+          
+            <a href='/tags/startup.html'>startup</a>
+          
+        </span>
+        <span>
+          <i class='icon-time'></i>
+          5 分钟
+        </span>
+        <!--
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-comments'></i>
+            24
+          </a>
+        </span>
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-heart'></i>
+            15
+          </a>
+        </span>
+        -->
+      </div>
+      <p>承工场合伙人Chris的情，短短的一周时间我有幸约见了硅谷当地的创业者：Brian，Bobby和Chung。</p>
+
+      <div class='under-post'>
+        <div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-facebook'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-twitter'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-linkedin'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+      </div>
+      <br/>
+      <div class='slogan-buttons'>
+          <a class='btn btn-primary btn-cta btn-lg animated-when-hover' data-animation-type="swing" href='/posts/2013-06-21-entrepreneurship-in-bay-area.html'>
+              继续阅读 ->
+          </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+        <div class='row post-loop'>
+  <div class='col-md-2 col-md-offset-1'>
+    <div class='post-loop-author-info'>
+      <div class='author-avatar'>
+        <img alt='' src='/assets/images/tyr.png'>
+      </div>
+      <div class='author-meta'>
+        <h4 class='author-name'>Tyr Chen</h4>
+        <i class='icon-calendar'></i>
+        5个月前
+      </div>
+    </div>
+  </div>
+  <div class='col-md-8'>
+    <div class='post-loop-content'>
+      <h2 class='has-sub-header'>
+        <a href='/posts/2013-06-12-use-makefile-to-automate-deployment.html'>使用Makefile自动化部署</a>
+      </h2>
+      <div class='post-loop-meta'>
+        <span class='hidden-mobile-ib tags'>
+          <i class='icon-reorder'></i>
+          
+            <a href='/tags/automation.html'>automation</a>
+          
+            <a href='/tags/technology.html'>technology</a>
+          
+        </span>
+        <span>
+          <i class='icon-time'></i>
+          8 分钟
+        </span>
+        <!--
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-comments'></i>
+            24
+          </a>
+        </span>
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-heart'></i>
+            15
+          </a>
+        </span>
+        -->
+      </div>
+      <p>有时候，写个小app，部署是件麻烦的事情 —— 你需要登录到服务器上，手工编辑nginx，supervisor等配置文件，然后重启相关的服务。这些配置都不在版本库中，所以也无法记录历史修订。<code>puppet</code> 是个不错的解决方案，但对于小项目来说，使用puppet是个负担。</p>
+<p>本文讨论如何通过写个简单的 <code>makefile</code> 来达到自动化部署的目的。</p>
+
+      <div class='under-post'>
+        <div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-facebook'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-twitter'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-linkedin'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+      </div>
+      <br/>
+      <div class='slogan-buttons'>
+          <a class='btn btn-primary btn-cta btn-lg animated-when-hover' data-animation-type="swing" href='/posts/2013-06-12-use-makefile-to-automate-deployment.html'>
+              继续阅读 ->
+          </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+        <div class='row post-loop'>
+  <div class='col-md-2 col-md-offset-1'>
+    <div class='post-loop-author-info'>
+      <div class='author-avatar'>
+        <img alt='' src='/assets/images/tyr.png'>
+      </div>
+      <div class='author-meta'>
+        <h4 class='author-name'>Tyr Chen</h4>
+        <i class='icon-calendar'></i>
+        5个月前
+      </div>
+    </div>
+  </div>
+  <div class='col-md-8'>
+    <div class='post-loop-content'>
+      <h2 class='has-sub-header'>
+        <a href='/posts/2013-06-10-use-scrapyd-to-serve-scrapy-projects.html'>用scrapyd来提供crawler服务</a>
+      </h2>
+      <div class='post-loop-meta'>
+        <span class='hidden-mobile-ib tags'>
+          <i class='icon-reorder'></i>
+          
+            <a href='/tags/scrapy.html'>scrapy</a>
+          
+            <a href='/tags/crawler.html'>crawler</a>
+          
+            <a href='/tags/technology.html'>technology</a>
+          
+        </span>
+        <span>
+          <i class='icon-time'></i>
+          6 分钟
+        </span>
+        <!--
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-comments'></i>
+            24
+          </a>
+        </span>
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-heart'></i>
+            15
+          </a>
+        </span>
+        -->
+      </div>
+      <p>这是一篇即兴的短文，主要是为了记录我用 <code>scrapyd</code> 的心得。</p>
+<p>之前做数据抓取，总是一个scrapy project做一个deploy，很不方便，一个一个更新起来也很麻烦，总觉得能有更好的方法去处理。今早看了看scrapyd，觉得这就是我想要的东西。</p>
+
+      <div class='under-post'>
+        <div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-facebook'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-twitter'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-linkedin'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+      </div>
+      <br/>
+      <div class='slogan-buttons'>
+          <a class='btn btn-primary btn-cta btn-lg animated-when-hover' data-animation-type="swing" href='/posts/2013-06-10-use-scrapyd-to-serve-scrapy-projects.html'>
+              继续阅读 ->
+          </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+        <div class='row post-loop'>
+  <div class='col-md-2 col-md-offset-1'>
+    <div class='post-loop-author-info'>
+      <div class='author-avatar'>
+        <img alt='' src='/assets/images/tyr.png'>
+      </div>
+      <div class='author-meta'>
+        <h4 class='author-name'>Tyr Chen</h4>
+        <i class='icon-calendar'></i>
+        6个月前
+      </div>
+    </div>
+  </div>
+  <div class='col-md-8'>
+    <div class='post-loop-content'>
+      <h2 class='has-sub-header'>
+        <a href='/posts/2013-05-09-why-every-developer-should-use-mac.html'>why every developer should use mac</a>
+      </h2>
+      <div class='post-loop-meta'>
+        <span class='hidden-mobile-ib tags'>
+          <i class='icon-reorder'></i>
+          
+            <a href='/tags/mac.html'>mac</a>
+          
+            <a href='/tags/thought.html'>thought</a>
+          
+        </span>
+        <span>
+          <i class='icon-time'></i>
+          8 分钟
+        </span>
+        <!--
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-comments'></i>
+            24
+          </a>
+        </span>
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-heart'></i>
+            15
+          </a>
+        </span>
+        -->
+      </div>
+      <p>Two years ago, I bought my own 13&quot; mbp. From then on, I never left mac world, only changed that little thing to a new 15&quot; retina mbp. From my two years experience, I believe to make your development work much more productive, you shall use mac.</p>
+
+      <div class='under-post'>
+        <div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-facebook'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-twitter'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-linkedin'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+      </div>
+      <br/>
+      <div class='slogan-buttons'>
+          <a class='btn btn-primary btn-cta btn-lg animated-when-hover' data-animation-type="swing" href='/posts/2013-05-09-why-every-developer-should-use-mac.html'>
+              继续阅读 ->
+          </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+        <div class='row post-loop'>
+  <div class='col-md-2 col-md-offset-1'>
+    <div class='post-loop-author-info'>
+      <div class='author-avatar'>
+        <img alt='' src='/assets/images/tyr.png'>
+      </div>
+      <div class='author-meta'>
+        <h4 class='author-name'>Tyr Chen</h4>
+        <i class='icon-calendar'></i>
+        6个月前
+      </div>
+    </div>
+  </div>
+  <div class='col-md-8'>
+    <div class='post-loop-content'>
+      <h2 class='has-sub-header'>
+        <a href='/posts/2013-04-25-engineering-environment-for-smart-team.html'>自动化的高效团队开发环境</a>
+      </h2>
+      <div class='post-loop-meta'>
+        <span class='hidden-mobile-ib tags'>
+          <i class='icon-reorder'></i>
+          
+            <a href='/tags/startup.html'>startup</a>
+          
+            <a href='/tags/technology.html'>technology</a>
+          
+            <a href='/tags/automation.html'>automation</a>
+          
+        </span>
+        <span>
+          <i class='icon-time'></i>
+          5 分钟
+        </span>
+        <!--
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-comments'></i>
+            24
+          </a>
+        </span>
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-heart'></i>
+            15
+          </a>
+        </span>
+        -->
+      </div>
+      <p>这两天无意翻到几个月前的Evernote笔记，看到了当时对团队开发环境的一些想法。可惜后来种种，这一想法未能得到实践，只能将其完善后公诸于众，立此存照，日后有空可以一试。</p>
+<p>考虑这套开发环境是因为我们遇到了这些问题：</p>
+<ol>
+<li>开发人员的环境并不统一：dev在osx，ubuntu 11.10和ubuntu 12.04上工作，而ux在windows下工作，协调，解决问题不太方便，尤其是一个bug在A的系统出现，却在自己的环境下无法复用。</li>
+<li>无法即刻搭建和线上同版本的环境，解决线上问题。小团队节奏很快，当前的工作目录可能和线上版本差几天的代码（diff可能已经是巨量），所以当线上出问题时，將工作环境切换过去非常耗时（尤其是数据库发生变化时）。</li>
+<li>为新员工构建开发环境耗时且问题重重。这和第一点有些类似，即在ubuntu下工作的构建开发环境的流程在osx下会break。尤其是后期我们不断有开发人员转换系统到osx下。</li>
+</ol>
+<p>当时正好看到一篇关于 <a href="http://vagrantup.com">vagrant</a> 的文章，感觉这正是我想要的救命稻草。</p>
+
+      <div class='under-post'>
+        <div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-facebook'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-twitter'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-linkedin'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+      </div>
+      <br/>
+      <div class='slogan-buttons'>
+          <a class='btn btn-primary btn-cta btn-lg animated-when-hover' data-animation-type="swing" href='/posts/2013-04-25-engineering-environment-for-smart-team.html'>
+              继续阅读 ->
+          </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+        <div class='row post-loop'>
+  <div class='col-md-2 col-md-offset-1'>
+    <div class='post-loop-author-info'>
+      <div class='author-avatar'>
+        <img alt='' src='/assets/images/tyr.png'>
+      </div>
+      <div class='author-meta'>
+        <h4 class='author-name'>Tyr Chen</h4>
+        <i class='icon-calendar'></i>
+        7个月前
+      </div>
+    </div>
+  </div>
+  <div class='col-md-8'>
+    <div class='post-loop-content'>
+      <h2 class='has-sub-header'>
+        <a href='/posts/2013-04-08-trying-to-extract-the-thoughts-behind-lockitron.html'>胡思乱想之Lockitron的技术架构</a>
+      </h2>
+      <div class='post-loop-meta'>
+        <span class='hidden-mobile-ib tags'>
+          <i class='icon-reorder'></i>
+          
+            <a href='/tags/analysis.html'>analysis</a>
+          
+            <a href='/tags/lockitron.html'>lockitron</a>
+          
+            <a href='/tags/technology.html'>technology</a>
+          
+        </span>
+        <span>
+          <i class='icon-time'></i>
+          7 分钟
+        </span>
+        <!--
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-comments'></i>
+            24
+          </a>
+        </span>
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-heart'></i>
+            15
+          </a>
+        </span>
+        -->
+      </div>
+      <p>有很久没有写文章了。为google I/O在airbnb寻找硅谷附近的住所时无意间遇到了Paul，<a href="http://lockitron.com">lockitron</a> 的创始人。于是lockitron便吸引了我的注意力。他们的video很酷（需翻墙）：</p>
+<iframe width="640" height="360" src="http://www.youtube.com/embed/D1L3o88GKew" frameborder="0" allowfullscreen></iframe>
+
+<p>根据这个video及其主页的介绍，我用lean canvas大概总结了一下其要解决的问题和商业思路：<a href="/canvases/2013-04-10-lockitron-canvas.html">Locitron lean canvas</a>。接下来的问题是：如果要做这样一个产品，需要什么样的技术架构？</p>
+<p>于是，我花了些时间，深入了解lockitron，思考其特性，及特性背后的feature。我会从硬件——门锁控制器（下称controller），软件——功能与服务（下称service）两个方面来看lockitron面临的技术挑战及解决方案。由于我手头没有一个lockitron供我测试和reverse engineering，所以接下来你看到的内容，臆想的成分很大。</p>
+
+      <div class='under-post'>
+        <div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-facebook'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-twitter'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-linkedin'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+      </div>
+      <br/>
+      <div class='slogan-buttons'>
+          <a class='btn btn-primary btn-cta btn-lg animated-when-hover' data-animation-type="swing" href='/posts/2013-04-08-trying-to-extract-the-thoughts-behind-lockitron.html'>
+              继续阅读 ->
+          </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+    
+    
+<ul class="paginator text-center">
+    <!-- Previous Page Button -->
+    
+        <li class="disabled"><span>上一页</span></li>
+    
+
+    <!-- Page Number Buttons -->
+    
+        
+            <li class="active"><span>1</span></li>
+        
+    
+        
+            <li><a href="/pages/posts.1.html">2</a></li>
+        
+    
+        
+            <li><a href="/pages/posts.2.html">3</a></li>
+        
+    
+        
+            <li><a href="/pages/posts.3.html">4</a></li>
+        
+    
+
+    <!-- Next Page Button -->
+    
+        <li><a href="/pages/posts.1.html">下一页</a></li>
+    
+</ul>
+
+    
+</div>
+
+<footer id="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="footer-menu">
+                    <li><a href="/pages/privacy">隐私策略</a></li>
+                    <li><a href="/pages/license">版权说明</a></li>
+                    <li><a href="/pages/disclaimer">免责声明</a></li>
+                    <li><a href="#">联系我们</a></li>
+                </ul>
+                <div class="copyright">
+                    2013 &copy; Tyr Chen. 保留一切权利.
+                </div>
+            </div>
+            <div class="col-md-6">
+                <ul class="footer-social">
+                    <li><a href="#"><i class="icon-facebook"></i></a></li>
+                    <li><a href="#"><i class="icon-twitter"></i></a></li>
+                    <li><a href="#"><i class="icon-dribbble"></i></a></li>
+                    <li><a href="#"><i class="icon-linkedin"></i></a></li>
+                    <li><a href="#"><i class="icon-google-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- Scripts -->
+<script defer="defer"  src="/assets/js/jquery.js"></script><script defer="defer"  src="/assets/js/bootstrap.min.js"></script><script defer="defer"  src="/assets/js/jquery.visible.min.js"></script><script defer="defer"  src="/assets/js/jquery.isotope.min.js"></script><script defer="defer"  src="/assets/js/jquery.knob.js"></script><script defer="defer"  src="/assets/js/jquery.scrollUp.min.js"></script><script defer="defer"  src="/assets/js/highlight.pack.js"></script><script defer="defer"  src="/assets/js/application.js"></script>
+
+
+
+
+
+</body>
+
+</html>

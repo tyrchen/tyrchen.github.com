@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="本博客提供我个人的想法，创意，经验，心得。你不必认同博主观点。" />
+    <meta name="keywords" content="创业, 思想, 点子, 经验, python, erlang, node, javascript, 服务器, devops, meteor" />
+    <meta name="author" content="Tyr Chen" />
+
+    <!-- Output DocPad produced meta elements -->
+    
+
+    <!-- Styles -->
+    <link  rel="stylesheet" href="/assets/css/app.css" /><link  rel="stylesheet" href="/assets/css/animate.css" /><link  rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700|Yanone+Kaffeesatz:200,300,400,700|Raleway:200,300,400,500,700" /><link  rel="stylesheet" href="/assets/css/font-awesome.css" /><link  rel="stylesheet" href="/assets/css/solarized_dark.css" /><link  rel="stylesheet" href="/assets/css/theme.css" />
+
+    <link href="/assets/favicon.ico" rel="shortcut icon">
+    <link href="/assets/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    @javascript html5shiv respond.min
+    <![endif]-->
+
+    <title>为什么要使用wintersmith取代octopress | 觅珠人 | Tyr Chen的个人博客 | 创意 | 心得 | 经验</title>
+
+</head>
+
+<body>
+
+<!-- Contact Modal -->
+<div aria-hidden='true' aria-labelledby='contactModalLabel' class='modal fade' id='contactModal' role='dialog' tabindex='-1'>
+    <div class='modal-dialog'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <button aria-hidden='true' class='close' data-dismiss='modal' type='button'>×</button>
+                <h4 class='modal-title'>Contact Us Form</h4>
+            </div>
+            <div class='modal-body'>
+                <form action='#' role='form'>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Name</label>
+                                <input class='form-control' placeholder='your username' type='text'>
+                            </div>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Email</label>
+                                <input class='form-control' placeholder='your password' type='text'>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-12'>
+                                <label class='control-label' for=''>Your Message</label>
+                                <textarea class='form-control' name='' rows='4'></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class='modal-footer'>
+                <button class='btn btn-default' data-dismiss='modal' type='button'>Cancel</button>
+                <button class='btn btn-primary' type='button'>Send Message</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="header-image-wrapper">
+  <img alt="" src="/assets/images/backgrounds/page-header-bg-1.jpg">
+</div>
+
+<div class='header-main'>
+    <div class='container'>
+        <nav class='navbar navbar-default' role='navigation'>
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class='navbar-header'>
+                <button class='navbar-toggle' data-target='.navbar-ex1-collapse' data-toggle='collapse' type='button'>
+                    <span class='sr-only'>Toggle navigation</span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                </button>
+                <a class='navbar-brand' href='/'>
+                    <img alt='' height='45px' src='/assets/images/tyr.png'> <span>觅珠人</span>
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class='collapse navbar-collapse navbar-ex1-collapse'>
+
+                <ul class='nav navbar-nav navbar-right'>
+                    <li class="">
+                        <a href="/">首页</a>
+                    </li>
+                    
+                        
+                        <li
+                            about="/pages/posts.html"
+                            class=""
+                        >
+                            <a href="/pages/posts.html">
+                                文章随笔
+                            </a>
+                        </li>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                        <li
+                            about="/pages/canvases.html"
+                            class=""
+                        >
+                            <a href="/pages/canvases.html">
+                                奇思妙想
+                            </a>
+                        </li>
+                        
+                    
+                        
+                        <li
+                            about="/pages/aboutme.html"
+                            class=""
+                        >
+                            <a href="/pages/aboutme.html">
+                                关于我
+                            </a>
+                        </li>
+                        
+                    
+                    <!--
+                    <li>
+                        <a data-toggle='modal' href='#contactModal'>联系我</a>
+                    </li>
+                    -->
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+</div>
+
+<div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+
+<div class='container'>
+  <div class='row'>
+    <div class="col-md-3">
+      <div class="post-side-bar">
+        <div class="widget widget-cats tags">
+          <h4 class="widget-title">标签</h4>
+          <ul>
+          
+            <li><a href='/tags/octopress.html'>octopress</a></li>
+          
+            <li><a href='/tags/wintersmith.html'>wintersmith</a></li>
+          
+            <li><a href='/tags/tool.html'>tool</a></li>
+          
+          </ul>
+        </div>
+        <div class="widget widget-cats">
+          <h4 class="widget-title">
+            相关文章
+          </h4>
+          <ul>
+            
+            
+              <li><a href="/posts/2012-12-16-first-blog.html">第一篇博客: 用octopress搭建博客系统</a></li>
+            
+              <li><a href="/posts/2012-12-16-why-meteor.html">为什么是Meteor</a></li>
+            
+              <li><a href="/posts/2012-12-21-meteor-basics.html">Meteor基础入门</a></li>
+            
+              <li><a href="/posts/2012-12-26-reveal-js-support-for-octopress.html">Octopress支持reveal.js撰写slides</a></li>
+            
+              <li><a href="/posts/2013-01-09-auto-deploy-with-github-webhooks.html">用Github Webhooks实现自动部署</a></li>
+            
+              <li><a href="/posts/2013-02-04-teamspark-open-sourced.html">Teamspark及Meteor杂谈</a></li>
+            
+            
+          </ul>
+        </div>
+      </div>
+    </div>      
+    <div class='col-md-9'>
+      <div class='post-single'>
+        <!--
+        <div class='pre-post-meta'>
+          <span>
+            <i class='icon-reorder'></i>
+            in
+            <a href='#'>Web Development</a>
+          </span>
+          <span>
+            <i class='icon-user'></i>
+            by
+            <a href='#'>Tyr Chen</a>
+          </span>
+          <span>
+            <i class='icon-bookmark'></i>
+            17 分钟
+          </span>
+        </div>
+        -->
+        <h1 class='has-sub-header'>为什么要使用wintersmith取代octopress</h1>
+        <div class='post-single-meta'>
+          <span class='meta-item'>
+            <i class='icon-calendar'></i>
+            9个月前
+          </span>
+          <!--
+          <span class='meta-item'>
+            <a href='#'>
+              <i class='icon-comments'></i>
+              24
+            </a>
+          </span>
+          <span class='meta-item'>
+            <a href='#'>
+              <i class='icon-heart'></i>
+              15
+            </a>
+          </span>
+          -->
+          <span class="meta-item">
+          	
+            <i class='icon-time'></i>
+            17 分钟
+          </span>
+        </div>
+        <h2>引言</h2>
+<p>使用octopress已经有一段时间，用这套framework构架博客，写作和部署感觉相当地爽。然而，就我个人的网站而言，我希望它不仅仅是一个博客系统，不光能产生固定格式的post/page，更应该是一个完整的CMS，能根据我个人的需要定制更多的内容展现方式。在使用octopress的这段时间，我尝试为其添加了对演示文档的支持，对更多模版的支持，但感觉还是有点别扭，就好像你让守门员去踢自由人，能干，但干不好。</p>
+<p>我希望我的个人网站能够有以下特点：</p>
+<ol>
+<li>随时随地使用 <code>markdown</code> 来撰写文章<ul>
+<li>文章可以是word, excel, ppt等类型</li>
+<li>可以像office那样选择想用的模版</li>
+<li>focus在写作本身，而不是最终的展示</li>
+</ul>
+</li>
+<li>生成静态页面，可以最小化部署（比如说直接用github pages）</li>
+<li>能够对内容做各种各样的聚合<ul>
+<li>相同标签</li>
+<li>相同系列</li>
+</ul>
+</li>
+<li>很方便添加模版</li>
+<li>能够保护私有内容</li>
+</ol>
+<p>于是上周起，断断续续，我开启了对个人网站的升级之旅。</p>
+<!--more-->
+
+<h2>选型</h2>
+<p>需求确定后，就是技术选型。能够实现这类需求的static site generator自 <code>jekyll/octopress</code> 始，已经有 <a href="http://tuxlite.com/2012/02/static-site-generators-are-the-new-wordpress/">一大把</a>，比如说python世界里的 <a href="https://github.com/getpelican/pelican/">Pelican</a>。因为最近在看nodejs，非常喜欢jade这个模版系统，所以想在nodejs领域中找找类似的framework。找到两个：</p>
+<ul>
+<li><a href="https://github.com/flatiron/blacksmith">blacksmith</a>：<a href="http://nodejitsu.com">http://nodejitsu.com</a> 的静态网站生成器，nodejitsu自己也在用。</li>
+<li><a href="https://github.com/jnordberg/wintersmith">wintersmith</a>：受blacksmith激发产生的一个静态网站生成器</li>
+</ul>
+<p>blacksmith最大的问题是不支持jade做为模版引擎，且没有提供一些基本的命令如preview。所以最终我选择了wintersmith。</p>
+<h2>Wintersmith</h2>
+<h3>安装</h3>
+<pre><code>$ npm install -g wintersmith</code></pre>
+<p>安装完成后可以看看它提供的基本命令：</p>
+<pre><code>$ wintersmith --help
+
+usage: wintersmith [options] [command]
+
+commands:
+
+  build [options] - build a site
+  preview [options] - run local webserver
+  new &lt;location&gt; - create a new site
+
+  also see [command] --help
+
+global options:
+
+  -v, --verbose   show debug information
+  -q, --quiet     only output critical errors
+  -V, --version   output version and exit
+  -h, --help      show help</code></pre>
+<h3>使用</h3>
+<p>我们先来创建一个新的系统，使用wintersmith内置的template。</p>
+<pre><code>$ wintersmith new myblog
+  initializing new wintersmith site in ~/documents/myblog using template blog
+  done!</code></pre>
+<p>然后使用 <code>wintersmith preview</code> 打开预览模式，通过浏览器访问 <a href="http://localhost:8080/">http://localhost:8080/</a> 就可以查看生成的效果。</p>
+<p>wintersmith的template放在templates目录下，而和网站相关的一切资源，如：文章，css，js等都放在contents目录下。缺省的目录结构不太理想，我个人喜欢这样一个结构：</p>
+<pre><code>├── config.json                          site configuration and metadata
+├── contents
+│   ├── archive.md
+│   ├── posts                   
+│   │   └── 2013-01-22-this-is-a-post.md
+│   ├── slides                           
+│   │   ├── 2013-01-21-awesome-slides.md                   
+│   │   └── the-wintersmith.json
+│   ├── assets
+│   │   ├── img
+│   │   ├── css
+│   │   └── js
+│   ├── feed.json                        json page that renders the rss feed to feed.xml
+│   ├── index.json
+└── templates
+    ├── layout
+    │   ├── includes
+    │   │   └── footer.jade
+    │   ├── mixins
+    │   │   └── header.jade
+    │   └── layout1.jade
+    ├── posts.jade
+    └── ...</code></pre>
+<p>生成出来的网站和contents目录下的目录结构完全一样。</p>
+<h3>深入了解</h3>
+<p>在wintersmith的框架下，每一篇文章都可以有自己的一些metadata，用过octopress的人都知道，一篇文章长这个样子，用 <code>:</code> 隔开的内容就是metadata：</p>
+<pre><code>---
+layout: post
+title: 为什么要使用wintersmith取代octopress
+date: 2013-01-21 06:55
+comments: true
+tags: [octopress, wintersmith]
+---
+
+## This is the subtitle of the post
+
+This is the content of this post!</code></pre>
+<p>对于metadata，wintersmith会将其解析出来到 <code>page</code> 对象中。对于内置的metadata，可以直接访问，如page.title；对于自定义的metadata，可以通过metadata引用访问，如page.metadata.tags。</p>
+<p>wintersmith内置的metadata：</p>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">metadata</td>
+<td align="left">the metadata object</td>
+</tr>
+<tr>
+<td align="left">title</td>
+<td align="left"><code>metadata.title</code> or <code>Untitled</code></td>
+</tr>
+<tr>
+<td align="left">date</td>
+<td align="left">Date object from <code>metadata.date</code> if set or unix epoch time</td>
+</tr>
+<tr>
+<td align="left">rfc822date</td>
+<td align="left">a rfc-822 formatted string made from <code>date</code></td>
+</tr>
+<tr>
+<td align="left">body</td>
+<td align="left">unparsed markdown content</td>
+</tr>
+<tr>
+<td align="left">html</td>
+<td align="left">parsed markdown content</td>
+</tr>
+<tr>
+<td align="left">intro</td>
+<td align="left">the intro part of the content, before <code>more</code></td>
+</tr>
+</tbody>
+</table>
+<p>由于文章都是采用markdown语法撰写的，wintersmith使用 <a href="https://github.com/chjj/marked">marked</a> 将其生成为html。marked是个相当不错的parser，performance很好，而且支持github对markdown语法的扩展，如：table，code block等。marked还使用 <code>highlights.js</code> 对代码的高亮做了很强的支持。</p>
+<p>marked生成的html可以被page.html访问到。另外，如果你在文中定义了：</p>
+<pre><code>&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;</code></pre>
+<p>wintersmith会将这之前的内容放入page.intro中，方便在各种索引页面使用。</p>
+<h2>定制</h2>
+<h3>撰写模版</h3>
+<p>使用wintersmith撰写模版是件很惬意的事情，因为它使用了jade。和jade相比，各种其他template system如jinja2，handlebars等都显得极其臃肿和复杂，写jade的时候我第一次感觉做页面不是件苦逼的差事。</p>
+<p>我们先写个layout.jade练练手：</p>
+<pre><code>doctype 5
+html
+  head
+    meta(charset=&quot;utf-8&quot;)
+    meta(http-equiv=&quot;X-UA-Compatible&quot;, content=&quot;IE=edge,chrome=1&quot;)
+    title
+      block title
+        = locals.title
+    meta(name=&quot;description&quot;, content=&quot;&quot;)
+    meta(name=&quot;viewport&quot;, content=&quot;width=device-width&quot;)
+    //link(rel=&quot;stylesheet&quot;, href=&quot;/assets/css/bootstrap.min.css&quot;)
+    //link(rel=&quot;stylesheet&quot;, href=&quot;/assets/css/font-awesome.css&quot;)
+    //link(rel=&quot;stylesheet&quot;, href=&quot;/assets/css/base.css&quot;)
+    //link(rel=&quot;stylesheet&quot;, href=&quot;/assets/css/red.css&quot;)
+    link(rel=&quot;stylesheet&quot;, href=&quot;/assets/css/style.css&quot;)
+
+
+    //if lt IE 9
+      link(rel=&quot;stylesheet&quot;, href=&quot;/assets/css/font-awesome-ie7.css&quot;)
+      script(src=&quot;/assets/js/html5-3.6-respond-1.1.0.min.js&quot;)
+
+    block css
+
+  body
+    block header
+      include mixins/nav
+      +topnav(page.metadata.which)
+    block content
+
+    block footer
+      include includes/footer
+
+    block js</code></pre>
+<p>代码很简单，相信只要有html基础，哪怕第一次使用jade的人也能很快看懂。是不是有种比 <code>zencoding</code> 还爽的感觉？</p>
+<p>有了基本的layout后，我们需要对文章，演示文档分别提供模版，我们就以演示文档为例。</p>
+<h3>支持reveal.js的模版</h3>
+<p>由于reveal.js的页面有自己独特的layout，所以我们不从layout.jade继承，而是直接写一个新的：</p>
+<pre><code>doctype 5
+html
+  head
+    meta(charset=&quot;utf-8&quot;)
+    title #{page.title} - #{locals.title}
+    meta(name=&quot;apple-mobile-web-app-capable&quot;, content=&quot;yes&quot;)
+    meta(name=&quot;apple-mobile-web-app-status-bar-style&quot;, content=&quot;black-translucent&quot;)
+    link(rel=&quot;stylesheet&quot;, href=&quot;/assets/reveal/css/reveal.min.css&quot;)
+    link(rel=&quot;stylesheet&quot;, href=&quot;/assets/reveal/css/theme/#{page.metadata.theme}.css&quot;, id=&quot;theme&quot;)
+    link(rel=&quot;stylesheet&quot;, href=&quot;/assets/css/code/github.css&quot;)
+    link(rel=&quot;stylesheet&quot;, href=&quot;/assets/css/style.css&quot;)
+
+    // if lt IE 9
+        script(src=&quot;/assets/reveal/lib/js/html5shiv.js&quot;)
+
+  body.reveal
+    .reveal
+      .slides
+        != page.html
+
+
+      a.back(href=&quot;/pages/slides.html&quot;, title=&quot;返回&quot;)
+        i.icon.icon-arrow-left
+        | 演示文稿列表
+
+    script(src=&quot;/assets/reveal/lib/js/head.min.js&quot;)
+    script(src=&quot;/assets/reveal/js/reveal.min.js&quot;)
+    script
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || &#39;#{page.metadata.transition || &#39;default&#39;}&#39;, // default/cube/page/concave/zoom/linear/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: &#39;/assets/reveal/plugin/classList.js&#39;, condition: function() { return !document.body.classList; } },
+          { src: &#39;/assets/reveal/plugin/markdown/showdown.js&#39;, condition: function() { return !!document.querySelector( &#39;[data-markdown]&#39; ); } },
+          { src: &#39;/assets/reveal/plugin/markdown/markdown.js&#39;, condition: function() { return !!document.querySelector( &#39;[data-markdown]&#39; ); } },
+          { src: &#39;/assets/reveal/plugin/highlight/highlight.js&#39;, async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: &#39;/assets/reveal/plugin/zoom-js/zoom.js&#39;, async: true, condition: function() { return !!document.body.classList; } },
+          { src: &#39;/assets/reveal/plugin/notes/notes.js&#39;, async: true, condition: function() { return !!document.body.classList; } }
+          // { src: &#39;/assets/reveal/plugin/remotes/remotes.js&#39;, async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+    include layouts/includes/baidu_tongji</code></pre>
+<p>这个模版提供了reveal.js的骨架，其中：</p>
+<pre><code>!= page.html</code></pre>
+<p>这一句会把你的演示文档正文插入到当前位置。为了能够让文档可以自定义theme和transition，这里还使用了两个metadata：theme和transition。</p>
+<p>有了这样一个模版，你只需要专注于文档的内容就好。举个例子（可以访问 <a href="/slides/my-first-slide.html">这里</a> 看实际效果）：</p>
+<pre><code>---
+layout: slide
+title: 我的第一篇演示稿
+date: 2012-12-26 20:50
+theme: serif
+---
+
+    # 我的第一篇演示稿
+    ### Brought to you by Tyr Chen
+    Stay hungry, stay foolish.
+
+    2012-12-26
+
+
+    &lt;!--more--&gt;
+
+
+    ## 目标
+
+    * 能够使撰写slides脱离繁琐的power point or keynote
+    * 使用__sublime__撰写演示稿
+    * 能够在octopress里嵌入演示稿
+    * 能够随时随地access和share
+
+
+    ## slide可以嵌入
+
+    ### 也可以提供各种标题
+    #### 也可以提供各种标题
+    ##### 也可以提供各种标题
+    ###### 也可以提供各种标题
+
+
+    ## THE END</code></pre>
+<p>注意这里我对marked做了一点修改（我实在想不到更好更简洁的语法，于是就把code的语法占用了-_-），为4个空格开头的内容生成 <code>&lt;section&gt;&lt;/section&gt;</code> 标签，这也是reveal.js需要的。具体代码就不列在这里，大家可以直接fork我的marked clone：<a href="https://github.com/tyrchen/marked。">https://github.com/tyrchen/marked。</a></p>
+<h2>后记</h2>
+<p>这项工程花了我不少时间，但改版后，相对于之前的octopress，无论从内容的生成速度上，代码的可读性上还是可扩展性上都提升了几个档次。下一步就是把一些第三方的组件，如多说，百度分享集成进来，提高互动性。</p>
+<p>依然放上小宝的一张照片：</p>
+<p><img src="/assets/files/photos/baby20130121.jpg" alt="小宝"></p>
+
+        <div class='under-post'>
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+                
+                  <div class='pull-left'>
+                    <a class='read-previous-link' href='/posts/2013-01-09-auto-deploy-with-github-webhooks.html'>
+                      <i class='icon-angle-left'></i>
+                      上一篇
+                    </a>
+                  </div>                  
+                
+                
+                  <div class='pull-right'>
+                    <a class='read-next-link' href='/posts/2013-01-25-try-github-zen-writing-mode.html'>
+                      下一篇
+                      <i class='icon-angle-right'></i>
+                    </a>
+                  </div>
+                         
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-facebook'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-twitter'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-linkedin'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+        </div>
+      </div>
+    </div>
+      
+  </div>
+  <div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+  
+  <div class="ds-thread">
+    <script>
+        var duoshuoQuery = {short_name:"tyrchen"};
+        (function() {
+          var ds = document.createElement('script');
+          ds.type = 'text/javascript';ds.async = true;
+          ds.src = 'http://static.duoshuo.com/embed.js';
+          ds.charset = 'UTF-8';
+          (document.getElementsByTagName('head')[0]
+          || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+  </div>
+
+</div>
+
+<footer id="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="footer-menu">
+                    <li><a href="/pages/privacy">隐私策略</a></li>
+                    <li><a href="/pages/license">版权说明</a></li>
+                    <li><a href="/pages/disclaimer">免责声明</a></li>
+                    <li><a href="#">联系我们</a></li>
+                </ul>
+                <div class="copyright">
+                    2013 &copy; Tyr Chen. 保留一切权利.
+                </div>
+            </div>
+            <div class="col-md-6">
+                <ul class="footer-social">
+                    <li><a href="#"><i class="icon-facebook"></i></a></li>
+                    <li><a href="#"><i class="icon-twitter"></i></a></li>
+                    <li><a href="#"><i class="icon-dribbble"></i></a></li>
+                    <li><a href="#"><i class="icon-linkedin"></i></a></li>
+                    <li><a href="#"><i class="icon-google-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- Scripts -->
+<script defer="defer"  src="/assets/js/jquery.js"></script><script defer="defer"  src="/assets/js/bootstrap.min.js"></script><script defer="defer"  src="/assets/js/jquery.visible.min.js"></script><script defer="defer"  src="/assets/js/jquery.isotope.min.js"></script><script defer="defer"  src="/assets/js/jquery.knob.js"></script><script defer="defer"  src="/assets/js/jquery.scrollUp.min.js"></script><script defer="defer"  src="/assets/js/highlight.pack.js"></script><script defer="defer"  src="/assets/js/application.js"></script>
+
+
+</body>
+
+</html>

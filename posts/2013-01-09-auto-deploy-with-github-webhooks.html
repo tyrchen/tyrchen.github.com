@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="本博客提供我个人的想法，创意，经验，心得。你不必认同博主观点。" />
+    <meta name="keywords" content="创业, 思想, 点子, 经验, python, erlang, node, javascript, 服务器, devops, meteor" />
+    <meta name="author" content="Tyr Chen" />
+
+    <!-- Output DocPad produced meta elements -->
+    
+
+    <!-- Styles -->
+    <link  rel="stylesheet" href="/assets/css/app.css" /><link  rel="stylesheet" href="/assets/css/animate.css" /><link  rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700|Yanone+Kaffeesatz:200,300,400,700|Raleway:200,300,400,500,700" /><link  rel="stylesheet" href="/assets/css/font-awesome.css" /><link  rel="stylesheet" href="/assets/css/solarized_dark.css" /><link  rel="stylesheet" href="/assets/css/theme.css" />
+
+    <link href="/assets/favicon.ico" rel="shortcut icon">
+    <link href="/assets/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    @javascript html5shiv respond.min
+    <![endif]-->
+
+    <title>用Github Webhooks实现自动部署 | 觅珠人 | Tyr Chen的个人博客 | 创意 | 心得 | 经验</title>
+
+</head>
+
+<body>
+
+<!-- Contact Modal -->
+<div aria-hidden='true' aria-labelledby='contactModalLabel' class='modal fade' id='contactModal' role='dialog' tabindex='-1'>
+    <div class='modal-dialog'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <button aria-hidden='true' class='close' data-dismiss='modal' type='button'>×</button>
+                <h4 class='modal-title'>Contact Us Form</h4>
+            </div>
+            <div class='modal-body'>
+                <form action='#' role='form'>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Name</label>
+                                <input class='form-control' placeholder='your username' type='text'>
+                            </div>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Email</label>
+                                <input class='form-control' placeholder='your password' type='text'>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-12'>
+                                <label class='control-label' for=''>Your Message</label>
+                                <textarea class='form-control' name='' rows='4'></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class='modal-footer'>
+                <button class='btn btn-default' data-dismiss='modal' type='button'>Cancel</button>
+                <button class='btn btn-primary' type='button'>Send Message</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="header-image-wrapper">
+  <img alt="" src="/assets/images/backgrounds/page-header-bg-1.jpg">
+</div>
+
+<div class='header-main'>
+    <div class='container'>
+        <nav class='navbar navbar-default' role='navigation'>
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class='navbar-header'>
+                <button class='navbar-toggle' data-target='.navbar-ex1-collapse' data-toggle='collapse' type='button'>
+                    <span class='sr-only'>Toggle navigation</span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                </button>
+                <a class='navbar-brand' href='/'>
+                    <img alt='' height='45px' src='/assets/images/tyr.png'> <span>觅珠人</span>
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class='collapse navbar-collapse navbar-ex1-collapse'>
+
+                <ul class='nav navbar-nav navbar-right'>
+                    <li class="">
+                        <a href="/">首页</a>
+                    </li>
+                    
+                        
+                        <li
+                            about="/pages/posts.html"
+                            class=""
+                        >
+                            <a href="/pages/posts.html">
+                                文章随笔
+                            </a>
+                        </li>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                        <li
+                            about="/pages/canvases.html"
+                            class=""
+                        >
+                            <a href="/pages/canvases.html">
+                                奇思妙想
+                            </a>
+                        </li>
+                        
+                    
+                        
+                        <li
+                            about="/pages/aboutme.html"
+                            class=""
+                        >
+                            <a href="/pages/aboutme.html">
+                                关于我
+                            </a>
+                        </li>
+                        
+                    
+                    <!--
+                    <li>
+                        <a data-toggle='modal' href='#contactModal'>联系我</a>
+                    </li>
+                    -->
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+</div>
+
+<div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+
+<div class='container'>
+  <div class='row'>
+    <div class="col-md-3">
+      <div class="post-side-bar">
+        <div class="widget widget-cats tags">
+          <h4 class="widget-title">标签</h4>
+          <ul>
+          
+            <li><a href='/tags/tool.html'>tool</a></li>
+          
+            <li><a href='/tags/automation.html'>automation</a></li>
+          
+          </ul>
+        </div>
+        <div class="widget widget-cats">
+          <h4 class="widget-title">
+            相关文章
+          </h4>
+          <ul>
+            
+            
+              <li><a href="/posts/2012-12-16-first-blog.html">第一篇博客: 用octopress搭建博客系统</a></li>
+            
+              <li><a href="/posts/2012-12-16-why-meteor.html">为什么是Meteor</a></li>
+            
+              <li><a href="/posts/2012-12-21-meteor-basics.html">Meteor基础入门</a></li>
+            
+              <li><a href="/posts/2012-12-26-reveal-js-support-for-octopress.html">Octopress支持reveal.js撰写slides</a></li>
+            
+              <li><a href="/posts/2013-01-21-why-use-wintersmith-to-replace-octopress.html">为什么要使用wintersmith取代octopress</a></li>
+            
+              <li><a href="/posts/2013-02-04-teamspark-open-sourced.html">Teamspark及Meteor杂谈</a></li>
+            
+              <li><a href="/posts/2013-04-25-engineering-environment-for-smart-team.html">自动化的高效团队开发环境</a></li>
+            
+              <li><a href="/posts/2013-06-12-use-makefile-to-automate-deployment.html">使用Makefile自动化部署</a></li>
+            
+            
+          </ul>
+        </div>
+      </div>
+    </div>      
+    <div class='col-md-9'>
+      <div class='post-single'>
+        <!--
+        <div class='pre-post-meta'>
+          <span>
+            <i class='icon-reorder'></i>
+            in
+            <a href='#'>Web Development</a>
+          </span>
+          <span>
+            <i class='icon-user'></i>
+            by
+            <a href='#'>Tyr Chen</a>
+          </span>
+          <span>
+            <i class='icon-bookmark'></i>
+            12 分钟
+          </span>
+        </div>
+        -->
+        <h1 class='has-sub-header'>用Github Webhooks实现自动部署</h1>
+        <div class='post-single-meta'>
+          <span class='meta-item'>
+            <i class='icon-calendar'></i>
+            10个月前
+          </span>
+          <!--
+          <span class='meta-item'>
+            <a href='#'>
+              <i class='icon-comments'></i>
+              24
+            </a>
+          </span>
+          <span class='meta-item'>
+            <a href='#'>
+              <i class='icon-heart'></i>
+              15
+            </a>
+          </span>
+          -->
+          <span class="meta-item">
+          	
+            <i class='icon-time'></i>
+            12 分钟
+          </span>
+        </div>
+        <h2>问题</h2>
+<p>互联网产品永远都处在不断更迭的beta阶段。我们常常会在生产环境外，建立一套与生产环境共享数据的lab环境，以便验证一些即将用于真实世界的想法。问题是，每次提交改动后都需要手工运行部署脚本（前后大概花去30s左右时间），很不高效，每天运行那么几次，对惜时如金的程序员来说是种磨难。于是忙中偷闲的时候，就会想：有没有一种方法在代码提交后能够自动部署，身躯手工的麻烦？</p>
+<p>当然是有的。Github的 <a href="https://help.github.com/articles/post-receive-hooks">Post receive hooks</a> 就是用来干这个滴。作者花了小半天时间（对nodejs不熟啊），实现了一个很简单的自动部署方案，趁着记忆还未散去，将其记录在案，和大家分享交流。</p>
+<!--more-->
+
+<h2>需求</h2>
+<p>这个小工具的需求很简单，可以抽象为：对于指定的repositories上的指定branch，如果发生改动，执行一个action。</p>
+<p>比如说：</p>
+<ul>
+<li>tukeq的master branch改动，执行lab_deploy的动作。</li>
+<li>tukeq的production branch改动，执行safety_check的动作。</li>
+</ul>
+<p>这是最基本的需求，当然在其之上还有很多衍生需求，比如说时间比较长的action是否可以取消，同样的action能否聚合处理等等，在这里就不讨论。</p>
+<p>需求简单，功能的实现方案也不难：</p>
+<ul>
+<li>提供一个url给github用于接受Post receive处理流程发过来的数据</li>
+<li>进行模式匹配，对于满足条件者，执行指定好的动作</li>
+<li>指定的动作如果是个长任务，则需要使用MQ异步化</li>
+</ul>
+<p>对于这样一个小东西，使用django貌似有点重了。正好最近学了点express的皮毛，就拿它来尝试。</p>
+<h2>准备工作</h2>
+<p>这个项目基本没有什么依赖，express/jade/underscore的标配外，加了个 <a href="https://github.com/LearnBoost/kue">kue</a> 用于处理异步任务。</p>
+<p>简单说下 <code>kue</code>。它是个job queue，使用redis做job的存储。如果用过python下的celery，则对这类的工具应该不陌生。</p>
+<p>celery实现一个异步任务（无与伦比的简洁与优雅）：</p>
+<pre><code># caller
+async_task.delay(a, b)
+
+# task
+@task
+def async_task(a, b):
+  pass</code></pre>
+<p>kue做为后起之秀在语法上稍逊一筹：</p>
+<pre><code># caller
+jobs.create(&#39;async_task&#39;, data).priority(&#39;high&#39;).save();
+
+# task
+jobs.process(&#39;async_task&#39;, function(job, done) { ... });</code></pre>
+<p>如果你的redis跑在缺省端口，kue几乎就是零配置，这对于配置稍嫌复杂的celery来讲轻便不少。</p>
+<h2>开工</h2>
+<p>假定我们在Github上注册的webhook地址为：<a href="http://tukeq.com/deploy">http://tukeq.com/deploy</a> （一个虚拟的地址，不必当真），则我们的主要任务就是实现 <code>deploy</code> 路由。首先定义之：</p>
+<pre><code>var hook = require(&#39;./routes/githubhook&#39;)
+app.post(&#39;/deploy&#39;, hook.githubhook);</code></pre>
+<p>接下来就是实现githubhook的逻辑了。我们先定义主逻辑：</p>
+<pre><code>exports.githubhook = function(req, res){
+    var payload;
+    // ensure paylaod is a object
+    if (typeof req.body.payload === &#39;object&#39;) {
+        payload = req.body.payload;
+    } else {
+        payload = JSON.parse(req.body.payload);
+    }
+
+    _.each(repos, function(repo) {
+        if(repo.name === payload.repository.name &amp;&amp; payload.ref.indexOf(repo.ref) &gt;= 0) {
+            repo.action(repo.name, repo.ref, payload);
+        }
+        res.send(&#39;ok&#39;);
+    });
+};</code></pre>
+<p>代码很简单，基本想法是使用一张模式表，里面包含了要匹配的项目，以及一旦匹配，使用何种action去处理。</p>
+<p>下面看模式：</p>
+<pre><code>var repos = [
+    {name: &#39;tukeq&#39;, ref: &#39;master&#39;, action: deploy},
+    {name: &#39;tukeq&#39;, ref: &#39;live&#39;, action: log},
+    {name: &#39;barr&#39;, ref: &#39;master&#39;, action: deploy}
+];</code></pre>
+<p>没什么高深。如果改动是在tukeq这个repo的master branch上发生，则执行deploy action。</p>
+<p>我们再看看deploy做什么：</p>
+<pre><code>var kue = require(&#39;kue&#39;)
+    , jobs = kue.createQueue()
+function deploy(repo, ref, data) {
+    var name = &#39;github_&#39; + repo + &#39;_&#39; + ref;
+    var path = &#39;/home/dev/bin/&#39;;
+    var cmd = path + name;
+
+    console.log(&#39;deploy:&#39;, repo, ref);
+
+    jobs.create(&#39;deploy&#39;, {
+        command: cmd
+    }).save();
+}</code></pre>
+<p>在服务端，我们有对应的deploy脚本，所以在这里，deploy的任务就是找到对应的脚本，启动一个kue job运行之。这里如果不使用异步任务，脚本很可能执行到一半就被杀掉。<code>nodejs</code> 中http的缺省timeout是2分钟，所以即便我们在收到request后立即返回 <strong>ok</strong> 做为response（见上文代码），超过两分钟后，脚本依然会收到 <code>SIGTERM</code>（我在这里纠结了一阵子，本不想引入job queue，因为那样需要管理的任务又多了一个，但尝试了各种创建child process的方式后，还是没找到一个理想的方案）。</p>
+<p>由于我们使用了job queue，必然需要一个job server来pull queue中的job并进行处理，于是我们单开一个脚本做任务处理：</p>
+<pre><code>var kue = require(&#39;kue&#39;)
+    , jobs = kue.createQueue()
+    ,exec = require(&#39;child_process&#39;).exec;
+
+jobs.process(&#39;deploy&#39;, function(job, done){
+    console.log(&#39;working on a deploy job&#39;, job.data.command);
+    exec(job.data.command, function(err, output) {
+        console.log(&#39;job done&#39;, err);
+        done();
+    });
+});</code></pre>
+<p>OK，至此基本的代码逻辑就已经OK，我们可以分别把web server和job server运行起来，使用 <a href="https://github.com/jkbr/httpie">httpie</a> 测试一下。</p>
+<p>运行服务：</p>
+<pre><code>$ npm install # 确保所有依赖正确安装
+$ node app
+$ node jobs/process</code></pre>
+<p>如果你系统里没装 <code>httpie</code>，强烈建议使用这个强大的，基于 <a href="http://docs.python-requests.org/en/latest/">requests</a> 的python小工具。有了它，<code>curl</code> 就好像是旧石器时代的简陋工具，你再也不想用哪怕一次。</p>
+<p>安装：</p>
+<pre><code>$ sudo pip install httpie</code></pre>
+<p>使用：</p>
+<pre><code>$ http POST localhost:3000/deploy &lt; test.json</code></pre>
+<p>这条命令所见即所得：把test.json做为body POST到localhost:3000/deploy。test.json是用于测试的数据：</p>
+<pre><code>{
+  &quot;before&quot;: &quot;5aef35982fb2d34e9d9d4502f6ede1072793222d&quot;,
+  &quot;repository&quot;: {
+    &quot;url&quot;: &quot;http://github.com/defunkt/github&quot;,
+    &quot;name&quot;: &quot;github&quot;,
+    &quot;description&quot;: &quot;You&#39;re lookin&#39; at it.&quot;,
+    &quot;watchers&quot;: 5,
+    &quot;forks&quot;: 2,
+    &quot;private&quot;: 1,
+    &quot;owner&quot;: {
+      &quot;email&quot;: &quot;chris@ozmm.org&quot;,
+      &quot;name&quot;: &quot;defunkt&quot;
+    }
+  },
+  &quot;commits&quot;: [
+    {
+      &quot;id&quot;: &quot;41a212ee83ca127e3c8cf465891ab7216a705f59&quot;,
+      &quot;url&quot;: &quot;http://github.com/defunkt/github/commit/41a212ee83ca127e3c8cf465891ab7216a705f59&quot;,
+      &quot;author&quot;: {
+        &quot;email&quot;: &quot;chris@ozmm.org&quot;,
+        &quot;name&quot;: &quot;Chris Wanstrath&quot;
+      },
+      &quot;message&quot;: &quot;okay i give in&quot;,
+      &quot;timestamp&quot;: &quot;2008-02-15T14:57:17-08:00&quot;,
+      &quot;added&quot;: [&quot;filepath.rb&quot;]
+    },
+    {
+      &quot;id&quot;: &quot;de8251ff97ee194a289832576287d6f8ad74e3d0&quot;,
+      &quot;url&quot;: &quot;http://github.com/defunkt/github/commit/de8251ff97ee194a289832576287d6f8ad74e3d0&quot;,
+      &quot;author&quot;: {
+        &quot;email&quot;: &quot;chris@ozmm.org&quot;,
+        &quot;name&quot;: &quot;Chris Wanstrath&quot;
+      },
+      &quot;message&quot;: &quot;update pricing a tad&quot;,
+      &quot;timestamp&quot;: &quot;2008-02-15T14:36:34-08:00&quot;
+    }
+  ],
+  &quot;after&quot;: &quot;de8251ff97ee194a289832576287d6f8ad74e3d0&quot;,
+  &quot;ref&quot;: &quot;refs/heads/master&quot;
+}</code></pre>
+<p>测试通过，大功告成。</p>
+<p>本文所述代码可以在这里找到：<a href="https://github.com/tyrchen/simplehooks.git"><a href="https://github.com/tyrchen/simplehooks.git">https://github.com/tyrchen/simplehooks.git</a></a>。欢迎clone/fork。</p>
+<h2>部署</h2>
+<p>光有代码还没用，要将其部署到一个github能够访问到的server上。我喜欢用supervisor进行部署：</p>
+<p>Simple hook服务：</p>
+<pre><code>[program:simplehooks]
+directory = /home/dev/deployment/simplehooks
+user = dev
+command=/usr/local/bin/node app
+environment=PORT=12345
+redirect_stderr=true
+stderr_logfile=none
+stdout_logfile=/var/log/supervisor/simplehooks.log
+autostart=true
+autorestart=true</code></pre>
+<p>Simple job服务：</p>
+<pre><code>[program:simplehookjobs]
+directory = /home/dev/deployment/simplehooks
+user = dev
+command=/usr/local/bin/node jobs/process
+redirect_stderr=true
+stderr_logfile=none
+stdout_logfile=/var/log/supervisor/simplehookjobs.log
+autostart=true
+autorestart=true</code></pre>
+<p>配置完后可以通过如下命令无缝运行：</p>
+<pre><code>$ supervisorctl
+supervisor&gt; reread
+supervisor&gt; update</code></pre>
+<p>当然不要忘记nginx配置：</p>
+<pre><code>server {
+  listen 80;
+  server_name deploy.tukeq.com;
+  set $simplehook_current_root &quot;/home/dev/deployment/simplehooks&quot;;
+  root @simplehooks;
+  access_log /var/log/nginx/simplehooks.access.log;
+  error_log /var/log/nginx/simplehooks.error.log;
+  location / {
+    proxy_pass http://localhost:12345;
+    include /etc/nginx/proxy_params;
+  }
+}</code></pre>
+<h2>后记</h2>
+<p>小宝笑了，依旧是那么天真无邪。看到她，我的苦闷阴霾一下子就没了。</p>
+<p><img src="/assets/files/photos/baby20130109.jpg" alt="小宝"></p>
+
+        <div class='under-post'>
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+                
+                  <div class='pull-left'>
+                    <a class='read-previous-link' href='/posts/2013-01-06-io-lang.html'>
+                      <i class='icon-angle-left'></i>
+                      上一篇
+                    </a>
+                  </div>                  
+                
+                
+                  <div class='pull-right'>
+                    <a class='read-next-link' href='/posts/2013-01-21-why-use-wintersmith-to-replace-octopress.html'>
+                      下一篇
+                      <i class='icon-angle-right'></i>
+                    </a>
+                  </div>
+                         
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-facebook'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-twitter'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-linkedin'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+        </div>
+      </div>
+    </div>
+      
+  </div>
+  <div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+  
+  <div class="ds-thread">
+    <script>
+        var duoshuoQuery = {short_name:"tyrchen"};
+        (function() {
+          var ds = document.createElement('script');
+          ds.type = 'text/javascript';ds.async = true;
+          ds.src = 'http://static.duoshuo.com/embed.js';
+          ds.charset = 'UTF-8';
+          (document.getElementsByTagName('head')[0]
+          || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+  </div>
+
+</div>
+
+<footer id="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="footer-menu">
+                    <li><a href="/pages/privacy">隐私策略</a></li>
+                    <li><a href="/pages/license">版权说明</a></li>
+                    <li><a href="/pages/disclaimer">免责声明</a></li>
+                    <li><a href="#">联系我们</a></li>
+                </ul>
+                <div class="copyright">
+                    2013 &copy; Tyr Chen. 保留一切权利.
+                </div>
+            </div>
+            <div class="col-md-6">
+                <ul class="footer-social">
+                    <li><a href="#"><i class="icon-facebook"></i></a></li>
+                    <li><a href="#"><i class="icon-twitter"></i></a></li>
+                    <li><a href="#"><i class="icon-dribbble"></i></a></li>
+                    <li><a href="#"><i class="icon-linkedin"></i></a></li>
+                    <li><a href="#"><i class="icon-google-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- Scripts -->
+<script defer="defer"  src="/assets/js/jquery.js"></script><script defer="defer"  src="/assets/js/bootstrap.min.js"></script><script defer="defer"  src="/assets/js/jquery.visible.min.js"></script><script defer="defer"  src="/assets/js/jquery.isotope.min.js"></script><script defer="defer"  src="/assets/js/jquery.knob.js"></script><script defer="defer"  src="/assets/js/jquery.scrollUp.min.js"></script><script defer="defer"  src="/assets/js/highlight.pack.js"></script><script defer="defer"  src="/assets/js/application.js"></script>
+
+
+</body>
+
+</html>

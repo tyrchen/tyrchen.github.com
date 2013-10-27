@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="本博客提供我个人的想法，创意，经验，心得。你不必认同博主观点。" />
+    <meta name="keywords" content="创业, 思想, 点子, 经验, python, erlang, node, javascript, 服务器, devops, meteor" />
+    <meta name="author" content="Tyr Chen" />
+
+    <!-- Output DocPad produced meta elements -->
+    
+
+    <!-- Styles -->
+    <link  rel="stylesheet" href="/assets/css/app.css" /><link  rel="stylesheet" href="/assets/css/animate.css" /><link  rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700|Yanone+Kaffeesatz:200,300,400,700|Raleway:200,300,400,500,700" /><link  rel="stylesheet" href="/assets/css/font-awesome.css" /><link  rel="stylesheet" href="/assets/css/solarized_dark.css" /><link  rel="stylesheet" href="/assets/css/theme.css" />
+
+    <link href="/assets/favicon.ico" rel="shortcut icon">
+    <link href="/assets/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    @javascript html5shiv respond.min
+    <![endif]-->
+
+    <title>Meteor基础入门 | 觅珠人 | Tyr Chen的个人博客 | 创意 | 心得 | 经验</title>
+
+</head>
+
+<body>
+
+<!-- Contact Modal -->
+<div aria-hidden='true' aria-labelledby='contactModalLabel' class='modal fade' id='contactModal' role='dialog' tabindex='-1'>
+    <div class='modal-dialog'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <button aria-hidden='true' class='close' data-dismiss='modal' type='button'>×</button>
+                <h4 class='modal-title'>Contact Us Form</h4>
+            </div>
+            <div class='modal-body'>
+                <form action='#' role='form'>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Name</label>
+                                <input class='form-control' placeholder='your username' type='text'>
+                            </div>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Email</label>
+                                <input class='form-control' placeholder='your password' type='text'>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-12'>
+                                <label class='control-label' for=''>Your Message</label>
+                                <textarea class='form-control' name='' rows='4'></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class='modal-footer'>
+                <button class='btn btn-default' data-dismiss='modal' type='button'>Cancel</button>
+                <button class='btn btn-primary' type='button'>Send Message</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="header-image-wrapper">
+  <img alt="" src="/assets/images/backgrounds/page-header-bg-1.jpg">
+</div>
+
+<div class='header-main'>
+    <div class='container'>
+        <nav class='navbar navbar-default' role='navigation'>
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class='navbar-header'>
+                <button class='navbar-toggle' data-target='.navbar-ex1-collapse' data-toggle='collapse' type='button'>
+                    <span class='sr-only'>Toggle navigation</span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                </button>
+                <a class='navbar-brand' href='/'>
+                    <img alt='' height='45px' src='/assets/images/tyr.png'> <span>觅珠人</span>
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class='collapse navbar-collapse navbar-ex1-collapse'>
+
+                <ul class='nav navbar-nav navbar-right'>
+                    <li class="">
+                        <a href="/">首页</a>
+                    </li>
+                    
+                        
+                        <li
+                            about="/pages/posts.html"
+                            class=""
+                        >
+                            <a href="/pages/posts.html">
+                                文章随笔
+                            </a>
+                        </li>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                        <li
+                            about="/pages/canvases.html"
+                            class=""
+                        >
+                            <a href="/pages/canvases.html">
+                                奇思妙想
+                            </a>
+                        </li>
+                        
+                    
+                        
+                        <li
+                            about="/pages/aboutme.html"
+                            class=""
+                        >
+                            <a href="/pages/aboutme.html">
+                                关于我
+                            </a>
+                        </li>
+                        
+                    
+                    <!--
+                    <li>
+                        <a data-toggle='modal' href='#contactModal'>联系我</a>
+                    </li>
+                    -->
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+</div>
+
+<div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+
+<div class='container'>
+  <div class='row'>
+    <div class="col-md-3">
+      <div class="post-side-bar">
+        <div class="widget widget-cats tags">
+          <h4 class="widget-title">标签</h4>
+          <ul>
+          
+            <li><a href='/tags/meteor.html'>meteor</a></li>
+          
+            <li><a href='/tags/tool.html'>tool</a></li>
+          
+          </ul>
+        </div>
+        <div class="widget widget-cats">
+          <h4 class="widget-title">
+            相关文章
+          </h4>
+          <ul>
+            
+            
+              <li><a href="/posts/2012-12-16-first-blog.html">第一篇博客: 用octopress搭建博客系统</a></li>
+            
+              <li><a href="/posts/2012-12-16-why-meteor.html">为什么是Meteor</a></li>
+            
+              <li><a href="/posts/2012-12-26-reveal-js-support-for-octopress.html">Octopress支持reveal.js撰写slides</a></li>
+            
+              <li><a href="/posts/2013-01-09-auto-deploy-with-github-webhooks.html">用Github Webhooks实现自动部署</a></li>
+            
+              <li><a href="/posts/2013-01-21-why-use-wintersmith-to-replace-octopress.html">为什么要使用wintersmith取代octopress</a></li>
+            
+              <li><a href="/posts/2013-02-04-teamspark-open-sourced.html">Teamspark及Meteor杂谈</a></li>
+            
+            
+          </ul>
+        </div>
+      </div>
+    </div>      
+    <div class='col-md-9'>
+      <div class='post-single'>
+        <!--
+        <div class='pre-post-meta'>
+          <span>
+            <i class='icon-reorder'></i>
+            in
+            <a href='#'>Web Development</a>
+          </span>
+          <span>
+            <i class='icon-user'></i>
+            by
+            <a href='#'>Tyr Chen</a>
+          </span>
+          <span>
+            <i class='icon-bookmark'></i>
+            21 分钟
+          </span>
+        </div>
+        -->
+        <h1 class='has-sub-header'>Meteor基础入门</h1>
+        <div class='post-single-meta'>
+          <span class='meta-item'>
+            <i class='icon-calendar'></i>
+            10个月前
+          </span>
+          <!--
+          <span class='meta-item'>
+            <a href='#'>
+              <i class='icon-comments'></i>
+              24
+            </a>
+          </span>
+          <span class='meta-item'>
+            <a href='#'>
+              <i class='icon-heart'></i>
+              15
+            </a>
+          </span>
+          -->
+          <span class="meta-item">
+          	
+            <i class='icon-time'></i>
+            21 分钟
+          </span>
+        </div>
+        <h2>安装</h2>
+<h3>安装nodejs</h3>
+<p>可以通过<code>brew install nodejs</code> 或 <code>sudo apt-get install nodejs</code> 安装。不过版本也许不是最新的，所以建议到 <a href="http://nodejs.org/download/"><a href="http://nodejs.org/download/">http://nodejs.org/download/</a></a> 直接下载对应系统下的安装包。如果你是windows的用户，我想说，接下来的旅程对你而言将是无尽的折腾，我要是你，要么合上笔记本，远离这篇文章；要么咬咬牙，卖半个肾，去搞台mbp回来。</p>
+<!--more-->
+
+<p>安装完成后， 测试一下版本号：</p>
+<pre><code>tchen@tchen-mbp:~$ node -v
+v0.8.5
+tchen@tchen-mbp:~$ npm -v
+1.1.59</code></pre>
+<p>最新的meteor需要nodejs 0.8.x版本支持。</p>
+<h3>安装mongodb</h3>
+<p>Meteor目前的版本与mongodb紧密绑定，所以你需要安装mongodb（<a href="http://baike.baidu.com/view/3385614.htm">mongodb是什么？</a>）。建议去官网下载最新版本安装：
+<a href="http://www.mongodb.org/downloads"><a href="http://www.mongodb.org/downloads">http://www.mongodb.org/downloads</a></a>。</p>
+<p>安装完成后，可以用 <code>mongod</code> 命令启动数据库服务器，用 <code>mongo</code> 命令打开命令行界面访问mongodb。</p>
+<h3>安装Meteor</h3>
+<p>Meteor的安装很简单，通过如下命令就可以安装一个官方的最新稳定版本：</p>
+<pre><code>$ curl https://install.meteor.com | /bin/sh</code></pre>
+<p>如果你和我一样，喜欢cutting edge的刺激，可以 <code>clone</code> meteor的repo，并切换至devel branch，然后安装：</p>
+<pre><code>$ git clone git://github.com/meteor/meteor.git
+$ cd meteor
+$ git checkout devel
+$ sudo ./install.sh</code></pre>
+<p>安装脚本会先下载dependency kit，然后安装整个framework。</p>
+<h2>第一个项目</h2>
+<h3>创建</h3>
+<pre><code>$ meteor create meteor-example
+meteor-example: created.
+
+To run your new app:
+   cd meteor-example
+   meteor
+$ cd meteor-example
+$ meteor
+[[[[[ ~/projects/meteor-example ]]]]]
+
+Running on: http://localhost:3000/</code></pre>
+<p>在浏览器中打开 <a href="http://localhost:3000/"><a href="http://localhost:3000/">http://localhost:3000/</a></a> 就可以访问这个项目了。</p>
+<h3>探索新建的项目</h3>
+<p>进入到meteor-example目录后，<code>ls -la</code> 可以看到项目的目录结构：</p>
+<pre><code>$ ls -la
+total 24
+drwxr-xr-x   6 tchen  staff   204 12 22 10:10 .
+drwxr-xr-x  47 tchen  staff  1598 12 22 10:10 ..
+drwxr-xr-x   5 tchen  staff   170 12 22 10:10 .meteor
+-rw-r--r--   1 tchen  staff    31 12 22 10:10 meteor-example.css
+-rw-r--r--   1 tchen  staff   193 12 22 10:10 meteor-example.html
+-rw-r--r--   1 tchen  staff   433 12 22 10:10 meteor-example.js</code></pre>
+<p>其中有一个隐藏的文件夹 <code>.meteor</code>，它记载了当前项目的配置信息，运行时所需要的各种文件，以及项目的local db（第一次启动meteor的时候会自动生成）。</p>
+<p>我们来看看 <code>.meteor/packages</code> 里记录了什么：</p>
+<pre><code>$ cat .meteor/packages
+# Meteor packages used by this project, one per line.
+#
+# &#39;meteor add&#39; and &#39;meteor remove&#39; will edit this file for you,
+# but you can also edit it by hand.
+
+autopublish
+insecure
+preserve-inputs</code></pre>
+<p>这是Meteor用来进行包管理的配置文件，它记录了你的项目里用了那些packages。</p>
+<ul>
+<li>autopublish是一个用来自动发布服务器端collection到客户端的库。</li>
+<li>insecure是一个允许客户端对服务器端publish出来的数据有全部read/write权限的库。</li>
+<li>preserve-inputs比较难解释一些，它指在meteor自动更新dom时，对于form中的各种输入组件，不重新生成。具体见：<a href="http://http://docs.meteor.com/"><a href="http://http://docs.meteor.com/">http://http://docs.meteor.com/</a></a>。</li>
+</ul>
+<h3>Meteor命令行介绍</h3>
+<pre><code>$ meteor --help
+Usage: meteor [--version] [--help] &lt;command&gt; [&lt;args&gt;]
+
+With no arguments, &#39;meteor&#39; runs the project in the current
+directory in local development mode. You can run it from the root
+directory of the project or from any subdirectory.
+
+Use &#39;meteor create &lt;name&gt;&#39; to create a new Meteor project.
+
+Commands:
+   run        [default] Run this project in local development mode
+   create     Create a new project
+   update     Upgrade to the latest version of Meteor
+   add        Add a package to this project
+   remove     Remove a package from this project
+   list       List available packages
+   bundle     Pack this project up into a tarball
+   mongo      Connect to the Mongo database for the specified site
+   deploy     Deploy this project to Meteor
+   logs       Show logs for specified site
+   reset      Reset the project state. Erases the local database.
+
+See &#39;meteor help &lt;command&gt;&#39; for details on a command.</code></pre>
+<h4>meteor list</h4>
+<p>列出meteor支持的package。注意，meteor的package（也自诩为smark package）和npm package不是一回事。meteor有自己的一套生态系统。以下所列的package都是开箱即用，用meteor add/remove安装/卸载即可。聪明如你一定会想到其实meteor add/remove就是修改 <code>.meteor/packages</code> 文件。</p>
+<pre><code>$ meteor list
+
+accounts-base           A user account system
+accounts-facebook       Login service for Facebook accounts
+accounts-github         Login service for Github accounts
+accounts-google         Login service for Google accounts
+accounts-password       Password support for accounts.
+accounts-twitter        Login service for Twitter accounts
+accounts-ui             Simple templates to add login widgets to an app.
+accounts-ui-unstyled    Unstyled version of login widgets
+accounts-weibo          Login service for Sina Weibo accounts
+amplify                 API for Persistant Storage, PubSub and Request
+autopublish             Automatically publish the entire database to all clients
+backbone                A minimalist client-side MVC framework
+bootstrap               UX/UI framework from Twitter
+code-prettify           Syntax highlighting of code, from Google
+coffeescript            Javascript dialect with fewer braces and semicolons
+d3                      Library for manipulating documents based on data.
+email                   Send email messages
+force-ssl               Require this application to use secure transport (HTTPS)
+handlebars              Simple semantic templating language
+htmljs                  Easy macros for generating DOM elements in Javascript
+http                    Make HTTP calls to remote servers
+insecure                Allow all database writes by default
+jquery                  Manipulate the DOM using CSS selectors
+jquery-history          pushState module from the jQuery project
+jquery-layout           Easily create arbitrary multicolumn layouts
+jquery-waypoints        Execute a function when the user scrolls past an element
+less                    The dynamic stylesheet language.
+localstorage-polyfill   Simulates the localStorage API on IE 6,7 using userData
+madewith                Made With Meteor badge
+preserve-inputs         Automatically preserve all form fields with a unique id
+showdown                Markdown-to-HTML processor
+spiderable              Makes the application crawlable to web spiders.
+stylus                  Expressive, dynamic, robust CSS.
+underscore              Collection of small helper functions: _.map, _.each, ...</code></pre>
+<h4>meteor mongo</h4>
+<p>由于meteor的db放在 <code>.meteor/local/db</code> 下，所以使用 <code>mongo</code> 命令行查看系统db找不到meteor的数据库。meteor提供了自己的mongo cli供调试使用，这条命令运行前必须保证Meteor server处于开启状态。即运行了 <code>meteor</code> 命令。</p>
+<pre><code>$ meteor mongo
+MongoDB shell version: 2.2.1
+connecting to: 127.0.0.1:3002/meteor
+&gt; show dbs
+local (empty)</code></pre>
+<h3>小试牛刀</h3>
+<p>我们先安装几个package，看看meteor的威力。</p>
+<pre><code>$ meteor add accounts-ui
+accounts-ui: Simple templates to add login widgets to an app.
+$ meteor add accounts-weibo
+accounts-weibo: Login service for Sina Weibo accounts
+$ meteor add accounts-password
+accounts-password: Password support for accounts.
+$ meteor add jquery
+jquery: Manipulate the DOM using CSS selectors
+$ meteor add bootstrap
+bootstrap: UX/UI framework from Twitter
+$ meteor add underscore
+underscore: Collection of small helper functions: _.map, _.each, ...</code></pre>
+<p>打开项目目录下的meteor-example.html，我们给它加上bootstrap的标准菜单，并添加loginButtons这个widget（是accounts-ui中定义的）：</p>
+<pre><code>&lt;body&gt;
+  &lt;div class=&quot;navbar&quot;&gt;
+    &lt;div class=&quot;navbar-inner&quot;&gt;
+      &lt;div class=&quot;container&quot;&gt;
+        &lt;a class=&quot;brand&quot; href=&quot;#&quot;&gt;Meteor Example&lt;/a&gt;
+        &lt;div class=&quot;nav-collapse collapse&quot;&gt;
+          &lt;ul class=&quot;nav&quot;&gt;
+            &lt;li&gt;&lt;a href=&quot;#&quot;&gt;{{loginButtons}}&lt;/a&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  {{&gt;hello}}
+&lt;/body&gt;</code></pre>
+<p>打开浏览器，可以看到多了一个菜单，里面有一个登录按钮。点击该按钮，你会发现这个简单的项目目前已经支持weibo和邮件登录两种方式了。</p>
+<h3>微博登录</h3>
+<p>你需要先到 <a href="http://open.weibo.com/apps"><a href="http://open.weibo.com/apps">http://open.weibo.com/apps</a></a> 创建你自己的微博app。将key和secret填入这里的微博接入配置窗口并按提示配置微博app，就可以使用了（大范围使用请先通过weibo app审核）。</p>
+<h3>邮件登录</h3>
+<p>点击 <code>create account</code>，输入邮箱和密码，创建一个账户。可以看到账号已创建，并且自动登录进来。</p>
+<p>你可以继续试验登入，登出，忘记密码（注意，本地环境可能无法发送找回密码的邮件）。目前我们还没有撰写一行代码，已经有了一个完备的用户系统。</p>
+<h2>深入了解</h2>
+<p>如果你好奇这一切是怎么回事，那么请接着阅读。打开浏览器当前页面（<a href="http://localhost:3000）的console（建议使用chrome），尝试以下命令：">http://localhost:3000）的console（建议使用chrome），尝试以下命令：</a></p>
+<pre><code>&gt; $(document)
+&lt; [#document]
+&gt; _.max([1,2,3,4])
+&lt; 4</code></pre>
+<p>神奇吧，上一步add了jquery和underscore这两个package后，你的项目已经自动包含了这两个库。接下保持在登录状态。在console中输入：</p>
+<pre><code>&gt; Meteor.userId()
+&lt; &quot;dd0ed681-75e4-4d8c-b1fa-8b7dba8a2b16&quot;
+&gt; Meteor.user()
+&lt; Object
+_id: &quot;dd0ed681-75e4-4d8c-b1fa-8b7dba8a2b16&quot;
+emails: Array[1]
+0: Object
+address: &quot;a@b.com&quot;
+verified: false
+__proto__: Object
+length: 1
+__proto__: Array[0]
+__proto__: Object</code></pre>
+<p>登出当前用户，在console中输入：</p>
+<pre><code>&gt; Meteor.userId()
+&lt; null
+&gt; Accounts.createUser({email:&#39;e@f.com&#39;, password: &#39;123456&#39;})
+&lt; undefined // 注意这个时候e@f.com已经是登录状态，见浏览器菜单栏。
+&gt; Meteor.userId()
+&lt; &quot;b9947f4f-0916-4ea9-88ea-7984b7f43875&quot;
+&gt; Meteor.logout()
+&gt; Meteor.loginWithPassword(&#39;e@f.com&#39;, &#39;123456&#39;)
+&lt; undefined // 注意这个时候e@f.com又变成登录状态，见浏览器菜单栏。</code></pre>
+<p>我们得出如下结论：</p>
+<ul>
+<li>Meteor会自动将package中用于客户端的js和css加载在浏览器中。</li>
+<li>accounts-* 系列组件提供了用户系统所需的绝大多数功能，并提供了一个简单的ui，供快速开发。</li>
+<li>Accounts对象和Meteor对象可以对用户进行创建，登录，退出等操作。</li>
+<li>Meteor实时在服务器和客户端间交换数据。无论是登入/登出，还是创建用户，在client &lt;-&gt; server间的roundtrip中，只有数据在传输，页面的各种元素只有在第一次加载时才传输。</li>
+</ul>
+<h2>Meteor中的一些概念</h2>
+<h3>Collection</h3>
+<p>Meteor的Collection一旦定义后，在client/server端都可以访问。在meteor-example.js里输入如下代码创建collection：</p>
+<pre><code>Messages = new Meteor.Collection(&#39;messages&#39;);</code></pre>
+<p>在浏览器的console中可以访问该collection:</p>
+<pre><code>&gt; Messages.find().fetch()
+&lt; []
+&gt; Messages.insert({username: Meteor.user().emails[0].address, content: &#39;Hello Hanmeimei, how are you?&#39;})
+&lt; &quot;21354a36-ec04-4b47-8000-e01ef2267c43&quot;</code></pre>
+<p>为了有更好的显示效果，我们再加一些代码显示Messages里的内容：</p>
+<p>在meteor-example.html中我们加入一个新的template：</p>
+<pre><code>&lt;template name=&quot;message&quot;&gt;
+  &lt;div class=&quot;hero-unit&quot;&gt;
+    &lt;h1&gt;Messages&lt;/h1&gt;
+    &lt;ul&gt;
+      {{ #each messages }}
+      &lt;li&gt;{{ username }} says: {{ content }}&lt;/li&gt;
+      {{/each }}
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre>
+<p>然后在body中引用它，在 <strong>{{ &gt;hello }}</strong> 后，加入 <strong>{{ &gt;message }}</strong>。</p>
+<p>有了显示message的template，我们还需要提供数据的controller。在meteor-example.js中 if(...client)的scope中，加入新的message的controller：</p>
+<pre><code>Template.message.messages = function() {
+    return Messages.find()
+}</code></pre>
+<p>现在看看浏览器中发生了什么变化。是滴！页面自动刷新，显示我们刚才创建的内容了。现在我们打开另外一个浏览器，进入 <a href="http://localhost:3000"><a href="http://localhost:3000">http://localhost:3000</a></a>，用一个新的账户登录。然后在console里输入（这里建议使用firefox和chrome做测试）：</p>
+<pre><code>&gt; Messages.insert({username: Meteor.user().emails[0].address, content: &#39;Hi Lilei, fine, thank you. And you?&#39;})
+&lt; &quot;c6ec8655-4644-48b2-a6be-7a3973dd7581&quot;</code></pre>
+<p>奇迹出现了，不仅仅是当前窗口得到了更新，另外一个浏览器有了最新的消息！我们仅仅写了几行代码，就已经见到一个实时聊天系统的雏形了！</p>
+<p><img src="/assets/files/snapshots/meteor-realtime.jpg" alt="meteor实时聊天"></p>
+<h3>Live Update</h3>
+<p>从刚才的例子中我们已经看到了Meteor的live update的威力。任何时候，当数据发生改变的时候，Meteor会自动在客户端重新渲染改动相关的DOM。</p>
+<h3>Realtime</h3>
+<p>借助socket.io，Meteor在server和每个客户端间保持了一个web socket连接。当有数据发生改变时，服务器会将新的数据publish到所有的客户端。这是Meteor的基因，因此，使用Meteor的任何app都天然具备realtime的特性。</p>
+<h3>MVC</h3>
+<p>Meteor不算是标准的MVC framework。如果非要往上套，Collection算是Model层，Template对象算是Controller层，而View是html中的template。</p>
+<h2>后记</h2>
+<p>今天就先写这么多，感兴趣的童鞋可以为聊天室加一个输入界面，这样说句话不必费劲地敲代码了。本文的完整代码可以在这里下载：
+<a href="/assets/files/chat.tgz">chat.tgz</a>。</p>
+<p>依旧例，送上小宝今日照片。</p>
+<p><img src="/assets/files/photos/baby20121222-1.jpg" alt="小宝"></p>
+<p><img src="/assets/files/photos/baby20121222-2.jpg" alt="小宝"></p>
+
+        <div class='under-post'>
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+                
+                  <div class='pull-left'>
+                    <a class='read-previous-link' href='/posts/2012-12-19-atanasoff-product-flow-chart.html'>
+                      <i class='icon-angle-left'></i>
+                      上一篇
+                    </a>
+                  </div>                  
+                
+                
+                  <div class='pull-right'>
+                    <a class='read-next-link' href='/posts/2012-12-26-reveal-js-support-for-octopress.html'>
+                      下一篇
+                      <i class='icon-angle-right'></i>
+                    </a>
+                  </div>
+                         
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-facebook'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-twitter'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-linkedin'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+        </div>
+      </div>
+    </div>
+      
+  </div>
+  <div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+  
+  <div class="ds-thread">
+    <script>
+        var duoshuoQuery = {short_name:"tyrchen"};
+        (function() {
+          var ds = document.createElement('script');
+          ds.type = 'text/javascript';ds.async = true;
+          ds.src = 'http://static.duoshuo.com/embed.js';
+          ds.charset = 'UTF-8';
+          (document.getElementsByTagName('head')[0]
+          || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+  </div>
+
+</div>
+
+<footer id="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="footer-menu">
+                    <li><a href="/pages/privacy">隐私策略</a></li>
+                    <li><a href="/pages/license">版权说明</a></li>
+                    <li><a href="/pages/disclaimer">免责声明</a></li>
+                    <li><a href="#">联系我们</a></li>
+                </ul>
+                <div class="copyright">
+                    2013 &copy; Tyr Chen. 保留一切权利.
+                </div>
+            </div>
+            <div class="col-md-6">
+                <ul class="footer-social">
+                    <li><a href="#"><i class="icon-facebook"></i></a></li>
+                    <li><a href="#"><i class="icon-twitter"></i></a></li>
+                    <li><a href="#"><i class="icon-dribbble"></i></a></li>
+                    <li><a href="#"><i class="icon-linkedin"></i></a></li>
+                    <li><a href="#"><i class="icon-google-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- Scripts -->
+<script defer="defer"  src="/assets/js/jquery.js"></script><script defer="defer"  src="/assets/js/bootstrap.min.js"></script><script defer="defer"  src="/assets/js/jquery.visible.min.js"></script><script defer="defer"  src="/assets/js/jquery.isotope.min.js"></script><script defer="defer"  src="/assets/js/jquery.knob.js"></script><script defer="defer"  src="/assets/js/jquery.scrollUp.min.js"></script><script defer="defer"  src="/assets/js/highlight.pack.js"></script><script defer="defer"  src="/assets/js/application.js"></script>
+
+
+</body>
+
+</html>

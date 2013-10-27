@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="本博客提供我个人的想法，创意，经验，心得。你不必认同博主观点。" />
+    <meta name="keywords" content="创业, 思想, 点子, 经验, python, erlang, node, javascript, 服务器, devops, meteor" />
+    <meta name="author" content="Tyr Chen" />
+
+    <!-- Output DocPad produced meta elements -->
+    
+
+    <!-- Styles -->
+    <link  rel="stylesheet" href="/assets/css/app.css" /><link  rel="stylesheet" href="/assets/css/animate.css" /><link  rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700|Yanone+Kaffeesatz:200,300,400,700|Raleway:200,300,400,500,700" /><link  rel="stylesheet" href="/assets/css/font-awesome.css" /><link  rel="stylesheet" href="/assets/css/solarized_dark.css" /><link  rel="stylesheet" href="/assets/css/theme.css" />
+
+    <link href="/assets/favicon.ico" rel="shortcut icon">
+    <link href="/assets/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    @javascript html5shiv respond.min
+    <![endif]-->
+
+    <title>创建下一代家用防火墙vMars | 觅珠人 | Tyr Chen的个人博客 | 创意 | 心得 | 经验</title>
+
+</head>
+
+<body>
+
+<!-- Contact Modal -->
+<div aria-hidden='true' aria-labelledby='contactModalLabel' class='modal fade' id='contactModal' role='dialog' tabindex='-1'>
+    <div class='modal-dialog'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <button aria-hidden='true' class='close' data-dismiss='modal' type='button'>×</button>
+                <h4 class='modal-title'>Contact Us Form</h4>
+            </div>
+            <div class='modal-body'>
+                <form action='#' role='form'>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Name</label>
+                                <input class='form-control' placeholder='your username' type='text'>
+                            </div>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Email</label>
+                                <input class='form-control' placeholder='your password' type='text'>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-12'>
+                                <label class='control-label' for=''>Your Message</label>
+                                <textarea class='form-control' name='' rows='4'></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class='modal-footer'>
+                <button class='btn btn-default' data-dismiss='modal' type='button'>Cancel</button>
+                <button class='btn btn-primary' type='button'>Send Message</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="header-image-wrapper">
+  <img alt="" src="/assets/files/posts/fire_alarm.jpg">
+</div>
+
+<div class='header-main'>
+    <div class='container'>
+        <nav class='navbar navbar-default' role='navigation'>
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class='navbar-header'>
+                <button class='navbar-toggle' data-target='.navbar-ex1-collapse' data-toggle='collapse' type='button'>
+                    <span class='sr-only'>Toggle navigation</span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                </button>
+                <a class='navbar-brand' href='/'>
+                    <img alt='' height='45px' src='/assets/images/tyr.png'> <span>觅珠人</span>
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class='collapse navbar-collapse navbar-ex1-collapse'>
+
+                <ul class='nav navbar-nav navbar-right'>
+                    <li class="">
+                        <a href="/">首页</a>
+                    </li>
+                    
+                        
+                        <li
+                            about="/pages/posts.html"
+                            class=""
+                        >
+                            <a href="/pages/posts.html">
+                                文章随笔
+                            </a>
+                        </li>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                        <li
+                            about="/pages/canvases.html"
+                            class=""
+                        >
+                            <a href="/pages/canvases.html">
+                                奇思妙想
+                            </a>
+                        </li>
+                        
+                    
+                        
+                        <li
+                            about="/pages/aboutme.html"
+                            class=""
+                        >
+                            <a href="/pages/aboutme.html">
+                                关于我
+                            </a>
+                        </li>
+                        
+                    
+                    <!--
+                    <li>
+                        <a data-toggle='modal' href='#contactModal'>联系我</a>
+                    </li>
+                    -->
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+</div>
+
+<div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+
+<div class='container'>
+  <div class='row'>
+    <div class="col-md-3">
+      <div class="post-side-bar">
+        <div class="widget widget-cats tags">
+          <h4 class="widget-title">标签</h4>
+          <ul>
+          
+            <li><a href='/tags/firewall.html'>firewall</a></li>
+          
+            <li><a href='/tags/thought.html'>thought</a></li>
+          
+            <li><a href='/tags/startup.html'>startup</a></li>
+          
+          </ul>
+        </div>
+        <div class="widget widget-cats">
+          <h4 class="widget-title">
+            相关文章
+          </h4>
+          <ul>
+            
+            
+              <li><a href="/canvases/2013-04-04-lean-canvas-example.html">Lean Canvas Example</a></li>
+            
+              <li><a href="/posts/2012-12-29-2013-things-to-do.html">2013要做的事</a></li>
+            
+              <li><a href="/posts/2013-01-25-bootstrap-a-new-web-app.html">后端工程师的逆袭：单枪匹马搭建一个新的Web App</a></li>
+            
+              <li><a href="/posts/2013-02-03-observation-about-align-and-fit.html">Align/Fit杂谈</a></li>
+            
+              <li><a href="/posts/2013-03-08-career-path-for-software-engineer.html">软件工程师的职业生涯</a></li>
+            
+              <li><a href="/posts/2013-04-25-engineering-environment-for-smart-team.html">自动化的高效团队开发环境</a></li>
+            
+              <li><a href="/posts/2013-05-09-why-every-developer-should-use-mac.html">why every developer should use mac</a></li>
+            
+              <li><a href="/posts/2013-06-21-entrepreneurship-in-bay-area.html">湾区创业者</a></li>
+            
+              <li><a href="/posts/2013-07-27-the-remains-of-the-day.html">长日无痕</a></li>
+            
+            
+          </ul>
+        </div>
+      </div>
+    </div>      
+    <div class='col-md-9'>
+      <div class='post-single'>
+        <!--
+        <div class='pre-post-meta'>
+          <span>
+            <i class='icon-reorder'></i>
+            in
+            <a href='#'>Web Development</a>
+          </span>
+          <span>
+            <i class='icon-user'></i>
+            by
+            <a href='#'>Tyr Chen</a>
+          </span>
+          <span>
+            <i class='icon-bookmark'></i>
+            9 分钟
+          </span>
+        </div>
+        -->
+        <h1 class='has-sub-header'>创建下一代家用防火墙vMars</h1>
+        <div class='post-single-meta'>
+          <span class='meta-item'>
+            <i class='icon-calendar'></i>
+            8个月前
+          </span>
+          <!--
+          <span class='meta-item'>
+            <a href='#'>
+              <i class='icon-comments'></i>
+              24
+            </a>
+          </span>
+          <span class='meta-item'>
+            <a href='#'>
+              <i class='icon-heart'></i>
+              15
+            </a>
+          </span>
+          -->
+          <span class="meta-item">
+          	
+            <i class='icon-time'></i>
+            9 分钟
+          </span>
+        </div>
+        <blockquote>
+<p>2013-03-05 作者按：这是个胡思乱想的产品，写于2013-02-06，我尝试者把我系统领域的知识和互联网上的实践结合起来，看看能擦出什么火花。一直keep private，是想有朝一日做成自己的下一个创业项目。但最近的精力放在这上的很少，目前可预见的一年内自己也没有能耐去handle这样一个项目（主要是涉及的链条太广）。所以干脆将其open，或许可以激发能干成这事的人。</p>
+</blockquote>
+<!--more-->
+
+<h2>硬件</h2>
+<p>Raspberry Pi开启了一个新的廉价低功耗全功能PC时代。仅需要$35，你可以轻松拥有一个700MHz，512M memory，可轻松运行debian/archlinux的PC。如果扣去销售和管理运营成本，我们有理由相信Pi的BOM可能会在$25-$32间。</p>
+<p>如果我们将Pi的video/audio/usb/gpio等子系统去掉，加多四个百兆网口及wifi芯片，内嵌1G flash memory，将其打造成一个可用的网络平台，以我并不专业的大脑猜测，BOM大概还在$30左右的区间。也就是说，花费不到200元，我们有了一个打造家用防火墙的硬件基础。</p>
+<p>(当然，这里没有考虑设计SoC的费用，毕竟没法直接使用Pi现成的硬件设计了)</p>
+<h2>软件</h2>
+<p>对于一个家庭而言，很少会部署多个网络设备，这会增大使用难度。但用户必然会使用的网络设备是无线路由器。所以家用防火墙首先要支持无线路由器的基本功能，否则无法立足。无线路由器的基本功能包括：</p>
+<ul>
+<li>PPPoE/Static IP接入。这是最基本的功能，供用户接入互联网。</li>
+<li>WIFI access point。这也是最基本的功能，供家用设备无线接入局域网。</li>
+<li>DHCP server。自动为家用设备分配局域网IP。</li>
+<li>NAT。将局域网IP转换成WAN IP。</li>
+<li>DNS relay。中继从其他设备发送过来的DNS请求。</li>
+<li>uPnP（可选）。</li>
+<li>MAC address binding（可选）。</li>
+<li>Traffic Shaping/Metoring（可选）。</li>
+</ul>
+<p>支持以上功能后，一款基本的防火墙还应该支持以下安全功能：</p>
+<ul>
+<li>policy。简言之，允许或拒绝什么样的traffic通过。比如：拒绝从孩子的IP去访问 <a href="http://sex.com">http://sex.com</a> (假设这个域名存在)</li>
+<li>screen。阻止常见的网络攻击。</li>
+<li>Intrusion detection: 未知攻击的检测和防范。</li>
+<li>Application Identification: 鉴别具体的应用以阻止不当内容。如允许家庭网络访问facebook，但阻止一个名为drug play（假想的应用）的facebook第三方应用。</li>
+<li>URL Filtering/Content Filtering: URL过滤和内容过滤。</li>
+</ul>
+<p>要满足以上feature，先不做任何performance的考虑，仅从最快速度打造一个demo product的角度看，我们有十足的理由选用open source软件：</p>
+<ul>
+<li>OS: debian (Raspbian) 或者 archlinux</li>
+<li>Policy based firewall: iptables</li>
+<li>Intrusion detection: snort</li>
+</ul>
+<p>当然还有linux下的all-in-one的software suite可选，如 <a href="http://www.ipfire.org/">ipfire</a>。</p>
+<p>选用linux是因为上述的网络协议linux已经都很好地支持，仅需要做必要的配置就可以使用。iptables和snort能够提供必要的网络安全支持，安装和配置就不在这里详述。有兴趣的同学可以移步 <a href="http://www.instructables.com/id/Raspberry-Pi-Firewall-and-Intrusion-Detection-Syst/">这里</a>。</p>
+<p>当然，选用GPL license的software对商业项目来说有些风险，因为任何修改于其source code的redistribution都需要开源。所以真要商业使用的话，要么将防火墙端代码开源，要么换bsd license的software stack，如freebasd + ipfirewall, etc. 如果demo product被验证成功，我会选择走BSD的路子，更可控一些。</p>
+<h2>互联网</h2>
+<p>上面讲了一大堆和系统相关的内容，好像跟互联网没半毛钱关系。其实，之所以将这个防火墙称为下一代防火墙，重头戏就在互联网这里。</p>
+<h3>部署</h3>
+<p>传统无线路由器部署起来很麻烦，对于不是精通网络的人来说，简直就是一场痛苦的审判。而防火墙的复杂性更甚于此。不过，构架在开源软件之上，我们可以很方便地构架一套web ui，通过cloud的方式来方便用户部署。听起来是不是很SDN?</p>
+<p>vMars的部署方式：</p>
+<ol>
+<li>用户把防火墙拆箱，连到笔记本上，并将防火墙的WAN口连接到xDSL接口（或者小区宽带）上，就可以访问 <a href="http://10.0.0.1">http://10.0.0.1</a> 进行配置。管理界面只有一页，就是提供宽带商给你的用户名/密码。直至接入到互联网。</li>
+<li>防火墙连接云端的服务器（假想中的 <a href="https://vmars.com），提示用户使用产品的序列号注册一个用户ID。用户ID就是云端的通行证。">https://vmars.com），提示用户使用产品的序列号注册一个用户ID。用户ID就是云端的通行证。</a></li>
+<li>接下来vmars.com问用户几个问题，然后帮助用户初步配置防火墙的无线功能。之后让用户将家中的设备连接到防火墙的SSID下。用户点击完成后，会以可视化的方式显示都有什么样的设备连接到了防火墙（这点应该可实现，因为每个mac地址的前24bit对应一个vendor，如：<a href="http://aruljohn.com/mac.pl。但具体到device如ipad">http://aruljohn.com/mac.pl。但具体到device如ipad</a>, iphone则需构建一个db）。</li>
+<li>用户可以为device起别名，并标记已连接的设备为：『家长』，『孩子』，『朋友』。『家长』的设备可以访问本地网络（Intranet），并且可以无限制访问外网（Internet）；『孩子』的设备可以访问本地网络，并可以有限制访问外网；『朋友』的设备只能访问外网。</li>
+<li>接下来vmars.com会根据进一步的偏好设置为用户生成合适的安全配置，并推送到防火墙端。</li>
+<li>至此，配置完成，防火墙开始工作。以后新增的设备连接SSID后重复4-5步即可。</li>
+</ol>
+<p>部署的整个过程用户不需要知道什么是policy，什么是application identification，什么是端口，只用做一些选择题就足够了。这样，即使对于小白用户也能最大化保护家庭网络的安全。</p>
+<h3>自动更新（配置推送）</h3>
+<p>防火墙的更新以及配置推送都由vmars.com发起。防火墙端和vmars.com端保持一个长期的TCP连接，中断后自动重连。当vmars.com有最新的virus/spam/malware的definition lib时，会自动通过连接push到防火墙，根据用户网络状况而按需变化的配置也会即时推送到防火墙端。</p>
+<h3>日志分析</h3>
+<p>在用户许可的情况下，每X（X&gt;=5）分钟，设备将一些采样日志信息（可关闭），统计信息和识别出的疑似攻击信息传输到vmars.com。每个用户ID下有10G免费的日志空间。</p>
+<p>日志信息用于分析用户的网络安全状况。</p>
+<p>统计信息可以帮助用户可视化地看到自己家庭网络的使用状况。比如说过去一周在各个时间段网络使用的状况。vmars.com据此可以生成优化的网络配置，供用户选择使用。比如说，20:00-22:30将带宽优先提供给优酷，爱奇艺，乐视。</p>
+<p>疑似攻击信息用于鉴定攻击行为。收集此类信息可以为用户提供更安全的网络保护。</p>
+<h3>自动VPN</h3>
+<p>用户可以指定一个白名单，在名单内的网站访问都将通过VPN tunnel。白名单采用UGC方式生成，一般不需要用户自己撰写。</p>
+<p>或者根据配置，当某次访问持续无响应时，防火墙对该网站将自行切换至VPN tunnel，如果得到响应，则将该网站自动加入到VPN白名单。</p>
+<p>由于占用了很多服务器资源，自动VPN将会是一个收费项目。相信该功能在天朝将会广受欢迎。</p>
+<p>温馨提示：请不要将该功能用于一切形式的爬墙，否则后果自负 ^_^</p>
+<h3>家长控制</h3>
+<p>介个么，也可以做成一个收费项目，让家庭网络对孩子无毒无害（这可是护花育苗，造福千秋万载的丰功伟业啊）。</p>
+<p>其实基本功能实现不难，就是一个Url filtering，难的是构建database（不过可以购买第三方滴）。Url filtering（使用了好的database）能够过滤99%的有害信息，比如涉黄的网站。</p>
+<p>但Url filtering无法过滤你孩子的朋友在facebook发表的不良信息，或者在snapchat上发的裸照。所以我们还需要content filtering。这个也有现成的技术买，是个integration的活儿。</p>
+<h3>其他功能</h3>
+<p>如果实现了以上基本功能，vMars项目就能够赚到钱的话，那么，还有很多很多tier 2的功能可以进一步增加ARPU，比如说将防火墙拓展成topset，NAS，成为家庭网络的一个无可替代的中心等。当然，vMars还有更大的野心，我就不献丑了。:)</p>
+<h2>商业模式</h2>
+<p>一直在想这个要不要说，但看到这里，聪明的你应该也已经猜到了：IAAS，Infrastructure as a Service。没错，卖硬件是假，卖服务是真。一次性的硬件可以不赚钱（为了占领市场），但持续的服务赚钱。和运营商一样，vMars喜欢ARPU，Average Revenue Per User。我希望月ARPU是￥15或$5。</p>
+<p>在别人的市场，别人的玩法下，一个创新的项目是很难长大的，除非你定义一种新的玩法。vMars的商业模式颠覆了诸如tplink, netgear等vendor一贯的做法。可行与否，交由市场和用户来判定。</p>
+<h2>后记</h2>
+<p>站着说话不腰痛，以分析家的角度来看一个项目貌似如此简单，但真正做起来，呵呵，做过的人偷笑一下，将会是一场备受折磨的旅程。做系统可不比做互联网，花3个月时间掌握一门语言和框架，就能做出看上去相当不错的产品（我的teamspark第一版仅仅用了几个晚上），但做系统，没有一定时间的积淀和历练，很难做好，甚至根本无从下手。</p>
+<p>放张小宝的照片，这小妞现在在我怀里不愿躺着，经常自己就半坐起来，太厉害了。每周游一次泳，现在已经是游泳健将啦。</p>
+<p><img src="/assets/files/photos/baby20130303.jpg" alt="小宝"></p>
+
+        <div class='under-post'>
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+                
+                  <div class='pull-left'>
+                    <a class='read-previous-link' href='/posts/2013-02-21-openflow-introduction.html'>
+                      <i class='icon-angle-left'></i>
+                      上一篇
+                    </a>
+                  </div>                  
+                
+                
+                  <div class='pull-right'>
+                    <a class='read-next-link' href='/posts/2013-03-08-career-path-for-software-engineer.html'>
+                      下一篇
+                      <i class='icon-angle-right'></i>
+                    </a>
+                  </div>
+                         
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-facebook'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-twitter'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-linkedin'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+        </div>
+      </div>
+    </div>
+      
+  </div>
+  <div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+  
+  <div class="ds-thread">
+    <script>
+        var duoshuoQuery = {short_name:"tyrchen"};
+        (function() {
+          var ds = document.createElement('script');
+          ds.type = 'text/javascript';ds.async = true;
+          ds.src = 'http://static.duoshuo.com/embed.js';
+          ds.charset = 'UTF-8';
+          (document.getElementsByTagName('head')[0]
+          || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+  </div>
+
+</div>
+
+<footer id="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="footer-menu">
+                    <li><a href="/pages/privacy">隐私策略</a></li>
+                    <li><a href="/pages/license">版权说明</a></li>
+                    <li><a href="/pages/disclaimer">免责声明</a></li>
+                    <li><a href="#">联系我们</a></li>
+                </ul>
+                <div class="copyright">
+                    2013 &copy; Tyr Chen. 保留一切权利.
+                </div>
+            </div>
+            <div class="col-md-6">
+                <ul class="footer-social">
+                    <li><a href="#"><i class="icon-facebook"></i></a></li>
+                    <li><a href="#"><i class="icon-twitter"></i></a></li>
+                    <li><a href="#"><i class="icon-dribbble"></i></a></li>
+                    <li><a href="#"><i class="icon-linkedin"></i></a></li>
+                    <li><a href="#"><i class="icon-google-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- Scripts -->
+<script defer="defer"  src="/assets/js/jquery.js"></script><script defer="defer"  src="/assets/js/bootstrap.min.js"></script><script defer="defer"  src="/assets/js/jquery.visible.min.js"></script><script defer="defer"  src="/assets/js/jquery.isotope.min.js"></script><script defer="defer"  src="/assets/js/jquery.knob.js"></script><script defer="defer"  src="/assets/js/jquery.scrollUp.min.js"></script><script defer="defer"  src="/assets/js/highlight.pack.js"></script><script defer="defer"  src="/assets/js/application.js"></script>
+
+
+</body>
+
+</html>

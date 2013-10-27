@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="本博客提供我个人的想法，创意，经验，心得。你不必认同博主观点。" />
+    <meta name="keywords" content="创业, 思想, 点子, 经验, python, erlang, node, javascript, 服务器, devops, meteor" />
+    <meta name="author" content="Tyr Chen" />
+
+    <!-- Output DocPad produced meta elements -->
+    
+
+    <!-- Styles -->
+    <link  rel="stylesheet" href="/assets/css/app.css" /><link  rel="stylesheet" href="/assets/css/animate.css" /><link  rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700|Yanone+Kaffeesatz:200,300,400,700|Raleway:200,300,400,500,700" /><link  rel="stylesheet" href="/assets/css/font-awesome.css" /><link  rel="stylesheet" href="/assets/css/solarized_dark.css" /><link  rel="stylesheet" href="/assets/css/theme.css" />
+
+    <link href="/assets/favicon.ico" rel="shortcut icon">
+    <link href="/assets/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    @javascript html5shiv respond.min
+    <![endif]-->
+
+    <title>后端工程师的逆袭：单枪匹马搭建一个新的Web App | 觅珠人 | Tyr Chen的个人博客 | 创意 | 心得 | 经验</title>
+
+</head>
+
+<body>
+
+<!-- Contact Modal -->
+<div aria-hidden='true' aria-labelledby='contactModalLabel' class='modal fade' id='contactModal' role='dialog' tabindex='-1'>
+    <div class='modal-dialog'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <button aria-hidden='true' class='close' data-dismiss='modal' type='button'>×</button>
+                <h4 class='modal-title'>Contact Us Form</h4>
+            </div>
+            <div class='modal-body'>
+                <form action='#' role='form'>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Name</label>
+                                <input class='form-control' placeholder='your username' type='text'>
+                            </div>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Email</label>
+                                <input class='form-control' placeholder='your password' type='text'>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-12'>
+                                <label class='control-label' for=''>Your Message</label>
+                                <textarea class='form-control' name='' rows='4'></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class='modal-footer'>
+                <button class='btn btn-default' data-dismiss='modal' type='button'>Cancel</button>
+                <button class='btn btn-primary' type='button'>Send Message</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="header-image-wrapper">
+  <img alt="" src="/assets/images/backgrounds/page-header-bg-1.jpg">
+</div>
+
+<div class='header-main'>
+    <div class='container'>
+        <nav class='navbar navbar-default' role='navigation'>
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class='navbar-header'>
+                <button class='navbar-toggle' data-target='.navbar-ex1-collapse' data-toggle='collapse' type='button'>
+                    <span class='sr-only'>Toggle navigation</span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                </button>
+                <a class='navbar-brand' href='/'>
+                    <img alt='' height='45px' src='/assets/images/tyr.png'> <span>觅珠人</span>
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class='collapse navbar-collapse navbar-ex1-collapse'>
+
+                <ul class='nav navbar-nav navbar-right'>
+                    <li class="">
+                        <a href="/">首页</a>
+                    </li>
+                    
+                        
+                        <li
+                            about="/pages/posts.html"
+                            class=""
+                        >
+                            <a href="/pages/posts.html">
+                                文章随笔
+                            </a>
+                        </li>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                        <li
+                            about="/pages/canvases.html"
+                            class=""
+                        >
+                            <a href="/pages/canvases.html">
+                                奇思妙想
+                            </a>
+                        </li>
+                        
+                    
+                        
+                        <li
+                            about="/pages/aboutme.html"
+                            class=""
+                        >
+                            <a href="/pages/aboutme.html">
+                                关于我
+                            </a>
+                        </li>
+                        
+                    
+                    <!--
+                    <li>
+                        <a data-toggle='modal' href='#contactModal'>联系我</a>
+                    </li>
+                    -->
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+</div>
+
+<div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+
+<div class='container'>
+  <div class='row'>
+    <div class="col-md-3">
+      <div class="post-side-bar">
+        <div class="widget widget-cats tags">
+          <h4 class="widget-title">标签</h4>
+          <ul>
+          
+            <li><a href='/tags/thought.html'>thought</a></li>
+          
+            <li><a href='/tags/startup.html'>startup</a></li>
+          
+          </ul>
+        </div>
+        <div class="widget widget-cats">
+          <h4 class="widget-title">
+            相关文章
+          </h4>
+          <ul>
+            
+            
+              <li><a href="/canvases/2013-04-04-lean-canvas-example.html">Lean Canvas Example</a></li>
+            
+              <li><a href="/posts/2012-12-29-2013-things-to-do.html">2013要做的事</a></li>
+            
+              <li><a href="/posts/2013-02-03-observation-about-align-and-fit.html">Align/Fit杂谈</a></li>
+            
+              <li><a href="/posts/2013-02-06-Making-a-next-generation-home-security-device.html">创建下一代家用防火墙vMars</a></li>
+            
+              <li><a href="/posts/2013-03-08-career-path-for-software-engineer.html">软件工程师的职业生涯</a></li>
+            
+              <li><a href="/posts/2013-04-25-engineering-environment-for-smart-team.html">自动化的高效团队开发环境</a></li>
+            
+              <li><a href="/posts/2013-05-09-why-every-developer-should-use-mac.html">why every developer should use mac</a></li>
+            
+              <li><a href="/posts/2013-06-21-entrepreneurship-in-bay-area.html">湾区创业者</a></li>
+            
+              <li><a href="/posts/2013-07-27-the-remains-of-the-day.html">长日无痕</a></li>
+            
+            
+          </ul>
+        </div>
+      </div>
+    </div>      
+    <div class='col-md-9'>
+      <div class='post-single'>
+        <!--
+        <div class='pre-post-meta'>
+          <span>
+            <i class='icon-reorder'></i>
+            in
+            <a href='#'>Web Development</a>
+          </span>
+          <span>
+            <i class='icon-user'></i>
+            by
+            <a href='#'>Tyr Chen</a>
+          </span>
+          <span>
+            <i class='icon-bookmark'></i>
+            6 分钟
+          </span>
+        </div>
+        -->
+        <h1 class='has-sub-header'>后端工程师的逆袭：单枪匹马搭建一个新的Web App</h1>
+        <div class='post-single-meta'>
+          <span class='meta-item'>
+            <i class='icon-calendar'></i>
+            9个月前
+          </span>
+          <!--
+          <span class='meta-item'>
+            <a href='#'>
+              <i class='icon-comments'></i>
+              24
+            </a>
+          </span>
+          <span class='meta-item'>
+            <a href='#'>
+              <i class='icon-heart'></i>
+              15
+            </a>
+          </span>
+          -->
+          <span class="meta-item">
+          	
+            <i class='icon-time'></i>
+            6 分钟
+          </span>
+        </div>
+        <h2>引子</h2>
+<p>小T是个很苦逼的后端工程师。他拥有通天的本领，从web server到db，从cache server到MQ，从assembly到Javascript，写得了算法，玩得了数据，十八般武艺样样精通。可惜，他生在一个矮矬穷靠边站，高富帅是宇宙中心的时代。看人家的产品一个个长得娇艳欲滴，自己的却蓬头垢面，心里那个郁闷。每每朋友刚一试用，产品的美妙还未体现，就被痛快枪毙。睡梦中，小T不知道把发明GUI，让屏幕充满色彩的那些家伙干掉多少回了，也不知道憧憬过多少次没有色彩，没有图形，满屏幕都是字符的世界 —— 每个用户都像hacker一样通过清脆的键盘敲击，进入一个又一个自己创建的产品。</p>
+<!--more-->
+
+<p>可是梦总有醒的时候。打开窗户，外面是一片蓝天。</p>
+<p>小T脑袋里又冒出一个新的产品想法，很小的想法，他迫不及待地在纸上构想，推演，一幅又一幅时而简单，时而复杂的草图在笔尖下跃出。</p>
+<p>擦了擦鼻头的汗，看着草图，小T满意地笑了。这玩意能做。如果每天晚上9点到11点无干扰工作两个小时，一个包含主要逻辑的demo一周内就能做出来。Piece of cake! </p>
+<p>这种时刻，小T总是有一种舍我其谁的自负。</p>
+<p>等等，<strong>这些活怎么办</strong>？</p>
+<ul>
+<li>页面布局</li>
+<li>配色风格</li>
+<li>基本样式</li>
+<li>全站的icons</li>
+<li>...</li>
+</ul>
+<p>小T惊出了一身冷汗。他深知在这些方面自己等同一个白痴，他曾经花了10分钟用gimp画了一个 <code>+</code> 的的图标，后来就配色和审美被师兄师弟，甚至路人甲鄙视了半年。</p>
+<blockquote>
+<ul>
+<li>我有审美能力，但我做不出来看上去美的东西。</li>
+<li>我不是色盲，但我的配色水准让我恨不得自己就是色盲。</li>
+<li>...</li>
+</ul>
+</blockquote>
+<p>在一次SWOT分析中，小T在Weakness那一栏如是写到。</p>
+<p>如果在这些方面没有改进，这个产品的命运可想而知，demo一出估计还会继续被毙。毕竟俺做的不是12306这样的刚需。</p>
+<p>给前端的兄弟打了一通电话，结果他们不是在泡妞的路上，就是正在泡妞。WTF，女人真是容易被美丽的外表欺骗。他们做的那些玩意儿，离了我的API能跑起来么？小T不屑地啐了口吐沫。</p>
+<p>鄙视归鄙视，小T只能无奈地自己一个人苦苦琢磨。该如何拯救你，我的想法？</p>
+<p>恍惚中，小T误入了chrome神殿，google大神轻挥衣袖，把他带入open source的世界。</p>
+<h2>第一站：Bootstrap</h2>
+<p><a href="http://twitter.github.com/bootstrap/">Bootstrap</a> 提供几乎前端所需要的一切，由于名气很大，在此之上的project相当众多。小T收下后暗想：这货我以前用过几次，但从来都是浅尝辄止，这次痛下决心，要学好bootstrap。</p>
+<p><img src="/assets/files/snapshots/bootstrap.jpg" alt="Bootstrap"></p>
+<h2>第二站：SubtlePatterns</h2>
+<p><a href="http://subtlepatterns.com/">SubtlePatterns</a> 能够提供各种各样很有质感的页面的底纹。别小看这小小的底纹，用好了能让App增色不少。小T欣然收入囊中。</p>
+<p><img src="/assets/files/snapshots/subtlepatterns.jpg" alt="Subtle Patterns"></p>
+<h2>第三站：COLOURlovers</h2>
+<p>在 <a href="http://www.colourlovers.com/browse">COLOURlovers</a> 的世界里，小T找到了天堂的感觉。原来非黑即白，大红大紫的世界里还有这样淡淡的美丽，就像其中一个调色盘的title所说那样：life is a gift。小T突然觉得有色彩的世界，很美好。</p>
+<p><img src="/assets/files/snapshots/colourlovers.jpg" alt="Colour Lovers"></p>
+<h2>第四站：Font Awesome</h2>
+<p>小T早对设计做的那堆css sprite不满了，稍微放大一些，各种狗啃般的锯齿就出来了，不想要锯齿，sprite要重新生成，多一倍的图标，大一倍还多。小T头脑中浮现出之前的sprite hell...</p>
+<p><img src="/assets/files/snapshots/spritehell.jpg" alt="Sprite Hell"></p>
+<p>你看人家 <a href="http://fortawesome.github.com/Font-Awesome/">Font Awesome</a> 的思想，多给力，一个小小的字体文件就搞定，还提供了bootstrap的支持，真棒！收之，必收之，有了示意性的图标，页面丰富多了，谁说俺做不好前端？那是俺没有利器～</p>
+<p><img src="/assets/files/snapshots/fontawesome.jpg" alt="Font Awesome"></p>
+<p>临走前，发小广告的偷偷塞给小T一个链接：<a href="http://aristath.github.com/elusive-iconfont/index.html">Elusive Iconfont</a>，小T看了看，觉得也挺靠谱。</p>
+<p>迈出大门后，又一个小广告飞速冲过来，硬塞了个链接，说是build what you want only。小T打开一看，是 <a href="http://fontello.com/">Fontello</a>。这是个好东东。</p>
+<p><img src="/assets/files/snapshots/fontello.jpg" alt="Fontello"></p>
+<h2>第五站：Bootstrap themes</h2>
+<p>手握各种利器，小T已经雄心万丈。这下来到了bootstrap themes的王国，心里的最后一块石头落地了。这些themes或者为我所用，或者为我所学，总之有了他们，做页面有底多了。小T自言自语到。</p>
+<ul>
+<li><a href="http://www.boottheme.com/#gallery">BootTheme</a></li>
+<li><a href="http://bootswatch.com/">BootsWatch</a></li>
+<li><a href="https://wrapbootstrap.com/">Wrapbootstrap</a></li>
+</ul>
+<p><img src="/assets/files/snapshots/wrapbootstrap.jpg" alt="Wrap Bootstrap"></p>
+<p>不过令小T不那么开心的是，Wrapbootstrap里面模版的效果很好，但要收费。狠了下心买了个admin模版，下次的项目前端基本有着落了。</p>
+<h2>第六站：Emoji</h2>
+<p><a href="http://www.emoji-cheat-sheet.com/">Emoji</a> 这货很好！小T眼前一亮，遂又黯淡下来，苦笑，google大神，你怎么最后给了我个打酱油的？我现在的项目肯定用不到。不过留着也好，说不定哪天加个feature，开个聊天室，各种表情就有用武之地了。</p>
+<p><img src="/assets/files/snapshots/emoji.jpg" alt="Emoji"></p>
+<h2>第七站：家</h2>
+<p>回到家中，小T拿着刚才获得的六件武器，开始<strong>单枪匹马</strong>打磨自己的新产品...</p>
+<p>本故事纯属虚构</p>
+<hr>
+<h2>后记</h2>
+<p>笑谈毕，依旧上小宝照片。</p>
+<p><img src="/assets/files/photos/baby20130125-1.jpg" alt="小宝抬头"></p>
+<p><img src="/assets/files/photos/baby20130125-2.jpg" alt="小宝穿裙子"></p>
+
+        <div class='under-post'>
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+                
+                  <div class='pull-left'>
+                    <a class='read-previous-link' href='/posts/2013-01-25-try-github-zen-writing-mode.html'>
+                      <i class='icon-angle-left'></i>
+                      上一篇
+                    </a>
+                  </div>                  
+                
+                
+                  <div class='pull-right'>
+                    <a class='read-next-link' href='/posts/2013-01-28-make-raspberry-pi-up-and-running.html'>
+                      下一篇
+                      <i class='icon-angle-right'></i>
+                    </a>
+                  </div>
+                         
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-facebook'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-twitter'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-linkedin'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+        </div>
+      </div>
+    </div>
+      
+  </div>
+  <div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+  
+  <div class="ds-thread">
+    <script>
+        var duoshuoQuery = {short_name:"tyrchen"};
+        (function() {
+          var ds = document.createElement('script');
+          ds.type = 'text/javascript';ds.async = true;
+          ds.src = 'http://static.duoshuo.com/embed.js';
+          ds.charset = 'UTF-8';
+          (document.getElementsByTagName('head')[0]
+          || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+  </div>
+
+</div>
+
+<footer id="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="footer-menu">
+                    <li><a href="/pages/privacy">隐私策略</a></li>
+                    <li><a href="/pages/license">版权说明</a></li>
+                    <li><a href="/pages/disclaimer">免责声明</a></li>
+                    <li><a href="#">联系我们</a></li>
+                </ul>
+                <div class="copyright">
+                    2013 &copy; Tyr Chen. 保留一切权利.
+                </div>
+            </div>
+            <div class="col-md-6">
+                <ul class="footer-social">
+                    <li><a href="#"><i class="icon-facebook"></i></a></li>
+                    <li><a href="#"><i class="icon-twitter"></i></a></li>
+                    <li><a href="#"><i class="icon-dribbble"></i></a></li>
+                    <li><a href="#"><i class="icon-linkedin"></i></a></li>
+                    <li><a href="#"><i class="icon-google-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- Scripts -->
+<script defer="defer"  src="/assets/js/jquery.js"></script><script defer="defer"  src="/assets/js/bootstrap.min.js"></script><script defer="defer"  src="/assets/js/jquery.visible.min.js"></script><script defer="defer"  src="/assets/js/jquery.isotope.min.js"></script><script defer="defer"  src="/assets/js/jquery.knob.js"></script><script defer="defer"  src="/assets/js/jquery.scrollUp.min.js"></script><script defer="defer"  src="/assets/js/highlight.pack.js"></script><script defer="defer"  src="/assets/js/application.js"></script>
+
+
+</body>
+
+</html>
