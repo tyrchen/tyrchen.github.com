@@ -7,4 +7,5 @@ deploy:
 	git add --all .
 	git commit -a -m "Deploy to github pages on $(DATE)."
 	git push
+	rsync -au --progress . itenny@o.stdyun.net:~/tchen.me/
 	@echo $(DONE)
