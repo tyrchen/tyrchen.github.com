@@ -156,6 +156,7 @@
 	<ul>
 	
 	    <div class='row post-loop'>
+  <!--
   <div class='col-md-2 col-md-offset-1'>
     <div class='post-loop-author-info'>
       <div class='author-avatar'>
@@ -168,14 +169,19 @@
       </div>
     </div>
   </div>
-  <div class='col-md-8'>
+  -->
+  <div class='col-md-8 col-md-offset-2'>
     <div class='post-loop-content'>
       <h2 class='has-sub-header'>
         <a href='/posts/2013-06-23-come-to-origin-for-embedded-applications.html'>Come to Origins for Embedded Applications</a>
       </h2>
       <div class='post-loop-meta'>
+        <span>
+          <i class='icon-calendar'></i>
+          4个月前
+        </span>
         <span class='hidden-mobile-ib tags'>
-          <i class='icon-reorder'></i>
+          <i class='icon-tags'></i>
           
             <a href='/tags/architecture.html'>architecture</a>
           
@@ -203,6 +209,7 @@
       </div>
       <p>Recently I did a web application to make easy GNATS report for my team. I use scrapy to crawl the GNATS web pages for people&#39;s issues every 4 hours, then add the crawled data into mongodb. A set of simple-to-use RESTful APIs written with nodejs can provide easy access to the data (<a href="http://api.jcnrd.us/gnats/tchen.json">try it out</a>, but only viewable internally in Juniper). Then a django application consumes the APIs and wraps them into a not-so-bad user interface, thanks to twitter bootstrap and a set of javascript frameworks and libraries. You can look at the ultimate application here: <a href="http://gnats.jcnrd.us/groups/branch-team/">GNATS report system</a>.</p>
 
+      <!--
       <div class='under-post'>
         <div class='post-social text-center'>
   <a class='social-link' href='#'>
@@ -220,6 +227,7 @@
 </div>
       </div>
       <br/>
+      -->
       <div class='slogan-buttons'>
           <a class='btn btn-primary btn-cta btn-lg animated-when-hover' data-animation-type="swing" href='/posts/2013-06-23-come-to-origin-for-embedded-applications.html'>
               继续阅读 ->
@@ -254,17 +262,26 @@
             </div>
             <div class="col-md-6">
                 <ul class="footer-social">
-                    <li><a href="#"><i class="icon-facebook"></i></a></li>
-                    <li><a href="#"><i class="icon-twitter"></i></a></li>
-                    <li><a href="#"><i class="icon-dribbble"></i></a></li>
-                    <li><a href="#"><i class="icon-linkedin"></i></a></li>
-                    <li><a href="#"><i class="icon-google-plus"></i></a></li>
+                
+                    <li><a href="tyr.chen{#}gmail.com" target="_blank"><i class="icon-envelope"></i></a></li>
+                
+                    <li><a href="http://weibo.com/tchen82" target="_blank"><i class="icon-weibo"></i></a></li>
+                
+                    <li><a href="http://github.com/tyrchen" target="_blank"><i class="icon-github"></i></a></li>
+                
+                    <li><a href="http://linkedin.com/in/tyrchen/" target="_blank"><i class="icon-linkedin"></i></a></li>
+                
+                    <li><a href="https://twitter.com/tyrchen" target="_blank"><i class="icon-twitter"></i></a></li>
+                
+                    <li><a href="https://www.facebook.com/tyrchen" target="_blank"><i class="icon-facebook"></i></a></li>
+                
+                    <li><a href="https://plus.google.com/114684266209262341260/" target="_blank"><i class="icon-google-plus"></i></a></li>
+                
                 </ul>
             </div>
         </div>
     </div>
 </footer>
-
 
 <!-- Scripts -->
 <script defer="defer"  src="/assets/js/app.min.js"></script>

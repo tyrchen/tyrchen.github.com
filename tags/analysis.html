@@ -156,6 +156,7 @@
 	<ul>
 	
 	    <div class='row post-loop'>
+  <!--
   <div class='col-md-2 col-md-offset-1'>
     <div class='post-loop-author-info'>
       <div class='author-avatar'>
@@ -168,14 +169,19 @@
       </div>
     </div>
   </div>
-  <div class='col-md-8'>
+  -->
+  <div class='col-md-8 col-md-offset-2'>
     <div class='post-loop-content'>
       <h2 class='has-sub-header'>
         <a href='/posts/2013-04-08-trying-to-extract-the-thoughts-behind-lockitron.html'>胡思乱想之Lockitron的技术架构</a>
       </h2>
       <div class='post-loop-meta'>
+        <span>
+          <i class='icon-calendar'></i>
+          7个月前
+        </span>
         <span class='hidden-mobile-ib tags'>
-          <i class='icon-reorder'></i>
+          <i class='icon-tags'></i>
           
             <a href='/tags/analysis.html'>analysis</a>
           
@@ -209,6 +215,7 @@
 <p>根据这个video及其主页的介绍，我用lean canvas大概总结了一下其要解决的问题和商业思路：<a href="/canvases/2013-04-10-lockitron-canvas.html">Locitron lean canvas</a>。接下来的问题是：如果要做这样一个产品，需要什么样的技术架构？</p>
 <p>于是，我花了些时间，深入了解lockitron，思考其特性，及特性背后的feature。我会从硬件——门锁控制器（下称controller），软件——功能与服务（下称service）两个方面来看lockitron面临的技术挑战及解决方案。由于我手头没有一个lockitron供我测试和reverse engineering，所以接下来你看到的内容，臆想的成分很大。</p>
 
+      <!--
       <div class='under-post'>
         <div class='post-social text-center'>
   <a class='social-link' href='#'>
@@ -226,6 +233,7 @@
 </div>
       </div>
       <br/>
+      -->
       <div class='slogan-buttons'>
           <a class='btn btn-primary btn-cta btn-lg animated-when-hover' data-animation-type="swing" href='/posts/2013-04-08-trying-to-extract-the-thoughts-behind-lockitron.html'>
               继续阅读 ->
@@ -260,17 +268,26 @@
             </div>
             <div class="col-md-6">
                 <ul class="footer-social">
-                    <li><a href="#"><i class="icon-facebook"></i></a></li>
-                    <li><a href="#"><i class="icon-twitter"></i></a></li>
-                    <li><a href="#"><i class="icon-dribbble"></i></a></li>
-                    <li><a href="#"><i class="icon-linkedin"></i></a></li>
-                    <li><a href="#"><i class="icon-google-plus"></i></a></li>
+                
+                    <li><a href="tyr.chen{#}gmail.com" target="_blank"><i class="icon-envelope"></i></a></li>
+                
+                    <li><a href="http://weibo.com/tchen82" target="_blank"><i class="icon-weibo"></i></a></li>
+                
+                    <li><a href="http://github.com/tyrchen" target="_blank"><i class="icon-github"></i></a></li>
+                
+                    <li><a href="http://linkedin.com/in/tyrchen/" target="_blank"><i class="icon-linkedin"></i></a></li>
+                
+                    <li><a href="https://twitter.com/tyrchen" target="_blank"><i class="icon-twitter"></i></a></li>
+                
+                    <li><a href="https://www.facebook.com/tyrchen" target="_blank"><i class="icon-facebook"></i></a></li>
+                
+                    <li><a href="https://plus.google.com/114684266209262341260/" target="_blank"><i class="icon-google-plus"></i></a></li>
+                
                 </ul>
             </div>
         </div>
     </div>
 </footer>
-
 
 <!-- Scripts -->
 <script defer="defer"  src="/assets/js/app.min.js"></script>
