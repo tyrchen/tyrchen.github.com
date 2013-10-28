@@ -1,0 +1,1267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title><![CDATA[觅珠人 | Tyr Chen的个人博客 | 创意 | 心得 | 经验]]></title>
+        <description><![CDATA[本博客提供我个人的想法，创意，经验，心得。你不必认同博主观点。]]></description>
+        <link>http://tchen.me</link>
+        <generator>RSS for Node</generator>
+        <lastBuildDate>Mon, 28 Oct 2013 14:57:44 GMT</lastBuildDate>
+        <atom:link href="http://tchen.me/rss.xml" rel="self" type="application/rss+xml"/>
+        <author><![CDATA[Tyr Chen]]></author>
+        <pubDate>Mon, 28 Oct 2013 14:57:08 GMT</pubDate>
+        <item>
+            <title><![CDATA[觅珠人：浴火重生]]></title>
+            <description><![CDATA[<p>很久没有更新博客了。最近几个月写了三篇文章：</p>
+<ul>
+<li>8月底：『软件公司如何有效地组织和运作?』</li>
+<li>9月中：『班加罗尔初体验』</li>
+<li>10月：『nodejs callback hell的解决之道』</li>
+</ul>
+<p>因为种种原因都烂尾，没有继续下去，所以也就没有发表出来。绵绵不断的工作压力和为人父的家庭责任让我心力交瘁，眼一睁一闭，一睁一闭的，一天天就过去了。</p>
+<p>这两天闲逛hn时，无意中发现了 <code>docpad</code>，又一个静态网站生成器。由于我目前使用的 <code>wintersmith</code> 是一个hack版，将其升级到2.x太麻烦，而且随着我文章的增多，分页，标签管理等都成为麻烦事。在尝试了 <code>docpad</code> 后，我发现这是个好东西，干脆心一横，就把整个博客的底层系统升级过去了。</p>
+<!--more-->
+
+<p>看过我之前博文的童鞋可能注意到，我的博客自诞生起，历经 <code>wordpress</code> -&gt; <code>octopress</code> -&gt; <code>wintersmith</code> -&gt; <code>docpad</code>。原因很简单，我需要一款能够支持以下功能的静态网站生成工具：</p>
+<ul>
+<li>能使用 <code>markdown</code> 或任何其他语言撰写文章（posts）。</li>
+<li>支持尽可能多的模板，如jade，haml。</li>
+<li>能生成标签索引页。</li>
+<li>能生成文章索引页。</li>
+<li>索引页支持分页。</li>
+<li>支持local server，能在本地展示生成出来的网站的感觉。</li>
+<li>生成速度尽可能快（不要超过10s），并且不要做无意义的重复生成。</li>
+<li>是CMS，而非blog engine。</li>
+</ul>
+<p>在这个过程中，我不断寻觅，不断更新工具，直到我找到了 <code>docpad</code>。除去对性能的要求外，<code>docpad</code> 满足我上述所有需求。</p>
+<p>所以我便开始了艰难的升级之旅。由于本文非 <code>docpad</code> 入门文档，重点描述我升级遇到的问题，所以要学习 <code>docpad</code> 请移步：<a href="http://docpad.org。">http://docpad.org。</a></p>
+<h2>模板</h2>
+<p>这次升级，UI全部重写。我放弃了bootstrap 2，选择了bootstrap 3，亦即意味着完全放弃了IE7，基本放弃了IE8。我的博客读者并不很多，在百度统计中，IE7/IE8占比不到15%（IE7及以下不到1%），所以对整体用户影响不太大。</p>
+<p>UI的设计购买自wrapbootstrap，花四十美刀买了个multiple license，很划算。如果从设计做起，我未必能做出这样的设计，而且短期内不可能升级完成。</p>
+<p>购买后前端的主要工作就是把html变成template。由于 <code>docpad</code> 对 <code>eco</code> 支持比较好，所以我花了些时间学习eco。</p>
+<h2>文档</h2>
+<p>文档的改动主要在文件名和metadata上。<code>docpad</code> 借鉴了rails的pipeline，根据文件名判断该如何转化，比如：<code>test.css.less</code>，<code>eco</code> 会先通过 <code>eco</code> 处理转换成 <code>test.css.less</code>，再通过 <code>lessc</code> 转换成 <code>test.css</code>。</p>
+<p>metadata的转换主要是 <code>wintersmith</code> 和 <code>docpad</code>的命名不同，比如：</p>
+<pre><code>---
+template: default.jade
+published: false
+---</code></pre>
+<p>在 <code>docpad</code> 中需要转换为：</p>
+<pre><code>---
+layout: default // default.html.eco
+ignored: true
+---</code></pre>
+<p>这都不是什么大问题。</p>
+<h2>分页</h2>
+<p>之前的博客不支持分页，在首页我塞了40篇文章。如果我的博客超过了40篇文章，那么之前的就无法被直接索引到。使用 <code>docpad</code> 后，只要安装 <code>paged</code> 插件，并按例子写一小段代码，就能完美支持分页：</p>
+<pre><code>$ docpad install paged</code></pre>
+<p>我写的支持分页的partial：</p>
+<pre><code>&lt;% if @document.page.count &gt; 1: %&gt;
+&lt;ul class=&quot;paginator text-center&quot;&gt;
+    &lt;!-- Previous Page Button --&gt;
+    &lt;% unless @hasPrevPage(): %&gt;
+        &lt;li class=&quot;disabled&quot;&gt;&lt;span&gt;上一页&lt;/span&gt;&lt;/li&gt;
+    &lt;% else: %&gt;
+        &lt;li&gt;&lt;a href=&quot;&lt;%= @getPrevPage() %&gt;&quot;&gt;上一页&lt;/a&gt;&lt;/li&gt;
+    &lt;% end %&gt;
+
+    &lt;!-- Page Number Buttons --&gt;
+    &lt;% for pageNumber in [0..@document.page.count-1]: %&gt;
+        &lt;% if @document.page.number is pageNumber: %&gt;
+            &lt;li class=&quot;active&quot;&gt;&lt;span&gt;&lt;%= pageNumber + 1 %&gt;&lt;/span&gt;&lt;/li&gt;
+        &lt;% else: %&gt;
+            &lt;li&gt;&lt;a href=&quot;&lt;%= @getPageUrl(pageNumber) %&gt;&quot;&gt;&lt;%= pageNumber + 1 %&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;% end %&gt;
+    &lt;% end %&gt;
+
+    &lt;!-- Next Page Button --&gt;
+    &lt;% unless @hasNextPage(): %&gt;
+        &lt;li class=&quot;disabled&quot;&gt;&lt;span&gt;下一页&lt;/span&gt;&lt;/li&gt;
+    &lt;% else: %&gt;
+        &lt;li&gt;&lt;a href=&quot;&lt;%= @getNextPage() %&gt;&quot;&gt;下一页&lt;/a&gt;&lt;/li&gt;
+    &lt;% end %&gt;
+&lt;/ul&gt;
+&lt;% end %&gt;</code></pre>
+<h2>标签</h2>
+<p>在 <code>docpad</code> 里支持标签很容易，安装两个plugin就好：</p>
+<pre><code>$ docpad install related
+$ docpad install tagging</code></pre>
+<p>前者提供『相关文档』的功能，后者能生成类似 <code>/tags/:tag</code> 的索引页。</p>
+<p>我们先看如何显示相关文档：</p>
+<pre><code>&lt;div class=&quot;widget widget-cats&quot;&gt;
+  &lt;h4 class=&quot;widget-title&quot;&gt;
+    相关文章
+  &lt;/h4&gt;
+  &lt;ul&gt;
+    &lt;% if @document.relatedDocuments : %&gt;
+    &lt;% for document in @document.relatedDocuments: %&gt;
+      &lt;li&gt;&lt;a href=&quot;&lt;%= document.url %&gt;&quot;&gt;&lt;%= document.title %&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;% end %&gt;
+    &lt;% else : %&gt;
+      &lt;li&gt;&lt;a&gt;无&lt;/a&gt;&lt;/li&gt;
+    &lt;% end %&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+<p>这样，只要文档中使用了 <code>tags: [tag1, tag2]</code> 这样的metadata，所有定义了 <code>tag1</code> 或 <code>tag2</code> 的文章就被聚合在此。</p>
+<p>生成标签索引页也不难，只要做一个template：</p>
+<pre><code>---
+layout: default
+---
+&lt;div class=&quot;container&quot;&gt;
+    &lt;h1&gt;文章列表：『&lt;%= @document.tag %&gt;』&lt;/h1&gt;
+    &lt;hr/&gt;
+
+    &lt;ul&gt;
+    &lt;% for doc in @getCollection(&#39;documents&#39;).findAll({tags: &#39;$in&#39;: @document.tag}).toJSON(): %&gt;
+        &lt;%- @partial(&#39;posts/post_loop_item&#39;, {item: doc}) %&gt;
+    &lt;% end %&gt;
+    &lt;/ul&gt;
+
+&lt;/div&gt;</code></pre>
+<p>显示效果如：<a href="http://tchen.me/tags/technology.html。">http://tchen.me/tags/technology.html。</a></p>
+<h2>问题</h2>
+<p><code>docpad</code> 功能很强大，但其速度让人难以忍受。之前 <code>wintersmith</code> 生成全站只需要3s左右，<code>docpad</code> 则要40s。而且</p>
+<p>为了加快速度我做了很多尝试：</p>
+<ol>
+<li>使用standalone metadata。<a href="https://docpad.org/docs/meta-data。效果一般，很多地方不适用，而且在诸如app.css.less里加这么个东西很不伦不类。">https://docpad.org/docs/meta-data。效果一般，很多地方不适用，而且在诸如app.css.less里加这么个东西很不伦不类。</a></li>
+<li>对静态文件使用raw plugin。效果不明显，我往raw目录中拷一个文件还会trigger regenerate。</li>
+<li>停用live-reload插件。我不希望加了一个回车，保存后就要话40s才能访问本地服务器。</li>
+<li>使用 <code>docpad watch</code>，而不是 <code>docpad run</code>，同时启动一个 <code>python -m SimpleHTTPServer 8210</code>，来serve静态文件。这样，改动能够被重新生成，且生成时我还能浏览已有的页面。</li>
+</ol>
+<p>但这些都不太理想。<code>docpad</code> 蠢到我改一行less，整个网站就全部重编。你可想而知在迁移阶段我有多少时间耗费在等待中。</p>
+<p>于是我把所有的静态文件都拿出来放在 <code>src</code> 外，不让 <code>docpad</code> 干蠢事。完全抛弃 <code>raw</code> 插件，我写了个几行的 <code>Makefile</code> 干这些事：</p>
+<ul>
+<li>将less生成css，并使用yuicompressor压缩。</li>
+<li>将js用yuicompressor压缩。</li>
+<li>将整个 <code>raw</code> 目录rsync到 <code>out</code> 目录。</li>
+</ul>
+<p>在 <code>raw</code> 目录下的Makefile如下：</p>
+<pre><code>CHECK=\033[32m✔\033[39m
+DONE=&quot;\n${CHECK} Done.\n&quot;
+ECHO=echo
+ROOT=assets
+
+CSS_COMPRESSOR=lessc
+JS_COMPRESSOR=yuicompressor
+SYNC=rsync
+CAT=cat
+RM=rm
+
+CSS_PATH=$(ROOT)/less
+CSS_SOURCE=$(CSS_PATH)/app.less
+
+JS_PATH=$(ROOT)/scripts
+JS_PLUGIN_PATH=$(JS_PATH)/plugins
+JS_SOURCE=$(JS_PLUGIN_PATH)/jquery.js $(JS_PLUGIN_PATH)/bootstrap.min.js $(JS_PLUGIN_PATH)/jquery.visible.min.js $(JS_PLUGIN_PATH)/jquery.isotope.min.js $(JS_PLUGIN_PATH)/jquery.knob.js $(JS_PLUGIN_PATH)/jquery.scrollUp.min.js $(JS_PLUGIN_PATH)/highlight.pack.js $(JS_PATH)/application.js
+
+CSS_TARGET=$(ROOT)/css/app.min.css
+JS_TARGET=$(ROOT)/js/app.min.js
+
+SYNC_TARGET=../out
+
+
+sync: $(CSS_TARGET) $(JS_TARGET)
+    $(SYNC) -au --exclude $(CSS_PATH) --exclude $(JS_PATH) --exclude Makefile . $(SYNC_TARGET)
+    @$(ECHO) $(DONE)
+
+$(CSS_TARGET):
+    $(CSS_COMPRESSOR) $(CSS_SOURCE) --yui-compress  &gt; $(CSS_TARGET)
+
+$(JS_TARGET):
+    @$(CAT) $(JS_SOURCE) &gt; tmp.js
+    $(JS_COMPRESSOR) -o $(JS_TARGET) tmp.js
+    @$(RM) tmp.js
+
+clean:
+    $(RM) -f $(CSS_TARGET) $(JS_TARGET)</code></pre>
+<p>在根目录下的Makefile如下：</p>
+<pre><code>generate:
+    docpad generate
+    @cd raw; make; cd ..
+
+deploy:
+    cd out; make; cd ../..
+
+clean:
+    cd raw; make clean; cd ../..</code></pre>
+<p>这样，css/js的改动和 <code>docpad</code> 完全没关系，<code>docpad</code> 只需要帮我生成文档即可。这样下来，60%的修改都能够在1s内完成。剩下40%的修改，耗时稍微少了一些，可还要用三十多秒。没有本质差别。</p>
+<h2>部署</h2>
+<p>强烈不建议使用 <code>ghpages</code> 插件部署。我安装了这个插件，也使用了，但使用第二次的时候就将其卸载了。原因很简单：每次 <code>git push -f</code> 全部重新push，写这个plugin的作者之前没生成过大一些的网站吧？我的博客现在几十篇文章，不足百张图片，总共几十M的repo，每次都全部重新push要十多分钟，一天push十几次我还干不干活了？</p>
+<p>所以还是自己解决部署问题吧：</p>
+<pre><code>$ rm -rf out
+$ git clone &lt;your repo url&gt;
+$ make deploy # 这个我已经做进了上文中的Makefile中</code></pre>
+<p>在要部署的repo中添加一个Makefile:</p>
+<pre><code>DATE=$(shell date)
+CHECK=\033[32m✔\033[39m
+DONE=&quot;\n${CHECK} Done.\n&quot;
+
+deploy:
+    @echo &quot;Deploy the blog to github pages.&quot;
+    git add --all .
+    git commit -a -m &quot;Deploy to github pages on $(DATE).&quot;
+    git push
+    @echo $(DONE)</code></pre>
+<p>也是简单之极。</p>
+<h2>心得</h2>
+<p>这次博客升级花费了我两个晚上和一个周日。按我晚上9点开工到12点，周日工作了至少6小时，总共耗时12+小时，耗资USD40。</p>
+<p><code>docpad</code> 是个功能丰富的工具，值得试用，但要忍受极慢的编译速度。撰写者（尤其是plugin的撰写者）显然水平一般，不懂得用unix的设计哲学来设计这样工具。</p>
+<p>在经历了这么多工具后，我有强烈的意愿写一个自己的静态网站生成器，来更好地支持我的需求。想法很简单：</p>
+<ol>
+<li>使用Makefile和现成的工具完成静态文件的处理。</li>
+<li>高度组件化 - 撰写小脚本来完成单一的功能。用Makefile粘合这些脚本。</li>
+<li>脚本解析的中间结果存储在redis/mongodb中，供其他附加功能使用，比如tagging/paging。</li>
+<li>任何一个工具可以对全站使用，也可对部分文件使用。</li>
+<li>尽可能并发处理，全站的生成速度控制在秒级。</li>
+<li>如果可以，提供development模式，动态生成当前访问的页面。</li>
+</ol>
+<p>送上小宝近照一张。</p>
+<p><img src="/assets/files/photos/baby20131028.jpg" alt="小宝"></p>
+]]></description>
+            <link>http://tchen.me/posts/2013-10-28-blog-reborn.html</link>
+            <guid isPermaLink="true">
+                http://tchen.me/posts/2013-10-28-blog-reborn.html            </guid>
+            <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
+            <pubDate>Sun, 27 Oct 2013 23:40:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[长日无痕]]></title>
+            <description><![CDATA[<h2>（一）</h2>
+<p>又是一个闷热的周六，灰霾就像粘在天空一样，依旧笼罩着这个城市。带着小宝，我们三人游荡在蓝色港湾的儿童城中，为小家伙的未来打算着。老婆和丈母娘穿梭于一个又一个玩具店，而我，因为推着童车，不便走来走去，就带着小宝静静地欣赏楼下冰场里玩耍的孩子们。很快，我们的注意力就被冰场上两个正在进行对抗训练的小男孩吸引住了。小宝快乐地随着冰球转动脖子，双眼紧紧地捕捉着黑色的冰球，不时发出愉悦的『喝彩』；而我，默默地看着两位『男子汉』一次次跌倒，又一次次爬起，对抗虽然异常激烈，但任何一方都没有脏动作，这足以让真正的冰球赛场上的成年人汗颜。</p>
+<!-- more -->
+
+<p>连日来，对环法自行车赛兴奋剂丑闻的追踪报道，让曾经的英雄们纷纷落马。成人世界里，人们对于名利的渴望，对成功的追逐已经远远超出了能力或是道德的底线。我们不得不承认，这个世界正变得越来越浮躁。会爬的恨不得立即会走，踉踉跄跄走着的，又恨不得能撒腿就跑。前两天我在卓越亚马逊上随便查了查『小时学会』和『天学会』，结果发现分别有65条和157条结果之多。『Java程序设计24小时轻松掌握 』，『21天学会javascript』，『30天学会Visual C++』，...看着那列出的一大堆需要花很大力气学习和使用的语言，我不得不感慨这种浮躁已经无处不在。</p>
+<p>小宝还在咯咯地乐。那种发自内心的，如雪花般洁净的快乐让我由衷地羡慕。如果不是上周日LP跟我严肃地讨论了一下在未来我如何更好地履行父亲的责任，此刻（周六的下午）我应该端坐在办公室里思考某段代码该如何去写，而不是在这样一个放松的环境下，任由我的思想翱翔。</p>
+<p>我们讨论的结果是，一周里大礼拜我能不去公司工作就不去，并且工作日最好有两天赶在七点前回到家，这样，可以大大增加我在家中陪伴小宝的时间，提升她对『父亲』这个角色的认知。在北京这样一个拥挤到几乎处于崩溃边缘的城市，以公司到我家长达三十五公里的距离来算，晚上七点前回到家就意味着至少提前两个从公司出发，还得祈求一路上 1）没有事故（小概率事件），2）没有管制，3）没有幽灵堵车。两个小时的车程对很多北京人来说还在忍受的极限内，但对我来说，开车上/下班的时间超过一小时我就已经浑身难受，更遑论两小时这一让人绝望的数字。所以，我决定在提前回家的那两天搭乘地铁，这样，只消花一个半小时，我就能回到家中；而且，在地铁里，我可以暂时远离代码和互联网，翻几十页和技术毫不相干的书。巧的是，上周不开车的两天上下班时间里，我翻的书是《长日留痕》——一本我买了很久，翻了几次却都没看进去的小说。史蒂文斯先生，书中的主人公，利用一次旅行的机会回顾了他漫长的管家生涯。在整部书中，他始终在回忆过去的人生，并且不断地探讨一个严肃的问题：一位杰出的男管家究竟是什么样子的？</p>
+<p>感谢这本书，让我开始严肃地回顾我自己的职业生涯。这思考断断续续游走了好几天，很多时候干脆藏身在潜意识中，以至于每每我工作累了，对着窗外中关村东路和成府路交叉的路口发呆时，它就会蹦出来，让我暂时从繁重的工作中解脱出来，在回忆中尽情徜徉。</p>
+<h2>（二）</h2>
+<p>教练一声哨响，把我暂时拉回。此时此刻，两个小家伙开始了一攻一守的对抗，场面也变得好玩起来——两个小愣头青从场地的两端以几乎相同的路线滑向中圈，砰的一声，重重地撞到了一起，一同倒地。教练上前，把攻方的小家伙拉到一旁耳语几句，并比划了几下，随即恢复了比赛。两人从场地的两头快步冲向中圈，守方将重心控制地很低，高速滑动中，目不转睛地盯着冰球。就在两人要接触的一刹那，攻方一个急停，然后迅速切向斜前方。由于扑得太猛，守方来不及调整，无奈让攻方轻松绕过自己，打进一球。不知是看懂了比赛，还是单纯开心，小宝挥舞着双手，发出欢畅的尖叫声。</p>
+<p>这就是教练的作用。他们告诉你什么是基本功，如何应对局势，以及一名优秀的球员应该具备什么素养。在一个人职业生涯的早期，一位好的导师比什么都重要。一晃我的程序员生涯已经过去了十年，在这十年里，我一直在不断探索<strong>一位优秀的程序员究竟该具备什么素养</strong>，如果当时有个教练能给予我指导，给予我探索的方向，那该多好啊。</p>
+<p>可惜没有。软件行业没有教练，也没有拜师学艺的传统。也许曾经有，但自从程序员从手工艺人变成了工程师，教练或者师傅就不再重要。你基本不需要像手工艺人那样具备从无到有做出点什么的技术，你需要的仅仅是解决某个或者某些特定问题的能力 —— 某种意义上说，这和流水线上的工人并无二异。这也导致了那些速成的图书的畅销，因为它们试图让你学习到的是<strong>如何完成任务，而非如何编程。</strong>当然，互联网正在粉碎这一切，程序员似乎又在回归手工艺人的传统，这很好。</p>
+<p>虽然没有教练，但每个软件公司基本都会为新员工指定一名资深的同事提供『象征』意义上的 &quot;mentor&quot;。我说『象征意义』，并不是否定mentor的作用，而是说这些mentor并非职业化的mentor，『传道授业解惑』的为师之道，mentor们勉强在解惑上提供了些许帮助。当然，对于公司来说，mentor最重要的作用是成为一个榜样（Role Model），通过他们的工作态度，工作习惯，工作能力，对新员工，尤其是处在职业生涯早期的员工产生潜移默化的影响。</p>
+<p>我职业生涯起始的公司是神州数码网络公司（DCN）。如果将google或者twitter定义为『优秀』公司，那么，DCN显然处在平庸公司的行列。好在DCN继承了老联想的底子，还有一批有理想的做系统的牛人。Z君就是这样一个人。碰巧我被分在了他所在的团队。当我把『一位优秀的程序员究竟该具备什么素养』这样的问题抛给我的mentor，即将离职的X君时，他让我多看，多学Z君。之后，有意无意地，我都会多去劳烦Z君，他总会抛开手头的事，爽快地为我答疑。为了解决某个问题，他经常工作到深夜；跟他讨论代码如果没揪到根上他绝不善罢甘休。拿code review来说，当你看到一堆逻辑上无比正确但写作上WTF的代码时，即使想骂娘，但屈服于release的压力或人情世故，你总会妥协。但Z君不太会妥协。他会笑眯眯地，毫不留情地指出你代码上十多处毛病，让你整改。很多人认为代码逻辑对了就足够，但Z君期待代码（算法）在时间空间上的合理（和谐），以及是否做到了SoC。工作之外，他又是个吊儿郎当的人，经常爆发出的爽朗的笑声，浑身浓重的烟味，让你即使在很远的地方，也能感受到他独特的气场。</p>
+<p>从Z君身上，我找到了一直追寻的问题的第一个答案：</p>
+<p><strong>真心喜爱你所做的事情。</strong></p>
+<p>真心喜爱你所做的事情。之所以斟酌出这个句子，是因为我觉得诸如『敬业』，『有韧劲』，『钻研』，『爱学习』等词语或多或少都被它涵盖，或者说，是它的自然而然的结果。</p>
+<p>那时对我而言，『真心喜爱』就意味着每天超过12个小时泡在公司里努力搞明白遇见的每一个技术问题。很快，我搞透了OSPF，填补了X君走后OSPF上的空缺，之后又独立开发了IGMv3，SNTP，接着完成了极其重要的linux 2.4 kernel的移植。</p>
+<h2>（三）</h2>
+<p>由于工作的原因，我逐渐与另一个团队的S君打交道很多。S君兴趣很广，他帮着公司内部搭建了团队的wiki，使得信息的交流，知识的分享大大地系统化。以前我们知识的交流以邮件为主，这很被动，当下有用的，还是无用的知识，都一股脑成了一封封亟待打开的邮件。打开看吧，浪费时间；不打开吧，以后需要时都不知道自己的邮箱里还有这么份东西。在S君的推广和维护下，团队的wiki大大提高了大家获取知识的效率。</p>
+<p>从S君那里得知，他使用了一个叫mediawiki（wikipedia使用的软件）的开源软件。我开始把玩mediawiki，进一步，我接触了LAMP，并且逐渐意识到像linux，Mediawiki这样的开源软件的重要性。如果说林则徐魏源是近代中国开眼看世界的第一人，那么他也许是DCN内部拥抱更广阔的世界的第一人。做system的，很少关注application的动向，有种天朝藐视番邦的傲娇；而做application的，则放低姿态谦卑地注视着system的变化。现在随便拉一个做路由器的人，你问问他对web application的看法，十有八九还停留在对LAMP的认知上；而做web application的人已经把触角伸向了user space data plane。究其原因，是做system越做越掌控一切，倾向于封闭；而做application越做越依赖生态圈，所以拥抱开放。</p>
+<p>S君让我认识到了开源的力量和开放的社区的伟大之处。怀着对mediawiki的敬畏，我开始学习PHP，进而在他的影响下，学习据说是『聪明的程序员』使用的Python。我想我已经是『真正的程序员』了，如果能成为『聪明的程序员』，何乐而不为？</p>
+<p>在这个过程中，我找到了第二个答案：</p>
+<p><strong>拥抱开源和自由软件，拥抱社区。</strong></p>
+<p>大学期间，我曾经是一个坚定的微软主义者：凡是微软推出的，我都拥护；凡是微软反对的，我都反对。直到毕业时，我还天真的认为C#就是我们这代程序员的终极武器。S君及时把我从这种盲从中拉了出来，让我看到了一个不一样的世界。现在棱镜门事件的热度在渐渐褪去，但是，它让人们开始意识到Richard Stallman的思想的重要性：<strong>开源软件关乎着人类的自由。</strong>遗憾的是（也许我不该这么评价），我的两任雇主，对开源软件的贡献要远小于其索取。</p>
+<p>PHP和Python对于我所做的开发任务似乎毫无帮助，学习它们地目的是为了了解更广阔的世界，了解为什么最流行的软件会被用这样的语言开发出来。为了更好的实践我的所学，我用PHP和Python做了一个工具：开发人员可以通过一个PHP撰写的web页面提交一项测试任务，后台的python脚本拿到这个任务后会拉下指定版本的代码，编译，并将编译好的image传到直连的交换机上，然后开始运行测试团队提供的regression脚本。我的工具带来的效率的提升引起了老板的重视，我被批准使用一台PC和两台交换机，组成一个完整的环境，供开发团队践行CI（Continuous Integration）。</p>
+<p>在这个过程中，我发现了第三个答案：</p>
+<p><strong>能够通过自身所掌握的技术，不断提高自己和团队的效率。</strong></p>
+<p>容我再解释两句。一个真正的程序员，在那些每天重复低效的干活方式展现在你面前时，很难抑制住利用自己的技能做点什么改变现状的心情。工作中（当然生活中也是），这样的低效比比皆是。比如说从X系统中定期导出一些数据到excel中做报表，比如说一级一级收集weekly report进行工作汇总。</p>
+<p>这种低效在我工作过的第二家公司，Juniper，也广泛存在。</p>
+<p>回顾我目前的整个职业履历，我在DCN工作了两年零两个月，在Juniper China R&amp;D(CNRD)工作了五年半，在途客圈作为创始人和CTO工作了两年，然后回到Juniper CNRD工作至今。所以，作为雇员，我总共就工作过两家公司，因此，是否每家软件公司都存在类似的低效，我不得而知。但我觉得，工作中的低效场景无处不在，问题在于有没有被发现，发现后值不值得为此做点什么。</p>
+<h2>（四）</h2>
+<p>冰球场上的对抗结束了，小家伙们离场休息去了。我松开手上的童车腕带，把脑袋凑过去，轻唤小宝的名字。小宝显然还全神贯注于冰场，被我这突然的举动吓了一跳。当她惶恐地转过头来看到是我，便放下心来，微微笑了笑，又回过头去欣赏冰场上的运动。循着她的目光，我看到冰场上一个也就六七岁大的小女孩一个人在认真地练习花滑。她的动作如此纯熟，姿态那么优美，让你几乎忘了她的年龄。我想，她大概这么练了有很长一段时间了吧。</p>
+<p>看到这里我不禁想起在Juniper曾经跟Y君讨论过我们招人的准则。我不解为何我们不给年轻员工，甚至应届毕业生一些机会。Y君认为我们需要的是专家，而某个领域的专家，根据研究，需要经过10000个小时的培养。我算了一下，假使每周四十个小时，一年五十周扑在某个或者某些特定的领域，那么，五年的时间就可以造就一个专家。这也是为何很多公司对于senior的职位，都要求至少五至七年的相关工作经验。但现实是，在面试中，很多五年，甚至十年工作经验的人都未必对得起自己逝去的年华。我曾经遇见过一个工作了8年之久的程序员，在提供了vim，gcc等编辑编译环境的情况下，连一个非常简单的链表操作的程序都无法正确完成。这是怎么回事？</p>
+<p>我查了查&quot;10,000 hour rule&quot;的原文，是这么说的 —— &quot;it takes approximately 10000 hours of deliberate practice to master a skill&quot;。</p>
+<p>问题出在了<strong>&quot;deliberate practice&quot;</strong>上。</p>
+<p>何谓&quot;deliberate practice&quot;？钢琴考级有九个等级，每个等级都有要求的技法和曲谱。这是一系列刻意设计的练习，每一个级别都比上一个难度大一些，但经过努力还是可以掌握的。当你对车尔尼驾轻就熟后，可以尝试一点巴赫，也许也可以是贝多芬，但绝不能倒着来，也不能跳着来。跳着来意味着你当前的水平和期望的结果之间的鸿沟太大，也许已经超过了单凭努力就可以到达的境地。</p>
+<p>可惜软件行业鲜有这样的&quot;deliberate practice&quot;，学校和培训机构也没有类似的体系。所以这个社会能够批量造就钢琴9级获得者，却无法批量培养出合格的程序员。很多拥有五年工作经验的人，折合成有效的经验，也许就只剩一年，剩下的四年只不过在重复自己第一年的收获。这就好比一个人掌握了车尔尼《钢琴简易练习曲》后，还在刻苦反复练习相同的内容，即使练到脱离曲谱信手拈来，又有何用？</p>
+<p>想想我们的境地，挺悲惨的。没有合适的导师指引方向，没有成型的体系来培养专家。但是我们还得不断地学习，不断地更新知识。对于那些还尚未『开窍』的程序员来说，职业生涯就像《富爸爸穷爸爸》所谓的老鼠赛跑，在蹉跎中耗尽光阴。</p>
+<p>所以自我救赎的最好方法就是不断地给自己增加挑战，让自己脱离舒适区域。具体方法是：用那些刚好超过自己能力的任务挑战自己，build（尝试） - measure（分析） - learn（学习总结）。然后不断重复。这是lean startup一书中建议的精益创业模式，同样也适用于这个场合。</p>
+<p>不要去看那些多少小时或者多少天就能掌握XYZ的书。生命苦短，多读读大师的著作和文章，他们能让你跨越到新的台阶；多写代码，多写能让你有征服感的代码。</p>
+<p>这就是我找寻到的第四个答案：</p>
+<p><strong>不断跳出舒适区，有目的地挑战自己。</strong></p>
+<p>让我倍感欣慰的是，在Juniper的这五年半时间里，公司提供了各种机会让我在三个不同的team里学习和掌握data plane，kernel，以及application。托L君rellocate到US的福，我还有机会lead一支团队，来践行我在leadership上所学的理论知识。</p>
+<p>冰场里依旧人声鼎沸。怕寒气把小宝冻着，我不敢在此过度停留，我把车推着往里靠了靠，坐在一张椅子上稍稍休息。小宝举着双手似乎在抗议，但当她发现从她坐着的角度依旧能看到冰场的一角时，就渐渐安静下来，双手自然搭在童车的护栏上。</p>
+<p>说来好笑，就在我离开Juniper的前夕，L君主持了一场小规模的英文演讲训练，以此来提高manager们用英文当众发言的能力。我的主题就是&quot;Move yourself out of comfort zone&quot;。后来偶然的机会，我遇到了同样也离开Juniper的L君，他说他那时就感到我要离开。我问为什么。『因为CNRD对你而言已经成为一个confort zone，你只需不犯错误，静静等待，就能一点点向上爬，而这又和你的性格，尤其是你的演讲传达出来的感觉不同。』L君回答道。</p>
+<p>想想也真是。我的性格里流淌着不安分的血液，它源自我的父亲。一九九三年，父亲只身前往海南和广东，像那个时代的所有朝气蓬勃的年轻人一样，希望能够在改革开放的最前沿，寻找工作机会，潇洒走一回。和其他人不同的是，父亲当时已接近不惑之年，有家有口，还捧着医生这样一个金饭碗。如今我已过而立，晋升为爷爷的父亲年逾古稀，在这个本该安享天年的时刻，仍然奋斗在第一线，业余时间还以编者的身份出了个人的第一部书，同时正在紧张地编撰第二部。父亲就是我的榜样，能够全面超越他是我的一大理想（当然这也是一个达尔文主义者必须做到的，总不能一代更比一代差吧^_^），可惜至今我还未能完成这一理想。</p>
+<h2>（五）</h2>
+<blockquote>
+<p>A language that doesn&#39;t affect the way you think about programming, is not worth knowing.  - Alan Perlis</p>
+</blockquote>
+<p>离开Juniper，我选择了创业，创建了途客圈。那是一段奇妙的旅程，一段让我成熟很多的征途。有史以来第一次，我写软件，不是为了我的雇主，我的payroll，而是为了我的梦想。虽然这段旅程仅仅走了两年我就不得不因为一些个人的原因选择了自我放逐，但这两年，如乔帮主所言，是我开始去连接那一个个&quot;disconnected dots&quot;。我的编程水平开始极大地发展，我的软件开发思想在不断走向成熟，我越来越觉得自己像是一个真正的程序员了。</p>
+<p>重要的是，我开始学习新的语言了。你也许注意到，自从从DCN学习了PHP和Python后，在Juniper我就不再学习新的语言了，部分原因是我在夯实我这两门语言的水平，尤其是Python的水平，但更关键的原因是我开始固步自封了。C让我成为真正的程序员，Python让我成为聪明的程序员，我似乎找不到继续学习新语言的理由。</p>
+<p>但是，创业改变了这一切。我不得不学习javascript，因为这是客户端唯一的标准。尽管在十多年前我就接触了javascript，并用它做过一些效果，但那时对javascript的使用，与其说是使用，不如说是误用。在途客圈，我才真正重新认识这门prototype based language。另外，为了权衡究竟什么样的架构更利于未来的发展，我花了很多功夫深入了解ruby，在ruby和python之间进行对比。通过《松本行弘的程序世界》，我了解了设计ruby时的很多思想。尽管途客圈最终选择了python/django，但这是一次非常有益的对比和思考，它让我进一步找到了第五个答案：</p>
+<p><strong>学通超过一种编程语言，了解尽可能多的编程语言及其优劣，知道解决某个问题的可能的最佳路径。</strong></p>
+<p>注意学通和学会是两个概念。学会意味着你能够使用这门语言，会写程序，而学通则意味着更多：</p>
+<ul>
+<li>了解语言被创建之出的动机，深刻理解语言背后的<strong>思想</strong>。</li>
+<li>掌握如何在线调试（online debugging）和事后分析（coredump analysis）。</li>
+<li>掌握语言外延/周边的技术。如JVM之于java，OS/CPU EABI之于C。</li>
+<li>掌握如何提升关键代码的效率，如何能够扩充语言的能力。如NIF之于Erlang。</li>
+<li>...</li>
+</ul>
+<p>很多在简历中号称精通C的人不知道malloc背后都发生了什么，精通Python的人却无法用meta programming写出干净漂亮的代码。这样的精通其实也就是勉强学会。</p>
+<p>按照这个标准，摸爬滚打了十年后，我在C语言上勉强算学通，Python和Javascript只能说学会，Erlang/Ruby刚算了解。</p>
+<p>容我再解释一下为何要了解尽可能多的编程语言极其优劣。比如说新开发的软件并发模式要采用STM（Software Transactional Memory），如果在技术选型前，你知道clojure在语言层面，haskell在GHC层面实现了STM，那么，你的选择可能不会局限于你之前所用的语言。</p>
+<h2>（六）</h2>
+<blockquote>
+<p>总而言之，现在完全不可能让时钟倒转了。你不能永远总是对过去也许会发生的事耿耿于怀。你应该认识到你与大多数人一样地过得很好，或许还要好得多，那就应该心满意足了。  - 《长日留痕》</p>
+</blockquote>
+<p><br/></p>
+<blockquote>
+<p>Life is short, 
+[the] craft long, 
+opportunity fleeting, 
+experiment treacherous, 
+judgment difficult. 
+  - Hippocrates</p>
+</blockquote>
+<p>也许是之前的凝视耗费了太多的精力，小宝开始打着哈欠揉眼睛。她回过头来，张开双臂，满眼期待地望着我。我知道，小家伙想要抱抱了。</p>
+<p>十年前我根本无法想象十年后我能如此幸运而又意外地拥有她，正如十年后我无法预料她会变成什么样子。我可以为我的职业生涯，还有她的人生做&quot;deliberate&quot;的打算，但我无法控制结果。过去的十年，我遇到了很多很多十字路口。就像《长日留痕》里说的那样，『你不能永远总是对过去也许会发生的事耿耿于怀』。重要的是，我做出了选择。我很高兴我的人生经历与大多数人一样丰富，或许还要丰富得多，我很高兴我有很多很多故事讲给我的孩子听。</p>
+<p>哦，忘了说另外一个答案，也就是第六个 —— 当然，仅仅对非英语母语的人有效：</p>
+<p><strong>能用英文自如地阅读，写作和交流。</strong></p>
+<p>一位优秀的程序员究竟该具备什么素养？</p>
+<p>在用了近8年的vim之后，我决定，尝试emacs。</p>
+]]></description>
+            <link>http://tchen.me/posts/2013-07-27-the-remains-of-the-day.html</link>
+            <guid isPermaLink="true">
+                http://tchen.me/posts/2013-07-27-the-remains-of-the-day.html            </guid>
+            <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
+            <pubDate>Sat, 27 Jul 2013 13:24:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Why should C programmers learn Erlang?]]></title>
+            <description><![CDATA[<h2>Prologue</h2>
+<p>If somebody says X language is better than Y language, usually there will be a fierce quarrel between two sides. If you&#39;re using certain language for a long time, you will be the evangelist of that language, and try to protect it unconsciously. Admitted or not, you have been trapped in a tunnel, that what you can see is constraint greatly. &quot;The Shawshank Redemption&quot; gives a good footnote on it:</p>
+<p><img src="/assets/files/snapshots/institutionalized.jpg" alt="institutionalized"></p>
+<blockquote>
+<p>[Red] These walls are funny. First you hate &#39;em, then you get used to &#39;em. Enough time passes, you get so you depend on them. That&#39;s institutionalized.</p>
+</blockquote>
+<p>So before we&#39;re institutionalized too deep, let&#39;s learn something completely different - a language that not derived from C family, a language that leads you to a totally different mindset.</p>
+<p>Erlang seems to be a good candidate.</p>
+<!-- more -->
+
+<h2>Why Erlang?</h2>
+<p>Erlang is a languages more than 20 years old, developed initially by Ericsson, for the purpose of their &quot;next-gen&quot; switch. It&#39;s a really weird language with &quot;clumsy&quot; grammar which mixed with the functional programming into Prolog. However it adopts almost the best design philosophy, which is still ahead of the current era at least 10 years. Let me show you gradually.</p>
+<h3>No side effects (almost)</h3>
+<p>As a functional programming language, Erlang eliminates the shared states. Variables can only be bound to, but not changed. </p>
+<pre><code>1&gt; X = 1.
+1
+2&gt; X = X + 1.
+** exception error: no match of right hand side value 2
+3&gt; X = 2.
+** exception error: no match of right hand side value 2</code></pre>
+<p>This makes sure that you can write functions that has no side effects - which means, with the same parameters, even if you call the function a thousand times the return value is the same. Writing code that has no side effects is a fundamental advantage in Erlang, it has these benefits:</p>
+<ul>
+<li>There&#39;s (almost) no critical sections you need to protect. Think of C code under concurrent environment, you have to use various synchronous primitives to prevent data from corruption. Poor synchronization leads to poor performance and instability of the system. This is a great headache for C programmers.</li>
+<li>It makes low level optimization easier. The compiler can aggressively optimize the register usage since it knows once a variable is set it will not be changed.</li>
+<li>It makes garbage collection easier. Think of poor Java VM. To determine if a variable is garbage or not is not a easy thing since it might be reference by others, and it might be used or changed later. But Erlang not. A variable is only in the scope of the outer function. Nobody else will use it. Nobody will change it. (read more about <a href="http://stackoverflow.com/questions/10221907/garbage-collection-and-memory-management-in-erlang">Erlang garbage collection</a> if you&#39;re interested).</li>
+</ul>
+<h3>Asynchronous / Concurrent built in language</h3>
+<p>Erlang has built-in support of concurrent / asynchronous in its language. The theory backed Erlang&#39;s idea is <a href="http://en.wikipedia.org/wiki/Actor_model">Actor Model</a>. This is a great vision in 1986 since at that time multi-core, multi-thread, or even SMP is not a known terminology.</p>
+<h4>Light weighted process</h4>
+<p>To support concurrent, Erlang has its own light weighted process on its VM. You can spawn tens of thousands of processes simultaneously without hitting the limitation of the OS. Furthermore, the creation of the processes are super-fast - <a href="http://www.lshift.net/blog/2006/09/10/how-fast-can-Erlang-create-processes">350,000Hz for an old Pentium 4 CPU</a>. The memory footprint of Erlang process is quite small - in the granularity of kilobytes (minimum ~300 bytes), rather than megabytes for OS level processes. As for scheduler, Erlang support soft realtime scheduler, and the cost of context switch is very low - <a href="http://stackoverflow.com/questions/2708033/technically-why-is-processes-in-Erlang-more-efficient-than-os-threads">Switching between processes, takes about 16 instructions and 20 nanoseconds on a modern processor</a>. If you&#39;re interested in scheduling, read <a href="http://jlouisramblings.blogspot.com/2013/01/how-Erlang-does-scheduling.html">how Erlang does scheduling</a>.</p>
+<h4>Message passing</h4>
+<p>Erlang use message passing for inter process communication, which inherits the idea of Actor model. Each process has its own mailbox to hold messages that cannot be processed immediately.</p>
+<p>With built-in process and message passing between processes, Erlang made itself full asynchronous.</p>
+<h4>Example</h4>
+<pre><code>-module(echo_server).
+-export([rpc/2, loop/0]).
+
+rpc(Pid, Request) -&gt;
+    Pid ! {self(), Request},
+    receive
+        Response -&gt;
+            Response
+    end.
+
+loop() -&gt;
+    receive
+        {From, {message, Message}} -&gt;
+            From ! {ok, Message},
+            loop();
+        {From, Request} -&gt;
+            From ! {error, Request},
+            loop()
+    end.
+
+%% in shell:
+
+1&gt; c(echo_server).
+{ok,echo_server}
+2&gt;  Pid = spawn(fun echo_server:loop/0).
+&lt;0.42.0&gt;
+3&gt; echo_server:rpc(Pid, {message, &quot;Hello world!&quot;}).
+{ok,&quot;Hello world!&quot;}
+4&gt; echo_server:rpc(Pid, {message1, &quot;Hello world!&quot;}).
+{error,{message1,&quot;Hello world!&quot;}}</code></pre>
+<p>Hope you&#39;re not overwhelmed by the grammar and the details on functional programming. I&#39;m not going to go into details of this code - it basically create a echo server then send message to the echo server. By using <code>spawn</code>, <code>!</code> (keyword for message passing) and <code>receive</code> we created echo server with only several lines of code. Think about how you achieve this by using C, Java, Python, Ruby or node.js. You will find the beauty of Erlang.</p>
+<p>As actor model is so important to the concurrent world, modern languages like Golang support it in the language level as well. I&#39;m not familiar with Golang, but as it does allow you share memory, doing concurrent in Golang may still need synchronous primitives. Furthermore, I don&#39;t think Golang support software real-time since this is the goal of Erlang but not the goal for Golang.</p>
+<p>For other languages, such as Java, Python and Ruby, who supports Actor model in the form of the library, I doubt its efficiency. Only putting coroutine and it&#39;s scheduler in the VM level, you can get the maximum performance.</p>
+<h3>Scale out</h3>
+<p>From previous example we can see that you&#39;re more likely to write loosely coupled applications in Erlang. With the built-in concurrency support, Erlang application is fairly easy to scale out. You can distribute your code from one node to multiple nodes, to different machines in same LAN, or even to servers in the other side of Internet, with only a little extra coding cost. This is because:</p>
+<ol>
+<li>Erlang allows you to spawn process in a remote node.</li>
+<li>Erlang allows you to interact with remote process, just like what you do for local process.</li>
+</ol>
+<p>With a little change of previous program (added a new function), we can distribute it in two different Erlang nodes:</p>
+<pre><code>start() -&gt; register(?MODULE, spawn(fun loop/0)).</code></pre>
+<pre><code>➜  Erlang-programming-examples  erl -sname weasley
+Erlang R16B (erts-5.10.1) [source] [64-bit] [smp:8:8] [async-threads:10] [hipe] [kernel-poll:false] [dtrace]
+
+Eshell V5.10.1  (abort with ^G)
+(weasley@cnrd-tchen-mbp)1&gt; c(echo_server).
+{ok,echo_server}
+(weasley@cnrd-tchen-mbp)2&gt; echo_server:start().
+true
+
+➜  Erlang-programming-examples  erl -sname potter
+Erlang R16B (erts-5.10.1) [source] [64-bit] [smp:8:8] [async-threads:10] [hipe] [kernel-poll:false] [dtrace]
+
+Eshell V5.10.1  (abort with ^G)
+(potter@cnrd-tchen-mbp)1&gt; rpc:call(&#39;weasley@cnrd-tchen-mbp&#39;, echo_server, rpc, [{message, &quot;Hurry up, Harry!&quot;}]).
+{ok,&quot;Hurry up, Harry!&quot;}</code></pre>
+<h3>Hot code reload</h3>
+<p>This is really a dream feature every system programmer wants. Think about all kinds of tedious hot patching solutions you provided to your customer. It&#39;s about hacking, dirtiness and limitations. But Erlang, on the contrary, supports hot code reload in an elegant manner.</p>
+<p>Still use the echo server as an example, let&#39;s revise the code so that we could swap the code later:</p>
+<pre><code>-module(echo_server_general).
+-export([start/2, rpc/2, swap_code/2]).
+
+start(Name, Mod) -&gt;
+    register(Name, spawn(fun() -&gt; loop(Name, Mod) end)).
+
+swap_code(Name, Mod) -&gt;
+    rpc(Name, {swap_code, Mod}).
+
+rpc(Name, Request) -&gt;
+    Name ! {self(), Request},
+    receive
+        {Name, Response} -&gt; Response
+    end.
+
+loop(Name, Mod) -&gt;
+    receive
+        {From, {swap_code, NewMod}} -&gt;
+            From ! {Name, ack},
+            loop(Name, NewMod);
+        {From, Request} -&gt;
+            Response  = Mod:handle(Request),
+            From ! {Name, Response},
+            loop(Name, Mod)
+    end.
+
+-module(echo_server).
+-export([echo/2, handle/1]).
+
+echo(Name, Message) -&gt; echo_server_general:rpc(Name, {echo, Message}).
+
+handle({echo, Message}) -&gt; {ok, Message}.
+
+%% shell output
+
+(weasley@cnrd-tchen-mbp)1&gt; echo_server_general:start(s, echo_server).
+true
+(weasley@cnrd-tchen-mbp)2&gt; echo_server:echo(s, &quot;hello world&quot;).
+{ok,&quot;hello world&quot;}</code></pre>
+<p>Now the new requirement comes - our echo_server need to capitalize the first letter of the message and echo it back. Normally we need to shutdown the server, replace it with the new code, then restart the server again. You don&#39;t need to do so in Erlang.</p>
+<pre><code>%% revised echo_server.erl
+-module(echo_server).
+-export([echo/2, handle/1]).
+
+echo(Name, Message) -&gt; echo_server_general:rpc(Name, {echo, Message}).
+
+handle({echo, Message}) -&gt; {ok, capfirst(Message)}.
+
+capfirst([H|T]) when H &gt;= $a, H =&lt; $z -&gt;
+    [H + ($A - $a)|T];
+capfirst(Others) -&gt; Others.
+
+%% shell output
+(weasley@cnrd-tchen-mbp)4&gt; c(echo_server).
+{ok,echo_server}
+(weasley@cnrd-tchen-mbp)5&gt; echo_server_general:swap_code(s, echo_server).
+ack
+(weasley@cnrd-tchen-mbp)6&gt; echo_server:echo(s, &quot;hello world&quot;).
+{ok,&quot;Hello world&quot;}</code></pre>
+<p>Hot code reload is greatly useful not only for high availability of running software, but also very useful for software development life cycle. You don&#39;t need to waste lots of time to shutdown, load, and boot a big system for verifying a few lines of change.</p>
+<p>I read several articles which claim hot code reload is not so useful in real world. People fears about the chaos of module versions of the hot reloaded software. Understandable. People tend to fear about unknown, and things that beyond their knowledge and vision. The power of the hot code reload will be discovered a decade later, when there&#39;s corresponding software management tools and theory appears. Erlang is too ahead its time that after more than 20 years its philosophy is still ahead of time.</p>
+<h3>Fault Tolerance</h3>
+<p>The industry dreams on nine nines (99.9999999%) of system availability. However, software is made by people. People will make mistakes. Murphy&#39;s law says anything can go wrong will go wrong. So we can not avoid mistakes. Instead of getting us out of mistakes, a more important question is: how could our software survive with all kinds of mistakes?</p>
+<p>Other languages train people to use defensive programming to try to protect your software from crash, but Erlang&#39;s philosophy is &quot;let it crash&quot;. Why?</p>
+<p>If someone built a house for you that as long as one of the window breaks the house will fall completely, will you stay in the house? Absolutely no. You need a house that you can still live in it though window is broken. You can later ask expert to fix it.</p>
+<p>This is the difference between applications written in C and in Erlang. Crash is not a serious problem if you know how to recover from the crash. In Erlang: </p>
+<ul>
+<li>a process crashing will not impact unrelated processes.</li>
+<li>crashed process will notify the processes linked to it.</li>
+<li>supervisor could be used to recover from the crash, e.g. restart the crashed process.</li>
+</ul>
+<h3>Speed</h3>
+<p>the performance of Erlang code has some drawbacks compared with C:</p>
+<ul>
+<li>the code runs on top of VM</li>
+<li>runtime type deduction</li>
+<li>pattern matching</li>
+<li>...</li>
+</ul>
+<p>So how slow is Erlang? Inspired by this <a href="http://stackoverflow.com/questions/6964392/speed-comparison-with-project-euler-c-vs-python-vs-Erlang-vs-haskell">post</a>, I did the following tests in my mbp:</p>
+<pre><code>➜  comparison  time ./euler12.bin
+842161320
+./euler12.bin  5.90s user 0.01s system 99% cpu 5.910 total
+➜  comparison  time erl -noshell -s euler12 solve
+842161320
+erl -noshell -s euler12 solve  11.09s user 0.19s system 100% cpu 11.269 total
+➜  comparison  time pypy euler12.py
+842161320
+pypy euler12.py  9.92s user 0.05s system 96% cpu 10.305 total
+➜  comparison  time ./euler12.py
+842161320
+./euler12.py  66.32s user 0.04s system 99% cpu 1:06.43 total</code></pre>
+<p>We can see that C code is almost 2x faster than Erlang. This is not bad for Erlang, considering the benefits it brings. Think about a I/O intensive situation. Think about concurrent or distributed situation. Erlang wins for sure.</p>
+<p>Sooner or later one DIE will have a thousand cores. Even if nowadays Erlang cannot excel in performance, it will in future.</p>
+<h3>Adoption</h3>
+<p>There are quite a few famous software built with Erlang:</p>
+<ul>
+<li><a href="http://couchdb.apache.org/">couchDB</a>. A NoSQL database. </li>
+<li><a href="http://www.rabbitmq.com/">RabbitMQ</a>. A distributed message queue system.</li>
+<li><a href="http://www.ejabberd.im/">ejabberd</a>. An instant message server.</li>
+<li><a href="http://www.adelcogroup.com/EricssonAXD301.htm">AXD301 ATM switch</a>. Probably the only system in this planet reached nine nines. It hasn&#39;t been shutdown for 20 years.</li>
+<li>And a lot more companies, including Amazon, Facebook, Yahoo!, T-Mobile, use Erlang in their systems, see <a href="http://stackoverflow.com/questions/1636455/where-is-Erlang-used-and-why">Where is Erlang used and why?</a></li>
+</ul>
+<h2>How to learn Erlang?</h2>
+<p>Erlang is really difficult to learn. But once you mastered it, you&#39;re the king. I like the words from Evan Miller, the creator of Erlang Web MVC framwork <a href="http://www.chicagoboss.org/">Chicago Boss</a>, in a good article named <a href="http://www.evanmiller.org/joy-of-erlang.html">Joy of erlang</a>:</p>
+<blockquote>
+<p>In the movie Avatar, there&#39;s this big badass bird-brained pterodactyl thing called a Toruk that the main character must learn to ride in order to regain the trust of the blue people. As a general rule, Toruks do not like to be ridden, but if you fight one, subdue it, and then link your Blue Man ponytail to the Toruk&#39;s ptero-tail, you get to own the thing for life. Owning a Toruk is awesome; it&#39;s like owning a flying car you can control with your mind, which comes in handy when battling large chemical companies, impressing future colleagues, or delivering a pizza. But learning to ride a Toruk is dangerous, and very few people succeed.</p>
+</blockquote>
+<p><img src="/assets/files/snapshots/toruk.jpg" alt="toruk"></p>
+<p>It reflects perfectly how hard I learned Erlang. BTW, I&#39;ve far from conquering it. </p>
+<p>Before learning Erlang, I have good master of C, Python and Javascript, programmed a little bit on C++, Java and Ruby. You can see my brain is filled with <a href="http://en.wikipedia.org/wiki/Imperative_programming">Imperative programming</a>. So the biggest challenges for me is to get used to functional programming, which implies <strong>mind change</strong>.</p>
+<h3>No state change for variables</h3>
+<p>Variables can only be bound to but not changed. Suddenly I found I could not program.</p>
+<p>For example, to implement upper(str) without using any helper function, such as map().</p>
+<p>In Python, it&#39;s super easy and pretty straight forward:</p>
+<pre><code>def upper(str):
+    str1 = &#39;&#39;
+    for c in str:
+        str1 += c.upper()
+    return str1</code></pre>
+<p>But in erlang, without changing the internal state, how can I achieve it?</p>
+<p>The ingredient is accumulator. Bear this paradigm in mind when writing Erlang code. The code looks like this:</p>
+<pre><code>upper(S) -&gt;
+    upper(S, []).
+
+upper([], N) -&gt;
+    lists:reverse(N);
+upper([H|T], N) when H &gt; $a, H =&lt; $z -&gt;
+    upper(T, [H + ($A - $a)|N]);
+upper([H|T], N) -&gt;
+    upper(T, [H|N]).</code></pre>
+<p>The function itself doesn&#39;t have any internal state change, but we have achieved the same goal by having an accumulator passed as a parameter. This is a fundamental paradigm in functional programming world. <strong>Master it or die</strong>.</p>
+<h3>Pattern matching</h3>
+<p>Pattern matching makes Erlang program beautiful and easy to understand. In C, a function is unique inside its scope. You cannot define a <code>fun(x)</code> firstly, then define <code>fun(x, y)</code> later. But in Erlang, there&#39;s no such limitation. You could define as many as functions as long as their parameters are different, you could also define as many as <a href="http://www.erlang.org/doc/reference_manual/functions.html">clauses</a> for a function as long as their patterns are different. Take the above <code>upper()</code> function as an example. You call <code>upper(&quot;#hello&quot;)</code>:</p>
+<ul>
+<li>as there&#39;s only one parameter, the call matches with <code>upper(S)</code>, so we call <code>upper(&quot;#hello&quot;, [])</code>.</li>
+<li>For <code>upper(&quot;#hello&quot;, [])</code>, as &quot;#hello&quot; cannot match [], and the first char &quot;#&quot; doesn&#39;t match with the guard condition, the call matched <code>upper([H|T], N)</code>, so it calls <code>upper(&quot;hello&quot;, [$#])</code>.</li>
+<li>The following calls all matched with <code>upper([H|T], N) when H &gt; $a, H =&lt; $z</code>, and it will change the char to uppercase. So the call sequence is:<pre><code>upper(&quot;ello&quot;, [$H, $#])
+upper(&quot;llo&quot;, [$E, $H, $#])
+upper(&quot;lo&quot;, [$L, $E, $H, $#])
+upper(&quot;o&quot;, [$L, $L, $E, $H, $#])
+upper([], [$O, $L, $L, $E, $H, $#])</code></pre>
+</li>
+<li>for <code>upper([], [$O, $L, $L, $E, $H, $#])</code>, it matches <code>upper([], N)</code>, <code>lists:reverse(N)</code> is returned.</li>
+</ul>
+<p>Pattern matching allows you to break your code logic into pieces, as a result, the body of each clause of a function is much smaller and more readable. That&#39;s why usually you see a C function is more than a hundred lines of code but an Erlang function clause usually takes no more than twenty lines of code.</p>
+<p>Note that the sequence of the clauses are important. Erlang executes the first matched clause.</p>
+<h3>The magic of recursive</h3>
+<p>When studying C programming, I was trained that recursion is a poison that you should use as little as possible. But in functional programming world, recursion is another fundamental paradigm.</p>
+<p>Look back into the code I&#39;ve written in this article so far. Do you see regular loop? No. But how about recursive function? Everywhere. Recursion replaces for/while loop, making a clean iteration or looping solution. Why? Think about the for loop in C. It involves with state change - for every step you change the iterating factor until it match the exiting criteria. But Erlang doesn&#39;t allow internal state change, so it uses recursion to replace normal for/while loop.</p>
+<p>But you have doubts.</p>
+<h4>The performance of recursion is poor</h4>
+<p>This is a pseudo-proposition. </p>
+<p>Let me give you an example. The common sense is that passing parameters by registers is much faster than by stack. Intel CPU relies on stack push/pop so much for function calls since it has fewer general purpose registers than RISC CPUs. To boost performance it introduces the register stack so that push/pop operation is lightening-y fast - as fast as using registers.</p>
+<p>Let&#39;s come back to recursion. We use little recursion in C, according to 80/20 principle, there&#39;s no immediate need to optimize it, right? But for Erlang, recursion is the lifeline of the code. How dare the compiler not to optimize it? So your intuition is wrong - recursion is not necessarily slow. Yes it is slow in C, but very fast in Erlang. </p>
+<h4>It usually leads to stack overflow</h4>
+<p>Not exactly if you program in a right way. Erlang optimize the stack specially for <a href="https://en.wikipedia.org/wiki/Tail_call">tail recursion</a>. Let me give you an example:</p>
+<pre><code>fac(1) -&gt; 1;
+fac(N) when N &gt; 0 -&gt; N * fac(N-1).</code></pre>
+<p>This is not a tail recursion since the stack must be kept for calculation.</p>
+<p>Let&#39;s make it a tail recursion one:</p>
+<pre><code>fac1(N) -&gt; fac1(N, 1).
+
+fac1(1, M) -&gt; M;
+fac1(N, M) when N &gt; 0 -&gt; fac1(N-1, N * M).</code></pre>
+<p>Each time a function call is made we can safely drop the stack of the last call, this is tail recursion.</p>
+<p>The benefit of tail recursion is that you need only to keep a very small, constant memory footprint for recursion. So there&#39;s no worry about stack overflow for long running recursive programs.</p>
+<p>In Erlang, you should program the code with tail recursion as long as it is possible.</p>
+<h3>Functional programming in mind</h3>
+<p>Pay attention to the data that could be recursively accessed, such as list (including string). List could be processed like this:</p>
+<pre><code>retrieve([H|T]) -&gt; {H, T}.
+
+%% or even
+retrieve1([H1, H2|T]) -&gt; {H1, H2, T}</code></pre>
+<p>Bear map/reduce in mind.</p>
+<p>Focus on algorithm, think how you achieve it with math formula. Then it should be easy to write it down with Erlang. Divide and conquer your problem. Do not get into details.</p>
+<p>Let&#39;s take atoi(S) as an example.</p>
+<p>The formula:</p>
+<pre><code>
+         |- S[0] is &#39;-&#39;:  -1 * atoi(s[1:], 0)
+atoi(S) -+
+         |- else:         atoi(S, 0)
+
+              |- S is []:       Acc
+atoi(S, Acc) -+- S[X] is digit: atoi(S[X+1:], 10 * Acc + digit(S))
+              |- else:          Acc</code></pre>
+<p>Thus we could write code like this:</p>
+<pre><code>-module(math).
+-export([atoi/1]).
+
+atoi([$-|S]) -&gt;
+    -1 * atoi(S, 0);
+atoi(S) -&gt;
+    atoi(S, 0).
+
+atoi([], Acc) -&gt; Acc;
+atoi([H|T], Acc) when H &gt;= $0, H =&lt; $9 -&gt;
+    atoi(T, 10 * Acc + (H - $0));
+atoi(_S, Acc) -&gt; Acc.</code></pre>
+<p>Think of how you write C code for <code>atoi()</code>. The Erlang program is close to what your algorithm is. You can make it correct almost on your first try.</p>
+<h3>Embrace processes</h3>
+<p>Process is not hard to use if you&#39;re willing to use it. It helps organize your system in a loosely coupled and asynchronous way. You just need to get used to it. Treat process as worker, as object, or anything you could analog.</p>
+<h3>Let it fail</h3>
+<p>For C programmer, normally you should write code that covers every possible value of the parameters. But Erlang not. Take this example:</p>
+<pre><code>%% good code
+fac(N) when is_integer(N), N &gt; 0 -&gt; fac(N, 1).
+
+fac(1, Acc) -&gt; Acc;
+fac(N, Acc) -&gt; fac(N-1, Acc * N).
+
+%% bad code
+fac(N) when is_integer(N), N &gt; 0 -&gt; fac(N, 1).
+fac(N)                           -&gt; {error, &quot;argument must be positive integer&quot;}
+
+fac(1, Acc) -&gt; Acc;
+fac(N, Acc) -&gt; fac(N-1, Acc * N).</code></pre>
+<p>Execute the good code with bad parameter will cause exception, like the following:</p>
+<pre><code>1&gt; c(math).
+{ok,math}
+2&gt; math:fac(10).
+3628800
+3&gt; math:fac(-10).
+** exception error: no function clause matching math:fac(-10) (math.erl, line 14)</code></pre>
+<p>Should we write code to process the negative integer? YES in C, NO in Erlang. The bade code saves the process from exception but it leads unnecessary handling for the caller. Caller needs to add extra code to handle this pointless return value, which only makes the system more complicated. Let the exception happen. Let the process crash. Handle exception only in the place that need to handle it.</p>
+<h2>Materials to learn Erlang</h2>
+<p>Congratulations! After reading this long article now it&#39;s your turn to conquer your Toruk. Here&#39;s your weapon:</p>
+<ol>
+<li><strong>Joe Armstrong</strong>&#39;s book <strong>&quot;Programming Erlang - software for a concurrent world&quot;</strong>. The best way to learn a language is to read the book of the language&#39;s father. I highly recommend you to read this book thoroughly, especially the chapters regarding with sequential programming, concurrent programming and OTP.</li>
+<li><a href="http://www.erlang.org/doc/">Erlang doc</a>. Read on when you have doubts.</li>
+<li>Implement in Erlang for the problems you&#39;re facing in day-to-day work. For example:<ul>
+<li>Count the words for a given file.</li>
+<li>Implement cloc (giving a directory, count the lines of code for different languages).</li>
+<li>Write a message server that keeps top N unread messages in memory while keeping the rest in mnesia.</li>
+<li>Write a markdown interpreter.</li>
+<li>Write a web framework based on mochiweb.</li>
+<li>Write a L3/L4 firewall that handles symmetric NAT translation (to focus on the problem itself you should use the data from tcpdump).</li>
+</ul>
+</li>
+<li>Read open source software, such as ranch, cowboy, boss_db, etc.</li>
+</ol>
+<p>Hope you have fun!</p>
+]]></description>
+            <link>http://tchen.me/posts/2013-07-22-why-should-c-programmers-learn-erlang.html</link>
+            <guid isPermaLink="true">
+                http://tchen.me/posts/2013-07-22-why-should-c-programmers-learn-erlang.html            </guid>
+            <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
+            <pubDate>Mon, 22 Jul 2013 10:32:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[你无法想象的C语法]]></title>
+            <description><![CDATA[<h2>引子</h2>
+<p>看了berkeley网站上的文章<a href="http://www.cs.berkeley.edu/~necula/cil/cil016.html">Who Says C is Simple?</a>，顿感汗流浃背。如果招聘官按照这个题目去面试，我也就将将五十分。不过话说回来，这里所列的case都太偏门，走的是圣火令的武功路数，真正做工程的这么写代码就是欠揍。</p>
+<p>但是抱着学语言的态度，这里的题目如果你不懂都值得深究。我研究了下第四题 —— 这是让我比较困惑的一题。</p>
+<pre><code>// Functions and function pointers are implicitly converted to each other.
+int (*pf)(void);
+int f(void) {
+
+   pf = &amp;f; // This looks ok
+   pf = ***f; // Dereference a function?
+   pf(); // Invoke a function pointer?     
+   (****pf)();  // Looks strange but Ok
+   (***************f)(); // Also Ok             
+}</code></pre>
+<!--more-->
+
+<h2>探讨</h2>
+<p>这个代码直接运行的话肯定是Segment Fault。从第3句起就是个无限递归。作者想揭示的问题并不在此，所以我的测试代码做了小小修改：</p>
+<pre><code>#include &lt;stdio.h&gt;
+
+int (*pf)(void);
+
+int f(void) {
+    printf(&quot;Hello world!\n&quot;);
+}
+
+int main() {
+    f();
+    (&amp;f)();
+    (*f)();
+    (************f)();
+    pf = &amp;f;
+    pf();
+    pf = *f;
+    pf();
+}</code></pre>
+<p>运行起来和预期一致：</p>
+<pre><code>vagrant@vagrant-ubuntu-raring-64:~/arena$ ./fp
+Hello world!
+Hello world!
+Hello world!
+Hello world!
+Hello world!
+Hello world!</code></pre>
+<p>我们来看看汇编出来的结果（arm）：</p>
+<pre><code>00008440 &lt;f&gt;:
+    8440:   e92d4800    push    {fp, lr}
+    8444:   e28db004    add fp, sp, #4
+    8448:   e59f0008    ldr r0, [pc, #8]    ; 8458 &lt;f+0x18&gt;
+    844c:   ebffffa2    bl  82dc &lt;_init+0x20&gt;
+    8450:   e1a00003    mov r0, r3
+    8454:   e8bd8800    pop {fp, pc}
+    8458:   00008528    .word   0x00008528
+
+0000845c &lt;main&gt;:
+    845c:   e92d4800    push    {fp, lr}
+    8460:   e28db004    add fp, sp, #4
+    8464:   ebfffff5    bl  8440 &lt;f&gt;
+    8468:   ebfffff4    bl  8440 &lt;f&gt;
+    846c:   ebfffff3    bl  8440 &lt;f&gt;
+    8470:   ebfffff2    bl  8440 &lt;f&gt;
+    8474:   e59f3030    ldr r3, [pc, #48]   ; 84ac &lt;main+0x50&gt;
+    8478:   e59f2030    ldr r2, [pc, #48]   ; 84b0 &lt;main+0x54&gt;
+    847c:   e5832000    str r2, [r3]
+    8480:   e59f3024    ldr r3, [pc, #36]   ; 84ac &lt;main+0x50&gt;
+    8484:   e5933000    ldr r3, [r3]
+    8488:   e12fff33    blx r3
+    848c:   e59f3018    ldr r3, [pc, #24]   ; 84ac &lt;main+0x50&gt;
+    8490:   e59f2018    ldr r2, [pc, #24]   ; 84b0 &lt;main+0x54&gt;
+    8494:   e5832000    str r2, [r3]
+    8498:   e59f300c    ldr r3, [pc, #12]   ; 84ac &lt;main+0x50&gt;
+    849c:   e5933000    ldr r3, [r3]
+    84a0:   e12fff33    blx r3
+    84a4:   e1a00003    mov r0, r3
+    84a8:   e8bd8800    pop {fp, pc}
+    84ac:   0001102c    .word   0x0001102c
+    84b0:   00008440    .word   0x00008440</code></pre>
+<p>我们可以看到 <code>f()</code>，<code>(&amp;f)()</code>，<code>(*f)()</code>，<code>(************f)()</code> 编译出来的结果均为 <code>bl 8440 &lt;f&gt;</code>。而无论对 <code>pf</code> 赋值为 <code>&amp;f</code>，还是 <code>*f</code>，其代码都是：</p>
+<pre><code>    8474:   e59f3030    ldr r3, [pc, #48]   ; 84ac &lt;main+0x50&gt;
+    8478:   e59f2030    ldr r2, [pc, #48]   ; 84b0 &lt;main+0x54&gt;
+    847c:   e5832000    str r2, [r3]
+    8480:   e59f3024    ldr r3, [pc, #36]   ; 84ac &lt;main+0x50&gt;
+    8484:   e5933000    ldr r3, [r3]
+    8488:   e12fff33    blx r3</code></pre>
+<p>这个代码很好理解，就是把 <code>f()</code> 的地址取出来，存入 <code>pf</code>，然后执行 <code>pf()</code>（注意arm会把全局地址存放在使用它的函数的末尾，这样可以一条指令取出地址）。问题是，为何 <code>&amp;f</code> 和 <code>*f</code> 在这里是等价的？</p>
+<h2>*和&amp;</h2>
+<p>我们知道，<code>*</code> 是解引用，<code>&amp;</code> 是引用，下面的代码，前者取值，后者取地址：</p>
+<pre><code>#include &lt;stdio.h&gt;
+
+int print(int x)
+{
+    printf(&quot;value is %x\n&quot;, x);
+}
+
+int main()
+{
+    int a;
+    int b;
+    unsigned int x[] = {0x10};
+
+    a = *x;
+    b = &amp;x;
+
+    print(a);
+    print(b);
+    print(x);
+
+}</code></pre>
+<p>执行结果说明一切：</p>
+<pre><code>vagrant@vagrant-ubuntu-raring-64:~/arena$ ./a.out
+value is 10
+value is f50cef80
+value is f50cef80</code></pre>
+<p>汇编代码也和预期一致：</p>
+<pre><code>    00008470 &lt;main&gt;:
+    8470:   e92d4800    push    {fp, lr}
+    8474:   e28db004    add fp, sp, #4
+    8478:   e24dd010    sub sp, sp, #16
+    847c:   e3a03010    mov r3, #16
+    8480:   e50b3010    str r3, [fp, #-16]
+    8484:   e51b3010    ldr r3, [fp, #-16]
+    8488:   e50b300c    str r3, [fp, #-12]
+    848c:   e24b3010    sub r3, fp, #16
+    8490:   e50b3008    str r3, [fp, #-8]
+    8494:   e51b000c    ldr r0, [fp, #-12]
+    8498:   ebffffe9    bl  8444 &lt;print&gt;
+    849c:   e51b0008    ldr r0, [fp, #-8]
+    84a0:   ebffffe7    bl  8444 &lt;print&gt;
+    84a4:   e24b3010    sub r3, fp, #16
+    84a8:   e1a00003    mov r0, r3
+    84ac:   ebffffe4    bl  8444 &lt;print&gt;
+    84b0:   e1a00003    mov r0, r3
+    84b4:   e24bd004    sub sp, fp, #4
+    84b8:   e8bd8800    pop {fp, pc}</code></pre>
+<p>那么，同样是对地址（<code>f()</code>也是个地址）做解引用(<code>*</code>)，为何作用于函数地址，解引用等同于引用？</p>
+<p>我的理解是，对于函数地址的解引用，如何和数组等同处理，返回对应地址的内容，即编译出来的机器码，是能够解释 <code>(*f)()</code>的。因为返回的代码被执行后，<code>pc</code> 会自增，然后代码就顺着函数的逻辑执行下去，这个没有问题。所以，<code>(*f)()</code> 等价于 <code>f()</code>，同样等价于 <code>(&amp;f)()</code>。但问题是如何理解 <code>(*******f)()</code>？貌似任意多的解引用作用于函数地址，编译器并不会报错且运行正常，而 <code>(&amp;&amp;&amp;f)()</code> 编都编不过？</p>
+<p>费了好大劲，想花了脑袋都没想明白。求助于stackoverflow，发现有人也有类似的疑问：<a href="http://stackoverflow.com/questions/2795575/how-does-dereferencing-of-a-function-pointer-happen">How does dereferencing of a function pointer happen?</a>，最佳答案通过lvalue和rvalue的角度去分析，看着很靠谱，值得一读，我这里就不重复了。</p>
+<h2>后记</h2>
+<p>学语言，如果抱着一颗写编译器的心去学，那么就无敌于天下了。:)</p>
+<p><img src="/assets/files/photos/baby20130711.jpg" alt="小宝和爷爷"></p>
+]]></description>
+            <link>http://tchen.me/posts/2013-07-18-c-grammar-you-cannot-imagine.html</link>
+            <guid isPermaLink="true">
+                http://tchen.me/posts/2013-07-18-c-grammar-you-cannot-imagine.html            </guid>
+            <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
+            <pubDate>Thu, 18 Jul 2013 00:22:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Come to Origins for Embedded Applications]]></title>
+            <description><![CDATA[<h2>The problem</h2>
+<p>Recently I did a web application to make easy GNATS report for my team. I use scrapy to crawl the GNATS web pages for people&#39;s issues every 4 hours, then add the crawled data into mongodb. A set of simple-to-use RESTful APIs written with nodejs can provide easy access to the data (<a href="http://api.jcnrd.us/gnats/tchen.json">try it out</a>, but only viewable internally in Juniper). Then a django application consumes the APIs and wraps them into a not-so-bad user interface, thanks to twitter bootstrap and a set of javascript frameworks and libraries. You can look at the ultimate application here: <a href="http://gnats.jcnrd.us/groups/branch-team/">GNATS report system</a>.</p>
+<!--more-->
+
+<p>What I want to emphosize is, I did all these stuffs in less than a full week, and then a working edition is there. I&#39;ve not counted the code, maybe a few thousands line of python, coffescript, css and html code.</p>
+<p>Here comes the problem - I can never be so productive when writing code for the datapath of JUNOS, or any embedded systems I&#39;ve been working with. Why is it?</p>
+<p>Then I began to compare the differences for my web application and the data path application, say NAT for embedded systems, to find the magic.</p>
+<h3>Web application</h3>
+<ul>
+<li>Almost all the software is running at user mode. Even the most mission critical, throughput sensitive applications, like DBMS, web server, are working in user mode.</li>
+<li>Great frameworks there for you to achieve your goal. They have really nice layering with separation of concerns beared in mind. You don&#39;t need to know the details about the underlying layers, just focus what your application is required to do.</li>
+<li>There&#39;re good conventions for you to follow, so that even the not so experienced engineer can write good-quality, working code.</li>
+<li>You can for sure scale up, and it is not that difficult to scale out.</li>
+</ul>
+<h3>Applications for embedded systems</h3>
+<ul>
+<li>Usually your code is running in kernel mode (especially the data path code), even if it is not required to.</li>
+<li>No good framework and people who&#39;re working on architecture may be not aware of how important a good framework means to the applications.</li>
+<li>No separation of concerns. As a developer, you need to master the complexity of the whole system to write correct code, even if for not so underlying application like NAT, you have to care about locking, CPU, session, etc., which, in my opinion, should not be exposed to you.</li>
+<li>No good convention to follow so that people tend to write code in a very different style and even very bad code (long switch case with duplicated code everywhere).</li>
+<li>Scale up is not so easy, scale out is a disaster.</li>
+</ul>
+<p>Yes you can argue the embedded systems are much more complicated, but making not so complicated things complex is much easier than making it simple, right? If you think about a whole web systems, you need to deal with web server, db server, message queue server, cache server, etc., and each of them expose every detail to you and you have to learn all of them, who can write web applications so easy?</p>
+<p>You may also argue that performance is everything so we had to sacreface almost everything. But is it really the right way of doing it, considering the hardware is getting a lot better and better than 15 years ago? 15 years ago, web applications are also written in C or equivalent, in terms of performance I guess? But what about now? Our mind should change with the era. Furthermore, is it easier to write the architecture right firstly then optimize it afterwards? Or it is easier to optmize the application firstly even if making a lots of things in a mess then evolve the whole mess? The answer is transparent.</p>
+<p>So here&#39;s my point - let&#39;s try to make the architecture right with a framework with usability for developer bear in mind.</p>
+<h2>The solution</h2>
+<p>Here I&#39;ll try to come out a crazy data plane framework. I don&#39;t even know if it works but it is a good stress test for your brian when you&#39;re in a 12-hour flight with nothing else to do.</p>
+<h3>Engine</h3>
+<p>Engine is a very light-weight component like thread, but the memory footprint is much less and there&#39;s no data copy between engines. To boost the performance, multiple instance of the same engine could be run simutaneously.</p>
+<p>Engine is the minimum unit in the forwarding path, following <strong>open-close</strong> principle. An engine should do and only do one thing, it usually should not be changed when introducing a new feature. For example, you should not create a l3 forward engine which combined lots of stuffs in it. Instead, you should do something like a TTL engine, which just decrease the TTL of the given packet.</p>
+<p>An engine have an inqueue and outqueue to hold packet to be processed and to be sent to the next engine. The writer of the engine usually isn&#39;t aware of it. To move packet forward to the next engine, current engine just need to call API like this:</p>
+<pre><code>return next_engine();</code></pre>
+<p>This API will automatically calculate the next-to-call engine, and distribute to one of the not-so-busy instances of the engine.</p>
+<p>To write an engine, you basically need:</p>
+<ol>
+<li>UI/Configuration. Write a erlang script to subclass <code>Command</code> and implement methods like <code>set</code>, <code>get</code>, <code>debug</code>. Configuration is stored into memory based key-value database.</li>
+<li>Main logic. Subclass <code>Engine</code> and implement <code>c2s(pkt)</code> and <code>s2c(pkt)</code>. They will be called by <code>process(pkt)</code> based on the traffic direction.</li>
+<li>Insert engine into the right place of the global engine database.</li>
+</ol>
+<h3>Path</h3>
+<p>Path is a set of engines that packet will go through. Usually the first packet packet will trigger a session installation, which creates bidirection paths for the session.</p>
+<p>Path is organized as bitmap.</p>
+<p>The <code>next_engine()</code> API will work with path to decide the next engine, but the engine owner doesn&#39;t need to deal with path.</p>
+<h3>Session</h3>
+<p>Session is almost the same concept as what a typical firewall session is. It&#39;s 5-tuple based, bi-direction data structure that provides enough information for engines to process packets.</p>
+<p>Sessions are stored in a memory based key-value database. It can be queried and modified by database API.</p>
+<p>After session lookup, each packet data structure will have a copy of the matched session. Except invalidation, normally engines should not modify sessions in database. Only session lookup engine could modify session - e.g. the sequence number, the statistics info, etc.</p>
+<p>There are two session classes: <code>SessionStore</code>, <code>Session</code>.</p>
+<p><code>SessionStore</code> has the static <code>match</code> method, if you inherit <code>SessionStore</code>, <code>get_key()</code> and <code>modify_on_match()</code> should be implemented. </p>
+<p><code>SessionStore</code> will be separated based on protocols.</p>
+<p><code>Session</code> has <code>execute()</code>, which will call the engine path attached to the direction that packet comes.</p>
+<h3>Tunnel</h3>
+<p><code>TunnelSessionStore</code> inherits <code>SessionStore</code>. <code>TunnelSession</code> inherits <code>Session</code>.</p>
+<p><code>TunnelEngine</code> inherits <code>Engine</code>, which <code>c2s()</code> calls <code>encap(pkt)</code>, <code>s2c()</code> calls <code>decap(pkt)</code>. So you need to implement <code>encap()</code> and <code>decap()</code>.</p>
+<h2>The next step</h2>
+<p>There are much more to consider, for example, TCP Proxy, ALG, IDP, AI, QoS, etc. But unfortunately my flight is almost over and I need to release my brian for something more relex.</p>
+<p>DPDkit can zero-copy the packet from driver to user space. This is a great news for this idea.</p>
+<p>I&#39;m struggling for a while about the langyages I should choose. To me, golang is too young, python/ruby is too simple, and c/c++ is just naive to do it. Erlang, on the contrary, seems to be a smart choice for it.</p>
+<p>I know little about erlang. You can see my previous psudo code are all in c/python. I don&#39;t even know if erlang supports OOP (I guess so). What I think it is the right choice is because:</p>
+<ul>
+<li>string concatenation is O(1), which is rooted in its language essense of erlang. Think about fragmentation and reassemble you&#39;ll see how efficient it is.</li>
+<li>Processes are really, really light-weighted to spawn tens of thousands in a shot.</li>
+<li>You have no chance to mess things up through shared memory. The only way for communication is messaging, which is quite efficient without copying (hope my memory is correct).</li>
+<li>Erlang has its own key value realtime database called mnesia which could be used as configuration or even session stores (hopefully it is better than berkeley DB).</li>
+</ul>
+<p>So the next step is to learn erlang, and to try to write a framework, which by adding an engine, I can make the basic pass-through TCP traffic work without any issue.</p>
+<p>Don&#39;t laugh at me if you&#39;re expert. It is not an architecture spec. I just let my thought fly and record it faithfully.</p>
+<!--
+
+这不是说做web application要比做embedded system简单得多，而是一种思维方式和做事方法上的不同。我们做个简单的比较：
+
+### Internet application
+
+* 所有依赖的软件几乎都运行在user mode。
+* 你可以用很多的工具和框架来达到目的。你可以用nodejs和mongodb来提供api和数据的持久化；用django提供view和controller；bootstrap实现前端展现。所有这些基础结构都开源且运行良好。
+* 良好的层次划分和Separation of Concerns让你从不用担心死锁，也不用去考虑这段代码运行在哪个CPU上，你只需知道只要我遵循相应的convention，就能写出质量不错，能正常工作的代码。
+* 可以scale up，也比较容易scale out。
+
+### Application for embedded system
+
+* 很多时候不需要运行在kernel mode的代码被运行到了kernel mode。
+* 没有现成的framework（或者即使有，也没有人愿用）。
+* 没有separation of concerns。作为一个开发者，你需要对整个系统的复杂度了解得非常透彻，即使做NAT这样相对不那么复杂的应用，你也不得不关心锁，CPU，session这些本不需要暴露给你的东西。
+* 没有convention可言，每个人写出来的代码都有不同的风格。
+
+
+-->]]></description>
+            <link>http://tchen.me/posts/2013-06-23-come-to-origin-for-embedded-applications.html</link>
+            <guid isPermaLink="true">
+                http://tchen.me/posts/2013-06-23-come-to-origin-for-embedded-applications.html            </guid>
+            <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
+            <pubDate>Sun, 23 Jun 2013 00:14:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[湾区创业者]]></title>
+            <description><![CDATA[<p>承工场合伙人Chris的情，短短的一周时间我有幸约见了硅谷当地的创业者：Brian，Bobby和Chung。</p>
+<!--more-->
+
+<h2>Brian</h2>
+<p>Brian在沈阳和北京呆过，做过4家startup，然后先后加入了LinkedIn和Twitter。我跟他约到了某天中午一起吃午餐。在此之前，我从未了解过twitter的R&amp;D究竟在哪，觉着反正离Sunnyvale不远，所以中午吃个午餐还算OK，出发前一查，竟然是在San Francisco Downtown的Market Street。这可要了我的老命。San Francisco室内开车已经出奇得难，到处是单行线，停车又是个老大难，更不用说Downtown。开过去不算费劲，走101，稍微超点速，半个多小时GPS就把我导到了Market Street，但看着twitter的楼我又小心翼翼地绕了好几圈，才放心停到一个地下停车场。这算是我取经路上的小小磨难吧。</p>
+<p>到了前台，报上大名，出示Photo ID，前台大姐很快就找到了我的reservation，打印出访客证件，1分钟左右，我就见到了Brian。他把我带到了twitter的餐厅，一起享用美味的免费自助餐。餐厅到处是twitter风格的 @xxxx，不知他们的员工是否可以发tweet就能为厨师提供建议。:) 当天有一种用面包，三文鱼（或者是沙丁鱼）以及奶酪做的特殊的食物，当天特供，Brian建议我尝尝，并告诉我这是为了纪念某个明星而提供的她最爱吃的食物。看来美国成功的创业公司考虑的已经不仅仅是为员工提供『最好的』食物，以满足他们的胃口；而进一步在食物背后提供某种人文关怀。</p>
+<p>我们边吃边聊，谈论我们彼此的创业历程，细节不表，谈谈我近距离了解到的twitter。</p>
+<p>twitter已经两千多人，其中一半是工程师。虽然公司规模已经到达一个不小的规模，但Brian觉得在twitter里还能享受到创业公司的那种感觉：工作自由，小项目，绝大部分时间是在coding而不是meeting，release周期很短，节奏很快，没有官僚主义，非常非常senior的工程师还在hands-on的写代码而不是天马行空地做所谓技术架构，另外牛人很多，像他这样的创业者也很多。</p>
+<p>在twitter，很多人喜欢拿着笔记本在餐厅工作，氛围很自由。三两个人或讨论问题，或『结对』编程。室外天台的餐桌总是最先被占领——除了大风或阴雨的天气，誰不愿意一边享受着加州和煦的阳光，一边美美地写代码呢？</p>
+<p>据Brian说，twitter每个季度会有Hacker Week。当然，这是内部的盛会，外人无法参加。在整整一周时间里，你可以放下手中的活，开发任何你感兴趣的项目。一周后，在餐厅，你可以demo你的成果，最终胜出的五个项目可以在全体员工面前展示。Twitter有很多非常非常NB的工程师，所以这个盛会的竞争异常激烈，产生的项目质量也是相当高的。</p>
+<p>站在做embedded system的角度，一周的时间做个小feature都很困难；但做internet application完全是另一种形态。在设计良好的框架和工具链的帮助下，一般一天左右做出一个prototype不是问题，所以不那么复杂的产品一周时间足矣。我做的code exam service（vint &amp; cerf），GNATS report service（kahn, gnats &amp; church），严格计算第一个版本完成所花费的时间，均不到一周。</p>
+<p>Brian给我一个很不错的建议：平时的时候多积累自己的工具箱，这样当需要的时候，可以迅速开展一个项目，并且能够很快把产品做出来。我深以为然。其实这几个月来我一直在铸造我的『工具箱』。</p>
+<p>草草聊了一个小时，twitter给我的感觉是awesome。</p>
+<h2>Bobby</h2>
+<p>Bobby是个ABC，创过好几家公司，目前的创业项目还处在private beta阶段，所以我不能透露太多。和北京一样，在硅谷，招人也越来越成为一个严峻的问题。虽然硅谷的工程师人才非常充沛，但扛不住这么多像google，facebook这样优秀的大公司，像twitter这样已经创业成功的公司，还有很多正在迈向成功的公司对人才不断地渴求。所以很多创业公司已经开始瞄向了中国，印度这样的市场，要么把R&amp;D开在这些地方，要么干脆通过H1B吸引人才。其实用H1B吸引人才是个相当精明的办法——NetScreen曾经招了一堆清华的学子赴美工作，这些人在硅谷举目无亲，英文又不佳，在NetScreen有大家庭的感觉，出了NetScreen生存都成问题。所以NetScreen成功，大家就成功；NetScreen失败，大部分人就得卷铺盖灰溜溜回国。</p>
+<p>和Bobby见面的一个小插曲：我们见面的咖啡厅当天搞Happy hour，咖啡免费。硅谷真是对创业者友好啊。</p>
+<h2>Chung</h2>
+<p>Chung的创业项目是一个家人间照片分享的app，通过把照片组织成一个个story，Chung找到了他的nitch market。硅谷对创业者友好的地方还提现在房租上：首先房租含水电，他们所在的co-office是个两层楼的大Loft，他们的工位大约六七十平，和别人共享前台，会议室，活动室，洗手间等公共区域，会议室有好几个，很大，随便用，办公环境非常舒服（可惜我没照下来）。这样的办公环境只需要$2000每个月，想想途客圈在立方庭租的房子，名义上大不少，但考虑到他们的公共区域，实际小不少，同时不包水电，还要￥14000每月，真是太坑了。</p>
+<p>三个创业者中，Bobby最年轻，Brian估计最年长，而Chung的第二个孩子即将出生。他们都有在google工作的经历，都是full stack engineer，都在eat their own dogshit。</p>
+<p>希望硅谷创业的环境！</p>
+<p>衷心希望他们都能走向通往成功的道路！</p>
+]]></description>
+            <link>http://tchen.me/posts/2013-06-21-entrepreneurship-in-bay-area.html</link>
+            <guid isPermaLink="true">
+                http://tchen.me/posts/2013-06-21-entrepreneurship-in-bay-area.html            </guid>
+            <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
+            <pubDate>Fri, 21 Jun 2013 02:30:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[使用Makefile自动化部署]]></title>
+            <description><![CDATA[<p>有时候，写个小app，部署是件麻烦的事情 —— 你需要登录到服务器上，手工编辑nginx，supervisor等配置文件，然后重启相关的服务。这些配置都不在版本库中，所以也无法记录历史修订。<code>puppet</code> 是个不错的解决方案，但对于小项目来说，使用puppet是个负担。</p>
+<p>本文讨论如何通过写个简单的 <code>makefile</code> 来达到自动化部署的目的。</p>
+<!--more-->
+
+<h2>本地化服务器配置</h2>
+<p>首先要做的是將服务器的配置本地化，放在自己的项目中：</p>
+<p><img src="/assets/files/snapshots/project_layout.jpg" alt="项目目录结构"></p>
+<p>图中，_deploy目录下的内容就是我们要部署到服务器上的配置，其目录结构和服务器要完全一致，这样可以用 <code>cp</code> 直接將文件拷贝过去：</p>
+<section>
+<pre><code> $ sudo cp -r _deploy/etc/. /etc/.</code></pre>
+</section>
+<p>这里有个问题，sudo一般需要输密码，但这里如果停下来等待用户交互，就无法完全自动化了。所以我们需要让 <code>cp</code> 无须password就可以执行。但又引来一个问题：无密码限制的 <code>cp</code> 太危险，可能会导致误操作。所以我们就把 <code>cp</code> copy 一份出来，叫 <code>sucopy</code>，然后对其设置 nopassword:</p>
+<section>
+<pre><code> $ sudo cp /bin/cp /bin/sucopy
+ $ sudo visudo</code></pre>
+</section>
+<p>在打开的编辑窗口，为当前用户设置 <code>sudo</code> 选项：</p>
+<section>
+<pre><code> dev ALL=(ALL) NOPASSWD: /usr/bin/supervisorctl, /etc/init.d/nginx, /bin/sucopy, /usr/bin/apt-get</code></pre>
+</section>
+<p>我这里把 <code>apt-get</code>，<code>supervisorctl</code> 和 <code>nginx</code> 都设置为 <code>NOPASSWD</code>，也是为了自动运行。</p>
+<p>注：如果 <code>visudo</code> 使用的nano编辑器不是你的菜，可以用 <code>update-alternatives --config editor</code> 切换成vim。</p>
+<p>设置完成后，我们就可以在makefile中用 <code>sucopy</code> 把项目中的配置文件直接更新系统中的对应文件了，比如：</p>
+<section>
+<pre><code> sudo sucopy -r _deploy/etc/. /etc/.</code></pre>
+</section>
+<p>很简单吧。这样做的好处是配置文件的修改随着项目文件一起在版本库中控制，部署起来也方便很多。</p>
+<p>nginx和supervisor的配置很简单，这里就给个例子，不解释：</p>
+<p>nginx配置：</p>
+<section>
+<pre><code> tchen@tchen-mbp: ~/projects/kahn/_deploy/etc/nginx/sites-available on master$ cat kahn
+ server {
+   listen 80;
+   server_name api.awesome-server.com;
+   access_log /var/log/nginx/kahn.access.log;
+   error_log /var/log/nginx/kahn.error.log;
+   location / {
+     proxy_pass http://localhost:6080;
+     include /etc/nginx/proxy_params;
+   }
+ }</code></pre>
+<pre><code> tchen@tchen-mbp: ~/projects/kahn/_deploy/etc/nginx/sites-enabled on master$ ls -l
+ total 8
+ lrwxr-xr-x  1 tchen  522017917  23 Jun 11 13:48 kahn -&gt; ../sites-available/kahn</code></pre>
+</section>
+<p>supervisor配置：</p>
+<section>
+<pre><code> tchen@tchen-mbp: ~/projects/kahn/_deploy/etc/supervisor/conf.d on master$ cat kahn.conf
+ [program:kahn]
+ directory=/home/dev/deployment/kahn
+ user=dev
+ command=coffee app.coffee
+ redirect_stderr=true
+ stderr_logfile=none
+ stdout_logfile=/var/log/supervisor/kahn.log
+ autostart=true
+ autorestart=true</code></pre>
+</section>
+<h2>Makefile</h2>
+<p>解决了服务器的本地化配置问题，自动化部署就不在话下。这里只自动化了下列任务，对简单的小项目来说足够了：</p>
+<ul>
+<li>代码更新。</li>
+<li>依赖更新。（python的用户可以把 <code>npm install</code> 换成 <code>pip install -r requirements.txt</code>）</li>
+<li>配置更新。</li>
+<li>supervisor设置更新及重启。</li>
+<li>nginx重启。</li>
+</ul>
+<p>Makefile文件比较简单，不解释了。注意这里我们把 <code>remote_deploy</code> 放在第一位，让 <code>make</code> 缺省调用时可以调用它，这样，我们会自动登录到服务器上（服务器的连接请使用rsa key，避免输入密码），pull代码，然后执行 <code>make deploy</code> 进行部署。</p>
+<section>
+<pre><code> tchen@tchen-mbp: ~/projects/kahn on master$ cat Makefile
+ CHECK=\033[32m✔\033[39m
+ DONE=&quot;\n$(CHECK) Done.\n&quot;
+
+ SERVER=awesome-server.com
+ PROJECT=kahn
+ PATH=deployment/$(PROJECT)
+ SUPERVISORCTL=/usr/bin/supervisorctl
+ SUCOPY=/bin/sucopy
+ SSH=/usr/bin/ssh
+ ECHO=/bin/echo -e
+ NPM=/usr/local/bin/npm
+ SUDO=/usr/bin/sudo
+
+ remote_deploy:
+     @$(SSH) -t $(SERVER) &quot;echo Deploy $(PROJECT) to the $(SERVER) server.; cd $(PATH); git pull; make deploy;&quot;
+
+ dependency:
+     @$(ECHO) &quot;\nInstall project dependencies...&quot;
+     @$(NPM) install
+
+ configuration:
+     @$(ECHO) &quot;\nUpdate configuration...&quot;
+     @$(SUDO) $(SUCOPY) -r _deploy/etc/. /etc/.
+
+ supervisor:
+     @$(ECHO) &quot;\nUpdate supervisor configuration...&quot;
+     @$(SUDO) $(SUPERVISORCTL) reread
+     @$(SUDO) $(SUPERVISORCTL) update
+     @$(ECHO) &quot;\nRestart $(PROJECT)...&quot;
+     @$(SUDO) $(SUPERVISORCTL) restart $(PROJECT)
+
+ nginx:
+     @$(ECHO) &quot;\nRestart nginx...&quot;
+     @$(SUDO) /etc/init.d/nginx restart
+
+ deploy: dependency configuration supervisor nginx
+     @$(ECHO) $(DONE)</code></pre>
+</section>
+<p>大功告成。试试吧：</p>
+<section>
+<pre><code> tchen@tchen-mbp: ~/projects/kahn on master$ make
+ Deploy kahn to the awesome-server.com server.
+ Current branch master is up to date.
+
+ Install project dependencies...
+
+ Update configuration...
+
+ Update supervisor configuration...
+ No config updates to processes
+
+ Restart kahn...
+ kahn: stopped
+ kahn: started
+
+ Restart nginx...
+ Restarting nginx: nginx.
+
+ ✔ Done.
+
+ Shared connection to awesome-server.com closed.</code></pre>
+</section>
+<p>送上小宝的近照一张：</p>
+<p><img src="/assets/files/photos/baby20130612.jpg" alt="小宝近期照片"></p>
+]]></description>
+            <link>http://tchen.me/posts/2013-06-12-use-makefile-to-automate-deployment.html</link>
+            <guid isPermaLink="true">
+                http://tchen.me/posts/2013-06-12-use-makefile-to-automate-deployment.html            </guid>
+            <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
+            <pubDate>Tue, 11 Jun 2013 23:14:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[用scrapyd来提供crawler服务]]></title>
+            <description><![CDATA[<p>这是一篇即兴的短文，主要是为了记录我用 <code>scrapyd</code> 的心得。</p>
+<p>之前做数据抓取，总是一个scrapy project做一个deploy，很不方便，一个一个更新起来也很麻烦，总觉得能有更好的方法去处理。今早看了看scrapyd，觉得这就是我想要的东西。</p>
+<!--more-->
+
+<h2>目标</h2>
+<p>假设你有两个scrapy project：</p>
+<ul>
+<li>alpha: 其spider是alpha-spider。</li>
+<li>beta: 其spider是beta-spider。</li>
+</ul>
+<p>你想将其做成service，在一台ubuntu server（gryffindoe）上每周定期运行。</p>
+<h2>前提</h2>
+<p>在gryffindoe上，安装scrapyd：</p>
+<section>
+<pre><code> $ lsb_release -cs
+ quantal
+ $ # 将 deb http://archive.scrapy.org/ubuntu quantal main 添加到sources.list中
+ $ sudo vim /etc/apt/sources.list
+ $ # 安装key
+ $ curl -s http://archive.scrapy.org/ubuntu/archive.key | sudo apt-key add -
+ $ sudo apt-get update
+ $ apt-cache search scrapyd
+ scrapyd-0.16 - Scrapy Service
+ scrapyd-0.17 - Scrapy Service
+ $ # 安装最新版本
+ $ sudo apt-get isntall scrapyd-0.17</code></pre>
+</section>
+<p>安装完成后，scrapyd就自动在gryffindoe上运行了。</p>
+<h2>部署scrapy项目</h2>
+<p>scrapyd默认运行在6800端口，假设gryffindoe的域名是 <code>gryffindoe.com</code>，在你的alpha项目中，编辑 <code>scrapy.cfg</code>:</p>
+<section>
+<pre><code> [deploy:gryffindoe]
+ url = http://gryffindoe.com:6800/
+ project = alpha</code></pre>
+</section>
+<p>然后你可以在你的scrapy项目下查看在gryffindoe上的scrapyd的状态：</p>
+<section>
+<pre><code> $ # 查看当前scrapyd配置
+ $ scrapy deploy -l
+ gryffindoe                http://gryffindoe.com:6800/
+ $ # 查看当前scrapyd上部署好的项目，现在还没有
+ $ scrapy deploy -L gryffindoe</code></pre>
+</section>
+<p>接着我们把 <code>alpha</code> 部署到 <code>gryffindoe</code>:</p>
+<section>
+<pre><code> $ scrapy deploy graffindoe -p alpha
+ Building egg of alpha-1370823198
+ &#39;build/scripts-2.7&#39; does not exist -- can&#39;t clean it
+ zip_safe flag not set; analyzing archive contents...
+ Deploying alpha-1370823198 to http://gryffindoe.com:6800/addversion.json
+ Server response (200):
+ {&quot;status&quot;: &quot;ok&quot;, &quot;project&quot;: &quot;alpha&quot;, &quot;version&quot;: &quot;1370823198&quot;, &quot;spiders&quot;: 1}
+ $ scrapy deploy -L gryffindoe
+ alpha</code></pre>
+</section>
+<p>大功告成。进入到另一个project <code>beta</code> 的目录下，如法炮制:</p>
+<section>
+<pre><code> $ scrapy deploy graffindoe -p beta
+ Building egg of beta-1370823198
+ &#39;build/scripts-2.7&#39; does not exist -- can&#39;t clean it
+ zip_safe flag not set; analyzing archive contents...
+ Deploying beta-1370823198 to http://gryffindoe.com:6800/addversion.json
+ Server response (200):
+ {&quot;status&quot;: &quot;ok&quot;, &quot;project&quot;: &quot;beta&quot;, &quot;version&quot;: &quot;1370823198&quot;, &quot;spiders&quot;: 1}
+ $ scrapy deploy -L gryffindoe
+ alpha
+ beta</code></pre>
+</section>
+<p>现在你打开 <code>http://gryffindeo.com:6800/</code>，应该有如下显示：</p>
+<section>
+<p> Scrapyd</p>
+<p> Available projects: alpha, beta</p>
+<p> Jobs
+ Items
+ Logs
+ Documentation</p>
+</section>
+<h2>运行spider</h2>
+<p>接下来我们可以远程指定要运行的spider了，很简单，页面上提示可以直接使用scrapyd的json API:</p>
+<section>
+<pre><code> $ curl http://localhost:6800/schedule.json -d project=default -d spider=somespider</code></pre>
+</section>
+<p>对于project <code>alpha</code>下的spider <code>alpha-spider</code>:</p>
+<section>
+<pre><code> $ curl http://localhost:6800/schedule.json -d project=alpha -d spider=alpha-spider</code></pre>
+</section>
+<p>这样，alpha-spider就开始运行了。你可以打开 <code>http://gryffindeo.com:6800/</code> 查看运行状态。</p>
+<p>如果要定期运行spider，把这条命令加到cronjob里就可以了。</p>
+<p>送上六一给小宝的礼物一枚：</p>
+<p><embed src="http://player.youku.com/player.php/sid/XNTY0NzQ5NDA0/v.swf" allowFullScreen="true" quality="high" width="660" height="500" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed><br/></p>
+]]></description>
+            <link>http://tchen.me/posts/2013-06-10-use-scrapyd-to-serve-scrapy-projects.html</link>
+            <guid isPermaLink="true">
+                http://tchen.me/posts/2013-06-10-use-scrapyd-to-serve-scrapy-projects.html            </guid>
+            <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
+            <pubDate>Sun, 09 Jun 2013 23:51:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[why every developer should use mac]]></title>
+            <description><![CDATA[<p>Two years ago, I bought my own 13&quot; mbp. From then on, I never left mac world, only changed that little thing to a new 15&quot; retina mbp. From my two years experience, I believe to make your development work much more productive, you shall use mac.</p>
+<!--more-->
+
+<h2>Shell</h2>
+<p>The No.1 reason regards with the powerful shell. This is something windows could never compete with *nix world. Shell releases your from the burden of GUI, let you think and do like a guru. GUI means endless mouse clicks, interweaving with keyboard presses - it&#39;s unproductive, and un-automatable; in contrast, shell means almost only keyboard presses, you can automate as much as possible.</p>
+<p>How many times you login into eng-shell to do your work? In osx, you can use &quot;ssh-copy-id&quot; to copy your public key to your engineering server so that you don&#39;t need to enter your password again and again. If you feel &quot;ssh eng-shell5.your-domain.net&quot; is too long to enter, you can alias it to something like &quot;eng5&quot;. Don&#39;t neglect these tiny improvements, lots of precious time slipped in this way. Let&#39;s do a comparison between windows users (secureCRT) and osx users (shell). Windows user need to move their hand from keyboard to mouse, then click the menu in SecureCRT, find and select a stored eng-shell5 session from a number of sessions, click, then move the hand from mouse to keyboard, then enter password and start to work. Mac user only need to cmd+t (if you&#39;re using iTerm) to open a new terminal tab, press &quot;eng5&quot;, then start to work.</p>
+<p>There are much more approaches to be productive. If you want to download a file from bug tracking system (BTS) to analyze, that means a series of clicks and switching between windows. But in mac, you can just copy the link and use &quot;wget&quot; or &quot;curl&quot; to store it. You can then &quot;open&quot; the file in the same terminal. How about your BTS use HTTP authentication? No worry, you just need to make an alias with wget like &quot;alias wget-gnats=&quot;wget --http-user=tchen --http-password=&quot;. Next time you just need &quot;wget-bts&quot;.</p>
+<p>You can also write more complicated scripts to make you as productive as possible. Standard osx ships with at least python, ruby. You can install your own favorite programming languages quite easily.</p>
+<p>Now you may understand the philosophy in the *nix world - Do something in a inelegant way in the first time, do the same thing elegant afterwards. Unfortunately, you need to do things clumsily again and again in windows.</p>
+<h2>Software</h2>
+<p>Second reason is the software. What software you use defines what kind of engineer you&#39;re. vim/emacs/sublime/etc. compared with NotePad, chrome/safari/firefox compared with Internet Explorer, iTerm/Terminal compared with SecureCRT, space (virtual desktop) compared with ??, sips compared with Paint (lots of times I just want to resize images), python/ruby/gcc/wget/ssh/git/etc. compared with ?? (maybe cygwin?). To a developer, the softwares in mac or *nix world surpass those in windows at least a mile. Try it, you&#39;ll know.</p>
+<p>You may say most of these softwares could be found in windows as well. The question is, if you use them in your windows, why not switch to osx for the native or better experience?</p>
+<p>Space, aka virtual desktop, is another great accelerator. You can flip with 4 fingers on the touch pad to switch between spaces. You can assign outlook, lync, safari to one space and iTerm, chrome, sublime to another space. That will separate your development task from your communication task so that the communication softwares cannot disturb you when you&#39;re in a flow of development or problem solving.</p>
+<h2>Aesthetic Perception</h2>
+<p>Third reason is related with aesthetic perception. ThinkPad/Windows never let you feel beautiful. But every part of macbook pro/osx tells you what is the beauty and perfection. Macbook pro itself is an art. So the quality of software in it inherit this characteristic.</p>
+<p>Engineers should pursue beauty and perfection. Only that their software could be beautiful and perfect.</p>
+]]></description>
+            <link>http://tchen.me/posts/2013-05-09-why-every-developer-should-use-mac.html</link>
+            <guid isPermaLink="true">
+                http://tchen.me/posts/2013-05-09-why-every-developer-should-use-mac.html            </guid>
+            <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
+            <pubDate>Thu, 09 May 2013 00:34:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[自动化的高效团队开发环境]]></title>
+            <description><![CDATA[<h2>引子</h2>
+<p>这两天无意翻到几个月前的Evernote笔记，看到了当时对团队开发环境的一些想法。可惜后来种种，这一想法未能得到实践，只能将其完善后公诸于众，立此存照，日后有空可以一试。</p>
+<p>考虑这套开发环境是因为我们遇到了这些问题：</p>
+<ol>
+<li>开发人员的环境并不统一：dev在osx，ubuntu 11.10和ubuntu 12.04上工作，而ux在windows下工作，协调，解决问题不太方便，尤其是一个bug在A的系统出现，却在自己的环境下无法复用。</li>
+<li>无法即刻搭建和线上同版本的环境，解决线上问题。小团队节奏很快，当前的工作目录可能和线上版本差几天的代码（diff可能已经是巨量），所以当线上出问题时，將工作环境切换过去非常耗时（尤其是数据库发生变化时）。</li>
+<li>为新员工构建开发环境耗时且问题重重。这和第一点有些类似，即在ubuntu下工作的构建开发环境的流程在osx下会break。尤其是后期我们不断有开发人员转换系统到osx下。</li>
+</ol>
+<p>当时正好看到一篇关于 <a href="http://vagrantup.com">vagrant</a> 的文章，感觉这正是我想要的救命稻草。</p>
+<!--more-->
+
+<h2>理想的开发环境</h2>
+<p>我心目中理想的开发环境应该是这样子的：</p>
+<ul>
+<li>编辑环境和运行/测试环境分离。这意味着开发人员，不管是dev还是ux，可以使用任何她喜欢的系统进行内容的编辑，而其产出可以无缝地运行在另一个统一的环境。无缝是很重要的体验，如果分离意味着在两个系统显示地频繁切换，那还不如不分离；在此基础上的统一的环境则让大家在同一个上下文中交流。</li>
+<li>开发人员可以同时工作在好几个版本下。在途客圈，一个relase（或者一个scrum）以两周为周期，一周开发，一周测试，然后就上线，如图所示：
+<img src="/assets/files/charts/tukeq_iteration.jpg" alt="tukeq iteration"><br/>
+这意味着在任何一周，开发人员同时工作在3个不同的branch上，以week 3第一天为例：Dalian已经部署到线上，Edingburgh交付测试，而Florence正在开发中。开发人员能够无痛地在这三个环境中任意切换，就像任务调度一样，保存上下文，切换到另一个branch，开始工作。作为小团队，我们不希望甚至不可能将有限的人员切成三份来运作，所以应该通过工具支持这种开发状态。</li>
+<li>能很好地支持持续集成。<code>travis-ci.org</code> 跑跑开源项目还可以，但商业项目就免了，而且其每次构建都rebuild整套环境这个效率太低。</li>
+</ul>
+<h2>构建理想的开发环境</h2>
+<p>存在的问题和期望的解决方案已经摆出来了，接下来就是如何实现的问题。这种场景是典型的虚拟机大展拳脚的地方，VmWare会很欣慰地摆出VDI + vSphere的解决方案。不过小团队人少钱紧，自然只能寻找免费的替代品，即之前提到的 <code>vagrant</code>。</p>
+<h3>什么是vagrant?</h3>
+<p>我对它的不太确切的理解是：一套自动化创建，部署和使用虚拟机的工具。<code>vagrant</code> 原生支持 <code>virtualbox</code>，这就足够了。通过一系列CLI命令，我们可以很方便地操作虚拟机。</p>
+<ul>
+<li>创建并运行虚拟机：<pre><code>  $ vagrant box add lucid32 http://files.vagrantup.com/lucid32.box
+  $ vagrant init lucid32
+  $ vagrant up</code></pre>
+</li>
+<li>登入虚拟机：<pre><code>  $ vagrant ssh</code></pre>
+</li>
+<li>打包虚拟机：<pre><code>  $ vagrant package --vagrantfile Vagrantfile.pkg</code></pre>
+</li>
+</ul>
+<p>更详细的 <code>vagrant</code> 使用说明请参考其 <a href="http://docs-v1.vagrantup.com/v1/docs/getting-started/index.html">文档</a>，这里就不详细介绍。</p>
+<h3>如何使用Vagrant构建理想的开发环境</h3>
+<p>在这个模型中，大家交流的基础是虚拟机。虚拟机随时被创建，随时又销毁，有一个box服务器 <code>vagrant repo</code> 来统一存储所有box并提供上传/下载服务。box服务器提供两类box：</p>
+<ul>
+<li>基准box。每天半夜从github pull相应branch的代码，并辅以对应的database，自动打包成一个基准box。每个活跃的branch每天都会有一个新的基准box。基准box保存一周足矣。大家新的一天工作的基础是基准box。</li>
+<li>PR box。解决线上问题时，和QA，CI交流使用的box。</li>
+</ul>
+<p>任意一个box都是一个沙箱，它包含和线上环境同版本的操作系统，运行环境。同时里面有对应branch的代码库和数据库。数据库采用线上数据库的一个子集，可以让系统正常运行即可。box和用户的host OS间可以共享目录，比如说代码的目录，这样可以让用户通过host OS上的个性化编辑环境撰写代码。此外，box里的port和host OS的port要能一一映射，这样用户完全具有本地的测试体验。</p>
+<p>详细的环境和工作场景参见下图：</p>
+<p><img src="/assets/files/charts/environment.jpg" alt="dev environment"></p>
+<h3>适用场景</h3>
+<p>这样的开发环境能满足本地办公团队，甚至远程办公团队的需要。</p>
+<ul>
+<li>同一个地点办公的团队，<code>vagrant repo</code> 服务器可以放在本地，以获得最好的下载速度。</li>
+<li>异地办公或者服务于开源项目的松散团队，可以把 <code>bagrant repo</code> 放在一个公网服务器，让参与者都能访问（安全性不在本文讨论）。访问速度的问题可以通过本地缓存来解决，这样在多人下载同一个box时会有近乎本地访问的体验。</li>
+</ul>
+<h2>免责声明</h2>
+<p>如引文所述，本文想法尚未来得及实践，所以不保证能正常运行，所以 &quot;try it at your own risk&quot;。笔者个人觉得这个想法的靠谱率在 90% 以上。</p>
+<p>送上小宝的近照一张：</p>
+<p><img src="/assets/files/photos/baby20130427.jpg" alt="小宝近期照片"></p>
+]]></description>
+            <link>http://tchen.me/posts/2013-04-25-engineering-environment-for-smart-team.html</link>
+            <guid isPermaLink="true">
+                http://tchen.me/posts/2013-04-25-engineering-environment-for-smart-team.html            </guid>
+            <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
+            <pubDate>Thu, 25 Apr 2013 02:26:00 GMT</pubDate>
+        </item>
+    </channel>
+</rss>
