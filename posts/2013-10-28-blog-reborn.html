@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="本博客提供我个人的想法，创意，经验，心得。你不必认同博主观点。" />
+    <meta name="keywords" content="创业, 思想, 点子, 经验, python, erlang, node, javascript, 服务器, devops, meteor" />
+    <meta name="author" content="Tyr Chen" />
+
+    <!-- Output DocPad produced meta elements -->
+    
+
+    <!-- Styles -->
+    <link  rel="stylesheet" href="/assets/css/app.min.css" />
+
+    <link href="/assets/favicon.ico" rel="shortcut icon">
+    <link href="/assets/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    @javascript html5shiv respond.min
+    <![endif]-->
+
+    <title>觅珠人：浴火重生 | 觅珠人 | Tyr Chen的个人博客 | 创意 | 心得 | 经验</title>
+
+</head>
+
+<body>
+
+<!-- Contact Modal -->
+<div aria-hidden='true' aria-labelledby='contactModalLabel' class='modal fade' id='contactModal' role='dialog' tabindex='-1'>
+    <div class='modal-dialog'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <button aria-hidden='true' class='close' data-dismiss='modal' type='button'>×</button>
+                <h4 class='modal-title'>Contact Us Form</h4>
+            </div>
+            <div class='modal-body'>
+                <form action='#' role='form'>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Name</label>
+                                <input class='form-control' placeholder='your username' type='text'>
+                            </div>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Email</label>
+                                <input class='form-control' placeholder='your password' type='text'>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-12'>
+                                <label class='control-label' for=''>Your Message</label>
+                                <textarea class='form-control' name='' rows='4'></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class='modal-footer'>
+                <button class='btn btn-default' data-dismiss='modal' type='button'>Cancel</button>
+                <button class='btn btn-primary' type='button'>Send Message</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="header-image-wrapper">
+  <img alt="" src="/assets/files/posts/reborn.jpg">
+</div>
+
+<div class='header-main'>
+    <div class='container'>
+        <nav class='navbar navbar-default' role='navigation'>
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class='navbar-header'>
+                <button class='navbar-toggle' data-target='.navbar-ex1-collapse' data-toggle='collapse' type='button'>
+                    <span class='sr-only'>Toggle navigation</span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                </button>
+                <a class='navbar-brand' href='/'>
+                    <img alt='' height='45px' src='/assets/images/tyr.png'> <span>觅珠人</span>
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class='collapse navbar-collapse navbar-ex1-collapse'>
+
+                <ul class='nav navbar-nav navbar-right'>
+                    <li class="">
+                        <a href="/">首页</a>
+                    </li>
+                    
+                        
+                        <li
+                            about="/pages/posts.html"
+                            class=""
+                        >
+                            <a href="/pages/posts.html">
+                                文章随笔
+                            </a>
+                        </li>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                        <li
+                            about="/pages/canvases.html"
+                            class=""
+                        >
+                            <a href="/pages/canvases.html">
+                                奇思妙想
+                            </a>
+                        </li>
+                        
+                    
+                        
+                        <li
+                            about="/pages/aboutme.html"
+                            class=""
+                        >
+                            <a href="/pages/aboutme.html">
+                                关于我
+                            </a>
+                        </li>
+                        
+                    
+                    <!--
+                    <li>
+                        <a data-toggle='modal' href='#contactModal'>联系我</a>
+                    </li>
+                    -->
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+</div>
+
+<div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+
+<div class='container'>
+  <div class='row'>
+    <div class="col-md-3">
+      <div class="post-side-bar">
+        <div class="widget widget-cats tags">
+          <h4 class="widget-title">标签</h4>
+          <ul>
+          
+            <li><a href='/tags/docpad.html'>docpad</a></li>
+          
+            <li><a href='/tags/technology.html'>technology</a></li>
+          
+            <li><a href='/tags/github.html'>github</a></li>
+          
+          </ul>
+        </div>
+        <div class="widget widget-cats">
+          <h4 class="widget-title">
+            相关文章
+          </h4>
+          <ul>
+            
+            
+              <li><a href="/posts/2012-12-18-octopress-client-a-better-composition-tool.html">产品随想：octopress客户端 —— Atanasoff</a></li>
+            
+              <li><a href="/posts/2012-12-31-atanasoff-product-design.html">进一步思考Atanasoff (Octopress client) (2)</a></li>
+            
+              <li><a href="/posts/2013-01-25-try-github-zen-writing-mode.html">尝试github &quot;Zen Writing Mode&quot;</a></li>
+            
+              <li><a href="/posts/2013-02-18-sdn-elementatory-introduction.html">SDN浅谈</a></li>
+            
+              <li><a href="/posts/2013-02-21-openflow-introduction.html">Openflow简介</a></li>
+            
+              <li><a href="/posts/2013-04-08-trying-to-extract-the-thoughts-behind-lockitron.html">胡思乱想之Lockitron的技术架构</a></li>
+            
+              <li><a href="/posts/2013-04-25-engineering-environment-for-smart-team.html">自动化的高效团队开发环境</a></li>
+            
+              <li><a href="/posts/2013-06-10-use-scrapyd-to-serve-scrapy-projects.html">用scrapyd来提供crawler服务</a></li>
+            
+              <li><a href="/posts/2013-06-12-use-makefile-to-automate-deployment.html">使用Makefile自动化部署</a></li>
+            
+              <li><a href="/posts/2013-06-23-come-to-origin-for-embedded-applications.html">Come to Origins for Embedded Applications</a></li>
+            
+              <li><a href="/posts/2013-07-18-c-grammar-you-cannot-imagine.html">你无法想象的C语法</a></li>
+            
+              <li><a href="/posts/2013-07-22-why-should-c-programmers-learn-erlang.html">Why should C programmers learn Erlang?</a></li>
+            
+            
+          </ul>
+        </div>
+      </div>
+    </div>      
+    <div class='col-md-9'>
+      <div class='post-single'>
+        <!--
+        <div class='pre-post-meta'>
+          <span>
+            <i class='icon-reorder'></i>
+            in
+            <a href='#'>Web Development</a>
+          </span>
+          <span>
+            <i class='icon-user'></i>
+            by
+            <a href='#'>Tyr Chen</a>
+          </span>
+          <span>
+            <i class='icon-bookmark'></i>
+            13 分钟
+          </span>
+        </div>
+        -->
+        <h1 class='has-sub-header'>觅珠人：浴火重生</h1>
+        <div class='post-single-meta'>
+          <span class='meta-item'>
+            <i class='icon-calendar'></i>
+            6小时前
+          </span>
+          <!--
+          <span class='meta-item'>
+            <a href='#'>
+              <i class='icon-comments'></i>
+              24
+            </a>
+          </span>
+          <span class='meta-item'>
+            <a href='#'>
+              <i class='icon-heart'></i>
+              15
+            </a>
+          </span>
+          -->
+          <span class="meta-item">
+          	
+            <i class='icon-time'></i>
+            13 分钟
+          </span>
+        </div>
+        <p>很久没有更新博客了。最近几个月写了三篇文章：</p>
+<ul>
+<li>8月底：『软件公司如何有效地组织和运作?』</li>
+<li>9月中：『班加罗尔初体验』</li>
+<li>10月：『nodejs callback hell的解决之道』</li>
+</ul>
+<p>因为种种原因都烂尾，没有继续下去，所以也就没有发表出来。绵绵不断的工作压力和为人父的家庭责任让我心力交瘁，眼一睁一闭，一睁一闭的，一天天就过去了。</p>
+<p>这两天闲逛hn时，无意中发现了 <code>docpad</code>，又一个静态网站生成器。由于我目前使用的 <code>wintersmith</code> 是一个hack版，将其升级到2.x太麻烦，而且随着我文章的增多，分页，标签管理等都成为麻烦事。在尝试了 <code>docpad</code> 后，我发现这是个好东西，干脆心一横，就把整个博客的底层系统升级过去了。</p>
+<!--more-->
+
+<p>看过我之前博文的童鞋可能注意到，我的博客自诞生起，历经 <code>wordpress</code> -&gt; <code>octopress</code> -&gt; <code>wintersmith</code> -&gt; <code>docpad</code>。原因很简单，我需要一款能够支持以下功能的静态网站生成工具：</p>
+<ul>
+<li>能使用 <code>markdown</code> 或任何其他语言撰写文章（posts）。</li>
+<li>支持尽可能多的模板，如jade，haml。</li>
+<li>能生成标签索引页。</li>
+<li>能生成文章索引页。</li>
+<li>索引页支持分页。</li>
+<li>支持local server，能在本地展示生成出来的网站的感觉。</li>
+<li>生成速度尽可能快（不要超过10s），并且不要做无意义的重复生成。</li>
+<li>是CMS，而非blog engine。</li>
+</ul>
+<p>在这个过程中，我不断寻觅，不断更新工具，直到我找到了 <code>docpad</code>。除去对性能的要求外，<code>docpad</code> 满足我上述所有需求。</p>
+<p>所以我便开始了艰难的升级之旅。由于本文非 <code>docpad</code> 入门文档，重点描述我升级遇到的问题，所以要学习 <code>docpad</code> 请移步：<a href="http://docpad.org。">http://docpad.org。</a></p>
+<h2>模板</h2>
+<p>这次升级，UI全部重写。我放弃了bootstrap 2，选择了bootstrap 3，亦即意味着完全放弃了IE7，基本放弃了IE8。我的博客读者并不很多，在百度统计中，IE7/IE8占比不到15%（IE7及以下不到1%），所以对整体用户影响不太大。</p>
+<p>UI的设计购买自wrapbootstrap，花四十美刀买了个multiple license，很划算。如果从设计做起，我未必能做出这样的设计，而且短期内不可能升级完成。</p>
+<p>购买后前端的主要工作就是把html变成template。由于 <code>docpad</code> 对 <code>eco</code> 支持比较好，所以我花了些时间学习eco。</p>
+<h2>文档</h2>
+<p>文档的改动主要在文件名和metadata上。<code>docpad</code> 借鉴了rails的pipeline，根据文件名判断该如何转化，比如：<code>test.css.less</code>，<code>eco</code> 会先通过 <code>eco</code> 处理转换成 <code>test.css.less</code>，再通过 <code>lessc</code> 转换成 <code>test.css</code>。</p>
+<p>metadata的转换主要是 <code>wintersmith</code> 和 <code>docpad</code>的命名不同，比如：</p>
+<pre><code>---
+template: default.jade
+published: false
+---</code></pre>
+<p>在 <code>docpad</code> 中需要转换为：</p>
+<pre><code>---
+layout: default // default.html.eco
+ignored: true
+---</code></pre>
+<p>这都不是什么大问题。</p>
+<h2>分页</h2>
+<p>之前的博客不支持分页，在首页我塞了40篇文章。如果我的博客超过了40篇文章，那么之前的就无法被直接索引到。使用 <code>docpad</code> 后，只要安装 <code>paged</code> 插件，并按例子写一小段代码，就能完美支持分页：</p>
+<pre><code>$ docpad install paged</code></pre>
+<p>我写的支持分页的partial：</p>
+<pre><code>&lt;% if @document.page.count &gt; 1: %&gt;
+&lt;ul class=&quot;paginator text-center&quot;&gt;
+    &lt;!-- Previous Page Button --&gt;
+    &lt;% unless @hasPrevPage(): %&gt;
+        &lt;li class=&quot;disabled&quot;&gt;&lt;span&gt;上一页&lt;/span&gt;&lt;/li&gt;
+    &lt;% else: %&gt;
+        &lt;li&gt;&lt;a href=&quot;&lt;%= @getPrevPage() %&gt;&quot;&gt;上一页&lt;/a&gt;&lt;/li&gt;
+    &lt;% end %&gt;
+
+    &lt;!-- Page Number Buttons --&gt;
+    &lt;% for pageNumber in [0..@document.page.count-1]: %&gt;
+        &lt;% if @document.page.number is pageNumber: %&gt;
+            &lt;li class=&quot;active&quot;&gt;&lt;span&gt;&lt;%= pageNumber + 1 %&gt;&lt;/span&gt;&lt;/li&gt;
+        &lt;% else: %&gt;
+            &lt;li&gt;&lt;a href=&quot;&lt;%= @getPageUrl(pageNumber) %&gt;&quot;&gt;&lt;%= pageNumber + 1 %&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;% end %&gt;
+    &lt;% end %&gt;
+
+    &lt;!-- Next Page Button --&gt;
+    &lt;% unless @hasNextPage(): %&gt;
+        &lt;li class=&quot;disabled&quot;&gt;&lt;span&gt;下一页&lt;/span&gt;&lt;/li&gt;
+    &lt;% else: %&gt;
+        &lt;li&gt;&lt;a href=&quot;&lt;%= @getNextPage() %&gt;&quot;&gt;下一页&lt;/a&gt;&lt;/li&gt;
+    &lt;% end %&gt;
+&lt;/ul&gt;
+&lt;% end %&gt;</code></pre>
+<h2>标签</h2>
+<p>在 <code>docpad</code> 里支持标签很容易，安装两个plugin就好：</p>
+<pre><code>$ docpad install related
+$ docpad install tagging</code></pre>
+<p>前者提供『相关文档』的功能，后者能生成类似 <code>/tags/:tag</code> 的索引页。</p>
+<p>我们先看如何显示相关文档：</p>
+<pre><code>&lt;div class=&quot;widget widget-cats&quot;&gt;
+  &lt;h4 class=&quot;widget-title&quot;&gt;
+    相关文章
+  &lt;/h4&gt;
+  &lt;ul&gt;
+    &lt;% if @document.relatedDocuments : %&gt;
+    &lt;% for document in @document.relatedDocuments: %&gt;
+      &lt;li&gt;&lt;a href=&quot;&lt;%= document.url %&gt;&quot;&gt;&lt;%= document.title %&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;% end %&gt;
+    &lt;% else : %&gt;
+      &lt;li&gt;&lt;a&gt;无&lt;/a&gt;&lt;/li&gt;
+    &lt;% end %&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+<p>这样，只要文档中使用了 <code>tags: [tag1, tag2]</code> 这样的metadata，所有定义了 <code>tag1</code> 或 <code>tag2</code> 的文章就被聚合在此。</p>
+<p>生成标签索引页也不难，只要做一个template：</p>
+<pre><code>---
+layout: default
+---
+&lt;div class=&quot;container&quot;&gt;
+    &lt;h1&gt;文章列表：『&lt;%= @document.tag %&gt;』&lt;/h1&gt;
+    &lt;hr/&gt;
+
+    &lt;ul&gt;
+    &lt;% for doc in @getCollection(&#39;documents&#39;).findAll({tags: &#39;$in&#39;: @document.tag}).toJSON(): %&gt;
+        &lt;%- @partial(&#39;posts/post_loop_item&#39;, {item: doc}) %&gt;
+    &lt;% end %&gt;
+    &lt;/ul&gt;
+
+&lt;/div&gt;</code></pre>
+<p>显示效果如：<a href="http://tchen.me/tags/technology.html。">http://tchen.me/tags/technology.html。</a></p>
+<h2>问题</h2>
+<p><code>docpad</code> 功能很强大，但其速度让人难以忍受。之前 <code>wintersmith</code> 生成全站只需要3s左右，<code>docpad</code> 则要40s。而且</p>
+<p>为了加快速度我做了很多尝试：</p>
+<ol>
+<li>使用standalone metadata。<a href="https://docpad.org/docs/meta-data。效果一般，很多地方不适用，而且在诸如app.css.less里加这么个东西很不伦不类。">https://docpad.org/docs/meta-data。效果一般，很多地方不适用，而且在诸如app.css.less里加这么个东西很不伦不类。</a></li>
+<li>对静态文件使用raw plugin。效果不明显，我往raw目录中拷一个文件还会trigger regenerate。</li>
+<li>停用live-reload插件。我不希望加了一个回车，保存后就要话40s才能访问本地服务器。</li>
+<li>使用 <code>docpad watch</code>，而不是 <code>docpad run</code>，同时启动一个 <code>python -m SimpleHTTPServer 8210</code>，来serve静态文件。这样，改动能够被重新生成，且生成时我还能浏览已有的页面。</li>
+</ol>
+<p>但这些都不太理想。<code>docpad</code> 蠢到我改一行less，整个网站就全部重编。你可想而知在迁移阶段我有多少时间耗费在等待中。</p>
+<p>于是我把所有的静态文件都拿出来放在 <code>src</code> 外，不让 <code>docpad</code> 干蠢事。完全抛弃 <code>raw</code> 插件，我写了个几行的 <code>Makefile</code> 干这些事：</p>
+<ul>
+<li>将less生成css，并使用yuicompressor压缩。</li>
+<li>将js用yuicompressor压缩。</li>
+<li>将整个 <code>raw</code> 目录rsync到 <code>out</code> 目录。</li>
+</ul>
+<p>在 <code>raw</code> 目录下的Makefile如下：</p>
+<pre><code>CHECK=\033[32m✔\033[39m
+DONE=&quot;\n${CHECK} Done.\n&quot;
+ECHO=echo
+ROOT=assets
+
+CSS_COMPRESSOR=lessc
+JS_COMPRESSOR=yuicompressor
+SYNC=rsync
+CAT=cat
+RM=rm
+
+CSS_PATH=$(ROOT)/less
+CSS_SOURCE=$(CSS_PATH)/app.less
+
+JS_PATH=$(ROOT)/scripts
+JS_PLUGIN_PATH=$(JS_PATH)/plugins
+JS_SOURCE=$(JS_PLUGIN_PATH)/jquery.js $(JS_PLUGIN_PATH)/bootstrap.min.js $(JS_PLUGIN_PATH)/jquery.visible.min.js $(JS_PLUGIN_PATH)/jquery.isotope.min.js $(JS_PLUGIN_PATH)/jquery.knob.js $(JS_PLUGIN_PATH)/jquery.scrollUp.min.js $(JS_PLUGIN_PATH)/highlight.pack.js $(JS_PATH)/application.js
+
+CSS_TARGET=$(ROOT)/css/app.min.css
+JS_TARGET=$(ROOT)/js/app.min.js
+
+SYNC_TARGET=../out
+
+
+sync: $(CSS_TARGET) $(JS_TARGET)
+    $(SYNC) -au --exclude $(CSS_PATH) --exclude $(JS_PATH) --exclude Makefile . $(SYNC_TARGET)
+    @$(ECHO) $(DONE)
+
+$(CSS_TARGET):
+    $(CSS_COMPRESSOR) $(CSS_SOURCE) --yui-compress  &gt; $(CSS_TARGET)
+
+$(JS_TARGET):
+    @$(CAT) $(JS_SOURCE) &gt; tmp.js
+    $(JS_COMPRESSOR) -o $(JS_TARGET) tmp.js
+    @$(RM) tmp.js
+
+clean:
+    $(RM) -f $(CSS_TARGET) $(JS_TARGET)</code></pre>
+<p>在根目录下的Makefile如下：</p>
+<pre><code>generate:
+    docpad generate
+    @cd raw; make; cd ..
+
+deploy:
+    cd out; make; cd ../..
+
+clean:
+    cd raw; make clean; cd ../..</code></pre>
+<p>这样，css/js的改动和 <code>docpad</code> 完全没关系，<code>docpad</code> 只需要帮我生成文档即可。这样下来，60%的修改都能够在1s内完成。剩下40%的修改，耗时稍微少了一些，可还要用三十多秒。没有本质差别。</p>
+<h2>部署</h2>
+<p>强烈不建议使用 <code>ghpages</code> 插件部署。我安装了这个插件，也使用了，但使用第二次的时候就将其卸载了。原因很简单：每次 <code>git push -f</code> 全部重新push，写这个plugin的作者之前没生成过大一些的网站吧？我的博客现在几十篇文章，不足百张图片，总共几十M的repo，每次都全部重新push要十多分钟，一天push十几次我还干不干活了？</p>
+<p>所以还是自己解决部署问题吧：</p>
+<pre><code>$ rm -rf out
+$ git clone &lt;your repo url&gt;
+$ make deploy # 这个我已经做进了上文中的Makefile中</code></pre>
+<p>在要部署的repo中添加一个Makefile:</p>
+<pre><code>DATE=$(shell date)
+CHECK=\033[32m✔\033[39m
+DONE=&quot;\n${CHECK} Done.\n&quot;
+
+deploy:
+    @echo &quot;Deploy the blog to github pages.&quot;
+    git add --all .
+    git commit -a -m &quot;Deploy to github pages on $(DATE).&quot;
+    git push
+    @echo $(DONE)</code></pre>
+<p>也是简单之极。</p>
+<h2>心得</h2>
+<p>这次博客升级花费了我两个晚上和一个周日。按我晚上9点开工到12点，周日工作了至少6小时，总共耗时12+小时，耗资USD40。</p>
+<p><code>docpad</code> 是个功能丰富的工具，值得试用，但要忍受极慢的编译速度。撰写者（尤其是plugin的撰写者）显然水平一般，不懂得用unix的设计哲学来设计这样工具。</p>
+<p>在经历了这么多工具后，我有强烈的意愿写一个自己的静态网站生成器，来更好地支持我的需求。想法很简单：</p>
+<ol>
+<li>使用Makefile和现成的工具完成静态文件的处理。</li>
+<li>高度组件化 - 撰写小脚本来完成单一的功能。用Makefile粘合这些脚本。</li>
+<li>脚本解析的中间结果存储在redis/mongodb中，供其他附加功能使用，比如tagging/paging。</li>
+<li>任何一个工具可以对全站使用，也可对部分文件使用。</li>
+<li>尽可能并发处理，全站的生成速度控制在秒级。</li>
+<li>如果可以，提供development模式，动态生成当前访问的页面。</li>
+</ol>
+<p>送上小宝近照一张。</p>
+<p><img src="/assets/files/photos/baby20131028.jpg" alt="小宝"></p>
+
+        <div class='under-post'>
+          
+          
+            
+                
+                  <div class='pull-left'>
+                    <a class='read-previous-link' href='/posts/2013-07-27-the-remains-of-the-day.html'>
+                      <i class='icon-angle-left'></i>
+                      上一篇
+                    </a>
+                  </div>                  
+                
+                         
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-facebook'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-twitter'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-linkedin'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+    
+  <div class="ds-thread">
+    <script>
+        var duoshuoQuery = {short_name:"tyrchen"};
+        (function() {
+          var ds = document.createElement('script');
+          ds.type = 'text/javascript';ds.async = true;
+          ds.src = 'http://static.duoshuo.com/embed.js';
+          ds.charset = 'UTF-8';
+          (document.getElementsByTagName('head')[0]
+          || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+  </div>
+
+      
+  </div>
+</div>
+
+<footer id="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="footer-menu">
+                    <li><a href="/pages/privacy">隐私策略</a></li>
+                    <li><a href="/pages/license">版权说明</a></li>
+                    <li><a href="/pages/disclaimer">免责声明</a></li>
+                    <li><a href="#">联系我们</a></li>
+                </ul>
+                <div class="copyright">
+                    2013 &copy; Tyr Chen. 保留一切权利.
+                    <script>
+                        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+                        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F639096b5979f5825515e0f88f871f56c' type='text/javascript'%3E%3C/script%3E"));
+                    </script>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <ul class="footer-social">
+                    <li><a href="#"><i class="icon-facebook"></i></a></li>
+                    <li><a href="#"><i class="icon-twitter"></i></a></li>
+                    <li><a href="#"><i class="icon-dribbble"></i></a></li>
+                    <li><a href="#"><i class="icon-linkedin"></i></a></li>
+                    <li><a href="#"><i class="icon-google-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- Scripts -->
+<script defer="defer"  src="/assets/js/app.min.js"></script>
+
+
+</body>
+
+</html>
