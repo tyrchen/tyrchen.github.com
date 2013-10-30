@@ -258,7 +258,7 @@
         <div class='post-single-meta'>
           <span class='meta-item'>
             <i class='icon-calendar'></i>
-            1小时前
+            2小时前
           </span>
           <!--
           <span class='meta-item'>
@@ -380,6 +380,7 @@ Hello hatch!</code></pre>
 <p>这引入一个问题：当磁盘文件修改时，如何找到数据库中对应的文档？源文件名是少数不那么容易修改又具备唯一性的字段，所以在数据库文档中我们放入了 <code>src</code> 这个域。在 <code>makefile</code> 里，我们需要提供 <code>make dbclean</code>，以便用户在需要时，可以将数据库中的文档清除干净。</p>
 <h2>实现</h2>
 <p>从构思的角度，基本的障碍已经消除，大致的设计也有了，剩下的就是如何实现。这个周末，争取能把最基本的功能实现出来，然后在讨论实现过程中遇到的问题，看看和我的构思/假设有什么明显的偏差。</p>
+<p>顺手做了个 Lean Canvas: <a href="/canvases/2013-10-30-hatch.html">hatch project lean canvas</a>，感兴趣可以看看。</p>
 <p>这几天没怎么照相，还是送上之前照的一张照片：</p>
 <p><img src="/assets/files/photos/baby20131030.jpg" alt="小宝快一岁了"></p>
 <!--

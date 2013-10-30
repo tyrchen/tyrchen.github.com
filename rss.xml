@@ -5,10 +5,10 @@
         <description><![CDATA[本博客提供我个人的想法，创意，经验，心得。你不必认同博主观点。]]></description>
         <link>http://tchen.me</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Wed, 30 Oct 2013 01:05:32 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 30 Oct 2013 01:24:09 GMT</lastBuildDate>
         <atom:link href="http://tchen.me/rss.xml" rel="self" type="application/rss+xml"/>
         <author><![CDATA[Tyr Chen]]></author>
-        <pubDate>Wed, 30 Oct 2013 01:04:54 GMT</pubDate>
+        <pubDate>Wed, 30 Oct 2013 01:23:28 GMT</pubDate>
         <item>
             <title><![CDATA[Hatch: 又一个建站工具]]></title>
             <description><![CDATA[<p>在 <a href="/posts/2013-10-28-blog-reborn.html">前文</a> 中，我尝试了 <a href="http://docpad.org">docpad</a> 做为新的建站工具。<code>docpad</code> 有很多优点，但最大的缺点是效率。在我看来，一个好的静态网站生成工具最好能在秒级处理成千上万文档，这样才能真正满足个人博客外的中等规模网站的需求。要做到这一点，工具必须将full build和incremental build区别开来。这样，即使一个full build要花几十秒甚至几分钟，incremental build还能控制在秒级。当用户修改某个文件时，incremental build能够保证用户有良好的体验 —— 无需等待，改动立即可见。而这一点，则恰恰是 <code>docpad</code> 所欠缺的。本文讲述的 <code>hatch</code> 项目将尝试在保留 <code>docpad</code> 的诸多优点外，通过更智能的build过程将编译速度尽最大可能提高。</p>
@@ -111,6 +111,7 @@ Hello hatch!</code></pre>
 <p>这引入一个问题：当磁盘文件修改时，如何找到数据库中对应的文档？源文件名是少数不那么容易修改又具备唯一性的字段，所以在数据库文档中我们放入了 <code>src</code> 这个域。在 <code>makefile</code> 里，我们需要提供 <code>make dbclean</code>，以便用户在需要时，可以将数据库中的文档清除干净。</p>
 <h2>实现</h2>
 <p>从构思的角度，基本的障碍已经消除，大致的设计也有了，剩下的就是如何实现。这个周末，争取能把最基本的功能实现出来，然后在讨论实现过程中遇到的问题，看看和我的构思/假设有什么明显的偏差。</p>
+<p>顺手做了个 Lean Canvas: <a href="/canvases/2013-10-30-hatch.html">hatch project lean canvas</a>，感兴趣可以看看。</p>
 <p>这几天没怎么照相，还是送上之前照的一张照片：</p>
 <p><img src="/assets/files/photos/baby20131030.jpg" alt="小宝快一岁了"></p>
 <!--
