@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="本博客提供我个人的想法，创意，经验，心得。你不必认同博主观点。" />
+    <meta name="keywords" content="创业, 思想, 点子, 经验, python, erlang, node, javascript, 服务器, devops, meteor" />
+    <meta name="author" content="Tyr Chen" />
+
+    <!-- Output DocPad produced meta elements -->
+    
+
+    <!-- Styles -->
+    <link  rel="stylesheet" href="/assets/css/app.min.css" />
+
+    <link href="/assets/favicon.ico" rel="shortcut icon">
+    <link href="/assets/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.3.0/respond.js"></script>
+
+    <![endif]-->
+
+    <title>Hatch: 又一个建站工具 | 觅珠人 | Tyr Chen的个人博客 | 创意 | 心得 | 经验</title>
+
+</head>
+
+<body>
+
+<!-- Contact Modal -->
+<div aria-hidden='true' aria-labelledby='contactModalLabel' class='modal fade' id='contactModal' role='dialog' tabindex='-1'>
+    <div class='modal-dialog'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <button aria-hidden='true' class='close' data-dismiss='modal' type='button'>×</button>
+                <h4 class='modal-title'>Contact Us Form</h4>
+            </div>
+            <div class='modal-body'>
+                <form action='#' role='form'>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Name</label>
+                                <input class='form-control' placeholder='your username' type='text'>
+                            </div>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Email</label>
+                                <input class='form-control' placeholder='your password' type='text'>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-12'>
+                                <label class='control-label' for=''>Your Message</label>
+                                <textarea class='form-control' name='' rows='4'></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class='modal-footer'>
+                <button class='btn btn-default' data-dismiss='modal' type='button'>Cancel</button>
+                <button class='btn btn-primary' type='button'>Send Message</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="header-image-wrapper">
+  <img alt="" src="/assets/files/posts/hatch.jpg">
+</div>
+
+<div class='header-main'>
+    <div class='container'>
+        <nav class='navbar navbar-default' role='navigation'>
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class='navbar-header'>
+                <button class='navbar-toggle' data-target='.navbar-ex1-collapse' data-toggle='collapse' type='button'>
+                    <span class='sr-only'>Toggle navigation</span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                </button>
+                <a class='navbar-brand' href='/'>
+                    <img alt='' height='45px' src='/assets/images/tyr.png'> <span>觅珠人</span>
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class='collapse navbar-collapse navbar-ex1-collapse'>
+
+                <ul class='nav navbar-nav navbar-right'>
+                    <li class="">
+                        <a href="/">首页</a>
+                    </li>
+                    
+                        
+                        <li
+                            about="/pages/posts.html"
+                            class=""
+                        >
+                            <a href="/pages/posts.html">
+                                文章随笔
+                            </a>
+                        </li>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                        <li
+                            about="/pages/canvases.html"
+                            class=""
+                        >
+                            <a href="/pages/canvases.html">
+                                奇思妙想
+                            </a>
+                        </li>
+                        
+                    
+                        
+                        <li
+                            about="/pages/aboutme.html"
+                            class=""
+                        >
+                            <a href="/pages/aboutme.html">
+                                关于我
+                            </a>
+                        </li>
+                        
+                    
+                    <!--
+                    <li>
+                        <a data-toggle='modal' href='#contactModal'>联系我</a>
+                    </li>
+                    -->
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+</div>
+
+<div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+
+<div class='container'>
+  <div class='row'>
+    <div class="col-md-3">
+      <div class="post-side-bar">
+        <!--
+        <div class="widget widget-author">
+          <div class="author-avatar">
+            <img alt="" src="/assets/images/tyr.png">
+          </div>
+          <div class="author-meta">
+            <h4 class="author-name">Tyr Chen</h4>
+            <p class="author-bio">Progressively maintain extensive infomediaries via extensible niches.</p>
+            
+            <a class="author-more" href="#">
+              read more posts
+              <i class="icon-angle-right"></i>
+            </a>
+          </div>
+        </div>
+        -->
+        <div class="widget widget-cats tags">
+          <h4 class="widget-title">标签</h4>
+          <ul>
+          
+            <li><a href='/tags/tool.html'>tool</a></li>
+          
+            <li><a href='/tags/technology.html'>technology</a></li>
+          
+            <li><a href='/tags/hatch.html'>hatch</a></li>
+          
+          </ul>
+        </div>
+        <div class="widget widget-cats">
+          <h4 class="widget-title">
+            相关文章
+          </h4>
+          <ul>
+            
+            
+              <li><a href="/posts/2013-02-18-sdn-elementatory-introduction.html">SDN浅谈</a></li>
+            
+              <li><a href="/posts/2012-12-16-first-blog.html">第一篇博客: 用octopress搭建博客系统</a></li>
+            
+              <li><a href="/posts/2012-12-18-octopress-client-a-better-composition-tool.html">产品随想：octopress客户端 —— Atanasoff</a></li>
+            
+              <li><a href="/posts/2012-12-21-meteor-basics.html">Meteor基础入门</a></li>
+            
+              <li><a href="/posts/2012-12-26-reveal-js-support-for-octopress.html">Octopress支持reveal.js撰写slides</a></li>
+            
+              <li><a href="/posts/2012-12-31-atanasoff-product-design.html">进一步思考Atanasoff (Octopress client) (2)</a></li>
+            
+              <li><a href="/posts/2013-01-09-auto-deploy-with-github-webhooks.html">用Github Webhooks实现自动部署</a></li>
+            
+              <li><a href="/posts/2013-01-21-why-use-wintersmith-to-replace-octopress.html">为什么要使用wintersmith取代octopress</a></li>
+            
+              <li><a href="/posts/2013-02-04-teamspark-open-sourced.html">Teamspark及Meteor杂谈</a></li>
+            
+              <li><a href="/posts/2012-12-16-why-meteor.html">为什么是Meteor</a></li>
+            
+              <li><a href="/posts/2013-02-21-openflow-introduction.html">Openflow简介</a></li>
+            
+              <li><a href="/posts/2013-04-08-trying-to-extract-the-thoughts-behind-lockitron.html">胡思乱想之Lockitron的技术架构</a></li>
+            
+              <li><a href="/posts/2013-04-25-engineering-environment-for-smart-team.html">自动化的高效团队开发环境</a></li>
+            
+              <li><a href="/posts/2013-06-10-use-scrapyd-to-serve-scrapy-projects.html">用scrapyd来提供crawler服务</a></li>
+            
+              <li><a href="/posts/2013-06-12-use-makefile-to-automate-deployment.html">使用Makefile自动化部署</a></li>
+            
+              <li><a href="/posts/2013-06-23-come-to-origin-for-embedded-applications.html">Come to Origins for Embedded Applications</a></li>
+            
+              <li><a href="/posts/2013-07-18-c-grammar-you-cannot-imagine.html">你无法想象的C语法</a></li>
+            
+              <li><a href="/posts/2013-07-22-why-should-c-programmers-learn-erlang.html">Why should C programmers learn Erlang?</a></li>
+            
+              <li><a href="/posts/2013-10-28-blog-reborn.html">觅珠人：浴火重生</a></li>
+            
+            
+          </ul>
+        </div>
+      </div>
+    </div>      
+    <div class='col-md-9'>
+      <div class='post-single'>
+        <!--
+        <div class='pre-post-meta'>
+          <span>
+            <i class='icon-tags'></i>
+            in
+            <a href='#'>Web Development</a>
+          </span>
+          <span>
+            <i class='icon-user'></i>
+            by
+            <a href='#'>Tyr Chen</a>
+          </span>
+          <span>
+            <i class='icon-bookmark'></i>
+            10 分钟
+          </span>
+        </div>
+        -->
+        <h1 class='has-sub-header'>Hatch: 又一个建站工具</h1>
+        <div class='post-single-meta'>
+          <span class='meta-item'>
+            <i class='icon-calendar'></i>
+            1小时前
+          </span>
+          <!--
+          <span class='meta-item'>
+            <a href='#'>
+              <i class='icon-comments'></i>
+              24
+            </a>
+          </span>
+          <span class='meta-item'>
+            <a href='#'>
+              <i class='icon-heart'></i>
+              15
+            </a>
+          </span>
+          -->
+          <span class="meta-item">
+          	
+            <i class='icon-time'></i>
+            10 分钟
+          </span>
+        </div>
+        <p>在 <a href="/posts/2013-10-28-blog-reborn.html">前文</a> 中，我尝试了 <a href="http://docpad.org">docpad</a> 做为新的建站工具。<code>docpad</code> 有很多优点，但最大的缺点是效率。在我看来，一个好的静态网站生成工具最好能在秒级处理成千上万文档，这样才能真正满足个人博客外的中等规模网站的需求。要做到这一点，工具必须将full build和incremental build区别开来。这样，即使一个full build要花几十秒甚至几分钟，incremental build还能控制在秒级。当用户修改某个文件时，incremental build能够保证用户有良好的体验 —— 无需等待，改动立即可见。而这一点，则恰恰是 <code>docpad</code> 所欠缺的。本文讲述的 <code>hatch</code> 项目将尝试在保留 <code>docpad</code> 的诸多优点外，通过更智能的build过程将编译速度尽最大可能提高。</p>
+<!--more-->
+
+<h2>目标</h2>
+<p><code>hatch</code> 的目标是实现如下功能：
+1. 支持任意模板类型。官方可仅支持 <code>jade</code>，但用户可以轻松扩展。
+2. 支持任意格式的源文件。官方可仅支持 <code>markdown</code> 和 <code>jade</code>，但用户可以轻松扩展。
+3. 支持复杂页面的生成，如标签聚合页面（docpad-plugin-tagging）和每个文档的相关文档（docpad-plugin-related）的功能。
+4. 支持less/coffeescript，及compress。
+5. 支持live preview。</p>
+<h2>工具选择</h2>
+<p>有了目标，我们需要选择合适的工具去完成目标。</p>
+<p>在web时代，尽管 <code>rake</code>，<code>jake</code>，<code>grunt</code> 等等task runner大行其道，我还是偏爱 <code>make</code>，因为它最能体现unix的哲学：</p>
+<blockquote>
+<p>write programs that do one thing and do it well.</p>
+</blockquote>
+<p>比如说将less生成css并打包，然后上传到服务器上这样的工作：</p>
+<pre><code>CSS_SOURCE=$(CSS_PATH)/app.less
+CSS_DEPS=$(shell find $(CSS_PATH) -type f -name &#39;*.less&#39;)
+CSS_TARGET=app.min.css
+SYNC_TARGET=tchen@my-awesome-server.com:/homes/tchen/deployment/css
+
+$(CSS_TARGET): $(CSS_DEPS)
+    lessc $(CSS_SOURCE) --yui-compress  &gt; $(CSS_TARGET)
+
+sync: $(CSS_TARGET)
+    rsync -au $(CSS_TARGET) $(SYNC_TARGET)</code></pre>
+<p>这段代码很简单，目标任务 <code>sync</code> 依赖于 <code>$(CSS_TARGET)</code> 的构建，而 <code>$(CSS_TARGET)</code> 依赖于 <code>$(CSS_DEPS)</code> 的构建。</p>
+<p>使用 <code>make</code> 简单明了，且不会做任何无用功。比如说：</p>
+<pre><code>$ make sync</code></pre>
+<p>在第一次执行后，如果less文件没有修改（ctime没有改变），则不会做任何事就结束了，节省大量的重复劳动。</p>
+<p>使用 <code>make</code> 加上合适的shell命令（如果特定功能的命令不存在，我们需要自己创建），我们就可以构建一套完整的编译系统，将 <code>markdown</code> 文件（或者其他类型的文件），经过一系列处理，生成 <code>html</code>。</p>
+<h2>依赖处理</h2>
+<p>如前文所述，我们要解决的问题归化成一个如何构建合适的 <code>makefile</code>，让源文件（如markdown）高效地（且正确地）编译成目标文件（如html）。而这其中的重点，则在如何处理依赖。</p>
+<p>最简单的依赖处理莫过于一个文件发生改变，整个项目都会重新编译。正确性得以保证，但显然不高效。<code>docpad</code> 采用这样的策略，以至于对css的改动会引发html的重编。很不科学，漫长的等待让我这样的用户很受伤。</p>
+<p>所以我们要设定合理的依赖规则。</p>
+<p>对于目标中我们想要实现的功能，5暂且放在一边，1/2/4很好实现。3是一个难点，需要两次build才能正确处理：
+1. make parse。每个修改过的文档单独parse，中间结果保存在 <code>mongodb</code> 中，如果 <code>tags</code> 信息有改变，则删除对应的标签聚合页（会触发重新生成），及受影响的文档页面。
+2. make generate。调用整个正式的生成过程，生成所有需要重新生成的页面。</p>
+<p><img src="/assets/files/posts/hatch_dep.jpg" alt="博客截图"></p>
+<p>如上图，如果删除了标签 <code>docpad</code> ，并添加了标签 <code>hatch</code>，那么 <code>make parse</code> 时会将该文档的最新内容保存在db里，删除 <code>docpad</code> 和 <code>hatch</code> 的标签聚合页面，删除已经生成的所有包含 <code>docpad</code> 和 <code>hatch</code>标签的页面（包括自己），然后进入到第二阶段的页面生成。</p>
+<h2>系统结构</h2>
+<p>有了上面的思考，<code>hatch</code> 的系统结构也就付出水面，整个系统围绕着 <code>make</code> 展开，尽可能使用已有的unix工具（sorry，为了保证小而美，windows不在这样一个系统的考虑之列）。如果没有合适的工具，则撰写之。</p>
+<p>可以直接leverage的工具：</p>
+<ul>
+<li>lessc/sass，用于生成css。</li>
+<li>coffee，用于生成js。</li>
+<li>yuicompressor，用于compress css和js。</li>
+<li>jade，用于将jade template生成html。</li>
+<li>marked，用于将markdown文件生成html。</li>
+<li>js-yaml，用于parse metadata。</li>
+</ul>
+<p>需要撰写的工具：</p>
+<ul>
+<li>hatch-parse，用于parse一个文档，将中间结果存入数据库中。例如：<code>hatch-parse test.md</code>。hatch-parse会根据扩展名自动使用相应的parser。</li>
+<li>hatch-gen，用于生成一个页面，生成过程中可能需要读取数据库。例如：<code>hatch-gen -o test.html test.md</code>，<code>hatch-gen -o index.html index.jade</code>。如果文章需要分页（定义了<code>&lt;!--page--&gt;</code>），则进行分页处理。</li>
+<li>tag-gen，用于生成标签索引页。例如：<code>tag-gen -o hatch.html -t tag.jade hatch</code>。将会查询数据库中标签是 <code>hatch</code> 的文档，将其写入hatch.html。如果 <code>tag-gen -o &lt;dir&gt; -t tag.jade *</code>，将会生成所有标签索引。如果生成过程中需要分页，则进行分页。</li>
+<li>index-gen，用于生成索引页。例如：<code>index-gen -o index.html index.md</code>。如果生成过程中需要分页，则进行分页。</li>
+</ul>
+<h2>数据结构</h2>
+<p>我用过的 <a href="http://wintersmith.io">wintersmith</a>，<a href="http://docpad.org">docpad</a> 都使用memory db存放文档的中间结果，为特殊需求（如related documents）提供接口。由于采用 <code>make</code> 来组织整个系统，每个运行的命令都是自己的进程空间，所以无法用in process memory db，另外我也不希望每次build都重新生成这个DB，所以一个可以persistent的DB就是我的第一选择。考虑到我有如下需求：</p>
+<ul>
+<li>数据库中的字段来源于文档的metadata，所以随意性很大，必须schemaless。</li>
+<li>需要支持一些复杂的查询，比如，找出6篇标签为：<code>hatch</code> 或 <code>tool</code> 的文档。</li>
+</ul>
+<p>所以权衡之后，本文决定使用mongodb来保存中间结果。当然，每次build时可能涉及很多次数据库的open/close，至于performance如何，只有实测后才有结论。</p>
+<p>mongodb中存储的是文档（template无须存储），大概长这个样子（<code>createdAt</code>，<code>tags</code>，<code>ignored</code>，<code>src</code> 上建有索引）：</p>
+<pre><code>{
+    &quot;_id&quot;: ObjectId(`blablabla`),
+    &quot;template&quot;: &quot;posts.jade&quot;,
+    &quot;createdAt&quot;: ISODate(&quot;2013-10-30T20:20.000Z&quot;),
+    &quot;updatedAt&quot;: ISODate(&quot;2013-10-30T20:25.000Z&quot;),
+    &quot;tags&quot;: [&quot;hatch&quot;, &quot;tool&quot;],
+    &quot;ignored&quot;: true,
+    &quot;comments&quot;: true,
+    &quot;cover&quot;: &quot;/assets/files/posts/hatch.jpg&quot;,
+    &quot;src&quot;: &quot;/documents/posts/hatch.md&quot;,
+    &quot;outputs&quot;: [&quot;/posts/hatch.html&quot;, &quot;/posts/hatch.1.html&quot;],
+    &quot;title&quot;: &quot;Hello Hatch&quot;,
+    &quot;rawContent&quot;: &quot;This is a great document\n\nHello hatch!\n&quot;,
+    &quot;teaser&quot;: &quot;&lt;p&gt;This is a great document&lt;/p&gt;&quot;,
+    &quot;content&quot;: &quot;&lt;p&gt;This is a great document&lt;/p&gt;\n&lt;!--more--&gt;\n&lt;p&gt;Hello hatch!&lt;p&gt;&quot;
+}</code></pre>
+<p>对应在磁盘上的文件是这个样子：</p>
+<pre><code>---
+template: posts.jade
+title: Hello Hatch
+date: 2013-10-30 20:20
+tags: [hatch, tool]
+comments: true
+ignored: true
+cover: /assets/files/posts/hatch.jpg
+---
+
+This is a great document
+
+Hello hatch!</code></pre>
+<p>这引入一个问题：当磁盘文件修改时，如何找到数据库中对应的文档？源文件名是少数不那么容易修改又具备唯一性的字段，所以在数据库文档中我们放入了 <code>src</code> 这个域。在 <code>makefile</code> 里，我们需要提供 <code>make dbclean</code>，以便用户在需要时，可以将数据库中的文档清除干净。</p>
+<h2>实现</h2>
+<p>从构思的角度，基本的障碍已经消除，大致的设计也有了，剩下的就是如何实现。这个周末，争取能把最基本的功能实现出来，然后在讨论实现过程中遇到的问题，看看和我的构思/假设有什么明显的偏差。</p>
+<p>这几天没怎么照相，还是送上之前照的一张照片：</p>
+<p><img src="/assets/files/photos/baby20131030.jpg" alt="小宝快一岁了"></p>
+<!--
+* index-gen，用于生成索引页，比如说标签索引页，首页等。用户传入一个查询条件，和一个排序条件，从数据库中读取对应的数据，生成html。例如：index-gen -e '[{"q": {"tag": "hatch"}, "s": {"date": -1}, "name": "dataset1"}, ...]'  > hatch.html。
+
+比如说我们要生成 ``index.html``。它通过 ``documents/index.md`` 和 ``templates/index.jade`` 生成，并能展示 ``documents/posts`` 和 ``documents/slides`` 目录下的最新10篇文章。
+-->
+        <div class='under-post'>
+          
+          
+            
+                
+                  <div class='pull-left'>
+                    <a class='read-previous-link' href='/posts/2013-10-28-blog-reborn.html'>
+                      <i class='icon-angle-left'></i>
+                      上一篇
+                    </a>
+                  </div>                  
+                
+                         
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-facebook'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-twitter'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-linkedin'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+        </div>
+        <div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+        
+  <div class="ds-thread">
+    <script>
+        var duoshuoQuery = {short_name:"tyrchen"};
+        (function() {
+          var ds = document.createElement('script');
+          ds.type = 'text/javascript';ds.async = true;
+          ds.src = 'http://static.duoshuo.com/embed.js';
+          ds.charset = 'UTF-8';
+          (document.getElementsByTagName('head')[0]
+          || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+  </div>
+
+    
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+<footer id="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="footer-menu">
+                    <li><a href="/pages/privacy">隐私策略</a></li>
+                    <li><a href="/pages/license">版权说明</a></li>
+                    <li><a href="/pages/disclaimer">免责声明</a></li>
+                    <li><a href="#">联系我们</a></li>
+                </ul>
+                <div class="copyright">
+                    2013 &copy; Tyr Chen. 保留一切权利.
+                    <script>
+                        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+                        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F639096b5979f5825515e0f88f871f56c' type='text/javascript'%3E%3C/script%3E"));
+                    </script>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <ul class="footer-social">
+                
+                    <li><a href="tyr.chen{#}gmail.com" target="_blank"><i class="icon-envelope"></i></a></li>
+                
+                    <li><a href="http://weibo.com/tchen82" target="_blank"><i class="icon-weibo"></i></a></li>
+                
+                    <li><a href="http://github.com/tyrchen" target="_blank"><i class="icon-github"></i></a></li>
+                
+                    <li><a href="http://linkedin.com/in/tyrchen/" target="_blank"><i class="icon-linkedin"></i></a></li>
+                
+                    <li><a href="https://twitter.com/tyrchen" target="_blank"><i class="icon-twitter"></i></a></li>
+                
+                    <li><a href="https://www.facebook.com/tyrchen" target="_blank"><i class="icon-facebook"></i></a></li>
+                
+                    <li><a href="https://plus.google.com/114684266209262341260/" target="_blank"><i class="icon-google-plus"></i></a></li>
+                
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script defer="defer"  src="/assets/js/app.min.js"></script>
+
+
+</body>
+
+</html>
