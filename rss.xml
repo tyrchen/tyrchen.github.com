@@ -5,10 +5,10 @@
         <description><![CDATA[本博客提供我个人的想法，创意，经验，心得。你不必认同博主观点。]]></description>
         <link>http://tchen.me</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Mon, 04 Nov 2013 05:57:28 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 04 Nov 2013 06:21:20 GMT</lastBuildDate>
         <atom:link href="http://tchen.me/rss.xml" rel="self" type="application/rss+xml"/>
         <author><![CDATA[Tyr Chen]]></author>
-        <pubDate>Mon, 04 Nov 2013 05:56:48 GMT</pubDate>
+        <pubDate>Mon, 04 Nov 2013 06:20:42 GMT</pubDate>
         <item>
             <title><![CDATA[Hatch: 实验]]></title>
             <description><![CDATA[<p>继续 <a href="/posts/2013-11-03-hatch-experiment.html">前文</a> 。熬到了周末，正式开始了 <code>hatch</code> 项目的开发。首先是一个关键问题：如果每个文件的生成由一个单一的shell脚本完成，那么数据库打开/关闭的损耗会不会成为瓶颈？做了个简单的实验，发现每次打开都要花费0.2s，一个不小的数字。</p>
