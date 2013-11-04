@@ -5,10 +5,279 @@
         <description><![CDATA[本博客提供我个人的想法，创意，经验，心得。你不必认同博主观点。]]></description>
         <link>http://tchen.me</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Wed, 30 Oct 2013 01:24:09 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 04 Nov 2013 05:57:28 GMT</lastBuildDate>
         <atom:link href="http://tchen.me/rss.xml" rel="self" type="application/rss+xml"/>
         <author><![CDATA[Tyr Chen]]></author>
-        <pubDate>Wed, 30 Oct 2013 01:23:28 GMT</pubDate>
+        <pubDate>Mon, 04 Nov 2013 05:56:48 GMT</pubDate>
+        <item>
+            <title><![CDATA[Hatch: 实验]]></title>
+            <description><![CDATA[<p>继续 <a href="/posts/2013-11-03-hatch-experiment.html">前文</a> 。熬到了周末，正式开始了 <code>hatch</code> 项目的开发。首先是一个关键问题：如果每个文件的生成由一个单一的shell脚本完成，那么数据库打开/关闭的损耗会不会成为瓶颈？做了个简单的实验，发现每次打开都要花费0.2s，一个不小的数字。</p>
+<pre><code>➜  hatch git:(master) ✗ cat test.coffee
+#!/usr/bin/env coffee
+
+db = require(&#39;mongojs&#39;)(&#39;hatch&#39;)
+col = db.collection(&#39;documents&#39;)
+
+col.findOne {}, (err, doc) -&gt;
+    db.close()</code></pre>
+<pre><code>➜  hatch git:(master) ✗ time ./test.coffee
+./test.coffee  0.20s user 0.03s system 99% cpu 0.226 total</code></pre>
+<!--more-->
+
+<p>这意味着照之前的设想，一千个文件如果都单独parse，那么仅数据库打开/关闭就需要200s，这是不可接受的。于是，最初的想法不得不调整。如果在一个大脚本中完成所有事情，显然是最经济的，但这样无法借助 <code>makefile</code> 的优势，于是妥协为：</p>
+<ol>
+<li>整个系统依旧由 <code>make</code> 驱动，除unix已有的工具外，撰写：<code>hatch-parse</code>，<code>hatch-gen</code>，<code>hatch-tag</code> 和 <code>hatch-index</code>。</li>
+<li>所有这些脚本支持 <code>1..n</code> 个参数，为输入的文件名。</li>
+<li>由于这样无法使用 <code>makefile</code> 中的依赖，所以需要一个 <code>hatch-diff</code> 为其提供参数。</li>
+</ol>
+<p>解释一下第三点：</p>
+<p>如果 <code>hatch-gen</code> 只处理单个文件，那么 <code>makefile</code> 中的依赖关系很容易推导出需要处理的文件，并依次处理之：</p>
+<pre><code>OUT=out
+SRC=src
+CONTENT_PATH=$(SRC)/contents
+OUTS=$(subst $(SRC),$(OUT), $(shell find $(CONTENT_PATH) -type f -name &#39;*&#39;))
+
+$(OUTS): $(OUT)%: $(SRC)%
+    @echo &quot;Creating $@.&quot;
+    @$(HATCH_GEN) $@ $&lt;</code></pre>
+<p>但如果我们要处理大批文件，则不能这么做，所以我做了个 <code>hatch-diff</code> 来返回更改过的文件列表，于是 <code>makefile</code> 变为：</p>
+<pre><code>generate:
+    @$(HATCH_GEN) $(shell $(HATCH_DIFF) -e .html $(CONTENT_PATH) $(CONTENT_OUT_PATH))</code></pre>
+<blockquote>
+<p>注：写该代码时我还不知道 <code>makefile</code> 有 <code>$?</code> 这样的神器。所以其实 <code>hatch-diff</code>基本没用。</p>
+</blockquote>
+<h2>具体实现</h2>
+<p>实现代码见：<a href="https://github.com/coderena/hatch">https://github.com/coderena/hatch</a>.</p>
+<p>核心代码在 <code>lib/core.coffee</code>。目前实现得很简单，还没有进一步的命令行来帮助使用者创建项目。</p>
+<p>测试代码在 <code>test</code> 下。</p>
+<p>具体实现很简单，也很直接。就不讨论。</p>
+<h2>问题与解决</h2>
+<h3>加速，加速，加速！</h3>
+<p>打开数据库的时间越滞后越好。</p>
+<p>能通过 <code>makefile</code> 的 dependency 解决的就放在那里解决。数据库里的内容和磁盘上的文件谁新谁旧，可以通过建立这样的 dependency:</p>
+<pre><code>$(CONTENT_DEPS): $(DEP)/%: $(SRC)/%
+    @touch $@
+
+content_depend: $(CONTENT_DEP_PATHS) $(CONTENT_DEPS)</code></pre>
+<p>每次 parse 完磁盘文件就更新 dependency，这样一旦文件改变，make就能分析出要重新parse的文件。</p>
+<p>牢记 <code>nodejs</code> 单线程的劣势，尽可能用asynchronous的库和代码。需要异步处理一堆事情，但要在所有处理完成后统一操作请使用 <code>async</code> 库。</p>
+<p>为了提高速度，所有 <code>jade</code> 模板都预编译好，再和 <code>locals</code> 结合，生成html。</p>
+<h3>绑定，绑定，绑定！</h3>
+<p>跟 <code>docpad</code> 一样，我希望用户可以定制他们自己的helpers，在模板中使用。比如：</p>
+<pre><code>hatchConfig =
+    layoutData:
+        site:
+            # default url of the site
+            url: &#39;http://hatch-jade-example.com&#39;
+            # default time of the site
+            title: &#39;Example website build with hatch&#39;
+
+            getTitle: -&gt;
+
+                if @document.title
+                    &quot;#{@document.title} | #{@site.title}&quot;
+                else
+                    @site.title</code></pre>
+<p>然后在模板中可以直接访问：</p>
+<pre><code>extends common/default
+
+block prepend title
+  | #{ getTitle() }</code></pre>
+<p>如果直接把 <code>layoutData</code> 传给 <code>jade</code> 去编译，<code>this</code> 并不存在，必然报错。所以需要为每个helper函数进行 <code>this</code> 的绑定，问题是，<a href="http://stackoverflow.com/questions/5999998/how-can-i-check-if-a-javascript-variable-is-function-type">怎么判断一个值是函数呢</a>？这是 javascript 语言中的又一个坑。我的项目中使用了 <code>lodash</code>，所以自然而然会使用 <code>_.isFunction()</code>:</p>
+<pre><code>locals = {document: data}
+_.extend locals, self.config.layoutData
+    for own key, value of locals
+        if _.isFunction value
+            locals[key] = value.bind(locals)</code></pre>
+<h3>处理teaser和长文的分页</h3>
+<p>teaser一般是文章的头一段，在索引页中方便用户领略文章的大致内容。目前大部分静态网站生成器都使用html comment，如 <code>&lt;!--more--&gt;</code> 来达到这一目的，这样做有点问题：如果teaser之前有标题，那么标题也被包含在teaser里，展示效果不好，于是我采用下述方法定义teaser。用户仅需要在想标记为teaser的地方前后进行标注即可，不限于文章的任何部分，灵活性很好。</p>
+<pre><code># teaser notation in the document
+regexTeaser: /&lt;!--\s*teaser\s*--&gt;\s*([\s\S]*?)\s*&lt;!--\s*teaser\s*--&gt;/i</code></pre>
+<p>长文的分页也是类似的想法。定义了 <code>&lt;!--page--&gt;</code>：</p>
+<pre><code># page notation in the document
+regexPager: /&lt;!--\s*page\s*--&gt;/</code></pre>
+<p>可以这样来生成页面：</p>
+<pre><code>@adapter.findOne src: src, (err, doc) -&gt;
+    return cb(err) if err
+
+    if doc
+        generate_doc = (i, callback) -&gt;
+            data = {}
+            _.extend data, doc
+            data.content = doc.contents[i]
+            delete data.contents
+
+            locals = {document: data}
+            _.extend locals, self.config.layoutData
+            for own key, value of locals
+                if _.isFunction value
+                    locals[key] = value.bind(locals)
+            html = self.layouts[doc.layout] locals
+            if i is 0
+                filename = &quot;#{dst}.html&quot;
+            else
+                filename = &quot;#{dst}.#{i}.html&quot;
+            fs.writeFile filename, html, (err) -&gt;
+                callback err, filename
+
+        async.map _.range(doc.contents.length), generate_doc, (err, data) -&gt;
+            cb err, data</code></pre>
+<h3>在jade里处理回调</h3>
+<p>由于用户可以自定义helper，如果要访问数据库，理论上可以这样做：</p>
+<pre><code>getRelated: (tags, cb) -&gt;
+    @adapter.findTag tags: $in: tags, 10, (err, docs) -&gt;
+        return cb(err) if err
+
+        # blablabla</code></pre>
+<p>但在 <code>jade</code> 中，helper是不允许回调的，所以，除了把数据库访问变成同步模式，这个现在貌似无解。</p>
+<h2>测试</h2>
+<p>在我的本地环境中，我创建了一个有1k+ <code>markdown</code> 源文件的项目，测试结果还不赖：</p>
+<pre><code>➜  hatch-jade-example git:(master) ✗ make fullclean
+➜  hatch-jade-example git:(master) ✗ time make
+Creating dependency paths .dep/layouts.
+Creating dependency paths .dep/layouts/common.
+Creating dependency paths .dep/layouts/common/includes.
+Creating dependency paths .dep/layouts/common/includes/asides.
+Creating dependency paths .dep/layouts/common/mixins.
+    Too many layouts changed, clean all outputs.
+Parsing the documents into database.
+cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc  1118 docs parsed.
+Creating output paths.
+Creating output paths.
+Creating output paths.
+Creating output paths.
+Creating output paths.
+Creating output paths.
+Creating output paths.
+Creating output paths.
+Creating output paths.
+Creating output paths.
+Creating output paths.
+Creating output paths.
+Creating output paths.
+Creating output paths.
+Creating output paths.
+Creating output paths.
+Creating output paths.
+Creating output paths.
+Creating output paths.
+Creating output paths.
+Creating output paths.
+Creating output paths.
+Creating output paths.
+Creating output paths.
+Creating output paths.
+Creating output paths.
+Creating output paths.
+Generate documents.
+    1118 docs generated.
+Creating dependency paths .dep/contents.
+Creating dependency paths .dep/contents/docs.
+Creating dependency paths .dep/contents/post1.
+Creating dependency paths .dep/contents/post10.
+Creating dependency paths .dep/contents/post11.
+Creating dependency paths .dep/contents/post12.
+Creating dependency paths .dep/contents/post13.
+Creating dependency paths .dep/contents/post14.
+Creating dependency paths .dep/contents/post15.
+Creating dependency paths .dep/contents/post16.
+Creating dependency paths .dep/contents/post17.
+Creating dependency paths .dep/contents/post18.
+Creating dependency paths .dep/contents/post19.
+Creating dependency paths .dep/contents/post2.
+Creating dependency paths .dep/contents/post20.
+Creating dependency paths .dep/contents/post21.
+Creating dependency paths .dep/contents/post22.
+Creating dependency paths .dep/contents/post23.
+Creating dependency paths .dep/contents/post24.
+Creating dependency paths .dep/contents/post25.
+Creating dependency paths .dep/contents/post3.
+Creating dependency paths .dep/contents/post4.
+Creating dependency paths .dep/contents/post5.
+Creating dependency paths .dep/contents/post6.
+Creating dependency paths .dep/contents/post7.
+Creating dependency paths .dep/contents/post8.
+Creating dependency paths .dep/contents/post9.
+Build completed!
+make  5.93s user 1.65s system 100% cpu 7.540 total
+➜  hatch-jade-example git:(master) ✗ touch src/contents/docs/2013-01-01-atanasoff-implementation.markdown
+➜  hatch-jade-example git:(master) ✗ time make
+Parsing the documents into database.
+u   1 docs parsed.
+Generate documents.
+    1 docs generated.
+Build completed!
+make  2.28s user 0.24s system 101% cpu 2.477 total</code></pre>
+<h2>后记 &amp; 未完待续</h2>
+<p>这个项目目前仅仅实现了POC，比我预期的进展要缓慢一些。但这毕竟是我第一次跳出 <code>express</code> 的框框去写 <code>nodejs</code> 代码，所以可以原谅。</p>
+<p>写 <code>makefile</code> 是种享受，尤其是几行很直观的代码下来就达到用编程语言几十甚至上百行的效果。不信，看看项目中我为了实现类似查找 dependency 变化的代码：</p>
+<pre><code>$ cat lib/diff.coffee
+fs = require &#39;fs&#39;
+file = require &#39;file&#39;
+path = require &#39;path&#39;
+async = require &#39;async&#39;
+_ = require &#39;lodash&#39;
+
+# params should contain src, dst and ext
+diffPath = (src, dst, ext, callback) -&gt;
+    fileTimeDiff = (src_file, cb) -&gt;
+        old_ext = path.extname(src_file)
+        dst_file = src_file.replace(src, dst)
+        if ext
+            dst_file = dst_file.replace(old_ext, ext)
+
+        fs.stat src_file, (err, src_stat) -&gt;
+            return cb(err) if err
+
+            fs.exists dst_file, (exists) -&gt;
+                return cb null, src_file if not exists
+
+                fs.stat dst_file, (err, dst_stat) -&gt;
+                    cb(err) if err
+
+                    if src_stat.mtime &gt; dst_stat.mtime
+                        cb null, src_file
+                    else
+                        cb null, null
+
+
+    file.walk src, (err, dirPath, dirs, files) -&gt;
+        async.map files, fileTimeDiff, (err, results) -&gt;
+            callback err, _.compact(results)
+
+module.exports.diffPath = diffPath
+
+$ cat scripts/hatch-diff.coffee
+#!/usr/bin/env coffee
+diffPath = require(&#39;./../lib/diff&#39;).diffPath
+
+argv = require(&#39;optimist&#39;)
+    .usage(&#39;&#39;&#39;
+           Compare two folders
+           Usage: $0 [--ext html] src_dir dst_dir
+           &#39;&#39;&#39;)
+    .demand(2)
+    .alias(&#39;e&#39;, &#39;ext&#39;)
+    .describe(&#39;e&#39;, &#39;destination file extention&#39;)
+    .argv
+
+
+[src, dst] = argv._
+ext = argv.e
+
+diffPath src, dst, ext, (err, data) -&gt;
+    for item in data
+        console.log item</code></pre>
+<p>这么复杂的逻辑仅仅实现了 <code>makefile</code> 中 <code>$?</code> 的功能而已。。。</p>
+<p>送上小宝照片一枚。</p>
+<p><img src="/assets/files/photos/baby20131103.jpg" alt="小宝"></p>
+]]></description>
+            <link>http://tchen.me/posts/2013-11-03-hatch-experiment.html</link>
+            <guid isPermaLink="true">
+                http://tchen.me/posts/2013-11-03-hatch-experiment.html            </guid>
+            <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
+            <pubDate>Mon, 04 Nov 2013 14:40:00 GMT</pubDate>
+        </item>
         <item>
             <title><![CDATA[Hatch: 又一个建站工具]]></title>
             <description><![CDATA[<p>在 <a href="/posts/2013-10-28-blog-reborn.html">前文</a> 中，我尝试了 <a href="http://docpad.org">docpad</a> 做为新的建站工具。<code>docpad</code> 有很多优点，但最大的缺点是效率。在我看来，一个好的静态网站生成工具最好能在秒级处理成千上万文档，这样才能真正满足个人博客外的中等规模网站的需求。要做到这一点，工具必须将full build和incremental build区别开来。这样，即使一个full build要花几十秒甚至几分钟，incremental build还能控制在秒级。当用户修改某个文件时，incremental build能够保证用户有良好的体验 —— 无需等待，改动立即可见。而这一点，则恰恰是 <code>docpad</code> 所欠缺的。本文讲述的 <code>hatch</code> 项目将尝试在保留 <code>docpad</code> 的诸多优点外，通过更智能的build过程将编译速度尽最大可能提高。</p>
@@ -1290,31 +1559,6 @@ value is f50cef80</code></pre>
                 http://tchen.me/posts/2013-06-10-use-scrapyd-to-serve-scrapy-projects.html            </guid>
             <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
             <pubDate>Sun, 09 Jun 2013 23:51:00 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[why every developer should use mac]]></title>
-            <description><![CDATA[<p>Two years ago, I bought my own 13&quot; mbp. From then on, I never left mac world, only changed that little thing to a new 15&quot; retina mbp. From my two years experience, I believe to make your development work much more productive, you shall use mac.</p>
-<!--more-->
-
-<h2>Shell</h2>
-<p>The No.1 reason regards with the powerful shell. This is something windows could never compete with *nix world. Shell releases your from the burden of GUI, let you think and do like a guru. GUI means endless mouse clicks, interweaving with keyboard presses - it&#39;s unproductive, and un-automatable; in contrast, shell means almost only keyboard presses, you can automate as much as possible.</p>
-<p>How many times you login into eng-shell to do your work? In osx, you can use &quot;ssh-copy-id&quot; to copy your public key to your engineering server so that you don&#39;t need to enter your password again and again. If you feel &quot;ssh eng-shell5.your-domain.net&quot; is too long to enter, you can alias it to something like &quot;eng5&quot;. Don&#39;t neglect these tiny improvements, lots of precious time slipped in this way. Let&#39;s do a comparison between windows users (secureCRT) and osx users (shell). Windows user need to move their hand from keyboard to mouse, then click the menu in SecureCRT, find and select a stored eng-shell5 session from a number of sessions, click, then move the hand from mouse to keyboard, then enter password and start to work. Mac user only need to cmd+t (if you&#39;re using iTerm) to open a new terminal tab, press &quot;eng5&quot;, then start to work.</p>
-<p>There are much more approaches to be productive. If you want to download a file from bug tracking system (BTS) to analyze, that means a series of clicks and switching between windows. But in mac, you can just copy the link and use &quot;wget&quot; or &quot;curl&quot; to store it. You can then &quot;open&quot; the file in the same terminal. How about your BTS use HTTP authentication? No worry, you just need to make an alias with wget like &quot;alias wget-gnats=&quot;wget --http-user=tchen --http-password=&quot;. Next time you just need &quot;wget-bts&quot;.</p>
-<p>You can also write more complicated scripts to make you as productive as possible. Standard osx ships with at least python, ruby. You can install your own favorite programming languages quite easily.</p>
-<p>Now you may understand the philosophy in the *nix world - Do something in a inelegant way in the first time, do the same thing elegant afterwards. Unfortunately, you need to do things clumsily again and again in windows.</p>
-<h2>Software</h2>
-<p>Second reason is the software. What software you use defines what kind of engineer you&#39;re. vim/emacs/sublime/etc. compared with NotePad, chrome/safari/firefox compared with Internet Explorer, iTerm/Terminal compared with SecureCRT, space (virtual desktop) compared with ??, sips compared with Paint (lots of times I just want to resize images), python/ruby/gcc/wget/ssh/git/etc. compared with ?? (maybe cygwin?). To a developer, the softwares in mac or *nix world surpass those in windows at least a mile. Try it, you&#39;ll know.</p>
-<p>You may say most of these softwares could be found in windows as well. The question is, if you use them in your windows, why not switch to osx for the native or better experience?</p>
-<p>Space, aka virtual desktop, is another great accelerator. You can flip with 4 fingers on the touch pad to switch between spaces. You can assign outlook, lync, safari to one space and iTerm, chrome, sublime to another space. That will separate your development task from your communication task so that the communication softwares cannot disturb you when you&#39;re in a flow of development or problem solving.</p>
-<h2>Aesthetic Perception</h2>
-<p>Third reason is related with aesthetic perception. ThinkPad/Windows never let you feel beautiful. But every part of macbook pro/osx tells you what is the beauty and perfection. Macbook pro itself is an art. So the quality of software in it inherit this characteristic.</p>
-<p>Engineers should pursue beauty and perfection. Only that their software could be beautiful and perfect.</p>
-]]></description>
-            <link>http://tchen.me/posts/2013-05-09-why-every-developer-should-use-mac.html</link>
-            <guid isPermaLink="true">
-                http://tchen.me/posts/2013-05-09-why-every-developer-should-use-mac.html            </guid>
-            <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
-            <pubDate>Thu, 09 May 2013 00:34:00 GMT</pubDate>
         </item>
     </channel>
 </rss>

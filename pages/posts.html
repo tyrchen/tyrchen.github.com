@@ -162,7 +162,123 @@
       <div class='author-meta'>
         <h4 class='author-name'>Tyr Chen</h4>
         <i class='icon-calendar'></i>
-        2小时前
+        9小时内
+      </div>
+    </div>
+  </div>
+  -->
+  <div class='col-md-8 col-md-offset-2'>
+    <div class='post-loop-content'>
+      <h2 class='has-sub-header'>
+        <a href='/posts/2013-11-03-hatch-experiment.html'>Hatch: 实验</a>
+      </h2>
+      <div class='post-loop-meta'>
+        <span>
+          <i class='icon-calendar'></i>
+          9小时内
+        </span>
+        <span class='hidden-mobile-ib tags'>
+          <i class='icon-tags'></i>
+          
+            <a href='/tags/tool.html'>tool</a>
+          
+            <a href='/tags/technology.html'>technology</a>
+          
+            <a href='/tags/hatch.html'>hatch</a>
+          
+        </span>
+        <span>
+          <i class='icon-time'></i>
+          21 分钟
+        </span>
+        <!--
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-comments'></i>
+            24
+          </a>
+        </span>
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-heart'></i>
+            15
+          </a>
+        </span>
+        -->
+      </div>
+      <p>继续 <a href="/posts/2013-11-03-hatch-experiment.html">前文</a> 。熬到了周末，正式开始了 <code>hatch</code> 项目的开发。首先是一个关键问题：如果每个文件的生成由一个单一的shell脚本完成，那么数据库打开/关闭的损耗会不会成为瓶颈？做了个简单的实验，发现每次打开都要花费0.2s，一个不小的数字。</p>
+<pre><code>➜  hatch git:(master) ✗ cat test.coffee
+
+db = require(&#39;mongojs&#39;)(&#39;hatch&#39;)
+col = db.collection(&#39;documents&#39;)
+
+col.findOne {}, (err, doc) -&gt;
+    db.close()</code></pre>
+<pre><code>➜  hatch git:(master) ✗ time ./test.coffee
+./test.coffee  0.20s user 0.03s system 99% cpu 0.226 total</code></pre>
+
+      <!--
+      <div class='under-post'>
+        <!--
+<div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-facebook'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-twitter'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-linkedin'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+-->
+
+<!-- Baidu Button BEGIN -->
+<!-- later we could make this more general -->
+<div class=' post-social text-center'>
+  <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+    <a class="bds_tsina"></a>
+    <a class="bds_tqq"></a>
+    <a class="bds_renren"></a>
+    <a class="bds_mail"></a>
+    <a class="bds_print"></a>
+    <!-- span class="bds_more"></span -->
+    <a class="shareCount"></a>
+  </div>
+  <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6554625" ></script>
+  <script type="text/javascript" id="bdshell_js"></script>
+  <script type="text/javascript">
+  document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+  </script>
+</div>
+<!-- Baidu Button END -->
+      </div>
+      <br/>
+      -->
+      <div class='slogan-buttons'>
+          <a class='btn btn-primary btn-cta btn-lg animated-when-hover' data-animation-type="swing" href='/posts/2013-11-03-hatch-experiment.html'>
+              继续阅读 ->
+          </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+        <div class='row post-loop'>
+  <!--
+  <div class='col-md-2 col-md-offset-1'>
+    <div class='post-loop-author-info'>
+      <div class='author-avatar'>
+        <img alt='' src='/assets/images/tyr.png'>
+      </div>
+      <div class='author-meta'>
+        <h4 class='author-name'>Tyr Chen</h4>
+        <i class='icon-calendar'></i>
+        5天前
       </div>
     </div>
   </div>
@@ -175,7 +291,7 @@
       <div class='post-loop-meta'>
         <span>
           <i class='icon-calendar'></i>
-          2小时前
+          5天前
         </span>
         <span class='hidden-mobile-ib tags'>
           <i class='icon-tags'></i>
@@ -210,7 +326,8 @@
 
       <!--
       <div class='under-post'>
-        <div class='post-social text-center'>
+        <!--
+<div class='post-social text-center'>
   <a class='social-link' href='#'>
     <i class='icon-facebook'></i>
   </a>
@@ -224,6 +341,27 @@
     <i class='icon-envelope'></i>
   </a>
 </div>
+-->
+
+<!-- Baidu Button BEGIN -->
+<!-- later we could make this more general -->
+<div class=' post-social text-center'>
+  <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+    <a class="bds_tsina"></a>
+    <a class="bds_tqq"></a>
+    <a class="bds_renren"></a>
+    <a class="bds_mail"></a>
+    <a class="bds_print"></a>
+    <!-- span class="bds_more"></span -->
+    <a class="shareCount"></a>
+  </div>
+  <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6554625" ></script>
+  <script type="text/javascript" id="bdshell_js"></script>
+  <script type="text/javascript">
+  document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+  </script>
+</div>
+<!-- Baidu Button END -->
       </div>
       <br/>
       -->
@@ -247,7 +385,7 @@
       <div class='author-meta'>
         <h4 class='author-name'>Tyr Chen</h4>
         <i class='icon-calendar'></i>
-        2天前
+        7天前
       </div>
     </div>
   </div>
@@ -260,7 +398,7 @@
       <div class='post-loop-meta'>
         <span>
           <i class='icon-calendar'></i>
-          2天前
+          7天前
         </span>
         <span class='hidden-mobile-ib tags'>
           <i class='icon-tags'></i>
@@ -302,7 +440,8 @@
 
       <!--
       <div class='under-post'>
-        <div class='post-social text-center'>
+        <!--
+<div class='post-social text-center'>
   <a class='social-link' href='#'>
     <i class='icon-facebook'></i>
   </a>
@@ -316,6 +455,27 @@
     <i class='icon-envelope'></i>
   </a>
 </div>
+-->
+
+<!-- Baidu Button BEGIN -->
+<!-- later we could make this more general -->
+<div class=' post-social text-center'>
+  <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+    <a class="bds_tsina"></a>
+    <a class="bds_tqq"></a>
+    <a class="bds_renren"></a>
+    <a class="bds_mail"></a>
+    <a class="bds_print"></a>
+    <!-- span class="bds_more"></span -->
+    <a class="shareCount"></a>
+  </div>
+  <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6554625" ></script>
+  <script type="text/javascript" id="bdshell_js"></script>
+  <script type="text/javascript">
+  document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+  </script>
+</div>
+<!-- Baidu Button END -->
       </div>
       <br/>
       -->
@@ -385,7 +545,8 @@
 
       <!--
       <div class='under-post'>
-        <div class='post-social text-center'>
+        <!--
+<div class='post-social text-center'>
   <a class='social-link' href='#'>
     <i class='icon-facebook'></i>
   </a>
@@ -399,6 +560,27 @@
     <i class='icon-envelope'></i>
   </a>
 </div>
+-->
+
+<!-- Baidu Button BEGIN -->
+<!-- later we could make this more general -->
+<div class=' post-social text-center'>
+  <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+    <a class="bds_tsina"></a>
+    <a class="bds_tqq"></a>
+    <a class="bds_renren"></a>
+    <a class="bds_mail"></a>
+    <a class="bds_print"></a>
+    <!-- span class="bds_more"></span -->
+    <a class="shareCount"></a>
+  </div>
+  <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6554625" ></script>
+  <script type="text/javascript" id="bdshell_js"></script>
+  <script type="text/javascript">
+  document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+  </script>
+</div>
+<!-- Baidu Button END -->
       </div>
       <br/>
       -->
@@ -422,7 +604,7 @@
       <div class='author-meta'>
         <h4 class='author-name'>Tyr Chen</h4>
         <i class='icon-calendar'></i>
-        3个月前
+        4个月前
       </div>
     </div>
   </div>
@@ -435,7 +617,7 @@
       <div class='post-loop-meta'>
         <span>
           <i class='icon-calendar'></i>
-          3个月前
+          4个月前
         </span>
         <span class='hidden-mobile-ib tags'>
           <i class='icon-tags'></i>
@@ -476,7 +658,8 @@
 
       <!--
       <div class='under-post'>
-        <div class='post-social text-center'>
+        <!--
+<div class='post-social text-center'>
   <a class='social-link' href='#'>
     <i class='icon-facebook'></i>
   </a>
@@ -490,6 +673,27 @@
     <i class='icon-envelope'></i>
   </a>
 </div>
+-->
+
+<!-- Baidu Button BEGIN -->
+<!-- later we could make this more general -->
+<div class=' post-social text-center'>
+  <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+    <a class="bds_tsina"></a>
+    <a class="bds_tqq"></a>
+    <a class="bds_renren"></a>
+    <a class="bds_mail"></a>
+    <a class="bds_print"></a>
+    <!-- span class="bds_more"></span -->
+    <a class="shareCount"></a>
+  </div>
+  <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6554625" ></script>
+  <script type="text/javascript" id="bdshell_js"></script>
+  <script type="text/javascript">
+  document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+  </script>
+</div>
+<!-- Baidu Button END -->
       </div>
       <br/>
       -->
@@ -513,7 +717,7 @@
       <div class='author-meta'>
         <h4 class='author-name'>Tyr Chen</h4>
         <i class='icon-calendar'></i>
-        3个月前
+        4个月前
       </div>
     </div>
   </div>
@@ -526,7 +730,7 @@
       <div class='post-loop-meta'>
         <span>
           <i class='icon-calendar'></i>
-          3个月前
+          4个月前
         </span>
         <span class='hidden-mobile-ib tags'>
           <i class='icon-tags'></i>
@@ -572,7 +776,8 @@ int f(void) {
 
       <!--
       <div class='under-post'>
-        <div class='post-social text-center'>
+        <!--
+<div class='post-social text-center'>
   <a class='social-link' href='#'>
     <i class='icon-facebook'></i>
   </a>
@@ -586,6 +791,27 @@ int f(void) {
     <i class='icon-envelope'></i>
   </a>
 </div>
+-->
+
+<!-- Baidu Button BEGIN -->
+<!-- later we could make this more general -->
+<div class=' post-social text-center'>
+  <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+    <a class="bds_tsina"></a>
+    <a class="bds_tqq"></a>
+    <a class="bds_renren"></a>
+    <a class="bds_mail"></a>
+    <a class="bds_print"></a>
+    <!-- span class="bds_more"></span -->
+    <a class="shareCount"></a>
+  </div>
+  <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6554625" ></script>
+  <script type="text/javascript" id="bdshell_js"></script>
+  <script type="text/javascript">
+  document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+  </script>
+</div>
+<!-- Baidu Button END -->
       </div>
       <br/>
       -->
@@ -655,7 +881,8 @@ int f(void) {
 
       <!--
       <div class='under-post'>
-        <div class='post-social text-center'>
+        <!--
+<div class='post-social text-center'>
   <a class='social-link' href='#'>
     <i class='icon-facebook'></i>
   </a>
@@ -669,6 +896,27 @@ int f(void) {
     <i class='icon-envelope'></i>
   </a>
 </div>
+-->
+
+<!-- Baidu Button BEGIN -->
+<!-- later we could make this more general -->
+<div class=' post-social text-center'>
+  <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+    <a class="bds_tsina"></a>
+    <a class="bds_tqq"></a>
+    <a class="bds_renren"></a>
+    <a class="bds_mail"></a>
+    <a class="bds_print"></a>
+    <!-- span class="bds_more"></span -->
+    <a class="shareCount"></a>
+  </div>
+  <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6554625" ></script>
+  <script type="text/javascript" id="bdshell_js"></script>
+  <script type="text/javascript">
+  document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+  </script>
+</div>
+<!-- Baidu Button END -->
       </div>
       <br/>
       -->
@@ -692,7 +940,7 @@ int f(void) {
       <div class='author-meta'>
         <h4 class='author-name'>Tyr Chen</h4>
         <i class='icon-calendar'></i>
-        4个月前
+        5个月前
       </div>
     </div>
   </div>
@@ -705,7 +953,7 @@ int f(void) {
       <div class='post-loop-meta'>
         <span>
           <i class='icon-calendar'></i>
-          4个月前
+          5个月前
         </span>
         <span class='hidden-mobile-ib tags'>
           <i class='icon-tags'></i>
@@ -736,7 +984,8 @@ int f(void) {
 
       <!--
       <div class='under-post'>
-        <div class='post-social text-center'>
+        <!--
+<div class='post-social text-center'>
   <a class='social-link' href='#'>
     <i class='icon-facebook'></i>
   </a>
@@ -750,6 +999,27 @@ int f(void) {
     <i class='icon-envelope'></i>
   </a>
 </div>
+-->
+
+<!-- Baidu Button BEGIN -->
+<!-- later we could make this more general -->
+<div class=' post-social text-center'>
+  <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+    <a class="bds_tsina"></a>
+    <a class="bds_tqq"></a>
+    <a class="bds_renren"></a>
+    <a class="bds_mail"></a>
+    <a class="bds_print"></a>
+    <!-- span class="bds_more"></span -->
+    <a class="shareCount"></a>
+  </div>
+  <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6554625" ></script>
+  <script type="text/javascript" id="bdshell_js"></script>
+  <script type="text/javascript">
+  document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+  </script>
+</div>
+<!-- Baidu Button END -->
       </div>
       <br/>
       -->
@@ -820,7 +1090,8 @@ int f(void) {
 
       <!--
       <div class='under-post'>
-        <div class='post-social text-center'>
+        <!--
+<div class='post-social text-center'>
   <a class='social-link' href='#'>
     <i class='icon-facebook'></i>
   </a>
@@ -834,6 +1105,27 @@ int f(void) {
     <i class='icon-envelope'></i>
   </a>
 </div>
+-->
+
+<!-- Baidu Button BEGIN -->
+<!-- later we could make this more general -->
+<div class=' post-social text-center'>
+  <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+    <a class="bds_tsina"></a>
+    <a class="bds_tqq"></a>
+    <a class="bds_renren"></a>
+    <a class="bds_mail"></a>
+    <a class="bds_print"></a>
+    <!-- span class="bds_more"></span -->
+    <a class="shareCount"></a>
+  </div>
+  <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6554625" ></script>
+  <script type="text/javascript" id="bdshell_js"></script>
+  <script type="text/javascript">
+  document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+  </script>
+</div>
+<!-- Baidu Button END -->
       </div>
       <br/>
       -->
@@ -906,7 +1198,8 @@ int f(void) {
 
       <!--
       <div class='under-post'>
-        <div class='post-social text-center'>
+        <!--
+<div class='post-social text-center'>
   <a class='social-link' href='#'>
     <i class='icon-facebook'></i>
   </a>
@@ -920,94 +1213,32 @@ int f(void) {
     <i class='icon-envelope'></i>
   </a>
 </div>
+-->
+
+<!-- Baidu Button BEGIN -->
+<!-- later we could make this more general -->
+<div class=' post-social text-center'>
+  <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+    <a class="bds_tsina"></a>
+    <a class="bds_tqq"></a>
+    <a class="bds_renren"></a>
+    <a class="bds_mail"></a>
+    <a class="bds_print"></a>
+    <!-- span class="bds_more"></span -->
+    <a class="shareCount"></a>
+  </div>
+  <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6554625" ></script>
+  <script type="text/javascript" id="bdshell_js"></script>
+  <script type="text/javascript">
+  document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+  </script>
+</div>
+<!-- Baidu Button END -->
       </div>
       <br/>
       -->
       <div class='slogan-buttons'>
           <a class='btn btn-primary btn-cta btn-lg animated-when-hover' data-animation-type="swing" href='/posts/2013-06-10-use-scrapyd-to-serve-scrapy-projects.html'>
-              继续阅读 ->
-          </a>
-      </div>
-    </div>
-  </div>
-</div>
-
-    
-        <div class='row post-loop'>
-  <!--
-  <div class='col-md-2 col-md-offset-1'>
-    <div class='post-loop-author-info'>
-      <div class='author-avatar'>
-        <img alt='' src='/assets/images/tyr.png'>
-      </div>
-      <div class='author-meta'>
-        <h4 class='author-name'>Tyr Chen</h4>
-        <i class='icon-calendar'></i>
-        6个月前
-      </div>
-    </div>
-  </div>
-  -->
-  <div class='col-md-8 col-md-offset-2'>
-    <div class='post-loop-content'>
-      <h2 class='has-sub-header'>
-        <a href='/posts/2013-05-09-why-every-developer-should-use-mac.html'>why every developer should use mac</a>
-      </h2>
-      <div class='post-loop-meta'>
-        <span>
-          <i class='icon-calendar'></i>
-          6个月前
-        </span>
-        <span class='hidden-mobile-ib tags'>
-          <i class='icon-tags'></i>
-          
-            <a href='/tags/mac.html'>mac</a>
-          
-            <a href='/tags/thought.html'>thought</a>
-          
-        </span>
-        <span>
-          <i class='icon-time'></i>
-          8 分钟
-        </span>
-        <!--
-        <span class='hidden-mobile-ib'>
-          <a href='#'>
-            <i class='icon-comments'></i>
-            24
-          </a>
-        </span>
-        <span class='hidden-mobile-ib'>
-          <a href='#'>
-            <i class='icon-heart'></i>
-            15
-          </a>
-        </span>
-        -->
-      </div>
-      <p>Two years ago, I bought my own 13&quot; mbp. From then on, I never left mac world, only changed that little thing to a new 15&quot; retina mbp. From my two years experience, I believe to make your development work much more productive, you shall use mac.</p>
-
-      <!--
-      <div class='under-post'>
-        <div class='post-social text-center'>
-  <a class='social-link' href='#'>
-    <i class='icon-facebook'></i>
-  </a>
-  <a class='social-link' href='#'>
-    <i class='icon-twitter'></i>
-  </a>
-  <a class='social-link' href='#'>
-    <i class='icon-linkedin'></i>
-  </a>
-  <a class='social-link' href='#'>
-    <i class='icon-envelope'></i>
-  </a>
-</div>
-      </div>
-      <br/>
-      -->
-      <div class='slogan-buttons'>
-          <a class='btn btn-primary btn-cta btn-lg animated-when-hover' data-animation-type="swing" href='/posts/2013-05-09-why-every-developer-should-use-mac.html'>
               继续阅读 ->
           </a>
       </div>

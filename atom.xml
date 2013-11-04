@@ -3,13 +3,31 @@
         <title>觅珠人</title>
 		<link href="http://tchen.me/atom.xml" rel="self"/>
 		<link href="http://tchen.me"/>
-        <updated>2013-10-30T01:23:28.194Z</updated>
+        <updated>2013-11-04T05:56:48.419Z</updated>
 		<id>http://tchen.me</id>
         <author>
 			<name>Tyr Chen</name>
 			<email></email>
         </author>
 
+        
+        	<entry>
+            	<title>Hatch: 实验</title>
+				<link href="http://tchen.me/posts/2013-11-03-hatch-experiment.html"/>
+                <updated>2013-11-04T14:40:00.000Z</updated>
+				<id>http://tchen.me/posts/2013-11-03-hatch-experiment.html</id>
+                <content type="html">&lt;p&gt;继续 &lt;a href=&quot;/posts/2013-11-03-hatch-experiment.html&quot;&gt;前文&lt;/a&gt; 。熬到了周末，正式开始了 &lt;code&gt;hatch&lt;/code&gt; 项目的开发。首先是一个关键问题：如果每个文件的生成由一个单一的shell脚本完成，那么数据库打开/关闭的损耗会不会成为瓶颈？做了个简单的实验，发现每次打开都要花费0.2s，一个不小的数字。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;➜  hatch git:(master) ✗ cat test.coffee
+
+db = require(&amp;#39;mongojs&amp;#39;)(&amp;#39;hatch&amp;#39;)
+col = db.collection(&amp;#39;documents&amp;#39;)
+
+col.findOne {}, (err, doc) -&amp;gt;
+    db.close()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;➜  hatch git:(master) ✗ time ./test.coffee
+./test.coffee  0.20s user 0.03s system 99% cpu 0.226 total&lt;/code&gt;&lt;/pre&gt;
+</content>
+            </entry>
         
         	<entry>
             	<title>Hatch: 又一个建站工具</title>

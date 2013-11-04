@@ -155,18 +155,27 @@
         <div class='row bottom-margin'>
     
     <div class='col-md-5'>
-        <h2 class='header-lined'>Hatch: 又一个建站工具</h2>
-        <p class='text-bigger'><p>在 <a href="/posts/2013-10-28-blog-reborn.html">前文</a> 中，我尝试了 <a href="http://docpad.org">docpad</a> 做为新的建站工具。<code>docpad</code> 有很多优点，但最大的缺点是效率。在我看来，一个好的静态网站生成工具最好能在秒级处理成千上万文档，这样才能真正满足个人博客外的中等规模网站的需求。要做到这一点，工具必须将full build和incremental build区别开来。这样，即使一个full build要花几十秒甚至几分钟，incremental build还能控制在秒级。当用户修改某个文件时，incremental build能够保证用户有良好的体验 —— 无需等待，改动立即可见。而这一点，则恰恰是 <code>docpad</code> 所欠缺的。本文讲述的 <code>hatch</code> 项目将尝试在保留 <code>docpad</code> 的诸多优点外，通过更智能的build过程将编译速度尽最大可能提高。</p>
+        <h2 class='header-lined'>Hatch: 实验</h2>
+        <p class='text-bigger'><p>继续 <a href="/posts/2013-11-03-hatch-experiment.html">前文</a> 。熬到了周末，正式开始了 <code>hatch</code> 项目的开发。首先是一个关键问题：如果每个文件的生成由一个单一的shell脚本完成，那么数据库打开/关闭的损耗会不会成为瓶颈？做了个简单的实验，发现每次打开都要花费0.2s，一个不小的数字。</p>
+<pre><code>➜  hatch git:(master) ✗ cat test.coffee
+
+db = require(&#39;mongojs&#39;)(&#39;hatch&#39;)
+col = db.collection(&#39;documents&#39;)
+
+col.findOne {}, (err, doc) -&gt;
+    db.close()</code></pre>
+<pre><code>➜  hatch git:(master) ✗ time ./test.coffee
+./test.coffee  0.20s user 0.03s system 99% cpu 0.226 total</code></pre>
 </p>
         <div class='slogan-buttons'>
-            <a class='btn btn-primary btn-cta btn-lg animated-when-hover' data-animation-type="swing" href='/posts/2013-10-30-the-hatch-project.html'>
+            <a class='btn btn-primary btn-cta btn-lg animated-when-hover' data-animation-type="swing" href='/posts/2013-11-03-hatch-experiment.html'>
                 继续阅读 ->
             </a>
         </div>
     </div>
     <div class='col-md-7'>
         <div class='frame-browser-image'>
-            <img class='img-rounded' src='/assets/files/posts/hatch.jpg'>    
+            <img class='img-rounded' src='/assets/files/posts/hatch_experiment.jpg'>    
         </div>
         
     </div>
@@ -188,6 +197,34 @@
         
             <div class='item active'>
                 <div class='row'>
+                    
+                        <div class='col-md-4'>
+                            <div class='portfolio-item portfolio-style-3 animated-when-visible' data-animation-type='flipInY'>
+                                <div class='frame-browser'>
+                                    <figure>
+                                        <img alt='' src='/assets/files/posts/hatch_experiment.jpg'>
+                                        <figcaption>
+                                            <h5 class='fp-title'>
+                                                <a href='#'>Hatch: 实验</a>
+                                            </h5>
+                                            <div class='fp-content'> </div>
+                                            <div class='fp-buttons'>
+                                                <a class='btn btn-default btn-sm fp-details-btn' href='/posts/2013-11-03-hatch-experiment.html'>
+                                                    <i class='icon-file-text-alt'></i>
+                                                    查看详情
+                                                </a>
+                                                <!--
+                                                <a class='btn btn-default btn-sm fp-lightbox-btn prettyphoto' data-rel='prettyPhoto' href='http://placehold.it/700x500'>
+                                                    <i class='icon-zoom-in'></i>
+                                                    View Bigger
+                                                </a>
+                                                -->
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
                     
                         <div class='col-md-4'>
                             <div class='portfolio-item portfolio-style-3 animated-when-visible' data-animation-type='flipInY'>
@@ -245,6 +282,12 @@
                             </div>
                         </div>
                     
+                </div>
+            </div>
+        
+            <div class='item '>
+                <div class='row'>
+                    
                         <div class='col-md-4'>
                             <div class='portfolio-item portfolio-style-3 animated-when-visible' data-animation-type='flipInY'>
                                 <div class='frame-browser'>
@@ -272,12 +315,6 @@
                                 </div>
                             </div>
                         </div>
-                    
-                </div>
-            </div>
-        
-            <div class='item '>
-                <div class='row'>
                     
                         <div class='col-md-4'>
                             <div class='portfolio-item portfolio-style-3 animated-when-visible' data-animation-type='flipInY'>
@@ -319,34 +356,6 @@
                                             <div class='fp-content'> </div>
                                             <div class='fp-buttons'>
                                                 <a class='btn btn-default btn-sm fp-details-btn' href='/posts/2013-07-18-c-grammar-you-cannot-imagine.html'>
-                                                    <i class='icon-file-text-alt'></i>
-                                                    查看详情
-                                                </a>
-                                                <!--
-                                                <a class='btn btn-default btn-sm fp-lightbox-btn prettyphoto' data-rel='prettyPhoto' href='http://placehold.it/700x500'>
-                                                    <i class='icon-zoom-in'></i>
-                                                    View Bigger
-                                                </a>
-                                                -->
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </div>
-                            </div>
-                        </div>
-                    
-                        <div class='col-md-4'>
-                            <div class='portfolio-item portfolio-style-3 animated-when-visible' data-animation-type='flipInY'>
-                                <div class='frame-browser'>
-                                    <figure>
-                                        <img alt='' src='/assets/files/posts/embeddedsystem.jpg'>
-                                        <figcaption>
-                                            <h5 class='fp-title'>
-                                                <a href='#'>Come to Origins for Embedded Applications</a>
-                                            </h5>
-                                            <div class='fp-content'> </div>
-                                            <div class='fp-buttons'>
-                                                <a class='btn btn-default btn-sm fp-details-btn' href='/posts/2013-06-23-come-to-origin-for-embedded-applications.html'>
                                                     <i class='icon-file-text-alt'></i>
                                                     查看详情
                                                 </a>
