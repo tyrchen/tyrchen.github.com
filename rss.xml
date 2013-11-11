@@ -5,10 +5,162 @@
         <description><![CDATA[本博客提供我个人的想法，创意，经验，心得。你不必认同博主观点。]]></description>
         <link>http://tchen.me</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Wed, 06 Nov 2013 04:50:54 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 11 Nov 2013 06:04:59 GMT</lastBuildDate>
         <atom:link href="http://tchen.me/rss.xml" rel="self" type="application/rss+xml"/>
         <author><![CDATA[Tyr Chen]]></author>
-        <pubDate>Wed, 06 Nov 2013 04:50:13 GMT</pubDate>
+        <pubDate>Mon, 11 Nov 2013 06:04:20 GMT</pubDate>
+        <item>
+            <title><![CDATA[使用HTTPS]]></title>
+            <description><![CDATA[<p>如今随着网上交易规模不断扩大及API驱动的互联网的出现（如 <a href="https://strip.com">https://strip.com</a> ），互联网的安全性越来越受到重视。本文简单讲述如何将你的nginx配置成支持https的web server。当然，理论上一个合格的https server需要从CA那里获得正式的SSL certificate，但如何购买SSL certificate不在本文讨论之列。本文仅从技术上讨论如何在你的服务器上使能https。</p>
+<!--more-->
+
+<h2>生成证书</h2>
+<h3>生成RSA key</h3>
+<p>首先生成本地的RSA key，我们使用1024 bit的密钥。pass phrase一定要输入，并且输入的pass phrase在接下来的步骤中要使用。</p>
+<pre><code>sudo mkdir /etc/nginx/ssl
+cd /etc/nginx/ssl
+$ sudo openssl genrsa -des3 -out coderena.key 1024
+[sudo] password for tchen:
+Generating RSA private key, 1024 bit long modulus
+.....++++++
+.++++++
+e is 65537 (0x10001)
+Enter pass phrase for coderena.key:
+Verifying - Enter pass phrase for coderena.key:
+`</code></pre>
+<h3>生成csr (Certificate Signing Request)</h3>
+<p>CSR包含能够鉴别证书申请人的信息。关于CSR及X.509证书的详细说明，请参考：<a href="http://en.wikipedia.org/wiki/Certificate_signing_request。">http://en.wikipedia.org/wiki/Certificate_signing_request。</a></p>
+<pre><code>$ sudo openssl req -new -key coderena.key -out coderena.csr
+Enter pass phrase for coderena.key:
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter &#39;.&#39;, the field will be left blank.
+-----
+Country Name (2 letter code) [AU]:CN
+State or Province Name (full name) [Some-State]:Beijing
+Locality Name (eg, city) []:BJ
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:Coderena
+Organizational Unit Name (eg, section) []:
+Common Name (e.g. server FQDN or YOUR name) []:coderena.com
+Email Address []:tchen@coderena.com
+
+Please enter the following &#39;extra&#39; attributes
+to be sent with your certificate request
+A challenge password []:
+An optional company name []:</code></pre>
+<h3>为csr签名</h3>
+<p>首先要把刚才生成的RSA密钥的pass phrase移除：</p>
+<pre><code>$ sudo openssl rsa -in coderena.key.org -out coderena.key
+Enter pass phrase for coderena.key.org:
+writing RSA key</code></pre>
+<p>对CSR进行为期一年（365 days）的授权，生成证书：</p>
+<pre><code>$ sudo openssl x509 -req -days 365 -in coderena.csr -signkey coderena.key -out coderena.crt
+Signature ok
+subject=/C=CN/ST=Beijing/L=BJ/O=Coderena/CN=coderena.com/emailAddress=tchen@coderena.com
+Getting Private key</code></pre>
+<h3>保护证书</h3>
+<p>在当前目录下，把证书相关文件的权限改为只可自己读，防止他人使用或篡改。</p>
+<pre><code>$ sudo chmod 600 *</code></pre>
+<h2>设置nginx</h2>
+<p>接下来就是设置网站使用证书。一般我们的app server（如nodejs或gunicorn）都部署在nginx或apache后，所以SSL可以在用户端和web server端使能，这样免去了为每个app server支持SSL的麻烦。这样做在web server和app server之间存在一定的安全风险，但一般而言，web server / app server都在同一个受信任的网络内，所以问题不大。</p>
+<p>本文将讨论在nginx下配置SSL。假设在site-available下你有如下virtual host:</p>
+<pre><code>server {
+  listen 80;
+  server_name coderena.com;
+  set $current_root &quot;/home/dev/deployment/coderena&quot;;
+  access_log /var/log/nginx/coderena.access.log;
+  error_log /var/log/nginx/coderena.error.log;
+
+  location ~* ^/media/ {
+    autoindex off;
+    root $current_root;
+    expires max;
+  }
+
+
+  location ~* ^/static/ {
+    autoindex off;
+    root $current_root;
+    expires 30d;
+  }
+
+  location / {
+    proxy_pass http://localhost:7010;
+    include /etc/nginx/proxy_params;
+  }
+}</code></pre>
+<p>要对其使能https，首先，将所有http请求都跳转到https：</p>
+<pre><code>server {
+ listen      80;
+ server_name coderena.com;
+ rewrite     ^ https://$server_name$request_uri? permanent;
+}</code></pre>
+<p>接着配置https:</p>
+<pre><code>server {
+  listen 443;
+  ssl on;
+  ssl_certificate /etc/nginx/ssl/coderena.crt;
+  ssl_certificate_key /etc/nginx/ssl/coderena.key;
+
+  server_name coderena.com;
+
+  set $current_root &quot;/home/dev/deployment/coderena&quot;;
+  client_max_body_size 32m;
+
+  access_log /var/log/nginx/coderena.access.log;
+  error_log /var/log/nginx/coderena.error.log;
+
+  location ~* ^/media/ {
+    autoindex off;
+    root $current_root;
+    expires max;
+  }
+
+
+  location ~* ^/static/ {
+    autoindex off;
+    root $current_root;
+    expires 30d;
+  }
+
+  location / {
+    proxy_pass http://localhost:7010;
+    include /etc/nginx/proxy_ssl_params;
+  }
+
+}</code></pre>
+<p>我们之前使用的proxy params在 <code>proxy_params</code> 文件中：</p>
+<pre><code>proxy_set_header Host $host;
+proxy_set_header X-Real-IP $remote_addr;
+proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</code></pre>
+<p>对于https，我们需要一个单独的 <code>proxy_ssl_params</code> 文件:</p>
+<pre><code>proxy_redirect off;
+proxy_set_header Host $host;
+proxy_set_header X-Real-IP $remote_addr;
+proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+proxy_set_header X-Forwarded-Proto https;</code></pre>
+<p>两者有一些差别。</p>
+<p>至此，整个证书的生成及使用就完成了，重启nginx后打开浏览器就可以尝试。注意由于我们的证书是在本地签名的，不属于一个合法的CA授权的证书，所以浏览器会报警，继续浏览即可。虽然浏览器认为其安全性存在问题，但整个访问过程都是通过SSL进行加密的。</p>
+<h2>补记</h2>
+<p>如果要购买被验证的证书，需要花费一大笔美刀（比如Symantac的单服务器任意子域名3年有效的证书要$5095）。这么贵是有原因的：</p>
+<ul>
+<li>CA需要在技术上做大笔投入来保护自己的data center不被攻破。（想想看上百万的证书私钥对黑客有多大的吸引力，就像银行的金库一样）</li>
+<li>CA往往对证书提供保险（上例中的证书有每年 $500, 000的保障，大致意思是如果证书被compromise，对于你的损失，我最高可以赔这些钱）。</li>
+<li>SSL certificate是身份和实力的象征，大企业和创业土豪们不差钱。</li>
+</ul>
+<p>当然，如果你付不起这么多钱，很想使用https保护你的用户（但根本不需要巨额的保险），可以购买那些二三线的CA的证书。几美金到几十美金一年就可以搞定。这就跟把传家宝藏在瑞士银行的保险柜里和放在本地农商行的保险柜一个道理，一分钱一分货。</p>
+<p>送上小宝照片一枚：</p>
+<p><img src="/assets/files/photos/baby20131110.jpg" alt="小宝"></p>
+]]></description>
+            <link>http://tchen.me/posts/2013-11-11-https.html</link>
+            <guid isPermaLink="true">
+                http://tchen.me/posts/2013-11-11-https.html            </guid>
+            <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
+            <pubDate>Sun, 10 Nov 2013 14:40:00 GMT</pubDate>
+        </item>
         <item>
             <title><![CDATA[Hatch: 实验]]></title>
             <description><![CDATA[<p>继续 <a href="/posts/2013-11-03-hatch-experiment.html">前文</a> 。熬到了周末，正式开始了 <code>hatch</code> 项目的开发。首先是一个关键问题：如果每个文件的生成由一个单一的shell脚本完成，那么数据库打开/关闭的损耗会不会成为瓶颈？做了个简单的实验，发现每次打开都要花费0.2s，一个不小的数字。</p>
@@ -1460,105 +1612,6 @@ value is f50cef80</code></pre>
                 http://tchen.me/posts/2013-06-12-use-makefile-to-automate-deployment.html            </guid>
             <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
             <pubDate>Tue, 11 Jun 2013 23:14:00 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[用scrapyd来提供crawler服务]]></title>
-            <description><![CDATA[<p>这是一篇即兴的短文，主要是为了记录我用 <code>scrapyd</code> 的心得。</p>
-<p>之前做数据抓取，总是一个scrapy project做一个deploy，很不方便，一个一个更新起来也很麻烦，总觉得能有更好的方法去处理。今早看了看scrapyd，觉得这就是我想要的东西。</p>
-<!--more-->
-
-<h2>目标</h2>
-<p>假设你有两个scrapy project：</p>
-<ul>
-<li>alpha: 其spider是alpha-spider。</li>
-<li>beta: 其spider是beta-spider。</li>
-</ul>
-<p>你想将其做成service，在一台ubuntu server（gryffindoe）上每周定期运行。</p>
-<h2>前提</h2>
-<p>在gryffindoe上，安装scrapyd：</p>
-<section>
-<pre><code> $ lsb_release -cs
- quantal
- $ # 将 deb http://archive.scrapy.org/ubuntu quantal main 添加到sources.list中
- $ sudo vim /etc/apt/sources.list
- $ # 安装key
- $ curl -s http://archive.scrapy.org/ubuntu/archive.key | sudo apt-key add -
- $ sudo apt-get update
- $ apt-cache search scrapyd
- scrapyd-0.16 - Scrapy Service
- scrapyd-0.17 - Scrapy Service
- $ # 安装最新版本
- $ sudo apt-get isntall scrapyd-0.17</code></pre>
-</section>
-<p>安装完成后，scrapyd就自动在gryffindoe上运行了。</p>
-<h2>部署scrapy项目</h2>
-<p>scrapyd默认运行在6800端口，假设gryffindoe的域名是 <code>gryffindoe.com</code>，在你的alpha项目中，编辑 <code>scrapy.cfg</code>:</p>
-<section>
-<pre><code> [deploy:gryffindoe]
- url = http://gryffindoe.com:6800/
- project = alpha</code></pre>
-</section>
-<p>然后你可以在你的scrapy项目下查看在gryffindoe上的scrapyd的状态：</p>
-<section>
-<pre><code> $ # 查看当前scrapyd配置
- $ scrapy deploy -l
- gryffindoe                http://gryffindoe.com:6800/
- $ # 查看当前scrapyd上部署好的项目，现在还没有
- $ scrapy deploy -L gryffindoe</code></pre>
-</section>
-<p>接着我们把 <code>alpha</code> 部署到 <code>gryffindoe</code>:</p>
-<section>
-<pre><code> $ scrapy deploy graffindoe -p alpha
- Building egg of alpha-1370823198
- &#39;build/scripts-2.7&#39; does not exist -- can&#39;t clean it
- zip_safe flag not set; analyzing archive contents...
- Deploying alpha-1370823198 to http://gryffindoe.com:6800/addversion.json
- Server response (200):
- {&quot;status&quot;: &quot;ok&quot;, &quot;project&quot;: &quot;alpha&quot;, &quot;version&quot;: &quot;1370823198&quot;, &quot;spiders&quot;: 1}
- $ scrapy deploy -L gryffindoe
- alpha</code></pre>
-</section>
-<p>大功告成。进入到另一个project <code>beta</code> 的目录下，如法炮制:</p>
-<section>
-<pre><code> $ scrapy deploy graffindoe -p beta
- Building egg of beta-1370823198
- &#39;build/scripts-2.7&#39; does not exist -- can&#39;t clean it
- zip_safe flag not set; analyzing archive contents...
- Deploying beta-1370823198 to http://gryffindoe.com:6800/addversion.json
- Server response (200):
- {&quot;status&quot;: &quot;ok&quot;, &quot;project&quot;: &quot;beta&quot;, &quot;version&quot;: &quot;1370823198&quot;, &quot;spiders&quot;: 1}
- $ scrapy deploy -L gryffindoe
- alpha
- beta</code></pre>
-</section>
-<p>现在你打开 <code>http://gryffindeo.com:6800/</code>，应该有如下显示：</p>
-<section>
-<p> Scrapyd</p>
-<p> Available projects: alpha, beta</p>
-<p> Jobs
- Items
- Logs
- Documentation</p>
-</section>
-<h2>运行spider</h2>
-<p>接下来我们可以远程指定要运行的spider了，很简单，页面上提示可以直接使用scrapyd的json API:</p>
-<section>
-<pre><code> $ curl http://localhost:6800/schedule.json -d project=default -d spider=somespider</code></pre>
-</section>
-<p>对于project <code>alpha</code>下的spider <code>alpha-spider</code>:</p>
-<section>
-<pre><code> $ curl http://localhost:6800/schedule.json -d project=alpha -d spider=alpha-spider</code></pre>
-</section>
-<p>这样，alpha-spider就开始运行了。你可以打开 <code>http://gryffindeo.com:6800/</code> 查看运行状态。</p>
-<p>如果要定期运行spider，把这条命令加到cronjob里就可以了。</p>
-<p>送上六一给小宝的礼物一枚：</p>
-<p><embed src="http://player.youku.com/player.php/sid/XNTY0NzQ5NDA0/v.swf" allowFullScreen="true" quality="high" width="660" height="500" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed><br/></p>
-]]></description>
-            <link>http://tchen.me/posts/2013-06-10-use-scrapyd-to-serve-scrapy-projects.html</link>
-            <guid isPermaLink="true">
-                http://tchen.me/posts/2013-06-10-use-scrapyd-to-serve-scrapy-projects.html            </guid>
-            <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
-            <pubDate>Sun, 09 Jun 2013 23:51:00 GMT</pubDate>
         </item>
     </channel>
 </rss>
