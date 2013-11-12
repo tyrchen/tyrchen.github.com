@@ -343,7 +343,7 @@ docker-registry                  RUNNING    pid 4371, uptime 0:00:01</code></pre
 <pre><code>server {
   listen 80;
   client_max_body_size 200m;
-  server_name docker.jcnrd.us;
+  server_name docker.your-domain.com;
   access_log /var/log/nginx/docker-registry.access.log;
   error_log /var/log/nginx/docker-registry.error.log;
   location / {
@@ -355,7 +355,7 @@ docker-registry                  RUNNING    pid 4371, uptime 0:00:01</code></pre
 <pre><code>cd /etc/nginx/sites-enabled/
 sudo ln -s ../sites-available/docker-registry docker-registry
 sudo /etc/init.d/nginx restart</code></pre>
-<p>把 <code>docker</code> 二级域名加入到你的域名服务器中，然后打开浏览器访问 <a href="http://docker.jcnrd.us">http://docker.jcnrd.us</a> 就可以看到如下页面：</p>
+<p>把 <code>docker</code> 二级域名加入到你的域名服务器中，然后打开浏览器访问 <a href="http://docker.your-domain.com">http://docker.your-domain.com</a> 就可以看到如下页面：</p>
 <pre><code>&quot;docker-registry server (dev)&quot;</code></pre>
 <p>至此，<code>docker-registry</code> 就正常运行了。</p>
 <p>接下来看看系统都有哪些 docker images：</p>
@@ -374,12 +374,12 @@ base                                  ubuntu-12.10          b750fe79269d        
 base                                  ubuntu-quantal        b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
 base                                  ubuntu-quantl         b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)</code></pre>
 <p>我们选择 <code>base</code> 对应的 image，将其 push 到自己的服务器。首先将其标记为要push到自己的服务器：</p>
-<pre><code>$ sudo docker tag b750fe79269d docker.jcnrd.us/tchen/base</code></pre>
+<pre><code>$ sudo docker tag b750fe79269d docker.your-domain.com/tchen/base</code></pre>
 <p>然后push:</p>
-<pre><code>$ sudo docker push docker.jcnrd.us/tchen/base
-The push refers to a repository [docker.jcnrd.us/tchen/base] (len: 1)
+<pre><code>$ sudo docker push docker.your-domain.com/tchen/base
+The push refers to a repository [docker.your-domain.com/tchen/base] (len: 1)
 Sending image list
-Pushing repository docker.jcnrd.us/tchen (1 tags)
+Pushing repository docker.your-domain.com/tchen (1 tags)
 Pushing 27cf784147099545
 
 2013/11/12 03:35:18 Received HTTP code 413 while uploading layer: &lt;html&gt;
@@ -400,18 +400,18 @@ ubuntu                                12.04                 8dbd9e392a96        
 ubuntu                                latest                8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
 ubuntu                                precise               8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
 ubuntu                                12.10                 b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-docker.jcnrd.us/base              latest                b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+docker.your-domain.com/base              latest                b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
 base                                  latest                b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-docker.jcnrd.us/tchen             latest                b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-docker.jcnrd.us/tchen/base        latest                b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+docker.your-domain.com/tchen             latest                b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+docker.your-domain.com/tchen/base        latest                b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
 ubuntu                                quantal               b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
 base                                  ubuntu-12.10          b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
 base                                  ubuntu-quantal        b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
 base                                  ubuntu-quantl         b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)</code></pre>
 <p>本地的image就可用了，尝试一下：</p>
-<pre><code>$ sudo docker run -i -t docker.jcnrd.us/tchen/base /bin/bash</code></pre>
+<pre><code>$ sudo docker run -i -t docker.your-domain.com/tchen/base /bin/bash</code></pre>
 <p>在其他机器上要pull这个image，很简单：</p>
-<pre><code>$ sudo docker pull docker.jcnrd.us/tchen/base</code></pre>
+<pre><code>$ sudo docker pull docker.your-domain.com/tchen/base</code></pre>
 
         <div class='under-post'>
           
