@@ -176,7 +176,7 @@
           <h4 class="widget-title">标签</h4>
           <ul>
           
-            <li><a href='/tags/tool.html'>tool</a></li>
+            <li><a href='/tags/guide.html'>guide</a></li>
           
             <li><a href='/tags/technology.html'>technology</a></li>
           
@@ -191,23 +191,9 @@
           <ul>
             
             
-              <li><a href="/posts/2012-12-16-first-blog.html">第一篇博客: 用octopress搭建博客系统</a></li>
-            
-              <li><a href="/posts/2012-12-16-why-meteor.html">为什么是Meteor</a></li>
-            
-              <li><a href="/posts/2012-12-18-octopress-client-a-better-composition-tool.html">产品随想：octopress客户端 —— Atanasoff</a></li>
-            
-              <li><a href="/posts/2012-12-21-meteor-basics.html">Meteor基础入门</a></li>
-            
-              <li><a href="/posts/2012-12-26-reveal-js-support-for-octopress.html">Octopress支持reveal.js撰写slides</a></li>
-            
               <li><a href="/posts/2012-12-31-atanasoff-product-design.html">进一步思考Atanasoff (Octopress client) (2)</a></li>
             
-              <li><a href="/posts/2013-01-09-auto-deploy-with-github-webhooks.html">用Github Webhooks实现自动部署</a></li>
-            
-              <li><a href="/posts/2013-01-21-why-use-wintersmith-to-replace-octopress.html">为什么要使用wintersmith取代octopress</a></li>
-            
-              <li><a href="/posts/2013-02-04-teamspark-open-sourced.html">Teamspark及Meteor杂谈</a></li>
+              <li><a href="/posts/2013-06-12-use-makefile-to-automate-deployment.html">使用Makefile自动化部署</a></li>
             
               <li><a href="/posts/2013-02-18-sdn-elementatory-introduction.html">SDN浅谈</a></li>
             
@@ -219,7 +205,7 @@
             
               <li><a href="/posts/2013-06-10-use-scrapyd-to-serve-scrapy-projects.html">用scrapyd来提供crawler服务</a></li>
             
-              <li><a href="/posts/2013-06-12-use-makefile-to-automate-deployment.html">使用Makefile自动化部署</a></li>
+              <li><a href="/posts/2012-12-18-octopress-client-a-better-composition-tool.html">产品随想：octopress客户端 —— Atanasoff</a></li>
             
               <li><a href="/posts/2013-06-23-come-to-origin-for-embedded-applications.html">Come to Origins for Embedded Applications</a></li>
             
@@ -232,6 +218,8 @@
               <li><a href="/posts/2013-10-30-the-hatch-project.html">Hatch: 又一个建站工具</a></li>
             
               <li><a href="/posts/2013-11-03-hatch-experiment.html">Hatch: 实验</a></li>
+            
+              <li><a href="/posts/2013-11-13-local-docker-repo.html">建立自己的docker repository</a></li>
             
             
           </ul>
@@ -262,7 +250,7 @@
         <div class='post-single-meta'>
           <span class='meta-item'>
             <i class='icon-calendar'></i>
-            15小时前
+            2天前
           </span>
           <!--
           <span class='meta-item'>
@@ -292,19 +280,19 @@
 <p>首先生成本地的RSA key，我们使用1024 bit的密钥。pass phrase一定要输入，并且输入的pass phrase在接下来的步骤中要使用。</p>
 <pre><code>sudo mkdir /etc/nginx/ssl
 cd /etc/nginx/ssl
-$ sudo openssl genrsa -des3 -out coderena.key 1024
+$ sudo openssl genrsa -des3 -out myserver.key 1024
 [sudo] password for tchen:
 Generating RSA private key, 1024 bit long modulus
 .....++++++
 .++++++
 e is 65537 (0x10001)
-Enter pass phrase for coderena.key:
-Verifying - Enter pass phrase for coderena.key:
+Enter pass phrase for myserver.key:
+Verifying - Enter pass phrase for myserver.key:
 `</code></pre>
 <h3>生成csr (Certificate Signing Request)</h3>
 <p>CSR包含能够鉴别证书申请人的信息。关于CSR及X.509证书的详细说明，请参考：<a href="http://en.wikipedia.org/wiki/Certificate_signing_request。">http://en.wikipedia.org/wiki/Certificate_signing_request。</a></p>
-<pre><code>$ sudo openssl req -new -key coderena.key -out coderena.csr
-Enter pass phrase for coderena.key:
+<pre><code>$ sudo openssl req -new -key myserver.key -out myserver.csr
+Enter pass phrase for myserver.key:
 You are about to be asked to enter information that will be incorporated
 into your certificate request.
 What you are about to enter is what is called a Distinguished Name or a DN.
@@ -317,8 +305,8 @@ State or Province Name (full name) [Some-State]:Beijing
 Locality Name (eg, city) []:BJ
 Organization Name (eg, company) [Internet Widgits Pty Ltd]:Coderena
 Organizational Unit Name (eg, section) []:
-Common Name (e.g. server FQDN or YOUR name) []:coderena.com
-Email Address []:tchen@coderena.com
+Common Name (e.g. server FQDN or YOUR name) []:myserver.com
+Email Address []:tchen@myserver.com
 
 Please enter the following &#39;extra&#39; attributes
 to be sent with your certificate request
@@ -326,13 +314,13 @@ A challenge password []:
 An optional company name []:</code></pre>
 <h3>为csr签名</h3>
 <p>首先要把刚才生成的RSA密钥的pass phrase移除：</p>
-<pre><code>$ sudo openssl rsa -in coderena.key.org -out coderena.key
-Enter pass phrase for coderena.key.org:
+<pre><code>$ sudo openssl rsa -in myserver.key.org -out myserver.key
+Enter pass phrase for myserver.key.org:
 writing RSA key</code></pre>
 <p>对CSR进行为期一年（365 days）的授权，生成证书：</p>
-<pre><code>$ sudo openssl x509 -req -days 365 -in coderena.csr -signkey coderena.key -out coderena.crt
+<pre><code>$ sudo openssl x509 -req -days 365 -in myserver.csr -signkey myserver.key -out myserver.crt
 Signature ok
-subject=/C=CN/ST=Beijing/L=BJ/O=Coderena/CN=coderena.com/emailAddress=tchen@coderena.com
+subject=/C=CN/ST=Beijing/L=BJ/O=Coderena/CN=myserver.com/emailAddress=tchen@myserver.com
 Getting Private key</code></pre>
 <h3>保护证书</h3>
 <p>在当前目录下，把证书相关文件的权限改为只可自己读，防止他人使用或篡改。</p>
@@ -342,17 +330,16 @@ Getting Private key</code></pre>
 <p>本文将讨论在nginx下配置SSL。假设在site-available下你有如下virtual host:</p>
 <pre><code>server {
   listen 80;
-  server_name coderena.com;
-  set $current_root &quot;/home/dev/deployment/coderena&quot;;
-  access_log /var/log/nginx/coderena.access.log;
-  error_log /var/log/nginx/coderena.error.log;
+  server_name myserver.com;
+  set $current_root &quot;/home/dev/deployment/myserver&quot;;
+  access_log /var/log/nginx/myserver.access.log;
+  error_log /var/log/nginx/myserver.error.log;
 
   location ~* ^/media/ {
     autoindex off;
     root $current_root;
     expires max;
   }
-
 
   location ~* ^/static/ {
     autoindex off;
@@ -368,23 +355,23 @@ Getting Private key</code></pre>
 <p>要对其使能https，首先，将所有http请求都跳转到https：</p>
 <pre><code>server {
  listen      80;
- server_name coderena.com;
+ server_name myserver.com;
  rewrite     ^ https://$server_name$request_uri? permanent;
 }</code></pre>
 <p>接着配置https:</p>
 <pre><code>server {
   listen 443;
   ssl on;
-  ssl_certificate /etc/nginx/ssl/coderena.crt;
-  ssl_certificate_key /etc/nginx/ssl/coderena.key;
+  ssl_certificate /etc/nginx/ssl/myserver.crt;
+  ssl_certificate_key /etc/nginx/ssl/myserver.key;
 
-  server_name coderena.com;
+  server_name myserver.com;
 
-  set $current_root &quot;/home/dev/deployment/coderena&quot;;
+  set $current_root &quot;/home/dev/deployment/myserver&quot;;
   client_max_body_size 32m;
 
-  access_log /var/log/nginx/coderena.access.log;
-  error_log /var/log/nginx/coderena.error.log;
+  access_log /var/log/nginx/myserver.access.log;
+  error_log /var/log/nginx/myserver.error.log;
 
   location ~* ^/media/ {
     autoindex off;
@@ -432,6 +419,8 @@ proxy_set_header X-Forwarded-Proto https;</code></pre>
           
           
             
+          
+            
                 
                   <div class='pull-left'>
                     <a class='read-previous-link' href='/posts/2013-11-03-hatch-experiment.html'>
@@ -440,6 +429,13 @@ proxy_set_header X-Forwarded-Proto https;</code></pre>
                     </a>
                   </div>                  
                 
+                
+                  <div class='pull-right'>
+                    <a class='read-next-link' href='/posts/2013-11-13-local-docker-repo.html'>
+                      下一篇
+                      <i class='icon-angle-right'></i>
+                    </a>
+                  </div>
                          
             
           

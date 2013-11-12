@@ -5,10 +5,145 @@
         <description><![CDATA[本博客提供我个人的想法，创意，经验，心得。你不必认同博主观点。]]></description>
         <link>http://tchen.me</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Mon, 11 Nov 2013 06:04:59 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 12 Nov 2013 14:24:30 GMT</lastBuildDate>
         <atom:link href="http://tchen.me/rss.xml" rel="self" type="application/rss+xml"/>
         <author><![CDATA[Tyr Chen]]></author>
-        <pubDate>Mon, 11 Nov 2013 06:04:20 GMT</pubDate>
+        <pubDate>Tue, 12 Nov 2013 14:23:50 GMT</pubDate>
+        <item>
+            <title><![CDATA[建立自己的docker repository]]></title>
+            <description><![CDATA[<p>如果你不知道docker是什么，请参考 <a href="http://www.slideshare.net/dotCloud/why-docker">这个slides</a>。</p>
+<p>在 ubuntu 下安装 docker 请参考：<a href="http://docs.docker.io/en/latest/installation/ubuntulinux/。注意，由于">http://docs.docker.io/en/latest/installation/ubuntulinux/。注意，由于</a> docker 的核心技术是 <a href="http://en.wikipedia.org/wiki/LXC">Linux container</a>，所以如果想在 osx 下安装 docker 请使用 vagrant。</p>
+<!--more-->
+
+<h2>安装docker-registry</h2>
+<p>首先clone docker-registry：</p>
+<pre><code>$ git clone https://github.com/dotcloud/docker-registry
+$ cd docker-registry
+
+$ cp config_sample.yml config.yml</code></pre>
+<p>然后打开 <code>config.yml</code>，设置dev（缺省）的storage路径为 <code>/var/docker/registry</code>：</p>
+<pre><code># This is the default configuration when no flavor is specified
+dev:
+    storage: local
+    storage_path: /var/docker/registry
+    loglevel: debug</code></pre>
+<p>创建这个目录：</p>
+<pre><code>sudo mkdir -p /var/docker/registry
+sudo chown -R tchen /var/docker</code></pre>
+<p>docker-registry使用了python，需要以下库的支持：</p>
+<pre><code>sudo apt-get install build-essential python-dev libevent-dev python-pip libssl-dev</code></pre>
+<p>然后建立 <code>virtualenv</code> 并安装requirements：</p>
+<pre><code>$ sudo pip install virtualenv
+$ virtualenv --no-site-packages venv
+$ . venv/bin/activate
+$ pip install -r requirements.txt</code></pre>
+<h2>配置supervisor</h2>
+<p>如果系统没有安装supervisor，请先安装:</p>
+<pre><code>$ sudo apt-get install supervisor</code></pre>
+<p>安装完成后，配置 <code>supervisor</code>：</p>
+<pre><code>$ sudo vim /etc/supervisor/conf.d/docker-registry.conf</code></pre>
+<p>填入以下内容：</p>
+<pre><code>[program:docker-registry]
+directory=/home/dev/deployment/docker-registry
+user=dev
+command=/home/dev/deployment/docker-registry/venv/bin/gunicorn -b 0.0.0.0:7030 -k gevent --max-requests 100 --graceful-timeout 3600 -t 3600 -w 8 wsgi:application
+redirect_stderr=true
+stderr_logfile=none
+stdout_logfile=/var/log/supervisor/docker-registry.log
+autostart=true
+autorestart=true</code></pre>
+<p>重新加载 <code>supervisor</code> 配置：</p>
+<pre><code>$ sudo supervisorctl
+supervisor&gt; reread
+docker-registry: available
+supervisor&gt; update
+docker-registry: added process group
+supervisor&gt; status
+docker-registry                  RUNNING    pid 4371, uptime 0:00:01</code></pre>
+<p>这样，<code>docker-registry</code> 服务就正常运行了。</p>
+<h2>配置nginx</h2>
+<p>接下来把 <code>nginx</code> request proxy 到 <code>docker-registry</code> app 就大功告成了。</p>
+<pre><code>$ sudo vim /etc/nginx/sites-available/docker-registry</code></pre>
+<p>填入以下内容：</p>
+<pre><code>server {
+  listen 80;
+  client_max_body_size 200m;
+  server_name docker.jcnrd.us;
+  access_log /var/log/nginx/docker-registry.access.log;
+  error_log /var/log/nginx/docker-registry.error.log;
+  location / {
+    proxy_pass http://localhost:7030;
+    include /etc/nginx/proxy_params;
+  }
+}</code></pre>
+<p>然后将其加入 <code>sites-enabled</code> 并重启nginx：</p>
+<pre><code>cd /etc/nginx/sites-enabled/
+sudo ln -s ../sites-available/docker-registry docker-registry
+sudo /etc/init.d/nginx restart</code></pre>
+<p>把 <code>docker</code> 二级域名加入到你的域名服务器中，然后打开浏览器访问 <a href="http://docker.jcnrd.us">http://docker.jcnrd.us</a> 就可以看到如下页面：</p>
+<pre><code>&quot;docker-registry server (dev)&quot;</code></pre>
+<p>至此，<code>docker-registry</code> 就正常运行了。</p>
+<p>接下来看看系统都有哪些 docker images：</p>
+<pre><code>(venv)tchen@docker:~$ sudo docker images
+REPOSITORY                            TAG                   IMAGE ID            CREATED             SIZE
+colinsurprenant/ubuntu-raring-amd64   latest                2eb422301015        6 weeks ago         91.89 MB (virtual 91.89 MB)
+colinsurprenant/ubuntu-raring-amd64   raring-amd64          2eb422301015        6 weeks ago         91.89 MB (virtual 91.89 MB)
+colinsurprenant/ubuntu-raring-amd64   ubuntu-raring-amd64   22ca6d4b1576        6 weeks ago         91.89 MB (virtual 91.89 MB)
+ubuntu                                12.04                 8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
+ubuntu                                latest                8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
+ubuntu                                precise               8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
+ubuntu                                12.10                 b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+base                                  latest                b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+ubuntu                                quantal               b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+base                                  ubuntu-12.10          b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+base                                  ubuntu-quantal        b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+base                                  ubuntu-quantl         b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)</code></pre>
+<p>我们选择 <code>base</code> 对应的 image，将其 push 到自己的服务器。首先将其标记为要push到自己的服务器：</p>
+<pre><code>$ sudo docker tag b750fe79269d docker.jcnrd.us/tchen/base</code></pre>
+<p>然后push:</p>
+<pre><code>$ sudo docker push docker.jcnrd.us/tchen/base
+The push refers to a repository [docker.jcnrd.us/tchen/base] (len: 1)
+Sending image list
+Pushing repository docker.jcnrd.us/tchen (1 tags)
+Pushing 27cf784147099545
+
+2013/11/12 03:35:18 Received HTTP code 413 while uploading layer: &lt;html&gt;
+&lt;head&gt;&lt;title&gt;413 Request Entity Too Large&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;413 Request Entity Too Large&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.4.3&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>如果出现以上错误，请修改之前nginx配置中的 <code>client_max_body_size 200m;</code>，将其扩大至能够容纳你的image。</p>
+<p>成功后可以看到：</p>
+<pre><code>$ sudo docker images
+REPOSITORY                            TAG                   IMAGE ID            CREATED             SIZE
+colinsurprenant/ubuntu-raring-amd64   latest                2eb422301015        6 weeks ago         91.89 MB (virtual 91.89 MB)
+colinsurprenant/ubuntu-raring-amd64   raring-amd64          2eb422301015        6 weeks ago         91.89 MB (virtual 91.89 MB)
+colinsurprenant/ubuntu-raring-amd64   ubuntu-raring-amd64   22ca6d4b1576        6 weeks ago         91.89 MB (virtual 91.89 MB)
+ubuntu                                12.04                 8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
+ubuntu                                latest                8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
+ubuntu                                precise               8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
+ubuntu                                12.10                 b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+docker.jcnrd.us/base              latest                b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+base                                  latest                b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+docker.jcnrd.us/tchen             latest                b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+docker.jcnrd.us/tchen/base        latest                b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+ubuntu                                quantal               b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+base                                  ubuntu-12.10          b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+base                                  ubuntu-quantal        b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+base                                  ubuntu-quantl         b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)</code></pre>
+<p>本地的image就可用了，尝试一下：</p>
+<pre><code>$ sudo docker run -i -t docker.jcnrd.us/tchen/base /bin/bash</code></pre>
+<p>在其他机器上要pull这个image，很简单：</p>
+<pre><code>$ sudo docker pull docker.jcnrd.us/tchen/base</code></pre>
+]]></description>
+            <link>http://tchen.me/posts/2013-11-13-local-docker-repo.html</link>
+            <guid isPermaLink="true">
+                http://tchen.me/posts/2013-11-13-local-docker-repo.html            </guid>
+            <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
+            <pubDate>Wed, 13 Nov 2013 14:40:00 GMT</pubDate>
+        </item>
         <item>
             <title><![CDATA[使用HTTPS]]></title>
             <description><![CDATA[<p>如今随着网上交易规模不断扩大及API驱动的互联网的出现（如 <a href="https://strip.com">https://strip.com</a> ），互联网的安全性越来越受到重视。本文简单讲述如何将你的nginx配置成支持https的web server。当然，理论上一个合格的https server需要从CA那里获得正式的SSL certificate，但如何购买SSL certificate不在本文讨论之列。本文仅从技术上讨论如何在你的服务器上使能https。</p>
@@ -19,19 +154,19 @@
 <p>首先生成本地的RSA key，我们使用1024 bit的密钥。pass phrase一定要输入，并且输入的pass phrase在接下来的步骤中要使用。</p>
 <pre><code>sudo mkdir /etc/nginx/ssl
 cd /etc/nginx/ssl
-$ sudo openssl genrsa -des3 -out coderena.key 1024
+$ sudo openssl genrsa -des3 -out myserver.key 1024
 [sudo] password for tchen:
 Generating RSA private key, 1024 bit long modulus
 .....++++++
 .++++++
 e is 65537 (0x10001)
-Enter pass phrase for coderena.key:
-Verifying - Enter pass phrase for coderena.key:
+Enter pass phrase for myserver.key:
+Verifying - Enter pass phrase for myserver.key:
 `</code></pre>
 <h3>生成csr (Certificate Signing Request)</h3>
 <p>CSR包含能够鉴别证书申请人的信息。关于CSR及X.509证书的详细说明，请参考：<a href="http://en.wikipedia.org/wiki/Certificate_signing_request。">http://en.wikipedia.org/wiki/Certificate_signing_request。</a></p>
-<pre><code>$ sudo openssl req -new -key coderena.key -out coderena.csr
-Enter pass phrase for coderena.key:
+<pre><code>$ sudo openssl req -new -key myserver.key -out myserver.csr
+Enter pass phrase for myserver.key:
 You are about to be asked to enter information that will be incorporated
 into your certificate request.
 What you are about to enter is what is called a Distinguished Name or a DN.
@@ -44,8 +179,8 @@ State or Province Name (full name) [Some-State]:Beijing
 Locality Name (eg, city) []:BJ
 Organization Name (eg, company) [Internet Widgits Pty Ltd]:Coderena
 Organizational Unit Name (eg, section) []:
-Common Name (e.g. server FQDN or YOUR name) []:coderena.com
-Email Address []:tchen@coderena.com
+Common Name (e.g. server FQDN or YOUR name) []:myserver.com
+Email Address []:tchen@myserver.com
 
 Please enter the following &#39;extra&#39; attributes
 to be sent with your certificate request
@@ -53,13 +188,13 @@ A challenge password []:
 An optional company name []:</code></pre>
 <h3>为csr签名</h3>
 <p>首先要把刚才生成的RSA密钥的pass phrase移除：</p>
-<pre><code>$ sudo openssl rsa -in coderena.key.org -out coderena.key
-Enter pass phrase for coderena.key.org:
+<pre><code>$ sudo openssl rsa -in myserver.key.org -out myserver.key
+Enter pass phrase for myserver.key.org:
 writing RSA key</code></pre>
 <p>对CSR进行为期一年（365 days）的授权，生成证书：</p>
-<pre><code>$ sudo openssl x509 -req -days 365 -in coderena.csr -signkey coderena.key -out coderena.crt
+<pre><code>$ sudo openssl x509 -req -days 365 -in myserver.csr -signkey myserver.key -out myserver.crt
 Signature ok
-subject=/C=CN/ST=Beijing/L=BJ/O=Coderena/CN=coderena.com/emailAddress=tchen@coderena.com
+subject=/C=CN/ST=Beijing/L=BJ/O=Coderena/CN=myserver.com/emailAddress=tchen@myserver.com
 Getting Private key</code></pre>
 <h3>保护证书</h3>
 <p>在当前目录下，把证书相关文件的权限改为只可自己读，防止他人使用或篡改。</p>
@@ -69,17 +204,16 @@ Getting Private key</code></pre>
 <p>本文将讨论在nginx下配置SSL。假设在site-available下你有如下virtual host:</p>
 <pre><code>server {
   listen 80;
-  server_name coderena.com;
-  set $current_root &quot;/home/dev/deployment/coderena&quot;;
-  access_log /var/log/nginx/coderena.access.log;
-  error_log /var/log/nginx/coderena.error.log;
+  server_name myserver.com;
+  set $current_root &quot;/home/dev/deployment/myserver&quot;;
+  access_log /var/log/nginx/myserver.access.log;
+  error_log /var/log/nginx/myserver.error.log;
 
   location ~* ^/media/ {
     autoindex off;
     root $current_root;
     expires max;
   }
-
 
   location ~* ^/static/ {
     autoindex off;
@@ -95,23 +229,23 @@ Getting Private key</code></pre>
 <p>要对其使能https，首先，将所有http请求都跳转到https：</p>
 <pre><code>server {
  listen      80;
- server_name coderena.com;
+ server_name myserver.com;
  rewrite     ^ https://$server_name$request_uri? permanent;
 }</code></pre>
 <p>接着配置https:</p>
 <pre><code>server {
   listen 443;
   ssl on;
-  ssl_certificate /etc/nginx/ssl/coderena.crt;
-  ssl_certificate_key /etc/nginx/ssl/coderena.key;
+  ssl_certificate /etc/nginx/ssl/myserver.crt;
+  ssl_certificate_key /etc/nginx/ssl/myserver.key;
 
-  server_name coderena.com;
+  server_name myserver.com;
 
-  set $current_root &quot;/home/dev/deployment/coderena&quot;;
+  set $current_root &quot;/home/dev/deployment/myserver&quot;;
   client_max_body_size 32m;
 
-  access_log /var/log/nginx/coderena.access.log;
-  error_log /var/log/nginx/coderena.error.log;
+  access_log /var/log/nginx/myserver.access.log;
+  error_log /var/log/nginx/myserver.error.log;
 
   location ~* ^/media/ {
     autoindex off;
@@ -1469,149 +1603,6 @@ value is f50cef80</code></pre>
                 http://tchen.me/posts/2013-06-21-entrepreneurship-in-bay-area.html            </guid>
             <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
             <pubDate>Fri, 21 Jun 2013 02:30:00 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[使用Makefile自动化部署]]></title>
-            <description><![CDATA[<p>有时候，写个小app，部署是件麻烦的事情 —— 你需要登录到服务器上，手工编辑nginx，supervisor等配置文件，然后重启相关的服务。这些配置都不在版本库中，所以也无法记录历史修订。<code>puppet</code> 是个不错的解决方案，但对于小项目来说，使用puppet是个负担。</p>
-<p>本文讨论如何通过写个简单的 <code>makefile</code> 来达到自动化部署的目的。</p>
-<!--more-->
-
-<h2>本地化服务器配置</h2>
-<p>首先要做的是將服务器的配置本地化，放在自己的项目中：</p>
-<p><img src="/assets/files/snapshots/project_layout.jpg" alt="项目目录结构"></p>
-<p>图中，_deploy目录下的内容就是我们要部署到服务器上的配置，其目录结构和服务器要完全一致，这样可以用 <code>cp</code> 直接將文件拷贝过去：</p>
-<section>
-<pre><code> $ sudo cp -r _deploy/etc/. /etc/.</code></pre>
-</section>
-<p>这里有个问题，sudo一般需要输密码，但这里如果停下来等待用户交互，就无法完全自动化了。所以我们需要让 <code>cp</code> 无须password就可以执行。但又引来一个问题：无密码限制的 <code>cp</code> 太危险，可能会导致误操作。所以我们就把 <code>cp</code> copy 一份出来，叫 <code>sucopy</code>，然后对其设置 nopassword:</p>
-<section>
-<pre><code> $ sudo cp /bin/cp /bin/sucopy
- $ sudo visudo</code></pre>
-</section>
-<p>在打开的编辑窗口，为当前用户设置 <code>sudo</code> 选项：</p>
-<section>
-<pre><code> dev ALL=(ALL) NOPASSWD: /usr/bin/supervisorctl, /etc/init.d/nginx, /bin/sucopy, /usr/bin/apt-get</code></pre>
-</section>
-<p>我这里把 <code>apt-get</code>，<code>supervisorctl</code> 和 <code>nginx</code> 都设置为 <code>NOPASSWD</code>，也是为了自动运行。</p>
-<p>注：如果 <code>visudo</code> 使用的nano编辑器不是你的菜，可以用 <code>update-alternatives --config editor</code> 切换成vim。</p>
-<p>设置完成后，我们就可以在makefile中用 <code>sucopy</code> 把项目中的配置文件直接更新系统中的对应文件了，比如：</p>
-<section>
-<pre><code> sudo sucopy -r _deploy/etc/. /etc/.</code></pre>
-</section>
-<p>很简单吧。这样做的好处是配置文件的修改随着项目文件一起在版本库中控制，部署起来也方便很多。</p>
-<p>nginx和supervisor的配置很简单，这里就给个例子，不解释：</p>
-<p>nginx配置：</p>
-<section>
-<pre><code> tchen@tchen-mbp: ~/projects/kahn/_deploy/etc/nginx/sites-available on master$ cat kahn
- server {
-   listen 80;
-   server_name api.awesome-server.com;
-   access_log /var/log/nginx/kahn.access.log;
-   error_log /var/log/nginx/kahn.error.log;
-   location / {
-     proxy_pass http://localhost:6080;
-     include /etc/nginx/proxy_params;
-   }
- }</code></pre>
-<pre><code> tchen@tchen-mbp: ~/projects/kahn/_deploy/etc/nginx/sites-enabled on master$ ls -l
- total 8
- lrwxr-xr-x  1 tchen  522017917  23 Jun 11 13:48 kahn -&gt; ../sites-available/kahn</code></pre>
-</section>
-<p>supervisor配置：</p>
-<section>
-<pre><code> tchen@tchen-mbp: ~/projects/kahn/_deploy/etc/supervisor/conf.d on master$ cat kahn.conf
- [program:kahn]
- directory=/home/dev/deployment/kahn
- user=dev
- command=coffee app.coffee
- redirect_stderr=true
- stderr_logfile=none
- stdout_logfile=/var/log/supervisor/kahn.log
- autostart=true
- autorestart=true</code></pre>
-</section>
-<h2>Makefile</h2>
-<p>解决了服务器的本地化配置问题，自动化部署就不在话下。这里只自动化了下列任务，对简单的小项目来说足够了：</p>
-<ul>
-<li>代码更新。</li>
-<li>依赖更新。（python的用户可以把 <code>npm install</code> 换成 <code>pip install -r requirements.txt</code>）</li>
-<li>配置更新。</li>
-<li>supervisor设置更新及重启。</li>
-<li>nginx重启。</li>
-</ul>
-<p>Makefile文件比较简单，不解释了。注意这里我们把 <code>remote_deploy</code> 放在第一位，让 <code>make</code> 缺省调用时可以调用它，这样，我们会自动登录到服务器上（服务器的连接请使用rsa key，避免输入密码），pull代码，然后执行 <code>make deploy</code> 进行部署。</p>
-<section>
-<pre><code> tchen@tchen-mbp: ~/projects/kahn on master$ cat Makefile
- CHECK=\033[32m✔\033[39m
- DONE=&quot;\n$(CHECK) Done.\n&quot;
-
- SERVER=awesome-server.com
- PROJECT=kahn
- PATH=deployment/$(PROJECT)
- SUPERVISORCTL=/usr/bin/supervisorctl
- SUCOPY=/bin/sucopy
- SSH=/usr/bin/ssh
- ECHO=/bin/echo -e
- NPM=/usr/local/bin/npm
- SUDO=/usr/bin/sudo
-
- remote_deploy:
-     @$(SSH) -t $(SERVER) &quot;echo Deploy $(PROJECT) to the $(SERVER) server.; cd $(PATH); git pull; make deploy;&quot;
-
- dependency:
-     @$(ECHO) &quot;\nInstall project dependencies...&quot;
-     @$(NPM) install
-
- configuration:
-     @$(ECHO) &quot;\nUpdate configuration...&quot;
-     @$(SUDO) $(SUCOPY) -r _deploy/etc/. /etc/.
-
- supervisor:
-     @$(ECHO) &quot;\nUpdate supervisor configuration...&quot;
-     @$(SUDO) $(SUPERVISORCTL) reread
-     @$(SUDO) $(SUPERVISORCTL) update
-     @$(ECHO) &quot;\nRestart $(PROJECT)...&quot;
-     @$(SUDO) $(SUPERVISORCTL) restart $(PROJECT)
-
- nginx:
-     @$(ECHO) &quot;\nRestart nginx...&quot;
-     @$(SUDO) /etc/init.d/nginx restart
-
- deploy: dependency configuration supervisor nginx
-     @$(ECHO) $(DONE)</code></pre>
-</section>
-<p>大功告成。试试吧：</p>
-<section>
-<pre><code> tchen@tchen-mbp: ~/projects/kahn on master$ make
- Deploy kahn to the awesome-server.com server.
- Current branch master is up to date.
-
- Install project dependencies...
-
- Update configuration...
-
- Update supervisor configuration...
- No config updates to processes
-
- Restart kahn...
- kahn: stopped
- kahn: started
-
- Restart nginx...
- Restarting nginx: nginx.
-
- ✔ Done.
-
- Shared connection to awesome-server.com closed.</code></pre>
-</section>
-<p>送上小宝的近照一张：</p>
-<p><img src="/assets/files/photos/baby20130612.jpg" alt="小宝近期照片"></p>
-]]></description>
-            <link>http://tchen.me/posts/2013-06-12-use-makefile-to-automate-deployment.html</link>
-            <guid isPermaLink="true">
-                http://tchen.me/posts/2013-06-12-use-makefile-to-automate-deployment.html            </guid>
-            <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
-            <pubDate>Tue, 11 Jun 2013 23:14:00 GMT</pubDate>
         </item>
     </channel>
 </rss>
