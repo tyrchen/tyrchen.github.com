@@ -264,7 +264,7 @@
         <div class='post-single-meta'>
           <span class='meta-item'>
             <i class='icon-calendar'></i>
-            1天内
+            14小时内
           </span>
           <!--
           <span class='meta-item'>
@@ -287,7 +287,7 @@
           </span>
         </div>
         <p>如果你不知道docker是什么，请参考 <a href="http://www.slideshare.net/dotCloud/why-docker">这个slides</a>。</p>
-<p>在 ubuntu 下安装 docker 请参考：<a href="http://docs.docker.io/en/latest/installation/ubuntulinux/。注意，由于">http://docs.docker.io/en/latest/installation/ubuntulinux/。注意，由于</a> docker 的核心技术是 <a href="http://en.wikipedia.org/wiki/LXC">Linux container</a>，所以如果想在 osx 下安装 docker 请使用 vagrant。</p>
+<p>在 ubuntu 下安装 docker 请参考 <a href="http://docs.docker.io/en/latest/installation/ubuntulinux/">官方教程</a> 。注意，由于 docker 的核心技术是 <a href="http://en.wikipedia.org/wiki/LXC">Linux container</a>，所以如果想在 osx 下安装 docker 请使用 vagrant。</p>
 <!--more-->
 
 <h2>安装docker-registry</h2>
@@ -303,10 +303,10 @@ dev:
     storage_path: /var/docker/registry
     loglevel: debug</code></pre>
 <p>创建这个目录：</p>
-<pre><code>sudo mkdir -p /var/docker/registry
-sudo chown -R tchen /var/docker</code></pre>
+<pre><code>$ sudo mkdir -p /var/docker/registry
+$ sudo chown -R tchen /var/docker</code></pre>
 <p>docker-registry使用了python，需要以下库的支持：</p>
-<pre><code>sudo apt-get install build-essential python-dev libevent-dev python-pip libssl-dev</code></pre>
+<pre><code>$ sudo apt-get install build-essential python-dev libevent-dev python-pip libssl-dev</code></pre>
 <p>然后建立 <code>virtualenv</code> 并安装requirements：</p>
 <pre><code>$ sudo pip install virtualenv
 $ virtualenv --no-site-packages venv
@@ -352,10 +352,10 @@ docker-registry                  RUNNING    pid 4371, uptime 0:00:01</code></pre
   }
 }</code></pre>
 <p>然后将其加入 <code>sites-enabled</code> 并重启nginx：</p>
-<pre><code>cd /etc/nginx/sites-enabled/
-sudo ln -s ../sites-available/docker-registry docker-registry
-sudo /etc/init.d/nginx restart</code></pre>
-<p>把 <code>docker</code> 二级域名加入到你的域名服务器中，然后打开浏览器访问 <a href="http://docker.your-domain.com">http://docker.your-domain.com</a> 就可以看到如下页面：</p>
+<pre><code>$ cd /etc/nginx/sites-enabled/
+$ sudo ln -s ../sites-available/docker-registry docker-registry
+$ sudo /etc/init.d/nginx restart</code></pre>
+<p>把 <code>docker</code> 二级域名加入到你的域名服务器中，然后打开浏览器访问 <code>http://docker.your-domain.com</code> 就可以看到如下页面：</p>
 <pre><code>&quot;docker-registry server (dev)&quot;</code></pre>
 <p>至此，<code>docker-registry</code> 就正常运行了。</p>
 <p>接下来看看系统都有哪些 docker images：</p>

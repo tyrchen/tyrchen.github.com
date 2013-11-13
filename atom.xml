@@ -3,7 +3,7 @@
         <title>觅珠人</title>
 		<link href="http://tchen.me/atom.xml" rel="self"/>
 		<link href="http://tchen.me"/>
-        <updated>2013-11-12T14:29:04.494Z</updated>
+        <updated>2013-11-13T00:16:16.549Z</updated>
 		<id>http://tchen.me</id>
         <author>
 			<name>Tyr Chen</name>
@@ -17,7 +17,7 @@
                 <updated>2013-11-13T14:40:00.000Z</updated>
 				<id>http://tchen.me/posts/2013-11-13-local-docker-repo.html</id>
                 <content type="html">&lt;p&gt;如果你不知道docker是什么，请参考 &lt;a href=&quot;http://www.slideshare.net/dotCloud/why-docker&quot;&gt;这个slides&lt;/a&gt;。&lt;/p&gt;
-&lt;p&gt;在 ubuntu 下安装 docker 请参考：&lt;a href=&quot;http://docs.docker.io/en/latest/installation/ubuntulinux/。注意，由于&quot;&gt;http://docs.docker.io/en/latest/installation/ubuntulinux/。注意，由于&lt;/a&gt; docker 的核心技术是 &lt;a href=&quot;http://en.wikipedia.org/wiki/LXC&quot;&gt;Linux container&lt;/a&gt;，所以如果想在 osx 下安装 docker 请使用 vagrant。&lt;/p&gt;
+&lt;p&gt;在 ubuntu 下安装 docker 请参考 &lt;a href=&quot;http://docs.docker.io/en/latest/installation/ubuntulinux/&quot;&gt;官方教程&lt;/a&gt; 。注意，由于 docker 的核心技术是 &lt;a href=&quot;http://en.wikipedia.org/wiki/LXC&quot;&gt;Linux container&lt;/a&gt;，所以如果想在 osx 下安装 docker 请使用 vagrant。&lt;/p&gt;
 </content>
             </entry>
         
