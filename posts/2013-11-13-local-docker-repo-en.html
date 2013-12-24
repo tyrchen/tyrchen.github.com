@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="本博客提供我个人的想法，创意，经验，心得。你不必认同博主观点。" />
+    <meta name="keywords" content="创业, 思想, 点子, 经验, python, erlang, node, javascript, 服务器, devops, meteor" />
+    <meta name="author" content="Tyr Chen" />
+
+    <!-- Output DocPad produced meta elements -->
+    
+
+    <!-- Styles -->
+    <link  rel="stylesheet" href="/assets/css/app.min.css" />
+
+    <link href="/assets/favicon.ico" rel="shortcut icon">
+    <link href="/assets/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.3.0/respond.js"></script>
+
+    <![endif]-->
+
+    <title>Build Your Own Docker Registry with DigitalOcean | 觅珠人 | Tyr Chen的个人博客 | 创意 | 心得 | 经验</title>
+
+</head>
+
+<body>
+
+<!-- Contact Modal -->
+<div aria-hidden='true' aria-labelledby='contactModalLabel' class='modal fade' id='contactModal' role='dialog' tabindex='-1'>
+    <div class='modal-dialog'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <button aria-hidden='true' class='close' data-dismiss='modal' type='button'>×</button>
+                <h4 class='modal-title'>Contact Us Form</h4>
+            </div>
+            <div class='modal-body'>
+                <form action='#' role='form'>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Name</label>
+                                <input class='form-control' placeholder='your username' type='text'>
+                            </div>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Email</label>
+                                <input class='form-control' placeholder='your password' type='text'>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-12'>
+                                <label class='control-label' for=''>Your Message</label>
+                                <textarea class='form-control' name='' rows='4'></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class='modal-footer'>
+                <button class='btn btn-default' data-dismiss='modal' type='button'>Cancel</button>
+                <button class='btn btn-primary' type='button'>Send Message</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="header-image-wrapper">
+  <img alt="" src="/assets/files/posts/container.jpg">
+</div>
+
+<div class='header-main'>
+    <div class='container'>
+        <nav class='navbar navbar-default' role='navigation'>
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class='navbar-header'>
+                <button class='navbar-toggle' data-target='.navbar-ex1-collapse' data-toggle='collapse' type='button'>
+                    <span class='sr-only'>Toggle navigation</span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                </button>
+                <a class='navbar-brand' href='/'>
+                    <img alt='' height='45px' src='/assets/images/tyr.png'> <span>觅珠人</span>
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class='collapse navbar-collapse navbar-ex1-collapse'>
+
+                <ul class='nav navbar-nav navbar-right'>
+                    <li class="">
+                        <a href="/">首页</a>
+                    </li>
+                    
+                        
+                        <li
+                            about="/pages/posts.html"
+                            class=""
+                        >
+                            <a href="/pages/posts.html">
+                                文章随笔
+                            </a>
+                        </li>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                        <li
+                            about="/pages/canvases.html"
+                            class=""
+                        >
+                            <a href="/pages/canvases.html">
+                                奇思妙想
+                            </a>
+                        </li>
+                        
+                    
+                        
+                        <li
+                            about="/pages/aboutme.html"
+                            class=""
+                        >
+                            <a href="/pages/aboutme.html">
+                                关于我
+                            </a>
+                        </li>
+                        
+                    
+                    <!--
+                    <li>
+                        <a data-toggle='modal' href='#contactModal'>联系我</a>
+                    </li>
+                    -->
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+</div>
+
+<div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+
+<div class='container'>
+  <div class='row'>
+    <div class="col-md-3">
+      <div class="post-side-bar">
+        <!--
+        <div class="widget widget-author">
+          <div class="author-avatar">
+            <img alt="" src="/assets/images/tyr.png">
+          </div>
+          <div class="author-meta">
+            <h4 class="author-name">Tyr Chen</h4>
+            <p class="author-bio">Progressively maintain extensive infomediaries via extensible niches.</p>
+            
+            <a class="author-more" href="#">
+              read more posts
+              <i class="icon-angle-right"></i>
+            </a>
+          </div>
+        </div>
+        -->
+        <div class="widget widget-cats tags">
+          <h4 class="widget-title">标签</h4>
+          <ul>
+          
+            <li><a href='/tags/tool.html'>tool</a></li>
+          
+            <li><a href='/tags/technology.html'>technology</a></li>
+          
+            <li><a href='/tags/docker.html'>docker</a></li>
+          
+          </ul>
+        </div>
+        <div class="widget widget-cats">
+          <h4 class="widget-title">
+            相关文章
+          </h4>
+          <ul>
+            
+            
+              <li><a href="/posts/2013-04-08-trying-to-extract-the-thoughts-behind-lockitron.html">胡思乱想之Lockitron的技术架构</a></li>
+            
+              <li><a href="/posts/2012-12-16-first-blog.html">第一篇博客: 用octopress搭建博客系统</a></li>
+            
+              <li><a href="/posts/2012-12-18-octopress-client-a-better-composition-tool.html">产品随想：octopress客户端 —— Atanasoff</a></li>
+            
+              <li><a href="/posts/2012-12-21-meteor-basics.html">Meteor基础入门</a></li>
+            
+              <li><a href="/posts/2012-12-26-reveal-js-support-for-octopress.html">Octopress支持reveal.js撰写slides</a></li>
+            
+              <li><a href="/posts/2012-12-31-atanasoff-product-design.html">进一步思考Atanasoff (Octopress client) (2)</a></li>
+            
+              <li><a href="/posts/2013-01-09-auto-deploy-with-github-webhooks.html">用Github Webhooks实现自动部署</a></li>
+            
+              <li><a href="/posts/2013-01-21-why-use-wintersmith-to-replace-octopress.html">为什么要使用wintersmith取代octopress</a></li>
+            
+              <li><a href="/posts/2013-02-04-teamspark-open-sourced.html">Teamspark及Meteor杂谈</a></li>
+            
+              <li><a href="/posts/2013-02-18-sdn-elementatory-introduction.html">SDN浅谈</a></li>
+            
+              <li><a href="/posts/2013-02-21-openflow-introduction.html">Openflow简介</a></li>
+            
+              <li><a href="/posts/2012-12-16-why-meteor.html">为什么是Meteor</a></li>
+            
+              <li><a href="/posts/2013-04-25-engineering-environment-for-smart-team.html">自动化的高效团队开发环境</a></li>
+            
+              <li><a href="/posts/2013-06-10-use-scrapyd-to-serve-scrapy-projects.html">用scrapyd来提供crawler服务</a></li>
+            
+              <li><a href="/posts/2013-06-12-use-makefile-to-automate-deployment.html">使用Makefile自动化部署</a></li>
+            
+              <li><a href="/posts/2013-06-23-come-to-origin-for-embedded-applications.html">Come to Origins for Embedded Applications</a></li>
+            
+              <li><a href="/posts/2013-07-18-c-grammar-you-cannot-imagine.html">你无法想象的C语法</a></li>
+            
+              <li><a href="/posts/2013-07-22-why-should-c-programmers-learn-erlang.html">Why should C programmers learn Erlang?</a></li>
+            
+              <li><a href="/posts/2013-10-28-blog-reborn.html">觅珠人：浴火重生</a></li>
+            
+              <li><a href="/posts/2013-10-30-the-hatch-project.html">Hatch: 又一个建站工具</a></li>
+            
+              <li><a href="/posts/2013-11-03-hatch-experiment.html">Hatch: 实验</a></li>
+            
+              <li><a href="/posts/2013-11-11-https.html">使用HTTPS</a></li>
+            
+              <li><a href="/posts/2013-11-13-local-docker-repo.html">建立自己的docker repository</a></li>
+            
+            
+          </ul>
+        </div>
+      </div>
+    </div>      
+    <div class='col-md-9'>
+      <div class='post-single'>
+        <!--
+        <div class='pre-post-meta'>
+          <span>
+            <i class='icon-tags'></i>
+            in
+            <a href='#'>Web Development</a>
+          </span>
+          <span>
+            <i class='icon-user'></i>
+            by
+            <a href='#'>Tyr Chen</a>
+          </span>
+          <span>
+            <i class='icon-bookmark'></i>
+            17 分钟
+          </span>
+        </div>
+        -->
+        <h1 class='has-sub-header'>Build Your Own Docker Registry with DigitalOcean</h1>
+        <div class='post-single-meta'>
+          <span class='meta-item'>
+            <i class='icon-calendar'></i>
+            1个月前
+          </span>
+          <!--
+          <span class='meta-item'>
+            <a href='#'>
+              <i class='icon-comments'></i>
+              24
+            </a>
+          </span>
+          <span class='meta-item'>
+            <a href='#'>
+              <i class='icon-heart'></i>
+              15
+            </a>
+          </span>
+          -->
+          <span class="meta-item">
+          	
+            <i class='icon-time'></i>
+            17 分钟
+          </span>
+        </div>
+        <h1>Build Your Own Docker Registry with DigitalOcean</h1>
+<p><a href="http://www.slideshare.net/dotCloud/why-docker">Docker</a> might be the most attracting open source technologies in 2013. By providing a higher level API and management UI, it make linux container much more usable. If you haven&#39;t tried it, <a href="http://www.docker.io/gettingstarted/">try it</a>. You will then feel it is &quot;<a href="http://blog.scoutapp.com/articles/2013/08/28/docker-git-for-deployment">the git for deployment</a>&quot;.</p>
+<p>After you played with it for a while, enjoying the git like operation for your software and their dependencies, a natural question will appear: how can I build my own private docker registry that I could leverage for my own IT infrastructure? </p>
+<p>The docker-registry comes to help you. docker-registry is a software to provide similar functionality as <a href="http://index.docker.io/">official docker index</a>, which is a central registry for you to commit your new images, pull existing ones, etc. It can let you to build your own docker registry that is private, secure and speedy.</p>
+<h2>Install docker-registry</h2>
+<p>First of all, let&#39;s clone docker-registry：</p>
+<pre><code>git clone https://github.com/dotcloud/docker-registry
+cd docker-registry
+cp config_sample.yml config.yml</code></pre>
+<p>You need then to open config.yml to set the dev (the default profile) storage to something like <code>/var/docker/registry</code>:</p>
+<pre><code># This is the default configuration when no flavor is specified
+dev:
+    storage: local
+    storage_path: /var/docker/registry
+    loglevel: debug</code></pre>
+<p>Then create this directory and grant </p>
+<pre><code>sudo mkdir -p /var/docker/registry
+sudo chown -R `whoami` /var/docker</code></pre>
+<p>As docker-registry uses python and ssl, you need to install the following libraries:</p>
+<pre><code>sudo apt-get install build-essential python-dev libevent-dev python-pip libssl-dev</code></pre>
+<p>Then you can setup your virtualenv and install requirements:</p>
+<p>(optional) install virtualenv if you haven&#39;t:</p>
+<pre><code>sudo pip install virtualenv</code></pre>
+<p>setup virtualenv:</p>
+<pre><code>virtualenv --no-site-packages venv
+. venv/bin/activate
+pip install -r requirements.txt</code></pre>
+<p>Now your docker-registry should be run via:</p>
+<pre><code>gunicorn -k gevent --max-requests 100 --graceful-timeout 3600 -t 3600 -b localhost:8080 -w 8 wsgi:application</code></pre>
+<p>You can open your browser on <code>http://localhost:8080</code> to see if it works. It should show you:</p>
+<pre><code>&quot;docker-registry server (dev)&quot;</code></pre>
+<p>Congratulations! The minimum installation is done. However, if you want to run it like a normal service, you need to configure supervisor and nginx. Let&#39;s continue our journey.</p>
+<h2>Run docker-registry as a service</h2>
+<p>If you don&#39;t have supervisor installed, please install it firstly:</p>
+<pre><code>sudo apt-get install supervisor</code></pre>
+<p>Then add a new configuration file:</p>
+<pre><code>sudo vim /etc/supervisor/conf.d/docker-registry.conf</code></pre>
+<p>In the opened vim editor, copy and paste the following content, save and quit (you need to change dev to your local user):</p>
+<pre><code>[program:docker-registry]
+directory=/home/dev/deployment/docker-registry
+user=dev
+command=/home/dev/deployment/docker-registry/venv/bin/gunicorn -b 0.0.0.0:7030 -k gevent --max-requests 100 --graceful-timeout 3600 -t 3600 -w 8 wsgi:application
+redirect_stderr=true
+stderr_logfile=none
+stdout_logfile=/var/log/supervisor/docker-registry.log
+autostart=true
+autorestart=true</code></pre>
+<p>Then reload supervisor to make it take effects.</p>
+<pre><code>$ sudo supervisorctl
+supervisor&gt; reread
+docker-registry: available
+supervisor&gt; update
+docker-registry: added process group
+supervisor&gt; status
+docker-registry                  RUNNING    pid 4371, uptime 0:00:01</code></pre>
+<p>If you see RUNNING int the status output, then it means your docker-registry is up and running normally. If not, please got to <code>/var/log/supervisor/docker-registry.log</code> to see what happened.</p>
+<p>Next you need to use nginx to proxy the requests to docker-registry. If you don&#39;t have nginx installed, please install it firstly:</p>
+<pre><code>sudo apt-get install nginx</code></pre>
+<p>Then add a new configuration file:</p>
+<pre><code>sudo vim /etc/nginx/sites-available/docker-registry</code></pre>
+<p>Copy and paste the following content, then save and quite:</p>
+<pre><code>server {
+  listen 80;
+  client_max_body_size 200m;
+  server_name your-domain.com;
+  access_log /var/log/nginx/docker-registry.access.log;
+  error_log /var/log/nginx/docker-registry.error.log;
+  location / {
+    proxy_pass http://localhost:8080;
+    include /etc/nginx/proxy_params;
+  }
+}</code></pre>
+<p>Note that you need <code>client_max_body_size 200m</code> to allow big file post. If later your found error like:</p>
+<pre><code>2013/11/12 03:35:18 Received HTTP code 413 while uploading layer</code></pre>
+<p>You need to enlarge this value.</p>
+<p>Then you need to soft link this file to <code>sites-enabled</code> and restart nginx:</p>
+<pre><code>cd /etc/nginx/sites-enabled/
+sudo ln -s ../sites-available/docker-registry docker-registry
+sudo service nginx restart</code></pre>
+<p>Open your browser to visit <code>http://your-domain.com</code>, you should see the same result as previous step:</p>
+<pre><code>&quot;docker-registry server (dev)&quot;</code></pre>
+<h2>Use your private docker registry</h2>
+<p>First of all, let&#39;s see what images we have so far:</p>
+<pre><code>$ sudo docker images
+REPOSITORY                            TAG                   IMAGE ID            CREATED             SIZE
+ubuntu                                12.04                 8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
+ubuntu                                latest                8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
+ubuntu                                precise               8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
+ubuntu                                12.10                 b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+base                                  latest                b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+ubuntu                                quantal               b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+base                                  ubuntu-12.10          b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+base                                  ubuntu-quantal        b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+base                                  ubuntu-quantl         b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)</code></pre>
+<p>If you don&#39;t have any docker images, please use <code>sudo docker pull base</code> to pull base images from docker repository.</p>
+<p>We would like to push the base image to our own shiny registry. First of all, tag it to push to your own server:</p>
+<pre><code>sudo docker tag b750fe79269d your-domain.com/yourname/base</code></pre>
+<p>Then push:</p>
+<pre><code>sudo docker push your-domain.com/yourname/base</code></pre>
+<p>If push succeeded, you will see your images with <code>docker images</code>:</p>
+<pre><code>$ sudo docker images
+REPOSITORY                            TAG                   IMAGE ID            CREATED             SIZE
+ubuntu                                12.04                 8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
+ubuntu                                latest                8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
+ubuntu                                precise               8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
+ubuntu                                12.10                 b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+base                                  latest                b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+your-domain.com/yourname/base        latest                b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+ubuntu                                quantal               b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+base                                  ubuntu-12.10          b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+base                                  ubuntu-quantal        b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+base                                  ubuntu-quantl         b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)</code></pre>
+<p>It is already available locally, so you can try it：</p>
+<pre><code>sudo docker run -i -t your-domain.com/yourname/base /bin/bash</code></pre>
+<p>If you want to pull this image from other machine, just use:</p>
+<pre><code>sudo docker pull your-domain.com/yourname/base</code></pre>
+<p>Have fun!</p>
+
+        <div class='under-post'>
+          
+          
+            
+          
+            
+                
+                  <div class='pull-left'>
+                    <a class='read-previous-link' href='/posts/2013-11-13-local-docker-repo.html'>
+                      <i class='icon-angle-left'></i>
+                      上一篇
+                    </a>
+                  </div>                  
+                
+                
+                  <div class='pull-right'>
+                    <a class='read-next-link' href='/posts/2013-12-23-my-year-2013.html'>
+                      下一篇
+                      <i class='icon-angle-right'></i>
+                    </a>
+                  </div>
+                         
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-weibo'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+        </div>
+        <div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+        
+  <div class="ds-thread">
+    <script>
+        var duoshuoQuery = {short_name:"tyrchen"};
+        (function() {
+          var ds = document.createElement('script');
+          ds.type = 'text/javascript';ds.async = true;
+          ds.src = 'http://static.duoshuo.com/embed.js';
+          ds.charset = 'UTF-8';
+          (document.getElementsByTagName('head')[0]
+          || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+  </div>
+
+    
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+<footer id="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="footer-menu">
+                    <li><a href="/pages/privacy">隐私策略</a></li>
+                    <li><a href="/pages/license">版权说明</a></li>
+                    <li><a href="/pages/disclaimer">免责声明</a></li>
+                    <li><a href="#">联系我们</a></li>
+                </ul>
+                <div class="copyright">
+                    2013 &copy; Tyr Chen. 保留一切权利.
+                    <script>
+                        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+                        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F639096b5979f5825515e0f88f871f56c' type='text/javascript'%3E%3C/script%3E"));
+                    </script>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <ul class="footer-social">
+                
+                    <li><a href="tyr.chen{#}gmail.com" target="_blank"><i class="icon-envelope"></i></a></li>
+                
+                    <li><a href="http://weibo.com/tchen82" target="_blank"><i class="icon-weibo"></i></a></li>
+                
+                    <li><a href="http://github.com/tyrchen" target="_blank"><i class="icon-github"></i></a></li>
+                
+                    <li><a href="http://linkedin.com/in/tyrchen/" target="_blank"><i class="icon-linkedin"></i></a></li>
+                
+                    <li><a href="https://twitter.com/tyrchen" target="_blank"><i class="icon-twitter"></i></a></li>
+                
+                    <li><a href="https://www.facebook.com/tyrchen" target="_blank"><i class="icon-facebook"></i></a></li>
+                
+                    <li><a href="https://plus.google.com/114684266209262341260/" target="_blank"><i class="icon-google-plus"></i></a></li>
+                
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script defer="defer"  src="/assets/js/app.min.js"></script>
+
+
+</body>
+
+</html>

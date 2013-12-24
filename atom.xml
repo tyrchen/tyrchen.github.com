@@ -3,13 +3,30 @@
         <title>觅珠人</title>
 		<link href="http://tchen.me/atom.xml" rel="self"/>
 		<link href="http://tchen.me"/>
-        <updated>2013-11-13T00:16:16.549Z</updated>
+        <updated>2013-12-24T15:01:42.701Z</updated>
 		<id>http://tchen.me</id>
         <author>
 			<name>Tyr Chen</name>
 			<email></email>
         </author>
 
+        
+        	<entry>
+            	<title>盘点我的2013</title>
+				<link href="http://tchen.me/posts/2013-12-23-my-year-2013.html"/>
+                <updated>2013-12-23T14:40:00.000Z</updated>
+				<id>http://tchen.me/posts/2013-12-23-my-year-2013.html</id>
+                <content type="html">&lt;p&gt;提笔（确切地说，敲下键盘）开始盘点我的2013时，我感觉 &lt;a href=&quot;http://tchen.me/posts/2012-12-28-retrospect-of-the-year-2012.html&quot;&gt;回顾我的2012&lt;/a&gt; 和 &lt;a href=&quot;http://tchen.me/posts/2012-12-29-2013-things-to-do.html&quot;&gt;展望2013&lt;/a&gt; 似乎就在眼前。都说岁月催人，这哪是催，这是赶。无论心智是否更成熟，知识经验是否更丰富，过了一年，就老了一岁，去年的那支影子也渐行渐远。多愁善感并不单是文人的专利，年过三十后，我也染上了这臭毛病。太白说『白发三千丈，缘愁似个长。不知明镜里，何处得秋香！』（好吧，是秋霜 ^_^），本不大懂，但经历了2013这奇特，曲折，煎熬，仿佛过去的十年职场都被挤压收缩的一年后，我很能理解他那种年过半百，壮志未酬，人已衰老的那种痛苦。&lt;/p&gt;
+</content>
+            </entry>
+        
+        	<entry>
+            	<title>Build Your Own Docker Registry with DigitalOcean</title>
+				<link href="http://tchen.me/posts/2013-11-13-local-docker-repo-en.html"/>
+                <updated>2013-11-13T14:40:00.000Z</updated>
+				<id>http://tchen.me/posts/2013-11-13-local-docker-repo-en.html</id>
+                <content type="html"></content>
+            </entry>
         
         	<entry>
             	<title>建立自己的docker repository</title>
