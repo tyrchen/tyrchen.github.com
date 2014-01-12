@@ -5,10 +5,61 @@
         <description><![CDATA[本博客提供我个人的想法，创意，经验，心得。你不必认同博主观点。]]></description>
         <link>http://tchen.me</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Wed, 01 Jan 2014 23:52:54 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 12 Jan 2014 18:49:57 GMT</lastBuildDate>
         <atom:link href="http://tchen.me/rss.xml" rel="self" type="application/rss+xml"/>
         <author><![CDATA[Tyr Chen]]></author>
-        <pubDate>Wed, 01 Jan 2014 23:52:10 GMT</pubDate>
+        <pubDate>Sun, 12 Jan 2014 18:49:12 GMT</pubDate>
+        <item>
+            <title><![CDATA[Sunnyvale trip - 所见，所聊，所感]]></title>
+            <description><![CDATA[<p>又是一个一周的短差，来去匆匆。依旧是白天各种开会，各种social，跟所有认识的人打招呼唠家常，跟不认识的但有来往（或者即将来往的）熟悉并打交道。本文没什么主题，就是所见所聊所感，totally personal。</p>
+<!--
+走之前列了好几个清单，分别是：
+
+* 这次过去老板布置的任务（3个）
+* Peer布置的任务（2个）
+* 自己想到的任务（4个）
+* 要打个招呼，唠唠家常的人（29人）
+* 要深入了解和认识的人（5人）
+* 要一同工作，寻求帮助的人（6人）
+
+到离开的时候，除了有6个要Say hello的人没见着外，其他都完成得不错。工作上的事情当然不便在博客里透露，但和形形色色的人接触得到的感受却值得说说。
+-->
+
+<!--more-->
+
+<p>（一）</p>
+<p>先说我老板G君。G君有10个US Patents，10年engineering工作经验，13年management工作经验。</p>
+<p>他第一次来CNRD时，我和他曾聊了二十多分钟。他一直作为一个旁听者静静地听我的自我介绍，偶尔会插两句话让我就经历过的一些事提提看法，比如说scrum，python。那时对他印象还不算深。</p>
+<p>他第二次来CNRD时，有次我负责领他去餐馆吃饭。他拎着皮箱去的，皮箱里有一本厚厚的书，撑着外侧的兜子合不上。书是上千页的那种大砖头。我问他是什么书？他说是 <strong>SRX cookbook</strong>，他想尽快熟悉我们的产品，就在amazon买了本带在飞机上看。我对他顿时肃然起敬。在途客圈，我喜欢招爱读书的工程师，面试时也会和对方聊聊最近读过什么书。我喜欢爱读书的人，因为读书要么能更新你的思想，要么能更新你的技能。愿意读书，便不会墨守成规。</p>
+<p>其他深入接触到他的人，都认为他很注重细节，提问一针见血，并且雷厉风行。这次在Sunnyvale和他前后开了6次会，这个评价我认为恰到好处。一般而言，一个做了十几年管理者，已经离技术有相当的距离，但他似乎不同，还在不断跟踪和了解技术，并琢磨怎么能将这些技术用在daily work上。这也是为什么他总能提出一针见血的问题。具体细节我不便多说，这几次开会我被激发了出了不少新的想法和思路。</p>
+<p>说几句题外话。我一直觉得在R&amp;D中，Manager只负责people management和resource planning是行不通的。Manager一定要有扎实的工程师背景，要有很强的技术敏感性，这样才能做正确的判断。并且越往上走（直到Engineering VP）这种能力应该越强才对。如果说Manager是县官或师团长，TL充其量也就是师爷或者参谋，出谋划策可以，最终拍板，make decision还是得Manager。很多东西可以delegate，但decision making不能。因为Manager要为手下的弟兄们负责，要为team的成败负责。一个不那么懂技术的Manager很容易被TL蒙蔽（有意或无意），做出并非全局最优的决定。久而久之，能说会道者上去，勤奋木讷者下去，organization渐渐从治世转为乱局。</p>
+<p>自从做了途客圈后，我就养成个毛病，总把自己放在某个位置做沙盘推演。我常常会想，如果我是xxx（比如G君），我会怎么做？我会如何make decision？我会如何去让整个organization更优化，更有战斗力和活力？当然，这些推演都是纸上谈兵，乱点鸳鸯谱。</p>
+<p>G君还有个特点就是早出晚归。这周经常早上8点左右，晚上7点后都能见到他。他喜欢把会议放在早上9点（不管是和Sunnyvale team还是和CNRD team），这给很多同事整了个大难题：8点多正是堵车的时候，肿么办？</p>
+<p>总之，G君值得期待。</p>
+<p>（二）</p>
+<p>再说说新来的DE K君。K君履历惊人 - Brown小本，Stanford研究生，然后SGI 4年（嘿嘿，Ex-SGIer），NetApp 9年，Zynga 4年（2009-2013)，有6个US patents。Zynga 07年创立，11年上市，所以我猜K君应该发了笔横财（忘记当面跟他验证了）。</p>
+<p>第一次见他是在3楼。我跟几个CNRD的老熟人在Pantry聊天，这哥们很唐突地加入并接管了话题，然后讲了个『冷』笑话。我没太听懂，但其他人都哈哈大笑（唉，no slangs，请讲英语普通话）。当时我以为他是 XX team里某个工程师，后来 XX 说他就是刚来的DE。充满活力，爱开玩笑的geek，这就是我对他的第一印象。</p>
+<p>第二次见他是莫名其妙被 Program management team 拉进了一个会议。这会议是K君主导。K君一到，就把大家从椅子上拉起来，开站立会议。我顿时觉得这哥们有意思了。我喜欢站立会议，它让大家能集中精神在要讨论的事情上，而不是坐在那里一只耳朵听着，貌合神离。他把要做的事情分成sprint去manage，估计这是在Zynga里养成的习惯。讨论结束后，他立刻在会上就明确action plan和deadline，而且他的deadline是以天为单位，而不是在J记惯常的单位：周。我能感觉得到会上的其他人感觉不那么舒服，至少不适应这种style。</p>
+<p>第三次是周五下午去他office跟他聊天。跟他拉家常你绝对不会感到沉闷，他话多，激情四射，玩笑一个接一个。聊到正题后，他展示给我他正在梳理的J记内部的整个process chain。这让我眼前一亮，我怎么从来没想过这么梳理一下呢？我甚至都没想过梳理一下途客圈的process chain呢？</p>
+<p>总之，K君是个很好相处的人。我对他在Zynga的这段履历还是很看好（2009年Zynga应该还是startup的氛围吧）—— 我觉得在大公司里混日子，混title比较容易，但在startup里就困难多了。不过他的风格是否适合J记（agile v.s. waterfall），或者说他多大程度上能影响J记（得看他被授予什么样的权责），就看造化了。</p>
+<p>（三）</p>
+<p>这次出差，KP君跟我一道。我对KP君的第一印象很一般，觉得他是个典型的那种自我感觉良好的蹦蹦跳跳的美国人。虽然上过几次他的课，但我对他并没有太深入的了解。</p>
+<p>这次出差我们share一辆车。每天晚上我都工作到比较晚，所以他都把车钥匙留给我，自己步行回酒店。</p>
+<p>他这次出差的目的是给这边的team做business training。但是，每天结束时他都显得很沮丧。有次他很郁闷地跟我抱怨事情进行地不那么顺利，因为这边的中国工程师，尤其是dev，不怎么鸟他。我跟他说你得摆正心态。原因大概有这么三个，第一，在CNRD，你是个外国人，大家会对你格外客气，但在这里，大家都是美国人，你不再特别。第二，CNRD平均年龄低一些，对这种training接受程度自然高一些。第三，CNRD你已经有些影响力了，这边却还零基础。</p>
+<p>说着我突然想起了06年我来这里出差，参加一个training的场景。那个training是 &quot;The Art of Presentation&quot;，training team花钱请的外边的trainer来做的。大家自我介绍后，我惊讶的发现十几个人中，R&amp;D的人聊聊无几，Dev貌似只有我一人。要知道，这个site，R&amp;D的人应该是占多数的。结果来的尽是PLM，PM，IT，blabla。你不能责备dev不求上进，因为在他们看来，写段代码要比这个有意思得多，这是性格使然。在途客圈里，诸多外事我也是能不参加就不参加，要不是跟投资人pitch我必须参加，我估计也会躲在一旁和工程师在一起快活地写代码（这性格对工程师来说没什么大碍，但对CTO的角色就是硬伤）。所以对一个Trainer来说，清楚地把握audience的性格特点也很重要。CNRD适用的，US未必；大多数人适用的，Dev也未必（dev就是这么个奇怪的群体）。就是这么个浅显的道理。</p>
+<p>我与人接触的一个大原则是：不管跟什么人打交道，不管对方有什么缺点，你总能找到他的优点（有意思的是，我们所认为别人的缺点，往往是和自己不一样的地方，就像研发看sales觉得太吵，sales看研发觉得无趣）。KP君估计不太能和dev玩到一块，因为他sales的性格。但深入接触后，他其实是个很不错的人，为他人着想，乐于帮忙等等。周五早上我要给这边的dev和TL做一个presentation，我们8点到办公室后，我找了个会议室请他帮忙帮我看看我present的如何，他欣然同意并提出了很多很有价值的意见。</p>
+<p>（四）</p>
+<p>周五晚上，我约老上司F君一起聊聊创业。F君心态很好，认为创业『谋事在人，成事在天』，尽最大的努力后，成与不成并不那么重要了。和懵懵懂懂走上创业之路的我相比，他要成熟得多。他深谙『兵马未动，粮草先行』之道，在R&amp;D刚刚起步阶段就开始actively engage customers，天天跑市场。这很好。dev出身的创业者，比如我，marketing/sales的感觉很差，往往光顾研发，忽略产品最终要交到客户手上。</p>
+<p>我跟他说，我四十岁前还会不断创业，直到成功，或者时间证明我这号人不管怎么努力，就是不适合创业。说到这里，我突然想起一个问题：F君多大了？我印象中他已经四十好几，但不能确定。</p>
+<p>他告诉我他是六二年的。我有点吃惊。在这个年龄，以他的地位，财富，他完全可以退休，每天出海钓钓鱼享受人生。但是，他还在这里追寻创业的理想。这让我十分敬佩。我想，我应该把我的deadline放在五十岁，那时候我依然需要拥有这份闯劲。</p>
+<p>F君跟我分享了一个故事。在他的职业早年，他的一个朋友，毕业于清华的很厉害的工程师，介绍他去E公司。因为没有past experience，他最终没能去成E，却成就了在NetScreen一段难得的startup经历。因为大环境的原因和执行层的问题，E不断走下坡路，最终那个朋友离开并加入Cisco。在最近的一次layoff中，他不幸中枪。现在还在艰难地寻找工作 —— 可竞争是如此激烈，他尽管曾经是个非常smart的工程师（现在如何不得而知），可年逾半百，和二三十岁同样smart，又精力充沛的工程师相比，已不具优势。F君说：我们做事要顺势而为，台风吹过的时候猪都能飞起来。炒股如此，工作如此，做startup亦如此。Totally agree。</p>
+]]></description>
+            <link>http://tchen.me/posts/2014-01-11-sunnyvale-trip.html</link>
+            <guid isPermaLink="true">
+                http://tchen.me/posts/2014-01-11-sunnyvale-trip.html            </guid>
+            <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
+            <pubDate>Sun, 12 Jan 2014 06:40:00 GMT</pubDate>
+        </item>
         <item>
             <title><![CDATA[盘点我的2013]]></title>
             <description><![CDATA[<p>提笔（确切地说，敲下键盘）开始盘点我的2013时，我感觉 <a href="http://tchen.me/posts/2012-12-28-retrospect-of-the-year-2012.html">回顾我的2012</a> 和 <a href="http://tchen.me/posts/2012-12-29-2013-things-to-do.html">展望2013</a> 似乎就在眼前。都说岁月催人，这哪是催，这是赶。无论心智是否更成熟，知识经验是否更丰富，过了一年，就老了一岁，去年的那支影子也渐行渐远。多愁善感并不单是文人的专利，年过三十后，我也染上了这臭毛病。太白说『白发三千丈，缘愁似个长。不知明镜里，何处得秋香！』（好吧，是秋霜 ^_^），本不大懂，但经历了2013这奇特，曲折，煎熬，仿佛过去的十年职场都被挤压收缩的一年后，我很能理解他那种年过半百，壮志未酬，人已衰老的那种痛苦。</p>
@@ -316,133 +367,7 @@
             <guid isPermaLink="true">
                 http://tchen.me/posts/2013-12-23-my-year-2013.html            </guid>
             <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
-            <pubDate>Mon, 23 Dec 2013 14:40:00 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[Build Your Own Docker Registry with DigitalOcean]]></title>
-            <description><![CDATA[<h1>Build Your Own Docker Registry with DigitalOcean</h1>
-<p><a href="http://www.slideshare.net/dotCloud/why-docker">Docker</a> might be the most attracting open source technologies in 2013. By providing a higher level API and management UI, it make linux container much more usable. If you haven&#39;t tried it, <a href="http://www.docker.io/gettingstarted/">try it</a>. You will then feel it is &quot;<a href="http://blog.scoutapp.com/articles/2013/08/28/docker-git-for-deployment">the git for deployment</a>&quot;.</p>
-<p>After you played with it for a while, enjoying the git like operation for your software and their dependencies, a natural question will appear: how can I build my own private docker registry that I could leverage for my own IT infrastructure? </p>
-<p>The docker-registry comes to help you. docker-registry is a software to provide similar functionality as <a href="http://index.docker.io/">official docker index</a>, which is a central registry for you to commit your new images, pull existing ones, etc. It can let you to build your own docker registry that is private, secure and speedy.</p>
-<h2>Install docker-registry</h2>
-<p>First of all, let&#39;s clone docker-registry：</p>
-<pre><code>git clone https://github.com/dotcloud/docker-registry
-cd docker-registry
-cp config_sample.yml config.yml</code></pre>
-<p>You need then to open config.yml to set the dev (the default profile) storage to something like <code>/var/docker/registry</code>:</p>
-<pre><code># This is the default configuration when no flavor is specified
-dev:
-    storage: local
-    storage_path: /var/docker/registry
-    loglevel: debug</code></pre>
-<p>Then create this directory and grant </p>
-<pre><code>sudo mkdir -p /var/docker/registry
-sudo chown -R `whoami` /var/docker</code></pre>
-<p>As docker-registry uses python and ssl, you need to install the following libraries:</p>
-<pre><code>sudo apt-get install build-essential python-dev libevent-dev python-pip libssl-dev</code></pre>
-<p>Then you can setup your virtualenv and install requirements:</p>
-<p>(optional) install virtualenv if you haven&#39;t:</p>
-<pre><code>sudo pip install virtualenv</code></pre>
-<p>setup virtualenv:</p>
-<pre><code>virtualenv --no-site-packages venv
-. venv/bin/activate
-pip install -r requirements.txt</code></pre>
-<p>Now your docker-registry should be run via:</p>
-<pre><code>gunicorn -k gevent --max-requests 100 --graceful-timeout 3600 -t 3600 -b localhost:8080 -w 8 wsgi:application</code></pre>
-<p>You can open your browser on <code>http://localhost:8080</code> to see if it works. It should show you:</p>
-<pre><code>&quot;docker-registry server (dev)&quot;</code></pre>
-<p>Congratulations! The minimum installation is done. However, if you want to run it like a normal service, you need to configure supervisor and nginx. Let&#39;s continue our journey.</p>
-<h2>Run docker-registry as a service</h2>
-<p>If you don&#39;t have supervisor installed, please install it firstly:</p>
-<pre><code>sudo apt-get install supervisor</code></pre>
-<p>Then add a new configuration file:</p>
-<pre><code>sudo vim /etc/supervisor/conf.d/docker-registry.conf</code></pre>
-<p>In the opened vim editor, copy and paste the following content, save and quit (you need to change dev to your local user):</p>
-<pre><code>[program:docker-registry]
-directory=/home/dev/deployment/docker-registry
-user=dev
-command=/home/dev/deployment/docker-registry/venv/bin/gunicorn -b 0.0.0.0:7030 -k gevent --max-requests 100 --graceful-timeout 3600 -t 3600 -w 8 wsgi:application
-redirect_stderr=true
-stderr_logfile=none
-stdout_logfile=/var/log/supervisor/docker-registry.log
-autostart=true
-autorestart=true</code></pre>
-<p>Then reload supervisor to make it take effects.</p>
-<pre><code>$ sudo supervisorctl
-supervisor&gt; reread
-docker-registry: available
-supervisor&gt; update
-docker-registry: added process group
-supervisor&gt; status
-docker-registry                  RUNNING    pid 4371, uptime 0:00:01</code></pre>
-<p>If you see RUNNING int the status output, then it means your docker-registry is up and running normally. If not, please got to <code>/var/log/supervisor/docker-registry.log</code> to see what happened.</p>
-<p>Next you need to use nginx to proxy the requests to docker-registry. If you don&#39;t have nginx installed, please install it firstly:</p>
-<pre><code>sudo apt-get install nginx</code></pre>
-<p>Then add a new configuration file:</p>
-<pre><code>sudo vim /etc/nginx/sites-available/docker-registry</code></pre>
-<p>Copy and paste the following content, then save and quite:</p>
-<pre><code>server {
-  listen 80;
-  client_max_body_size 200m;
-  server_name your-domain.com;
-  access_log /var/log/nginx/docker-registry.access.log;
-  error_log /var/log/nginx/docker-registry.error.log;
-  location / {
-    proxy_pass http://localhost:8080;
-    include /etc/nginx/proxy_params;
-  }
-}</code></pre>
-<p>Note that you need <code>client_max_body_size 200m</code> to allow big file post. If later your found error like:</p>
-<pre><code>2013/11/12 03:35:18 Received HTTP code 413 while uploading layer</code></pre>
-<p>You need to enlarge this value.</p>
-<p>Then you need to soft link this file to <code>sites-enabled</code> and restart nginx:</p>
-<pre><code>cd /etc/nginx/sites-enabled/
-sudo ln -s ../sites-available/docker-registry docker-registry
-sudo service nginx restart</code></pre>
-<p>Open your browser to visit <code>http://your-domain.com</code>, you should see the same result as previous step:</p>
-<pre><code>&quot;docker-registry server (dev)&quot;</code></pre>
-<h2>Use your private docker registry</h2>
-<p>First of all, let&#39;s see what images we have so far:</p>
-<pre><code>$ sudo docker images
-REPOSITORY                            TAG                   IMAGE ID            CREATED             SIZE
-ubuntu                                12.04                 8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
-ubuntu                                latest                8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
-ubuntu                                precise               8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
-ubuntu                                12.10                 b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-base                                  latest                b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-ubuntu                                quantal               b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-base                                  ubuntu-12.10          b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-base                                  ubuntu-quantal        b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-base                                  ubuntu-quantl         b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)</code></pre>
-<p>If you don&#39;t have any docker images, please use <code>sudo docker pull base</code> to pull base images from docker repository.</p>
-<p>We would like to push the base image to our own shiny registry. First of all, tag it to push to your own server:</p>
-<pre><code>sudo docker tag b750fe79269d your-domain.com/yourname/base</code></pre>
-<p>Then push:</p>
-<pre><code>sudo docker push your-domain.com/yourname/base</code></pre>
-<p>If push succeeded, you will see your images with <code>docker images</code>:</p>
-<pre><code>$ sudo docker images
-REPOSITORY                            TAG                   IMAGE ID            CREATED             SIZE
-ubuntu                                12.04                 8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
-ubuntu                                latest                8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
-ubuntu                                precise               8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
-ubuntu                                12.10                 b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-base                                  latest                b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-your-domain.com/yourname/base        latest                b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-ubuntu                                quantal               b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-base                                  ubuntu-12.10          b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-base                                  ubuntu-quantal        b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-base                                  ubuntu-quantl         b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)</code></pre>
-<p>It is already available locally, so you can try it：</p>
-<pre><code>sudo docker run -i -t your-domain.com/yourname/base /bin/bash</code></pre>
-<p>If you want to pull this image from other machine, just use:</p>
-<pre><code>sudo docker pull your-domain.com/yourname/base</code></pre>
-<p>Have fun!</p>
-]]></description>
-            <link>http://tchen.me/posts/2013-11-13-local-docker-repo-en.html</link>
-            <guid isPermaLink="true">
-                http://tchen.me/posts/2013-11-13-local-docker-repo-en.html            </guid>
-            <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
-            <pubDate>Wed, 13 Nov 2013 14:40:00 GMT</pubDate>
+            <pubDate>Tue, 24 Dec 2013 06:40:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[建立自己的docker repository]]></title>
@@ -577,7 +502,133 @@ base                                  ubuntu-quantl         b750fe79269d        
             <guid isPermaLink="true">
                 http://tchen.me/posts/2013-11-13-local-docker-repo.html            </guid>
             <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
-            <pubDate>Wed, 13 Nov 2013 14:40:00 GMT</pubDate>
+            <pubDate>Thu, 14 Nov 2013 06:40:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Build Your Own Docker Registry with DigitalOcean]]></title>
+            <description><![CDATA[<h1>Build Your Own Docker Registry with DigitalOcean</h1>
+<p><a href="http://www.slideshare.net/dotCloud/why-docker">Docker</a> might be the most attracting open source technologies in 2013. By providing a higher level API and management UI, it make linux container much more usable. If you haven&#39;t tried it, <a href="http://www.docker.io/gettingstarted/">try it</a>. You will then feel it is &quot;<a href="http://blog.scoutapp.com/articles/2013/08/28/docker-git-for-deployment">the git for deployment</a>&quot;.</p>
+<p>After you played with it for a while, enjoying the git like operation for your software and their dependencies, a natural question will appear: how can I build my own private docker registry that I could leverage for my own IT infrastructure? </p>
+<p>The docker-registry comes to help you. docker-registry is a software to provide similar functionality as <a href="http://index.docker.io/">official docker index</a>, which is a central registry for you to commit your new images, pull existing ones, etc. It can let you to build your own docker registry that is private, secure and speedy.</p>
+<h2>Install docker-registry</h2>
+<p>First of all, let&#39;s clone docker-registry：</p>
+<pre><code>git clone https://github.com/dotcloud/docker-registry
+cd docker-registry
+cp config_sample.yml config.yml</code></pre>
+<p>You need then to open config.yml to set the dev (the default profile) storage to something like <code>/var/docker/registry</code>:</p>
+<pre><code># This is the default configuration when no flavor is specified
+dev:
+    storage: local
+    storage_path: /var/docker/registry
+    loglevel: debug</code></pre>
+<p>Then create this directory and grant </p>
+<pre><code>sudo mkdir -p /var/docker/registry
+sudo chown -R `whoami` /var/docker</code></pre>
+<p>As docker-registry uses python and ssl, you need to install the following libraries:</p>
+<pre><code>sudo apt-get install build-essential python-dev libevent-dev python-pip libssl-dev</code></pre>
+<p>Then you can setup your virtualenv and install requirements:</p>
+<p>(optional) install virtualenv if you haven&#39;t:</p>
+<pre><code>sudo pip install virtualenv</code></pre>
+<p>setup virtualenv:</p>
+<pre><code>virtualenv --no-site-packages venv
+. venv/bin/activate
+pip install -r requirements.txt</code></pre>
+<p>Now your docker-registry should be run via:</p>
+<pre><code>gunicorn -k gevent --max-requests 100 --graceful-timeout 3600 -t 3600 -b localhost:8080 -w 8 wsgi:application</code></pre>
+<p>You can open your browser on <code>http://localhost:8080</code> to see if it works. It should show you:</p>
+<pre><code>&quot;docker-registry server (dev)&quot;</code></pre>
+<p>Congratulations! The minimum installation is done. However, if you want to run it like a normal service, you need to configure supervisor and nginx. Let&#39;s continue our journey.</p>
+<h2>Run docker-registry as a service</h2>
+<p>If you don&#39;t have supervisor installed, please install it firstly:</p>
+<pre><code>sudo apt-get install supervisor</code></pre>
+<p>Then add a new configuration file:</p>
+<pre><code>sudo vim /etc/supervisor/conf.d/docker-registry.conf</code></pre>
+<p>In the opened vim editor, copy and paste the following content, save and quit (you need to change dev to your local user):</p>
+<pre><code>[program:docker-registry]
+directory=/home/dev/deployment/docker-registry
+user=dev
+command=/home/dev/deployment/docker-registry/venv/bin/gunicorn -b 0.0.0.0:7030 -k gevent --max-requests 100 --graceful-timeout 3600 -t 3600 -w 8 wsgi:application
+redirect_stderr=true
+stderr_logfile=none
+stdout_logfile=/var/log/supervisor/docker-registry.log
+autostart=true
+autorestart=true</code></pre>
+<p>Then reload supervisor to make it take effects.</p>
+<pre><code>$ sudo supervisorctl
+supervisor&gt; reread
+docker-registry: available
+supervisor&gt; update
+docker-registry: added process group
+supervisor&gt; status
+docker-registry                  RUNNING    pid 4371, uptime 0:00:01</code></pre>
+<p>If you see RUNNING int the status output, then it means your docker-registry is up and running normally. If not, please got to <code>/var/log/supervisor/docker-registry.log</code> to see what happened.</p>
+<p>Next you need to use nginx to proxy the requests to docker-registry. If you don&#39;t have nginx installed, please install it firstly:</p>
+<pre><code>sudo apt-get install nginx</code></pre>
+<p>Then add a new configuration file:</p>
+<pre><code>sudo vim /etc/nginx/sites-available/docker-registry</code></pre>
+<p>Copy and paste the following content, then save and quite:</p>
+<pre><code>server {
+  listen 80;
+  client_max_body_size 200m;
+  server_name your-domain.com;
+  access_log /var/log/nginx/docker-registry.access.log;
+  error_log /var/log/nginx/docker-registry.error.log;
+  location / {
+    proxy_pass http://localhost:8080;
+    include /etc/nginx/proxy_params;
+  }
+}</code></pre>
+<p>Note that you need <code>client_max_body_size 200m</code> to allow big file post. If later your found error like:</p>
+<pre><code>2013/11/12 03:35:18 Received HTTP code 413 while uploading layer</code></pre>
+<p>You need to enlarge this value.</p>
+<p>Then you need to soft link this file to <code>sites-enabled</code> and restart nginx:</p>
+<pre><code>cd /etc/nginx/sites-enabled/
+sudo ln -s ../sites-available/docker-registry docker-registry
+sudo service nginx restart</code></pre>
+<p>Open your browser to visit <code>http://your-domain.com</code>, you should see the same result as previous step:</p>
+<pre><code>&quot;docker-registry server (dev)&quot;</code></pre>
+<h2>Use your private docker registry</h2>
+<p>First of all, let&#39;s see what images we have so far:</p>
+<pre><code>$ sudo docker images
+REPOSITORY                            TAG                   IMAGE ID            CREATED             SIZE
+ubuntu                                12.04                 8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
+ubuntu                                latest                8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
+ubuntu                                precise               8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
+ubuntu                                12.10                 b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+base                                  latest                b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+ubuntu                                quantal               b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+base                                  ubuntu-12.10          b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+base                                  ubuntu-quantal        b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+base                                  ubuntu-quantl         b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)</code></pre>
+<p>If you don&#39;t have any docker images, please use <code>sudo docker pull base</code> to pull base images from docker repository.</p>
+<p>We would like to push the base image to our own shiny registry. First of all, tag it to push to your own server:</p>
+<pre><code>sudo docker tag b750fe79269d your-domain.com/yourname/base</code></pre>
+<p>Then push:</p>
+<pre><code>sudo docker push your-domain.com/yourname/base</code></pre>
+<p>If push succeeded, you will see your images with <code>docker images</code>:</p>
+<pre><code>$ sudo docker images
+REPOSITORY                            TAG                   IMAGE ID            CREATED             SIZE
+ubuntu                                12.04                 8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
+ubuntu                                latest                8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
+ubuntu                                precise               8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
+ubuntu                                12.10                 b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+base                                  latest                b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+your-domain.com/yourname/base        latest                b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+ubuntu                                quantal               b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+base                                  ubuntu-12.10          b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+base                                  ubuntu-quantal        b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+base                                  ubuntu-quantl         b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)</code></pre>
+<p>It is already available locally, so you can try it：</p>
+<pre><code>sudo docker run -i -t your-domain.com/yourname/base /bin/bash</code></pre>
+<p>If you want to pull this image from other machine, just use:</p>
+<pre><code>sudo docker pull your-domain.com/yourname/base</code></pre>
+<p>Have fun!</p>
+]]></description>
+            <link>http://tchen.me/posts/2013-11-13-local-docker-repo-en.html</link>
+            <guid isPermaLink="true">
+                http://tchen.me/posts/2013-11-13-local-docker-repo-en.html            </guid>
+            <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
+            <pubDate>Thu, 14 Nov 2013 06:40:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[使用HTTPS]]></title>
@@ -728,7 +779,7 @@ proxy_set_header X-Forwarded-Proto https;</code></pre>
             <guid isPermaLink="true">
                 http://tchen.me/posts/2013-11-11-https.html            </guid>
             <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
-            <pubDate>Sun, 10 Nov 2013 14:40:00 GMT</pubDate>
+            <pubDate>Mon, 11 Nov 2013 06:40:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[Hatch: 实验]]></title>
@@ -997,7 +1048,7 @@ diffPath src, dst, ext, (err, data) -&gt;
             <guid isPermaLink="true">
                 http://tchen.me/posts/2013-11-03-hatch-experiment.html            </guid>
             <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
-            <pubDate>Mon, 04 Nov 2013 14:40:00 GMT</pubDate>
+            <pubDate>Tue, 05 Nov 2013 06:40:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[Hatch: 又一个建站工具]]></title>
@@ -1113,7 +1164,7 @@ Hello hatch!</code></pre>
             <guid isPermaLink="true">
                 http://tchen.me/posts/2013-10-30-the-hatch-project.html            </guid>
             <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
-            <pubDate>Tue, 29 Oct 2013 23:40:00 GMT</pubDate>
+            <pubDate>Wed, 30 Oct 2013 14:40:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[觅珠人：浴火重生]]></title>
@@ -1327,7 +1378,7 @@ deploy:
             <guid isPermaLink="true">
                 http://tchen.me/posts/2013-10-28-blog-reborn.html            </guid>
             <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
-            <pubDate>Sun, 27 Oct 2013 23:40:00 GMT</pubDate>
+            <pubDate>Mon, 28 Oct 2013 14:40:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[长日无痕]]></title>
@@ -1421,7 +1472,7 @@ judgment difficult.
             <guid isPermaLink="true">
                 http://tchen.me/posts/2013-07-27-the-remains-of-the-day.html            </guid>
             <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
-            <pubDate>Sat, 27 Jul 2013 13:24:00 GMT</pubDate>
+            <pubDate>Sun, 28 Jul 2013 04:24:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[Why should C programmers learn Erlang?]]></title>
@@ -1764,155 +1815,7 @@ fac(N, Acc) -&gt; fac(N-1, Acc * N).</code></pre>
             <guid isPermaLink="true">
                 http://tchen.me/posts/2013-07-22-why-should-c-programmers-learn-erlang.html            </guid>
             <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
-            <pubDate>Mon, 22 Jul 2013 10:32:00 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[你无法想象的C语法]]></title>
-            <description><![CDATA[<h2>引子</h2>
-<p>看了berkeley网站上的文章<a href="http://www.cs.berkeley.edu/~necula/cil/cil016.html">Who Says C is Simple?</a>，顿感汗流浃背。如果招聘官按照这个题目去面试，我也就将将五十分。不过话说回来，这里所列的case都太偏门，走的是圣火令的武功路数，真正做工程的这么写代码就是欠揍。</p>
-<p>但是抱着学语言的态度，这里的题目如果你不懂都值得深究。我研究了下第四题 —— 这是让我比较困惑的一题。</p>
-<pre><code>// Functions and function pointers are implicitly converted to each other.
-int (*pf)(void);
-int f(void) {
-
-   pf = &amp;f; // This looks ok
-   pf = ***f; // Dereference a function?
-   pf(); // Invoke a function pointer?     
-   (****pf)();  // Looks strange but Ok
-   (***************f)(); // Also Ok             
-}</code></pre>
-<!--more-->
-
-<h2>探讨</h2>
-<p>这个代码直接运行的话肯定是Segment Fault。从第3句起就是个无限递归。作者想揭示的问题并不在此，所以我的测试代码做了小小修改：</p>
-<pre><code>#include &lt;stdio.h&gt;
-
-int (*pf)(void);
-
-int f(void) {
-    printf(&quot;Hello world!\n&quot;);
-}
-
-int main() {
-    f();
-    (&amp;f)();
-    (*f)();
-    (************f)();
-    pf = &amp;f;
-    pf();
-    pf = *f;
-    pf();
-}</code></pre>
-<p>运行起来和预期一致：</p>
-<pre><code>vagrant@vagrant-ubuntu-raring-64:~/arena$ ./fp
-Hello world!
-Hello world!
-Hello world!
-Hello world!
-Hello world!
-Hello world!</code></pre>
-<p>我们来看看汇编出来的结果（arm）：</p>
-<pre><code>00008440 &lt;f&gt;:
-    8440:   e92d4800    push    {fp, lr}
-    8444:   e28db004    add fp, sp, #4
-    8448:   e59f0008    ldr r0, [pc, #8]    ; 8458 &lt;f+0x18&gt;
-    844c:   ebffffa2    bl  82dc &lt;_init+0x20&gt;
-    8450:   e1a00003    mov r0, r3
-    8454:   e8bd8800    pop {fp, pc}
-    8458:   00008528    .word   0x00008528
-
-0000845c &lt;main&gt;:
-    845c:   e92d4800    push    {fp, lr}
-    8460:   e28db004    add fp, sp, #4
-    8464:   ebfffff5    bl  8440 &lt;f&gt;
-    8468:   ebfffff4    bl  8440 &lt;f&gt;
-    846c:   ebfffff3    bl  8440 &lt;f&gt;
-    8470:   ebfffff2    bl  8440 &lt;f&gt;
-    8474:   e59f3030    ldr r3, [pc, #48]   ; 84ac &lt;main+0x50&gt;
-    8478:   e59f2030    ldr r2, [pc, #48]   ; 84b0 &lt;main+0x54&gt;
-    847c:   e5832000    str r2, [r3]
-    8480:   e59f3024    ldr r3, [pc, #36]   ; 84ac &lt;main+0x50&gt;
-    8484:   e5933000    ldr r3, [r3]
-    8488:   e12fff33    blx r3
-    848c:   e59f3018    ldr r3, [pc, #24]   ; 84ac &lt;main+0x50&gt;
-    8490:   e59f2018    ldr r2, [pc, #24]   ; 84b0 &lt;main+0x54&gt;
-    8494:   e5832000    str r2, [r3]
-    8498:   e59f300c    ldr r3, [pc, #12]   ; 84ac &lt;main+0x50&gt;
-    849c:   e5933000    ldr r3, [r3]
-    84a0:   e12fff33    blx r3
-    84a4:   e1a00003    mov r0, r3
-    84a8:   e8bd8800    pop {fp, pc}
-    84ac:   0001102c    .word   0x0001102c
-    84b0:   00008440    .word   0x00008440</code></pre>
-<p>我们可以看到 <code>f()</code>，<code>(&amp;f)()</code>，<code>(*f)()</code>，<code>(************f)()</code> 编译出来的结果均为 <code>bl 8440 &lt;f&gt;</code>。而无论对 <code>pf</code> 赋值为 <code>&amp;f</code>，还是 <code>*f</code>，其代码都是：</p>
-<pre><code>    8474:   e59f3030    ldr r3, [pc, #48]   ; 84ac &lt;main+0x50&gt;
-    8478:   e59f2030    ldr r2, [pc, #48]   ; 84b0 &lt;main+0x54&gt;
-    847c:   e5832000    str r2, [r3]
-    8480:   e59f3024    ldr r3, [pc, #36]   ; 84ac &lt;main+0x50&gt;
-    8484:   e5933000    ldr r3, [r3]
-    8488:   e12fff33    blx r3</code></pre>
-<p>这个代码很好理解，就是把 <code>f()</code> 的地址取出来，存入 <code>pf</code>，然后执行 <code>pf()</code>（注意arm会把全局地址存放在使用它的函数的末尾，这样可以一条指令取出地址）。问题是，为何 <code>&amp;f</code> 和 <code>*f</code> 在这里是等价的？</p>
-<h2>*和&amp;</h2>
-<p>我们知道，<code>*</code> 是解引用，<code>&amp;</code> 是引用，下面的代码，前者取值，后者取地址：</p>
-<pre><code>#include &lt;stdio.h&gt;
-
-int print(int x)
-{
-    printf(&quot;value is %x\n&quot;, x);
-}
-
-int main()
-{
-    int a;
-    int b;
-    unsigned int x[] = {0x10};
-
-    a = *x;
-    b = &amp;x;
-
-    print(a);
-    print(b);
-    print(x);
-
-}</code></pre>
-<p>执行结果说明一切：</p>
-<pre><code>vagrant@vagrant-ubuntu-raring-64:~/arena$ ./a.out
-value is 10
-value is f50cef80
-value is f50cef80</code></pre>
-<p>汇编代码也和预期一致：</p>
-<pre><code>    00008470 &lt;main&gt;:
-    8470:   e92d4800    push    {fp, lr}
-    8474:   e28db004    add fp, sp, #4
-    8478:   e24dd010    sub sp, sp, #16
-    847c:   e3a03010    mov r3, #16
-    8480:   e50b3010    str r3, [fp, #-16]
-    8484:   e51b3010    ldr r3, [fp, #-16]
-    8488:   e50b300c    str r3, [fp, #-12]
-    848c:   e24b3010    sub r3, fp, #16
-    8490:   e50b3008    str r3, [fp, #-8]
-    8494:   e51b000c    ldr r0, [fp, #-12]
-    8498:   ebffffe9    bl  8444 &lt;print&gt;
-    849c:   e51b0008    ldr r0, [fp, #-8]
-    84a0:   ebffffe7    bl  8444 &lt;print&gt;
-    84a4:   e24b3010    sub r3, fp, #16
-    84a8:   e1a00003    mov r0, r3
-    84ac:   ebffffe4    bl  8444 &lt;print&gt;
-    84b0:   e1a00003    mov r0, r3
-    84b4:   e24bd004    sub sp, fp, #4
-    84b8:   e8bd8800    pop {fp, pc}</code></pre>
-<p>那么，同样是对地址（<code>f()</code>也是个地址）做解引用(<code>*</code>)，为何作用于函数地址，解引用等同于引用？</p>
-<p>我的理解是，对于函数地址的解引用，如何和数组等同处理，返回对应地址的内容，即编译出来的机器码，是能够解释 <code>(*f)()</code>的。因为返回的代码被执行后，<code>pc</code> 会自增，然后代码就顺着函数的逻辑执行下去，这个没有问题。所以，<code>(*f)()</code> 等价于 <code>f()</code>，同样等价于 <code>(&amp;f)()</code>。但问题是如何理解 <code>(*******f)()</code>？貌似任意多的解引用作用于函数地址，编译器并不会报错且运行正常，而 <code>(&amp;&amp;&amp;f)()</code> 编都编不过？</p>
-<p>费了好大劲，想花了脑袋都没想明白。求助于stackoverflow，发现有人也有类似的疑问：<a href="http://stackoverflow.com/questions/2795575/how-does-dereferencing-of-a-function-pointer-happen">How does dereferencing of a function pointer happen?</a>，最佳答案通过lvalue和rvalue的角度去分析，看着很靠谱，值得一读，我这里就不重复了。</p>
-<h2>后记</h2>
-<p>学语言，如果抱着一颗写编译器的心去学，那么就无敌于天下了。:)</p>
-<p><img src="/assets/files/photos/baby20130711.jpg" alt="小宝和爷爷"></p>
-]]></description>
-            <link>http://tchen.me/posts/2013-07-18-c-grammar-you-cannot-imagine.html</link>
-            <guid isPermaLink="true">
-                http://tchen.me/posts/2013-07-18-c-grammar-you-cannot-imagine.html            </guid>
-            <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
-            <pubDate>Thu, 18 Jul 2013 00:22:00 GMT</pubDate>
+            <pubDate>Tue, 23 Jul 2013 01:32:00 GMT</pubDate>
         </item>
     </channel>
 </rss>

@@ -112,6 +112,8 @@
                         
                     
                         
+                    
+                        
                         <li
                             about="/pages/canvases.html"
                             class=""
@@ -170,12 +172,102 @@
   <div class='col-md-8 col-md-offset-2'>
     <div class='post-loop-content'>
       <h2 class='has-sub-header'>
-        <a href='/posts/2013-06-23-come-to-origin-for-embedded-applications.html'>Come to Origins for Embedded Applications</a>
+        <a href='/posts/2013-07-18-c-grammar-you-cannot-imagine.html'>你无法想象的C语法</a>
       </h2>
       <div class='post-loop-meta'>
         <span>
           <i class='icon-calendar'></i>
           6个月前
+        </span>
+        <span class='hidden-mobile-ib tags'>
+          <i class='icon-tags'></i>
+          
+            <a href='/tags/c.html'>c</a>
+          
+            <a href='/tags/lang.html'>lang</a>
+          
+            <a href='/tags/technology.html'>technology</a>
+          
+        </span>
+        <span>
+          <i class='icon-time'></i>
+          9 分钟
+        </span>
+        <!--
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-comments'></i>
+            24
+          </a>
+        </span>
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-heart'></i>
+            15
+          </a>
+        </span>
+        -->
+      </div>
+      <p>看了berkeley网站上的文章<a href="http://www.cs.berkeley.edu/~necula/cil/cil016.html">Who Says C is Simple?</a>，顿感汗流浃背。如果招聘官按照这个题目去面试，我也就将将五十分。不过话说回来，这里所列的case都太偏门，走的是圣火令的武功路数，真正做工程的这么写代码就是欠揍。</p>
+<p>但是抱着学语言的态度，这里的题目如果你不懂都值得深究。我研究了下第四题 —— 这是让我比较困惑的一题。</p>
+<pre><code>// Functions and function pointers are implicitly converted to each other.
+int (*pf)(void);
+int f(void) {
+
+   pf = &amp;f; // This looks ok
+   pf = ***f; // Dereference a function?
+   pf(); // Invoke a function pointer?     
+   (****pf)();  // Looks strange but Ok
+   (***************f)(); // Also Ok             
+}</code></pre>
+
+      <!--
+      <div class='under-post'>
+        <div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-weibo'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+      </div>
+      <br/>
+      -->
+      <div class='slogan-buttons'>
+          <a class='btn btn-primary btn-cta btn-lg animated-when-hover' data-animation-type="swing" href='/posts/2013-07-18-c-grammar-you-cannot-imagine.html'>
+              继续阅读 ->
+          </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+        <div class='row post-loop'>
+  <!--
+  <div class='col-md-2 col-md-offset-1'>
+    <div class='post-loop-author-info'>
+      <div class='author-avatar'>
+        <img alt='' src='/assets/images/tyr.png'>
+      </div>
+      <div class='author-meta'>
+        <h4 class='author-name'>Tyr Chen</h4>
+        <i class='icon-calendar'></i>
+        7个月前
+      </div>
+    </div>
+  </div>
+  -->
+  <div class='col-md-8 col-md-offset-2'>
+    <div class='post-loop-content'>
+      <h2 class='has-sub-header'>
+        <a href='/posts/2013-06-23-come-to-origin-for-embedded-applications.html'>Come to Origins for Embedded Applications</a>
+      </h2>
+      <div class='post-loop-meta'>
+        <span>
+          <i class='icon-calendar'></i>
+          7个月前
         </span>
         <span class='hidden-mobile-ib tags'>
           <i class='icon-tags'></i>
@@ -549,7 +641,7 @@
       <div class='author-meta'>
         <h4 class='author-name'>Tyr Chen</h4>
         <i class='icon-calendar'></i>
-        8个月前
+        9个月前
       </div>
     </div>
   </div>
@@ -562,7 +654,7 @@
       <div class='post-loop-meta'>
         <span>
           <i class='icon-calendar'></i>
-          8个月前
+          9个月前
         </span>
         <span class='hidden-mobile-ib tags'>
           <i class='icon-tags'></i>
@@ -861,83 +953,6 @@
 </div>
 
     
-        <div class='row post-loop'>
-  <!--
-  <div class='col-md-2 col-md-offset-1'>
-    <div class='post-loop-author-info'>
-      <div class='author-avatar'>
-        <img alt='' src='/assets/images/tyr.png'>
-      </div>
-      <div class='author-meta'>
-        <h4 class='author-name'>Tyr Chen</h4>
-        <i class='icon-calendar'></i>
-        10个月前
-      </div>
-    </div>
-  </div>
-  -->
-  <div class='col-md-8 col-md-offset-2'>
-    <div class='post-loop-content'>
-      <h2 class='has-sub-header'>
-        <a href='/posts/2013-03-08-career-path-for-software-engineer.html'>软件工程师的职业生涯</a>
-      </h2>
-      <div class='post-loop-meta'>
-        <span>
-          <i class='icon-calendar'></i>
-          10个月前
-        </span>
-        <span class='hidden-mobile-ib tags'>
-          <i class='icon-tags'></i>
-          
-            <a href='/tags/career.html'>career</a>
-          
-            <a href='/tags/thought.html'>thought</a>
-          
-        </span>
-        <span>
-          <i class='icon-time'></i>
-          8 分钟
-        </span>
-        <!--
-        <span class='hidden-mobile-ib'>
-          <a href='#'>
-            <i class='icon-comments'></i>
-            24
-          </a>
-        </span>
-        <span class='hidden-mobile-ib'>
-          <a href='#'>
-            <i class='icon-heart'></i>
-            15
-          </a>
-        </span>
-        -->
-      </div>
-      <p>今早（3/8）跟人聊起工程师的职业生涯，突然想起前些日子看的一篇长微博：一个IBM人的离职泪（回头翻微博，作者已经删除那条内容）。内容已经记不太清了，唯一记得的是这哥们14年被promote 11次，跨过了从屌丝到中产的几乎所有band。这是一种职业生涯的典型，姑且称之为从一而终型；与之相对的，就是打一枪换一个地方，每个公司都涉足不深，但行业里基本都混了个脸熟，朋友遍天下，这是机会主义型。</p>
-
-      <!--
-      <div class='under-post'>
-        <div class='post-social text-center'>
-  <a class='social-link' href='#'>
-    <i class='icon-weibo'></i>
-  </a>
-  <a class='social-link' href='#'>
-    <i class='icon-envelope'></i>
-  </a>
-</div>
-      </div>
-      <br/>
-      -->
-      <div class='slogan-buttons'>
-          <a class='btn btn-primary btn-cta btn-lg animated-when-hover' data-animation-type="swing" href='/posts/2013-03-08-career-path-for-software-engineer.html'>
-              继续阅读 ->
-          </a>
-      </div>
-    </div>
-  </div>
-</div>
-
-    
     
     
 <ul class="paginator text-center">
@@ -962,6 +977,10 @@
     
         
             <li><a href="/pages/posts.3.html">4</a></li>
+        
+    
+        
+            <li><a href="/pages/posts.4.html">5</a></li>
         
     
 

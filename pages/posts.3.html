@@ -112,6 +112,8 @@
                         
                     
                         
+                    
+                        
                         <li
                             about="/pages/canvases.html"
                             class=""
@@ -150,6 +152,84 @@
 </div>
 
 <div class='container'>
+
+    
+        <div class='row post-loop'>
+  <!--
+  <div class='col-md-2 col-md-offset-1'>
+    <div class='post-loop-author-info'>
+      <div class='author-avatar'>
+        <img alt='' src='/assets/images/tyr.png'>
+      </div>
+      <div class='author-meta'>
+        <h4 class='author-name'>Tyr Chen</h4>
+        <i class='icon-calendar'></i>
+        1年前
+      </div>
+    </div>
+  </div>
+  -->
+  <div class='col-md-8 col-md-offset-2'>
+    <div class='post-loop-content'>
+      <h2 class='has-sub-header'>
+        <a href='/posts/2013-01-09-auto-deploy-with-github-webhooks.html'>用Github Webhooks实现自动部署</a>
+      </h2>
+      <div class='post-loop-meta'>
+        <span>
+          <i class='icon-calendar'></i>
+          1年前
+        </span>
+        <span class='hidden-mobile-ib tags'>
+          <i class='icon-tags'></i>
+          
+            <a href='/tags/tool.html'>tool</a>
+          
+            <a href='/tags/automation.html'>automation</a>
+          
+        </span>
+        <span>
+          <i class='icon-time'></i>
+          12 分钟
+        </span>
+        <!--
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-comments'></i>
+            24
+          </a>
+        </span>
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-heart'></i>
+            15
+          </a>
+        </span>
+        -->
+      </div>
+      <p>互联网产品永远都处在不断更迭的beta阶段。我们常常会在生产环境外，建立一套与生产环境共享数据的lab环境，以便验证一些即将用于真实世界的想法。问题是，每次提交改动后都需要手工运行部署脚本（前后大概花去30s左右时间），很不高效，每天运行那么几次，对惜时如金的程序员来说是种磨难。于是忙中偷闲的时候，就会想：有没有一种方法在代码提交后能够自动部署，身躯手工的麻烦？</p>
+<p>当然是有的。Github的 <a href="https://help.github.com/articles/post-receive-hooks">Post receive hooks</a> 就是用来干这个滴。作者花了小半天时间（对nodejs不熟啊），实现了一个很简单的自动部署方案，趁着记忆还未散去，将其记录在案，和大家分享交流。</p>
+
+      <!--
+      <div class='under-post'>
+        <div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-weibo'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+      </div>
+      <br/>
+      -->
+      <div class='slogan-buttons'>
+          <a class='btn btn-primary btn-cta btn-lg animated-when-hover' data-animation-type="swing" href='/posts/2013-01-09-auto-deploy-with-github-webhooks.html'>
+              继续阅读 ->
+          </a>
+      </div>
+    </div>
+  </div>
+</div>
 
     
         <div class='row post-loop'>
@@ -877,83 +957,6 @@
 </div>
 
     
-        <div class='row post-loop'>
-  <!--
-  <div class='col-md-2 col-md-offset-1'>
-    <div class='post-loop-author-info'>
-      <div class='author-avatar'>
-        <img alt='' src='/assets/images/tyr.png'>
-      </div>
-      <div class='author-meta'>
-        <h4 class='author-name'>Tyr Chen</h4>
-        <i class='icon-calendar'></i>
-        1年前
-      </div>
-    </div>
-  </div>
-  -->
-  <div class='col-md-8 col-md-offset-2'>
-    <div class='post-loop-content'>
-      <h2 class='has-sub-header'>
-        <a href='/posts/2012-12-16-first-blog.html'>第一篇博客: 用octopress搭建博客系统</a>
-      </h2>
-      <div class='post-loop-meta'>
-        <span>
-          <i class='icon-calendar'></i>
-          1年前
-        </span>
-        <span class='hidden-mobile-ib tags'>
-          <i class='icon-tags'></i>
-          
-            <a href='/tags/octopress.html'>octopress</a>
-          
-            <a href='/tags/tool.html'>tool</a>
-          
-        </span>
-        <span>
-          <i class='icon-time'></i>
-          13 分钟
-        </span>
-        <!--
-        <span class='hidden-mobile-ib'>
-          <a href='#'>
-            <i class='icon-comments'></i>
-            24
-          </a>
-        </span>
-        <span class='hidden-mobile-ib'>
-          <a href='#'>
-            <i class='icon-heart'></i>
-            15
-          </a>
-        </span>
-        -->
-      </div>
-      <p>夜夜哭闹的混世小魔王在她满月的这天好像突然换了个人，一觉又一觉地睡。这可苦了我，一个月来建立的夜间作息倾刻间紊乱，她没有闹觉的时间里，我却丢了魂一样，怎么也睡不着。于是起身想折腾点什么，无意间看到了derbyjs的 <a href="http://blog.derbyjs.com" title="Derby JS">blog</a> 是github pages支持的，遂产生了兴趣，挽起袖子就开始折腾一个自己的。虽然 [octopress][1]的文档写得很清晰，但对于第一次接触这个博客系统的人来讲，还是有一些拦路虎的。2012年12月16日凌晨4:15，当我的第一篇空的博客展现在 <a href="tyrchen.github.com">tyrchen.github.com</a> 时，我终于累瘫在床上。
-
-      <!--
-      <div class='under-post'>
-        <div class='post-social text-center'>
-  <a class='social-link' href='#'>
-    <i class='icon-weibo'></i>
-  </a>
-  <a class='social-link' href='#'>
-    <i class='icon-envelope'></i>
-  </a>
-</div>
-      </div>
-      <br/>
-      -->
-      <div class='slogan-buttons'>
-          <a class='btn btn-primary btn-cta btn-lg animated-when-hover' data-animation-type="swing" href='/posts/2012-12-16-first-blog.html'>
-              继续阅读 ->
-          </a>
-      </div>
-    </div>
-  </div>
-</div>
-
-    
     
     
 <ul class="paginator text-center">
@@ -980,10 +983,14 @@
             <li class="active"><span>4</span></li>
         
     
+        
+            <li><a href="/pages/posts.4.html">5</a></li>
+        
+    
 
     <!-- Next Page Button -->
     
-        <li class="disabled"><span>下一页</span></li>
+        <li><a href="/pages/posts.4.html">下一页</a></li>
     
 </ul>
 
