@@ -5,10 +5,183 @@
         <description><![CDATA[本博客提供我个人的想法，创意，经验，心得。你不必认同博主观点。]]></description>
         <link>http://tchen.me</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sun, 12 Jan 2014 19:31:10 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 14 Jan 2014 23:51:27 GMT</lastBuildDate>
         <atom:link href="http://tchen.me/rss.xml" rel="self" type="application/rss+xml"/>
         <author><![CDATA[Tyr Chen]]></author>
-        <pubDate>Sun, 12 Jan 2014 19:30:26 GMT</pubDate>
+        <pubDate>Tue, 14 Jan 2014 23:50:40 GMT</pubDate>
+        <item>
+            <title><![CDATA[2014年年会节目脚本 - Branch取经记]]></title>
+            <description><![CDATA[<p>每年的年会，依team旧例：新员工挑大梁演主角，而且要无耻度无底线。2013我是新员工，所以不得不被安排角色。一不小心大家选了个三国的剧本 <a href="http://www.docin.com/p-111786442.html">三国无间道</a>，重口一致要让我演董卓，说我体态样貌样样俱全。我一看剧本，这是毁人的节奏啊。不行不行，于是毛遂自荐当编剧，卸了主演。话说这三国无间道的剧本有点烂，笑点不多，和内事外事均无半毛钱关系，于是干脆一狠心，推翻重来。正巧13年重读了『西游记』，对唐太宗地府还魂记还记忆犹新，于是以此为蓝本展开故事。剧本着眼于普度众生，让大多数team成员都能上个台，露个脸，于是人物众多，在一个主线故事下，没有绝对的主角，算是本剧的小小遗憾。</p>
+<p>以下内容做了些删改，避免暴露一些内部信息。</p>
+<!--more-->
+
+<h2>人物</h2>
+<p>唐太宗：Tony</p>
+<p>武媚娘：Lily</p>
+<p>观音姐姐：Halin</p>
+<p>黑白无常：Daniel, Leo</p>
+<p>王玄奘：Dereck</p>
+<p>邵悟空：Yafang</p>
+<p>郭悟能：Cliff</p>
+<p>郭悟净：Tim</p>
+<p>天竺城管：Bo</p>
+<p>接引道人：Dongdong</p>
+<p>菩提祖师：Colin </p>
+<p>举牌，新闻联播口型：Yaling，Hao</p>
+<p>P1, P2 Issue: Hao</p>
+<p>旁白及音乐播放：Tyr</p>
+<h2>第一幕</h2>
+<p>（牌子飘过：本故事纯属扯淡，请勿对号入座）</p>
+<p>（中宫内，武媚娘正在弹吉他：一闪一闪亮晶晶）</p>
+<p>（唐太宗背着手走进来）</p>
+<p>唐太宗：抽刀断水水更流，举杯消愁愁更愁，人生在世不称意,明朝散发弄…扁…舟。</p>
+<p>武媚娘（起身相迎）：陛下。</p>
+<p>唐太宗：媚娘免礼。（走到媚娘旁边的龙榻前，卧在龙榻上，一脸倦容）</p>
+<p>武媚娘：陛下满面愁容，是否国事太过繁重？</p>
+<p>唐太宗：媚娘，自从天庭将 branch 业务托朕掌管，我就吃也吃不好，睡也睡不着，那些海龙王，河龙王，井龙王，加上女儿国，宝象国等各国国君天天给我开p1 issue，还动不动就escalate到观音姐姐甚至玉帝那里，弄得我好生烦躁。唉～～累觉不爱啊（说罢，闭上眼睛）</p>
+<p>武媚娘：陛下莫愁，臣妾刚学会一首『广陵散』，这就弹来，为陛下安安神。</p>
+<p>（媚娘弹奏两只老虎，唐太宗随着音乐晃着脑袋扭着身子渐渐入睡，入睡，媚娘放下吉他，拿苍蝇拍给太宗扇风，并打苍蝇）</p>
+<p>（灯光转暗，黑白无常在远处现身。道具：招魂幡，一串糖葫芦，一个风车，凸显过年气氛）</p>
+<p>（音乐 You drive me crazy）</p>
+<audio src="/assets/files/mp3/1-1-you-drive-me-crazy.mp3" controls="controls"></audio>
+
+<p>黑无常：阎王教人三更死，绝不留人到五更。可是就在前两天，地府出了大事！分布在阴曹地府各个角落的firewall不停的crash，真是一塌糊涂啊！</p>
+<p>白无常：生死薄信息系统全部瘫痪，原本一帮贪官死期已至，结果到今天还活蹦乱跳的；高丽国三胖子的姑父本来还有十年阳寿，却嗝屁投胎去了。</p>
+<p>黑无常：阎王大怒，差我兄弟勾了branch的负责人前去问话，说句公道话，这branch的活真心不好干啊。</p>
+<p>白无常：谁说不是呢？以前大家都叫他小白，叫我小黑，叫得人家心里好自卑。自打当了JTAC以后，我就营养不良，脸色越来越白，上次PTO几天去高丽，一堆美女围着我问我用的面膜品牌。我告诉她们：要美白，请接customer issue，谁用谁知道！</p>
+<p>黑无常：皇宫已到，那不是就是负责branch的老李？</p>
+<p>（黑白上前锁住唐太宗，唐太宗惊醒）</p>
+<p>白无常：老李，阎王要你去地府开个secure meeting，速速跟了我们去吧！</p>
+<p>（唐太宗反抗，武媚娘上前阻拦，众人闹成一团）</p>
+<p>唐太宗：我死也不去！哦，不，我不要死！</p>
+<p>黑无常：不去就双规你！</p>
+<p>唐太宗：大慈大悲观世音救命啊！</p>
+<p>（观音姐姐手持玉净瓶，摆着兰花指出现。）</p>
+<p>观音姐姐：善哉善哉，给贫僧一个薄面，大家请住手。</p>
+<p>（众人住手，黑白无常原地吐舌头）</p>
+<p>唐太宗：欧～巴～（尾音拖三秒），你来得正好。佛说你不入地狱谁入地狱，这个meeting还是你参加吧。你好歹是个喜大普奔的菩萨，阎王爷那说得上话。</p>
+<p>（观音姐姐满脸黑线。黑线飘过。）</p>
+<p>观音姐姐（塞给黑白一人一个红包）：黑白无常，你等且回去禀报阎罗王，我有个极好的workaround，地府不是有孟婆汤么，浇在那些有问题的盒子上可保十日平安。</p>
+<p>黑白：尊法旨，不过我们要留一个人质！（拉着媚娘下场）</p>
+<p>媚娘（伸手）：陛下～</p>
+<audio src="/assets/files/mp3/1-2-huisekongjian.mp3" controls="controls"></audio>
+
+<p>唐太宗（伸手）：Honey～</p>
+<p>（画面定格。唐太宗面部抽搐，凄凄惨惨戚戚，内心独白）</p>
+<p>（音乐停）</p>
+<p>观音姐姐：随他们去吧。糖糖，目前你还有更重要的事情去做。我这次来就是想告诉你，什么是branch业务的真谛。</p>
+<p>唐太宗（回过神来）：真谛？</p>
+<p>观音姐姐：很多事情不是你表面上看到的那样。你以为遍布我大唐的沙县小吃仅仅是小吃么？</p>
+<p>唐太宗：啊？这和branch有毛关系啊？</p>
+<p>观音姐姐：打个比方嘛。你以为我们Juniper是卖硬件的么？你以为将 branch 产品做出来的西天神佛是吃素的么？其实我们是卖服务的。硬件软件不多出点问题，服务怎能做得起来？俗话说的好，一日卖硬件，终身卖服务。这，才是为商之道。</p>
+<p>唐太宗：虽然不明白你在说什么，但感觉好厉害的样子。</p>
+<p>观音姐姐：我想派你去西天取经。</p>
+<p>唐太宗：取经？</p>
+<p>观音姐姐：天竺班加罗尔寺的藏经阁里有大量 branch 知识，你组建一个取经团队，到天竺去学习，学好了branch知识就不怕customer issue了。</p>
+<p>唐太宗：学习？</p>
+<p>观音姐姐：对。贫僧先行告辞，替你们上下打点。</p>
+<p>（说罢观音姐姐飘走）</p>
+<p>唐太宗：喂，别走啊～天竺？我们没人懂梵文啊～</p>
+<p>（众人除唐太宗外均下场）</p>
+<p>（音乐 快乐女声）</p>
+<audio src="/assets/files/mp3/1-3-xiangchang.mp3" controls="controls"></audio>
+
+<p>旁白：就这样，唐太宗开始了艰苦卓绝的『西游记中人』海选，终于敲定了从超级女声十强赛中脱颖而出的史上最强大取经阵容：王玄奘，邵悟空，以及郭悟能，郭悟净两兄弟。这一天，唐太宗在Everest准备开all hands meeting，检阅取经部队。。。</p>
+<h2>第二幕</h2>
+<p>（播放运动员进行曲）</p>
+<audio src="/assets/files/mp3/2-1-yundongyuan.mp3" controls="controls"></audio>
+
+<p>（唐太宗在场地中央站着，旁边立一个牌子：长安，场地另一次立牌子：天竺）</p>
+<p>（玄奘，孙悟空，白龙马，猪悟能，沙悟净列队上台）</p>
+<p>玄奘：稍息，立正。向右看齐，向前看！</p>
+<p>（玄奘小跑到太宗面前，行军礼）</p>
+<p>玄奘：报告陛下，西天取经小分队集结完毕，请指示。</p>
+<p>唐太宗（挥挥手）：同志们辛苦了！</p>
+<p>玄奘等人：为branch服务！</p>
+<p>唐太宗：玄奘，此去你等背负重大责任，branch 能否做好就看你们的了。</p>
+<p>玄奘等人：Yes sir！</p>
+<p>唐太宗：唉？你们的坐骑白龙马呢？</p>
+<p>悟空：陛下，按照天庭规定，本周白马限行，只允许黑马上路。</p>
+<p>唐太宗：哦，明白。你们的梵文练得怎样了？</p>
+<p>悟净（出列）：前轱辘转后轱辘不转，前轱辘不转后轱辘转思密达（颔首）</p>
+<p>唐太宗：（挥手）我大唐有你等高人，branch复兴指日可待！出发在即，大家还有什么问题？</p>
+<p>悟空：此番西去，路途遥远，非一年半载不能归来，陛下可否多批些budget供我们旅途中team building？</p>
+<p>唐太宗：我靠，这是出差，你当是带薪休假呢。最近手头紧，国库里就够你们两周的钱粮。</p>
+<p>悟能：两周？此处离西天十万八千里，现在又是雾霾又是限行的，两周我们都走不出杜家坎啊陛下！</p>
+<p>唐太宗：哈哈哈，你们out了。西域刚刚上供了一种灵鸡，叫灰机，骑上它，七八个时辰就到天竺。你们看～</p>
+<p>众人：哦？</p>
+<p>（Yalin举着灰机-Juniper Rocker-的牌子上场，众人一齐跟在灰机的后面，在场中绕圈子，唐太宗下）</p>
+<h2>第三幕</h2>
+<p>（灰机带着师徒四人飘过，绕场两圈到天竺，然后飘走）</p>
+<p>（音乐 - 天竺少女）</p>
+<audio src="/assets/files/mp3/3-1-tianzhu.mp3" controls="controls"></audio>
+
+<p>（师徒四人开始跳印度舞）</p>
+<p>（十秒左右，音乐声渐小）</p>
+<p>悟能：师父，我们到天竺了～</p>
+<p>玄奘：悟空，去打探一下，此处是何地？</p>
+<p>悟空（抓耳挠腮，四处张望）：师父，此地正是班加罗尔寺。藏经阁应该就在附近，我们找人问问。</p>
+<p>玄奘（大喜）：徒儿们咱们走。</p>
+<p>（天竺城突然出现，操一口湖北普通话）</p>
+<p>天竺城管：你们这是去哪儿？身份证，暂住证，结婚证，离婚证，独生子女证？没有？罚钱！1w 卢比！</p>
+<p>郭悟净（跳出）：喂，大家都是道上的兄弟，给点面子。大哥以前混哪里？</p>
+<p>天竺城管：老子洪兴的，来天竺前混铜锣湾，兄弟们都管我叫山鸡。</p>
+<p>郭悟净：啊，洪兴啊（翘起大拇指）？小弟不才，混五道口多年，嘿嘿——前轱辘转后轱辘不转，前轱辘不转后轱辘转思密达（颔首）</p>
+<p>天竺城管（大惊）：啊，五道口？你才是我大哥！对不起啊，大哥，你们请～请～（低三下四）</p>
+<p>（城管大叔做个请的动作，随即离开）</p>
+<p>（众人原地做前进状）</p>
+<p>（接引道人出场，操一口纯正东北话）</p>
+<p>接引道人（举个接机的牌子走过来）：哎呀妈呀，可算等到你们了。俺在这噶哒都被烤秃噜了。你们是从大唐那噶哒来的么？看你们面相，俺寻思应该是来做PTO的吧？啊不，TOI。</p>
+<p>（牌子上写：Flight: N.G. 350，Country: Tang，Name: Derek Wang Xuanzang）</p>
+<p>悟净：前轱辘转后轱辘不转，前轱辘不转后轱辘转思密达（颔首）</p>
+<p>接引道人（转身欲走）：妈呀，接错淫了，丢淫丢大发了～</p>
+<p>玄奘：大师莫走。我这徒弟最近解bug解岔脑子了，不太会说人话。弟子正是从东土大唐而来，来班加罗尔求亲的王玄奘，啊，不对，求经，求经。</p>
+<p>接引道人：早说呀，你说你们一群大老爷们磨磨唧唧，跟老娘们似的。Let&#39;s go!</p>
+<audio src="/assets/files/mp3/3-1-tianzhu.mp3" controls="controls"></audio>
+
+<p>（菩提老祖上台，操一口湖南普通话）</p>
+<p>玄奘：弟子玄奘一行五人，参见我佛。</p>
+<p>（接引道人飘走）</p>
+<p>菩提老祖：佛祖PTO去了，这次由我菩提老祖全程接待，哈哈。</p>
+<p>玄奘：善哉善哉～</p>
+<p>菩提老祖：我这里有红咖喱，绿咖喱，黄咖喱，黑咖喱，你们想吃哪一种撒？哈哈。</p>
+<p>玄奘：感谢祖师恩惠。branch issue太多，我大唐陛下茶饭不思，我等岂敢怠慢？先不谈吃，能否即刻带我们去藏经阁学习经书？</p>
+<p>菩提老祖：妥妥的，你们等在这里，我去找找，哈哈。</p>
+<p>（菩提老祖离开，众人面面相觑）</p>
+<p>（Yaling和Hao上场，准备新闻联播）</p>
+<p>悟能：师父你也是的，人家好意请你吃，你却回绝，这一路旅途奔波，老郭我肚子都抑郁了半天了。</p>
+<p>悟空：郭师弟，要不我拔根毫毛，变个猪蹄给你补补？</p>
+<p>悟能：你看我的口型，哥屋恩。猪蹄我有四只，每天都在舔，我要吃猴脑！</p>
+<p>（众人正在玩闹，菩提祖师出现）</p>
+<p>菩提祖师：经书找到了，你们请看！哈哈。</p>
+<p>（Yalin和Li Hao托着电视框上场，准备。Yalin对口型，表情夸张；Li Hao做手语，神情严肃）</p>
+<p>（新闻联播音乐声骤然响起，众人一惊，然后捧着下巴，瞪大眼睛，一脸神往）</p>
+<audio src="/assets/files/mp3/3-2-cctv.mp3" controls="controls"></audio>
+
+<p>悟净（新闻联播音乐快结束时）：我靠，前轱辘转思密达！</p>
+<p>（众人张大了嘴，瞪大了眼，呆若木鸡）</p>
+<p>（播放完毕后，声音停止，众人跌倒，菩提老祖上台，电视机撤）</p>
+<p>菩提老祖：这仅仅是我们branch的xx文档的一部分，还有xxx的要不要听？哈哈。</p>
+<p>（众人爬起）</p>
+<p>玄奘等人（含着热泪，做个长揖）：多谢老祖，人家培训要钱，你们培训要命！且罢切罢，我们回去慢慢学习！悟能，上优盘！</p>
+<p>（悟能把猪鼻子凑过去，菩提老祖拿出U盘，插入猪鼻子）</p>
+<p>（视频拷贝中，视频拷贝完成！西天取经成功！的牌子飘过）</p>
+<p>旁白：就这样，师徒四人终于顺利取到真经。回到大唐后，众人努力学习 branch 视频，开始跟各种种奇葩customer issue斗争。</p>
+<p>（音乐霍元甲）</p>
+<audio src="/assets/files/mp3/3-3-hyj1.mp3" controls="controls"></audio>
+
+<p>（P2 issue上，一副有恃无恐的样子，唐僧念经，P2 issue头昏欲裂，倒下台去）</p>
+<p>（P1 issue上，双手捶胸，秀肌肉，唐僧念经，毫无效果，众人一齐上，将issue赶跑，下场）</p>
+<p>（音乐停）</p>
+<p>旁白：三个月后，整个branch终于清静了，再也没有customer issue来骚扰。唐太宗带着武媚娘天天哼着小芳，喝着摩卡，在5楼打着台球，小日子过得相当地思密达。</p>
+<p>（全剧完）</p>
+]]></description>
+            <link>http://tchen.me/posts/2014-01-14-my-annual-festival-script.html</link>
+            <guid isPermaLink="true">
+                http://tchen.me/posts/2014-01-14-my-annual-festival-script.html            </guid>
+            <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
+            <pubDate>Mon, 13 Jan 2014 23:40:00 GMT</pubDate>
+        </item>
         <item>
             <title><![CDATA[Sunnyvale trip - 所见，所聊，所感]]></title>
             <description><![CDATA[<p>又是一个一周的短差，来去匆匆。依旧是白天各种开会，各种social，跟所有认识的人打招呼唠家常，跟不认识的但有来往（或者即将来往的）熟悉并打交道。本文没什么主题，就是所见所聊所感，totally personal。</p>
@@ -54,13 +227,13 @@
 <p>他告诉我他是六二年的。我有点吃惊。在这个年龄，以他的地位，财富，他完全可以退休，每天出海钓钓鱼享受人生。但是，他还在这里追寻创业的理想。这让我十分敬佩。我想，我应该把我的deadline放在五十岁，那时候我依然需要拥有这份闯劲。</p>
 <p>F君跟我分享了一个故事。在他的职业早年，他的一个朋友，毕业于清华的很厉害的工程师，介绍他去E公司。因为没有past experience，他最终没能去成E，却成就了在NetScreen一段难得的startup经历。因为大环境的原因和执行层的问题，E不断走下坡路，最终那个朋友离开并加入Cisco。在最近的一次layoff中，他不幸中枪，现在还在艰难地寻找工作 —— 可竞争是如此激烈，他尽管曾经是个非常smart的工程师（现在如何不得而知），可年逾半百，和二三十岁同样smart，又精力充沛的工程师相比，已不具优势。F君说：我们做事要顺势而为，台风吹过的时候猪都能飞起来。炒股如此，工作如此，做startup亦如此。Totally agree。</p>
 <p>（五）</p>
-<p>这次来Sunnyvale，看到种种问题，我都痛心疾首。但这似乎是大公司的通病。有几个CNRD的工程师在外面转了一圈又回来，发现其实各个公司，EMC，Symantic，Microsoft，bla bla bla都差不多。一个公司就像一个人，从出生（startup），到成人（有些可能中途夭折），到壮年，到老年，到死亡。大家都在提基业长青，可真正存活百年以上屹立不倒的公司有几个呢？这似乎是个颠扑不破的自然规律。想想二十四史，里面发生的事情何其相似！不过话又说回来，如果大公司一直保持startup的状态，没有各种政治，没有各种奇葩process，没有各种制肘，也不犯那些比较愚蠢的错误，那startup的生存空间何在？冥冥中自有天意，也许唯有这样，经济社会才能正常循环，生生不息。</p>
+<p>这次来Sunnyvale，看到种种问题，我都痛心疾首。但这似乎是大公司的通病。有几个CNRD的工程师在外面转了一圈又回来，发现其实各个公司，EMC，Symantic，Microsoft，bla bla bla都差不多。一个公司就像一个人，从出生（startup），到成人（有些可能中途夭折），到壮年，到老年，到死亡。大家都在提基业长青，可真正存活百年以上屹立不倒的公司有几个呢？这似乎是个颠扑不破的自然规律。想想二十四史，里面发生的事情何其相似！不过话又说回来，如果大公司一直保持startup的状态，没有各种政治，产品不是政治妥协的产物，没有各种奇葩process，没有各种制肘，也不犯那些比较愚蠢的错误，那startup的生存空间何在？冥冥中自有天意，也许唯有这样，经济社会才能正常循环，生生不息。</p>
 ]]></description>
             <link>http://tchen.me/posts/2014-01-11-sunnyvale-trip.html</link>
             <guid isPermaLink="true">
                 http://tchen.me/posts/2014-01-11-sunnyvale-trip.html            </guid>
             <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
-            <pubDate>Sun, 12 Jan 2014 06:40:00 GMT</pubDate>
+            <pubDate>Sat, 11 Jan 2014 14:40:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[盘点我的2013]]></title>
@@ -369,7 +542,7 @@
             <guid isPermaLink="true">
                 http://tchen.me/posts/2013-12-23-my-year-2013.html            </guid>
             <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
-            <pubDate>Tue, 24 Dec 2013 06:40:00 GMT</pubDate>
+            <pubDate>Mon, 23 Dec 2013 14:40:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[建立自己的docker repository]]></title>
@@ -504,7 +677,7 @@ base                                  ubuntu-quantl         b750fe79269d        
             <guid isPermaLink="true">
                 http://tchen.me/posts/2013-11-13-local-docker-repo.html            </guid>
             <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
-            <pubDate>Thu, 14 Nov 2013 06:40:00 GMT</pubDate>
+            <pubDate>Wed, 13 Nov 2013 14:40:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[Build Your Own Docker Registry with DigitalOcean]]></title>
@@ -630,7 +803,7 @@ base                                  ubuntu-quantl         b750fe79269d        
             <guid isPermaLink="true">
                 http://tchen.me/posts/2013-11-13-local-docker-repo-en.html            </guid>
             <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
-            <pubDate>Thu, 14 Nov 2013 06:40:00 GMT</pubDate>
+            <pubDate>Wed, 13 Nov 2013 14:40:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[使用HTTPS]]></title>
@@ -781,7 +954,7 @@ proxy_set_header X-Forwarded-Proto https;</code></pre>
             <guid isPermaLink="true">
                 http://tchen.me/posts/2013-11-11-https.html            </guid>
             <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
-            <pubDate>Mon, 11 Nov 2013 06:40:00 GMT</pubDate>
+            <pubDate>Sun, 10 Nov 2013 14:40:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[Hatch: 实验]]></title>
@@ -1050,7 +1223,7 @@ diffPath src, dst, ext, (err, data) -&gt;
             <guid isPermaLink="true">
                 http://tchen.me/posts/2013-11-03-hatch-experiment.html            </guid>
             <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
-            <pubDate>Tue, 05 Nov 2013 06:40:00 GMT</pubDate>
+            <pubDate>Mon, 04 Nov 2013 14:40:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[Hatch: 又一个建站工具]]></title>
@@ -1166,7 +1339,7 @@ Hello hatch!</code></pre>
             <guid isPermaLink="true">
                 http://tchen.me/posts/2013-10-30-the-hatch-project.html            </guid>
             <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
-            <pubDate>Wed, 30 Oct 2013 14:40:00 GMT</pubDate>
+            <pubDate>Tue, 29 Oct 2013 23:40:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[觅珠人：浴火重生]]></title>
@@ -1380,7 +1553,7 @@ deploy:
             <guid isPermaLink="true">
                 http://tchen.me/posts/2013-10-28-blog-reborn.html            </guid>
             <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
-            <pubDate>Mon, 28 Oct 2013 14:40:00 GMT</pubDate>
+            <pubDate>Sun, 27 Oct 2013 23:40:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[长日无痕]]></title>
@@ -1474,350 +1647,7 @@ judgment difficult.
             <guid isPermaLink="true">
                 http://tchen.me/posts/2013-07-27-the-remains-of-the-day.html            </guid>
             <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
-            <pubDate>Sun, 28 Jul 2013 04:24:00 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[Why should C programmers learn Erlang?]]></title>
-            <description><![CDATA[<h2>Prologue</h2>
-<p>If somebody says X language is better than Y language, usually there will be a fierce quarrel between two sides. If you&#39;re using certain language for a long time, you will be the evangelist of that language, and try to protect it unconsciously. Admitted or not, you have been trapped in a tunnel, that what you can see is constraint greatly. &quot;The Shawshank Redemption&quot; gives a good footnote on it:</p>
-<p><img src="/assets/files/snapshots/institutionalized.jpg" alt="institutionalized"></p>
-<blockquote>
-<p>[Red] These walls are funny. First you hate &#39;em, then you get used to &#39;em. Enough time passes, you get so you depend on them. That&#39;s institutionalized.</p>
-</blockquote>
-<p>So before we&#39;re institutionalized too deep, let&#39;s learn something completely different - a language that not derived from C family, a language that leads you to a totally different mindset.</p>
-<p>Erlang seems to be a good candidate.</p>
-<!-- more -->
-
-<h2>Why Erlang?</h2>
-<p>Erlang is a languages more than 20 years old, developed initially by Ericsson, for the purpose of their &quot;next-gen&quot; switch. It&#39;s a really weird language with &quot;clumsy&quot; grammar which mixed with the functional programming into Prolog. However it adopts almost the best design philosophy, which is still ahead of the current era at least 10 years. Let me show you gradually.</p>
-<h3>No side effects (almost)</h3>
-<p>As a functional programming language, Erlang eliminates the shared states. Variables can only be bound to, but not changed. </p>
-<pre><code>1&gt; X = 1.
-1
-2&gt; X = X + 1.
-** exception error: no match of right hand side value 2
-3&gt; X = 2.
-** exception error: no match of right hand side value 2</code></pre>
-<p>This makes sure that you can write functions that has no side effects - which means, with the same parameters, even if you call the function a thousand times the return value is the same. Writing code that has no side effects is a fundamental advantage in Erlang, it has these benefits:</p>
-<ul>
-<li>There&#39;s (almost) no critical sections you need to protect. Think of C code under concurrent environment, you have to use various synchronous primitives to prevent data from corruption. Poor synchronization leads to poor performance and instability of the system. This is a great headache for C programmers.</li>
-<li>It makes low level optimization easier. The compiler can aggressively optimize the register usage since it knows once a variable is set it will not be changed.</li>
-<li>It makes garbage collection easier. Think of poor Java VM. To determine if a variable is garbage or not is not a easy thing since it might be reference by others, and it might be used or changed later. But Erlang not. A variable is only in the scope of the outer function. Nobody else will use it. Nobody will change it. (read more about <a href="http://stackoverflow.com/questions/10221907/garbage-collection-and-memory-management-in-erlang">Erlang garbage collection</a> if you&#39;re interested).</li>
-</ul>
-<h3>Asynchronous / Concurrent built in language</h3>
-<p>Erlang has built-in support of concurrent / asynchronous in its language. The theory backed Erlang&#39;s idea is <a href="http://en.wikipedia.org/wiki/Actor_model">Actor Model</a>. This is a great vision in 1986 since at that time multi-core, multi-thread, or even SMP is not a known terminology.</p>
-<h4>Light weighted process</h4>
-<p>To support concurrent, Erlang has its own light weighted process on its VM. You can spawn tens of thousands of processes simultaneously without hitting the limitation of the OS. Furthermore, the creation of the processes are super-fast - <a href="http://www.lshift.net/blog/2006/09/10/how-fast-can-Erlang-create-processes">350,000Hz for an old Pentium 4 CPU</a>. The memory footprint of Erlang process is quite small - in the granularity of kilobytes (minimum ~300 bytes), rather than megabytes for OS level processes. As for scheduler, Erlang support soft realtime scheduler, and the cost of context switch is very low - <a href="http://stackoverflow.com/questions/2708033/technically-why-is-processes-in-Erlang-more-efficient-than-os-threads">Switching between processes, takes about 16 instructions and 20 nanoseconds on a modern processor</a>. If you&#39;re interested in scheduling, read <a href="http://jlouisramblings.blogspot.com/2013/01/how-Erlang-does-scheduling.html">how Erlang does scheduling</a>.</p>
-<h4>Message passing</h4>
-<p>Erlang use message passing for inter process communication, which inherits the idea of Actor model. Each process has its own mailbox to hold messages that cannot be processed immediately.</p>
-<p>With built-in process and message passing between processes, Erlang made itself full asynchronous.</p>
-<h4>Example</h4>
-<pre><code>-module(echo_server).
--export([rpc/2, loop/0]).
-
-rpc(Pid, Request) -&gt;
-    Pid ! {self(), Request},
-    receive
-        Response -&gt;
-            Response
-    end.
-
-loop() -&gt;
-    receive
-        {From, {message, Message}} -&gt;
-            From ! {ok, Message},
-            loop();
-        {From, Request} -&gt;
-            From ! {error, Request},
-            loop()
-    end.
-
-%% in shell:
-
-1&gt; c(echo_server).
-{ok,echo_server}
-2&gt;  Pid = spawn(fun echo_server:loop/0).
-&lt;0.42.0&gt;
-3&gt; echo_server:rpc(Pid, {message, &quot;Hello world!&quot;}).
-{ok,&quot;Hello world!&quot;}
-4&gt; echo_server:rpc(Pid, {message1, &quot;Hello world!&quot;}).
-{error,{message1,&quot;Hello world!&quot;}}</code></pre>
-<p>Hope you&#39;re not overwhelmed by the grammar and the details on functional programming. I&#39;m not going to go into details of this code - it basically create a echo server then send message to the echo server. By using <code>spawn</code>, <code>!</code> (keyword for message passing) and <code>receive</code> we created echo server with only several lines of code. Think about how you achieve this by using C, Java, Python, Ruby or node.js. You will find the beauty of Erlang.</p>
-<p>As actor model is so important to the concurrent world, modern languages like Golang support it in the language level as well. I&#39;m not familiar with Golang, but as it does allow you share memory, doing concurrent in Golang may still need synchronous primitives. Furthermore, I don&#39;t think Golang support software real-time since this is the goal of Erlang but not the goal for Golang.</p>
-<p>For other languages, such as Java, Python and Ruby, who supports Actor model in the form of the library, I doubt its efficiency. Only putting coroutine and it&#39;s scheduler in the VM level, you can get the maximum performance.</p>
-<h3>Scale out</h3>
-<p>From previous example we can see that you&#39;re more likely to write loosely coupled applications in Erlang. With the built-in concurrency support, Erlang application is fairly easy to scale out. You can distribute your code from one node to multiple nodes, to different machines in same LAN, or even to servers in the other side of Internet, with only a little extra coding cost. This is because:</p>
-<ol>
-<li>Erlang allows you to spawn process in a remote node.</li>
-<li>Erlang allows you to interact with remote process, just like what you do for local process.</li>
-</ol>
-<p>With a little change of previous program (added a new function), we can distribute it in two different Erlang nodes:</p>
-<pre><code>start() -&gt; register(?MODULE, spawn(fun loop/0)).</code></pre>
-<pre><code>➜  Erlang-programming-examples  erl -sname weasley
-Erlang R16B (erts-5.10.1) [source] [64-bit] [smp:8:8] [async-threads:10] [hipe] [kernel-poll:false] [dtrace]
-
-Eshell V5.10.1  (abort with ^G)
-(weasley@cnrd-tchen-mbp)1&gt; c(echo_server).
-{ok,echo_server}
-(weasley@cnrd-tchen-mbp)2&gt; echo_server:start().
-true
-
-➜  Erlang-programming-examples  erl -sname potter
-Erlang R16B (erts-5.10.1) [source] [64-bit] [smp:8:8] [async-threads:10] [hipe] [kernel-poll:false] [dtrace]
-
-Eshell V5.10.1  (abort with ^G)
-(potter@cnrd-tchen-mbp)1&gt; rpc:call(&#39;weasley@cnrd-tchen-mbp&#39;, echo_server, rpc, [{message, &quot;Hurry up, Harry!&quot;}]).
-{ok,&quot;Hurry up, Harry!&quot;}</code></pre>
-<h3>Hot code reload</h3>
-<p>This is really a dream feature every system programmer wants. Think about all kinds of tedious hot patching solutions you provided to your customer. It&#39;s about hacking, dirtiness and limitations. But Erlang, on the contrary, supports hot code reload in an elegant manner.</p>
-<p>Still use the echo server as an example, let&#39;s revise the code so that we could swap the code later:</p>
-<pre><code>-module(echo_server_general).
--export([start/2, rpc/2, swap_code/2]).
-
-start(Name, Mod) -&gt;
-    register(Name, spawn(fun() -&gt; loop(Name, Mod) end)).
-
-swap_code(Name, Mod) -&gt;
-    rpc(Name, {swap_code, Mod}).
-
-rpc(Name, Request) -&gt;
-    Name ! {self(), Request},
-    receive
-        {Name, Response} -&gt; Response
-    end.
-
-loop(Name, Mod) -&gt;
-    receive
-        {From, {swap_code, NewMod}} -&gt;
-            From ! {Name, ack},
-            loop(Name, NewMod);
-        {From, Request} -&gt;
-            Response  = Mod:handle(Request),
-            From ! {Name, Response},
-            loop(Name, Mod)
-    end.
-
--module(echo_server).
--export([echo/2, handle/1]).
-
-echo(Name, Message) -&gt; echo_server_general:rpc(Name, {echo, Message}).
-
-handle({echo, Message}) -&gt; {ok, Message}.
-
-%% shell output
-
-(weasley@cnrd-tchen-mbp)1&gt; echo_server_general:start(s, echo_server).
-true
-(weasley@cnrd-tchen-mbp)2&gt; echo_server:echo(s, &quot;hello world&quot;).
-{ok,&quot;hello world&quot;}</code></pre>
-<p>Now the new requirement comes - our echo_server need to capitalize the first letter of the message and echo it back. Normally we need to shutdown the server, replace it with the new code, then restart the server again. You don&#39;t need to do so in Erlang.</p>
-<pre><code>%% revised echo_server.erl
--module(echo_server).
--export([echo/2, handle/1]).
-
-echo(Name, Message) -&gt; echo_server_general:rpc(Name, {echo, Message}).
-
-handle({echo, Message}) -&gt; {ok, capfirst(Message)}.
-
-capfirst([H|T]) when H &gt;= $a, H =&lt; $z -&gt;
-    [H + ($A - $a)|T];
-capfirst(Others) -&gt; Others.
-
-%% shell output
-(weasley@cnrd-tchen-mbp)4&gt; c(echo_server).
-{ok,echo_server}
-(weasley@cnrd-tchen-mbp)5&gt; echo_server_general:swap_code(s, echo_server).
-ack
-(weasley@cnrd-tchen-mbp)6&gt; echo_server:echo(s, &quot;hello world&quot;).
-{ok,&quot;Hello world&quot;}</code></pre>
-<p>Hot code reload is greatly useful not only for high availability of running software, but also very useful for software development life cycle. You don&#39;t need to waste lots of time to shutdown, load, and boot a big system for verifying a few lines of change.</p>
-<p>I read several articles which claim hot code reload is not so useful in real world. People fears about the chaos of module versions of the hot reloaded software. Understandable. People tend to fear about unknown, and things that beyond their knowledge and vision. The power of the hot code reload will be discovered a decade later, when there&#39;s corresponding software management tools and theory appears. Erlang is too ahead its time that after more than 20 years its philosophy is still ahead of time.</p>
-<h3>Fault Tolerance</h3>
-<p>The industry dreams on nine nines (99.9999999%) of system availability. However, software is made by people. People will make mistakes. Murphy&#39;s law says anything can go wrong will go wrong. So we can not avoid mistakes. Instead of getting us out of mistakes, a more important question is: how could our software survive with all kinds of mistakes?</p>
-<p>Other languages train people to use defensive programming to try to protect your software from crash, but Erlang&#39;s philosophy is &quot;let it crash&quot;. Why?</p>
-<p>If someone built a house for you that as long as one of the window breaks the house will fall completely, will you stay in the house? Absolutely no. You need a house that you can still live in it though window is broken. You can later ask expert to fix it.</p>
-<p>This is the difference between applications written in C and in Erlang. Crash is not a serious problem if you know how to recover from the crash. In Erlang: </p>
-<ul>
-<li>a process crashing will not impact unrelated processes.</li>
-<li>crashed process will notify the processes linked to it.</li>
-<li>supervisor could be used to recover from the crash, e.g. restart the crashed process.</li>
-</ul>
-<h3>Speed</h3>
-<p>the performance of Erlang code has some drawbacks compared with C:</p>
-<ul>
-<li>the code runs on top of VM</li>
-<li>runtime type deduction</li>
-<li>pattern matching</li>
-<li>...</li>
-</ul>
-<p>So how slow is Erlang? Inspired by this <a href="http://stackoverflow.com/questions/6964392/speed-comparison-with-project-euler-c-vs-python-vs-Erlang-vs-haskell">post</a>, I did the following tests in my mbp:</p>
-<pre><code>➜  comparison  time ./euler12.bin
-842161320
-./euler12.bin  5.90s user 0.01s system 99% cpu 5.910 total
-➜  comparison  time erl -noshell -s euler12 solve
-842161320
-erl -noshell -s euler12 solve  11.09s user 0.19s system 100% cpu 11.269 total
-➜  comparison  time pypy euler12.py
-842161320
-pypy euler12.py  9.92s user 0.05s system 96% cpu 10.305 total
-➜  comparison  time ./euler12.py
-842161320
-./euler12.py  66.32s user 0.04s system 99% cpu 1:06.43 total</code></pre>
-<p>We can see that C code is almost 2x faster than Erlang. This is not bad for Erlang, considering the benefits it brings. Think about a I/O intensive situation. Think about concurrent or distributed situation. Erlang wins for sure.</p>
-<p>Sooner or later one DIE will have a thousand cores. Even if nowadays Erlang cannot excel in performance, it will in future.</p>
-<h3>Adoption</h3>
-<p>There are quite a few famous software built with Erlang:</p>
-<ul>
-<li><a href="http://couchdb.apache.org/">couchDB</a>. A NoSQL database. </li>
-<li><a href="http://www.rabbitmq.com/">RabbitMQ</a>. A distributed message queue system.</li>
-<li><a href="http://www.ejabberd.im/">ejabberd</a>. An instant message server.</li>
-<li><a href="http://www.adelcogroup.com/EricssonAXD301.htm">AXD301 ATM switch</a>. Probably the only system in this planet reached nine nines. It hasn&#39;t been shutdown for 20 years.</li>
-<li>And a lot more companies, including Amazon, Facebook, Yahoo!, T-Mobile, use Erlang in their systems, see <a href="http://stackoverflow.com/questions/1636455/where-is-Erlang-used-and-why">Where is Erlang used and why?</a></li>
-</ul>
-<h2>How to learn Erlang?</h2>
-<p>Erlang is really difficult to learn. But once you mastered it, you&#39;re the king. I like the words from Evan Miller, the creator of Erlang Web MVC framwork <a href="http://www.chicagoboss.org/">Chicago Boss</a>, in a good article named <a href="http://www.evanmiller.org/joy-of-erlang.html">Joy of erlang</a>:</p>
-<blockquote>
-<p>In the movie Avatar, there&#39;s this big badass bird-brained pterodactyl thing called a Toruk that the main character must learn to ride in order to regain the trust of the blue people. As a general rule, Toruks do not like to be ridden, but if you fight one, subdue it, and then link your Blue Man ponytail to the Toruk&#39;s ptero-tail, you get to own the thing for life. Owning a Toruk is awesome; it&#39;s like owning a flying car you can control with your mind, which comes in handy when battling large chemical companies, impressing future colleagues, or delivering a pizza. But learning to ride a Toruk is dangerous, and very few people succeed.</p>
-</blockquote>
-<p><img src="/assets/files/snapshots/toruk.jpg" alt="toruk"></p>
-<p>It reflects perfectly how hard I learned Erlang. BTW, I&#39;ve far from conquering it. </p>
-<p>Before learning Erlang, I have good master of C, Python and Javascript, programmed a little bit on C++, Java and Ruby. You can see my brain is filled with <a href="http://en.wikipedia.org/wiki/Imperative_programming">Imperative programming</a>. So the biggest challenges for me is to get used to functional programming, which implies <strong>mind change</strong>.</p>
-<h3>No state change for variables</h3>
-<p>Variables can only be bound to but not changed. Suddenly I found I could not program.</p>
-<p>For example, to implement upper(str) without using any helper function, such as map().</p>
-<p>In Python, it&#39;s super easy and pretty straight forward:</p>
-<pre><code>def upper(str):
-    str1 = &#39;&#39;
-    for c in str:
-        str1 += c.upper()
-    return str1</code></pre>
-<p>But in erlang, without changing the internal state, how can I achieve it?</p>
-<p>The ingredient is accumulator. Bear this paradigm in mind when writing Erlang code. The code looks like this:</p>
-<pre><code>upper(S) -&gt;
-    upper(S, []).
-
-upper([], N) -&gt;
-    lists:reverse(N);
-upper([H|T], N) when H &gt; $a, H =&lt; $z -&gt;
-    upper(T, [H + ($A - $a)|N]);
-upper([H|T], N) -&gt;
-    upper(T, [H|N]).</code></pre>
-<p>The function itself doesn&#39;t have any internal state change, but we have achieved the same goal by having an accumulator passed as a parameter. This is a fundamental paradigm in functional programming world. <strong>Master it or die</strong>.</p>
-<h3>Pattern matching</h3>
-<p>Pattern matching makes Erlang program beautiful and easy to understand. In C, a function is unique inside its scope. You cannot define a <code>fun(x)</code> firstly, then define <code>fun(x, y)</code> later. But in Erlang, there&#39;s no such limitation. You could define as many as functions as long as their parameters are different, you could also define as many as <a href="http://www.erlang.org/doc/reference_manual/functions.html">clauses</a> for a function as long as their patterns are different. Take the above <code>upper()</code> function as an example. You call <code>upper(&quot;#hello&quot;)</code>:</p>
-<ul>
-<li>as there&#39;s only one parameter, the call matches with <code>upper(S)</code>, so we call <code>upper(&quot;#hello&quot;, [])</code>.</li>
-<li>For <code>upper(&quot;#hello&quot;, [])</code>, as &quot;#hello&quot; cannot match [], and the first char &quot;#&quot; doesn&#39;t match with the guard condition, the call matched <code>upper([H|T], N)</code>, so it calls <code>upper(&quot;hello&quot;, [$#])</code>.</li>
-<li>The following calls all matched with <code>upper([H|T], N) when H &gt; $a, H =&lt; $z</code>, and it will change the char to uppercase. So the call sequence is:<pre><code>upper(&quot;ello&quot;, [$H, $#])
-upper(&quot;llo&quot;, [$E, $H, $#])
-upper(&quot;lo&quot;, [$L, $E, $H, $#])
-upper(&quot;o&quot;, [$L, $L, $E, $H, $#])
-upper([], [$O, $L, $L, $E, $H, $#])</code></pre>
-</li>
-<li>for <code>upper([], [$O, $L, $L, $E, $H, $#])</code>, it matches <code>upper([], N)</code>, <code>lists:reverse(N)</code> is returned.</li>
-</ul>
-<p>Pattern matching allows you to break your code logic into pieces, as a result, the body of each clause of a function is much smaller and more readable. That&#39;s why usually you see a C function is more than a hundred lines of code but an Erlang function clause usually takes no more than twenty lines of code.</p>
-<p>Note that the sequence of the clauses are important. Erlang executes the first matched clause.</p>
-<h3>The magic of recursive</h3>
-<p>When studying C programming, I was trained that recursion is a poison that you should use as little as possible. But in functional programming world, recursion is another fundamental paradigm.</p>
-<p>Look back into the code I&#39;ve written in this article so far. Do you see regular loop? No. But how about recursive function? Everywhere. Recursion replaces for/while loop, making a clean iteration or looping solution. Why? Think about the for loop in C. It involves with state change - for every step you change the iterating factor until it match the exiting criteria. But Erlang doesn&#39;t allow internal state change, so it uses recursion to replace normal for/while loop.</p>
-<p>But you have doubts.</p>
-<h4>The performance of recursion is poor</h4>
-<p>This is a pseudo-proposition. </p>
-<p>Let me give you an example. The common sense is that passing parameters by registers is much faster than by stack. Intel CPU relies on stack push/pop so much for function calls since it has fewer general purpose registers than RISC CPUs. To boost performance it introduces the register stack so that push/pop operation is lightening-y fast - as fast as using registers.</p>
-<p>Let&#39;s come back to recursion. We use little recursion in C, according to 80/20 principle, there&#39;s no immediate need to optimize it, right? But for Erlang, recursion is the lifeline of the code. How dare the compiler not to optimize it? So your intuition is wrong - recursion is not necessarily slow. Yes it is slow in C, but very fast in Erlang. </p>
-<h4>It usually leads to stack overflow</h4>
-<p>Not exactly if you program in a right way. Erlang optimize the stack specially for <a href="https://en.wikipedia.org/wiki/Tail_call">tail recursion</a>. Let me give you an example:</p>
-<pre><code>fac(1) -&gt; 1;
-fac(N) when N &gt; 0 -&gt; N * fac(N-1).</code></pre>
-<p>This is not a tail recursion since the stack must be kept for calculation.</p>
-<p>Let&#39;s make it a tail recursion one:</p>
-<pre><code>fac1(N) -&gt; fac1(N, 1).
-
-fac1(1, M) -&gt; M;
-fac1(N, M) when N &gt; 0 -&gt; fac1(N-1, N * M).</code></pre>
-<p>Each time a function call is made we can safely drop the stack of the last call, this is tail recursion.</p>
-<p>The benefit of tail recursion is that you need only to keep a very small, constant memory footprint for recursion. So there&#39;s no worry about stack overflow for long running recursive programs.</p>
-<p>In Erlang, you should program the code with tail recursion as long as it is possible.</p>
-<h3>Functional programming in mind</h3>
-<p>Pay attention to the data that could be recursively accessed, such as list (including string). List could be processed like this:</p>
-<pre><code>retrieve([H|T]) -&gt; {H, T}.
-
-%% or even
-retrieve1([H1, H2|T]) -&gt; {H1, H2, T}</code></pre>
-<p>Bear map/reduce in mind.</p>
-<p>Focus on algorithm, think how you achieve it with math formula. Then it should be easy to write it down with Erlang. Divide and conquer your problem. Do not get into details.</p>
-<p>Let&#39;s take atoi(S) as an example.</p>
-<p>The formula:</p>
-<pre><code>
-         |- S[0] is &#39;-&#39;:  -1 * atoi(s[1:], 0)
-atoi(S) -+
-         |- else:         atoi(S, 0)
-
-              |- S is []:       Acc
-atoi(S, Acc) -+- S[X] is digit: atoi(S[X+1:], 10 * Acc + digit(S))
-              |- else:          Acc</code></pre>
-<p>Thus we could write code like this:</p>
-<pre><code>-module(math).
--export([atoi/1]).
-
-atoi([$-|S]) -&gt;
-    -1 * atoi(S, 0);
-atoi(S) -&gt;
-    atoi(S, 0).
-
-atoi([], Acc) -&gt; Acc;
-atoi([H|T], Acc) when H &gt;= $0, H =&lt; $9 -&gt;
-    atoi(T, 10 * Acc + (H - $0));
-atoi(_S, Acc) -&gt; Acc.</code></pre>
-<p>Think of how you write C code for <code>atoi()</code>. The Erlang program is close to what your algorithm is. You can make it correct almost on your first try.</p>
-<h3>Embrace processes</h3>
-<p>Process is not hard to use if you&#39;re willing to use it. It helps organize your system in a loosely coupled and asynchronous way. You just need to get used to it. Treat process as worker, as object, or anything you could analog.</p>
-<h3>Let it fail</h3>
-<p>For C programmer, normally you should write code that covers every possible value of the parameters. But Erlang not. Take this example:</p>
-<pre><code>%% good code
-fac(N) when is_integer(N), N &gt; 0 -&gt; fac(N, 1).
-
-fac(1, Acc) -&gt; Acc;
-fac(N, Acc) -&gt; fac(N-1, Acc * N).
-
-%% bad code
-fac(N) when is_integer(N), N &gt; 0 -&gt; fac(N, 1).
-fac(N)                           -&gt; {error, &quot;argument must be positive integer&quot;}
-
-fac(1, Acc) -&gt; Acc;
-fac(N, Acc) -&gt; fac(N-1, Acc * N).</code></pre>
-<p>Execute the good code with bad parameter will cause exception, like the following:</p>
-<pre><code>1&gt; c(math).
-{ok,math}
-2&gt; math:fac(10).
-3628800
-3&gt; math:fac(-10).
-** exception error: no function clause matching math:fac(-10) (math.erl, line 14)</code></pre>
-<p>Should we write code to process the negative integer? YES in C, NO in Erlang. The bade code saves the process from exception but it leads unnecessary handling for the caller. Caller needs to add extra code to handle this pointless return value, which only makes the system more complicated. Let the exception happen. Let the process crash. Handle exception only in the place that need to handle it.</p>
-<h2>Materials to learn Erlang</h2>
-<p>Congratulations! After reading this long article now it&#39;s your turn to conquer your Toruk. Here&#39;s your weapon:</p>
-<ol>
-<li><strong>Joe Armstrong</strong>&#39;s book <strong>&quot;Programming Erlang - software for a concurrent world&quot;</strong>. The best way to learn a language is to read the book of the language&#39;s father. I highly recommend you to read this book thoroughly, especially the chapters regarding with sequential programming, concurrent programming and OTP.</li>
-<li><a href="http://www.erlang.org/doc/">Erlang doc</a>. Read on when you have doubts.</li>
-<li>Implement in Erlang for the problems you&#39;re facing in day-to-day work. For example:<ul>
-<li>Count the words for a given file.</li>
-<li>Implement cloc (giving a directory, count the lines of code for different languages).</li>
-<li>Write a message server that keeps top N unread messages in memory while keeping the rest in mnesia.</li>
-<li>Write a markdown interpreter.</li>
-<li>Write a web framework based on mochiweb.</li>
-<li>Write a L3/L4 firewall that handles symmetric NAT translation (to focus on the problem itself you should use the data from tcpdump).</li>
-</ul>
-</li>
-<li>Read open source software, such as ranch, cowboy, boss_db, etc.</li>
-</ol>
-<p>Hope you have fun!</p>
-]]></description>
-            <link>http://tchen.me/posts/2013-07-22-why-should-c-programmers-learn-erlang.html</link>
-            <guid isPermaLink="true">
-                http://tchen.me/posts/2013-07-22-why-should-c-programmers-learn-erlang.html            </guid>
-            <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
-            <pubDate>Tue, 23 Jul 2013 01:32:00 GMT</pubDate>
+            <pubDate>Sat, 27 Jul 2013 13:24:00 GMT</pubDate>
         </item>
     </channel>
 </rss>

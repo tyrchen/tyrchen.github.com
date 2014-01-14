@@ -3,7 +3,7 @@
         <title>觅珠人</title>
 		<link href="http://tchen.me/atom.xml" rel="self"/>
 		<link href="http://tchen.me"/>
-        <updated>2014-01-12T19:30:26.981Z</updated>
+        <updated>2014-01-14T23:50:40.172Z</updated>
 		<id>http://tchen.me</id>
         <author>
 			<name>Tyr Chen</name>
@@ -12,9 +12,19 @@
 
         
         	<entry>
+            	<title>2014年年会节目脚本 - Branch取经记</title>
+				<link href="http://tchen.me/posts/2014-01-14-my-annual-festival-script.html"/>
+                <updated>2014-01-13T23:40:00.000Z</updated>
+				<id>http://tchen.me/posts/2014-01-14-my-annual-festival-script.html</id>
+                <content type="html">&lt;p&gt;每年的年会，依team旧例：新员工挑大梁演主角，而且要无耻度无底线。2013我是新员工，所以不得不被安排角色。一不小心大家选了个三国的剧本 &lt;a href=&quot;http://www.docin.com/p-111786442.html&quot;&gt;三国无间道&lt;/a&gt;，重口一致要让我演董卓，说我体态样貌样样俱全。我一看剧本，这是毁人的节奏啊。不行不行，于是毛遂自荐当编剧，卸了主演。话说这三国无间道的剧本有点烂，笑点不多，和内事外事均无半毛钱关系，于是干脆一狠心，推翻重来。正巧13年重读了『西游记』，对唐太宗地府还魂记还记忆犹新，于是以此为蓝本展开故事。剧本着眼于普度众生，让大多数team成员都能上个台，露个脸，于是人物众多，在一个主线故事下，没有绝对的主角，算是本剧的小小遗憾。&lt;/p&gt;
+&lt;p&gt;以下内容做了些删改，避免暴露一些内部信息。&lt;/p&gt;
+</content>
+            </entry>
+        
+        	<entry>
             	<title>Sunnyvale trip - 所见，所聊，所感</title>
 				<link href="http://tchen.me/posts/2014-01-11-sunnyvale-trip.html"/>
-                <updated>2014-01-12T06:40:00.000Z</updated>
+                <updated>2014-01-11T14:40:00.000Z</updated>
 				<id>http://tchen.me/posts/2014-01-11-sunnyvale-trip.html</id>
                 <content type="html">&lt;p&gt;又是一个一周的短差，来去匆匆。依旧是白天各种开会，各种social，跟所有认识的人打招呼唠家常，跟不认识的但有来往（或者即将来往的）熟悉并打交道。本文没什么主题，就是所见所聊所感，totally personal。&lt;/p&gt;
 &lt;!--
@@ -36,7 +46,7 @@
         	<entry>
             	<title>盘点我的2013</title>
 				<link href="http://tchen.me/posts/2013-12-23-my-year-2013.html"/>
-                <updated>2013-12-24T06:40:00.000Z</updated>
+                <updated>2013-12-23T14:40:00.000Z</updated>
 				<id>http://tchen.me/posts/2013-12-23-my-year-2013.html</id>
                 <content type="html">&lt;p&gt;提笔（确切地说，敲下键盘）开始盘点我的2013时，我感觉 &lt;a href=&quot;http://tchen.me/posts/2012-12-28-retrospect-of-the-year-2012.html&quot;&gt;回顾我的2012&lt;/a&gt; 和 &lt;a href=&quot;http://tchen.me/posts/2012-12-29-2013-things-to-do.html&quot;&gt;展望2013&lt;/a&gt; 似乎就在眼前。都说岁月催人，这哪是催，这是赶。无论心智是否更成熟，知识经验是否更丰富，过了一年，就老了一岁，去年的那支影子也渐行渐远。多愁善感并不单是文人的专利，年过三十后，我也染上了这臭毛病。太白说『白发三千丈，缘愁似个长。不知明镜里，何处得秋香！』（好吧，是秋霜 ^_^），本不大懂，但经历了2013这奇特，曲折，煎熬，仿佛过去的十年职场都被挤压收缩的一年后，我很能理解他那种年过半百，壮志未酬，人已衰老的那种痛苦。&lt;/p&gt;
 </content>
@@ -45,7 +55,7 @@
         	<entry>
             	<title>建立自己的docker repository</title>
 				<link href="http://tchen.me/posts/2013-11-13-local-docker-repo.html"/>
-                <updated>2013-11-14T06:40:00.000Z</updated>
+                <updated>2013-11-13T14:40:00.000Z</updated>
 				<id>http://tchen.me/posts/2013-11-13-local-docker-repo.html</id>
                 <content type="html">&lt;p&gt;如果你不知道docker是什么，请参考 &lt;a href=&quot;http://www.slideshare.net/dotCloud/why-docker&quot;&gt;这个slides&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;在 ubuntu 下安装 docker 请参考 &lt;a href=&quot;http://docs.docker.io/en/latest/installation/ubuntulinux/&quot;&gt;官方教程&lt;/a&gt; 。注意，由于 docker 的核心技术是 &lt;a href=&quot;http://en.wikipedia.org/wiki/LXC&quot;&gt;Linux container&lt;/a&gt;，所以如果想在 osx 下安装 docker 请使用 vagrant。&lt;/p&gt;
@@ -55,7 +65,7 @@
         	<entry>
             	<title>Build Your Own Docker Registry with DigitalOcean</title>
 				<link href="http://tchen.me/posts/2013-11-13-local-docker-repo-en.html"/>
-                <updated>2013-11-14T06:40:00.000Z</updated>
+                <updated>2013-11-13T14:40:00.000Z</updated>
 				<id>http://tchen.me/posts/2013-11-13-local-docker-repo-en.html</id>
                 <content type="html"></content>
             </entry>
@@ -63,7 +73,7 @@
         	<entry>
             	<title>使用HTTPS</title>
 				<link href="http://tchen.me/posts/2013-11-11-https.html"/>
-                <updated>2013-11-11T06:40:00.000Z</updated>
+                <updated>2013-11-10T14:40:00.000Z</updated>
 				<id>http://tchen.me/posts/2013-11-11-https.html</id>
                 <content type="html">&lt;p&gt;如今随着网上交易规模不断扩大及API驱动的互联网的出现（如 &lt;a href=&quot;https://strip.com&quot;&gt;https://strip.com&lt;/a&gt; ），互联网的安全性越来越受到重视。本文简单讲述如何将你的nginx配置成支持https的web server。当然，理论上一个合格的https server需要从CA那里获得正式的SSL certificate，但如何购买SSL certificate不在本文讨论之列。本文仅从技术上讨论如何在你的服务器上使能https。&lt;/p&gt;
 </content>
@@ -72,7 +82,7 @@
         	<entry>
             	<title>Hatch: 实验</title>
 				<link href="http://tchen.me/posts/2013-11-03-hatch-experiment.html"/>
-                <updated>2013-11-05T06:40:00.000Z</updated>
+                <updated>2013-11-04T14:40:00.000Z</updated>
 				<id>http://tchen.me/posts/2013-11-03-hatch-experiment.html</id>
                 <content type="html">&lt;p&gt;继续 &lt;a href=&quot;/posts/2013-11-03-hatch-experiment.html&quot;&gt;前文&lt;/a&gt; 。熬到了周末，正式开始了 &lt;code&gt;hatch&lt;/code&gt; 项目的开发。首先是一个关键问题：如果每个文件的生成由一个单一的shell脚本完成，那么数据库打开/关闭的损耗会不会成为瓶颈？做了个简单的实验，发现每次打开都要花费0.2s，一个不小的数字。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;➜  hatch git:(master) ✗ cat test.coffee
@@ -90,7 +100,7 @@ col.findOne {}, (err, doc) -&amp;gt;
         	<entry>
             	<title>Hatch: 又一个建站工具</title>
 				<link href="http://tchen.me/posts/2013-10-30-the-hatch-project.html"/>
-                <updated>2013-10-30T14:40:00.000Z</updated>
+                <updated>2013-10-29T23:40:00.000Z</updated>
 				<id>http://tchen.me/posts/2013-10-30-the-hatch-project.html</id>
                 <content type="html">&lt;p&gt;在 &lt;a href=&quot;/posts/2013-10-28-blog-reborn.html&quot;&gt;前文&lt;/a&gt; 中，我尝试了 &lt;a href=&quot;http://docpad.org&quot;&gt;docpad&lt;/a&gt; 做为新的建站工具。&lt;code&gt;docpad&lt;/code&gt; 有很多优点，但最大的缺点是效率。在我看来，一个好的静态网站生成工具最好能在秒级处理成千上万文档，这样才能真正满足个人博客外的中等规模网站的需求。要做到这一点，工具必须将full build和incremental build区别开来。这样，即使一个full build要花几十秒甚至几分钟，incremental build还能控制在秒级。当用户修改某个文件时，incremental build能够保证用户有良好的体验 —— 无需等待，改动立即可见。而这一点，则恰恰是 &lt;code&gt;docpad&lt;/code&gt; 所欠缺的。本文讲述的 &lt;code&gt;hatch&lt;/code&gt; 项目将尝试在保留 &lt;code&gt;docpad&lt;/code&gt; 的诸多优点外，通过更智能的build过程将编译速度尽最大可能提高。&lt;/p&gt;
 </content>
@@ -99,7 +109,7 @@ col.findOne {}, (err, doc) -&amp;gt;
         	<entry>
             	<title>觅珠人：浴火重生</title>
 				<link href="http://tchen.me/posts/2013-10-28-blog-reborn.html"/>
-                <updated>2013-10-28T14:40:00.000Z</updated>
+                <updated>2013-10-27T23:40:00.000Z</updated>
 				<id>http://tchen.me/posts/2013-10-28-blog-reborn.html</id>
                 <content type="html">&lt;p&gt;很久没有更新博客了。最近几个月写了三篇文章：&lt;/p&gt;
 &lt;ul&gt;
@@ -115,7 +125,7 @@ col.findOne {}, (err, doc) -&amp;gt;
         	<entry>
             	<title>长日无痕</title>
 				<link href="http://tchen.me/posts/2013-07-27-the-remains-of-the-day.html"/>
-                <updated>2013-07-28T04:24:00.000Z</updated>
+                <updated>2013-07-27T13:24:00.000Z</updated>
 				<id>http://tchen.me/posts/2013-07-27-the-remains-of-the-day.html</id>
                 <content type="html">&lt;p&gt;又是一个闷热的周六，灰霾就像粘在天空一样，依旧笼罩着这个城市。带着小宝，我们三人游荡在蓝色港湾的儿童城中，为小家伙的未来打算着。老婆和丈母娘穿梭于一个又一个玩具店，而我，因为推着童车，不便走来走去，就带着小宝静静地欣赏楼下冰场里玩耍的孩子们。很快，我们的注意力就被冰场上两个正在进行对抗训练的小男孩吸引住了。小宝快乐地随着冰球转动脖子，双眼紧紧地捕捉着黑色的冰球，不时发出愉悦的『喝彩』；而我，默默地看着两位『男子汉』一次次跌倒，又一次次爬起，对抗虽然异常激烈，但任何一方都没有脏动作，这足以让真正的冰球赛场上的成年人汗颜。&lt;/p&gt;
 </content>
@@ -124,7 +134,7 @@ col.findOne {}, (err, doc) -&amp;gt;
         	<entry>
             	<title>Why should C programmers learn Erlang?</title>
 				<link href="http://tchen.me/posts/2013-07-22-why-should-c-programmers-learn-erlang.html"/>
-                <updated>2013-07-23T01:32:00.000Z</updated>
+                <updated>2013-07-22T10:32:00.000Z</updated>
 				<id>http://tchen.me/posts/2013-07-22-why-should-c-programmers-learn-erlang.html</id>
                 <content type="html">&lt;p&gt;If somebody says X language is better than Y language, usually there will be a fierce quarrel between two sides. If you&amp;#39;re using certain language for a long time, you will be the evangelist of that language, and try to protect it unconsciously. Admitted or not, you have been trapped in a tunnel, that what you can see is constraint greatly. &amp;quot;The Shawshank Redemption&amp;quot; gives a good footnote on it:&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/assets/files/snapshots/institutionalized.jpg&quot; alt=&quot;institutionalized&quot;&gt;&lt;/p&gt;
@@ -139,7 +149,7 @@ col.findOne {}, (err, doc) -&amp;gt;
         	<entry>
             	<title>你无法想象的C语法</title>
 				<link href="http://tchen.me/posts/2013-07-18-c-grammar-you-cannot-imagine.html"/>
-                <updated>2013-07-18T15:22:00.000Z</updated>
+                <updated>2013-07-18T00:22:00.000Z</updated>
 				<id>http://tchen.me/posts/2013-07-18-c-grammar-you-cannot-imagine.html</id>
                 <content type="html">&lt;p&gt;看了berkeley网站上的文章&lt;a href=&quot;http://www.cs.berkeley.edu/~necula/cil/cil016.html&quot;&gt;Who Says C is Simple?&lt;/a&gt;，顿感汗流浃背。如果招聘官按照这个题目去面试，我也就将将五十分。不过话说回来，这里所列的case都太偏门，走的是圣火令的武功路数，真正做工程的这么写代码就是欠揍。&lt;/p&gt;
 &lt;p&gt;但是抱着学语言的态度，这里的题目如果你不懂都值得深究。我研究了下第四题 —— 这是让我比较困惑的一题。&lt;/p&gt;
@@ -159,7 +169,7 @@ int f(void) {
         	<entry>
             	<title>Come to Origins for Embedded Applications</title>
 				<link href="http://tchen.me/posts/2013-06-23-come-to-origin-for-embedded-applications.html"/>
-                <updated>2013-06-23T15:14:00.000Z</updated>
+                <updated>2013-06-23T00:14:00.000Z</updated>
 				<id>http://tchen.me/posts/2013-06-23-come-to-origin-for-embedded-applications.html</id>
                 <content type="html">&lt;p&gt;Recently I did a web application to make easy GNATS report for my team. I use scrapy to crawl the GNATS web pages for people&amp;#39;s issues every 4 hours, then add the crawled data into mongodb. A set of simple-to-use RESTful APIs written with nodejs can provide easy access to the data (&lt;a href=&quot;http://api.jcnrd.us/gnats/tchen.json&quot;&gt;try it out&lt;/a&gt;, but only viewable internally in Juniper). Then a django application consumes the APIs and wraps them into a not-so-bad user interface, thanks to twitter bootstrap and a set of javascript frameworks and libraries. You can look at the ultimate application here: &lt;a href=&quot;http://gnats.jcnrd.us/groups/branch-team/&quot;&gt;GNATS report system&lt;/a&gt;.&lt;/p&gt;
 </content>
@@ -168,7 +178,7 @@ int f(void) {
         	<entry>
             	<title>湾区创业者</title>
 				<link href="http://tchen.me/posts/2013-06-21-entrepreneurship-in-bay-area.html"/>
-                <updated>2013-06-21T17:30:00.000Z</updated>
+                <updated>2013-06-21T02:30:00.000Z</updated>
 				<id>http://tchen.me/posts/2013-06-21-entrepreneurship-in-bay-area.html</id>
                 <content type="html">&lt;p&gt;承工场合伙人Chris的情，短短的一周时间我有幸约见了硅谷当地的创业者：Brian，Bobby和Chung。&lt;/p&gt;
 </content>
@@ -177,7 +187,7 @@ int f(void) {
         	<entry>
             	<title>使用Makefile自动化部署</title>
 				<link href="http://tchen.me/posts/2013-06-12-use-makefile-to-automate-deployment.html"/>
-                <updated>2013-06-12T14:14:00.000Z</updated>
+                <updated>2013-06-11T23:14:00.000Z</updated>
 				<id>http://tchen.me/posts/2013-06-12-use-makefile-to-automate-deployment.html</id>
                 <content type="html">&lt;p&gt;有时候，写个小app，部署是件麻烦的事情 —— 你需要登录到服务器上，手工编辑nginx，supervisor等配置文件，然后重启相关的服务。这些配置都不在版本库中，所以也无法记录历史修订。&lt;code&gt;puppet&lt;/code&gt; 是个不错的解决方案，但对于小项目来说，使用puppet是个负担。&lt;/p&gt;
 &lt;p&gt;本文讨论如何通过写个简单的 &lt;code&gt;makefile&lt;/code&gt; 来达到自动化部署的目的。&lt;/p&gt;
@@ -187,7 +197,7 @@ int f(void) {
         	<entry>
             	<title>用scrapyd来提供crawler服务</title>
 				<link href="http://tchen.me/posts/2013-06-10-use-scrapyd-to-serve-scrapy-projects.html"/>
-                <updated>2013-06-10T14:51:00.000Z</updated>
+                <updated>2013-06-09T23:51:00.000Z</updated>
 				<id>http://tchen.me/posts/2013-06-10-use-scrapyd-to-serve-scrapy-projects.html</id>
                 <content type="html">&lt;p&gt;这是一篇即兴的短文，主要是为了记录我用 &lt;code&gt;scrapyd&lt;/code&gt; 的心得。&lt;/p&gt;
 &lt;p&gt;之前做数据抓取，总是一个scrapy project做一个deploy，很不方便，一个一个更新起来也很麻烦，总觉得能有更好的方法去处理。今早看了看scrapyd，觉得这就是我想要的东西。&lt;/p&gt;
@@ -197,7 +207,7 @@ int f(void) {
         	<entry>
             	<title>why every developer should use mac</title>
 				<link href="http://tchen.me/posts/2013-05-09-why-every-developer-should-use-mac.html"/>
-                <updated>2013-05-09T15:34:00.000Z</updated>
+                <updated>2013-05-09T00:34:00.000Z</updated>
 				<id>http://tchen.me/posts/2013-05-09-why-every-developer-should-use-mac.html</id>
                 <content type="html">&lt;p&gt;Two years ago, I bought my own 13&amp;quot; mbp. From then on, I never left mac world, only changed that little thing to a new 15&amp;quot; retina mbp. From my two years experience, I believe to make your development work much more productive, you shall use mac.&lt;/p&gt;
 </content>
@@ -206,7 +216,7 @@ int f(void) {
         	<entry>
             	<title>自动化的高效团队开发环境</title>
 				<link href="http://tchen.me/posts/2013-04-25-engineering-environment-for-smart-team.html"/>
-                <updated>2013-04-25T17:26:00.000Z</updated>
+                <updated>2013-04-25T02:26:00.000Z</updated>
 				<id>http://tchen.me/posts/2013-04-25-engineering-environment-for-smart-team.html</id>
                 <content type="html">&lt;p&gt;这两天无意翻到几个月前的Evernote笔记，看到了当时对团队开发环境的一些想法。可惜后来种种，这一想法未能得到实践，只能将其完善后公诸于众，立此存照，日后有空可以一试。&lt;/p&gt;
 &lt;p&gt;考虑这套开发环境是因为我们遇到了这些问题：&lt;/p&gt;
@@ -222,7 +232,7 @@ int f(void) {
         	<entry>
             	<title>胡思乱想之Lockitron的技术架构</title>
 				<link href="http://tchen.me/posts/2013-04-08-trying-to-extract-the-thoughts-behind-lockitron.html"/>
-                <updated>2013-04-08T15:53:00.000Z</updated>
+                <updated>2013-04-08T00:53:00.000Z</updated>
 				<id>http://tchen.me/posts/2013-04-08-trying-to-extract-the-thoughts-behind-lockitron.html</id>
                 <content type="html">&lt;p&gt;有很久没有写文章了。为google I/O在airbnb寻找硅谷附近的住所时无意间遇到了Paul，&lt;a href=&quot;http://lockitron.com&quot;&gt;lockitron&lt;/a&gt; 的创始人。于是lockitron便吸引了我的注意力。他们的video很酷（需翻墙）：&lt;/p&gt;
 &lt;iframe width=&quot;640&quot; height=&quot;360&quot; src=&quot;http://www.youtube.com/embed/D1L3o88GKew&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;
@@ -235,7 +245,7 @@ int f(void) {
         	<entry>
             	<title>带四个月大的宝宝去度假</title>
 				<link href="http://tchen.me/posts/2013-03-19-taking-baby-to-vacation.html"/>
-                <updated>2013-03-19T09:49:00.000Z</updated>
+                <updated>2013-03-18T18:49:00.000Z</updated>
 				<id>http://tchen.me/posts/2013-03-19-taking-baby-to-vacation.html</id>
                 <content type="html">&lt;p&gt;有时候觉得我跟我LP是奇葩。自从怀上孩子后，同事朋友们就告诉我们到两岁前就不要想有任何假期，好好看孩子是正途。可我们一点也没受到善意叮嘱的困扰，
 宝宝在娘胎里呆了3个月后，我们就不安分起来，去了两次北戴河，期间穿插着京郊各种周末度假地。也许是在娘胎里养得好，这孩子生下来就壮，看上去比同龄的小家伙大上一个月有余。所以，当宝宝满一百二十天的时候，LP说我们去三亚吧，我想都没想就同意了。花了一个晚上，我们就把一天后的机票酒店定好，准备出发。&lt;/p&gt;
@@ -246,7 +256,7 @@ int f(void) {
         	<entry>
             	<title>Google IO抢票记</title>
 				<link href="http://tchen.me/posts/2013-03-13-getting-a-google-io-ticket.html"/>
-                <updated>2013-03-13T18:01:00.000Z</updated>
+                <updated>2013-03-13T03:01:00.000Z</updated>
 				<id>http://tchen.me/posts/2013-03-13-getting-a-google-io-ticket.html</id>
                 <content type="html">&lt;p&gt;发篇酱油文。今晚10点抢票。Google IO。&lt;/p&gt;
 &lt;p&gt;要能够正常抢到票，基本上你需要先有Google Plus和Google Wallet。Google Wallet需要你有一张双币信用卡，注册的时候账单信息选美国（因为没有中国可选），但地址填你的中文账单地址即可。注册成功后google会虚拟扣你1USD，没问题。&lt;/p&gt;
@@ -256,7 +266,7 @@ int f(void) {
         	<entry>
             	<title>软件工程师的职业生涯</title>
 				<link href="http://tchen.me/posts/2013-03-08-career-path-for-software-engineer.html"/>
-                <updated>2013-03-08T19:32:00.000Z</updated>
+                <updated>2013-03-08T03:32:00.000Z</updated>
 				<id>http://tchen.me/posts/2013-03-08-career-path-for-software-engineer.html</id>
                 <content type="html">&lt;p&gt;今早（3/8）跟人聊起工程师的职业生涯，突然想起前些日子看的一篇长微博：一个IBM人的离职泪（回头翻微博，作者已经删除那条内容）。内容已经记不太清了，唯一记得的是这哥们14年被promote 11次，跨过了从屌丝到中产的几乎所有band。这是一种职业生涯的典型，姑且称之为从一而终型；与之相对的，就是打一枪换一个地方，每个公司都涉足不深，但行业里基本都混了个脸熟，朋友遍天下，这是机会主义型。&lt;/p&gt;
 </content>
@@ -265,7 +275,7 @@ int f(void) {
         	<entry>
             	<title>创建下一代家用防火墙vMars</title>
 				<link href="http://tchen.me/posts/2013-02-06-Making-a-next-generation-home-security-device.html"/>
-                <updated>2013-03-05T22:14:00.000Z</updated>
+                <updated>2013-03-05T06:14:00.000Z</updated>
 				<id>http://tchen.me/posts/2013-02-06-Making-a-next-generation-home-security-device.html</id>
                 <content type="html">&lt;blockquote&gt;
 &lt;p&gt;2013-03-05 作者按：这是个胡思乱想的产品，写于2013-02-06，我尝试者把我系统领域的知识和互联网上的实践结合起来，看看能擦出什么火花。一直keep private，是想有朝一日做成自己的下一个创业项目。但最近的精力放在这上的很少，目前可预见的一年内自己也没有能耐去handle这样一个项目（主要是涉及的链条太广）。所以干脆将其open，或许可以激发能干成这事的人。&lt;/p&gt;
@@ -276,7 +286,7 @@ int f(void) {
         	<entry>
             	<title>Openflow简介</title>
 				<link href="http://tchen.me/posts/2013-02-21-openflow-introduction.html"/>
-                <updated>2013-02-21T21:57:00.000Z</updated>
+                <updated>2013-02-21T05:57:00.000Z</updated>
 				<id>http://tchen.me/posts/2013-02-21-openflow-introduction.html</id>
                 <content type="html">&lt;p&gt;&lt;a href=&quot;/posts/2013-02-18-sdn-elementatory-introduction.html&quot;&gt;上一篇文章&lt;/a&gt;简单介绍了SDN及其应用场景，臆测的成分大些。本文谈谈SDN的基石：openflow。&lt;/p&gt;
 &lt;p&gt;我们知道，SDN的核心是将control plane（下文统称controller）和data plane（下文统称oSwitch，openflow switch）分离，由一个中央集权的controller（好比一个军团的将领）指挥成百上千的oSwitch（好比千千万万的士兵），共同完成网络中数据的传输。而openflow，as a protocol，是这套体系正常运作的基石。&lt;/p&gt;
@@ -287,7 +297,7 @@ int f(void) {
         	<entry>
             	<title>SDN浅谈</title>
 				<link href="http://tchen.me/posts/2013-02-18-sdn-elementatory-introduction.html"/>
-                <updated>2013-02-18T18:27:00.000Z</updated>
+                <updated>2013-02-18T02:27:00.000Z</updated>
 				<id>http://tchen.me/posts/2013-02-18-sdn-elementatory-introduction.html</id>
                 <content type="html">&lt;p&gt;SDN（Software Defined Network）是个有意思的概念。&lt;a href=&quot;https://www.opennetworking.org&quot;&gt;ONF&lt;/a&gt;（Open Network Foundation）这样定义SDN：&lt;/p&gt;
 &lt;blockquote&gt;
@@ -301,7 +311,7 @@ int f(void) {
         	<entry>
             	<title>Teamspark及Meteor杂谈</title>
 				<link href="http://tchen.me/posts/2013-02-04-teamspark-open-sourced.html"/>
-                <updated>2013-02-04T08:20:00.000Z</updated>
+                <updated>2013-02-03T16:20:00.000Z</updated>
 				<id>http://tchen.me/posts/2013-02-04-teamspark-open-sourced.html</id>
                 <content type="html">&lt;p&gt;我终于厚着脸皮把Teamspark开源了。&lt;/p&gt;
 &lt;p&gt;Teamspark是我做的一个协作软件。有关Teamspark的功能和使用方式见：&lt;a href=&quot;http://tchen.me/teamspark/&quot;&gt;&lt;a href=&quot;http://tchen.me/teamspark/&quot;&gt;http://tchen.me/teamspark/&lt;/a&gt;&lt;/a&gt;。或者你也可以直接clone或fork &lt;a href=&quot;http://github.com/tyrchen/teamspark/&quot;&gt;Teamspark的github项目&lt;/a&gt;。如果你想了解些关于Teamspark和Meteor的八卦，请继续阅读。&lt;/p&gt;
@@ -311,7 +321,7 @@ int f(void) {
         	<entry>
             	<title>Align/Fit杂谈</title>
 				<link href="http://tchen.me/posts/2013-02-03-observation-about-align-and-fit.html"/>
-                <updated>2013-02-03T18:53:00.000Z</updated>
+                <updated>2013-02-03T02:53:00.000Z</updated>
 				<id>http://tchen.me/posts/2013-02-03-observation-about-align-and-fit.html</id>
                 <content type="html">&lt;p&gt;上周见了一个半年多没见的朋友。他依旧是一套很朴素的打扮，衣服还是一两年前的，和他几十万年薪的身价一点都不符。这就是典型的engineer，外表和内在一点也不align。&lt;/p&gt;
 &lt;p&gt;由是我想到了创业，工作及人生。于是就瞎写了这篇文章。&lt;/p&gt;
@@ -321,7 +331,7 @@ int f(void) {
         	<entry>
             	<title>Make raspberry pi up and running</title>
 				<link href="http://tchen.me/posts/2013-01-28-make-raspberry-pi-up-and-running.html"/>
-                <updated>2013-01-28T17:59:00.000Z</updated>
+                <updated>2013-01-28T01:59:00.000Z</updated>
 				<id>http://tchen.me/posts/2013-01-28-make-raspberry-pi-up-and-running.html</id>
                 <content type="html">&lt;p&gt;心仪很久的Raspberry Pi model B终于到手。拆开相当原始的包装后，就两页说明书和一块电路板，连条电源线也没有（不过$35就能搞到这样一个好东东，你还能要求什么呢）。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/assets/files/snapshots/rasp.jpg&quot; alt=&quot;Raspberry Pi&quot;&gt;&lt;/p&gt;
@@ -333,7 +343,7 @@ int f(void) {
         	<entry>
             	<title>后端工程师的逆袭：单枪匹马搭建一个新的Web App</title>
 				<link href="http://tchen.me/posts/2013-01-25-bootstrap-a-new-web-app.html"/>
-                <updated>2013-01-25T22:13:00.000Z</updated>
+                <updated>2013-01-25T06:13:00.000Z</updated>
 				<id>http://tchen.me/posts/2013-01-25-bootstrap-a-new-web-app.html</id>
                 <content type="html">&lt;p&gt;小T是个很苦逼的后端工程师。他拥有通天的本领，从web server到db，从cache server到MQ，从assembly到Javascript，写得了算法，玩得了数据，十八般武艺样样精通。可惜，他生在一个矮矬穷靠边站，高富帅是宇宙中心的时代。看人家的产品一个个长得娇艳欲滴，自己的却蓬头垢面，心里那个郁闷。每每朋友刚一试用，产品的美妙还未体现，就被痛快枪毙。睡梦中，小T不知道把发明GUI，让屏幕充满色彩的那些家伙干掉多少回了，也不知道憧憬过多少次没有色彩，没有图形，满屏幕都是字符的世界 —— 每个用户都像hacker一样通过清脆的键盘敲击，进入一个又一个自己创建的产品。&lt;/p&gt;
 </content>
@@ -342,7 +352,7 @@ int f(void) {
         	<entry>
             	<title>尝试github &quot;Zen Writing Mode&quot;</title>
 				<link href="http://tchen.me/posts/2013-01-25-try-github-zen-writing-mode.html"/>
-                <updated>2013-01-25T16:38:00.000Z</updated>
+                <updated>2013-01-25T00:38:00.000Z</updated>
 				<id>http://tchen.me/posts/2013-01-25-try-github-zen-writing-mode.html</id>
                 <content type="html">&lt;p&gt;最新的 &lt;a href=&quot;http://news.ycombinator.com&quot;&gt;hacker news&lt;/a&gt; 有个 &lt;a href=&quot;https://github.com/blog/1379-zen-writing-mode&quot;&gt;链接&lt;/a&gt; 关于Zen Writing Mode，看完后迫不及待地尝试用它写自己的博客。感觉还是挺不错的。&lt;/p&gt;
 &lt;p&gt;和使用sublime + markdown插件的方式撰写文章比起来，用Github Zen Writing Mode有以下几个优点：&lt;/p&gt;
@@ -362,7 +372,7 @@ int f(void) {
         	<entry>
             	<title>为什么要使用wintersmith取代octopress</title>
 				<link href="http://tchen.me/posts/2013-01-21-why-use-wintersmith-to-replace-octopress.html"/>
-                <updated>2013-01-21T14:55:00.000Z</updated>
+                <updated>2013-01-20T22:55:00.000Z</updated>
 				<id>http://tchen.me/posts/2013-01-21-why-use-wintersmith-to-replace-octopress.html</id>
                 <content type="html">&lt;p&gt;使用octopress已经有一段时间，用这套framework构架博客，写作和部署感觉相当地爽。然而，就我个人的网站而言，我希望它不仅仅是一个博客系统，不光能产生固定格式的post/page，更应该是一个完整的CMS，能根据我个人的需要定制更多的内容展现方式。在使用octopress的这段时间，我尝试为其添加了对演示文档的支持，对更多模版的支持，但感觉还是有点别扭，就好像你让守门员去踢自由人，能干，但干不好。&lt;/p&gt;
 &lt;p&gt;我希望我的个人网站能够有以下特点：&lt;/p&gt;
@@ -389,7 +399,7 @@ int f(void) {
         	<entry>
             	<title>用Github Webhooks实现自动部署</title>
 				<link href="http://tchen.me/posts/2013-01-09-auto-deploy-with-github-webhooks.html"/>
-                <updated>2013-01-10T06:10:00.000Z</updated>
+                <updated>2013-01-09T14:10:00.000Z</updated>
 				<id>http://tchen.me/posts/2013-01-09-auto-deploy-with-github-webhooks.html</id>
                 <content type="html">&lt;p&gt;互联网产品永远都处在不断更迭的beta阶段。我们常常会在生产环境外，建立一套与生产环境共享数据的lab环境，以便验证一些即将用于真实世界的想法。问题是，每次提交改动后都需要手工运行部署脚本（前后大概花去30s左右时间），很不高效，每天运行那么几次，对惜时如金的程序员来说是种磨难。于是忙中偷闲的时候，就会想：有没有一种方法在代码提交后能够自动部署，身躯手工的麻烦？&lt;/p&gt;
 &lt;p&gt;当然是有的。Github的 &lt;a href=&quot;https://help.github.com/articles/post-receive-hooks&quot;&gt;Post receive hooks&lt;/a&gt; 就是用来干这个滴。作者花了小半天时间（对nodejs不熟啊），实现了一个很简单的自动部署方案，趁着记忆还未散去，将其记录在案，和大家分享交流。&lt;/p&gt;
@@ -399,7 +409,7 @@ int f(void) {
         	<entry>
             	<title>有意思的Io语言（一）</title>
 				<link href="http://tchen.me/posts/2013-01-06-io-lang.html"/>
-                <updated>2013-01-07T07:05:00.000Z</updated>
+                <updated>2013-01-06T15:05:00.000Z</updated>
 				<id>http://tchen.me/posts/2013-01-06-io-lang.html</id>
                 <content type="html">&lt;p&gt;最近写了不少javascript，对原型语言有了浓厚的兴趣。听闻原型语言中有一清丽脱俗，小桥简单的语言，叫Io，随即花了点时间研究下。&lt;/p&gt;
 &lt;p&gt;不看不知道，一看吓一跳。Io这门语言没有关键字，万事万物皆为消息，程序员要做的无非是把消息串联起来，传递，处理。&lt;/p&gt;
@@ -418,7 +428,7 @@ int f(void) {
         	<entry>
             	<title>进一步思考Atanasoff (Octopress client) (2)</title>
 				<link href="http://tchen.me/posts/2012-12-31-atanasoff-product-design.html"/>
-                <updated>2012-12-31T17:53:00.000Z</updated>
+                <updated>2012-12-31T01:53:00.000Z</updated>
 				<id>http://tchen.me/posts/2012-12-31-atanasoff-product-design.html</id>
                 <content type="html">&lt;p&gt;&lt;a href=&quot;http://tchen.me/blog/2012/12/19/atanasoff-product-flow-chart/&quot;&gt;之前的文章&lt;/a&gt;把atanasoff的主要流程思考了一下，元旦期间考虑下atanasoff的实现。&lt;/p&gt;
 &lt;h3&gt;整站结构&lt;/h3&gt;
@@ -429,7 +439,7 @@ int f(void) {
         	<entry>
             	<title>2013要做的事</title>
 				<link href="http://tchen.me/posts/2012-12-29-2013-things-to-do.html"/>
-                <updated>2012-12-30T05:07:00.000Z</updated>
+                <updated>2012-12-29T13:07:00.000Z</updated>
 				<id>http://tchen.me/posts/2012-12-29-2013-things-to-do.html</id>
                 <content type="html">&lt;p&gt;2013是很重要的一年。我需要静下心来好好思考一下有了孩子后，人生的下一个十年该怎么走？当然，这个问题不是岁末写写博客的时候就能想通的。不过有一点是毋庸置疑的：就小宝的教育而言，好父母胜过好老师，家庭教育优于学校教育。所以不管怎样，先用知识武装自己总是没错，否则日后教导小宝也是有心无力。伊索寓言有这么一则关于教育的：&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;小蟹与母蟹&lt;/strong&gt;&lt;/p&gt;
@@ -442,7 +452,7 @@ int f(void) {
         	<entry>
             	<title>Retrospect of the year 2012</title>
 				<link href="http://tchen.me/posts/2012-12-28-retrospect-of-the-year-2012.html"/>
-                <updated>2012-12-28T22:56:00.000Z</updated>
+                <updated>2012-12-28T06:56:00.000Z</updated>
 				<id>http://tchen.me/posts/2012-12-28-retrospect-of-the-year-2012.html</id>
                 <content type="html">&lt;p&gt;The year 2012 was an unusal year. As a sophomore in the self-employed battlefield, I experienced a lot this year, and learned my lessons. &lt;/p&gt;
 &lt;p&gt;If you ask what the biggest lesson I&amp;#39;ve learned, I would say - the only thing unchanged is the change itself, you need to prepare for it and adapt to it. For the year 2012, the obvious changes for the team were:&lt;/p&gt;
@@ -459,7 +469,7 @@ int f(void) {
         	<entry>
             	<title>Octopress支持reveal.js撰写slides</title>
 				<link href="http://tchen.me/posts/2012-12-26-reveal-js-support-for-octopress.html"/>
-                <updated>2012-12-27T05:10:00.000Z</updated>
+                <updated>2012-12-26T13:10:00.000Z</updated>
 				<id>http://tchen.me/posts/2012-12-26-reveal-js-support-for-octopress.html</id>
                 <content type="html">&lt;p&gt;&lt;a href=&quot;https://github.com/hakimel/reveal.js&quot;&gt;reveal.js&lt;/a&gt;是一个NB的HTML presention framework，可以使用一些简单地HTML标签撰写出效果很赞的演示稿，并通过互联网传播。具体效果可以看&lt;a href=&quot;http://lab.hakim.se/reveal-js/&quot;&gt;这里&lt;/a&gt;。本文不是介绍如何使用或者撰写使用reveal.js的演示稿，这些可以通过reveal.js的文档很快速地掌握。作者比较好奇的是，既然octopress能够生成静态Html，那么如何很方便地将reveal.js集成到octopress中，让blog和presentation能够更好地结合起来？？&lt;/p&gt;
 </content>
@@ -468,7 +478,7 @@ int f(void) {
         	<entry>
             	<title>Meteor基础入门</title>
 				<link href="http://tchen.me/posts/2012-12-21-meteor-basics.html"/>
-                <updated>2012-12-21T16:55:00.000Z</updated>
+                <updated>2012-12-21T00:55:00.000Z</updated>
 				<id>http://tchen.me/posts/2012-12-21-meteor-basics.html</id>
                 <content type="html">&lt;h3&gt;安装nodejs&lt;/h3&gt;
 &lt;p&gt;可以通过&lt;code&gt;brew install nodejs&lt;/code&gt; 或 &lt;code&gt;sudo apt-get install nodejs&lt;/code&gt; 安装。不过版本也许不是最新的，所以建议到 &lt;a href=&quot;http://nodejs.org/download/&quot;&gt;&lt;a href=&quot;http://nodejs.org/download/&quot;&gt;http://nodejs.org/download/&lt;/a&gt;&lt;/a&gt; 直接下载对应系统下的安装包。如果你是windows的用户，我想说，接下来的旅程对你而言将是无尽的折腾，我要是你，要么合上笔记本，远离这篇文章；要么咬咬牙，卖半个肾，去搞台mbp回来。&lt;/p&gt;
@@ -478,7 +488,7 @@ int f(void) {
         	<entry>
             	<title>进一步思考Atanasoff (Octopress client) (1)</title>
 				<link href="http://tchen.me/posts/2012-12-19-atanasoff-product-flow-chart.html"/>
-                <updated>2012-12-20T05:57:00.000Z</updated>
+                <updated>2012-12-19T13:57:00.000Z</updated>
 				<id>http://tchen.me/posts/2012-12-19-atanasoff-product-flow-chart.html</id>
                 <content type="html">&lt;p&gt;Atanasoff基本的想法已经有了，接下来就是一些细节上的思考。晚上在家看小宝的同时，考虑了一下产品的主要流程。&lt;/p&gt;
 </content>
@@ -487,7 +497,7 @@ int f(void) {
         	<entry>
             	<title>产品随想：octopress客户端 —— Atanasoff</title>
 				<link href="http://tchen.me/posts/2012-12-18-octopress-client-a-better-composition-tool.html"/>
-                <updated>2012-12-18T16:26:00.000Z</updated>
+                <updated>2012-12-18T00:26:00.000Z</updated>
 				<id>http://tchen.me/posts/2012-12-18-octopress-client-a-better-composition-tool.html</id>
                 <content type="html">&lt;p&gt;我是个懒人，记性还差。写了两篇博客后，隔了一天再写，就忘了新建博文的命令，是 &lt;code&gt;rake new_post&lt;/code&gt; 还是 &lt;code&gt;rake new_posts&lt;/code&gt; 来着？另外，每次写完之余，都要敲 &lt;code&gt;rake gen_deploy&lt;/code&gt; 部署也总让我抓狂。平心而论，我还是非常喜欢octopress这个产品，简洁的设计，独特的思想，优雅的撰写方式和美妙的历史记录，这些都让我沉浸在其中，乐不思WP，但如果再能好那么一点点，再让我少干些重复性的劳动，一切就完美了。&lt;/p&gt;
 &lt;p&gt;同事见了我的博客也想搭一个，我说这不适合你，octopress只适合程序猿。回过头来我想，为什么自己的视界这么狭小？程序猿是干什么的？不就是把复杂繁重的工作交给计算机，让计算机前的人能够悠然自得么？&lt;/p&gt;
@@ -497,7 +507,7 @@ int f(void) {
         	<entry>
             	<title>为什么是Meteor</title>
 				<link href="http://tchen.me/posts/2012-12-16-why-meteor.html"/>
-                <updated>2012-12-16T22:29:00.000Z</updated>
+                <updated>2012-12-16T06:29:00.000Z</updated>
 				<id>http://tchen.me/posts/2012-12-16-why-meteor.html</id>
                 <content type="html">&lt;p&gt;Meteor的官网( &lt;a href=&quot;http://meteor.com&quot;&gt;http://meteor.com&lt;/a&gt; )这样介绍这个框架：&lt;/p&gt;
 &lt;blockquote&gt;
@@ -510,7 +520,7 @@ int f(void) {
         	<entry>
             	<title>第一篇博客: 用octopress搭建博客系统</title>
 				<link href="http://tchen.me/posts/2012-12-16-first-blog.html"/>
-                <updated>2012-12-16T12:15:00.000Z</updated>
+                <updated>2012-12-15T20:15:00.000Z</updated>
 				<id>http://tchen.me/posts/2012-12-16-first-blog.html</id>
                 <content type="html">&lt;p&gt;夜夜哭闹的混世小魔王在她满月的这天好像突然换了个人，一觉又一觉地睡。这可苦了我，一个月来建立的夜间作息倾刻间紊乱，她没有闹觉的时间里，我却丢了魂一样，怎么也睡不着。于是起身想折腾点什么，无意间看到了derbyjs的 &lt;a href=&quot;http://blog.derbyjs.com&quot; title=&quot;Derby JS&quot;&gt;blog&lt;/a&gt; 是github pages支持的，遂产生了兴趣，挽起袖子就开始折腾一个自己的。虽然 [octopress][1]的文档写得很清晰，但对于第一次接触这个博客系统的人来讲，还是有一些拦路虎的。2012年12月16日凌晨4:15，当我的第一篇空的博客展现在 &lt;a href=&quot;tyrchen.github.com&quot;&gt;tyrchen.github.com&lt;/a&gt; 时，我终于累瘫在床上。
 </content>

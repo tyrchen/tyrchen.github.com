@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="本博客提供我个人的想法，创意，经验，心得。你不必认同博主观点。" />
+    <meta name="keywords" content="创业, 思想, 点子, 经验, python, erlang, node, javascript, 服务器, devops, meteor" />
+    <meta name="author" content="Tyr Chen" />
+
+    <!-- Output DocPad produced meta elements -->
+    
+
+    <!-- Styles -->
+    <link  rel="stylesheet" href="/assets/css/app.min.css" />
+
+    <link href="/assets/favicon.ico" rel="shortcut icon">
+    <link href="/assets/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.3.0/respond.js"></script>
+
+    <![endif]-->
+
+    <title>2014年年会节目脚本 - Branch取经记 | 觅珠人 | Tyr Chen的个人博客 | 创意 | 心得 | 经验</title>
+
+</head>
+
+<body>
+
+<!-- Contact Modal -->
+<div aria-hidden='true' aria-labelledby='contactModalLabel' class='modal fade' id='contactModal' role='dialog' tabindex='-1'>
+    <div class='modal-dialog'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <button aria-hidden='true' class='close' data-dismiss='modal' type='button'>×</button>
+                <h4 class='modal-title'>Contact Us Form</h4>
+            </div>
+            <div class='modal-body'>
+                <form action='#' role='form'>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Name</label>
+                                <input class='form-control' placeholder='your username' type='text'>
+                            </div>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Email</label>
+                                <input class='form-control' placeholder='your password' type='text'>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-12'>
+                                <label class='control-label' for=''>Your Message</label>
+                                <textarea class='form-control' name='' rows='4'></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class='modal-footer'>
+                <button class='btn btn-default' data-dismiss='modal' type='button'>Cancel</button>
+                <button class='btn btn-primary' type='button'>Send Message</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="header-image-wrapper">
+  <img alt="" src="/assets/files/posts/play_script.jpg">
+</div>
+
+<div class='header-main'>
+    <div class='container'>
+        <nav class='navbar navbar-default' role='navigation'>
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class='navbar-header'>
+                <button class='navbar-toggle' data-target='.navbar-ex1-collapse' data-toggle='collapse' type='button'>
+                    <span class='sr-only'>Toggle navigation</span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                </button>
+                <a class='navbar-brand' href='/'>
+                    <img alt='' height='45px' src='/assets/images/tyr.png'> <span>觅珠人</span>
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class='collapse navbar-collapse navbar-ex1-collapse'>
+
+                <ul class='nav navbar-nav navbar-right'>
+                    <li class="">
+                        <a href="/">首页</a>
+                    </li>
+                    
+                        
+                        <li
+                            about="/pages/posts.html"
+                            class=""
+                        >
+                            <a href="/pages/posts.html">
+                                文章随笔
+                            </a>
+                        </li>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                        <li
+                            about="/pages/canvases.html"
+                            class=""
+                        >
+                            <a href="/pages/canvases.html">
+                                奇思妙想
+                            </a>
+                        </li>
+                        
+                    
+                        
+                        <li
+                            about="/pages/aboutme.html"
+                            class=""
+                        >
+                            <a href="/pages/aboutme.html">
+                                关于我
+                            </a>
+                        </li>
+                        
+                    
+                    <!--
+                    <li>
+                        <a data-toggle='modal' href='#contactModal'>联系我</a>
+                    </li>
+                    -->
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+</div>
+
+<div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+
+<div class='container'>
+  <div class='row'>
+    <div class="col-md-3">
+      <div class="post-side-bar">
+        <!--
+        <div class="widget widget-author">
+          <div class="author-avatar">
+            <img alt="" src="/assets/images/tyr.png">
+          </div>
+          <div class="author-meta">
+            <h4 class="author-name">Tyr Chen</h4>
+            <p class="author-bio">Progressively maintain extensive infomediaries via extensible niches.</p>
+            
+            <a class="author-more" href="#">
+              read more posts
+              <i class="icon-angle-right"></i>
+            </a>
+          </div>
+        </div>
+        -->
+        <div class="widget widget-cats tags">
+          <h4 class="widget-title">标签</h4>
+          <ul>
+          
+            <li><a href='/tags/script.html'>script</a></li>
+          
+          </ul>
+        </div>
+        <div class="widget widget-cats">
+          <h4 class="widget-title">
+            相关文章
+          </h4>
+          <ul>
+            
+            
+            
+          </ul>
+        </div>
+      </div>
+    </div>      
+    <div class='col-md-9'>
+      <div class='post-single'>
+        <!--
+        <div class='pre-post-meta'>
+          <span>
+            <i class='icon-tags'></i>
+            in
+            <a href='#'>Web Development</a>
+          </span>
+          <span>
+            <i class='icon-user'></i>
+            by
+            <a href='#'>Tyr Chen</a>
+          </span>
+          <span>
+            <i class='icon-bookmark'></i>
+            11 分钟
+          </span>
+        </div>
+        -->
+        <h1 class='has-sub-header'>2014年年会节目脚本 - Branch取经记</h1>
+        <div class='post-single-meta'>
+          <span class='meta-item'>
+            <i class='icon-calendar'></i>
+            1天前
+          </span>
+          <!--
+          <span class='meta-item'>
+            <a href='#'>
+              <i class='icon-comments'></i>
+              24
+            </a>
+          </span>
+          <span class='meta-item'>
+            <a href='#'>
+              <i class='icon-heart'></i>
+              15
+            </a>
+          </span>
+          -->
+          <span class="meta-item">
+          	
+            <i class='icon-time'></i>
+            11 分钟
+          </span>
+        </div>
+        <p>每年的年会，依team旧例：新员工挑大梁演主角，而且要无耻度无底线。2013我是新员工，所以不得不被安排角色。一不小心大家选了个三国的剧本 <a href="http://www.docin.com/p-111786442.html">三国无间道</a>，重口一致要让我演董卓，说我体态样貌样样俱全。我一看剧本，这是毁人的节奏啊。不行不行，于是毛遂自荐当编剧，卸了主演。话说这三国无间道的剧本有点烂，笑点不多，和内事外事均无半毛钱关系，于是干脆一狠心，推翻重来。正巧13年重读了『西游记』，对唐太宗地府还魂记还记忆犹新，于是以此为蓝本展开故事。剧本着眼于普度众生，让大多数team成员都能上个台，露个脸，于是人物众多，在一个主线故事下，没有绝对的主角，算是本剧的小小遗憾。</p>
+<p>以下内容做了些删改，避免暴露一些内部信息。</p>
+<!--more-->
+
+<h2>人物</h2>
+<p>唐太宗：Tony</p>
+<p>武媚娘：Lily</p>
+<p>观音姐姐：Halin</p>
+<p>黑白无常：Daniel, Leo</p>
+<p>王玄奘：Dereck</p>
+<p>邵悟空：Yafang</p>
+<p>郭悟能：Cliff</p>
+<p>郭悟净：Tim</p>
+<p>天竺城管：Bo</p>
+<p>接引道人：Dongdong</p>
+<p>菩提祖师：Colin </p>
+<p>举牌，新闻联播口型：Yaling，Hao</p>
+<p>P1, P2 Issue: Hao</p>
+<p>旁白及音乐播放：Tyr</p>
+<h2>第一幕</h2>
+<p>（牌子飘过：本故事纯属扯淡，请勿对号入座）</p>
+<p>（中宫内，武媚娘正在弹吉他：一闪一闪亮晶晶）</p>
+<p>（唐太宗背着手走进来）</p>
+<p>唐太宗：抽刀断水水更流，举杯消愁愁更愁，人生在世不称意,明朝散发弄…扁…舟。</p>
+<p>武媚娘（起身相迎）：陛下。</p>
+<p>唐太宗：媚娘免礼。（走到媚娘旁边的龙榻前，卧在龙榻上，一脸倦容）</p>
+<p>武媚娘：陛下满面愁容，是否国事太过繁重？</p>
+<p>唐太宗：媚娘，自从天庭将 branch 业务托朕掌管，我就吃也吃不好，睡也睡不着，那些海龙王，河龙王，井龙王，加上女儿国，宝象国等各国国君天天给我开p1 issue，还动不动就escalate到观音姐姐甚至玉帝那里，弄得我好生烦躁。唉～～累觉不爱啊（说罢，闭上眼睛）</p>
+<p>武媚娘：陛下莫愁，臣妾刚学会一首『广陵散』，这就弹来，为陛下安安神。</p>
+<p>（媚娘弹奏两只老虎，唐太宗随着音乐晃着脑袋扭着身子渐渐入睡，入睡，媚娘放下吉他，拿苍蝇拍给太宗扇风，并打苍蝇）</p>
+<p>（灯光转暗，黑白无常在远处现身。道具：招魂幡，一串糖葫芦，一个风车，凸显过年气氛）</p>
+<p>（音乐 You drive me crazy）</p>
+<audio src="/assets/files/mp3/1-1-you-drive-me-crazy.mp3" controls="controls"></audio>
+
+<p>黑无常：阎王教人三更死，绝不留人到五更。可是就在前两天，地府出了大事！分布在阴曹地府各个角落的firewall不停的crash，真是一塌糊涂啊！</p>
+<p>白无常：生死薄信息系统全部瘫痪，原本一帮贪官死期已至，结果到今天还活蹦乱跳的；高丽国三胖子的姑父本来还有十年阳寿，却嗝屁投胎去了。</p>
+<p>黑无常：阎王大怒，差我兄弟勾了branch的负责人前去问话，说句公道话，这branch的活真心不好干啊。</p>
+<p>白无常：谁说不是呢？以前大家都叫他小白，叫我小黑，叫得人家心里好自卑。自打当了JTAC以后，我就营养不良，脸色越来越白，上次PTO几天去高丽，一堆美女围着我问我用的面膜品牌。我告诉她们：要美白，请接customer issue，谁用谁知道！</p>
+<p>黑无常：皇宫已到，那不是就是负责branch的老李？</p>
+<p>（黑白上前锁住唐太宗，唐太宗惊醒）</p>
+<p>白无常：老李，阎王要你去地府开个secure meeting，速速跟了我们去吧！</p>
+<p>（唐太宗反抗，武媚娘上前阻拦，众人闹成一团）</p>
+<p>唐太宗：我死也不去！哦，不，我不要死！</p>
+<p>黑无常：不去就双规你！</p>
+<p>唐太宗：大慈大悲观世音救命啊！</p>
+<p>（观音姐姐手持玉净瓶，摆着兰花指出现。）</p>
+<p>观音姐姐：善哉善哉，给贫僧一个薄面，大家请住手。</p>
+<p>（众人住手，黑白无常原地吐舌头）</p>
+<p>唐太宗：欧～巴～（尾音拖三秒），你来得正好。佛说你不入地狱谁入地狱，这个meeting还是你参加吧。你好歹是个喜大普奔的菩萨，阎王爷那说得上话。</p>
+<p>（观音姐姐满脸黑线。黑线飘过。）</p>
+<p>观音姐姐（塞给黑白一人一个红包）：黑白无常，你等且回去禀报阎罗王，我有个极好的workaround，地府不是有孟婆汤么，浇在那些有问题的盒子上可保十日平安。</p>
+<p>黑白：尊法旨，不过我们要留一个人质！（拉着媚娘下场）</p>
+<p>媚娘（伸手）：陛下～</p>
+<audio src="/assets/files/mp3/1-2-huisekongjian.mp3" controls="controls"></audio>
+
+<p>唐太宗（伸手）：Honey～</p>
+<p>（画面定格。唐太宗面部抽搐，凄凄惨惨戚戚，内心独白）</p>
+<p>（音乐停）</p>
+<p>观音姐姐：随他们去吧。糖糖，目前你还有更重要的事情去做。我这次来就是想告诉你，什么是branch业务的真谛。</p>
+<p>唐太宗（回过神来）：真谛？</p>
+<p>观音姐姐：很多事情不是你表面上看到的那样。你以为遍布我大唐的沙县小吃仅仅是小吃么？</p>
+<p>唐太宗：啊？这和branch有毛关系啊？</p>
+<p>观音姐姐：打个比方嘛。你以为我们Juniper是卖硬件的么？你以为将 branch 产品做出来的西天神佛是吃素的么？其实我们是卖服务的。硬件软件不多出点问题，服务怎能做得起来？俗话说的好，一日卖硬件，终身卖服务。这，才是为商之道。</p>
+<p>唐太宗：虽然不明白你在说什么，但感觉好厉害的样子。</p>
+<p>观音姐姐：我想派你去西天取经。</p>
+<p>唐太宗：取经？</p>
+<p>观音姐姐：天竺班加罗尔寺的藏经阁里有大量 branch 知识，你组建一个取经团队，到天竺去学习，学好了branch知识就不怕customer issue了。</p>
+<p>唐太宗：学习？</p>
+<p>观音姐姐：对。贫僧先行告辞，替你们上下打点。</p>
+<p>（说罢观音姐姐飘走）</p>
+<p>唐太宗：喂，别走啊～天竺？我们没人懂梵文啊～</p>
+<p>（众人除唐太宗外均下场）</p>
+<p>（音乐 快乐女声）</p>
+<audio src="/assets/files/mp3/1-3-xiangchang.mp3" controls="controls"></audio>
+
+<p>旁白：就这样，唐太宗开始了艰苦卓绝的『西游记中人』海选，终于敲定了从超级女声十强赛中脱颖而出的史上最强大取经阵容：王玄奘，邵悟空，以及郭悟能，郭悟净两兄弟。这一天，唐太宗在Everest准备开all hands meeting，检阅取经部队。。。</p>
+<h2>第二幕</h2>
+<p>（播放运动员进行曲）</p>
+<audio src="/assets/files/mp3/2-1-yundongyuan.mp3" controls="controls"></audio>
+
+<p>（唐太宗在场地中央站着，旁边立一个牌子：长安，场地另一次立牌子：天竺）</p>
+<p>（玄奘，孙悟空，白龙马，猪悟能，沙悟净列队上台）</p>
+<p>玄奘：稍息，立正。向右看齐，向前看！</p>
+<p>（玄奘小跑到太宗面前，行军礼）</p>
+<p>玄奘：报告陛下，西天取经小分队集结完毕，请指示。</p>
+<p>唐太宗（挥挥手）：同志们辛苦了！</p>
+<p>玄奘等人：为branch服务！</p>
+<p>唐太宗：玄奘，此去你等背负重大责任，branch 能否做好就看你们的了。</p>
+<p>玄奘等人：Yes sir！</p>
+<p>唐太宗：唉？你们的坐骑白龙马呢？</p>
+<p>悟空：陛下，按照天庭规定，本周白马限行，只允许黑马上路。</p>
+<p>唐太宗：哦，明白。你们的梵文练得怎样了？</p>
+<p>悟净（出列）：前轱辘转后轱辘不转，前轱辘不转后轱辘转思密达（颔首）</p>
+<p>唐太宗：（挥手）我大唐有你等高人，branch复兴指日可待！出发在即，大家还有什么问题？</p>
+<p>悟空：此番西去，路途遥远，非一年半载不能归来，陛下可否多批些budget供我们旅途中team building？</p>
+<p>唐太宗：我靠，这是出差，你当是带薪休假呢。最近手头紧，国库里就够你们两周的钱粮。</p>
+<p>悟能：两周？此处离西天十万八千里，现在又是雾霾又是限行的，两周我们都走不出杜家坎啊陛下！</p>
+<p>唐太宗：哈哈哈，你们out了。西域刚刚上供了一种灵鸡，叫灰机，骑上它，七八个时辰就到天竺。你们看～</p>
+<p>众人：哦？</p>
+<p>（Yalin举着灰机-Juniper Rocker-的牌子上场，众人一齐跟在灰机的后面，在场中绕圈子，唐太宗下）</p>
+<h2>第三幕</h2>
+<p>（灰机带着师徒四人飘过，绕场两圈到天竺，然后飘走）</p>
+<p>（音乐 - 天竺少女）</p>
+<audio src="/assets/files/mp3/3-1-tianzhu.mp3" controls="controls"></audio>
+
+<p>（师徒四人开始跳印度舞）</p>
+<p>（十秒左右，音乐声渐小）</p>
+<p>悟能：师父，我们到天竺了～</p>
+<p>玄奘：悟空，去打探一下，此处是何地？</p>
+<p>悟空（抓耳挠腮，四处张望）：师父，此地正是班加罗尔寺。藏经阁应该就在附近，我们找人问问。</p>
+<p>玄奘（大喜）：徒儿们咱们走。</p>
+<p>（天竺城突然出现，操一口湖北普通话）</p>
+<p>天竺城管：你们这是去哪儿？身份证，暂住证，结婚证，离婚证，独生子女证？没有？罚钱！1w 卢比！</p>
+<p>郭悟净（跳出）：喂，大家都是道上的兄弟，给点面子。大哥以前混哪里？</p>
+<p>天竺城管：老子洪兴的，来天竺前混铜锣湾，兄弟们都管我叫山鸡。</p>
+<p>郭悟净：啊，洪兴啊（翘起大拇指）？小弟不才，混五道口多年，嘿嘿——前轱辘转后轱辘不转，前轱辘不转后轱辘转思密达（颔首）</p>
+<p>天竺城管（大惊）：啊，五道口？你才是我大哥！对不起啊，大哥，你们请～请～（低三下四）</p>
+<p>（城管大叔做个请的动作，随即离开）</p>
+<p>（众人原地做前进状）</p>
+<p>（接引道人出场，操一口纯正东北话）</p>
+<p>接引道人（举个接机的牌子走过来）：哎呀妈呀，可算等到你们了。俺在这噶哒都被烤秃噜了。你们是从大唐那噶哒来的么？看你们面相，俺寻思应该是来做PTO的吧？啊不，TOI。</p>
+<p>（牌子上写：Flight: N.G. 350，Country: Tang，Name: Derek Wang Xuanzang）</p>
+<p>悟净：前轱辘转后轱辘不转，前轱辘不转后轱辘转思密达（颔首）</p>
+<p>接引道人（转身欲走）：妈呀，接错淫了，丢淫丢大发了～</p>
+<p>玄奘：大师莫走。我这徒弟最近解bug解岔脑子了，不太会说人话。弟子正是从东土大唐而来，来班加罗尔求亲的王玄奘，啊，不对，求经，求经。</p>
+<p>接引道人：早说呀，你说你们一群大老爷们磨磨唧唧，跟老娘们似的。Let&#39;s go!</p>
+<audio src="/assets/files/mp3/3-1-tianzhu.mp3" controls="controls"></audio>
+
+<p>（菩提老祖上台，操一口湖南普通话）</p>
+<p>玄奘：弟子玄奘一行五人，参见我佛。</p>
+<p>（接引道人飘走）</p>
+<p>菩提老祖：佛祖PTO去了，这次由我菩提老祖全程接待，哈哈。</p>
+<p>玄奘：善哉善哉～</p>
+<p>菩提老祖：我这里有红咖喱，绿咖喱，黄咖喱，黑咖喱，你们想吃哪一种撒？哈哈。</p>
+<p>玄奘：感谢祖师恩惠。branch issue太多，我大唐陛下茶饭不思，我等岂敢怠慢？先不谈吃，能否即刻带我们去藏经阁学习经书？</p>
+<p>菩提老祖：妥妥的，你们等在这里，我去找找，哈哈。</p>
+<p>（菩提老祖离开，众人面面相觑）</p>
+<p>（Yaling和Hao上场，准备新闻联播）</p>
+<p>悟能：师父你也是的，人家好意请你吃，你却回绝，这一路旅途奔波，老郭我肚子都抑郁了半天了。</p>
+<p>悟空：郭师弟，要不我拔根毫毛，变个猪蹄给你补补？</p>
+<p>悟能：你看我的口型，哥屋恩。猪蹄我有四只，每天都在舔，我要吃猴脑！</p>
+<p>（众人正在玩闹，菩提祖师出现）</p>
+<p>菩提祖师：经书找到了，你们请看！哈哈。</p>
+<p>（Yalin和Li Hao托着电视框上场，准备。Yalin对口型，表情夸张；Li Hao做手语，神情严肃）</p>
+<p>（新闻联播音乐声骤然响起，众人一惊，然后捧着下巴，瞪大眼睛，一脸神往）</p>
+<audio src="/assets/files/mp3/3-2-cctv.mp3" controls="controls"></audio>
+
+<p>悟净（新闻联播音乐快结束时）：我靠，前轱辘转思密达！</p>
+<p>（众人张大了嘴，瞪大了眼，呆若木鸡）</p>
+<p>（播放完毕后，声音停止，众人跌倒，菩提老祖上台，电视机撤）</p>
+<p>菩提老祖：这仅仅是我们branch的xx文档的一部分，还有xxx的要不要听？哈哈。</p>
+<p>（众人爬起）</p>
+<p>玄奘等人（含着热泪，做个长揖）：多谢老祖，人家培训要钱，你们培训要命！且罢切罢，我们回去慢慢学习！悟能，上优盘！</p>
+<p>（悟能把猪鼻子凑过去，菩提老祖拿出U盘，插入猪鼻子）</p>
+<p>（视频拷贝中，视频拷贝完成！西天取经成功！的牌子飘过）</p>
+<p>旁白：就这样，师徒四人终于顺利取到真经。回到大唐后，众人努力学习 branch 视频，开始跟各种种奇葩customer issue斗争。</p>
+<p>（音乐霍元甲）</p>
+<audio src="/assets/files/mp3/3-3-hyj1.mp3" controls="controls"></audio>
+
+<p>（P2 issue上，一副有恃无恐的样子，唐僧念经，P2 issue头昏欲裂，倒下台去）</p>
+<p>（P1 issue上，双手捶胸，秀肌肉，唐僧念经，毫无效果，众人一齐上，将issue赶跑，下场）</p>
+<p>（音乐停）</p>
+<p>旁白：三个月后，整个branch终于清静了，再也没有customer issue来骚扰。唐太宗带着武媚娘天天哼着小芳，喝着摩卡，在5楼打着台球，小日子过得相当地思密达。</p>
+<p>（全剧完）</p>
+
+        <div class='under-post'>
+          
+          
+            
+                
+                  <div class='pull-left'>
+                    <a class='read-previous-link' href='/posts/2014-01-11-sunnyvale-trip.html'>
+                      <i class='icon-angle-left'></i>
+                      上一篇
+                    </a>
+                  </div>                  
+                
+                         
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-weibo'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+        </div>
+        <div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+        
+  <div class="ds-thread">
+    <script>
+        var duoshuoQuery = {short_name:"tyrchen"};
+        (function() {
+          var ds = document.createElement('script');
+          ds.type = 'text/javascript';ds.async = true;
+          ds.src = 'http://static.duoshuo.com/embed.js';
+          ds.charset = 'UTF-8';
+          (document.getElementsByTagName('head')[0]
+          || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+  </div>
+
+    
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+<footer id="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="footer-menu">
+                    <li><a href="/pages/privacy">隐私策略</a></li>
+                    <li><a href="/pages/license">版权说明</a></li>
+                    <li><a href="/pages/disclaimer">免责声明</a></li>
+                    <li><a href="#">联系我们</a></li>
+                </ul>
+                <div class="copyright">
+                    2014 &copy; Tyr Chen. 保留一切权利.
+                    <script>
+                        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+                        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F639096b5979f5825515e0f88f871f56c' type='text/javascript'%3E%3C/script%3E"));
+                    </script>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <ul class="footer-social">
+                
+                    <li><a href="tyr.chen{#}gmail.com" target="_blank"><i class="icon-envelope"></i></a></li>
+                
+                    <li><a href="http://weibo.com/tchen82" target="_blank"><i class="icon-weibo"></i></a></li>
+                
+                    <li><a href="http://github.com/tyrchen" target="_blank"><i class="icon-github"></i></a></li>
+                
+                    <li><a href="http://linkedin.com/in/tyrchen/" target="_blank"><i class="icon-linkedin"></i></a></li>
+                
+                    <li><a href="https://twitter.com/tyrchen" target="_blank"><i class="icon-twitter"></i></a></li>
+                
+                    <li><a href="https://www.facebook.com/tyrchen" target="_blank"><i class="icon-facebook"></i></a></li>
+                
+                    <li><a href="https://plus.google.com/114684266209262341260/" target="_blank"><i class="icon-google-plus"></i></a></li>
+                
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script defer="defer"  src="/assets/js/app.min.js"></script>
+
+<script defer="defer" language="javascript">
+
+</script>
+</body>
+
+</html>
