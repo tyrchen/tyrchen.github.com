@@ -3,13 +3,22 @@
         <title>觅珠人</title>
 		<link href="http://tchen.me/atom.xml" rel="self"/>
 		<link href="http://tchen.me"/>
-        <updated>2014-01-14T23:50:40.172Z</updated>
+        <updated>2014-01-30T02:19:50.807Z</updated>
 		<id>http://tchen.me</id>
         <author>
 			<name>Tyr Chen</name>
 			<email></email>
         </author>
 
+        
+        	<entry>
+            	<title>Golang之chan/goroutine</title>
+				<link href="http://tchen.me/posts/2014-01-27-golang-chatroom.html"/>
+                <updated>2014-01-29T23:40:00.000Z</updated>
+				<id>http://tchen.me/posts/2014-01-27-golang-chatroom.html</id>
+                <content type="html">&lt;p&gt;最近在team内部培训golang，目标是看看golang能否被C工程师快速掌握。我定了个一个月，共计20小时的培训计划，首先花10个小时（两周，每天1小时）让大家掌握golang的基本要素，能写一些入门级的程序，之后再花两周时间做一个1000行代码规模的Proof of concept项目。为了能在培训的slides上直接运行go code，我做了个简单的 &lt;a href=&quot;https://github.com/tyrchen/coderunnerd&quot;&gt;coderunnerd&lt;/a&gt;，可以接受websocket传过来的code，编译运行再把stdout返回给websocket，为了更清晰地说明goroutine和chan的使用，以及golang的一些best practice，我分阶段写了个 &lt;a href=&quot;https://github.com/tyrchen/chatroom&quot;&gt;chatroom&lt;/a&gt;。本文介绍一下如何使用goroutine和chan来做一个简单的聊天室。&lt;/p&gt;
+</content>
+            </entry>
         
         	<entry>
             	<title>2014年年会节目脚本 - Branch取经记</title>
