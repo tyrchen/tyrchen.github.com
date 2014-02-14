@@ -3,13 +3,24 @@
         <title>觅珠人</title>
 		<link href="http://tchen.me/atom.xml" rel="self"/>
 		<link href="http://tchen.me"/>
-        <updated>2014-01-30T02:19:50.807Z</updated>
+        <updated>2014-02-14T01:04:42.041Z</updated>
 		<id>http://tchen.me</id>
         <author>
 			<name>Tyr Chen</name>
 			<email></email>
         </author>
 
+        
+        	<entry>
+            	<title>Plan for taking coursera courses 1F 2014</title>
+				<link href="http://tchen.me/posts/2014-02-14-knowing-by-learning.html"/>
+                <updated>2014-02-13T23:40:00.000Z</updated>
+				<id>http://tchen.me/posts/2014-02-14-knowing-by-learning.html</id>
+                <content type="html">&lt;p&gt;This is not a post for you - it&amp;#39;s only my own plans. These are the courses I&amp;#39;m currently interested and will put an eye on it. The probability to execute them all is less than 50%.&lt;/p&gt;
+&lt;p&gt;If you&amp;#39;re really interested, you can subscribe to my weixin public account: &lt;code&gt;程序人生&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/files/weixin.jpg&quot; width=&quot;150px&quot; /&gt;&lt;/p&gt;
+</content>
+            </entry>
         
         	<entry>
             	<title>Golang之chan/goroutine</title>

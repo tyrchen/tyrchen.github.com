@@ -24,7 +24,7 @@
 
     <![endif]-->
 
-    <title>用scrapyd来提供crawler服务 | 觅珠人 | Tyr Chen的个人博客 | 创意 | 心得 | 经验</title>
+    <title>Plan for taking coursera courses 1F 2014 | 觅珠人 | Tyr Chen的个人博客 | 创意 | 心得 | 经验</title>
 
 </head>
 
@@ -71,7 +71,7 @@
 </div>
 
 <div class="header-image-wrapper">
-  <img alt="" src="/assets/files/posts/spider.jpg">
+  <img alt="" src="/assets/files/posts/todo.jpg">
 </div>
 
 <div class='header-main'>
@@ -178,11 +178,7 @@
           <h4 class="widget-title">标签</h4>
           <ul>
           
-            <li><a href='/tags/scrapy.html'>scrapy</a></li>
-          
-            <li><a href='/tags/crawler.html'>crawler</a></li>
-          
-            <li><a href='/tags/technology.html'>technology</a></li>
+            <li><a href='/tags/thoughts.html'>thoughts</a></li>
           
           </ul>
         </div>
@@ -192,38 +188,6 @@
           </h4>
           <ul>
             
-            
-              <li><a href="/posts/2012-12-18-octopress-client-a-better-composition-tool.html">产品随想：octopress客户端 —— Atanasoff</a></li>
-            
-              <li><a href="/posts/2012-12-31-atanasoff-product-design.html">进一步思考Atanasoff (Octopress client) (2)</a></li>
-            
-              <li><a href="/posts/2013-02-18-sdn-elementatory-introduction.html">SDN浅谈</a></li>
-            
-              <li><a href="/posts/2013-02-21-openflow-introduction.html">Openflow简介</a></li>
-            
-              <li><a href="/posts/2013-04-08-trying-to-extract-the-thoughts-behind-lockitron.html">胡思乱想之Lockitron的技术架构</a></li>
-            
-              <li><a href="/posts/2013-04-25-engineering-environment-for-smart-team.html">自动化的高效团队开发环境</a></li>
-            
-              <li><a href="/posts/2013-06-12-use-makefile-to-automate-deployment.html">使用Makefile自动化部署</a></li>
-            
-              <li><a href="/posts/2013-06-23-come-to-origin-for-embedded-applications.html">Come to Origins for Embedded Applications</a></li>
-            
-              <li><a href="/posts/2013-07-18-c-grammar-you-cannot-imagine.html">你无法想象的C语法</a></li>
-            
-              <li><a href="/posts/2013-07-22-why-should-c-programmers-learn-erlang.html">Why should C programmers learn Erlang?</a></li>
-            
-              <li><a href="/posts/2013-10-28-blog-reborn.html">觅珠人：浴火重生</a></li>
-            
-              <li><a href="/posts/2013-10-30-the-hatch-project.html">Hatch: 又一个建站工具</a></li>
-            
-              <li><a href="/posts/2013-11-03-hatch-experiment.html">Hatch: 实验</a></li>
-            
-              <li><a href="/posts/2013-11-11-https.html">使用HTTPS</a></li>
-            
-              <li><a href="/posts/2013-11-13-local-docker-repo-en.html">Build Your Own Docker Registry with DigitalOcean</a></li>
-            
-              <li><a href="/posts/2013-11-13-local-docker-repo.html">建立自己的docker repository</a></li>
             
             
           </ul>
@@ -246,15 +210,15 @@
           </span>
           <span>
             <i class='icon-bookmark'></i>
-            6 分钟
+            7 分钟
           </span>
         </div>
         -->
-        <h1 class='has-sub-header'>用scrapyd来提供crawler服务</h1>
+        <h1 class='has-sub-header'>Plan for taking coursera courses 1F 2014</h1>
         <div class='post-single-meta'>
           <span class='meta-item'>
             <i class='icon-calendar'></i>
-            8个月前
+            1小时前
           </span>
           <!--
           <span class='meta-item'>
@@ -273,99 +237,145 @@
           <span class="meta-item">
           	
             <i class='icon-time'></i>
-            6 分钟
+            7 分钟
           </span>
         </div>
-        <p>这是一篇即兴的短文，主要是为了记录我用 <code>scrapyd</code> 的心得。</p>
-<p>之前做数据抓取，总是一个scrapy project做一个deploy，很不方便，一个一个更新起来也很麻烦，总觉得能有更好的方法去处理。今早看了看scrapyd，觉得这就是我想要的东西。</p>
-<!--more-->
+        <p>This is not a post for you - it&#39;s only my own plans. These are the courses I&#39;m currently interested and will put an eye on it. The probability to execute them all is less than 50%.</p>
+<p>If you&#39;re really interested, you can subscribe to my weixin public account: <code>程序人生</code>.</p>
+<p><img src="/assets/files/weixin.jpg" width="150px" /></p>
+<!-- more -->
 
-<h2>目标</h2>
-<p>假设你有两个scrapy project：</p>
+<p>Past courses:</p>
 <ul>
-<li>alpha: 其spider是alpha-spider。</li>
-<li>beta: 其spider是beta-spider。</li>
+<li><a href="https://class.coursera.org/sciwrite-2012-001/lecture">Writing in Sciences (Stanford)</a></li>
+<li><a href="https://class.coursera.org/lead-ei-001">Inspiring Leadership through Emotional Intelligence</a></li>
+<li><a href="https://class.coursera.org/sdn-001/lecture">Software Defined Networking</a></li>
+<li><a href="https://class.coursera.org/organalysis-002/lecture">Organizational Analysis (Stanford)</a></li>
+<li><a href="https://class.coursera.org/modelsystems-001">Everything is the Same: Modeling Engineered Systems</a></li>
 </ul>
-<p>你想将其做成service，在一台ubuntu server（gryffindoe）上每周定期运行。</p>
-<h2>前提</h2>
-<p>在gryffindoe上，安装scrapyd：</p>
-<section>
-<pre><code> $ lsb_release -cs
- quantal
- $ # 将 deb http://archive.scrapy.org/ubuntu quantal main 添加到sources.list中
- $ sudo vim /etc/apt/sources.list
- $ # 安装key
- $ curl -s http://archive.scrapy.org/ubuntu/archive.key | sudo apt-key add -
- $ sudo apt-get update
- $ apt-cache search scrapyd
- scrapyd-0.16 - Scrapy Service
- scrapyd-0.17 - Scrapy Service
- $ # 安装最新版本
- $ sudo apt-get isntall scrapyd-0.17</code></pre>
-</section>
-<p>安装完成后，scrapyd就自动在gryffindoe上运行了。</p>
-<h2>部署scrapy项目</h2>
-<p>scrapyd默认运行在6800端口，假设gryffindoe的域名是 <code>gryffindoe.com</code>，在你的alpha项目中，编辑 <code>scrapy.cfg</code>:</p>
-<section>
-<pre><code> [deploy:gryffindoe]
- url = http://gryffindoe.com:6800/
- project = alpha</code></pre>
-</section>
-<p>然后你可以在你的scrapy项目下查看在gryffindoe上的scrapyd的状态：</p>
-<section>
-<pre><code> $ # 查看当前scrapyd配置
- $ scrapy deploy -l
- gryffindoe                http://gryffindoe.com:6800/
- $ # 查看当前scrapyd上部署好的项目，现在还没有
- $ scrapy deploy -L gryffindoe</code></pre>
-</section>
-<p>接着我们把 <code>alpha</code> 部署到 <code>gryffindoe</code>:</p>
-<section>
-<pre><code> $ scrapy deploy graffindoe -p alpha
- Building egg of alpha-1370823198
- &#39;build/scripts-2.7&#39; does not exist -- can&#39;t clean it
- zip_safe flag not set; analyzing archive contents...
- Deploying alpha-1370823198 to http://gryffindoe.com:6800/addversion.json
- Server response (200):
- {&quot;status&quot;: &quot;ok&quot;, &quot;project&quot;: &quot;alpha&quot;, &quot;version&quot;: &quot;1370823198&quot;, &quot;spiders&quot;: 1}
- $ scrapy deploy -L gryffindoe
- alpha</code></pre>
-</section>
-<p>大功告成。进入到另一个project <code>beta</code> 的目录下，如法炮制:</p>
-<section>
-<pre><code> $ scrapy deploy graffindoe -p beta
- Building egg of beta-1370823198
- &#39;build/scripts-2.7&#39; does not exist -- can&#39;t clean it
- zip_safe flag not set; analyzing archive contents...
- Deploying beta-1370823198 to http://gryffindoe.com:6800/addversion.json
- Server response (200):
- {&quot;status&quot;: &quot;ok&quot;, &quot;project&quot;: &quot;beta&quot;, &quot;version&quot;: &quot;1370823198&quot;, &quot;spiders&quot;: 1}
- $ scrapy deploy -L gryffindoe
- alpha
- beta</code></pre>
-</section>
-<p>现在你打开 <code>http://gryffindeo.com:6800/</code>，应该有如下显示：</p>
-<section>
-<p> Scrapyd</p>
-<p> Available projects: alpha, beta</p>
-<p> Jobs
- Items
- Logs
- Documentation</p>
-</section>
-<h2>运行spider</h2>
-<p>接下来我们可以远程指定要运行的spider了，很简单，页面上提示可以直接使用scrapyd的json API:</p>
-<section>
-<pre><code> $ curl http://localhost:6800/schedule.json -d project=default -d spider=somespider</code></pre>
-</section>
-<p>对于project <code>alpha</code>下的spider <code>alpha-spider</code>:</p>
-<section>
-<pre><code> $ curl http://localhost:6800/schedule.json -d project=alpha -d spider=alpha-spider</code></pre>
-</section>
-<p>这样，alpha-spider就开始运行了。你可以打开 <code>http://gryffindeo.com:6800/</code> 查看运行状态。</p>
-<p>如果要定期运行spider，把这条命令加到cronjob里就可以了。</p>
-<p>送上六一给小宝的礼物一枚：</p>
-<p><embed src="http://player.youku.com/player.php/sid/XNTY0NzQ5NDA0/v.swf" allowFullScreen="true" quality="high" width="660" height="500" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed><br/></p>
+<h2>The First Step in Entrepreneurship</h2>
+<p>URL: <a href="https://class.coursera.org/innovativeideas-004/lecture">https://class.coursera.org/innovativeideas-004/lecture</a></p>
+<h3>Syllabus</h3>
+<ul>
+<li>Entrepreneurial Perspective</li>
+<li>Entrepreneurial Mindset, Motivations and Behavoirs</li>
+<li>Industry Understanding</li>
+<li>Customer Understanding</li>
+<li>Business Modeling</li>
+<li>Business Planning</li>
+</ul>
+<h3>Time</h3>
+<ul>
+<li>Feb 3rd</li>
+<li>6 weeks</li>
+<li>5-7 hours of work / week</li>
+<li>English subtitles</li>
+</ul>
+<h2>Data Analysis and Statistical Inference</h2>
+<p>URL: <a href="https://www.coursera.org/course/statistics">https://www.coursera.org/course/statistics</a></p>
+<p>suggested reading: <a href="https://www.dropbox.com/s/cr9e177a4yziqih/os2.pdf">https://www.dropbox.com/s/cr9e177a4yziqih/os2.pdf</a></p>
+<h3>Syllabus</h3>
+<ul>
+<li>Introduction to data</li>
+<li>Probability and distributions</li>
+<li>Foundations for inference</li>
+<li>Finish up Unit 3 + Midterm</li>
+<li>Statistical inference for numerical variables</li>
+<li>Statistical inference for categorical variables</li>
+<li>Introduction to linear regression</li>
+<li>Multiple linear regression</li>
+<li>Review / catch-up week</li>
+<li>Final exam</li>
+</ul>
+<h3>Time</h3>
+<ul>
+<li>Feb 17th</li>
+<li>10 weeks</li>
+<li>6-8 hours of work / week</li>
+<li>English subtitles</li>
+</ul>
+<h2>Networks: Friends, Money, and Bytes</h2>
+<p>URL: <a href="https://www.coursera.org/course/friendsmoneybytes">https://www.coursera.org/course/friendsmoneybytes</a></p>
+<h3>Syllabus</h3>
+<ul>
+<li>What makes CDMA work for my smartphone?</li>
+<li>How does Google rank webpages?</li>
+<li>How does Netflix recommend movies?</li>
+<li>Why do AT&amp;T and Verizon Wireless charge me $10 a GB?</li>
+<li>How does traffic get through the Internet?</li>
+<li>Why doesn&#39;t the Internet collapse under congestion?</li>
+<li>Why is WiFi faster at home than at a hotspot?</li>
+</ul>
+<h3>Time</h3>
+<ul>
+<li>March 1st</li>
+<li>9 weeks</li>
+<li>8 hours of work / week</li>
+<li>English subtitles</li>
+</ul>
+<h2>Machine Learning</h2>
+<p>URL: <a href="https://www.coursera.org/course/ml">https://www.coursera.org/course/ml</a></p>
+<h3>Syllabus</h3>
+<p>n/a</p>
+<h3>Time</h3>
+<ul>
+<li>March 3rd</li>
+<li>10 weeks</li>
+<li>5-7 hours of work / week</li>
+<li>English subtitles</li>
+</ul>
+<h2>An Introduction to Operations Management</h2>
+<p>URL: <a href="https://www.coursera.org/course/operations">https://www.coursera.org/course/operations</a></p>
+<h3>Syllabus</h3>
+<ul>
+<li>Introduction</li>
+<li>Process analysis</li>
+<li>Productivity</li>
+<li>Responsiveness</li>
+<li>Quality</li>
+<li>Product variety</li>
+</ul>
+<h3>Time</h3>
+<ul>
+<li>March 3rd</li>
+<li>8 weeks</li>
+<li>5-7 hours of work / week</li>
+<li>English subtitles</li>
+</ul>
+<h2>Grow to Greatness: Smart Growth for Private Businesses, Part II</h2>
+<p>Previous course: <a href="https://class.coursera.org/growtogreatness-002/lecture">https://class.coursera.org/growtogreatness-002/lecture</a></p>
+<p>URL: <a href="https://www.coursera.org/course/GTG">https://www.coursera.org/course/GTG</a></p>
+<h3>Syllabus</h3>
+<ul>
+<li>The Entrepreneur Must Grow, Too! </li>
+<li>The “Secret” of High Performance is High Employee Engagement</li>
+<li>Growth Is Much More Than a Strategy—It Requires a SYSTEM</li>
+<li>The Surprising Difficulties in Building a Senior Management Team</li>
+</ul>
+<h3>Time</h3>
+<ul>
+<li>March 17rd</li>
+<li>4 weeks</li>
+<li>4-6 hours of work / week</li>
+<li>English subtitles</li>
+</ul>
+<h2>Introduction to Public Speaking</h2>
+<p>URL: <a href="https://www.coursera.org/course/publicspeak">https://www.coursera.org/course/publicspeak</a></p>
+<h3>Syllabus</h3>
+<ul>
+<li>Design and deliver basic arguments clearly.</li>
+<li>Design and deliver informative presentations clearly.</li>
+<li>Design and deliver complex arguments persuasively.</li>
+<li>Speak confidently with appropriate rate, projection, movement, and vocal variety.</li>
+<li>Evaluate and critique speeches insightfully.</li>
+</ul>
+<h3>Time</h3>
+<ul>
+<li>March 31th</li>
+<li>10 weeks</li>
+<li>3-5 hours of work / week</li>
+<li>English subtitles</li>
+</ul>
 
         <div class="subscribe">
           <p>如果您对本站的文章感兴趣，欢迎订阅我的微博公共账号：程序人生。每次博文发表时，您都能获得通知。此外，公共账号还会不定期推送一些短文，技术心得，供您参考。</p>
@@ -375,56 +385,49 @@
           
           
             
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
                 
                   <div class='pull-left'>
-                    <a class='read-previous-link' href='/posts/2013-05-09-why-every-developer-should-use-mac.html'>
+                    <a class='read-previous-link' href='/posts/2014-01-27-golang-chatroom.html'>
                       <i class='icon-angle-left'></i>
                       上一篇
                     </a>
                   </div>                  
                 
-                
-                  <div class='pull-right'>
-                    <a class='read-next-link' href='/posts/2013-06-12-use-makefile-to-automate-deployment.html'>
-                      下一篇
-                      <i class='icon-angle-right'></i>
-                    </a>
-                  </div>
                          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
             
           
             
