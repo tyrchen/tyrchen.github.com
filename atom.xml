@@ -3,13 +3,22 @@
         <title>觅珠人</title>
 		<link href="http://tchen.me/atom.xml" rel="self"/>
 		<link href="http://tchen.me"/>
-        <updated>2014-02-18T09:56:35.627Z</updated>
+        <updated>2014-02-19T00:03:24.564Z</updated>
 		<id>http://tchen.me</id>
         <author>
 			<name>Tyr Chen</name>
 			<email></email>
         </author>
 
+        
+        	<entry>
+            	<title>公司成长之殇</title>
+				<link href="http://tchen.me/posts/2014-02-18-pain-of-grow.html"/>
+                <updated>2014-02-19T00:00:00.000Z</updated>
+				<id>http://tchen.me/posts/2014-02-18-pain-of-grow.html</id>
+                <content type="html">&lt;p&gt;自打踏入了创业者的行列，我就总会不自觉把自己置于某个位置之上，去操心如果是我掌舵，该如何如何。最近，我心头一直萦绕的一个问题是：为什么一家公司，不管曾经多么辉煌，多么具备创新能力，最终都会不可避免地向平庸滑去，甚至走向衰落？&lt;/p&gt;
+&lt;p&gt;</content>
+            </entry>
         
         	<entry>
             	<title>Plan for taking coursera courses 1F 2014</title>
@@ -73,14 +82,6 @@
             </entry>
         
         	<entry>
-            	<title>Build Your Own Docker Registry with DigitalOcean</title>
-				<link href="http://tchen.me/posts/2013-11-13-local-docker-repo-en.html"/>
-                <updated>2013-11-13T14:40:00.000Z</updated>
-				<id>http://tchen.me/posts/2013-11-13-local-docker-repo-en.html</id>
-                <content type="html"></content>
-            </entry>
-        
-        	<entry>
             	<title>建立自己的docker repository</title>
 				<link href="http://tchen.me/posts/2013-11-13-local-docker-repo.html"/>
                 <updated>2013-11-13T14:40:00.000Z</updated>
@@ -88,6 +89,14 @@
                 <content type="html">&lt;p&gt;如果你不知道docker是什么，请参考 &lt;a href=&quot;http://www.slideshare.net/dotCloud/why-docker&quot;&gt;这个slides&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;在 ubuntu 下安装 docker 请参考 &lt;a href=&quot;http://docs.docker.io/en/latest/installation/ubuntulinux/&quot;&gt;官方教程&lt;/a&gt; 。注意，由于 docker 的核心技术是 &lt;a href=&quot;http://en.wikipedia.org/wiki/LXC&quot;&gt;Linux container&lt;/a&gt;，所以如果想在 osx 下安装 docker 请使用 vagrant。&lt;/p&gt;
 </content>
+            </entry>
+        
+        	<entry>
+            	<title>Build Your Own Docker Registry with DigitalOcean</title>
+				<link href="http://tchen.me/posts/2013-11-13-local-docker-repo-en.html"/>
+                <updated>2013-11-13T14:40:00.000Z</updated>
+				<id>http://tchen.me/posts/2013-11-13-local-docker-repo-en.html</id>
+                <content type="html"></content>
             </entry>
         
         	<entry>

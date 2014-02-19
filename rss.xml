@@ -5,10 +5,41 @@
         <description><![CDATA[本博客提供我个人的想法，创意，经验，心得。你不必认同博主观点。]]></description>
         <link>http://tchen.me</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Tue, 18 Feb 2014 09:57:23 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 19 Feb 2014 00:04:12 GMT</lastBuildDate>
         <atom:link href="http://tchen.me/rss.xml" rel="self" type="application/rss+xml"/>
         <author><![CDATA[Tyr Chen]]></author>
-        <pubDate>Tue, 18 Feb 2014 09:56:35 GMT</pubDate>
+        <pubDate>Wed, 19 Feb 2014 00:03:24 GMT</pubDate>
+        <item>
+            <title><![CDATA[公司成长之殇]]></title>
+            <description><![CDATA[<p>自打踏入了创业者的行列，我就总会不自觉把自己置于某个位置之上，去操心如果是我掌舵，该如何如何。最近，我心头一直萦绕的一个问题是：为什么一家公司，不管曾经多么辉煌，多么具备创新能力，最终都会不可避免地向平庸滑去，甚至走向衰落？</p>
+<p><!--more-->
+这似乎是<a href="http://book.douban.com/subject/4243770/">『创新者的窘境』</a>中已经讨论过的话题。这本书阐述了破坏性技术是如何取代已有技术，以及管理良好的企业内部所蕴含的强大力量是如何阻碍它自己开发破坏性技术，这种力量让企业在挑战者面前不断将中低端市场拱手相让，一步步龟缩到高端市场，最终走向灭亡。里面的案例精彩而又发人深省。如果你没读过『创新者的窘境』，上下班乘地铁的时候可以拿来读读，比玩手游刷微博看我的文章带劲多了。</p>
+<p>然而我想说的另外一个原因关乎于人 —— 人才密度。</p>
+<p>在一家公司的初创期，它的人才密度是最大的。只有和产品（R&amp;D）/商业（sales）直接相关的人才组成团队。如果人才密度（Density of talent）可以表述为：</p>
+<blockquote>
+<p>Dt = (直接创造企业价值的员工 / 总员工) x (直接创造企业价值的工作时间 / 总工作时间) x 员工的平均能力</p>
+</blockquote>
+<p>那么，此时Dt无限逼近于1。</p>
+<p>之后，随着公司的发展，员工越来越多，业务越来越复杂，更多的不直接创造价值的职位被引入：HR，Manager，Admin，Finance，IT，etc.，这就导致Dt开始震荡向下，逐渐远离1。更多的员工，更多的岗位和更复杂的业务意味者需要不断完善的流程来约束和引导，这必然带来更高的管理开销，从而进一步拉低了直接创造企业价值的工作时间。然后，马太效应就渐渐形成：有效工作时间的降低需要更多的人来弥补，更多的人又带来更加复杂的人力结构，更细化的业务流程，更高的管理开销，和更多的文山会海等，最终每个人的效率不断下滑，形成一个 downward spiral。</p>
+<p><img src="/assets/files/posts/downward_spiral.jpg" alt="downward spiral"></p>
+<p><a href="http://www.quora.com/Google-Company-History/I-heard-about-an-incident-in-Google-history-where-all-engineering-managers-were-fired-and-100-engineers-reported-directly-to-Wayne-Rosing-What-are-the-details">google曾经试图反抗</a>，解雇了所有的经理，但很快导致灾难性的后果，所以它又回到了传统的人力结构。</p>
+<p>人的潜能在被直接赋予权利和责任的时候是最大的。当项目要层层审批，动用一点资金受到诸多限制，甚至写几行代码都要多个group进行review的话，每个人的潜能都被消耗殆尽。管理者开始寻求稳定，寻求最大程度follow process，这样犯错的机会会少很多；每个员工只能老老实实干好手头的工作，将新鲜的想法埋藏在心底。</p>
+<p>于是，不甘平庸的人开始离开，而留下的人由于受到种种制肘，其能力向着整个公司的平均能力滑落。按照人才流动的规律，除非有特别的激励，一家企业的平均员工能力决定了它招到的人才的能力。这样一来，当人才不断自由出走和补入时，企业员工的平均能力也在不断地被拉低。</p>
+<p>当google开始兴盛时，不少微软员工跳槽过来；当facebook在社交领域开疆拓土时，又有不少google的员工被吸引走。优秀的人总是愿意往人才密度（按我的表述）大的企业流动，因为这里有充分的施展空间（工作时间基本都用来创造价值了）。</p>
+<p>我不知道该如何破这个局。没有实践就没有发言权。但如果让我来纸上谈兵的话，我愿意尝试这些手段：</p>
+<ul>
+<li>将薪水一直保持在行业的制高点。宁可少招人，也要多招高薪者。郭隗给燕昭王讲的『千金买马骨』的故事，就是这么个道理。</li>
+<li>给予一线团队充分的权利和责任。产品（或者功能）的决策权和执行权下放到一线团队，而不是中高层管理者亲自挂帅。要让一线员工有敢干敢当，输则提头来见的责任心和气魄。sales team为何总能涌现英雄豪杰，就是因为他们有权利，有责任，有担当。</li>
+<li>最大限度地缩减流程，减少企业组织机构中的层级。很多新兴公司在做类似的尝试，如twitter, github, netflix（还有很多不知名的创业公司），效果如何不得而知，但这应该是一条路子。netflix据说连报销，差旅，请假的流程都废除了，企业相信员工能够做出最有利于公司的判断和选择。</li>
+<li>在文化上熏陶，从根上落实前面三点。</li>
+</ul>
+]]></description>
+            <link>http://tchen.me/posts/2014-02-18-pain-of-grow.html</link>
+            <guid isPermaLink="true">
+                http://tchen.me/posts/2014-02-18-pain-of-grow.html            </guid>
+            <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
+            <pubDate>Wed, 19 Feb 2014 00:00:00 GMT</pubDate>
+        </item>
         <item>
             <title><![CDATA[Plan for taking coursera courses 1F 2014]]></title>
             <description><![CDATA[<p>This is not a post for you - it&#39;s only my own plans. These are the courses I&#39;m currently interested and will put an eye on it. The probability to execute them all is less than 50%.</p>
@@ -1246,132 +1277,6 @@ func MatchAll(r *regexp.Regexp, data string) (captures []KVPair, ok bool) {
             <pubDate>Mon, 23 Dec 2013 14:40:00 GMT</pubDate>
         </item>
         <item>
-            <title><![CDATA[Build Your Own Docker Registry with DigitalOcean]]></title>
-            <description><![CDATA[<h1>Build Your Own Docker Registry with DigitalOcean</h1>
-<p><a href="http://www.slideshare.net/dotCloud/why-docker">Docker</a> might be the most attracting open source technologies in 2013. By providing a higher level API and management UI, it make linux container much more usable. If you haven&#39;t tried it, <a href="http://www.docker.io/gettingstarted/">try it</a>. You will then feel it is &quot;<a href="http://blog.scoutapp.com/articles/2013/08/28/docker-git-for-deployment">the git for deployment</a>&quot;.</p>
-<p>After you played with it for a while, enjoying the git like operation for your software and their dependencies, a natural question will appear: how can I build my own private docker registry that I could leverage for my own IT infrastructure? </p>
-<p>The docker-registry comes to help you. docker-registry is a software to provide similar functionality as <a href="http://index.docker.io/">official docker index</a>, which is a central registry for you to commit your new images, pull existing ones, etc. It can let you to build your own docker registry that is private, secure and speedy.</p>
-<h2>Install docker-registry</h2>
-<p>First of all, let&#39;s clone docker-registry：</p>
-<pre><code>git clone https://github.com/dotcloud/docker-registry
-cd docker-registry
-cp config_sample.yml config.yml</code></pre>
-<p>You need then to open config.yml to set the dev (the default profile) storage to something like <code>/var/docker/registry</code>:</p>
-<pre><code># This is the default configuration when no flavor is specified
-dev:
-    storage: local
-    storage_path: /var/docker/registry
-    loglevel: debug</code></pre>
-<p>Then create this directory and grant </p>
-<pre><code>sudo mkdir -p /var/docker/registry
-sudo chown -R `whoami` /var/docker</code></pre>
-<p>As docker-registry uses python and ssl, you need to install the following libraries:</p>
-<pre><code>sudo apt-get install build-essential python-dev libevent-dev python-pip libssl-dev</code></pre>
-<p>Then you can setup your virtualenv and install requirements:</p>
-<p>(optional) install virtualenv if you haven&#39;t:</p>
-<pre><code>sudo pip install virtualenv</code></pre>
-<p>setup virtualenv:</p>
-<pre><code>virtualenv --no-site-packages venv
-. venv/bin/activate
-pip install -r requirements.txt</code></pre>
-<p>Now your docker-registry should be run via:</p>
-<pre><code>gunicorn -k gevent --max-requests 100 --graceful-timeout 3600 -t 3600 -b localhost:8080 -w 8 wsgi:application</code></pre>
-<p>You can open your browser on <code>http://localhost:8080</code> to see if it works. It should show you:</p>
-<pre><code>&quot;docker-registry server (dev)&quot;</code></pre>
-<p>Congratulations! The minimum installation is done. However, if you want to run it like a normal service, you need to configure supervisor and nginx. Let&#39;s continue our journey.</p>
-<h2>Run docker-registry as a service</h2>
-<p>If you don&#39;t have supervisor installed, please install it firstly:</p>
-<pre><code>sudo apt-get install supervisor</code></pre>
-<p>Then add a new configuration file:</p>
-<pre><code>sudo vim /etc/supervisor/conf.d/docker-registry.conf</code></pre>
-<p>In the opened vim editor, copy and paste the following content, save and quit (you need to change dev to your local user):</p>
-<pre><code>[program:docker-registry]
-directory=/home/dev/deployment/docker-registry
-user=dev
-command=/home/dev/deployment/docker-registry/venv/bin/gunicorn -b 0.0.0.0:7030 -k gevent --max-requests 100 --graceful-timeout 3600 -t 3600 -w 8 wsgi:application
-redirect_stderr=true
-stderr_logfile=none
-stdout_logfile=/var/log/supervisor/docker-registry.log
-autostart=true
-autorestart=true</code></pre>
-<p>Then reload supervisor to make it take effects.</p>
-<pre><code>$ sudo supervisorctl
-supervisor&gt; reread
-docker-registry: available
-supervisor&gt; update
-docker-registry: added process group
-supervisor&gt; status
-docker-registry                  RUNNING    pid 4371, uptime 0:00:01</code></pre>
-<p>If you see RUNNING int the status output, then it means your docker-registry is up and running normally. If not, please got to <code>/var/log/supervisor/docker-registry.log</code> to see what happened.</p>
-<p>Next you need to use nginx to proxy the requests to docker-registry. If you don&#39;t have nginx installed, please install it firstly:</p>
-<pre><code>sudo apt-get install nginx</code></pre>
-<p>Then add a new configuration file:</p>
-<pre><code>sudo vim /etc/nginx/sites-available/docker-registry</code></pre>
-<p>Copy and paste the following content, then save and quite:</p>
-<pre><code>server {
-  listen 80;
-  client_max_body_size 200m;
-  server_name your-domain.com;
-  access_log /var/log/nginx/docker-registry.access.log;
-  error_log /var/log/nginx/docker-registry.error.log;
-  location / {
-    proxy_pass http://localhost:8080;
-    include /etc/nginx/proxy_params;
-  }
-}</code></pre>
-<p>Note that you need <code>client_max_body_size 200m</code> to allow big file post. If later your found error like:</p>
-<pre><code>2013/11/12 03:35:18 Received HTTP code 413 while uploading layer</code></pre>
-<p>You need to enlarge this value.</p>
-<p>Then you need to soft link this file to <code>sites-enabled</code> and restart nginx:</p>
-<pre><code>cd /etc/nginx/sites-enabled/
-sudo ln -s ../sites-available/docker-registry docker-registry
-sudo service nginx restart</code></pre>
-<p>Open your browser to visit <code>http://your-domain.com</code>, you should see the same result as previous step:</p>
-<pre><code>&quot;docker-registry server (dev)&quot;</code></pre>
-<h2>Use your private docker registry</h2>
-<p>First of all, let&#39;s see what images we have so far:</p>
-<pre><code>$ sudo docker images
-REPOSITORY                            TAG                   IMAGE ID            CREATED             SIZE
-ubuntu                                12.04                 8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
-ubuntu                                latest                8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
-ubuntu                                precise               8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
-ubuntu                                12.10                 b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-base                                  latest                b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-ubuntu                                quantal               b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-base                                  ubuntu-12.10          b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-base                                  ubuntu-quantal        b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-base                                  ubuntu-quantl         b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)</code></pre>
-<p>If you don&#39;t have any docker images, please use <code>sudo docker pull base</code> to pull base images from docker repository.</p>
-<p>We would like to push the base image to our own shiny registry. First of all, tag it to push to your own server:</p>
-<pre><code>sudo docker tag b750fe79269d your-domain.com/yourname/base</code></pre>
-<p>Then push:</p>
-<pre><code>sudo docker push your-domain.com/yourname/base</code></pre>
-<p>If push succeeded, you will see your images with <code>docker images</code>:</p>
-<pre><code>$ sudo docker images
-REPOSITORY                            TAG                   IMAGE ID            CREATED             SIZE
-ubuntu                                12.04                 8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
-ubuntu                                latest                8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
-ubuntu                                precise               8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
-ubuntu                                12.10                 b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-base                                  latest                b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-your-domain.com/yourname/base        latest                b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-ubuntu                                quantal               b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-base                                  ubuntu-12.10          b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-base                                  ubuntu-quantal        b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-base                                  ubuntu-quantl         b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)</code></pre>
-<p>It is already available locally, so you can try it：</p>
-<pre><code>sudo docker run -i -t your-domain.com/yourname/base /bin/bash</code></pre>
-<p>If you want to pull this image from other machine, just use:</p>
-<pre><code>sudo docker pull your-domain.com/yourname/base</code></pre>
-<p>Have fun!</p>
-]]></description>
-            <link>http://tchen.me/posts/2013-11-13-local-docker-repo-en.html</link>
-            <guid isPermaLink="true">
-                http://tchen.me/posts/2013-11-13-local-docker-repo-en.html            </guid>
-            <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
-            <pubDate>Wed, 13 Nov 2013 14:40:00 GMT</pubDate>
-        </item>
-        <item>
             <title><![CDATA[建立自己的docker repository]]></title>
             <description><![CDATA[<p>如果你不知道docker是什么，请参考 <a href="http://www.slideshare.net/dotCloud/why-docker">这个slides</a>。</p>
 <p>在 ubuntu 下安装 docker 请参考 <a href="http://docs.docker.io/en/latest/installation/ubuntulinux/">官方教程</a> 。注意，由于 docker 的核心技术是 <a href="http://en.wikipedia.org/wiki/LXC">Linux container</a>，所以如果想在 osx 下安装 docker 请使用 vagrant。</p>
@@ -1503,6 +1408,132 @@ base                                  ubuntu-quantl         b750fe79269d        
             <link>http://tchen.me/posts/2013-11-13-local-docker-repo.html</link>
             <guid isPermaLink="true">
                 http://tchen.me/posts/2013-11-13-local-docker-repo.html            </guid>
+            <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
+            <pubDate>Wed, 13 Nov 2013 14:40:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Build Your Own Docker Registry with DigitalOcean]]></title>
+            <description><![CDATA[<h1>Build Your Own Docker Registry with DigitalOcean</h1>
+<p><a href="http://www.slideshare.net/dotCloud/why-docker">Docker</a> might be the most attracting open source technologies in 2013. By providing a higher level API and management UI, it make linux container much more usable. If you haven&#39;t tried it, <a href="http://www.docker.io/gettingstarted/">try it</a>. You will then feel it is &quot;<a href="http://blog.scoutapp.com/articles/2013/08/28/docker-git-for-deployment">the git for deployment</a>&quot;.</p>
+<p>After you played with it for a while, enjoying the git like operation for your software and their dependencies, a natural question will appear: how can I build my own private docker registry that I could leverage for my own IT infrastructure? </p>
+<p>The docker-registry comes to help you. docker-registry is a software to provide similar functionality as <a href="http://index.docker.io/">official docker index</a>, which is a central registry for you to commit your new images, pull existing ones, etc. It can let you to build your own docker registry that is private, secure and speedy.</p>
+<h2>Install docker-registry</h2>
+<p>First of all, let&#39;s clone docker-registry：</p>
+<pre><code>git clone https://github.com/dotcloud/docker-registry
+cd docker-registry
+cp config_sample.yml config.yml</code></pre>
+<p>You need then to open config.yml to set the dev (the default profile) storage to something like <code>/var/docker/registry</code>:</p>
+<pre><code># This is the default configuration when no flavor is specified
+dev:
+    storage: local
+    storage_path: /var/docker/registry
+    loglevel: debug</code></pre>
+<p>Then create this directory and grant </p>
+<pre><code>sudo mkdir -p /var/docker/registry
+sudo chown -R `whoami` /var/docker</code></pre>
+<p>As docker-registry uses python and ssl, you need to install the following libraries:</p>
+<pre><code>sudo apt-get install build-essential python-dev libevent-dev python-pip libssl-dev</code></pre>
+<p>Then you can setup your virtualenv and install requirements:</p>
+<p>(optional) install virtualenv if you haven&#39;t:</p>
+<pre><code>sudo pip install virtualenv</code></pre>
+<p>setup virtualenv:</p>
+<pre><code>virtualenv --no-site-packages venv
+. venv/bin/activate
+pip install -r requirements.txt</code></pre>
+<p>Now your docker-registry should be run via:</p>
+<pre><code>gunicorn -k gevent --max-requests 100 --graceful-timeout 3600 -t 3600 -b localhost:8080 -w 8 wsgi:application</code></pre>
+<p>You can open your browser on <code>http://localhost:8080</code> to see if it works. It should show you:</p>
+<pre><code>&quot;docker-registry server (dev)&quot;</code></pre>
+<p>Congratulations! The minimum installation is done. However, if you want to run it like a normal service, you need to configure supervisor and nginx. Let&#39;s continue our journey.</p>
+<h2>Run docker-registry as a service</h2>
+<p>If you don&#39;t have supervisor installed, please install it firstly:</p>
+<pre><code>sudo apt-get install supervisor</code></pre>
+<p>Then add a new configuration file:</p>
+<pre><code>sudo vim /etc/supervisor/conf.d/docker-registry.conf</code></pre>
+<p>In the opened vim editor, copy and paste the following content, save and quit (you need to change dev to your local user):</p>
+<pre><code>[program:docker-registry]
+directory=/home/dev/deployment/docker-registry
+user=dev
+command=/home/dev/deployment/docker-registry/venv/bin/gunicorn -b 0.0.0.0:7030 -k gevent --max-requests 100 --graceful-timeout 3600 -t 3600 -w 8 wsgi:application
+redirect_stderr=true
+stderr_logfile=none
+stdout_logfile=/var/log/supervisor/docker-registry.log
+autostart=true
+autorestart=true</code></pre>
+<p>Then reload supervisor to make it take effects.</p>
+<pre><code>$ sudo supervisorctl
+supervisor&gt; reread
+docker-registry: available
+supervisor&gt; update
+docker-registry: added process group
+supervisor&gt; status
+docker-registry                  RUNNING    pid 4371, uptime 0:00:01</code></pre>
+<p>If you see RUNNING int the status output, then it means your docker-registry is up and running normally. If not, please got to <code>/var/log/supervisor/docker-registry.log</code> to see what happened.</p>
+<p>Next you need to use nginx to proxy the requests to docker-registry. If you don&#39;t have nginx installed, please install it firstly:</p>
+<pre><code>sudo apt-get install nginx</code></pre>
+<p>Then add a new configuration file:</p>
+<pre><code>sudo vim /etc/nginx/sites-available/docker-registry</code></pre>
+<p>Copy and paste the following content, then save and quite:</p>
+<pre><code>server {
+  listen 80;
+  client_max_body_size 200m;
+  server_name your-domain.com;
+  access_log /var/log/nginx/docker-registry.access.log;
+  error_log /var/log/nginx/docker-registry.error.log;
+  location / {
+    proxy_pass http://localhost:8080;
+    include /etc/nginx/proxy_params;
+  }
+}</code></pre>
+<p>Note that you need <code>client_max_body_size 200m</code> to allow big file post. If later your found error like:</p>
+<pre><code>2013/11/12 03:35:18 Received HTTP code 413 while uploading layer</code></pre>
+<p>You need to enlarge this value.</p>
+<p>Then you need to soft link this file to <code>sites-enabled</code> and restart nginx:</p>
+<pre><code>cd /etc/nginx/sites-enabled/
+sudo ln -s ../sites-available/docker-registry docker-registry
+sudo service nginx restart</code></pre>
+<p>Open your browser to visit <code>http://your-domain.com</code>, you should see the same result as previous step:</p>
+<pre><code>&quot;docker-registry server (dev)&quot;</code></pre>
+<h2>Use your private docker registry</h2>
+<p>First of all, let&#39;s see what images we have so far:</p>
+<pre><code>$ sudo docker images
+REPOSITORY                            TAG                   IMAGE ID            CREATED             SIZE
+ubuntu                                12.04                 8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
+ubuntu                                latest                8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
+ubuntu                                precise               8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
+ubuntu                                12.10                 b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+base                                  latest                b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+ubuntu                                quantal               b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+base                                  ubuntu-12.10          b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+base                                  ubuntu-quantal        b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+base                                  ubuntu-quantl         b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)</code></pre>
+<p>If you don&#39;t have any docker images, please use <code>sudo docker pull base</code> to pull base images from docker repository.</p>
+<p>We would like to push the base image to our own shiny registry. First of all, tag it to push to your own server:</p>
+<pre><code>sudo docker tag b750fe79269d your-domain.com/yourname/base</code></pre>
+<p>Then push:</p>
+<pre><code>sudo docker push your-domain.com/yourname/base</code></pre>
+<p>If push succeeded, you will see your images with <code>docker images</code>:</p>
+<pre><code>$ sudo docker images
+REPOSITORY                            TAG                   IMAGE ID            CREATED             SIZE
+ubuntu                                12.04                 8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
+ubuntu                                latest                8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
+ubuntu                                precise               8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
+ubuntu                                12.10                 b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+base                                  latest                b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+your-domain.com/yourname/base        latest                b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+ubuntu                                quantal               b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+base                                  ubuntu-12.10          b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+base                                  ubuntu-quantal        b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+base                                  ubuntu-quantl         b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)</code></pre>
+<p>It is already available locally, so you can try it：</p>
+<pre><code>sudo docker run -i -t your-domain.com/yourname/base /bin/bash</code></pre>
+<p>If you want to pull this image from other machine, just use:</p>
+<pre><code>sudo docker pull your-domain.com/yourname/base</code></pre>
+<p>Have fun!</p>
+]]></description>
+            <link>http://tchen.me/posts/2013-11-13-local-docker-repo-en.html</link>
+            <guid isPermaLink="true">
+                http://tchen.me/posts/2013-11-13-local-docker-repo-en.html            </guid>
             <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
             <pubDate>Wed, 13 Nov 2013 14:40:00 GMT</pubDate>
         </item>
@@ -1925,122 +1956,6 @@ diffPath src, dst, ext, (err, data) -&gt;
                 http://tchen.me/posts/2013-11-03-hatch-experiment.html            </guid>
             <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
             <pubDate>Mon, 04 Nov 2013 14:40:00 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[Hatch: 又一个建站工具]]></title>
-            <description><![CDATA[<p>在 <a href="/posts/2013-10-28-blog-reborn.html">前文</a> 中，我尝试了 <a href="http://docpad.org">docpad</a> 做为新的建站工具。<code>docpad</code> 有很多优点，但最大的缺点是效率。在我看来，一个好的静态网站生成工具最好能在秒级处理成千上万文档，这样才能真正满足个人博客外的中等规模网站的需求。要做到这一点，工具必须将full build和incremental build区别开来。这样，即使一个full build要花几十秒甚至几分钟，incremental build还能控制在秒级。当用户修改某个文件时，incremental build能够保证用户有良好的体验 —— 无需等待，改动立即可见。而这一点，则恰恰是 <code>docpad</code> 所欠缺的。本文讲述的 <code>hatch</code> 项目将尝试在保留 <code>docpad</code> 的诸多优点外，通过更智能的build过程将编译速度尽最大可能提高。</p>
-<!--more-->
-
-<h2>目标</h2>
-<p><code>hatch</code> 的目标是实现如下功能：
-1. 支持任意模板类型。官方可仅支持 <code>jade</code>，但用户可以轻松扩展。
-2. 支持任意格式的源文件。官方可仅支持 <code>markdown</code> 和 <code>jade</code>，但用户可以轻松扩展。
-3. 支持复杂页面的生成，如标签聚合页面（docpad-plugin-tagging）和每个文档的相关文档（docpad-plugin-related）的功能。
-4. 支持less/coffeescript，及compress。
-5. 支持live preview。</p>
-<h2>工具选择</h2>
-<p>有了目标，我们需要选择合适的工具去完成目标。</p>
-<p>在web时代，尽管 <code>rake</code>，<code>jake</code>，<code>grunt</code> 等等task runner大行其道，我还是偏爱 <code>make</code>，因为它最能体现unix的哲学：</p>
-<blockquote>
-<p>write programs that do one thing and do it well.</p>
-</blockquote>
-<p>比如说将less生成css并打包，然后上传到服务器上这样的工作：</p>
-<pre><code>CSS_SOURCE=$(CSS_PATH)/app.less
-CSS_DEPS=$(shell find $(CSS_PATH) -type f -name &#39;*.less&#39;)
-CSS_TARGET=app.min.css
-SYNC_TARGET=tchen@my-awesome-server.com:/homes/tchen/deployment/css
-
-$(CSS_TARGET): $(CSS_DEPS)
-    lessc $(CSS_SOURCE) --yui-compress  &gt; $(CSS_TARGET)
-
-sync: $(CSS_TARGET)
-    rsync -au $(CSS_TARGET) $(SYNC_TARGET)</code></pre>
-<p>这段代码很简单，目标任务 <code>sync</code> 依赖于 <code>$(CSS_TARGET)</code> 的构建，而 <code>$(CSS_TARGET)</code> 依赖于 <code>$(CSS_DEPS)</code> 的构建。</p>
-<p>使用 <code>make</code> 简单明了，且不会做任何无用功。比如说：</p>
-<pre><code>$ make sync</code></pre>
-<p>在第一次执行后，如果less文件没有修改（ctime没有改变），则不会做任何事就结束了，节省大量的重复劳动。</p>
-<p>使用 <code>make</code> 加上合适的shell命令（如果特定功能的命令不存在，我们需要自己创建），我们就可以构建一套完整的编译系统，将 <code>markdown</code> 文件（或者其他类型的文件），经过一系列处理，生成 <code>html</code>。</p>
-<h2>依赖处理</h2>
-<p>如前文所述，我们要解决的问题归化成一个如何构建合适的 <code>makefile</code>，让源文件（如markdown）高效地（且正确地）编译成目标文件（如html）。而这其中的重点，则在如何处理依赖。</p>
-<p>最简单的依赖处理莫过于一个文件发生改变，整个项目都会重新编译。正确性得以保证，但显然不高效。<code>docpad</code> 采用这样的策略，以至于对css的改动会引发html的重编。很不科学，漫长的等待让我这样的用户很受伤。</p>
-<p>所以我们要设定合理的依赖规则。</p>
-<p>对于目标中我们想要实现的功能，5暂且放在一边，1/2/4很好实现。3是一个难点，需要两次build才能正确处理：
-1. make parse。每个修改过的文档单独parse，中间结果保存在 <code>mongodb</code> 中，如果 <code>tags</code> 信息有改变，则删除对应的标签聚合页（会触发重新生成），及受影响的文档页面。
-2. make generate。调用整个正式的生成过程，生成所有需要重新生成的页面。</p>
-<p><img src="/assets/files/posts/hatch_dep.jpg" alt="博客截图"></p>
-<p>如上图，如果删除了标签 <code>docpad</code> ，并添加了标签 <code>hatch</code>，那么 <code>make parse</code> 时会将该文档的最新内容保存在db里，删除 <code>docpad</code> 和 <code>hatch</code> 的标签聚合页面，删除已经生成的所有包含 <code>docpad</code> 和 <code>hatch</code>标签的页面（包括自己），然后进入到第二阶段的页面生成。</p>
-<h2>系统结构</h2>
-<p>有了上面的思考，<code>hatch</code> 的系统结构也就付出水面，整个系统围绕着 <code>make</code> 展开，尽可能使用已有的unix工具（sorry，为了保证小而美，windows不在这样一个系统的考虑之列）。如果没有合适的工具，则撰写之。</p>
-<p>可以直接leverage的工具：</p>
-<ul>
-<li>lessc/sass，用于生成css。</li>
-<li>coffee，用于生成js。</li>
-<li>yuicompressor，用于compress css和js。</li>
-<li>jade，用于将jade template生成html。</li>
-<li>marked，用于将markdown文件生成html。</li>
-<li>js-yaml，用于parse metadata。</li>
-</ul>
-<p>需要撰写的工具：</p>
-<ul>
-<li>hatch-parse，用于parse一个文档，将中间结果存入数据库中。例如：<code>hatch-parse test.md</code>。hatch-parse会根据扩展名自动使用相应的parser。</li>
-<li>hatch-gen，用于生成一个页面，生成过程中可能需要读取数据库。例如：<code>hatch-gen -o test.html test.md</code>，<code>hatch-gen -o index.html index.jade</code>。如果文章需要分页（定义了<code>&lt;!--page--&gt;</code>），则进行分页处理。</li>
-<li>tag-gen，用于生成标签索引页。例如：<code>tag-gen -o hatch.html -t tag.jade hatch</code>。将会查询数据库中标签是 <code>hatch</code> 的文档，将其写入hatch.html。如果 <code>tag-gen -o &lt;dir&gt; -t tag.jade *</code>，将会生成所有标签索引。如果生成过程中需要分页，则进行分页。</li>
-<li>index-gen，用于生成索引页。例如：<code>index-gen -o index.html index.md</code>。如果生成过程中需要分页，则进行分页。</li>
-</ul>
-<h2>数据结构</h2>
-<p>我用过的 <a href="http://wintersmith.io">wintersmith</a>，<a href="http://docpad.org">docpad</a> 都使用memory db存放文档的中间结果，为特殊需求（如related documents）提供接口。由于采用 <code>make</code> 来组织整个系统，每个运行的命令都是自己的进程空间，所以无法用in process memory db，另外我也不希望每次build都重新生成这个DB，所以一个可以persistent的DB就是我的第一选择。考虑到我有如下需求：</p>
-<ul>
-<li>数据库中的字段来源于文档的metadata，所以随意性很大，必须schemaless。</li>
-<li>需要支持一些复杂的查询，比如，找出6篇标签为：<code>hatch</code> 或 <code>tool</code> 的文档。</li>
-</ul>
-<p>所以权衡之后，本文决定使用mongodb来保存中间结果。当然，每次build时可能涉及很多次数据库的open/close，至于performance如何，只有实测后才有结论。</p>
-<p>mongodb中存储的是文档（template无须存储），大概长这个样子（<code>createdAt</code>，<code>tags</code>，<code>ignored</code>，<code>src</code> 上建有索引）：</p>
-<pre><code>{
-    &quot;_id&quot;: ObjectId(`blablabla`),
-    &quot;template&quot;: &quot;posts.jade&quot;,
-    &quot;createdAt&quot;: ISODate(&quot;2013-10-30T20:20.000Z&quot;),
-    &quot;updatedAt&quot;: ISODate(&quot;2013-10-30T20:25.000Z&quot;),
-    &quot;tags&quot;: [&quot;hatch&quot;, &quot;tool&quot;],
-    &quot;ignored&quot;: true,
-    &quot;comments&quot;: true,
-    &quot;cover&quot;: &quot;/assets/files/posts/hatch.jpg&quot;,
-    &quot;src&quot;: &quot;/documents/posts/hatch.md&quot;,
-    &quot;outputs&quot;: [&quot;/posts/hatch.html&quot;, &quot;/posts/hatch.1.html&quot;],
-    &quot;title&quot;: &quot;Hello Hatch&quot;,
-    &quot;rawContent&quot;: &quot;This is a great document\n\nHello hatch!\n&quot;,
-    &quot;teaser&quot;: &quot;&lt;p&gt;This is a great document&lt;/p&gt;&quot;,
-    &quot;content&quot;: &quot;&lt;p&gt;This is a great document&lt;/p&gt;\n&lt;!--more--&gt;\n&lt;p&gt;Hello hatch!&lt;p&gt;&quot;
-}</code></pre>
-<p>对应在磁盘上的文件是这个样子：</p>
-<pre><code>---
-template: posts.jade
-title: Hello Hatch
-date: 2013-10-30 20:20
-tags: [hatch, tool]
-comments: true
-ignored: true
-cover: /assets/files/posts/hatch.jpg
----
-
-This is a great document
-
-Hello hatch!</code></pre>
-<p>这引入一个问题：当磁盘文件修改时，如何找到数据库中对应的文档？源文件名是少数不那么容易修改又具备唯一性的字段，所以在数据库文档中我们放入了 <code>src</code> 这个域。在 <code>makefile</code> 里，我们需要提供 <code>make dbclean</code>，以便用户在需要时，可以将数据库中的文档清除干净。</p>
-<h2>实现</h2>
-<p>从构思的角度，基本的障碍已经消除，大致的设计也有了，剩下的就是如何实现。这个周末，争取能把最基本的功能实现出来，然后在讨论实现过程中遇到的问题，看看和我的构思/假设有什么明显的偏差。</p>
-<p>顺手做了个 Lean Canvas: <a href="/canvases/2013-10-30-hatch.html">hatch project lean canvas</a>，感兴趣可以看看。</p>
-<p>这几天没怎么照相，还是送上之前照的一张照片：</p>
-<p><img src="/assets/files/photos/baby20131030.jpg" alt="小宝快一岁了"></p>
-<!--
-* index-gen，用于生成索引页，比如说标签索引页，首页等。用户传入一个查询条件，和一个排序条件，从数据库中读取对应的数据，生成html。例如：index-gen -e '[{"q": {"tag": "hatch"}, "s": {"date": -1}, "name": "dataset1"}, ...]'  > hatch.html。
-
-比如说我们要生成 ``index.html``。它通过 ``documents/index.md`` 和 ``templates/index.jade`` 生成，并能展示 ``documents/posts`` 和 ``documents/slides`` 目录下的最新10篇文章。
--->]]></description>
-            <link>http://tchen.me/posts/2013-10-30-the-hatch-project.html</link>
-            <guid isPermaLink="true">
-                http://tchen.me/posts/2013-10-30-the-hatch-project.html            </guid>
-            <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
-            <pubDate>Tue, 29 Oct 2013 23:40:00 GMT</pubDate>
         </item>
     </channel>
 </rss>
