@@ -5,10 +5,60 @@
         <description><![CDATA[本博客提供我个人的想法，创意，经验，心得。你不必认同博主观点。]]></description>
         <link>http://tchen.me</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Mon, 24 Feb 2014 01:46:17 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 24 Feb 2014 14:03:13 GMT</lastBuildDate>
         <atom:link href="http://tchen.me/rss.xml" rel="self" type="application/rss+xml"/>
         <author><![CDATA[Tyr Chen]]></author>
-        <pubDate>Mon, 24 Feb 2014 01:45:31 GMT</pubDate>
+        <pubDate>Mon, 24 Feb 2014 14:02:26 GMT</pubDate>
+        <item>
+            <title><![CDATA[闲扯code review]]></title>
+            <description><![CDATA[<p>如果说git终于让工程师在合作撰写代码的过程中找回了丢失已久的乐趣，那么，code review的过程还是让人相当地抓狂。我用过的所有code review的工具，没有一款能让code review的过程轻松起来。</p>
+<!--more-->
+
+<p>公司内部使用的工具自不必说，那是反人类的极致体验。</p>
+<p>reviewboard和gerrit不那么反人类，但submit review和review的流程也不太方便，而且体验并不一致。submit review可以在命令行下方便地完成，但review需要点开邮件通知里的链接才能查看。如果你一直在代码上工作，而不查邮件，你可能会miss掉一些review。</p>
+<p>不过，这些体验上的问题都是细枝末节。目前已有的code review工具的最大问题是：<strong>它不是写给程序员用的！</strong>慢着，这话听着好耳熟？没错，Linux Tolvalds在撰写git的时候，就说svn最大的问题是这玩意儿不是写给程序员用的。</p>
+<p>如果要我设计一款code review工具，它的使用体验会类似这样：</p>
+<h2>Submit code review</h2>
+<pre><code>$ git commit -a
+$ git push</code></pre>
+<p>Done! 不需要更多的流程了。</p>
+<p>这里面隐含了如下步骤：</p>
+<ul>
+<li>git commit时会弹出一个form，所有项目都正确填写才能提交。</li>
+<li>git push时会将diff push到review server上，review server会根据修改了那些文件确定出reviewers，然后从中round robin选两到三人进行review。</li>
+</ul>
+<p>与之最接近的体验是gerrit:</p>
+<pre><code>$ git commit -a
+$ git push origin HEAD:refs/for/master</code></pre>
+<p>但，<code>HEAD:refs/for/master</code>究竟是什么，我想没多少人能搞懂。如果配置了一个repo必须要经过code review后才能push到服务器，那么，为何不直接把<code>git push</code>用做review的命令？</p>
+<h2>Review the code</h2>
+<p>蒂尔原则：code review应该和repo紧密相连，而不是那该死的邮件。</p>
+<p>当reviewer在同样的repo下运行<code>git status</code>时，会有如下提示：</p>
+<pre><code>$ git status
+# On branch master
+nothing to commit, working directory clean
+You have 2 reviews:
+  6ae24fe: PR12345 - can not connect to server, by Tyr Chen
+  723e9e2: PR12346 - Tracking feature 123: add queue support, by Tyr Chen
+You must run &quot;git review &lt;review-id&gt;&quot; to do review.</code></pre>
+<p>这个提示很恼人，一般git用户都会尽快完成review以便让<code>git status</code>的输出看上去干净些。如果review长时间得不到处理，其颜色每隔4个小时变红一些，直至鲜红。</p>
+<p>Reviewer可以运行<code>git review</code>进行代码review：</p>
+<pre><code>$ git review 6ae24fe</code></pre>
+<p>根据配置，这条命令会自动调出对应的代码比较工具，比如说<code>vimdiff</code>。如果没有指定，则会输出标准的<code>git diff</code>。</p>
+<p>代码阅读完毕，可以使用：</p>
+<pre><code>$ git review 6ae24fe --approve|reject</code></pre>
+<p>这会弹出一个form，填写review的意见。</p>
+<p>被round robin出的2-3个reviewers必须全部approve，这个review才算通过。如果某个reviewer在72小时内还没有review代码（可能休假去了），则相应的review自动被approve，review的注释是：&quot;review skipped automatically due to XXX not-responding&quot;。这就像信用记录，对于一个程序员来说，如果他review别人的代码总出现这样的日志，自己脸上也挂不住。</p>
+<p>此外，review服务器还记录和索引每个review，方便日后检索。以后如果哪个问题是由某次不正确的修改导致的，那么能够很快查询到是谁批准了这段代码。</p>
+<p>最后，review的数据最好能做visualization，每个程序员都能看到他的历史review图表（这个可以做得非常有意思），也可以看到各种各样的统计信息（比如说团队里提交代码的排行榜，review通过率排行榜，review大牛排行榜等等），让冷冰冰的code commit和code review活泼起来。</p>
+<p>投票：如果有这样一个code review工具，你会试用么？回复即可。:)</p>
+]]></description>
+            <link>http://tchen.me/posts/2014-02-24-codereview.html</link>
+            <guid isPermaLink="true">
+                http://tchen.me/posts/2014-02-24-codereview.html            </guid>
+            <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
+            <pubDate>Mon, 24 Feb 2014 14:00:00 GMT</pubDate>
+        </item>
         <item>
             <title><![CDATA[公司成长之殇]]></title>
             <description><![CDATA[<p>自打踏入了创业者的行列，我就总会不自觉把自己置于某个位置之上，去操心如果是我掌舵，该如何如何。最近，我心头一直萦绕的一个问题是：为什么一家公司，不管曾经多么辉煌，多么具备创新能力，最终都会不可避免地向平庸滑去，甚至走向衰落？</p>
@@ -1687,275 +1737,6 @@ proxy_set_header X-Forwarded-Proto https;</code></pre>
                 http://tchen.me/posts/2013-11-11-https.html            </guid>
             <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
             <pubDate>Sun, 10 Nov 2013 14:40:00 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[Hatch: 实验]]></title>
-            <description><![CDATA[<p>继续 <a href="/posts/2013-11-03-hatch-experiment.html">前文</a> 。熬到了周末，正式开始了 <code>hatch</code> 项目的开发。首先是一个关键问题：如果每个文件的生成由一个单一的shell脚本完成，那么数据库打开/关闭的损耗会不会成为瓶颈？做了个简单的实验，发现每次打开都要花费0.2s，一个不小的数字。</p>
-<pre><code>➜  hatch git:(master) ✗ cat test.coffee
-#!/usr/bin/env coffee
-
-db = require(&#39;mongojs&#39;)(&#39;hatch&#39;)
-col = db.collection(&#39;documents&#39;)
-
-col.findOne {}, (err, doc) -&gt;
-    db.close()</code></pre>
-<pre><code>➜  hatch git:(master) ✗ time ./test.coffee
-./test.coffee  0.20s user 0.03s system 99% cpu 0.226 total</code></pre>
-<!--more-->
-
-<p>这意味着照之前的设想，一千个文件如果都单独parse，那么仅数据库打开/关闭就需要200s，这是不可接受的。于是，最初的想法不得不调整。如果在一个大脚本中完成所有事情，显然是最经济的，但这样无法借助 <code>makefile</code> 的优势，于是妥协为：</p>
-<ol>
-<li>整个系统依旧由 <code>make</code> 驱动，除unix已有的工具外，撰写：<code>hatch-parse</code>，<code>hatch-gen</code>，<code>hatch-tag</code> 和 <code>hatch-index</code>。</li>
-<li>所有这些脚本支持 <code>1..n</code> 个参数，为输入的文件名。</li>
-<li>由于这样无法使用 <code>makefile</code> 中的依赖，所以需要一个 <code>hatch-diff</code> 为其提供参数。</li>
-</ol>
-<p>解释一下第三点：</p>
-<p>如果 <code>hatch-gen</code> 只处理单个文件，那么 <code>makefile</code> 中的依赖关系很容易推导出需要处理的文件，并依次处理之：</p>
-<pre><code>OUT=out
-SRC=src
-CONTENT_PATH=$(SRC)/contents
-OUTS=$(subst $(SRC),$(OUT), $(shell find $(CONTENT_PATH) -type f -name &#39;*&#39;))
-
-$(OUTS): $(OUT)%: $(SRC)%
-    @echo &quot;Creating $@.&quot;
-    @$(HATCH_GEN) $@ $&lt;</code></pre>
-<p>但如果我们要处理大批文件，则不能这么做，所以我做了个 <code>hatch-diff</code> 来返回更改过的文件列表，于是 <code>makefile</code> 变为：</p>
-<pre><code>generate:
-    @$(HATCH_GEN) $(shell $(HATCH_DIFF) -e .html $(CONTENT_PATH) $(CONTENT_OUT_PATH))</code></pre>
-<blockquote>
-<p>注：写该代码时我还不知道 <code>makefile</code> 有 <code>$?</code> 这样的神器。所以其实 <code>hatch-diff</code>基本没用。</p>
-</blockquote>
-<h2>具体实现</h2>
-<p>实现代码见：<a href="https://github.com/coderena/hatch">https://github.com/coderena/hatch</a>.</p>
-<p>核心代码在 <code>lib/core.coffee</code>。目前实现得很简单，还没有进一步的命令行来帮助使用者创建项目。</p>
-<p>测试代码在 <code>test</code> 下。</p>
-<p>具体实现很简单，也很直接。就不讨论。</p>
-<h2>问题与解决</h2>
-<h3>加速，加速，加速！</h3>
-<p>打开数据库的时间越滞后越好。</p>
-<p>能通过 <code>makefile</code> 的 dependency 解决的就放在那里解决。数据库里的内容和磁盘上的文件谁新谁旧，可以通过建立这样的 dependency:</p>
-<pre><code>$(CONTENT_DEPS): $(DEP)/%: $(SRC)/%
-    @touch $@
-
-content_depend: $(CONTENT_DEP_PATHS) $(CONTENT_DEPS)</code></pre>
-<p>每次 parse 完磁盘文件就更新 dependency，这样一旦文件改变，make就能分析出要重新parse的文件。</p>
-<p>牢记 <code>nodejs</code> 单线程的劣势，尽可能用asynchronous的库和代码。需要异步处理一堆事情，但要在所有处理完成后统一操作请使用 <code>async</code> 库。</p>
-<p>为了提高速度，所有 <code>jade</code> 模板都预编译好，再和 <code>locals</code> 结合，生成html。</p>
-<h3>绑定，绑定，绑定！</h3>
-<p>跟 <code>docpad</code> 一样，我希望用户可以定制他们自己的helpers，在模板中使用。比如：</p>
-<pre><code>hatchConfig =
-    layoutData:
-        site:
-            # default url of the site
-            url: &#39;http://hatch-jade-example.com&#39;
-            # default time of the site
-            title: &#39;Example website build with hatch&#39;
-
-            getTitle: -&gt;
-
-                if @document.title
-                    &quot;#{@document.title} | #{@site.title}&quot;
-                else
-                    @site.title</code></pre>
-<p>然后在模板中可以直接访问：</p>
-<pre><code>extends common/default
-
-block prepend title
-  | #{ getTitle() }</code></pre>
-<p>如果直接把 <code>layoutData</code> 传给 <code>jade</code> 去编译，<code>this</code> 并不存在，必然报错。所以需要为每个helper函数进行 <code>this</code> 的绑定，问题是，<a href="http://stackoverflow.com/questions/5999998/how-can-i-check-if-a-javascript-variable-is-function-type">怎么判断一个值是函数呢</a>？这是 javascript 语言中的又一个坑。我的项目中使用了 <code>lodash</code>，所以自然而然会使用 <code>_.isFunction()</code>:</p>
-<pre><code>locals = {document: data}
-_.extend locals, self.config.layoutData
-    for own key, value of locals
-        if _.isFunction value
-            locals[key] = value.bind(locals)</code></pre>
-<h3>处理teaser和长文的分页</h3>
-<p>teaser一般是文章的头一段，在索引页中方便用户领略文章的大致内容。目前大部分静态网站生成器都使用html comment，如 <code>&lt;!--more--&gt;</code> 来达到这一目的，这样做有点问题：如果teaser之前有标题，那么标题也被包含在teaser里，展示效果不好，于是我采用下述方法定义teaser。用户仅需要在想标记为teaser的地方前后进行标注即可，不限于文章的任何部分，灵活性很好。</p>
-<pre><code># teaser notation in the document
-regexTeaser: /&lt;!--\s*teaser\s*--&gt;\s*([\s\S]*?)\s*&lt;!--\s*teaser\s*--&gt;/i</code></pre>
-<p>长文的分页也是类似的想法。定义了 <code>&lt;!--page--&gt;</code>：</p>
-<pre><code># page notation in the document
-regexPager: /&lt;!--\s*page\s*--&gt;/</code></pre>
-<p>可以这样来生成页面：</p>
-<pre><code>@adapter.findOne src: src, (err, doc) -&gt;
-    return cb(err) if err
-
-    if doc
-        generate_doc = (i, callback) -&gt;
-            data = {}
-            _.extend data, doc
-            data.content = doc.contents[i]
-            delete data.contents
-
-            locals = {document: data}
-            _.extend locals, self.config.layoutData
-            for own key, value of locals
-                if _.isFunction value
-                    locals[key] = value.bind(locals)
-            html = self.layouts[doc.layout] locals
-            if i is 0
-                filename = &quot;#{dst}.html&quot;
-            else
-                filename = &quot;#{dst}.#{i}.html&quot;
-            fs.writeFile filename, html, (err) -&gt;
-                callback err, filename
-
-        async.map _.range(doc.contents.length), generate_doc, (err, data) -&gt;
-            cb err, data</code></pre>
-<h3>在jade里处理回调</h3>
-<p>由于用户可以自定义helper，如果要访问数据库，理论上可以这样做：</p>
-<pre><code>getRelated: (tags, cb) -&gt;
-    @adapter.findTag tags: $in: tags, 10, (err, docs) -&gt;
-        return cb(err) if err
-
-        # blablabla</code></pre>
-<p>但在 <code>jade</code> 中，helper是不允许回调的，所以，除了把数据库访问变成同步模式，这个现在貌似无解。</p>
-<h2>测试</h2>
-<p>在我的本地环境中，我创建了一个有1k+ <code>markdown</code> 源文件的项目，测试结果还不赖：</p>
-<pre><code>➜  hatch-jade-example git:(master) ✗ make fullclean
-➜  hatch-jade-example git:(master) ✗ time make
-Creating dependency paths .dep/layouts.
-Creating dependency paths .dep/layouts/common.
-Creating dependency paths .dep/layouts/common/includes.
-Creating dependency paths .dep/layouts/common/includes/asides.
-Creating dependency paths .dep/layouts/common/mixins.
-    Too many layouts changed, clean all outputs.
-Parsing the documents into database.
-cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc  1118 docs parsed.
-Creating output paths.
-Creating output paths.
-Creating output paths.
-Creating output paths.
-Creating output paths.
-Creating output paths.
-Creating output paths.
-Creating output paths.
-Creating output paths.
-Creating output paths.
-Creating output paths.
-Creating output paths.
-Creating output paths.
-Creating output paths.
-Creating output paths.
-Creating output paths.
-Creating output paths.
-Creating output paths.
-Creating output paths.
-Creating output paths.
-Creating output paths.
-Creating output paths.
-Creating output paths.
-Creating output paths.
-Creating output paths.
-Creating output paths.
-Creating output paths.
-Generate documents.
-    1118 docs generated.
-Creating dependency paths .dep/contents.
-Creating dependency paths .dep/contents/docs.
-Creating dependency paths .dep/contents/post1.
-Creating dependency paths .dep/contents/post10.
-Creating dependency paths .dep/contents/post11.
-Creating dependency paths .dep/contents/post12.
-Creating dependency paths .dep/contents/post13.
-Creating dependency paths .dep/contents/post14.
-Creating dependency paths .dep/contents/post15.
-Creating dependency paths .dep/contents/post16.
-Creating dependency paths .dep/contents/post17.
-Creating dependency paths .dep/contents/post18.
-Creating dependency paths .dep/contents/post19.
-Creating dependency paths .dep/contents/post2.
-Creating dependency paths .dep/contents/post20.
-Creating dependency paths .dep/contents/post21.
-Creating dependency paths .dep/contents/post22.
-Creating dependency paths .dep/contents/post23.
-Creating dependency paths .dep/contents/post24.
-Creating dependency paths .dep/contents/post25.
-Creating dependency paths .dep/contents/post3.
-Creating dependency paths .dep/contents/post4.
-Creating dependency paths .dep/contents/post5.
-Creating dependency paths .dep/contents/post6.
-Creating dependency paths .dep/contents/post7.
-Creating dependency paths .dep/contents/post8.
-Creating dependency paths .dep/contents/post9.
-Build completed!
-make  5.93s user 1.65s system 100% cpu 7.540 total
-➜  hatch-jade-example git:(master) ✗ touch src/contents/docs/2013-01-01-atanasoff-implementation.markdown
-➜  hatch-jade-example git:(master) ✗ time make
-Parsing the documents into database.
-u   1 docs parsed.
-Generate documents.
-    1 docs generated.
-Build completed!
-make  2.28s user 0.24s system 101% cpu 2.477 total</code></pre>
-<h2>后记 &amp; 未完待续</h2>
-<p>这个项目目前仅仅实现了POC，比我预期的进展要缓慢一些。但这毕竟是我第一次跳出 <code>express</code> 的框框去写 <code>nodejs</code> 代码，所以可以原谅。</p>
-<p>写 <code>makefile</code> 是种享受，尤其是几行很直观的代码下来就达到用编程语言几十甚至上百行的效果。不信，看看项目中我为了实现类似查找 dependency 变化的代码：</p>
-<pre><code>$ cat lib/diff.coffee
-fs = require &#39;fs&#39;
-file = require &#39;file&#39;
-path = require &#39;path&#39;
-async = require &#39;async&#39;
-_ = require &#39;lodash&#39;
-
-# params should contain src, dst and ext
-diffPath = (src, dst, ext, callback) -&gt;
-    fileTimeDiff = (src_file, cb) -&gt;
-        old_ext = path.extname(src_file)
-        dst_file = src_file.replace(src, dst)
-        if ext
-            dst_file = dst_file.replace(old_ext, ext)
-
-        fs.stat src_file, (err, src_stat) -&gt;
-            return cb(err) if err
-
-            fs.exists dst_file, (exists) -&gt;
-                return cb null, src_file if not exists
-
-                fs.stat dst_file, (err, dst_stat) -&gt;
-                    cb(err) if err
-
-                    if src_stat.mtime &gt; dst_stat.mtime
-                        cb null, src_file
-                    else
-                        cb null, null
-
-
-    file.walk src, (err, dirPath, dirs, files) -&gt;
-        async.map files, fileTimeDiff, (err, results) -&gt;
-            callback err, _.compact(results)
-
-module.exports.diffPath = diffPath
-
-$ cat scripts/hatch-diff.coffee
-#!/usr/bin/env coffee
-diffPath = require(&#39;./../lib/diff&#39;).diffPath
-
-argv = require(&#39;optimist&#39;)
-    .usage(&#39;&#39;&#39;
-           Compare two folders
-           Usage: $0 [--ext html] src_dir dst_dir
-           &#39;&#39;&#39;)
-    .demand(2)
-    .alias(&#39;e&#39;, &#39;ext&#39;)
-    .describe(&#39;e&#39;, &#39;destination file extention&#39;)
-    .argv
-
-
-[src, dst] = argv._
-ext = argv.e
-
-diffPath src, dst, ext, (err, data) -&gt;
-    for item in data
-        console.log item</code></pre>
-<p>这么复杂的逻辑仅仅实现了 <code>makefile</code> 中 <code>$?</code> 的功能而已。。。</p>
-<p>送上小宝照片一枚。</p>
-<p><img src="/assets/files/photos/baby20131103.jpg" alt="小宝"></p>
-]]></description>
-            <link>http://tchen.me/posts/2013-11-03-hatch-experiment.html</link>
-            <guid isPermaLink="true">
-                http://tchen.me/posts/2013-11-03-hatch-experiment.html            </guid>
-            <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
-            <pubDate>Mon, 04 Nov 2013 14:40:00 GMT</pubDate>
         </item>
     </channel>
 </rss>

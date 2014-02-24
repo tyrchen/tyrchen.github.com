@@ -25,7 +25,7 @@
 
     <![endif]-->
 
-    <title>用Github Webhooks实现自动部署 | 觅珠人 | Tyr Chen的个人博客 | 创意 | 心得 | 经验</title>
+    <title>闲扯code review | 觅珠人 | Tyr Chen的个人博客 | 创意 | 心得 | 经验</title>
 
 </head>
 
@@ -73,7 +73,7 @@
 </div>
 
 <div class="header-image-wrapper">
-  <img alt="" src="/assets/images/backgrounds/page-header-bg-1.jpg">
+  <img alt="" src="/assets/files/posts/codereview.jpg">
 </div>
 
 <div class='header-main'>
@@ -180,9 +180,7 @@
           <h4 class="widget-title">标签</h4>
           <ul>
           
-            <li><a href='/tags/tool.html'>tool</a></li>
-          
-            <li><a href='/tags/automation.html'>automation</a></li>
+            <li><a href='/tags/thoughts.html'>thoughts</a></li>
           
           </ul>
         </div>
@@ -193,29 +191,9 @@
           <ul>
             
             
-              <li><a href="/posts/2013-04-25-engineering-environment-for-smart-team.html">自动化的高效团队开发环境</a></li>
+              <li><a href="/posts/2014-02-14-knowing-by-learning.html">Plan for taking coursera courses 1F 2014</a></li>
             
-              <li><a href="/posts/2012-12-16-first-blog.html">第一篇博客: 用octopress搭建博客系统</a></li>
-            
-              <li><a href="/posts/2012-12-21-meteor-basics.html">Meteor基础入门</a></li>
-            
-              <li><a href="/posts/2012-12-26-reveal-js-support-for-octopress.html">Octopress支持reveal.js撰写slides</a></li>
-            
-              <li><a href="/posts/2013-01-21-why-use-wintersmith-to-replace-octopress.html">为什么要使用wintersmith取代octopress</a></li>
-            
-              <li><a href="/posts/2013-02-04-teamspark-open-sourced.html">Teamspark及Meteor杂谈</a></li>
-            
-              <li><a href="/posts/2012-12-16-why-meteor.html">为什么是Meteor</a></li>
-            
-              <li><a href="/posts/2013-06-12-use-makefile-to-automate-deployment.html">使用Makefile自动化部署</a></li>
-            
-              <li><a href="/posts/2013-10-30-the-hatch-project.html">Hatch: 又一个建站工具</a></li>
-            
-              <li><a href="/posts/2013-11-03-hatch-experiment.html">Hatch: 实验</a></li>
-            
-              <li><a href="/posts/2013-11-13-local-docker-repo-en.html">Build Your Own Docker Registry with DigitalOcean</a></li>
-            
-              <li><a href="/posts/2013-11-13-local-docker-repo.html">建立自己的docker repository</a></li>
+              <li><a href="/posts/2014-02-18-pain-of-grow.html">公司成长之殇</a></li>
             
             
           </ul>
@@ -238,15 +216,15 @@
           </span>
           <span>
             <i class='icon-bookmark'></i>
-            12 分钟
+            4 分钟
           </span>
         </div>
         -->
-        <h1 class='has-sub-header'>用Github Webhooks实现自动部署</h1>
+        <h1 class='has-sub-header'>闲扯code review</h1>
         <div class='post-single-meta'>
           <span class='meta-item'>
             <i class='icon-calendar'></i>
-            1年前
+            3分钟前
           </span>
           <!--
           <span class='meta-item'>
@@ -265,199 +243,50 @@
           <span class="meta-item">
           	
             <i class='icon-time'></i>
-            12 分钟
+            4 分钟
           </span>
         </div>
-        <h2>问题</h2>
-<p>互联网产品永远都处在不断更迭的beta阶段。我们常常会在生产环境外，建立一套与生产环境共享数据的lab环境，以便验证一些即将用于真实世界的想法。问题是，每次提交改动后都需要手工运行部署脚本（前后大概花去30s左右时间），很不高效，每天运行那么几次，对惜时如金的程序员来说是种磨难。于是忙中偷闲的时候，就会想：有没有一种方法在代码提交后能够自动部署，身躯手工的麻烦？</p>
-<p>当然是有的。Github的 <a href="https://help.github.com/articles/post-receive-hooks">Post receive hooks</a> 就是用来干这个滴。作者花了小半天时间（对nodejs不熟啊），实现了一个很简单的自动部署方案，趁着记忆还未散去，将其记录在案，和大家分享交流。</p>
+        <p>如果说git终于让工程师在合作撰写代码的过程中找回了丢失已久的乐趣，那么，code review的过程还是让人相当地抓狂。我用过的所有code review的工具，没有一款能让code review的过程轻松起来。</p>
 <!--more-->
 
-<h2>需求</h2>
-<p>这个小工具的需求很简单，可以抽象为：对于指定的repositories上的指定branch，如果发生改动，执行一个action。</p>
-<p>比如说：</p>
+<p>公司内部使用的工具自不必说，那是反人类的极致体验。</p>
+<p>reviewboard和gerrit不那么反人类，但submit review和review的流程也不太方便，而且体验并不一致。submit review可以在命令行下方便地完成，但review需要点开邮件通知里的链接才能查看。如果你一直在代码上工作，而不查邮件，你可能会miss掉一些review。</p>
+<p>不过，这些体验上的问题都是细枝末节。目前已有的code review工具的最大问题是：<strong>它不是写给程序员用的！</strong>慢着，这话听着好耳熟？没错，Linux Tolvalds在撰写git的时候，就说svn最大的问题是这玩意儿不是写给程序员用的。</p>
+<p>如果要我设计一款code review工具，它的使用体验会类似这样：</p>
+<h2>Submit code review</h2>
+<pre><code>$ git commit -a
+$ git push</code></pre>
+<p>Done! 不需要更多的流程了。</p>
+<p>这里面隐含了如下步骤：</p>
 <ul>
-<li>tukeq的master branch改动，执行lab_deploy的动作。</li>
-<li>tukeq的production branch改动，执行safety_check的动作。</li>
+<li>git commit时会弹出一个form，所有项目都正确填写才能提交。</li>
+<li>git push时会将diff push到review server上，review server会根据修改了那些文件确定出reviewers，然后从中round robin选两到三人进行review。</li>
 </ul>
-<p>这是最基本的需求，当然在其之上还有很多衍生需求，比如说时间比较长的action是否可以取消，同样的action能否聚合处理等等，在这里就不讨论。</p>
-<p>需求简单，功能的实现方案也不难：</p>
-<ul>
-<li>提供一个url给github用于接受Post receive处理流程发过来的数据</li>
-<li>进行模式匹配，对于满足条件者，执行指定好的动作</li>
-<li>指定的动作如果是个长任务，则需要使用MQ异步化</li>
-</ul>
-<p>对于这样一个小东西，使用django貌似有点重了。正好最近学了点express的皮毛，就拿它来尝试。</p>
-<h2>准备工作</h2>
-<p>这个项目基本没有什么依赖，express/jade/underscore的标配外，加了个 <a href="https://github.com/LearnBoost/kue">kue</a> 用于处理异步任务。</p>
-<p>简单说下 <code>kue</code>。它是个job queue，使用redis做job的存储。如果用过python下的celery，则对这类的工具应该不陌生。</p>
-<p>celery实现一个异步任务（无与伦比的简洁与优雅）：</p>
-<pre><code># caller
-async_task.delay(a, b)
-
-# task
-@task
-def async_task(a, b):
-  pass</code></pre>
-<p>kue做为后起之秀在语法上稍逊一筹：</p>
-<pre><code># caller
-jobs.create(&#39;async_task&#39;, data).priority(&#39;high&#39;).save();
-
-# task
-jobs.process(&#39;async_task&#39;, function(job, done) { ... });</code></pre>
-<p>如果你的redis跑在缺省端口，kue几乎就是零配置，这对于配置稍嫌复杂的celery来讲轻便不少。</p>
-<h2>开工</h2>
-<p>假定我们在Github上注册的webhook地址为：<a href="http://tukeq.com/deploy">http://tukeq.com/deploy</a> （一个虚拟的地址，不必当真），则我们的主要任务就是实现 <code>deploy</code> 路由。首先定义之：</p>
-<pre><code>var hook = require(&#39;./routes/githubhook&#39;)
-app.post(&#39;/deploy&#39;, hook.githubhook);</code></pre>
-<p>接下来就是实现githubhook的逻辑了。我们先定义主逻辑：</p>
-<pre><code>exports.githubhook = function(req, res){
-    var payload;
-    // ensure paylaod is a object
-    if (typeof req.body.payload === &#39;object&#39;) {
-        payload = req.body.payload;
-    } else {
-        payload = JSON.parse(req.body.payload);
-    }
-
-    _.each(repos, function(repo) {
-        if(repo.name === payload.repository.name &amp;&amp; payload.ref.indexOf(repo.ref) &gt;= 0) {
-            repo.action(repo.name, repo.ref, payload);
-        }
-        res.send(&#39;ok&#39;);
-    });
-};</code></pre>
-<p>代码很简单，基本想法是使用一张模式表，里面包含了要匹配的项目，以及一旦匹配，使用何种action去处理。</p>
-<p>下面看模式：</p>
-<pre><code>var repos = [
-    {name: &#39;tukeq&#39;, ref: &#39;master&#39;, action: deploy},
-    {name: &#39;tukeq&#39;, ref: &#39;live&#39;, action: log},
-    {name: &#39;barr&#39;, ref: &#39;master&#39;, action: deploy}
-];</code></pre>
-<p>没什么高深。如果改动是在tukeq这个repo的master branch上发生，则执行deploy action。</p>
-<p>我们再看看deploy做什么：</p>
-<pre><code>var kue = require(&#39;kue&#39;)
-    , jobs = kue.createQueue()
-function deploy(repo, ref, data) {
-    var name = &#39;github_&#39; + repo + &#39;_&#39; + ref;
-    var path = &#39;/home/dev/bin/&#39;;
-    var cmd = path + name;
-
-    console.log(&#39;deploy:&#39;, repo, ref);
-
-    jobs.create(&#39;deploy&#39;, {
-        command: cmd
-    }).save();
-}</code></pre>
-<p>在服务端，我们有对应的deploy脚本，所以在这里，deploy的任务就是找到对应的脚本，启动一个kue job运行之。这里如果不使用异步任务，脚本很可能执行到一半就被杀掉。<code>nodejs</code> 中http的缺省timeout是2分钟，所以即便我们在收到request后立即返回 <strong>ok</strong> 做为response（见上文代码），超过两分钟后，脚本依然会收到 <code>SIGTERM</code>（我在这里纠结了一阵子，本不想引入job queue，因为那样需要管理的任务又多了一个，但尝试了各种创建child process的方式后，还是没找到一个理想的方案）。</p>
-<p>由于我们使用了job queue，必然需要一个job server来pull queue中的job并进行处理，于是我们单开一个脚本做任务处理：</p>
-<pre><code>var kue = require(&#39;kue&#39;)
-    , jobs = kue.createQueue()
-    ,exec = require(&#39;child_process&#39;).exec;
-
-jobs.process(&#39;deploy&#39;, function(job, done){
-    console.log(&#39;working on a deploy job&#39;, job.data.command);
-    exec(job.data.command, function(err, output) {
-        console.log(&#39;job done&#39;, err);
-        done();
-    });
-});</code></pre>
-<p>OK，至此基本的代码逻辑就已经OK，我们可以分别把web server和job server运行起来，使用 <a href="https://github.com/jkbr/httpie">httpie</a> 测试一下。</p>
-<p>运行服务：</p>
-<pre><code>$ npm install # 确保所有依赖正确安装
-$ node app
-$ node jobs/process</code></pre>
-<p>如果你系统里没装 <code>httpie</code>，强烈建议使用这个强大的，基于 <a href="http://docs.python-requests.org/en/latest/">requests</a> 的python小工具。有了它，<code>curl</code> 就好像是旧石器时代的简陋工具，你再也不想用哪怕一次。</p>
-<p>安装：</p>
-<pre><code>$ sudo pip install httpie</code></pre>
-<p>使用：</p>
-<pre><code>$ http POST localhost:3000/deploy &lt; test.json</code></pre>
-<p>这条命令所见即所得：把test.json做为body POST到localhost:3000/deploy。test.json是用于测试的数据：</p>
-<pre><code>{
-  &quot;before&quot;: &quot;5aef35982fb2d34e9d9d4502f6ede1072793222d&quot;,
-  &quot;repository&quot;: {
-    &quot;url&quot;: &quot;http://github.com/defunkt/github&quot;,
-    &quot;name&quot;: &quot;github&quot;,
-    &quot;description&quot;: &quot;You&#39;re lookin&#39; at it.&quot;,
-    &quot;watchers&quot;: 5,
-    &quot;forks&quot;: 2,
-    &quot;private&quot;: 1,
-    &quot;owner&quot;: {
-      &quot;email&quot;: &quot;chris@ozmm.org&quot;,
-      &quot;name&quot;: &quot;defunkt&quot;
-    }
-  },
-  &quot;commits&quot;: [
-    {
-      &quot;id&quot;: &quot;41a212ee83ca127e3c8cf465891ab7216a705f59&quot;,
-      &quot;url&quot;: &quot;http://github.com/defunkt/github/commit/41a212ee83ca127e3c8cf465891ab7216a705f59&quot;,
-      &quot;author&quot;: {
-        &quot;email&quot;: &quot;chris@ozmm.org&quot;,
-        &quot;name&quot;: &quot;Chris Wanstrath&quot;
-      },
-      &quot;message&quot;: &quot;okay i give in&quot;,
-      &quot;timestamp&quot;: &quot;2008-02-15T14:57:17-08:00&quot;,
-      &quot;added&quot;: [&quot;filepath.rb&quot;]
-    },
-    {
-      &quot;id&quot;: &quot;de8251ff97ee194a289832576287d6f8ad74e3d0&quot;,
-      &quot;url&quot;: &quot;http://github.com/defunkt/github/commit/de8251ff97ee194a289832576287d6f8ad74e3d0&quot;,
-      &quot;author&quot;: {
-        &quot;email&quot;: &quot;chris@ozmm.org&quot;,
-        &quot;name&quot;: &quot;Chris Wanstrath&quot;
-      },
-      &quot;message&quot;: &quot;update pricing a tad&quot;,
-      &quot;timestamp&quot;: &quot;2008-02-15T14:36:34-08:00&quot;
-    }
-  ],
-  &quot;after&quot;: &quot;de8251ff97ee194a289832576287d6f8ad74e3d0&quot;,
-  &quot;ref&quot;: &quot;refs/heads/master&quot;
-}</code></pre>
-<p>测试通过，大功告成。</p>
-<p>本文所述代码可以在这里找到：<a href="https://github.com/tyrchen/simplehooks.git"><a href="https://github.com/tyrchen/simplehooks.git">https://github.com/tyrchen/simplehooks.git</a></a>。欢迎clone/fork。</p>
-<h2>部署</h2>
-<p>光有代码还没用，要将其部署到一个github能够访问到的server上。我喜欢用supervisor进行部署：</p>
-<p>Simple hook服务：</p>
-<pre><code>[program:simplehooks]
-directory = /home/dev/deployment/simplehooks
-user = dev
-command=/usr/local/bin/node app
-environment=PORT=12345
-redirect_stderr=true
-stderr_logfile=none
-stdout_logfile=/var/log/supervisor/simplehooks.log
-autostart=true
-autorestart=true</code></pre>
-<p>Simple job服务：</p>
-<pre><code>[program:simplehookjobs]
-directory = /home/dev/deployment/simplehooks
-user = dev
-command=/usr/local/bin/node jobs/process
-redirect_stderr=true
-stderr_logfile=none
-stdout_logfile=/var/log/supervisor/simplehookjobs.log
-autostart=true
-autorestart=true</code></pre>
-<p>配置完后可以通过如下命令无缝运行：</p>
-<pre><code>$ supervisorctl
-supervisor&gt; reread
-supervisor&gt; update</code></pre>
-<p>当然不要忘记nginx配置：</p>
-<pre><code>server {
-  listen 80;
-  server_name deploy.tukeq.com;
-  set $simplehook_current_root &quot;/home/dev/deployment/simplehooks&quot;;
-  root @simplehooks;
-  access_log /var/log/nginx/simplehooks.access.log;
-  error_log /var/log/nginx/simplehooks.error.log;
-  location / {
-    proxy_pass http://localhost:12345;
-    include /etc/nginx/proxy_params;
-  }
-}</code></pre>
-<h2>后记</h2>
-<p>小宝笑了，依旧是那么天真无邪。看到她，我的苦闷阴霾一下子就没了。</p>
-<p><img src="/assets/files/photos/baby20130109.jpg" alt="小宝"></p>
+<p>与之最接近的体验是gerrit:</p>
+<pre><code>$ git commit -a
+$ git push origin HEAD:refs/for/master</code></pre>
+<p>但，<code>HEAD:refs/for/master</code>究竟是什么，我想没多少人能搞懂。如果配置了一个repo必须要经过code review后才能push到服务器，那么，为何不直接把<code>git push</code>用做review的命令？</p>
+<h2>Review the code</h2>
+<p>蒂尔原则：code review应该和repo紧密相连，而不是那该死的邮件。</p>
+<p>当reviewer在同样的repo下运行<code>git status</code>时，会有如下提示：</p>
+<pre><code>$ git status
+# On branch master
+nothing to commit, working directory clean
+You have 2 reviews:
+  6ae24fe: PR12345 - can not connect to server, by Tyr Chen
+  723e9e2: PR12346 - Tracking feature 123: add queue support, by Tyr Chen
+You must run &quot;git review &lt;review-id&gt;&quot; to do review.</code></pre>
+<p>这个提示很恼人，一般git用户都会尽快完成review以便让<code>git status</code>的输出看上去干净些。如果review长时间得不到处理，其颜色每隔4个小时变红一些，直至鲜红。</p>
+<p>Reviewer可以运行<code>git review</code>进行代码review：</p>
+<pre><code>$ git review 6ae24fe</code></pre>
+<p>根据配置，这条命令会自动调出对应的代码比较工具，比如说<code>vimdiff</code>。如果没有指定，则会输出标准的<code>git diff</code>。</p>
+<p>代码阅读完毕，可以使用：</p>
+<pre><code>$ git review 6ae24fe --approve|reject</code></pre>
+<p>这会弹出一个form，填写review的意见。</p>
+<p>被round robin出的2-3个reviewers必须全部approve，这个review才算通过。如果某个reviewer在72小时内还没有review代码（可能休假去了），则相应的review自动被approve，review的注释是：&quot;review skipped automatically due to XXX not-responding&quot;。这就像信用记录，对于一个程序员来说，如果他review别人的代码总出现这样的日志，自己脸上也挂不住。</p>
+<p>此外，review服务器还记录和索引每个review，方便日后检索。以后如果哪个问题是由某次不正确的修改导致的，那么能够很快查询到是谁批准了这段代码。</p>
+<p>最后，review的数据最好能做visualization，每个程序员都能看到他的历史review图表（这个可以做得非常有意思），也可以看到各种各样的统计信息（比如说团队里提交代码的排行榜，review通过率排行榜，review大牛排行榜等等），让冷冰冰的code commit和code review活泼起来。</p>
+<p>投票：如果有这样一个code review工具，你会试用么？回复即可。:)</p>
 
         <div class="subscribe">
           <p>如果您对本站的文章感兴趣，欢迎订阅我的微博公共账号：程序人生。每次博文发表时，您都能获得通知。此外，公共账号还会不定期推送一些短文，技术心得，供您参考。</p>
@@ -467,92 +296,85 @@ supervisor&gt; update</code></pre>
           
           
             
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
-          
-            
                 
                   <div class='pull-left'>
-                    <a class='read-previous-link' href='/posts/2013-01-06-io-lang.html'>
+                    <a class='read-previous-link' href='/posts/2014-02-18-pain-of-grow.html'>
                       <i class='icon-angle-left'></i>
                       上一篇
                     </a>
                   </div>                  
                 
-                
-                  <div class='pull-right'>
-                    <a class='read-next-link' href='/posts/2013-01-21-why-use-wintersmith-to-replace-octopress.html'>
-                      下一篇
-                      <i class='icon-angle-right'></i>
-                    </a>
-                  </div>
                          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
             
           
             
