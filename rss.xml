@@ -5,10 +5,10 @@
         <description><![CDATA[本博客提供我个人的想法，创意，经验，心得。你不必认同博主观点。]]></description>
         <link>http://tchen.me</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Mon, 24 Feb 2014 14:03:13 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 27 Feb 2014 23:40:53 GMT</lastBuildDate>
         <atom:link href="http://tchen.me/rss.xml" rel="self" type="application/rss+xml"/>
         <author><![CDATA[Tyr Chen]]></author>
-        <pubDate>Mon, 24 Feb 2014 14:02:26 GMT</pubDate>
+        <pubDate>Thu, 27 Feb 2014 23:40:03 GMT</pubDate>
         <item>
             <title><![CDATA[闲扯code review]]></title>
             <description><![CDATA[<p>如果说git终于让工程师在合作撰写代码的过程中找回了丢失已久的乐趣，那么，code review的过程还是让人相当地抓狂。我用过的所有code review的工具，没有一款能让code review的过程轻松起来。</p>
@@ -56,6 +56,86 @@ You must run &quot;git review &lt;review-id&gt;&quot; to do review.</code></pre>
             <link>http://tchen.me/posts/2014-02-24-codereview.html</link>
             <guid isPermaLink="true">
                 http://tchen.me/posts/2014-02-24-codereview.html            </guid>
+            <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
+            <pubDate>Mon, 24 Feb 2014 14:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[闲扯code review]]></title>
+            <description><![CDATA[<p>昨天收到同事转发的dtrace作者解释关于『为何dtrace在x86上能支持function boundary trace，而mips不行』的一封邮件点燃了我的战斗激情，写了段程序分别在mips，arm和x86上编了下求证。本想就此写篇微信文章，但琢磨一下还是算了，一来昨天已有承诺，二来这东西放在微信上估计打开率为0。</p>
+<p>前天有读者希望我多写点职场的建议，我深感惶恐。思来想去，怎么写都像在熬鸡汤，干脆换个思路，教教大家如何混日子吧。</p>
+<!--more-->
+
+<p>除了程序员的老板们和公务员（这年头公务员也不好混啊），世界上估计没有一种职业比程序员更好混日子了。</p>
+<p>程序员常见的场景一，软件崩溃：</p>
+<p>『Tyr，你做的feature流量上到1G就crash了！』</p>
+<p>『哦，我看看。尼玛，内存不够了，等着，我马上修好』</p>
+<p>如果我是个建筑师：</p>
+<p>『Tyr，昨晚设计的楼盘有家人办party，来了很多人，于是那幢楼坍塌了』</p>
+<p>『哦，我看看。尼玛，钢筋放少了。等着，我～』</p>
+<p>『等个屁，死伤几十人，你自裁吧』</p>
+<p>程序员常见场景二，解bug：</p>
+<p>『Tyr，这有个customer issue。在xxx场景下，网络不通。』</p>
+<p>『能复现么？』</p>
+<p>『能，blablabla』</p>
+<p>『我给你编个版本哈』</p>
+<p>『好』</p>
+<p>『能工作了么？』</p>
+<p>『不能』</p>
+<p>『可能是另一个问题导致，我再给你一个版本吧』</p>
+<p>『好』</p>
+<p>『能工作了么？』</p>
+<p>『不能』</p>
+<p>。。。</p>
+<p>（第5次后）</p>
+<p>『Tyr，customer火很大了』</p>
+<p>『我终于知道问题所在了。这个版本再不过，你杀了我吧』</p>
+<p>『OK了』</p>
+<p>（之后一封热情洋溢的邮件表扬了Tyr的出色表现）</p>
+<p>如果我是个医生：</p>
+<p>『大夫，我不舒服』</p>
+<p>『能复现么？啊不对，你都什么症状啊』</p>
+<p>『blablabla』</p>
+<p>『你做这些检查，然后我给你开药哈』</p>
+<p>『好』</p>
+<p>（一周后）</p>
+<p>『大夫，我病情加重了』</p>
+<p>『啊，哎呀，你这可能不是肠炎，有可能是肺炎』</p>
+<p>『啊？得，开药吧』</p>
+<p>（两周后）</p>
+<p>『大夫，我这病更重了』</p>
+<p>『我再看看，从最新的检查看，你这可能是脑膜炎』</p>
+<p>『。。。你把我当小白鼠了？我要告你！』</p>
+<p>（之后Tyr失去了行医执照）</p>
+<p>莫笑，这世界上可能没有比软件工程更不靠谱的工程了。虽有质量保证部门，但出点问题简直是家常便饭，不出问题反而让人惊讶；虽有项目管理甚至监理，可还经常延期。就这工程质量，客户还总能忍，你说怪不怪？</p>
+<p>由于软件行业有这么些子特点，所以混日子也比别的行业容易。下面的不完全手册乃我十多年辛辛苦苦累积，您请搬好小板凳，静待我一一到来。</p>
+<p><strong>混日子守则第一条：瞒天过海。</strong></p>
+<p>这行业不靠谱，所以招人『难』，怎么办，一来给高薪，二来实行弹性工作制，不用打卡。这弹性工作制真是个好东西啊，非常方便咱刷存在感。早上十点一刻到，晚上七点一刻走。为啥这个时间？来得不算晚，走得足够晚。周六或者周日来公司上上网，来加班的同事一看，哟，Tyr怎么周末又来加班了？另外，算好老板限行的日子，然后赶在那天正巧七点过一点点到公司，途经老板的办公室不忘赞一句：这么早～</p>
+<p><strong>混日子守则第二条：无中生有。</strong></p>
+<p>随时保持自己忙碌，各种项目都凑上去充个数，但实际上都在邮件里扯淡，活没干多少。没关系，大家都注意到了你说的话，却往往忽略你干的事。</p>
+<p><strong>混日子守则第三条：混水摸鱼，偷梁换柱。</strong></p>
+<p>既然混日子，那么绩效必然不好，这时候必须想办法把水搅浑，让自己显得不那么『鹤立鸡群』。具体做法：你跟我讨论architecture，我跟你扯performance issue；你跟我谈performance optimization，我跟你扯not modulized；你跟我解决modularity，我跟你说我们要customer centric，其它的都是浮云。总之牵着你的鼻子走。</p>
+<p><strong>混日子守则第四条：隔岸观火。</strong></p>
+<p>没完没了地开会是混日子的最佳选择，尤其是各种没有schedule，没有action plan的讨论会。上来就把讨论的方向引到有争议的细枝末节，甚至和议题无关的地方，只要有争议就可。然后就可以坐等会议膨胀，通过一个会议引发更多的会议。让大家永远都在讨论，但总讨论不到点子上。</p>
+<p><strong>混日子守则第五条：树上开花。</strong></p>
+<p>要学会营造大场面，大阵势。估计项目时间的时候将一切风险，一切问题都尽可能放大。一个月就能看到成果的项目不好，想办法让其膨胀到半年，一年。想想看，一个月的项目你延期半个月，那是延期50%，多不好看；一年的项目延期三个月，才仅仅是25%，正常。而且项目时间越短，就越好追踪，反之，越难追踪。你要的不是产品的v1，而是打着v1旗号的v10。</p>
+<p><strong>混日子守则第六条：走为上。</strong></p>
+<p>一般这么混日子法，换个detail oriented的老板就得赶紧跑路。没关系，找家钱多人傻的公司继续混，将日子混到底。</p>
+<p>hmm...</p>
+<p>说了这么多~</p>
+<p>Have you figured out the head fake?</p>
+<p>我没在讲行为准则。我在谈<strong>文化</strong>。不贯彻以<strong>结果</strong>和<strong>产出</strong>为准的文化，神马的都是浮云。</p>
+<p>Have you figured out the second head fake?</p>
+<p>这篇文章文章不是写给程序员的，而是写给老板和即将当老板的人的。</p>
+<p>程序员应该戳下面的链接看这篇文章（还是英文）。</p>
+<p><a href="http://programming.oreilly.com/2014/01/7-ways-to-be-a-better-programmer-in-2014.html">7 Ways to be a Better Programmer in 2014</a></p>
+<hr/>
+
+<p>本文纯属扯淡，顺带小小地向Randy Pausch教授致敬。如果你没听过他的最后一课，在优酷上搜搜，趁着星星还是月亮的那个剧结局了的空档期，看看，就当学习英文了。</p>
+<p>最后恳求大家一件事，方便的话上一下腾讯微博，收听『Tyr在路上』。程序君需要足够的粉来申请微博认证，进而申请微信认证，这样『程序人生』公众号就可以有自定义菜单，能更好地为您服务了。程序君先在这里跪谢啦。</p>
+]]></description>
+            <link>http://tchen.me/posts/2014-02-28-programmer-life.html</link>
+            <guid isPermaLink="true">
+                http://tchen.me/posts/2014-02-28-programmer-life.html            </guid>
             <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
             <pubDate>Mon, 24 Feb 2014 14:00:00 GMT</pubDate>
         </item>
@@ -1327,6 +1407,132 @@ func MatchAll(r *regexp.Regexp, data string) (captures []KVPair, ok bool) {
             <pubDate>Mon, 23 Dec 2013 14:40:00 GMT</pubDate>
         </item>
         <item>
+            <title><![CDATA[Build Your Own Docker Registry with DigitalOcean]]></title>
+            <description><![CDATA[<h1>Build Your Own Docker Registry with DigitalOcean</h1>
+<p><a href="http://www.slideshare.net/dotCloud/why-docker">Docker</a> might be the most attracting open source technologies in 2013. By providing a higher level API and management UI, it make linux container much more usable. If you haven&#39;t tried it, <a href="http://www.docker.io/gettingstarted/">try it</a>. You will then feel it is &quot;<a href="http://blog.scoutapp.com/articles/2013/08/28/docker-git-for-deployment">the git for deployment</a>&quot;.</p>
+<p>After you played with it for a while, enjoying the git like operation for your software and their dependencies, a natural question will appear: how can I build my own private docker registry that I could leverage for my own IT infrastructure? </p>
+<p>The docker-registry comes to help you. docker-registry is a software to provide similar functionality as <a href="http://index.docker.io/">official docker index</a>, which is a central registry for you to commit your new images, pull existing ones, etc. It can let you to build your own docker registry that is private, secure and speedy.</p>
+<h2>Install docker-registry</h2>
+<p>First of all, let&#39;s clone docker-registry：</p>
+<pre><code>git clone https://github.com/dotcloud/docker-registry
+cd docker-registry
+cp config_sample.yml config.yml</code></pre>
+<p>You need then to open config.yml to set the dev (the default profile) storage to something like <code>/var/docker/registry</code>:</p>
+<pre><code># This is the default configuration when no flavor is specified
+dev:
+    storage: local
+    storage_path: /var/docker/registry
+    loglevel: debug</code></pre>
+<p>Then create this directory and grant </p>
+<pre><code>sudo mkdir -p /var/docker/registry
+sudo chown -R `whoami` /var/docker</code></pre>
+<p>As docker-registry uses python and ssl, you need to install the following libraries:</p>
+<pre><code>sudo apt-get install build-essential python-dev libevent-dev python-pip libssl-dev</code></pre>
+<p>Then you can setup your virtualenv and install requirements:</p>
+<p>(optional) install virtualenv if you haven&#39;t:</p>
+<pre><code>sudo pip install virtualenv</code></pre>
+<p>setup virtualenv:</p>
+<pre><code>virtualenv --no-site-packages venv
+. venv/bin/activate
+pip install -r requirements.txt</code></pre>
+<p>Now your docker-registry should be run via:</p>
+<pre><code>gunicorn -k gevent --max-requests 100 --graceful-timeout 3600 -t 3600 -b localhost:8080 -w 8 wsgi:application</code></pre>
+<p>You can open your browser on <code>http://localhost:8080</code> to see if it works. It should show you:</p>
+<pre><code>&quot;docker-registry server (dev)&quot;</code></pre>
+<p>Congratulations! The minimum installation is done. However, if you want to run it like a normal service, you need to configure supervisor and nginx. Let&#39;s continue our journey.</p>
+<h2>Run docker-registry as a service</h2>
+<p>If you don&#39;t have supervisor installed, please install it firstly:</p>
+<pre><code>sudo apt-get install supervisor</code></pre>
+<p>Then add a new configuration file:</p>
+<pre><code>sudo vim /etc/supervisor/conf.d/docker-registry.conf</code></pre>
+<p>In the opened vim editor, copy and paste the following content, save and quit (you need to change dev to your local user):</p>
+<pre><code>[program:docker-registry]
+directory=/home/dev/deployment/docker-registry
+user=dev
+command=/home/dev/deployment/docker-registry/venv/bin/gunicorn -b 0.0.0.0:7030 -k gevent --max-requests 100 --graceful-timeout 3600 -t 3600 -w 8 wsgi:application
+redirect_stderr=true
+stderr_logfile=none
+stdout_logfile=/var/log/supervisor/docker-registry.log
+autostart=true
+autorestart=true</code></pre>
+<p>Then reload supervisor to make it take effects.</p>
+<pre><code>$ sudo supervisorctl
+supervisor&gt; reread
+docker-registry: available
+supervisor&gt; update
+docker-registry: added process group
+supervisor&gt; status
+docker-registry                  RUNNING    pid 4371, uptime 0:00:01</code></pre>
+<p>If you see RUNNING int the status output, then it means your docker-registry is up and running normally. If not, please got to <code>/var/log/supervisor/docker-registry.log</code> to see what happened.</p>
+<p>Next you need to use nginx to proxy the requests to docker-registry. If you don&#39;t have nginx installed, please install it firstly:</p>
+<pre><code>sudo apt-get install nginx</code></pre>
+<p>Then add a new configuration file:</p>
+<pre><code>sudo vim /etc/nginx/sites-available/docker-registry</code></pre>
+<p>Copy and paste the following content, then save and quite:</p>
+<pre><code>server {
+  listen 80;
+  client_max_body_size 200m;
+  server_name your-domain.com;
+  access_log /var/log/nginx/docker-registry.access.log;
+  error_log /var/log/nginx/docker-registry.error.log;
+  location / {
+    proxy_pass http://localhost:8080;
+    include /etc/nginx/proxy_params;
+  }
+}</code></pre>
+<p>Note that you need <code>client_max_body_size 200m</code> to allow big file post. If later your found error like:</p>
+<pre><code>2013/11/12 03:35:18 Received HTTP code 413 while uploading layer</code></pre>
+<p>You need to enlarge this value.</p>
+<p>Then you need to soft link this file to <code>sites-enabled</code> and restart nginx:</p>
+<pre><code>cd /etc/nginx/sites-enabled/
+sudo ln -s ../sites-available/docker-registry docker-registry
+sudo service nginx restart</code></pre>
+<p>Open your browser to visit <code>http://your-domain.com</code>, you should see the same result as previous step:</p>
+<pre><code>&quot;docker-registry server (dev)&quot;</code></pre>
+<h2>Use your private docker registry</h2>
+<p>First of all, let&#39;s see what images we have so far:</p>
+<pre><code>$ sudo docker images
+REPOSITORY                            TAG                   IMAGE ID            CREATED             SIZE
+ubuntu                                12.04                 8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
+ubuntu                                latest                8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
+ubuntu                                precise               8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
+ubuntu                                12.10                 b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+base                                  latest                b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+ubuntu                                quantal               b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+base                                  ubuntu-12.10          b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+base                                  ubuntu-quantal        b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+base                                  ubuntu-quantl         b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)</code></pre>
+<p>If you don&#39;t have any docker images, please use <code>sudo docker pull base</code> to pull base images from docker repository.</p>
+<p>We would like to push the base image to our own shiny registry. First of all, tag it to push to your own server:</p>
+<pre><code>sudo docker tag b750fe79269d your-domain.com/yourname/base</code></pre>
+<p>Then push:</p>
+<pre><code>sudo docker push your-domain.com/yourname/base</code></pre>
+<p>If push succeeded, you will see your images with <code>docker images</code>:</p>
+<pre><code>$ sudo docker images
+REPOSITORY                            TAG                   IMAGE ID            CREATED             SIZE
+ubuntu                                12.04                 8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
+ubuntu                                latest                8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
+ubuntu                                precise               8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
+ubuntu                                12.10                 b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+base                                  latest                b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+your-domain.com/yourname/base        latest                b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+ubuntu                                quantal               b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+base                                  ubuntu-12.10          b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+base                                  ubuntu-quantal        b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
+base                                  ubuntu-quantl         b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)</code></pre>
+<p>It is already available locally, so you can try it：</p>
+<pre><code>sudo docker run -i -t your-domain.com/yourname/base /bin/bash</code></pre>
+<p>If you want to pull this image from other machine, just use:</p>
+<pre><code>sudo docker pull your-domain.com/yourname/base</code></pre>
+<p>Have fun!</p>
+]]></description>
+            <link>http://tchen.me/posts/2013-11-13-local-docker-repo-en.html</link>
+            <guid isPermaLink="true">
+                http://tchen.me/posts/2013-11-13-local-docker-repo-en.html            </guid>
+            <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
+            <pubDate>Wed, 13 Nov 2013 14:40:00 GMT</pubDate>
+        </item>
+        <item>
             <title><![CDATA[建立自己的docker repository]]></title>
             <description><![CDATA[<p>如果你不知道docker是什么，请参考 <a href="http://www.slideshare.net/dotCloud/why-docker">这个slides</a>。</p>
 <p>在 ubuntu 下安装 docker 请参考 <a href="http://docs.docker.io/en/latest/installation/ubuntulinux/">官方教程</a> 。注意，由于 docker 的核心技术是 <a href="http://en.wikipedia.org/wiki/LXC">Linux container</a>，所以如果想在 osx 下安装 docker 请使用 vagrant。</p>
@@ -1460,283 +1666,6 @@ base                                  ubuntu-quantl         b750fe79269d        
                 http://tchen.me/posts/2013-11-13-local-docker-repo.html            </guid>
             <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
             <pubDate>Wed, 13 Nov 2013 14:40:00 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[Build Your Own Docker Registry with DigitalOcean]]></title>
-            <description><![CDATA[<h1>Build Your Own Docker Registry with DigitalOcean</h1>
-<p><a href="http://www.slideshare.net/dotCloud/why-docker">Docker</a> might be the most attracting open source technologies in 2013. By providing a higher level API and management UI, it make linux container much more usable. If you haven&#39;t tried it, <a href="http://www.docker.io/gettingstarted/">try it</a>. You will then feel it is &quot;<a href="http://blog.scoutapp.com/articles/2013/08/28/docker-git-for-deployment">the git for deployment</a>&quot;.</p>
-<p>After you played with it for a while, enjoying the git like operation for your software and their dependencies, a natural question will appear: how can I build my own private docker registry that I could leverage for my own IT infrastructure? </p>
-<p>The docker-registry comes to help you. docker-registry is a software to provide similar functionality as <a href="http://index.docker.io/">official docker index</a>, which is a central registry for you to commit your new images, pull existing ones, etc. It can let you to build your own docker registry that is private, secure and speedy.</p>
-<h2>Install docker-registry</h2>
-<p>First of all, let&#39;s clone docker-registry：</p>
-<pre><code>git clone https://github.com/dotcloud/docker-registry
-cd docker-registry
-cp config_sample.yml config.yml</code></pre>
-<p>You need then to open config.yml to set the dev (the default profile) storage to something like <code>/var/docker/registry</code>:</p>
-<pre><code># This is the default configuration when no flavor is specified
-dev:
-    storage: local
-    storage_path: /var/docker/registry
-    loglevel: debug</code></pre>
-<p>Then create this directory and grant </p>
-<pre><code>sudo mkdir -p /var/docker/registry
-sudo chown -R `whoami` /var/docker</code></pre>
-<p>As docker-registry uses python and ssl, you need to install the following libraries:</p>
-<pre><code>sudo apt-get install build-essential python-dev libevent-dev python-pip libssl-dev</code></pre>
-<p>Then you can setup your virtualenv and install requirements:</p>
-<p>(optional) install virtualenv if you haven&#39;t:</p>
-<pre><code>sudo pip install virtualenv</code></pre>
-<p>setup virtualenv:</p>
-<pre><code>virtualenv --no-site-packages venv
-. venv/bin/activate
-pip install -r requirements.txt</code></pre>
-<p>Now your docker-registry should be run via:</p>
-<pre><code>gunicorn -k gevent --max-requests 100 --graceful-timeout 3600 -t 3600 -b localhost:8080 -w 8 wsgi:application</code></pre>
-<p>You can open your browser on <code>http://localhost:8080</code> to see if it works. It should show you:</p>
-<pre><code>&quot;docker-registry server (dev)&quot;</code></pre>
-<p>Congratulations! The minimum installation is done. However, if you want to run it like a normal service, you need to configure supervisor and nginx. Let&#39;s continue our journey.</p>
-<h2>Run docker-registry as a service</h2>
-<p>If you don&#39;t have supervisor installed, please install it firstly:</p>
-<pre><code>sudo apt-get install supervisor</code></pre>
-<p>Then add a new configuration file:</p>
-<pre><code>sudo vim /etc/supervisor/conf.d/docker-registry.conf</code></pre>
-<p>In the opened vim editor, copy and paste the following content, save and quit (you need to change dev to your local user):</p>
-<pre><code>[program:docker-registry]
-directory=/home/dev/deployment/docker-registry
-user=dev
-command=/home/dev/deployment/docker-registry/venv/bin/gunicorn -b 0.0.0.0:7030 -k gevent --max-requests 100 --graceful-timeout 3600 -t 3600 -w 8 wsgi:application
-redirect_stderr=true
-stderr_logfile=none
-stdout_logfile=/var/log/supervisor/docker-registry.log
-autostart=true
-autorestart=true</code></pre>
-<p>Then reload supervisor to make it take effects.</p>
-<pre><code>$ sudo supervisorctl
-supervisor&gt; reread
-docker-registry: available
-supervisor&gt; update
-docker-registry: added process group
-supervisor&gt; status
-docker-registry                  RUNNING    pid 4371, uptime 0:00:01</code></pre>
-<p>If you see RUNNING int the status output, then it means your docker-registry is up and running normally. If not, please got to <code>/var/log/supervisor/docker-registry.log</code> to see what happened.</p>
-<p>Next you need to use nginx to proxy the requests to docker-registry. If you don&#39;t have nginx installed, please install it firstly:</p>
-<pre><code>sudo apt-get install nginx</code></pre>
-<p>Then add a new configuration file:</p>
-<pre><code>sudo vim /etc/nginx/sites-available/docker-registry</code></pre>
-<p>Copy and paste the following content, then save and quite:</p>
-<pre><code>server {
-  listen 80;
-  client_max_body_size 200m;
-  server_name your-domain.com;
-  access_log /var/log/nginx/docker-registry.access.log;
-  error_log /var/log/nginx/docker-registry.error.log;
-  location / {
-    proxy_pass http://localhost:8080;
-    include /etc/nginx/proxy_params;
-  }
-}</code></pre>
-<p>Note that you need <code>client_max_body_size 200m</code> to allow big file post. If later your found error like:</p>
-<pre><code>2013/11/12 03:35:18 Received HTTP code 413 while uploading layer</code></pre>
-<p>You need to enlarge this value.</p>
-<p>Then you need to soft link this file to <code>sites-enabled</code> and restart nginx:</p>
-<pre><code>cd /etc/nginx/sites-enabled/
-sudo ln -s ../sites-available/docker-registry docker-registry
-sudo service nginx restart</code></pre>
-<p>Open your browser to visit <code>http://your-domain.com</code>, you should see the same result as previous step:</p>
-<pre><code>&quot;docker-registry server (dev)&quot;</code></pre>
-<h2>Use your private docker registry</h2>
-<p>First of all, let&#39;s see what images we have so far:</p>
-<pre><code>$ sudo docker images
-REPOSITORY                            TAG                   IMAGE ID            CREATED             SIZE
-ubuntu                                12.04                 8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
-ubuntu                                latest                8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
-ubuntu                                precise               8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
-ubuntu                                12.10                 b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-base                                  latest                b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-ubuntu                                quantal               b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-base                                  ubuntu-12.10          b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-base                                  ubuntu-quantal        b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-base                                  ubuntu-quantl         b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)</code></pre>
-<p>If you don&#39;t have any docker images, please use <code>sudo docker pull base</code> to pull base images from docker repository.</p>
-<p>We would like to push the base image to our own shiny registry. First of all, tag it to push to your own server:</p>
-<pre><code>sudo docker tag b750fe79269d your-domain.com/yourname/base</code></pre>
-<p>Then push:</p>
-<pre><code>sudo docker push your-domain.com/yourname/base</code></pre>
-<p>If push succeeded, you will see your images with <code>docker images</code>:</p>
-<pre><code>$ sudo docker images
-REPOSITORY                            TAG                   IMAGE ID            CREATED             SIZE
-ubuntu                                12.04                 8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
-ubuntu                                latest                8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
-ubuntu                                precise               8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
-ubuntu                                12.10                 b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-base                                  latest                b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-your-domain.com/yourname/base        latest                b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-ubuntu                                quantal               b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-base                                  ubuntu-12.10          b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-base                                  ubuntu-quantal        b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-base                                  ubuntu-quantl         b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)</code></pre>
-<p>It is already available locally, so you can try it：</p>
-<pre><code>sudo docker run -i -t your-domain.com/yourname/base /bin/bash</code></pre>
-<p>If you want to pull this image from other machine, just use:</p>
-<pre><code>sudo docker pull your-domain.com/yourname/base</code></pre>
-<p>Have fun!</p>
-]]></description>
-            <link>http://tchen.me/posts/2013-11-13-local-docker-repo-en.html</link>
-            <guid isPermaLink="true">
-                http://tchen.me/posts/2013-11-13-local-docker-repo-en.html            </guid>
-            <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
-            <pubDate>Wed, 13 Nov 2013 14:40:00 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[使用HTTPS]]></title>
-            <description><![CDATA[<p>如今随着网上交易规模不断扩大及API驱动的互联网的出现（如 <a href="https://strip.com">https://strip.com</a> ），互联网的安全性越来越受到重视。本文简单讲述如何将你的nginx配置成支持https的web server。当然，理论上一个合格的https server需要从CA那里获得正式的SSL certificate，但如何购买SSL certificate不在本文讨论之列。本文仅从技术上讨论如何在你的服务器上使能https。</p>
-<!--more-->
-
-<h2>生成证书</h2>
-<h3>生成RSA key</h3>
-<p>首先生成本地的RSA key，我们使用1024 bit的密钥。pass phrase一定要输入，并且输入的pass phrase在接下来的步骤中要使用。</p>
-<pre><code>sudo mkdir /etc/nginx/ssl
-cd /etc/nginx/ssl
-$ sudo openssl genrsa -des3 -out myserver.key 1024
-[sudo] password for tchen:
-Generating RSA private key, 1024 bit long modulus
-.....++++++
-.++++++
-e is 65537 (0x10001)
-Enter pass phrase for myserver.key:
-Verifying - Enter pass phrase for myserver.key:
-`</code></pre>
-<h3>生成csr (Certificate Signing Request)</h3>
-<p>CSR包含能够鉴别证书申请人的信息。关于CSR及X.509证书的详细说明，请参考：<a href="http://en.wikipedia.org/wiki/Certificate_signing_request。">http://en.wikipedia.org/wiki/Certificate_signing_request。</a></p>
-<pre><code>$ sudo openssl req -new -key myserver.key -out myserver.csr
-Enter pass phrase for myserver.key:
-You are about to be asked to enter information that will be incorporated
-into your certificate request.
-What you are about to enter is what is called a Distinguished Name or a DN.
-There are quite a few fields but you can leave some blank
-For some fields there will be a default value,
-If you enter &#39;.&#39;, the field will be left blank.
------
-Country Name (2 letter code) [AU]:CN
-State or Province Name (full name) [Some-State]:Beijing
-Locality Name (eg, city) []:BJ
-Organization Name (eg, company) [Internet Widgits Pty Ltd]:Coderena
-Organizational Unit Name (eg, section) []:
-Common Name (e.g. server FQDN or YOUR name) []:myserver.com
-Email Address []:tchen@myserver.com
-
-Please enter the following &#39;extra&#39; attributes
-to be sent with your certificate request
-A challenge password []:
-An optional company name []:</code></pre>
-<h3>为csr签名</h3>
-<p>首先要把刚才生成的RSA密钥的pass phrase移除：</p>
-<pre><code>$ sudo openssl rsa -in myserver.key.org -out myserver.key
-Enter pass phrase for myserver.key.org:
-writing RSA key</code></pre>
-<p>对CSR进行为期一年（365 days）的授权，生成证书：</p>
-<pre><code>$ sudo openssl x509 -req -days 365 -in myserver.csr -signkey myserver.key -out myserver.crt
-Signature ok
-subject=/C=CN/ST=Beijing/L=BJ/O=Coderena/CN=myserver.com/emailAddress=tchen@myserver.com
-Getting Private key</code></pre>
-<h3>保护证书</h3>
-<p>在当前目录下，把证书相关文件的权限改为只可自己读，防止他人使用或篡改。</p>
-<pre><code>$ sudo chmod 600 *</code></pre>
-<h2>设置nginx</h2>
-<p>接下来就是设置网站使用证书。一般我们的app server（如nodejs或gunicorn）都部署在nginx或apache后，所以SSL可以在用户端和web server端使能，这样免去了为每个app server支持SSL的麻烦。这样做在web server和app server之间存在一定的安全风险，但一般而言，web server / app server都在同一个受信任的网络内，所以问题不大。</p>
-<p>本文将讨论在nginx下配置SSL。假设在site-available下你有如下virtual host:</p>
-<pre><code>server {
-  listen 80;
-  server_name myserver.com;
-  set $current_root &quot;/home/dev/deployment/myserver&quot;;
-  access_log /var/log/nginx/myserver.access.log;
-  error_log /var/log/nginx/myserver.error.log;
-
-  location ~* ^/media/ {
-    autoindex off;
-    root $current_root;
-    expires max;
-  }
-
-  location ~* ^/static/ {
-    autoindex off;
-    root $current_root;
-    expires 30d;
-  }
-
-  location / {
-    proxy_pass http://localhost:7010;
-    include /etc/nginx/proxy_params;
-  }
-}</code></pre>
-<p>要对其使能https，首先，将所有http请求都跳转到https：</p>
-<pre><code>server {
- listen      80;
- server_name myserver.com;
- rewrite     ^ https://$server_name$request_uri? permanent;
-}</code></pre>
-<p>接着配置https:</p>
-<pre><code>server {
-  listen 443;
-  ssl on;
-  ssl_certificate /etc/nginx/ssl/myserver.crt;
-  ssl_certificate_key /etc/nginx/ssl/myserver.key;
-
-  server_name myserver.com;
-
-  set $current_root &quot;/home/dev/deployment/myserver&quot;;
-  client_max_body_size 32m;
-
-  access_log /var/log/nginx/myserver.access.log;
-  error_log /var/log/nginx/myserver.error.log;
-
-  location ~* ^/media/ {
-    autoindex off;
-    root $current_root;
-    expires max;
-  }
-
-
-  location ~* ^/static/ {
-    autoindex off;
-    root $current_root;
-    expires 30d;
-  }
-
-  location / {
-    proxy_pass http://localhost:7010;
-    include /etc/nginx/proxy_ssl_params;
-  }
-
-}</code></pre>
-<p>我们之前使用的proxy params在 <code>proxy_params</code> 文件中：</p>
-<pre><code>proxy_set_header Host $host;
-proxy_set_header X-Real-IP $remote_addr;
-proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</code></pre>
-<p>对于https，我们需要一个单独的 <code>proxy_ssl_params</code> 文件:</p>
-<pre><code>proxy_redirect off;
-proxy_set_header Host $host;
-proxy_set_header X-Real-IP $remote_addr;
-proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-proxy_set_header X-Forwarded-Proto https;</code></pre>
-<p>两者有一些差别。</p>
-<p>至此，整个证书的生成及使用就完成了，重启nginx后打开浏览器就可以尝试。注意由于我们的证书是在本地签名的，不属于一个合法的CA授权的证书，所以浏览器会报警，继续浏览即可。虽然浏览器认为其安全性存在问题，但整个访问过程都是通过SSL进行加密的。</p>
-<h2>补记</h2>
-<p>如果要购买被验证的证书，需要花费一大笔美刀（比如Symantac的单服务器任意子域名3年有效的证书要$5095）。这么贵是有原因的：</p>
-<ul>
-<li>CA需要在技术上做大笔投入来保护自己的data center不被攻破。（想想看上百万的证书私钥对黑客有多大的吸引力，就像银行的金库一样）</li>
-<li>CA往往对证书提供保险（上例中的证书有每年 $500, 000的保障，大致意思是如果证书被compromise，对于你的损失，我最高可以赔这些钱）。</li>
-<li>SSL certificate是身份和实力的象征，大企业和创业土豪们不差钱。</li>
-</ul>
-<p>当然，如果你付不起这么多钱，很想使用https保护你的用户（但根本不需要巨额的保险），可以购买那些二三线的CA的证书。几美金到几十美金一年就可以搞定。这就跟把传家宝藏在瑞士银行的保险柜里和放在本地农商行的保险柜一个道理，一分钱一分货。</p>
-<p>送上小宝照片一枚：</p>
-<p><img src="/assets/files/photos/baby20131110.jpg" alt="小宝"></p>
-]]></description>
-            <link>http://tchen.me/posts/2013-11-11-https.html</link>
-            <guid isPermaLink="true">
-                http://tchen.me/posts/2013-11-11-https.html            </guid>
-            <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
-            <pubDate>Sun, 10 Nov 2013 14:40:00 GMT</pubDate>
         </item>
     </channel>
 </rss>

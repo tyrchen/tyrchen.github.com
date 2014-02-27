@@ -174,6 +174,85 @@
   <div class='col-md-8 col-md-offset-2'>
     <div class='post-loop-content'>
       <h2 class='has-sub-header'>
+        <a href='/posts/2013-11-11-https.html'>使用HTTPS</a>
+      </h2>
+      <div class='post-loop-meta'>
+        <span>
+          <i class='icon-calendar'></i>
+          4个月前
+        </span>
+        <span class='hidden-mobile-ib tags'>
+          <i class='icon-tags'></i>
+          
+            <a href='/tags/guide.html'>guide</a>
+          
+            <a href='/tags/technology.html'>technology</a>
+          
+            <a href='/tags/nginx.html'>nginx</a>
+          
+        </span>
+        <span>
+          <i class='icon-time'></i>
+          10 分钟
+        </span>
+        <!--
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-comments'></i>
+            24
+          </a>
+        </span>
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-heart'></i>
+            15
+          </a>
+        </span>
+        -->
+      </div>
+      <p>如今随着网上交易规模不断扩大及API驱动的互联网的出现（如 <a href="https://strip.com">https://strip.com</a> ），互联网的安全性越来越受到重视。本文简单讲述如何将你的nginx配置成支持https的web server。当然，理论上一个合格的https server需要从CA那里获得正式的SSL certificate，但如何购买SSL certificate不在本文讨论之列。本文仅从技术上讨论如何在你的服务器上使能https。</p>
+
+      <!--
+      <div class='under-post'>
+        <div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-weibo'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+      </div>
+      <br/>
+      -->
+      <div class='slogan-buttons'>
+          <a class='btn btn-primary btn-cta btn-lg animated-when-hover' data-animation-type="swing" href='/posts/2013-11-11-https.html'>
+              继续阅读 ->
+          </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+        <div class='row post-loop'>
+  <!--
+  <div class='col-md-2 col-md-offset-1'>
+    <div class='post-loop-author-info'>
+      <div class='author-avatar'>
+        <img alt='' src='/assets/images/tyr.png'>
+      </div>
+      <div class='author-meta'>
+        <h4 class='author-name'>Tyr Chen</h4>
+        <i class='icon-calendar'></i>
+        4个月前
+      </div>
+    </div>
+  </div>
+  -->
+  <div class='col-md-8 col-md-offset-2'>
+    <div class='post-loop-content'>
+      <h2 class='has-sub-header'>
         <a href='/posts/2013-11-03-hatch-experiment.html'>Hatch: 实验</a>
       </h2>
       <div class='post-loop-meta'>
@@ -581,7 +660,7 @@ col.findOne {}, (err, doc) -&gt;
       <div class='author-meta'>
         <h4 class='author-name'>Tyr Chen</h4>
         <i class='icon-calendar'></i>
-        7个月前
+        8个月前
       </div>
     </div>
   </div>
@@ -594,7 +673,7 @@ col.findOne {}, (err, doc) -&gt;
       <div class='post-loop-meta'>
         <span>
           <i class='icon-calendar'></i>
-          7个月前
+          8个月前
         </span>
         <span class='hidden-mobile-ib tags'>
           <i class='icon-tags'></i>
@@ -883,86 +962,6 @@ int f(void) {
       -->
       <div class='slogan-buttons'>
           <a class='btn btn-primary btn-cta btn-lg animated-when-hover' data-animation-type="swing" href='/posts/2013-06-12-use-makefile-to-automate-deployment.html'>
-              继续阅读 ->
-          </a>
-      </div>
-    </div>
-  </div>
-</div>
-
-    
-        <div class='row post-loop'>
-  <!--
-  <div class='col-md-2 col-md-offset-1'>
-    <div class='post-loop-author-info'>
-      <div class='author-avatar'>
-        <img alt='' src='/assets/images/tyr.png'>
-      </div>
-      <div class='author-meta'>
-        <h4 class='author-name'>Tyr Chen</h4>
-        <i class='icon-calendar'></i>
-        9个月前
-      </div>
-    </div>
-  </div>
-  -->
-  <div class='col-md-8 col-md-offset-2'>
-    <div class='post-loop-content'>
-      <h2 class='has-sub-header'>
-        <a href='/posts/2013-06-10-use-scrapyd-to-serve-scrapy-projects.html'>用scrapyd来提供crawler服务</a>
-      </h2>
-      <div class='post-loop-meta'>
-        <span>
-          <i class='icon-calendar'></i>
-          9个月前
-        </span>
-        <span class='hidden-mobile-ib tags'>
-          <i class='icon-tags'></i>
-          
-            <a href='/tags/scrapy.html'>scrapy</a>
-          
-            <a href='/tags/crawler.html'>crawler</a>
-          
-            <a href='/tags/technology.html'>technology</a>
-          
-        </span>
-        <span>
-          <i class='icon-time'></i>
-          6 分钟
-        </span>
-        <!--
-        <span class='hidden-mobile-ib'>
-          <a href='#'>
-            <i class='icon-comments'></i>
-            24
-          </a>
-        </span>
-        <span class='hidden-mobile-ib'>
-          <a href='#'>
-            <i class='icon-heart'></i>
-            15
-          </a>
-        </span>
-        -->
-      </div>
-      <p>这是一篇即兴的短文，主要是为了记录我用 <code>scrapyd</code> 的心得。</p>
-<p>之前做数据抓取，总是一个scrapy project做一个deploy，很不方便，一个一个更新起来也很麻烦，总觉得能有更好的方法去处理。今早看了看scrapyd，觉得这就是我想要的东西。</p>
-
-      <!--
-      <div class='under-post'>
-        <div class='post-social text-center'>
-  <a class='social-link' href='#'>
-    <i class='icon-weibo'></i>
-  </a>
-  <a class='social-link' href='#'>
-    <i class='icon-envelope'></i>
-  </a>
-</div>
-      </div>
-      <br/>
-      -->
-      <div class='slogan-buttons'>
-          <a class='btn btn-primary btn-cta btn-lg animated-when-hover' data-animation-type="swing" href='/posts/2013-06-10-use-scrapyd-to-serve-scrapy-projects.html'>
               继续阅读 ->
           </a>
       </div>
