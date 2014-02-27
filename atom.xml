@@ -3,7 +3,7 @@
         <title>觅珠人</title>
 		<link href="http://tchen.me/atom.xml" rel="self"/>
 		<link href="http://tchen.me"/>
-        <updated>2014-02-27T23:40:03.589Z</updated>
+        <updated>2014-02-27T23:55:54.011Z</updated>
 		<id>http://tchen.me</id>
         <author>
 			<name>Tyr Chen</name>
@@ -12,21 +12,21 @@
 
         
         	<entry>
-            	<title>闲扯code review</title>
-				<link href="http://tchen.me/posts/2014-02-24-codereview.html"/>
-                <updated>2014-02-24T14:00:00.000Z</updated>
-				<id>http://tchen.me/posts/2014-02-24-codereview.html</id>
-                <content type="html">&lt;p&gt;如果说git终于让工程师在合作撰写代码的过程中找回了丢失已久的乐趣，那么，code review的过程还是让人相当地抓狂。我用过的所有code review的工具，没有一款能让code review的过程轻松起来。&lt;/p&gt;
+            	<title>程序员混日子不完全手册</title>
+				<link href="http://tchen.me/posts/2014-02-28-programmer-life.html"/>
+                <updated>2014-02-28T00:00:00.000Z</updated>
+				<id>http://tchen.me/posts/2014-02-28-programmer-life.html</id>
+                <content type="html">&lt;p&gt;昨天收到同事转发的dtrace作者解释关于『为何dtrace在x86上能支持function boundary trace，而mips不行』的一封邮件点燃了我的战斗激情，写了段程序分别在mips，arm和x86上编了下求证。本想就此写篇微信文章，但琢磨一下还是算了，一来昨天已有承诺，二来这东西放在微信上估计打开率为0。&lt;/p&gt;
+&lt;p&gt;前天有读者希望我多写点职场的建议，我深感惶恐。思来想去，怎么写都像在熬鸡汤，干脆换个思路，教教大家如何混日子吧。&lt;/p&gt;
 </content>
             </entry>
         
         	<entry>
             	<title>闲扯code review</title>
-				<link href="http://tchen.me/posts/2014-02-28-programmer-life.html"/>
+				<link href="http://tchen.me/posts/2014-02-24-codereview.html"/>
                 <updated>2014-02-24T14:00:00.000Z</updated>
-				<id>http://tchen.me/posts/2014-02-28-programmer-life.html</id>
-                <content type="html">&lt;p&gt;昨天收到同事转发的dtrace作者解释关于『为何dtrace在x86上能支持function boundary trace，而mips不行』的一封邮件点燃了我的战斗激情，写了段程序分别在mips，arm和x86上编了下求证。本想就此写篇微信文章，但琢磨一下还是算了，一来昨天已有承诺，二来这东西放在微信上估计打开率为0。&lt;/p&gt;
-&lt;p&gt;前天有读者希望我多写点职场的建议，我深感惶恐。思来想去，怎么写都像在熬鸡汤，干脆换个思路，教教大家如何混日子吧。&lt;/p&gt;
+				<id>http://tchen.me/posts/2014-02-24-codereview.html</id>
+                <content type="html">&lt;p&gt;如果说git终于让工程师在合作撰写代码的过程中找回了丢失已久的乐趣，那么，code review的过程还是让人相当地抓狂。我用过的所有code review的工具，没有一款能让code review的过程轻松起来。&lt;/p&gt;
 </content>
             </entry>
         

@@ -5,62 +5,12 @@
         <description><![CDATA[本博客提供我个人的想法，创意，经验，心得。你不必认同博主观点。]]></description>
         <link>http://tchen.me</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Thu, 27 Feb 2014 23:40:53 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 27 Feb 2014 23:56:40 GMT</lastBuildDate>
         <atom:link href="http://tchen.me/rss.xml" rel="self" type="application/rss+xml"/>
         <author><![CDATA[Tyr Chen]]></author>
-        <pubDate>Thu, 27 Feb 2014 23:40:03 GMT</pubDate>
+        <pubDate>Thu, 27 Feb 2014 23:55:54 GMT</pubDate>
         <item>
-            <title><![CDATA[闲扯code review]]></title>
-            <description><![CDATA[<p>如果说git终于让工程师在合作撰写代码的过程中找回了丢失已久的乐趣，那么，code review的过程还是让人相当地抓狂。我用过的所有code review的工具，没有一款能让code review的过程轻松起来。</p>
-<!--more-->
-
-<p>公司内部使用的工具自不必说，那是反人类的极致体验。</p>
-<p>reviewboard和gerrit不那么反人类，但submit review和review的流程也不太方便，而且体验并不一致。submit review可以在命令行下方便地完成，但review需要点开邮件通知里的链接才能查看。如果你一直在代码上工作，而不查邮件，你可能会miss掉一些review。</p>
-<p>不过，这些体验上的问题都是细枝末节。目前已有的code review工具的最大问题是：<strong>它不是写给程序员用的！</strong>慢着，这话听着好耳熟？没错，Linux Tolvalds在撰写git的时候，就说svn最大的问题是这玩意儿不是写给程序员用的。</p>
-<p>如果要我设计一款code review工具，它的使用体验会类似这样：</p>
-<h2>Submit code review</h2>
-<pre><code>$ git commit -a
-$ git push</code></pre>
-<p>Done! 不需要更多的流程了。</p>
-<p>这里面隐含了如下步骤：</p>
-<ul>
-<li>git commit时会弹出一个form，所有项目都正确填写才能提交。</li>
-<li>git push时会将diff push到review server上，review server会根据修改了那些文件确定出reviewers，然后从中round robin选两到三人进行review。</li>
-</ul>
-<p>与之最接近的体验是gerrit:</p>
-<pre><code>$ git commit -a
-$ git push origin HEAD:refs/for/master</code></pre>
-<p>但，<code>HEAD:refs/for/master</code>究竟是什么，我想没多少人能搞懂。如果配置了一个repo必须要经过code review后才能push到服务器，那么，为何不直接把<code>git push</code>用做review的命令？</p>
-<h2>Review the code</h2>
-<p>蒂尔原则：code review应该和repo紧密相连，而不是那该死的邮件。</p>
-<p>当reviewer在同样的repo下运行<code>git status</code>时，会有如下提示：</p>
-<pre><code>$ git status
-# On branch master
-nothing to commit, working directory clean
-You have 2 reviews:
-  6ae24fe: PR12345 - can not connect to server, by Tyr Chen
-  723e9e2: PR12346 - Tracking feature 123: add queue support, by Tyr Chen
-You must run &quot;git review &lt;review-id&gt;&quot; to do review.</code></pre>
-<p>这个提示很恼人，一般git用户都会尽快完成review以便让<code>git status</code>的输出看上去干净些。如果review长时间得不到处理，其颜色每隔4个小时变红一些，直至鲜红。</p>
-<p>Reviewer可以运行<code>git review</code>进行代码review：</p>
-<pre><code>$ git review 6ae24fe</code></pre>
-<p>根据配置，这条命令会自动调出对应的代码比较工具，比如说<code>vimdiff</code>。如果没有指定，则会输出标准的<code>git diff</code>。</p>
-<p>代码阅读完毕，可以使用：</p>
-<pre><code>$ git review 6ae24fe --approve|reject</code></pre>
-<p>这会弹出一个form，填写review的意见。</p>
-<p>被round robin出的2-3个reviewers必须全部approve，这个review才算通过。如果某个reviewer在72小时内还没有review代码（可能休假去了），则相应的review自动被approve，review的注释是：&quot;review skipped automatically due to XXX not-responding&quot;。这就像信用记录，对于一个程序员来说，如果他review别人的代码总出现这样的日志，自己脸上也挂不住。</p>
-<p>此外，review服务器还记录和索引每个review，方便日后检索。以后如果哪个问题是由某次不正确的修改导致的，那么能够很快查询到是谁批准了这段代码。</p>
-<p>最后，review的数据最好能做visualization，每个程序员都能看到他的历史review图表（这个可以做得非常有意思），也可以看到各种各样的统计信息（比如说团队里提交代码的排行榜，review通过率排行榜，review大牛排行榜等等），让冷冰冰的code commit和code review活泼起来。</p>
-<p>投票：如果有这样一个code review工具，你会试用么？回复即可。:)</p>
-]]></description>
-            <link>http://tchen.me/posts/2014-02-24-codereview.html</link>
-            <guid isPermaLink="true">
-                http://tchen.me/posts/2014-02-24-codereview.html            </guid>
-            <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
-            <pubDate>Mon, 24 Feb 2014 14:00:00 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[闲扯code review]]></title>
+            <title><![CDATA[程序员混日子不完全手册]]></title>
             <description><![CDATA[<p>昨天收到同事转发的dtrace作者解释关于『为何dtrace在x86上能支持function boundary trace，而mips不行』的一封邮件点燃了我的战斗激情，写了段程序分别在mips，arm和x86上编了下求证。本想就此写篇微信文章，但琢磨一下还是算了，一来昨天已有承诺，二来这东西放在微信上估计打开率为0。</p>
 <p>前天有读者希望我多写点职场的建议，我深感惶恐。思来想去，怎么写都像在熬鸡汤，干脆换个思路，教教大家如何混日子吧。</p>
 <!--more-->
@@ -136,6 +86,56 @@ You must run &quot;git review &lt;review-id&gt;&quot; to do review.</code></pre>
             <link>http://tchen.me/posts/2014-02-28-programmer-life.html</link>
             <guid isPermaLink="true">
                 http://tchen.me/posts/2014-02-28-programmer-life.html            </guid>
+            <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
+            <pubDate>Fri, 28 Feb 2014 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[闲扯code review]]></title>
+            <description><![CDATA[<p>如果说git终于让工程师在合作撰写代码的过程中找回了丢失已久的乐趣，那么，code review的过程还是让人相当地抓狂。我用过的所有code review的工具，没有一款能让code review的过程轻松起来。</p>
+<!--more-->
+
+<p>公司内部使用的工具自不必说，那是反人类的极致体验。</p>
+<p>reviewboard和gerrit不那么反人类，但submit review和review的流程也不太方便，而且体验并不一致。submit review可以在命令行下方便地完成，但review需要点开邮件通知里的链接才能查看。如果你一直在代码上工作，而不查邮件，你可能会miss掉一些review。</p>
+<p>不过，这些体验上的问题都是细枝末节。目前已有的code review工具的最大问题是：<strong>它不是写给程序员用的！</strong>慢着，这话听着好耳熟？没错，Linux Tolvalds在撰写git的时候，就说svn最大的问题是这玩意儿不是写给程序员用的。</p>
+<p>如果要我设计一款code review工具，它的使用体验会类似这样：</p>
+<h2>Submit code review</h2>
+<pre><code>$ git commit -a
+$ git push</code></pre>
+<p>Done! 不需要更多的流程了。</p>
+<p>这里面隐含了如下步骤：</p>
+<ul>
+<li>git commit时会弹出一个form，所有项目都正确填写才能提交。</li>
+<li>git push时会将diff push到review server上，review server会根据修改了那些文件确定出reviewers，然后从中round robin选两到三人进行review。</li>
+</ul>
+<p>与之最接近的体验是gerrit:</p>
+<pre><code>$ git commit -a
+$ git push origin HEAD:refs/for/master</code></pre>
+<p>但，<code>HEAD:refs/for/master</code>究竟是什么，我想没多少人能搞懂。如果配置了一个repo必须要经过code review后才能push到服务器，那么，为何不直接把<code>git push</code>用做review的命令？</p>
+<h2>Review the code</h2>
+<p>蒂尔原则：code review应该和repo紧密相连，而不是那该死的邮件。</p>
+<p>当reviewer在同样的repo下运行<code>git status</code>时，会有如下提示：</p>
+<pre><code>$ git status
+# On branch master
+nothing to commit, working directory clean
+You have 2 reviews:
+  6ae24fe: PR12345 - can not connect to server, by Tyr Chen
+  723e9e2: PR12346 - Tracking feature 123: add queue support, by Tyr Chen
+You must run &quot;git review &lt;review-id&gt;&quot; to do review.</code></pre>
+<p>这个提示很恼人，一般git用户都会尽快完成review以便让<code>git status</code>的输出看上去干净些。如果review长时间得不到处理，其颜色每隔4个小时变红一些，直至鲜红。</p>
+<p>Reviewer可以运行<code>git review</code>进行代码review：</p>
+<pre><code>$ git review 6ae24fe</code></pre>
+<p>根据配置，这条命令会自动调出对应的代码比较工具，比如说<code>vimdiff</code>。如果没有指定，则会输出标准的<code>git diff</code>。</p>
+<p>代码阅读完毕，可以使用：</p>
+<pre><code>$ git review 6ae24fe --approve|reject</code></pre>
+<p>这会弹出一个form，填写review的意见。</p>
+<p>被round robin出的2-3个reviewers必须全部approve，这个review才算通过。如果某个reviewer在72小时内还没有review代码（可能休假去了），则相应的review自动被approve，review的注释是：&quot;review skipped automatically due to XXX not-responding&quot;。这就像信用记录，对于一个程序员来说，如果他review别人的代码总出现这样的日志，自己脸上也挂不住。</p>
+<p>此外，review服务器还记录和索引每个review，方便日后检索。以后如果哪个问题是由某次不正确的修改导致的，那么能够很快查询到是谁批准了这段代码。</p>
+<p>最后，review的数据最好能做visualization，每个程序员都能看到他的历史review图表（这个可以做得非常有意思），也可以看到各种各样的统计信息（比如说团队里提交代码的排行榜，review通过率排行榜，review大牛排行榜等等），让冷冰冰的code commit和code review活泼起来。</p>
+<p>投票：如果有这样一个code review工具，你会试用么？回复即可。:)</p>
+]]></description>
+            <link>http://tchen.me/posts/2014-02-24-codereview.html</link>
+            <guid isPermaLink="true">
+                http://tchen.me/posts/2014-02-24-codereview.html            </guid>
             <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
             <pubDate>Mon, 24 Feb 2014 14:00:00 GMT</pubDate>
         </item>
