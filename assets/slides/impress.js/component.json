@@ -1,0 +1,8 @@
+{
+  "name": "impress.js",
+  "version": "0.5.3",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bartaz/impress.js.git"
+  }
+}

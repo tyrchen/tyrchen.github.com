@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Python &amp; Django - </title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/assets/slides/reveal.js/css/reveal.min.css">
+    <link rel="stylesheet" href="/assets/slides/reveal.js/css/theme/default.css" id="theme">
+    <link href="http://fonts.googleapis.com/css?family=Arbutus+Slab|Josefin+Slab:400,700|Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/slides/code/github.css">
+    <link rel="stylesheet" href="/assets/slides/custom.css">
+  </head>
+  <body class="reveal">
+    <div class="reveal">
+      <div class="slides"><section>
+<h1>Python &amp; Django</h1>
+<h3>Tyr Chen</h3>
+<p> 2013-07-10</p>
+</section>
+<!--more-->
+
+
+<section>
+<h2>What is it about?</h2>
+<ul>
+<li>Python Basics</li>
+<li>Metaprogramming</li>
+<li>Django Basics</li>
+<li>Misc</li>
+</ul>
+</section>
+<section>
+<h1>Python Basics</h1>
+</section>
+<section>
+<p> <section></p>
+<h2>Data Structure</h2>
+</section>
+<section>
+<h2>integer</h2>
+<pre><code> <span class="preprocessor"># basic</span>
+ <span class="keyword">In</span> [<span class="number">1</span>]: a = <span class="number">123456789123456789123456789</span> <span class="preprocessor"># any big number</span>
+
+ <span class="keyword">In</span> [<span class="number">287</span>]: dir(a)
+ Out[<span class="number">287</span>]:
+ [<span class="comment">'__abs__',</span>
+  <span class="comment">'__add__',</span>
+  <span class="comment">'__and__',</span>
+  <span class="comment">'__class__',</span>
+  <span class="comment">'__cmp__',</span>
+  <span class="comment">'__coerce__',</span>
+  <span class="comment">'__delattr__',</span>
+  <span class="comment">'__div__',</span>
+  <span class="comment">'__divmod__',</span>
+  <span class="comment">'__doc__',</span>
+  <span class="comment">'__float__',</span>
+  <span class="comment">'__floordiv__',</span>
+  <span class="comment">'__format__',</span>
+  <span class="comment">'__getattribute__',</span>
+  <span class="comment">'__getnewargs__',</span>
+  <span class="comment">'__hash__',</span>
+  <span class="comment">'__hex__',</span>
+  <span class="comment">'__index__',</span>
+  <span class="comment">'__init__',</span>
+  <span class="comment">'__int__',</span>
+  <span class="comment">'__invert__',</span>
+  <span class="comment">'__long__',</span>
+  <span class="comment">'__lshift__',</span>
+  <span class="comment">'__mod__',</span>
+  <span class="comment">'__mul__',</span>
+  <span class="comment">'__neg__',</span>
+  <span class="comment">'__new__',</span>
+  <span class="comment">'__nonzero__',</span>
+  <span class="comment">'__oct__',</span>
+  <span class="comment">'__or__',</span>
+  <span class="comment">'__pos__',</span>
+  <span class="comment">'__pow__',</span>
+  <span class="comment">'__radd__',</span>
+  <span class="comment">'__rand__',</span>
+  <span class="comment">'__rdiv__',</span>
+  <span class="comment">'__rdivmod__',</span>
+  <span class="comment">'__reduce__',</span>
+  <span class="comment">'__reduce_ex__',</span>
+  <span class="comment">'__repr__',</span>
+  <span class="comment">'__rfloordiv__',</span>
+  <span class="comment">'__rlshift__',</span>
+  <span class="comment">'__rmod__',</span>
+  <span class="comment">'__rmul__',</span>
+  <span class="comment">'__ror__',</span>
+  <span class="comment">'__rpow__',</span>
+  <span class="comment">'__rrshift__',</span>
+  <span class="comment">'__rshift__',</span>
+  <span class="comment">'__rsub__',</span>
+  <span class="comment">'__rtruediv__',</span>
+  <span class="comment">'__rxor__',</span>
+  <span class="comment">'__setattr__',</span>
+  <span class="comment">'__sizeof__',</span>
+  <span class="comment">'__str__',</span>
+  <span class="comment">'__sub__',</span>
+  <span class="comment">'__subclasshook__',</span>
+  <span class="comment">'__truediv__',</span>
+  <span class="comment">'__trunc__',</span>
+  <span class="comment">'__xor__',</span>
+  <span class="comment">'bit_length',</span>
+  <span class="comment">'conjugate',</span>
+  <span class="comment">'denominator',</span>
+  <span class="comment">'imag',</span>
+  <span class="comment">'numerator',</span>
+  <span class="comment">'real']</span>
+
+ <span class="keyword">In</span> [<span class="number">2</span>]: pi = <span class="number">3.1415926</span></code></pre>
+</section>
+<section>
+<h2>list</h2>
+<pre><code> In <span class="matrix">[<span class="number">27</span>]</span>: l = <span class="matrix">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span>
+
+ In <span class="matrix">[<span class="number">28</span>]</span>: l
+ Out<span class="matrix">[<span class="number">28</span>]</span>: <span class="matrix">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span>
+
+ In <span class="matrix">[<span class="number">273</span>]</span>: len(l)
+ Out<span class="matrix">[<span class="number">273</span>]</span>: <span class="number">5</span>
+
+ In <span class="matrix">[<span class="number">274</span>]</span>: <span class="transposed_variable">l.</span>append(<span class="number">6</span>)
+
+ In <span class="matrix">[<span class="number">275</span>]</span>: l
+ Out<span class="matrix">[<span class="number">275</span>]</span>: <span class="matrix">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</span>
+
+ In <span class="matrix">[<span class="number">276</span>]</span>: l<span class="matrix">[<span class="number">3</span>]</span>
+ Out<span class="matrix">[<span class="number">276</span>]</span>: <span class="number">4</span>
+
+ In <span class="matrix">[<span class="number">277</span>]</span>: map(lambda x: x*<span class="number">2</span>, l)
+ Out<span class="matrix">[<span class="number">277</span>]</span>: <span class="matrix">[<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">10</span>, <span class="number">12</span>]</span>
+
+ In <span class="matrix">[<span class="number">279</span>]</span>: reduce(lambda x,y: x+y, l)
+ Out<span class="matrix">[<span class="number">279</span>]</span>: <span class="number">21</span></code></pre>
+</section>
+<section>
+<h2>dict</h2>
+<pre><code> In <span class="matrix">[<span class="number">29</span>]</span>: point = {<span class="string">"x"</span>: <span class="number">10</span>, <span class="string">"y"</span>: -<span class="number">20</span>}
+
+ In <span class="matrix">[<span class="number">30</span>]</span>: point<span class="matrix">[<span class="string">"x"</span>]</span>
+ Out<span class="matrix">[<span class="number">30</span>]</span>: <span class="number">10</span>
+
+ In <span class="matrix">[<span class="number">31</span>]</span>: point<span class="matrix">[<span class="string">"y"</span>]</span>
+ Out<span class="matrix">[<span class="number">31</span>]</span>: -<span class="number">20</span>
+
+ In <span class="matrix">[<span class="number">281</span>]</span>: <span class="transposed_variable">point.</span>keys()
+ Out<span class="matrix">[<span class="number">281</span>]</span>: <span class="matrix">[<span class="string">'y'</span>, <span class="string">'x'</span>]</span>
+
+ In <span class="matrix">[<span class="number">282</span>]</span>: <span class="transposed_variable">point.</span>has_key(<span class="string">'x'</span>)
+ Out<span class="matrix">[<span class="number">282</span>]</span>: True
+
+ In <span class="matrix">[<span class="number">283</span>]</span>: <span class="transposed_variable">point.</span>items()
+ Out<span class="matrix">[<span class="number">283</span>]</span>: <span class="matrix">[(<span class="string">'y'</span>, -<span class="number">20</span>), (<span class="string">'x'</span>, <span class="number">10</span>)]</span>
+
+ In <span class="matrix">[<span class="number">32</span>]</span>: s = <span class="string">"This is a string"</span>
+
+ In <span class="matrix">[<span class="number">33</span>]</span>: <span class="transposed_variable">s.</span>split(<span class="string">' '</span>)
+ Out<span class="matrix">[<span class="number">33</span>]</span>: <span class="matrix">[<span class="string">'This'</span>, <span class="string">'is'</span>, <span class="string">'a'</span>, <span class="string">'string'</span>]</span>
+
+ In <span class="matrix">[<span class="number">36</span>]</span>: <span class="string">' '</span>.join(<span class="matrix">[<span class="string">'This'</span>, <span class="string">'is'</span>, <span class="string">'a'</span>, <span class="string">'string'</span>]</span>)
+ Out<span class="matrix">[<span class="number">36</span>]</span>: <span class="string">'This is a string'</span></code></pre>
+<p> </section></p>
+</section>
+<section>
+ <section>
+
+<h2>Function and control flow</h2>
+</section>
+<section>
+<h2>Function Basics</h2>
+<pre><code> In [<span class="number">3</span>]: <span class="function"><span class="keyword">def</span> <span class="title">double</span><span class="params">(x)</span>:</span>
+    ...:     <span class="keyword">return</span> x*<span class="number">2</span>
+    ...:
+
+ In [<span class="number">4</span>]: double(pi)
+ Out[<span class="number">4</span>]: <span class="number">6.2831852</span>
+
+ In [<span class="number">11</span>]: <span class="function"><span class="keyword">def</span> <span class="title">max</span><span class="params">(a, b)</span>:</span>
+    ....:     <span class="keyword">return</span> a <span class="keyword">if</span> a &gt; b <span class="keyword">else</span> b <span class="comment"># inline if/else</span>
+    ....:
+
+ In [<span class="number">15</span>]: <span class="function"><span class="keyword">def</span> <span class="title">min</span><span class="params">(a, b)</span>:</span>
+    ....:     <span class="keyword">if</span> a &lt; b: <span class="comment"># normal if else</span>
+    ....:         <span class="keyword">return</span> a
+    ....:     <span class="keyword">else</span>:
+    ....:         <span class="keyword">return</span> b
+    ....:
+
+ In [<span class="number">12</span>]: <span class="function"><span class="keyword">def</span> <span class="title">avg</span><span class="params">(l)</span>:</span>
+    ....:     total = sum(l) <span class="comment"># function can be used before getting defined</span>
+    ....:     <span class="keyword">return</span> total/len(l)
+    ....:
+
+ In [<span class="number">13</span>]: <span class="function"><span class="keyword">def</span> <span class="title">sum</span><span class="params">(l)</span>:</span>
+    ....:     total = <span class="number">0</span>
+    ....:     <span class="keyword">for</span> item <span class="keyword">in</span> l: <span class="comment"># foreach style forloop</span>
+    ....:         total += item
+    ....:     <span class="keyword">return</span> total
+    ....:
+
+ In [<span class="number">14</span>]: avg([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])
+ Out[<span class="number">14</span>]: <span class="number">2</span>
+
+ In [<span class="number">16</span>]: <span class="function"><span class="keyword">def</span> <span class="title">triple</span><span class="params">(l)</span>:</span>
+    ....:     <span class="keyword">return</span> map(<span class="keyword">lambda</span> x: x*<span class="number">3</span>, l) <span class="comment"># anonymous function </span>
+    ....:
+
+ In [<span class="number">17</span>]: triple([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])
+ Out[<span class="number">17</span>]: [<span class="number">3</span>, <span class="number">6</span>, <span class="number">9</span>]</code></pre>
+</section>
+<section>
+<h2>Higher Order Function</h2>
+<pre><code> In [<span class="number">22</span>]: <span class="function"><span class="keyword">def</span> <span class="title">multiple</span><span class="params">(y)</span>:</span>  <span class="comment"># function can return function (higher order function)</span>
+    ....:     <span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(x)</span>:</span>
+    ....:         <span class="keyword">return</span> x * y
+    ....:     <span class="keyword">return</span> f
+    ....:
+
+ In [<span class="number">23</span>]: double = multiple(<span class="number">2</span>)
+
+ In [<span class="number">24</span>]: double(<span class="number">10</span>)
+ Out[<span class="number">24</span>]: <span class="number">20</span>
+
+ In [<span class="number">25</span>]: triple = multiple(<span class="number">3</span>)
+
+ In [<span class="number">26</span>]: triple(<span class="number">10</span>)
+ Out[<span class="number">26</span>]: <span class="number">30</span></code></pre>
+</section>
+<section>
+<h2>Generator</h2>
+<pre><code> <span class="keyword">In</span> [<span class="number">40</span>]: def fabonacci(): <span class="preprocessor"># generator</span>
+    ....:     a, b = <span class="number">1</span>, <span class="number">2</span>
+    ....:     while True:
+    ....:         a, b = b, a+b
+    ....:         yield b
+    ....:
+
+ <span class="keyword">In</span> [<span class="number">56</span>]: f = fabonacci()
+
+ <span class="keyword">In</span> [<span class="number">57</span>]: f<span class="preprocessor">.next</span>()
+ <span class="keyword">Out</span>[<span class="number">57</span>]: <span class="number">3</span>
+
+ <span class="keyword">In</span> [<span class="number">58</span>]: f<span class="preprocessor">.next</span>()
+ <span class="keyword">Out</span>[<span class="number">58</span>]: <span class="number">5</span>
+
+ <span class="keyword">In</span> [<span class="number">59</span>]: f<span class="preprocessor">.next</span>()
+ <span class="keyword">Out</span>[<span class="number">59</span>]: <span class="number">8</span>
+
+ <span class="keyword">In</span> [<span class="number">60</span>]: f<span class="preprocessor">.next</span>()
+ <span class="keyword">Out</span>[<span class="number">60</span>]: <span class="number">13</span>
+
+ <span class="keyword">In</span> [<span class="number">61</span>]: f<span class="preprocessor">.next</span>()
+ <span class="keyword">Out</span>[<span class="number">61</span>]: <span class="number">21</span></code></pre>
+<p> </section></p>
+</section>
+<section>
+ <section>
+
+<h2>OOP</h2>
+</section>
+<section>
+<h2>OOP Basics</h2>
+<pre><code> In [<span class="number">8</span>]: <span class="class"><span class="keyword">class</span> <span class="title">Circle</span>:</span>
+ ....:       <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, r)</span>:</span>
+ ....:           self.r = r
+ ....:       <span class="function"><span class="keyword">def</span> <span class="title">area</span><span class="params">(self)</span>:</span>
+ ....:           <span class="keyword">return</span> <span class="number">3.14159</span> * self.r * self.r
+ ....:
+
+ In [<span class="number">9</span>]: c = Circle(<span class="number">10</span>)
+
+ In [<span class="number">10</span>]: c.area()
+ Out[<span class="number">10</span>]: <span class="number">314.159</span></code></pre>
+</section>
+<section>
+<h2>Operator override</h2>
+<pre><code> In [<span class="number">65</span>]: <span class="class"><span class="keyword">class</span> <span class="title">Iterable</span>:</span> <span class="comment"># make object work like a list</span>
+    ....:     <span class="function"><span class="keyword">def</span> <span class="title">__iter__</span><span class="params">(self)</span>:</span>
+    ....:         <span class="keyword">return</span> self
+    ....:     <span class="function"><span class="keyword">def</span> <span class="title">next</span><span class="params">(self)</span>:</span>
+    ....:         <span class="keyword">if</span> self.has_next():
+    ....:             <span class="keyword">return</span> self.next_value()
+    ....:         <span class="keyword">else</span>:
+    ....:             <span class="keyword">raise</span> StopIteration
+    ....:     <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, items)</span>:</span>
+    ....:         self.items = items
+    ....:         self.cur = <span class="number">0</span>
+    ....:     <span class="function"><span class="keyword">def</span> <span class="title">has_next</span><span class="params">(self)</span>:</span>
+    ....:         <span class="keyword">return</span> self.cur &lt; len(self.items)
+    ....:     <span class="function"><span class="keyword">def</span> <span class="title">next_value</span><span class="params">(self)</span>:</span>
+    ....:         value = self.items[self.cur]
+    ....:         self.cur += <span class="number">1</span>
+    ....:         <span class="keyword">return</span> value
+
+ In [<span class="number">67</span>]: i = Iterable([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])
+
+ In [<span class="number">68</span>]: <span class="keyword">for</span> item <span class="keyword">in</span> i:
+    ....:     <span class="keyword">print</span> item
+    ....:
+ <span class="number">1</span>
+ <span class="number">2</span>
+ <span class="number">3</span>
+ <span class="number">4</span>       
+
+ In [<span class="number">69</span>]: <span class="class"><span class="keyword">class</span> <span class="title">Indexable</span>:</span>
+    ....:     <span class="function"><span class="keyword">def</span> <span class="title">__getitem__</span><span class="params">(self, index)</span>:</span>
+    ....:         <span class="keyword">return</span> index * <span class="number">2</span>
+    ....:
+
+ In [<span class="number">70</span>]: i = Indexable()
+
+ In [<span class="number">71</span>]: i[<span class="number">3</span>]
+ Out[<span class="number">71</span>]: <span class="number">6</span>
+
+ In [<span class="number">72</span>]: i[<span class="string">"Hello"</span>]
+ Out[<span class="number">72</span>]: <span class="string">'HelloHello'</span></code></pre>
+</section>
+<section>
+<h2>Inheritance</h2>
+<p> Python do not stop you from multiple inheritance, but single inheritance is recommended</p>
+<pre><code> In [<span class="number">73</span>]: <span class="class"><span class="keyword">class</span> <span class="title">A</span>(<span class="title">Indexable</span>, <span class="title">Iterable</span>): # <span class="title">here</span> <span class="title">Indexable</span> <span class="title">is</span> <span class="title">a</span> <span class="title">mixin</span>, <span class="title">actually</span>
+    ....:     <span class="title">pass</span>
+    ....:
+
+ <span class="title">In</span> [74]: <span class="title">a</span> = <span class="title">A</span>([1,2,3,4])
+
+ <span class="title">In</span> [75]: <span class="title">a</span>[2]
+ <span class="title">Out</span>[75]: 4
+
+ <span class="title">In</span> [76]: <span class="title">map</span>(<span class="title">lambda</span> <span class="title">x</span>:<span class="title">x</span>, <span class="title">a</span>)
+ <span class="title">Out</span>[76]: [1, 2, 3, 4]</span></code></pre>
+<p> </section></p>
+</section>
+<section>
+ <section>
+
+<h2>Metaprogramming</h2>
+</section>
+<section>
+<p> <strong>What is class?</strong></p>
+</section>
+<section>
+<p> <strong>Class is the template of creating objects</strong></p>
+<p> <br/>
+ which have different states but share with same structure and behavior</p>
+</section>
+<section>
+<h2>old and new style classes</h2>
+<pre><code> # old style <span class="class"><span class="keyword">class</span>
+ <span class="title">In</span> [1]: <span class="title">class</span> <span class="title">X</span>:
+    ...:     <span class="title">pass</span>
+
+ <span class="title">In</span> [2]:
+
+ <span class="title">In</span> [2]: <span class="title">x</span> = <span class="title">X</span>()
+
+ <span class="title">In</span> [3]: <span class="title">type</span>(<span class="title">x</span>)
+ <span class="title">Out</span>[3]: <span class="title">instance</span>
+
+ <span class="title">In</span> [4]: <span class="title">type</span>(<span class="title">type</span>(<span class="title">x</span>))
+ <span class="title">Out</span>[4]: <span class="title">type</span>
+
+ <span class="title">In</span> [6]: <span class="title">type</span>(<span class="title">X</span>)
+ <span class="title">Out</span>[6]: <span class="title">classobj</span>
+
+ <span class="title">In</span> [7]: <span class="title">type</span>(<span class="title">type</span>(<span class="title">X</span>))
+ <span class="title">Out</span>[7]: <span class="title">type</span>
+
+ # <span class="title">new</span> <span class="title">style</span> <span class="title">class</span>
+ <span class="title">In</span> [8]: <span class="title">class</span> <span class="title">Y</span>(<span class="title">object</span>):
+    ...:     <span class="title">pass</span>
+    ...:
+
+ <span class="title">In</span> [9]: <span class="title">y</span> = <span class="title">Y</span>()
+
+ <span class="title">In</span> [10]: <span class="title">type</span>(<span class="title">Y</span>)
+ <span class="title">Out</span>[10]: <span class="title">type</span>
+
+ <span class="title">In</span> [11]: <span class="title">type</span>(<span class="title">y</span>)
+ <span class="title">Out</span>[11]: <span class="title">__main__</span>.<span class="title">Y</span>
+
+ <span class="title">In</span> [12]: <span class="title">type</span>(<span class="title">type</span>(<span class="title">y</span>))
+ <span class="title">Out</span>[12]: <span class="title">type</span></span></code></pre>
+</section>
+<section>
+<h2>Crafting class</h2>
+<pre><code> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span><span class="params">(object)</span>:</span>
+     can_fly = <span class="keyword">False</span>
+
+     <span class="function"><span class="keyword">def</span> <span class="title">flee</span><span class="params">(self)</span>:</span>
+         <span class="keyword">if</span> self.can_fly:
+             <span class="keyword">print</span> <span class="string">"Fly..."</span>
+         <span class="keyword">else</span>:
+             <span class="keyword">print</span> <span class="string">"Run..."</span>
+
+ <span class="class"><span class="keyword">class</span> <span class="title">Swimmable</span><span class="params">(object)</span>:</span>
+     <span class="function"><span class="keyword">def</span> <span class="title">swim</span><span class="params">(self)</span>:</span>
+         <span class="keyword">print</span> <span class="string">"I'm swimming"</span>
+
+ <span class="class"><span class="keyword">class</span> <span class="title">Duck</span><span class="params">(Animal, Swimmable)</span>:</span>
+     can_fly = <span class="keyword">True</span>
+
+     <span class="function"><span class="keyword">def</span> <span class="title">say</span><span class="params">(self)</span>:</span>
+         <span class="keyword">print</span> <span class="string">"Gaga..."</span>
+
+ In [<span class="number">22</span>]: d = Duck()
+
+ In [<span class="number">23</span>]: d.flee()
+ Fly...
+
+ In [<span class="number">24</span>]: d.say()
+ Gaga...
+
+ In [<span class="number">25</span>]: d.swim()
+ I<span class="string">'m swimming</span></code></pre>
+</section>
+<section>
+<h2>Craft the class on the fly</h2>
+<pre><code> In <span class="matrix">[<span class="number">50</span>]</span>: Duck1 = type(<span class="string">"Duck1"</span>, (Animal, Swimmable), {<span class="string">'can_fly'</span>: True, <span class="string">'say'</span>: say})
+
+ In <span class="matrix">[<span class="number">51</span>]</span>: d1 = Duck1()
+
+ In <span class="matrix">[<span class="number">52</span>]</span>: <span class="transposed_variable">d1.</span>say()
+ <span class="transposed_variable">Gaga...</span>
+
+ In <span class="matrix">[<span class="number">53</span>]</span>: <span class="transposed_variable">d1.</span>can_fly
+ Out<span class="matrix">[<span class="number">53</span>]</span>: True
+
+ In <span class="matrix">[<span class="number">54</span>]</span>: <span class="transposed_variable">d1.</span>flee()
+ <span class="transposed_variable">Fly...</span>
+
+ In <span class="matrix">[<span class="number">55</span>]</span>: <span class="transposed_variable">d1.</span>swim()
+ <span class="transposed_variable">I'</span>m swimming</code></pre>
+</section>
+<section>
+<h2>Method mssing</h2>
+<p> Method mssing could be used to dynamically add attributes that are in common.</p>
+<pre><code> In [<span class="number">39</span>]: <span class="class"><span class="keyword">class</span> <span class="title">Y</span><span class="params">(object)</span>:</span>
+    ....:     point = (<span class="number">0</span>, <span class="number">0</span>)
+    ....:     <span class="function"><span class="keyword">def</span> <span class="title">__getattr__</span><span class="params">(self, attr)</span>:</span>
+    ....:         <span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(*args, **kwargs)</span>:</span>
+    ....:             <span class="keyword">return</span> <span class="string">"%s, %s"</span> % (args, kwargs)
+    ....:         <span class="keyword">print</span> <span class="string">"%s is missing"</span> % attr
+    ....:         <span class="keyword">return</span> f
+    ....:
+
+ In [<span class="number">42</span>]: y.point
+ Out[<span class="number">42</span>]: (<span class="number">0</span>, <span class="number">0</span>)
+
+ In [<span class="number">44</span>]: y.hello(<span class="string">"a"</span>, <span class="string">"b"</span>)
+ hello <span class="keyword">is</span> missing
+ Out[<span class="number">44</span>]: <span class="string">"('a', 'b'), {}"</span>
+
+ In [<span class="number">45</span>]: y.asdf
+ asdf <span class="keyword">is</span> missing
+ Out[<span class="number">45</span>]: &lt;function __main__.f&gt;</code></pre>
+</section>
+<section>
+<h2>Method missing real case</h2>
+<pre><code> # code from https:<span class="comment">//github.com/michaelliao/sinaweibopy</span>
+ <span class="class"><span class="keyword">class</span> <span class="title">APIClient</span>(<span class="title">object</span>):
+     ...
+
+     <span class="title">def</span> <span class="title">__getattr__</span>(<span class="title">self</span>, <span class="title">attr</span>):
+         <span class="title">return</span> <span class="title">_Callable</span>(<span class="title">self</span>, <span class="title">attr</span>)
+
+ <span class="title">class</span> <span class="title">_Executable</span>(<span class="title">object</span>):
+
+     <span class="title">def</span> <span class="title">__init__</span>(<span class="title">self</span>, <span class="title">client</span>, <span class="title">method</span>, <span class="title">path</span>):
+         <span class="title">self</span>.<span class="title">_client</span> = <span class="title">client</span>
+         <span class="title">self</span>.<span class="title">_method</span> = <span class="title">method</span>
+         <span class="title">self</span>.<span class="title">_path</span> = <span class="title">path</span>
+
+     <span class="title">def</span> <span class="title">__call__</span>(<span class="title">self</span>, **<span class="title">kw</span>):
+         <span class="title">method</span> = <span class="title">_METHOD_MAP</span>[<span class="title">self</span>.<span class="title">_method</span>]
+         <span class="title">if</span> <span class="title">method</span>==<span class="title">_HTTP_POST</span> <span class="title">and</span> '<span class="title">pic</span>' <span class="title">in</span> <span class="title">kw</span>:
+             <span class="title">method</span> = <span class="title">_HTTP_UPLOAD</span>
+         <span class="title">return</span> <span class="title">_http_call</span>('%<span class="title">s</span>%<span class="title">s</span>.<span class="title">json</span>' % (<span class="title">self</span>.<span class="title">_client</span>.<span class="title">api_url</span>, <span class="title">self</span>.<span class="title">_path</span>), <span class="title">method</span>, <span class="title">self</span>.<span class="title">_client</span>.<span class="title">access_token</span>, **<span class="title">kw</span>)
+
+     <span class="title">def</span> <span class="title">__str__</span>(<span class="title">self</span>):
+         <span class="title">return</span> '<span class="title">_Executable</span> (%<span class="title">s</span> %<span class="title">s</span>)' % (<span class="title">self</span>.<span class="title">_method</span>, <span class="title">self</span>.<span class="title">_path</span>)
+
+     <span class="title">__repr__</span> = <span class="title">__str__</span>
+
+ <span class="title">class</span> <span class="title">_Callable</span>(<span class="title">object</span>):
+
+     <span class="title">def</span> <span class="title">__init__</span>(<span class="title">self</span>, <span class="title">client</span>, <span class="title">name</span>):
+         <span class="title">self</span>.<span class="title">_client</span> = <span class="title">client</span>
+         <span class="title">self</span>.<span class="title">_name</span> = <span class="title">name</span>
+
+     <span class="title">def</span> <span class="title">__getattr__</span>(<span class="title">self</span>, <span class="title">attr</span>):
+         <span class="title">if</span> <span class="title">attr</span>=='<span class="title">get</span>':
+             <span class="title">return</span> <span class="title">_Executable</span>(<span class="title">self</span>.<span class="title">_client</span>, '<span class="title">GET</span>', <span class="title">self</span>.<span class="title">_name</span>)
+         <span class="title">if</span> <span class="title">attr</span>=='<span class="title">post</span>':
+             <span class="title">return</span> <span class="title">_Executable</span>(<span class="title">self</span>.<span class="title">_client</span>, '<span class="title">POST</span>', <span class="title">self</span>.<span class="title">_name</span>)
+         <span class="title">name</span> = '%<span class="title">s</span>/%<span class="title">s</span>' % (<span class="title">self</span>.<span class="title">_name</span>, <span class="title">attr</span>)
+         <span class="title">return</span> <span class="title">_Callable</span>(<span class="title">self</span>.<span class="title">_client</span>, <span class="title">name</span>)
+
+     <span class="title">def</span> <span class="title">__str__</span>(<span class="title">self</span>):
+         <span class="title">return</span> '<span class="title">_Callable</span> (%<span class="title">s</span>)' % <span class="title">self</span>.<span class="title">_name</span>
+
+     <span class="title">__repr__</span> = <span class="title">__str__</span>
+
+ # <span class="title">use</span> <span class="title">it</span>
+ <span class="title">client</span> = <span class="title">APIClient</span>(<span class="title">app_key</span>=<span class="title">YOUR_APP_KEY</span>, <span class="title">app_secret</span>=<span class="title">YOUR_APP_SECRET</span>,
+                <span class="title">redirect_uri</span>=<span class="title">YOUR_CALLBACK_URL</span>)
+
+ <span class="title">print</span> <span class="title">client</span>.<span class="title">statuses</span>.<span class="title">user_timeline</span>.<span class="title">get</span>()
+ <span class="title">print</span> <span class="title">client</span>.<span class="title">statuses</span>.<span class="title">update</span>.<span class="title">post</span>(<span class="title">status</span>=<span class="title">u</span>'<span class="title">test</span> <span class="title">plain</span> <span class="title">weibo</span>')
+ <span class="title">print</span> <span class="title">client</span>.<span class="title">statuses</span>.<span class="title">upload</span>.<span class="title">post</span>(<span class="title">status</span>=<span class="title">u</span>'<span class="title">test</span> <span class="title">weibo</span> <span class="title">with</span> <span class="title">picture</span>',
+                               <span class="title">pic</span>=<span class="title">open</span>('/<span class="title">Users</span>/<span class="title">michael</span>/<span class="title">test</span>.<span class="title">png</span>'))</span></code></pre>
+</section>
+<section>
+<h2>Metaclass</h2>
+<p> <br/>
+ A metaclass is a class whose instances are classes. </p>
+<p> It defines the behavior of certain classes and their instances.</p>
+</section>
+<section>
+<h2>Adding classmethod automatically</h2>
+<pre><code> $ cat metatest.py
+ <span class="keyword">import</span> random
+
+ <span class="class"><span class="keyword">class</span> <span class="title">MetaAutoProperty</span><span class="params">(type)</span>:</span>
+     <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(cls, name, bases, attrs)</span>:</span>
+         super(MetaAutoProperty, cls).__init__(name, bases, attrs)
+         <span class="keyword">for</span> key <span class="keyword">in</span> attrs:
+             <span class="keyword">if</span> <span class="keyword">not</span> key.startswith(<span class="string">'_'</span>) <span class="keyword">and</span> <span class="keyword">not</span> hasattr(attrs[key], <span class="string">'__call__'</span>):
+                 new_key = <span class="string">'find_by_%s'</span> % key
+                 setattr(cls, new_key, classmethod(<span class="keyword">lambda</span> c, value: <span class="string">"look up %s...find %d records"</span>
+                         % (value, random.randint(<span class="number">0</span>, <span class="number">10</span>))))
+
+ <span class="class"><span class="keyword">class</span> <span class="title">AutoProperty</span><span class="params">(object)</span>:</span>
+     __metaclass__ = MetaAutoProperty
+
+ <span class="class"><span class="keyword">class</span> <span class="title">User</span><span class="params">(AutoProperty)</span>:</span>
+     name = <span class="string">"Tyr"</span>
+     _password = <span class="string">"won't tell you"</span>
+     title = <span class="string">"Software Engineer"</span>
+
+     <span class="function"><span class="keyword">def</span> <span class="title">change_password</span><span class="params">(self, password)</span>:</span>
+         self._password = password
+
+ <span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:
+     <span class="keyword">print</span> User.find_by_name(<span class="string">"Hello World"</span>)
+     <span class="keyword">print</span> User.find_by_title(<span class="string">"MTS"</span>)
+
+ $ python  ./metatest.py
+ look up Hello World...find <span class="number">8</span> records
+ look up MTS...find <span class="number">6</span> records</code></pre>
+<p> </section></p>
+</section>
+<section>
+<h1>Django Basics</h1>
+</section>
+<section>
+<h1>Misc</h1>
+</section>
+<section>
+<h1>Thanks</h1>
+<p> <br/>
+ <strong>Learning by doing,</strong></p>
+<p> <strong>and learning by shipping.</strong></p>
+<p> <br/><hr/>
+ <em>Every engineer should use MAC</em></p>
+</section>
+
+      </div>
+    </div>
+    <script src="/assets/slides/reveal.js/lib/js/head.min.js"></script>
+    <script src="/assets/slides/reveal.js/js/reveal.min.js"></script>
+    <script>
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+        
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: '/assets/slides/reveal.js/plugin/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '/assets/slides/reveal.js/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '/assets/slides/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '/assets/slides/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: '/assets/slides/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+          // { src: '/assets/reveal/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+      
+    </script>
+  </body>
+</html>

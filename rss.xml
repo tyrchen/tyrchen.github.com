@@ -5,10 +5,10 @@
         <description><![CDATA[本博客提供我个人的想法，创意，经验，心得。你不必认同博主观点。]]></description>
         <link>http://tchen.me</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Thu, 27 Feb 2014 23:56:40 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 02 Mar 2014 03:01:23 GMT</lastBuildDate>
         <atom:link href="http://tchen.me/rss.xml" rel="self" type="application/rss+xml"/>
         <author><![CDATA[Tyr Chen]]></author>
-        <pubDate>Thu, 27 Feb 2014 23:55:54 GMT</pubDate>
+        <pubDate>Sun, 02 Mar 2014 03:00:35 GMT</pubDate>
         <item>
             <title><![CDATA[程序员混日子不完全手册]]></title>
             <description><![CDATA[<p>昨天收到同事转发的dtrace作者解释关于『为何dtrace在x86上能支持function boundary trace，而mips不行』的一封邮件点燃了我的战斗激情，写了段程序分别在mips，arm和x86上编了下求证。本想就此写篇微信文章，但琢磨一下还是算了，一来昨天已有承诺，二来这东西放在微信上估计打开率为0。</p>

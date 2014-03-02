@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Golang in two weeks - </title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/assets/slides/reveal.js/css/reveal.min.css">
+    <link rel="stylesheet" href="/assets/slides/reveal.js/css/theme/default.css" id="theme">
+    <link href="http://fonts.googleapis.com/css?family=Arbutus+Slab|Josefin+Slab:400,700|Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/slides/code/github.css">
+    <link rel="stylesheet" href="/assets/slides/custom.css">
+    <style>
+      .reveal p {text-align: justify;}
+      
+    </style>
+  </head>
+  <body class="reveal">
+    <div class="reveal">
+      <div class="slides">
+<section>
+  <h1>Build Dev Env with Docker</h1><br/>
+  <h3>Tyr Chen</h3><br/>
+  <div>Stay hungry, stay foolish </div>
+  <div>2014-03-08</div>
+</section>
+<section>
+  <h2>Agenda</h2>
+  <ul>
+    <li class="fragment">What is docker</li>
+    <li class="fragment">Docker in 10 minutes</li>
+    <li class="fragment">Dev Env - Requirements</li>
+    <li class="fragment">Dev Env - Thoughts</li>
+    <li class="fragment">Dev Env - Implementation</li>
+    <li class="fragment">Conclusion and summary</li>
+    <li class="fragment">What can I do with docker?</li>
+  </ul>
+</section>
+<section>
+  <section>
+    <h2>What is docker?</h2>
+  </section>
+  <section>
+    <p>an open-source engine that automates the deployment of any application as a lightweight, portable, self-sufficient container that will run virtually anywhere</p>
+  </section>
+  <section>
+    <h2>WTF?</h2>
+  </section>
+  <section><img src="/assets/files/slides/docker/why_docker.jpg"/></section>
+</section>
+<section>
+  <section>
+    <h2>Docker in 10 minutes</h2>
+  </section>
+  <section>
+    <h2>Install docker</h2>
+    <p><a href="https://www.docker.io/gettingstarted/#h_installation">Docker official installation guide</a></p>
+    <p class="fragment">Ubuntu 13.10 as following:</p>
+    <div class="fragment">
+      <pre class="main"><code>sudo apt-get update
+sudo apt-get install linux-image-extra-`uname -r`
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
+sudo sh -c "echo deb http://get.docker.io/ubuntu docker main > /etc/apt/sources.list.d/docker.list"
+sudo apt-get update
+sudo apt-get install lxc-docker</code></pre>
+    </div>
+  </section>
+  <section>
+    <h2>Try out docker</h2>
+    <div class="fragment"><code>docker run ubuntu echo hello world!</code>
+      <pre class="main"><code>tchen@docker:~$ docker run ubuntu echo hello world!
+Unable to find image 'ubuntu' locally
+Pulling repository ubuntu
+9cd978db300e: Download complete
+eb601b8965b8: Download complete
+5ac751e8d623: Download complete
+9cc9ea5ea540: Download complete
+9f676bd305a4: Download complete
+511136ea3c5a: Download complete
+6170bb7b0ad1: Download complete
+1c7f181e78b9: Download complete
+7a4f87241845: Download complete
+f323cf34fd77: Download complete
+321f7f4200f4: Download complete
+hello world!</code></pre>
+    </div>
+    <div class="fragment">
+      <p>Note: You need to <code>sudo gpasswd -a $USER docker</code> to use docker without sudo</p>
+    </div>
+  </section>
+  <section>
+    <h2>Wait...what the fuck is this?</h2>
+  </section>
+  <section><img src="/assets/files/slides/docker/docker_pull.jpg"/></section>
+  <section>
+    <h2>AUFS</h2><img src="/assets/files/slides/docker/aufs.jpg"/>
+  </section>
+  <section>
+    <h2>Basic commands</h2>
+    <ul>
+      <li class="fragment"><code>docker run</code>: run a command in a new container</li>
+      <li class="fragment"><code>docker images</code>: show a list of local images</li>
+      <li class="fragment"><code>docker search</code>: search images in the registry</li>
+      <li class="fragment"><code>docker commit</code>: create a new image based on container</li>
+      <li class="fragment"><code>docker pull/push</code>: pull or push a image from/to a registry</li>
+      <li class="fragment"><code>docker ps</code>: list running and stopped containers</li>
+      <li class="fragment"><code>docker rm/rmi</code>: remove container or image</li>
+      <li class="fragment"><code>docker log/inspect</code>: get information from the container</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Let's play with docker</h2>
+  </section>
+  <section>
+    <h2>First of all, get a image</h2>
+    <div class="fragment"><code>docker search tchen</code>
+      <pre class="main"><code>tchen@docker:~$ docker search tchen
+NAME                                       DESCRIPTION                                     STARS     OFFICIAL   TRUSTED
+codingforce/gitlab-ci-runner-testkitchen   Runner for gitlab-ci with fully installed ...   1                    [OK]
+tchen/gitlab                                                                               0
+tchen/base-server                                                                          0
+jdharrington/ubuntu                        The official Docker Ubuntu image with buil...   0</code></pre>
+    </div>
+  </section>
+  <section>
+    <h2>Let's pull base-server</h2>
+    <div class="fragment"><code>docker pull tchen/base-server</code>
+      <pre class="main"><code>tchen@docker:~$ docker pull tchen/base-server
+Pulling repository tchen/base-server
+8552614f23cd: Download complete
+e8f376b3c2c0: Download complete
+511136ea3c5a: Download complete
+6170bb7b0ad1: Download complete
+9cd978db300e: Download complete
+83da74670f8f: Download complete
+b4d20668744e: Download complete
+c9c0e86c5700: Download complete
+9630cea817e9: Download complete
+0ec2263b38de: Download complete
+83bc4d21347b: Download complete
+9ed2225fb91e: Download complete
+e705eec2dcb5: Download complete
+ad27f97b0a0a: Download complete
+4b1939764c80: Download complete
+5c52754a873d: Download complete
+e39f1b7212c8: Download complete</code></pre>
+    </div>
+  </section>
+  <section>
+    <h2>Show what we have</h2>
+    <div class="fragment"><code>docker images</code>
+      <pre class="main"><code>tchen@docker:~$ docker images
+REPOSITORY               TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
+tchen/base-server        0.2                 e8f376b3c2c0        40 hours ago        1.049 GB
+tchen/base-server        0.1                 8552614f23cd        41 hours ago        821.3 MB
+tchen/base-server        latest              8552614f23cd        41 hours ago        821.3 MB
+phusion/passenger-full   0.9.8               e39f1b7212c8        3 days ago          638.7 MB
+phusion/passenger-full   latest              e39f1b7212c8        3 days ago          638.7 MB
+phusion/passenger-full   0.9.7               5c4c2876be5b        3 days ago          638.7 MB
+phusion/passenger-full   0.9.6               4e0923ee4966        3 weeks ago         639 MB
+ubuntu                   13.10               9f676bd305a4        3 weeks ago         182.1 MB
+ubuntu                   saucy               9f676bd305a4        3 weeks ago         182.1 MB
+ubuntu                   raring              eb601b8965b8        3 weeks ago         170.2 MB
+ubuntu                   13.04               eb601b8965b8        3 weeks ago         170.2 MB
+ubuntu                   12.10               5ac751e8d623        3 weeks ago         161.4 MB
+ubuntu                   quantal             5ac751e8d623        3 weeks ago         161.4 MB
+ubuntu                   10.04               9cc9ea5ea540        3 weeks ago         183 MB
+ubuntu                   lucid               9cc9ea5ea540        3 weeks ago         183 MB
+ubuntu                   12.04               9cd978db300e        3 weeks ago         204.7 MB
+ubuntu                   latest              9cd978db300e        3 weeks ago         204.7 MB
+ubuntu                   precise             9cd978db300e        3 weeks ago         204.7 MB
+phusion/passenger-full   0.9.3               2819727a3f88        3 weeks ago         619.4 MB</code></pre>
+    </div>
+  </section>
+  <section>
+    <h2>Let's do something interesting</h2>
+    <p>Task: make a basic ipython environment</p>
+    <div class="fragment"><code>docker run -i -t tchen/base-server bash</code>
+      <pre class="main"><code>$ docker run -i -t tchen/base-server bash
+root@d06327b20658:/# ipython
+bash: ipython: command not found
+root@d06327b20658:/# pip install ipython
+bash: pip: command not found
+root@d06327b20658:/# apt-get install -y python-pip
+root@d06327b20658:/# apt-get install -y ipython
+root@d06327b20658:/# ipython
+Python 2.7.3 (default, Sep 26 2013, 20:03:06)
+Type "copyright", "credits" or "license" for more information.
+
+IPython 0.12.1 -- An enhanced Interactive Python.
+?         -> Introduction and overview of IPython's features.
+%quickref -> Quick reference.
+help      -> Python's own help system.
+object?   -> Details about 'object', use 'object??' for extra details.
+
+In [1]: exit</code></pre>
+    </div>
+    <p class="well fragment">Mission accomplished!</p>
+  </section>
+  <section>
+    <h2>Now share this to your coworkers</h2>
+    <div class="fragment">
+      <p>step 1: quit and get container id</p><code>docker ps -l</code>
+      <pre class="main"><code>root@d06327b20658:/# exit
+exit
+tchen@docker:~$ docker ps -l
+CONTAINER ID        IMAGE                   COMMAND             CREATED             STATUS              PORTS               NAMES
+d06327b20658        tchen/base-server:0.1   bash                6 minutes ago       Exit 0                                  cranky_ptolemy</code></pre>
+    </div>
+  </section>
+  <section>
+    <h2>Now share (Cont.)</h2>
+    <div class="fragment">
+      <p>step 2: Commit and push</p><code>docker commit d063 tchen/base-server:0.3</code><code>docker push tchen/base-server</code>
+      <pre class="main"><code>tchen@docker:~$ docker commit d063 tchen/base-server:0.3
+b9e6eefe596f9bdbc933926e2098165e83a78e49370d865867a591a314113da5
+tchen@docker:~$ docker push tchen/base-server
+The push refers to a repository [tchen/base-server] (len: 4)
+Sending image list
+Pushing repository tchen/base-server (4 tags)
+511136ea3c5a: Image already pushed, skipping
+Image 6170bb7b0ad1 already pushed, skipping
+Image 9cd978db300e already pushed, skipping
+Image 83da74670f8f already pushed, skipping
+Image b4d20668744e already pushed, skipping
+Image c9c0e86c5700 already pushed, skipping
+Image 9630cea817e9 already pushed, skipping
+Image 0ec2263b38de already pushed, skipping
+Image 83bc4d21347b already pushed, skipping
+Image 9ed2225fb91e already pushed, skipping
+Image e705eec2dcb5 already pushed, skipping
+Image ad27f97b0a0a already pushed, skipping
+Image 4b1939764c80 already pushed, skipping
+Image 5c52754a873d already pushed, skipping
+Image e39f1b7212c8 already pushed, skipping
+Image 8552614f23cd already pushed, skipping
+Pushing tag for rev [8552614f23cd] on {https://registry-1.docker.io/v1/repositories/tchen/base-server/tags/0.1}
+Pushing tag for rev [8552614f23cd] on {https://registry-1.docker.io/v1/repositories/tchen/base-server/tags/latest}
+Image e8f376b3c2c0 already pushed, skipping
+Pushing tag for rev [e8f376b3c2c0] on {https://registry-1.docker.io/v1/repositories/tchen/base-server/tags/0.2}
+b9e6eefe596f: Image successfully pushed
+Pushing tag for rev [b9e6eefe596f] on {https://registry-1.docker.io/v1/repositories/tchen/base-server/tags/0.3}</code></pre>
+    </div>
+  </section>
+  <section>
+    <h2>Now it's your 小伙伴's turn</h2>
+    <div class="fragment">
+      <p>step 1: Get the image</p><code>docker pull tchen/base-server</code>
+      <pre class="main"><code>vagrant@ubuntu-12:~$ docker pull tchen/base-server
+Pulling repository tchen/base-server
+e8f376b3c2c0: Download complete
+b9e6eefe596f: Download complete
+8552614f23cd: Download complete
+511136ea3c5a: Download complete
+6170bb7b0ad1: Download complete
+9cd978db300e: Download complete
+83da74670f8f: Download complete
+b4d20668744e: Download complete
+c9c0e86c5700: Download complete
+9630cea817e9: Download complete
+0ec2263b38de: Download complete
+83bc4d21347b: Download complete
+9ed2225fb91e: Download complete
+e705eec2dcb5: Download complete
+ad27f97b0a0a: Download complete
+4b1939764c80: Download complete
+5c52754a873d: Download complete
+e39f1b7212c8: Download complete</code></pre>
+    </div>
+  </section>
+  <section>
+    <div class="fragment">
+      <h2>Now it's your 小伙伴's turn (Cont.)</h2>
+      <p>step 2: Run the container</p><code>docker run -i -t tchen/base-server:0.3 bash</code>
+      <pre class="main"><code>vagrant@ubuntu-12:~$ docker run -i -t tchen/base-server:0.3 bash
+root@f57d5d94933c:/# ipython
+Python 2.7.3 (default, Sep 26 2013, 20:03:06)
+Type "copyright", "credits" or "license" for more information.
+
+IPython 0.12.1 -- An enhanced Interactive Python.
+?         -> Introduction and overview of IPython's features.
+%quickref -> Quick reference.
+help      -> Python's own help system.
+object?   -> Details about 'object', use 'object??' for extra details.
+
+In [1]: exit</code></pre>
+    </div>
+  </section>
+  <section>
+    <h2>How do you feel?</h2>
+  </section>
+  <section>
+    <p class="well fragment">it's fucking like git!!!!!!</p>
+    <p></p>
+    <p class="well fragment">That's why it is called <b>"git for deployment"</b></p>
+  </section>
+  <section>
+    <p class="well">Hats off and bow down to docker's creators!</p><img src="/assets/files/slides/docker/bowdown.jpg"/>
+  </section>
+</section>
+<section>
+  <section>
+    <p>/assets/files/slides/docker/</p>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>What can I do with docker?</h2>
+  </section>
+  <section>
+    <h3>flexible application deployment</h3>
+  </section>
+  <section>
+    <h3>shared deveopment environment setup</h3>
+  </section>
+  <section>
+    <h3>throwaway test setup</h3>
+  </section>
+  <section>
+    <h3>parallel continuous integration</h3>
+  </section>
+  <section>
+    <h3>and a lot...use your imagination, luke!</h3>
+  </section>
+</section>
+      </div>
+    </div>
+    <script src="/assets/slides/jquery.js"></script>
+    <script src="/assets/slides/reveal.js/lib/js/head.min.js"></script>
+    <script src="/assets/slides/reveal.js/js/reveal.min.js"></script>
+    <script src="/assets/slides/highlight.pack.js"></script>
+    <!--script(src="/assets/slides/reconnecting-websocket.js")-->
+    <!--script(src="/assets/slides/coderunner.js")-->
+    <script>
+      $(function() {
+        hljs.initHighlightingOnLoad();
+        $('div.white, img').addClass('img-thumbnail stretch');
+        
+        // Full list of configuration options available here:
+        // https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+          controls: true,
+          progress: true,
+          history: true,
+          center: true,
+          
+          theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+          transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+          
+          // Optional libraries used to extend on reveal.js
+          dependencies: [
+            { src: '/assets/slides/reveal.js/plugin/classList.js', condition: function() { return !document.body.classList; } },
+            { src: '/assets/slides/reveal.js/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: '/assets/slides/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: '/assets/slides/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+            { src: '/assets/slides/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+            // { src: '../../_static/reveal/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+          ]
+        });
+        /*
+        $.CodeRunner({
+          wsuri: 'ws://jcnrd.us:7100/',
+          buttonContainer: 'pre.main',
+          codeContainer: 'code'
+        });
+        $('div.coderunner').CodeRunner();
+        */
+      });
+      
+    </script>
+  </body>
+</html>

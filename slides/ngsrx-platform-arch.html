@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>NGSRX - Platform Arch - </title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/assets/slides/reveal.js/css/reveal.min.css">
+    <link rel="stylesheet" href="/assets/slides/reveal.js/css/theme/default.css" id="theme">
+    <link href="http://fonts.googleapis.com/css?family=Arbutus+Slab|Josefin+Slab:400,700|Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/slides/code/github.css">
+    <link rel="stylesheet" href="./assets/slides/custom.css">
+    <style>
+      .reveal p {text-align: justify;}
+      
+    </style>
+  </head>
+  <body class="reveal">
+    <div class="reveal">
+      <div class="slides">
+<section>
+  <h1>NGSRX: Platform Architecture</h1><br/>
+  <h3>Tyr Chen</h3><br/>
+  <div>Stay hungry, stay foolish </div>
+  <div>2014-01-15</div>
+</section>
+<section>
+  <h2>Agenda</h2>
+  <ul>
+    <li class="fragment">The architecture evolution</li>
+    <li class="fragment">What has (hasn't) changed in NGSRX</li>
+    <li class="fragment">Thoughts behind NGSRX</li>
+    <li class="fragment">NGSRX 101 - the underlying technology</li>
+    <li class="fragment">NGSRX system overview</li>
+    <li class="fragment">NGSRX control plane packet processing</li>
+    <li class="fragment">NGSRX dataplane packet processing</li>
+  </ul>
+</section>
+<section>
+  <section>
+    <h2>The architecture evolution</h2>
+  </section>
+  <section>
+    <h2>ScreenOS</h2>
+    <ul>
+      <li>Kernel space packet processing</li>
+      <li>HW(ASIC) fast path</li>
+    </ul>
+  </section>
+  <section>
+    <h2>CGSRX</h2>
+    <ul>
+      <li>User space packet processing</li>
+      <li>multithreading (HWT affinity)</li>
+    </ul>
+  </section>
+  <section>
+    <h2>NGSRX</h2>
+    <ul>
+      <li>User space packet processing</li>
+      <li>multithreading (session affinity)</li>
+      <li>HW(FPGA) fast path</li>
+      <li>flow / service separation</li>
+    </ul>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>What has changed in NGSRX</h2>
+  </section>
+  <section>
+    <p class="fragment">Leverage the power of x86 processor</p>
+    <p class="fragment">Use FPGA for hardware fast path processing & session affinity</p>
+    <p class="fragment">Embrace linux community</p>
+    <p class="fragment">Separate service from flow</p>
+    <p class="fragment">Replace bsd stack with linux stack in flowd control plane</p>
+  </section>
+  <section>
+    <h2>What hasn't changed in NGSRX</h2>
+  </section>
+  <section>
+    <p class="fragment">Control plane & UI</p>
+    <p class="fragment">User space packet processing (now leveraging DPDK)</p>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Thoughts behind NGSRX</h2>
+  </section>
+  <section>
+    <h2>Separation</h2>
+    <p class="fragment">JUNOS / SBU code separation</p>
+    <p class="fragment">Flow / service separation</p>
+    <p class="fragment">Flowd / PFE drivers (resources) separation</p>
+  </section>
+  <section>
+    <h2>Minimum Time to Implementation (TTI)</h2>
+    <p class="fragment">Mimic NGSRX HW in a decent way</p>
+    <p class="fragment">All-in-one development & UT (& FT) environment</p>
+    <p class="fragment">Iterates as the code evolutes (now it is 2nd edition)</p>
+    <p class="fragment">Open environment for any tools</p>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>NGSRX 101: the underlying technology</h2>
+  </section>
+  <section>
+    <h2>DPDK</h2><img src="../../_static/ngsrx/dpdk.png" class="white"/>
+    <p class="fragment">we use DPDK as underlying user space driver</p>
+  </section>
+  <section>
+    <h2>KVM</h2><img src="../../_static/ngsrx/kvm.png" class="white"/>
+    <p class="fragment">we use KVM to separate JUNOS from SBU code</p>
+  </section>
+  <section>
+    <h2>vswitch</h2><img src="../../_static/ngsrx/vswitch.jpg" class="white"/>
+    <p class="fragment">we use vswitch to connect control plane of RE VM / flowd / serviced </p>
+    <div class="fragment">
+      <hr/>
+      <p>More about linux virtual network - <a http://www.ibm.com/developerworks/cn/linux/1312_xiawc_linuxvirtnet/="http://www.ibm.com/developerworks/cn/linux/1312_xiawc_linuxvirtnet/">click me </a></p>
+    </div>
+  </section>
+  <section>
+    <h2>SR-IOV</h2><img src="../../_static/ngsrx/sr-iov.png" class="white"/>
+    <p class="fragment">we use sr-iov to provide VF for control plane (e.g. HW switch) and data plane (FPGA device for serviced)</p>
+  </section>
+  <section>
+    <h2>PCI passthrough</h2><img src="../../_static/ngsrx/pci_passthrough.gif" class="white"/>
+    <p class="fragment">we use PCI passthrough to deliver packets for fxp0 directly to RE</p>
+  </section>
+  <section>
+    <h2>TUN/TAP interface</h2><img src="../../_static/ngsrx/tun_tap.png" class="white"/>
+    <p class="fragment">we use TUN/TAP interface for control plane connectivity</p>
+  </section>
+  <section>
+    <h2>namespace / linux container</h2><img src="../../_static/ngsrx/lxc_architecture.png" class="white"/>
+    <p class="fragment">in DEV VM, we use namespace (or container) to emulate hosts</p>
+  </section>
+  <section>
+    <h2>More on namespace</h2>
+    <p class="fragment">it's isolation on resources</p>
+    <div class="fragment">
+      <hr/>
+      <p>hostname, domainname</p>
+      <p>SysV IPC objects</p>
+      <p>Process IDs</p>
+      <p>Network configuration</p>
+      <p>File system mounts</p>
+      <p>User / group IDs</p>
+    </div>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>System overview</h2>
+  </section>
+  <section>
+    <h2>ES3 hardware</h2><img src="../../_static/ngsrx/es3.png" class="white"/>
+  </section>
+  <section>
+    <h2>System architecture</h2><img src="../../_static/ngsrx/arch.png" class="white"/>
+  </section>
+  <section>
+    <h2>CPU thread allocation</h2><img src="../../_static/ngsrx/cpu_thread_allocation.png" class="white"/>
+  </section>
+  <section>
+    <p class="fragment">CPU thread allocation should be based on result of benchmark</p>
+    <p class="fragment">The purpose is to maximize the performance</p>
+    <p class="fragment">Considerations:</p>
+    <ul class="fragment">
+      <li>L1/L2 cache per core</li>
+      <li>L3 cache per CPU</li>
+      <li>Memory utilization</li>
+      <li>Hardware resource utilization</li>
+    </ul>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Control plane packet processing</h2>
+  </section>
+  <section><img src="../../_static/ngsrx/ngsrx_control_path.png" class="white"/></section>
+  <section>
+    <h2>TNP => TCP/IP</h2>
+    <p class="fragment">TNP UDP 		-> IP UDP</p>
+    <p class="fragment">TNP RDP 		-> IP TCP</p>
+    <p class="fragment">TTP to-host 	-> IP TTP (input_ifl, nh_index, etc.)</p>
+    <p class="fragment">TNP hello 	-> IP ARP (or equivelent)</p>
+    <div class="fragment">
+      <hr/>
+      <p>for more information about TNP/TTP, please <a href="https://matrix.juniper.net/docs/DOC-140645">click me</a></p>
+    </div>
+  </section>
+  <section>
+    <h2>PFE interaction with REVM (whiteboard)</h2>
+  </section>
+  <section>
+    <h2>REVM interaction with host OS (whiteboard)</h2>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Data plane packet processing</h2>
+  </section>
+  <section><img src="../../_static/ngsrx/ngsrx_data_path.png" class="white"/></section>
+</section>
+<section>
+  <section>
+    <h2>Achievements / good news</h2>
+  </section>
+  <section>
+    <h2>flowd control plane ready</h2>
+  </section>
+  <section>
+    <h2>flowd data plane will be ready soon</h2>
+  </section>
+  <section>
+    <h2>Opus project is doing similar thing</h2>
+    <ul>
+      <li class="fragment">CentOS as host OS</li>
+      <li class="fragment">JUNOS as a guest OS</li>
+      <li class="fragment">Packaing and installation</li>
+      <li class="fragment">Secure boot</li>
+    </ul>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Challenges</h2>
+  </section>
+  <section>
+    <h2>Resources allocation</h2>
+  </section>
+  <section>
+    <h2>Critical issues</h2>
+    <ul>
+      <li class="fragment">FPGA</li>
+      <li class="fragment">congestion control on flow threads</li>
+      <li class="fragment">flowd / serviced cooperation</li>
+    </ul>
+  </section>
+</section>
+<section>
+  <h2>Thanks, Q&A</h2>
+</section>
+      </div>
+    </div>
+    <script src="/assets/jquery.js"></script>
+    <script src="/assets/slides/reveal.js/lib/js/head.min.js"></script>
+    <script src="/assets/slides/reveal.js/js/reveal.min.js"></script>
+    <script src="/assets/highlight.pack.js"></script>
+    <!--script(src="/assets/slides/reconnecting-websocket.js")-->
+    <!--script(src="/assets/slides/coderunner.js")-->
+    <script>
+      $(function() {
+        hljs.initHighlightingOnLoad();
+        $('div.white, img').addClass('img-thumbnail stretch');
+        
+        // Full list of configuration options available here:
+        // https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+          controls: true,
+          progress: true,
+          history: true,
+          center: true,
+          
+          theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+          transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+          
+          // Optional libraries used to extend on reveal.js
+          dependencies: [
+            { src: '/assets/slides/reveal.js/plugin/classList.js', condition: function() { return !document.body.classList; } },
+            { src: '/assets/slides/reveal.js/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: '/assets/slides/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: '/assets/slides/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+            { src: '/assets/slides/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+            // { src: '../../_static/reveal/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+          ]
+        });
+        /*
+        $.CodeRunner({
+          wsuri: 'ws://jcnrd.us:7100/',
+          buttonContainer: 'pre.main',
+          codeContainer: 'code'
+        });
+        $('div.coderunner').CodeRunner();
+        */
+      });
+      
+    </script>
+  </body>
+</html>

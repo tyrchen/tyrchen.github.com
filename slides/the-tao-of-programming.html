@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>the tao of programming - </title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/assets/slides/reveal.js/css/reveal.min.css">
+    <link rel="stylesheet" href="/assets/slides/reveal.js/css/theme/beige.css" id="theme">
+    <link href="http://fonts.googleapis.com/css?family=Arbutus+Slab|Josefin+Slab:400,700|Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/slides/code/github.css">
+    <link rel="stylesheet" href="/assets/slides/custom.css">
+  </head>
+  <body class="reveal">
+    <div class="reveal">
+      <div class="slides"><section>
+<h1>The Tao of Programming</h1>
+<h3>Brought to you by Tyr Chen</h3>
+<p> 2013-07-01</p>
+</section>
+<!--more-->
+
+
+<section>
+<h2>What is it about?</h2>
+<ul>
+<li>Principles</li>
+<li>Paradigms</li>
+<li>Methodology</li>
+<li>Patterns</li>
+</ul>
+</section>
+<section>
+<h2>What is it not about?</h2>
+<ul>
+<li>Programming Languages</li>
+<li>Frameworks or Libraries</li>
+<li>Coding techniques</li>
+</ul>
+</section>
+<section>
+<h2>Principles</h2>
+<ul>
+<li>Don&#39;t Repeat Yourself (DRY)</li>
+<li>Open/Closed</li>
+<li>Separation of Concerns (SoC)</li>
+<li>Inversion of Control (IoC)</li>
+<li>Convention over Configuration (CoC)</li>
+<li>Encapsulation</li>
+<li>Indirection</li>
+</ul>
+</section>
+<section>
+<h2>Don&#39;t Repeat Yourself!</h2>
+<ul>
+<li>Hardware session installation (SoS)</li>
+<li>octeon_pthread_init()</li>
+</ul>
+</section>
+<section>
+ <section>
+
+<h2>Open/Closed Principle (OCP)</h2>
+<p> <br/>
+ <em>Software entities should be open for extension, but closed for modification.</em></p>
+</section>
+<section>
+<p> Let&#39;s rewrite <code>octeon_pthread_init()</code>:</p>
+<pre><code> <span class="function"><span class="keyword">def</span> <span class="title">octeon_pthread_init</span><span class="params">(configuration=<span class="string">'/etc/flowd.conf'</span>)</span>:</span>
+     f = open(configuration)
+     conf = json.load(f)
+     cores = conf[<span class="string">'cores'</span>]
+     <span class="keyword">for</span> core <span class="keyword">in</span> cores:
+         callback = pthread_callbacks[core[<span class="string">'callback'</span>]]
+         id = core[<span class="string">'id'</span>]
+         stack_size = core[<span class="string">'stack_size'</span>]
+         stack = stack_create(stack_size)
+         name = core[<span class="string">'name'</span>]
+
+         <span class="comment"># pre hook</span>
+         pthread_pre_init(core)
+
+         pthread_create(callback, id, name, stack, stack_size)
+
+         <span class="comment"># post hook - e.g. UTM initialization</span>
+         pthread_post_init(core)
+
+ <span class="comment"># here comes the file content</span>
+ {
+     <span class="string">"cores"</span>: [
+         {
+             <span class="string">"name"</span>: <span class="string">"TX"</span>,
+             <span class="string">"id"</span>: <span class="number">1</span>,
+             <span class="string">"stack_size"</span>: <span class="number">128000</span>,
+             <span class="string">"callback"</span>: <span class="string">"PTHREAD_CALLBACK_TX"</span>
+         }, {
+             <span class="string">"name"</span>: <span class="string">"LBT"</span>,
+             <span class="string">"id"</span>: <span class="number">2</span>,
+             <span class="string">"stack_size"</span>: <span class="number">256000</span>,
+             <span class="string">"callback"</span>: <span class="string">"PTHREAD_CALLBACK_LBT"</span>
+         }
+     ]
+ }</code></pre>
+<p> <em>This is also an example of SoC</em></p>
+<p> </section></p>
+</section>
+<section>
+<h2>Separation of Concerns (SoC)</h2>
+<p> <br/></p>
+<p> <em>separation of concerns is the process of breaking a computer program into distinct features that overlap in functionality as little as possible.</em></p>
+</section>
+<section>
+ <section>
+
+<h2>Inversion of Control (IoC)</h2>
+<p> <br/>
+ <em>Don&#39;t call me, let us call you.</em></p>
+</section>
+<section>
+<h2>A small server framework</h2>
+<pre><code> %% server_framework.erl - the framework
+ -<span class="built_in">module</span>(server_framework).
+ -<span class="reserved">export</span>([start/<span class="number">2</span>, rpc/<span class="number">2</span>]).
+
+ start<span class="function"><span class="params">(Name, Mod)</span> -&gt;</span>
+   register<span class="function"><span class="params">(Name, spawn(fun() -&gt; <span class="keyword">loop</span>(Name, Mod, Mod:init()) end))</span>.
+
+ <span class="title">rpc</span><span class="params">(Name, Request)</span> -&gt;</span>
+   Name ! {self(), Request},
+   receive
+     {Name, Response}<span class="function"> -&gt;</span> Response
+   end.
+
+ <span class="keyword">loop</span><span class="function"><span class="params">(Name, Mod, State)</span> -&gt;</span>
+   receive
+     {From, Request}<span class="function"> -&gt;</span>
+       {Response, State1} = <span class="attribute">Mod</span>:handle(Request, State),
+       From ! {Name, Response},
+       <span class="keyword">loop</span>(Name, Mod, State1)
+   end.
+
+ %% name_server.erl - the implementation
+ -<span class="built_in">module</span>(name_server).
+ -<span class="reserved">export</span>([init/<span class="number">0</span>, add/<span class="number">2</span>, whereis/<span class="number">1</span>, handle/<span class="number">2</span>]).
+ -<span class="reserved">import</span>(server_framework, [rpc/<span class="number">2</span>]).
+
+ add<span class="function"><span class="params">(Name, Place)</span> -&gt;</span> rpc(name_server, {add, Name, Place}).
+ whereis<span class="function"><span class="params">(Name)</span>    -&gt;</span> rpc(name_server, {whereis, Name}).
+
+ init<span class="function"><span class="params">()</span> -&gt;</span> <span class="attribute">dict</span>:<span class="keyword">new</span>().
+
+ handle<span class="function"><span class="params">({add, Name, Place}, Dict)</span> -&gt;</span> {ok, <span class="attribute">dict</span>:store(Name, Place, Dict)};
+ handle<span class="function"><span class="params">({whereis, Name}, Dict)</span> -&gt;</span> {<span class="attribute">dict</span>:find(Name, Dict), Dict}.</code></pre>
+</section>
+<section>
+<h2>Stop and Think</h2>
+<p> <br/></p>
+<ul>
+<li>Framework defines convention, we just follow it</li>
+<li><p>Details (concurrent programming) are hide</p>
+<p></section></p>
+</li>
+</ul>
+</section>
+<section>
+ <section>
+
+<h2>Convention over Configuration</h2>
+<p> <em>Aka coding by convention - seeks to decrease the number of decisions that developers need to make, gaining simplicity, but not necessarily losing flexibility.</em></p>
+</section>
+<section>
+<p> <strong>ruby on rails is the best known CoC</strong></p>
+<p> Other framworks, like django, drupal, Spring, etc. also greatly inspired by CoC...</p>
+</section>
+<section>
+<p> code from </p>
+<p> <small>tyrchen/church/church/management/commands/import_user.py</small></p>
+<pre><code> <span class="comment"># -*- coding: utf-8 -*-</span>
+
+ <span class="keyword">from</span> __future__ <span class="keyword">import</span> division, unicode_literals, print_function
+ <span class="keyword">from</span> django.contrib.auth.models <span class="keyword">import</span> User, Group
+ <span class="keyword">from</span> django.core.management <span class="keyword">import</span> BaseCommand
+ <span class="keyword">import</span> codecs
+ <span class="keyword">import</span> json
+ <span class="keyword">import</span> requests
+
+ __author__ = <span class="string">'tchen'</span>
+
+ DIRECTORY_API = <span class="string">'http://api.jcnrd.us/directory/employees.json'</span>
+
+ <span class="class"><span class="keyword">class</span> <span class="title">Command</span><span class="params">(BaseCommand)</span>:</span>
+     help = <span class="string">u'Import employee directory'</span>
+
+     <span class="function"><span class="keyword">def</span> <span class="title">process_user</span><span class="params">(self, item)</span>:</span>
+         u, created = User.objects.get_or_create(username=item[<span class="string">'uid'</span>])
+         <span class="keyword">if</span> created:
+             u.set_password(<span class="string">'xxxxxxxx'</span>)
+
+         u.email = item[<span class="string">'email'</span>]
+         first, last = item[<span class="string">'preferred_name'</span>].rsplit(<span class="string">' '</span>, <span class="number">1</span>)
+         u.first_name = first
+         u.last_name = last
+         u.save()
+         print(<span class="string">'User %s %s.'</span> % (u.username, <span class="string">'created'</span> <span class="keyword">if</span> created <span class="keyword">else</span> <span class="string">'updated'</span>))
+
+     <span class="function"><span class="keyword">def</span> <span class="title">handle</span><span class="params">(self, *args, **options)</span>:</span>
+         page = <span class="number">1</span>
+         <span class="keyword">while</span> <span class="keyword">True</span>:
+             data = requests.get(DIRECTORY_API, params={<span class="string">'page'</span>: page}).json()
+             <span class="keyword">if</span> <span class="keyword">not</span> data[<span class="string">'items'</span>]:
+                 <span class="keyword">break</span>
+
+             print(<span class="string">'\nProcess page %s\n'</span> % page)
+             <span class="keyword">for</span> item <span class="keyword">in</span> data[<span class="string">'items'</span>]:
+                 self.process_user(item)
+
+             page += <span class="number">1</span></code></pre>
+<p> You can run it: </p>
+<pre><code> <span class="variable">$ </span>.<span class="regexp">/manage.py import_user</span></code></pre>
+<p> </section></p>
+</section>
+<section>
+ <section>
+
+<h2>Encapsulation</h2>
+</section>
+<section>
+<pre><code> <span class="comment">// code from linux kernel...</span>
+ <span class="keyword">struct</span> device 
+ {
+
+   <span class="comment">/*
+    * This is the first field of the "visible" part of this structure
+    * (i.e. as seen by users in the "Space.c" file).  It is the name
+    * the interface.
+    */</span>
+   <span class="keyword">char</span>                    *name;
+
+   <span class="comment">/* I/O specific fields                                           */</span>
+   <span class="keyword">unsigned</span> <span class="keyword">long</span>           rmem_end;        <span class="comment">/* shmem "recv" end     */</span>
+   <span class="keyword">unsigned</span> <span class="keyword">long</span>           rmem_start;      <span class="comment">/* shmem "recv" start   */</span>
+   <span class="keyword">unsigned</span> <span class="keyword">long</span>           mem_end;         <span class="comment">/* shared mem end       */</span>
+   <span class="keyword">unsigned</span> <span class="keyword">long</span>           mem_start;       <span class="comment">/* shared mem start     */</span>
+   <span class="keyword">unsigned</span> <span class="keyword">long</span>           base_addr;       <span class="comment">/* device I/O address   */</span>
+   <span class="keyword">unsigned</span> <span class="keyword">char</span>           irq;             <span class="comment">/* device IRQ number    */</span>
+
+   <span class="comment">/* Low-level status flags. */</span>
+   <span class="keyword">volatile</span> <span class="keyword">unsigned</span> <span class="keyword">char</span>  start,           <span class="comment">/* start an operation   */</span>
+                           interrupt;       <span class="comment">/* interrupt arrived    */</span>
+   <span class="keyword">unsigned</span> <span class="keyword">long</span>           tbusy;           <span class="comment">/* transmitter busy     */</span>
+   <span class="keyword">struct</span> device           *next;
+
+   <span class="comment">/* The device initialization function. Called only once.         */</span>
+   <span class="keyword">int</span>                     (*init)(<span class="keyword">struct</span> device *dev);
+
+   <span class="comment">/* Some hardware also needs these fields, but they are not part of
+      the usual set specified in Space.c. */</span>
+   <span class="keyword">unsigned</span> <span class="keyword">char</span>           if_port;         <span class="comment">/* Selectable AUI,TP,   */</span>
+   <span class="keyword">unsigned</span> <span class="keyword">char</span>           dma;             <span class="comment">/* DMA channel          */</span>
+
+   <span class="keyword">struct</span> enet_statistics* (*get_stats)(<span class="keyword">struct</span> device *dev);
+
+   <span class="comment">/*
+    * This marks the end of the "visible" part of the structure. All
+    * fields hereafter are internal to the system, and may change at
+    * will (read: may be cleaned up at will).
+    */</span>
+
+   <span class="comment">/* These may be needed for future network-power-down code.       */</span>
+   <span class="keyword">unsigned</span> <span class="keyword">long</span>           trans_start;     <span class="comment">/* Time (jiffies) of 
+                                               last transmit        */</span>
+   <span class="keyword">unsigned</span> <span class="keyword">long</span>           last_rx;         <span class="comment">/* Time of last Rx      */</span>
+   <span class="keyword">unsigned</span> <span class="keyword">short</span>          flags;           <span class="comment">/* interface flags (BSD)*/</span>
+   <span class="keyword">unsigned</span> <span class="keyword">short</span>          family;          <span class="comment">/* address family ID    */</span>
+   <span class="keyword">unsigned</span> <span class="keyword">short</span>          metric;          <span class="comment">/* routing metric       */</span>
+   <span class="keyword">unsigned</span> <span class="keyword">short</span>          mtu;             <span class="comment">/* MTU value            */</span>
+   <span class="keyword">unsigned</span> <span class="keyword">short</span>          type;            <span class="comment">/* hardware type        */</span>
+   <span class="keyword">unsigned</span> <span class="keyword">short</span>          hard_header_len; <span class="comment">/* hardware hdr len     */</span>
+   <span class="keyword">void</span>                    *priv;           <span class="comment">/* private data         */</span>
+
+   <span class="comment">/* Interface address info. */</span>
+   <span class="keyword">unsigned</span> <span class="keyword">char</span>           broadcast[MAX_ADDR_LEN];
+   <span class="keyword">unsigned</span> <span class="keyword">char</span>           pad;               
+   <span class="keyword">unsigned</span> <span class="keyword">char</span>           dev_addr[MAX_ADDR_LEN];  
+   <span class="keyword">unsigned</span> <span class="keyword">char</span>           addr_len;        <span class="comment">/* hardware addr len    */</span>
+   <span class="keyword">unsigned</span> <span class="keyword">long</span>           pa_addr;         <span class="comment">/* protocol address     */</span>
+   <span class="keyword">unsigned</span> <span class="keyword">long</span>           pa_brdaddr;      <span class="comment">/* protocol broadcast addr*/</span>
+   <span class="keyword">unsigned</span> <span class="keyword">long</span>           pa_dstaddr;      <span class="comment">/* protocol P-P other addr*/</span>
+   <span class="keyword">unsigned</span> <span class="keyword">long</span>           pa_mask;         <span class="comment">/* protocol netmask     */</span>
+   <span class="keyword">unsigned</span> <span class="keyword">short</span>          pa_alen;         <span class="comment">/* protocol address len */</span>
+
+   <span class="keyword">struct</span> dev_mc_list      *mc_list;        <span class="comment">/* M'cast mac addrs     */</span>
+   <span class="keyword">int</span>                     mc_count;        <span class="comment">/* No installed mcasts  */</span>
+
+   <span class="keyword">struct</span> ip_mc_list       *ip_mc_list;     <span class="comment">/* IP m'cast filter chain */</span>
+   __u32                   tx_queue_len;    <span class="comment">/* Max frames per queue   */</span>
+
+   <span class="comment">/* For load balancing driver pair support */</span>
+   <span class="keyword">unsigned</span> <span class="keyword">long</span>           pkt_queue;       <span class="comment">/* Packets queued       */</span>
+   <span class="keyword">struct</span> device           *slave;          <span class="comment">/* Slave device         */</span>
+   <span class="keyword">struct</span> net_alias_info   *alias_info;     <span class="comment">/* main dev alias info  */</span>
+   <span class="keyword">struct</span> net_alias        *my_alias;       <span class="comment">/* alias devs           */</span>
+
+   <span class="comment">/* Pointer to the interface buffers. */</span>
+   <span class="keyword">struct</span> sk_buff_head     buffs[DEV_NUMBUFFS];
+
+   <span class="comment">/* Pointers to interface service routines. */</span>
+   <span class="keyword">int</span>                     (*open)(<span class="keyword">struct</span> device *dev);
+   <span class="keyword">int</span>                     (*stop)(<span class="keyword">struct</span> device *dev);
+   <span class="keyword">int</span>                     (*hard_start_xmit) (<span class="keyword">struct</span> sk_buff *skb,
+                                               <span class="keyword">struct</span> device *dev);
+   <span class="keyword">int</span>                     (*hard_header) (<span class="keyword">struct</span> sk_buff *skb,
+                                           <span class="keyword">struct</span> device *dev,
+                                           <span class="keyword">unsigned</span> <span class="keyword">short</span> type,
+                                           <span class="keyword">void</span> *daddr,
+                                           <span class="keyword">void</span> *saddr,
+                                           <span class="keyword">unsigned</span> len);
+   <span class="keyword">int</span>                     (*rebuild_header)(<span class="keyword">void</span> *eth, 
+                                           <span class="keyword">struct</span> device *dev,
+                                           <span class="keyword">unsigned</span> <span class="keyword">long</span> raddr,
+                                           <span class="keyword">struct</span> sk_buff *skb);
+   <span class="keyword">void</span>                    (*set_multicast_list)(<span class="keyword">struct</span> device *dev);
+   <span class="keyword">int</span>                     (*set_mac_address)(<span class="keyword">struct</span> device *dev,
+                                           <span class="keyword">void</span> *addr);
+   <span class="keyword">int</span>                     (*do_ioctl)(<span class="keyword">struct</span> device *dev, 
+                                           <span class="keyword">struct</span> ifreq *ifr,
+                                           <span class="keyword">int</span> cmd);
+   <span class="keyword">int</span>                     (*set_config)(<span class="keyword">struct</span> device *dev,
+                                           <span class="keyword">struct</span> ifmap *<span class="built_in">map</span>);
+   <span class="keyword">void</span>                    (*header_cache_bind)(<span class="keyword">struct</span> hh_cache **hhp,
+                                           <span class="keyword">struct</span> device *dev, 
+                                           <span class="keyword">unsigned</span> <span class="keyword">short</span> htype,
+                                           __u32 daddr);
+   <span class="keyword">void</span>                    (*header_cache_update)(<span class="keyword">struct</span> hh_cache *hh,
+                                           <span class="keyword">struct</span> device *dev,
+                                           <span class="keyword">unsigned</span> <span class="keyword">char</span> *  haddr);
+   <span class="keyword">int</span>                     (*change_mtu)(<span class="keyword">struct</span> device *dev,
+                                           <span class="keyword">int</span> new_mtu);
+   <span class="keyword">struct</span> iw_statistics*   (*get_wireless_stats)(<span class="keyword">struct</span> device *dev);
+ };</code></pre>
+<p> </section></p>
+</section>
+<section>
+ <section>
+
+<h2>Indirection</h2>
+<p> <br/>
+ <em>All problems in computer science can be solved by another level of indirection.</em></p>
+</section>
+<section>
+<p> application
+ <hr/>
+ <strong>OS</strong>
+ <hr/>
+ bare metal</p>
+</section>
+<section>
+<p> application
+ <hr/>
+ <strong>Virtual Memory</strong>
+ <hr/>
+ physical memory</p>
+</section>
+<section>
+<p> OS
+ <hr/>
+ <strong>Virtual Machine</strong>
+ <hr/>
+ bare metal/OS</p>
+</section>
+<section>
+<p> real datagram
+ <hr/>
+ <strong>Tunnel</strong>
+ <hr/>
+ transport channel</p>
+</section>
+<section>
+<p> ifstate
+ <hr/>
+ <strong>Proxy Peer</strong><br> <hr/>
+ ifstate consumer</p>
+<p> </section></p>
+</section>
+<section>
+<h2>Summary - what to bring back</h2>
+<p> <br/>
+ <em>DRY, OCP, SoC, IoC, CoC, Encapsulation, Indirection...</em></p>
+</section>
+<section>
+<h2>Paradigms</h2>
+<ul>
+<li>Generic Programming (GP)</li>
+<li>Meta Programming &amp; DSL</li>
+</ul>
+</section>
+<section>
+ <section>
+
+<h2>Generic Programming (GP)</h2>
+<p> <br/></p>
+<p> <em>Decouple algorithm with data structure, generalize the data structure used by algorithm so that the algorithm could be reused broadly.</em></p>
+</section>
+<section>
+<p> <strong>What&#39;s your intuition on GP?</strong></p>
+</section>
+<section>
+<p> <em>Yes in C++ we have this weired thing called template, and a library called <strong>STL</strong>... </em></p>
+<p> <br/></p>
+<pre><code> template &lt;typename <span class="literal">T</span>&gt;
+ <span class="literal">T</span> max(<span class="literal">T</span> a, <span class="literal">T</span> b) {
+     <span class="keyword">return</span> (a &gt; b) ? a : b;
+ }</code></pre>
+</section>
+<section>
+<p> <strong>Well, what we&#39;re talking is more than that...</strong></p>
+</section>
+<section>
+<h3>Basic coding tests</h3>
+<ol>
+<li>Randomly pick up 10 numbers from an array, sum up the primes.</li>
+<li>Given company directory, find female engineers then raise their salary by 10%.</li>
+<li>In CLI if user input a keyword which doesn&#39;t exist, print error message.</li>
+</ol>
+</section>
+<section>
+<p> <strong>How do you abstract the algorithm?</strong></p>
+</section>
+<section>
+<pre><code> // C++
+ template &lt;typename Iterator, typename Filter, typename Action&gt;
+ void process(Iterator <span class="operator"><span class="keyword">begin</span>, Iterator <span class="keyword">end</span>, Filter test, <span class="keyword">Action</span> <span class="keyword">action</span>) {
+     <span class="keyword">for</span> (;</span> <span class="operator"><span class="keyword">begin</span> &lt;= <span class="keyword">end</span>;</span> <span class="operator"><span class="keyword">begin</span>++) {
+         <span class="keyword">if</span> (test(*<span class="keyword">begin</span>)) <span class="keyword">action</span>(*<span class="keyword">begin</span>);</span>
+     }
+ }</code></pre>
+<pre><code> <span class="comment"># Python</span>
+ <span class="function"><span class="keyword">def</span> <span class="title">process</span><span class="params">(l, test, action)</span>:</span>
+     <span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(x)</span>:</span>
+         <span class="keyword">return</span> action(x) <span class="keyword">if</span> test(x) <span class="keyword">else</span> <span class="keyword">None</span>
+
+     <span class="keyword">return</span> filter(<span class="keyword">None</span>, map(f, l))</code></pre>
+<pre><code><span class="tag"> %</span>% Erlang
+ process(L, test, action) -&gt;
+     [action(X) || X &lt;- L, test(X) =:= true].</code></pre>
+<p> </section></p>
+</section>
+<section>
+ <section>
+
+<h2>Meta Programming &amp; DSL</h2>
+<p> <br/></p>
+<p> <em>a programmed system begins to program itself.</em></p>
+</section>
+<section>
+<pre><code> # code from https:<span class="comment">//github.com/michaelliao/sinaweibopy</span>
+ <span class="class"><span class="keyword">class</span> <span class="title">APIClient</span>(<span class="title">object</span>):
+     ...
+
+     <span class="title">def</span> <span class="title">__getattr__</span>(<span class="title">self</span>, <span class="title">attr</span>):
+         <span class="title">return</span> <span class="title">_Callable</span>(<span class="title">self</span>, <span class="title">attr</span>)
+
+ <span class="title">class</span> <span class="title">_Executable</span>(<span class="title">object</span>):
+
+     <span class="title">def</span> <span class="title">__init__</span>(<span class="title">self</span>, <span class="title">client</span>, <span class="title">method</span>, <span class="title">path</span>):
+         <span class="title">self</span>.<span class="title">_client</span> = <span class="title">client</span>
+         <span class="title">self</span>.<span class="title">_method</span> = <span class="title">method</span>
+         <span class="title">self</span>.<span class="title">_path</span> = <span class="title">path</span>
+
+     <span class="title">def</span> <span class="title">__call__</span>(<span class="title">self</span>, **<span class="title">kw</span>):
+         <span class="title">method</span> = <span class="title">_METHOD_MAP</span>[<span class="title">self</span>.<span class="title">_method</span>]
+         <span class="title">if</span> <span class="title">method</span>==<span class="title">_HTTP_POST</span> <span class="title">and</span> '<span class="title">pic</span>' <span class="title">in</span> <span class="title">kw</span>:
+             <span class="title">method</span> = <span class="title">_HTTP_UPLOAD</span>
+         <span class="title">return</span> <span class="title">_http_call</span>('%<span class="title">s</span>%<span class="title">s</span>.<span class="title">json</span>' % (<span class="title">self</span>.<span class="title">_client</span>.<span class="title">api_url</span>, <span class="title">self</span>.<span class="title">_path</span>), <span class="title">method</span>, <span class="title">self</span>.<span class="title">_client</span>.<span class="title">access_token</span>, **<span class="title">kw</span>)
+
+     <span class="title">def</span> <span class="title">__str__</span>(<span class="title">self</span>):
+         <span class="title">return</span> '<span class="title">_Executable</span> (%<span class="title">s</span> %<span class="title">s</span>)' % (<span class="title">self</span>.<span class="title">_method</span>, <span class="title">self</span>.<span class="title">_path</span>)
+
+     <span class="title">__repr__</span> = <span class="title">__str__</span>
+
+ <span class="title">class</span> <span class="title">_Callable</span>(<span class="title">object</span>):
+
+     <span class="title">def</span> <span class="title">__init__</span>(<span class="title">self</span>, <span class="title">client</span>, <span class="title">name</span>):
+         <span class="title">self</span>.<span class="title">_client</span> = <span class="title">client</span>
+         <span class="title">self</span>.<span class="title">_name</span> = <span class="title">name</span>
+
+     <span class="title">def</span> <span class="title">__getattr__</span>(<span class="title">self</span>, <span class="title">attr</span>):
+         <span class="title">if</span> <span class="title">attr</span>=='<span class="title">get</span>':
+             <span class="title">return</span> <span class="title">_Executable</span>(<span class="title">self</span>.<span class="title">_client</span>, '<span class="title">GET</span>', <span class="title">self</span>.<span class="title">_name</span>)
+         <span class="title">if</span> <span class="title">attr</span>=='<span class="title">post</span>':
+             <span class="title">return</span> <span class="title">_Executable</span>(<span class="title">self</span>.<span class="title">_client</span>, '<span class="title">POST</span>', <span class="title">self</span>.<span class="title">_name</span>)
+         <span class="title">name</span> = '%<span class="title">s</span>/%<span class="title">s</span>' % (<span class="title">self</span>.<span class="title">_name</span>, <span class="title">attr</span>)
+         <span class="title">return</span> <span class="title">_Callable</span>(<span class="title">self</span>.<span class="title">_client</span>, <span class="title">name</span>)
+
+     <span class="title">def</span> <span class="title">__str__</span>(<span class="title">self</span>):
+         <span class="title">return</span> '<span class="title">_Callable</span> (%<span class="title">s</span>)' % <span class="title">self</span>.<span class="title">_name</span>
+
+     <span class="title">__repr__</span> = <span class="title">__str__</span>
+
+ # <span class="title">use</span> <span class="title">it</span>
+ <span class="title">client</span> = <span class="title">APIClient</span>(<span class="title">app_key</span>=<span class="title">YOUR_APP_KEY</span>, <span class="title">app_secret</span>=<span class="title">YOUR_APP_SECRET</span>,
+                <span class="title">redirect_uri</span>=<span class="title">YOUR_CALLBACK_URL</span>)
+
+ <span class="title">print</span> <span class="title">client</span>.<span class="title">statuses</span>.<span class="title">user_timeline</span>.<span class="title">get</span>()
+ <span class="title">print</span> <span class="title">client</span>.<span class="title">statuses</span>.<span class="title">update</span>.<span class="title">post</span>(<span class="title">status</span>=<span class="title">u</span>'<span class="title">test</span> <span class="title">plain</span> <span class="title">weibo</span>')
+ <span class="title">print</span> <span class="title">client</span>.<span class="title">statuses</span>.<span class="title">upload</span>.<span class="title">post</span>(<span class="title">status</span>=<span class="title">u</span>'<span class="title">test</span> <span class="title">weibo</span> <span class="title">with</span> <span class="title">picture</span>',
+                               <span class="title">pic</span>=<span class="title">open</span>('/<span class="title">Users</span>/<span class="title">michael</span>/<span class="title">test</span>.<span class="title">png</span>'))</span></code></pre>
+<p> </section></p>
+</section>
+<section>
+<h2>Summary - what to bring back</h2>
+<p> <br/></p>
+<ul>
+<li>GP: algorithm, container, iterator</li>
+<li>MP: program to write program itself</li>
+</ul>
+</section>
+<section>
+<h2>Methodology</h2>
+<ul>
+<li>Object Oriented Programming (OOP)</li>
+<li>Aspect Oriented Programming (AOP)</li>
+<li>Functional Programming (FP)</li>
+</ul>
+</section>
+<section>
+<h2>Object Oriented Programming (OOP)</h2>
+</section>
+<section>
+ <section>
+
+<h2>Aspect Oriented Programming (AOP)</h2>
+</section>
+<section>
+<pre><code> <span class="comment"># normally if we want to authenticate user in a view</span>
+ <span class="function"><span class="keyword">def</span> <span class="title">user_view</span><span class="params">(request, *args, **kwargs)</span>:</span>
+   <span class="keyword">if</span> request.user.is_authenticated():
+     <span class="keyword">return</span> HttpRequestRedirect(<span class="string">'/login/'</span>)
+
+   user = request.user
+   profile = user.get_profile()
+
+   varialbes = RequestContext(request, {
+     <span class="string">'user'</span>: user,
+     <span class="string">'profile'</span>: profile,
+   })
+
+   <span class="keyword">return</span> render_to_response(...)
+
+ <span class="comment"># AOP for authenticate a user in a view</span>
+ <span class="decorator">@login_required</span>
+ <span class="function"><span class="keyword">def</span> <span class="title">user_view</span><span class="params">(request, *args, **kwargs)</span>:</span>
+   user = request.user
+   profile = user.get_profile()
+
+   varialbes = RequestContext(request, {
+     <span class="string">'user'</span>: user,
+     <span class="string">'profile'</span>: profile,
+   })
+
+   <span class="keyword">return</span> render_to_response(...)</code></pre>
+<p> </section></p>
+</section>
+<section>
+<h2>Functional Programming (FP)</h2>
+<pre><code><span class="tag"> %</span> Erlang
+ qsort([]) -&gt; [];
+ qsort([Pivot|T]) -&gt;
+   qsort([X || X &lt;- T, X &lt; Pivot])
+   ++ [Pivot] ++
+   qsort([X || X &lt;- T, X &gt;= Pivot]).</code></pre>
+</section>
+<section>
+<h2>Summary - what to bring back</h2>
+<p> <br/></p>
+<ul>
+<li>OOP - focus on data, then algorithm operated on data</li>
+<li>AOP - focus on core logic, moving concerns out</li>
+<li>FP  - no side effect, more abstracted, and elegant</li>
+</ul>
+</section>
+<section>
+<h2>Patterns</h2>
+<ul>
+<li>Observer (Pub/Sub)</li>
+<li>Chain of Responsibility</li>
+<li>Strategy</li>
+<li>...</li>
+</ul>
+</section>
+<section>
+<h2>Observer (Pub/Sub)</h2>
+<p> <br/>
+ <em>event notification, linux kernel notifier chain, etc.</em></p>
+</section>
+<section>
+<h2>Chain of Responsibility</h2>
+<p> <br/>
+ <em>jexec nexthop, flow vector processing are typical use cases.</em></p>
+</section>
+<section>
+<h2>Strategy</h2>
+<p> <br/>
+ <em>the strategy pattern defines a family of algorithms, encapsulates each one, and makes them interchangeable.</em></p>
+<p> <em>3DES/AES, etc.</em></p>
+</section>
+<section>
+<h2>In summary - Zen of Coding</h2>
+<pre><code> &gt;&gt;&gt; <span class="keyword">import</span> <span class="keyword">this</span></code></pre>
+<pre><code> Beautiful <span class="keyword">is</span> better than ugly.
+ Explicit <span class="keyword">is</span> better than implicit.
+
+ Simple <span class="keyword">is</span> better than complex.
+ Complex <span class="keyword">is</span> better than complicated.
+
+ Flat <span class="keyword">is</span> better than nested.
+ Sparse <span class="keyword">is</span> better than dense.
+
+ Readability counts.
+
+ Special cases are <span class="keyword">not</span> special enough <span class="keyword">to</span> break <span class="keyword">the</span> rules.
+ Although practicality beats purity.
+
+ Errors should never pass silently.
+ Unless explicitly silenced.
+
+ In <span class="keyword">the</span> face <span class="keyword">of</span> ambiguity, refuse <span class="keyword">the</span> temptation <span class="keyword">to</span> guess.
+
+ There should be one - <span class="keyword">and</span> preferably only one - obvious way <span class="keyword">to</span> do it.
+ Although <span class="keyword">that</span> way may <span class="keyword">not</span> be obvious <span class="keyword">at</span> <span class="keyword">first</span> unless you are Dutch.
+
+ Now <span class="keyword">is</span> better than never.
+ Although never <span class="keyword">is</span> often better than *right* now.
+
+ If <span class="keyword">the</span> implementation <span class="keyword">is</span> hard <span class="keyword">to</span> explain, <span class="keyword">it</span> <span class="keyword">is</span> a bad idea.
+ If <span class="keyword">the</span> implementation <span class="keyword">is</span> easy <span class="keyword">to</span> explain, <span class="keyword">it</span> may be a good idea.
+
+ Namespaces are one honking great idea <span class="comment">-- let us do more of those!</span></code></pre>
+</section>
+<section>
+<h1>Thanks</h1>
+<p> <br/>
+ <strong>Learning by doing,</strong></p>
+<p> <strong>and learning by shipping.</strong></p>
+<p> <br/><hr/>
+ <em>Every engineer should use MAC</em></p>
+</section>
+
+      </div>
+    </div>
+    <script src="/assets/slides/reveal.js/lib/js/head.min.js"></script>
+    <script src="/assets/slides/reveal.js/js/reveal.min.js"></script>
+    <script>
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'concave', // default/cube/page/concave/zoom/linear/none
+        
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: '/assets/slides/reveal.js/plugin/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '/assets/slides/reveal.js/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '/assets/slides/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '/assets/slides/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: '/assets/slides/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+          // { src: '/assets/reveal/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+      
+    </script>
+  </body>
+</html>

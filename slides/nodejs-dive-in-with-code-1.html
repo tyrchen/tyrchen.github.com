@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>nodejs dive in with code (1) - </title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/assets/slides/reveal.js/css/reveal.min.css">
+    <link rel="stylesheet" href="/assets/slides/reveal.js/css/theme/beige.css" id="theme">
+    <link href="http://fonts.googleapis.com/css?family=Arbutus+Slab|Josefin+Slab:400,700|Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/slides/code/github.css">
+    <link rel="stylesheet" href="/assets/slides/custom.css">
+  </head>
+  <body class="reveal">
+    <div class="reveal">
+      <div class="slides"><section>
+<h1>Nodejs Dive In With Code (1)</h1>
+<h3>Tyr Chen</h3>
+<h3>2013-01-25 @ subway line 10</h3>
+</section>
+<!--more-->
+
+
+
+<section>
+<h2>First Server</h2>
+</section>
+<section>
+<h2>Hello World</h2>
+<pre><code> var http = require(<span class="string">'http'</span>);
+
+ var s = <span class="transposed_variable">http.</span>createServer(<span class="function"><span class="keyword">function</span><span class="params">(req, res)</span> {</span>
+   <span class="transposed_variable">res.</span>writeHead(<span class="number">200</span>, <span class="cell">{ <span class="string">'content-type'</span>: <span class="string">'text/plain'</span> }</span>);
+   <span class="transposed_variable">res.</span>write(<span class="string">'hello\n\n'</span>);
+   <span class="transposed_variable">res.</span><span class="keyword">end</span>(<span class="string">'crucial world!\n'</span>);
+ }).listen(<span class="number">8000</span>);</code></pre>
+</section>
+<section>
+<h2>Test and Introspection</h2>
+<pre><code> $ curl -i <span class="attribute">http</span>:<span class="regexp">//</span><span class="attribute">localhost</span>:<span class="number">8000</span>/
+ HTTP/<span class="number">1.1</span> <span class="number">200</span> OK
+ content-<span class="attribute">type</span>: text/plain
+ <span class="attribute">Date</span>: Thu, <span class="number">24</span> Jan <span class="number">2013</span> <span class="number">22</span>:<span class="number">53</span>:<span class="number">10</span> GMT
+ <span class="attribute">Connection</span>: keep-alive
+ Transfer-<span class="attribute">Encoding</span>: chunked
+
+ hello
+
+ crucial world!</code></pre>
+</section>
+<section>
+<h2>Response Header</h2>
+<ul>
+<li>keep-alive</li>
+<li>chunked</li>
+</ul>
+</section>
+<section>
+<h2>Hello World (2)</h2>
+<pre><code> var http = require(<span class="string">'http'</span>);
+
+ var s = <span class="transposed_variable">http.</span>createServer(<span class="function"><span class="keyword">function</span><span class="params">(req, res)</span> {</span>
+   <span class="transposed_variable">res.</span>writeHead(<span class="number">200</span>, <span class="cell">{ <span class="string">'content-type'</span>: <span class="string">'text/plain'</span> }</span>);
+   <span class="transposed_variable">res.</span>write(<span class="string">'hello\n\n'</span>);
+   setTimeout(<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+     <span class="transposed_variable">res.</span><span class="keyword">end</span>(<span class="string">'crucial world!\n'</span>);
+   }, <span class="number">2000</span>);
+ }).listen(<span class="number">8000</span>);</code></pre>
+</section>
+<section>
+<h2>What Happened?</h2>
+<ul>
+<li>via curl</li>
+<li>via browser</li>
+</ul>
+</section>
+<section>
+<p> <strong>I like HTTP, how about a TCP server?</strong></p>
+</section>
+<section>
+<h2>TCP Server</h2>
+<pre><code> var net = <span class="keyword">require</span>(<span class="string">'net'</span>);
+
+ var server = net.createServer(function(<span class="keyword">socket</span>) {
+   <span class="keyword">socket</span>.<span class="keyword">write</span>(<span class="string">'hello\n'</span>);
+   <span class="keyword">socket</span>.<span class="keyword">write</span>(<span class="string">'crucial world\n'</span>);
+
+ }).<span class="keyword">listen</span>(<span class="number">8000</span>);</code></pre>
+</section>
+<section>
+<p> <strong>I would like to make it more interactive...</strong></p>
+</section>
+<section>
+<h2>Echo Server</h2>
+<pre><code> var net = <span class="keyword">require</span>(<span class="string">'net'</span>);
+
+ var server = net.createServer(function(<span class="keyword">socket</span>) {
+   <span class="keyword">socket</span>.<span class="keyword">write</span>(<span class="string">'hello\n'</span>);
+   <span class="keyword">socket</span>.<span class="keyword">write</span>(<span class="string">'world\n'</span>);
+
+   <span class="regexp">//</span> <span class="keyword">wait</span> <span class="keyword">for</span> data arrival event
+   <span class="keyword">socket</span>.on(<span class="string">'data'</span>, function(data) {
+     <span class="keyword">socket</span>.<span class="keyword">write</span>(data);
+   });
+ }).<span class="keyword">listen</span>(<span class="number">8000</span>);</code></pre>
+</section>
+<section>
+<p> <strong>What about UDP and Raw Socket?</strong></p>
+</section>
+<section>
+<h2>Well this is a good question</h2>
+<ul>
+<li>Node support UDP in dgram module</li>
+<li><p>Node doesn&#39;t support raw socket (you can&#39;t do Ping directly)</p>
+<p><em>Maybe joyent thought it is a poor choice for you to choose javascript to do raw socket...</em></p>
+</li>
+</ul>
+</section>
+<section>
+<h1>A simple UDP Server</h1>
+<pre><code> <span class="keyword">var</span> dgram = <span class="keyword">require</span>(<span class="string">'dgram'</span>);
+ <span class="keyword">var</span> message = <span class="keyword">new</span> Buffer(<span class="string">"Hello world"</span>);
+ <span class="keyword">var</span> client = dgram.createSocket(<span class="string">"udp4"</span>);
+ client.send(message, <span class="number">0</span>, message.length, <span class="number">12345</span>, <span class="string">"localhost"</span>, <span class="function"><span class="keyword">function</span><span class="params">(err, bytes)</span> {</span>
+   client.close();
+ });</code></pre>
+</section>
+<section>
+<p> <strong>Let&#39;s writing something a bit complicated</strong></p>
+</section>
+<section>
+<h2>A Chat Server</h2>
+<pre><code> var net = require(<span class="string">'net'</span>);
+ var sockets = <span class="matrix">[]</span>;
+ var s = <span class="transposed_variable">net.</span>Server(<span class="function"><span class="keyword">function</span><span class="params">(socket)</span> {</span>
+   <span class="transposed_variable">sockets.</span>push(socket);
+
+   <span class="transposed_variable">socket.</span>on(<span class="string">'data'</span>, <span class="function"><span class="keyword">function</span><span class="params">(data)</span> {</span>
+     <span class="keyword">for</span>(var <span class="built_in">i</span>=<span class="number">0</span>; <span class="built_in">i</span>&lt;<span class="transposed_variable">sockets.</span><span class="built_in">length</span>; <span class="built_in">i</span>++) <span class="cell">{
+       if (sockets[i] == socket) continue;
+       sockets[i].write(data);
+     }</span>
+   });
+
+   <span class="transposed_variable">socket.</span>on(<span class="string">'end'</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+     var <span class="built_in">i</span> = <span class="transposed_variable">sockets.</span>indexOf(socket);
+     <span class="transposed_variable">sockets.</span>splice(<span class="built_in">i</span>, <span class="number">1</span>);
+   });
+ }).listen(<span class="number">8000</span>);</code></pre>
+</section>
+<section>
+<h1>To Be Continued...</h1>
+</section>
+
+      </div>
+    </div>
+    <script src="/assets/slides/reveal.js/lib/js/head.min.js"></script>
+    <script src="/assets/slides/reveal.js/js/reveal.min.js"></script>
+    <script>
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+        
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: '/assets/slides/reveal.js/plugin/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '/assets/slides/reveal.js/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '/assets/slides/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '/assets/slides/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: '/assets/slides/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+          // { src: '/assets/reveal/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+      
+    </script>
+  </body>
+</html>

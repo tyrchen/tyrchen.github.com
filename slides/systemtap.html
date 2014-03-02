@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Systemtap for NGSRX - </title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/assets/slides/reveal.js/css/reveal.min.css">
+    <link rel="stylesheet" href="/assets/slides/reveal.js/css/theme/default.css" id="theme">
+    <link href="http://fonts.googleapis.com/css?family=Arbutus+Slab|Josefin+Slab:400,700|Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/slides/code/github.css">
+    <link rel="stylesheet" href="/assets/slides/custom.css">
+  </head>
+  <body class="reveal">
+    <div class="reveal">
+      <div class="slides"><section>
+<h1>Systemtap for NGSRX</h1>
+<p> <br/></p>
+<h3>Tyr Chen</h3>
+<p> <br/>
+ <br/>
+ Stay hungry, stay foolish
+ 2014-01-08</p>
+</section>
+<!--more-->
+
+
+<section>
+<p> <b>Have you ever been driven crazy by the difficult bugs?</b></p>
+<p> <img src="../../_static/exhausted.jpg" width="800px" /></p>
+</section>
+<section>
+<h2>What is Systemtap</h2>
+<p> <br/></p>
+<ul>
+<li>A tool to deeply examine a live linux system</li>
+<li>For complex performance or functional problems<ul>
+<li>You can extract, filter and summarize the data    </li>
+</ul>
+</li>
+</ul>
+</section>
+<section>
+<h2>What&#39;s the benifit of Systemtap?</h2>
+<ul>
+<li>Easy way to debug and profile running processes (and kernel)</li>
+<li>Minimum impact to the processes traced</li>
+<li>Powerful and reusable scripts</li>
+<li>Multiple tracers
+<hr/>
+<code>Eliminate most of the private images at least upon Dev/QA cycle</code></li>
+</ul>
+</section>
+<section>
+ <section>
+
+<h2>How does it work</h2>
+<p> <img src="../../_static/systemtap.jpg" alt="Systemtap"></p>
+ <aside class="notes">
+
+ <em> Load the stp script
+ </em> Compile it to C code
+ <em> Compile it to kernel module
+ </em> Load the kernel module, introduce TRAP (INT3) into the probes
+ * (upon quit) Unload the kernel module
+
+ </aside></section>
+<section>
+<h2>Example</h2>
+<pre><code> $ sudo stap -v -e <span class="string">'probe begin{printf("hello world\n"); exit();}'</span>
+ Pass <span class="number">1</span>: parsed user script and <span class="number">104</span> library script(s) using <span class="number">203496</span>virt/<span class="number">31656</span>res/<span class="number">3108</span>shr/<span class="number">29132</span>data kb, <span class="keyword">in</span> <span class="number">180</span>usr/<span class="number">20</span>sys/<span class="number">383</span>real ms.
+ Pass <span class="number">2</span>: analyzed script: <span class="number">1</span> probe(s), <span class="number">1</span> <span class="function"><span class="keyword">function</span><span class="params">(s)</span>, 0 <span class="title">embed</span><span class="params">(s)</span>, 0 <span class="title">global</span><span class="params">(s)</span> <span class="title">using</span> 204156<span class="title">virt</span>/32592<span class="title">res</span>/3364<span class="title">shr</span>/29792<span class="title">data</span> <span class="title">kb</span>, <span class="title">in</span> 0<span class="title">usr</span>/0<span class="title">sys</span>/9<span class="title">real</span> <span class="title">ms</span>.
+ <span class="title">Pass</span> 3: <span class="title">translated</span> <span class="title">to</span> <span class="title">C</span> <span class="title">into</span> "/<span class="title">tmp</span>/<span class="title">stap565B3A</span>/<span class="title">stap_b0d6ba829a87e91fab80333b3f250e11_924_src</span>.<span class="title">c</span>" <span class="title">using</span> 204288<span class="title">virt</span>/32920<span class="title">res</span>/3668<span class="title">shr</span>/29924<span class="title">data</span> <span class="title">kb</span>, <span class="title">in</span> 10<span class="title">usr</span>/10<span class="title">sys</span>/19<span class="title">real</span> <span class="title">ms</span>.
+ <span class="title">Pass</span> 4: <span class="title">compiled</span> <span class="title">C</span> <span class="title">into</span> "<span class="title">stap_b0d6ba829a87e91fab80333b3f250e11_924</span>.<span class="title">ko</span>" <span class="title">in</span> 920<span class="title">usr</span>/190<span class="title">sys</span>/3122<span class="title">real</span> <span class="title">ms</span>.
+ <span class="title">Pass</span> 5: <span class="title">starting</span> <span class="title">run</span>.
+ <span class="title">hello</span> <span class="title">world</span>
+ <span class="title">Pass</span> 5: <span class="title">run</span> <span class="title">completed</span> <span class="title">in</span> 0<span class="title">usr</span>/20<span class="title">sys</span>/345<span class="title">real</span> <span class="title">ms</span>.</span></code></pre>
+</section>
+<section>
+<h2>Systemtap Internals - Utrace</h2>
+<p> <img src="../../_static/utrace.jpg" style="width: 800px" /></p>
+</section>
+<section>
+<h2>Systemtap Internals - Code injection</h2>
+<p> <img src="../../_static/code_inject.jpg" style="width: 800px" /></p>
+<p> </section></p>
+</section>
+<section>
+ <section>
+
+<h2>Where to probe (1)?</h2>
+<ul>
+<li>begin</li>
+<li>end</li>
+<li>timer.jiffies(1000)</li>
+<li>timer.s(4)</li>
+<li>timer.ms(200).randomize(50)</li>
+</ul>
+</section>
+<section>
+<h2>Where to probe (2)?</h2>
+<ul>
+<li>kernel.funcion(&quot;*@kernel/fork.c:934&quot;)</li>
+<li>kernel.syscall.*</li>
+<li>kernel.data(&quot;SYMBOL_NAME&quot;).write (need CONFIG_HAVE_HW_BREAKPOINT)</li>
+<li>process(&quot;flowd&quot;).function(&quot;flow_process_pkt&quot;)</li>
+<li>process(&quot;flowd&quot;).statement(0x412930)</li>
+<li>netdev.receive/netdev.transmit</li>
+</ul>
+</section>
+<section>
+<p> For a complete list of probes please <a href="http://sourceware.org/systemtap/SystemTap_Beginners_Guide/scripts.html">visit the doc</a>.</p>
+</section>
+<section>
+<h2>Live example - the code</h2>
+<pre><code> global <span class="keyword">recv</span>, xmit
+
+ probe begin {
+   <span class="keyword">printf</span>(<span class="string">"Starting network capture (Ctl-C to end)\n"</span>)
+ }
+
+ probe netdev.receive {
+   <span class="keyword">recv</span>[dev_name, pid(), execname()] &lt;&lt;&lt; <span class="keyword">length</span>
+ }
+
+ probe netdev.transmit {
+   xmit[dev_name, pid(), execname()] &lt;&lt;&lt; <span class="keyword">length</span>
+ }
+
+ probe end {
+   <span class="keyword">printf</span>(<span class="string">"\nEnd Capture\n\n"</span>)
+
+   <span class="keyword">printf</span>(<span class="string">"Iface Process........ PID.. RcvPktCnt XmtPktCnt\n"</span>)
+
+   <span class="keyword">foreach</span> ([dev, pid, name] in <span class="keyword">recv</span>) {
+     recvcount = <span class="variable">@count</span>(<span class="keyword">recv</span>[dev, pid, name])
+     xmitcount = <span class="variable">@count</span>(xmit[dev, pid, name])
+     <span class="keyword">printf</span>( <span class="string">"<span class="variable">%5s</span> <span class="variable">%-</span>15s <span class="variable">%-</span>5d <span class="variable">%9d</span> <span class="variable">%9d</span>\n"</span>, dev, name, pid, recvcount, xmitcount )
+   }
+
+   <span class="keyword">delete</span> <span class="keyword">recv</span>
+   <span class="keyword">delete</span> xmit
+ }</code></pre>
+</section>
+<section>
+<h2>Live Example - the result</h2>
+<pre><code> $ su<span class="operator"><span class="keyword">do</span> stap net.stp
+ Starting network capture (Ctl-C <span class="keyword">to</span> <span class="keyword">end</span>)
+ ^C
+ <span class="keyword">End</span> Capture
+
+ Iface Process........ PID.. RcvPktCnt XmtPktCnt
+  eth2 mongod          <span class="number">1109</span>          <span class="number">1</span>         <span class="number">0</span>
+  eth2 swapper/<span class="number">0</span>       <span class="number">0</span>            <span class="number">49</span>         <span class="number">0</span></span></code></pre>
+<p> </section></p>
+</section>
+<section>
+ <section>
+
+<h2>What to print (1)?</h2>
+<ul>
+<li>tid()</li>
+<li>pid()</li>
+<li>uid()</li>
+<li>execname()</li>
+<li>cpu()</li>
+<li>gettimeofday_s()</li>
+<li>pp(): A string describing the probe point being currently handled. </li>
+</ul>
+</section>
+<section>
+<h2>What to print (2)?</h2>
+<ul>
+<li>ppfunc(): If known, the the function name in which this probe was placed.</li>
+<li>$$vars: If available, a pretty-printed listing of all local variables in scope. </li>
+<li>print_backtrace(): If possible, print a kernel backtrace. </li>
+<li>print_ubacktrace(): If possible, print a user-space backtrace. </li>
+<li>thread_indent(): beautiful print.</li>
+</ul>
+</section>
+<section>
+<p> for more internal functions, please <a href="http://sourceware.org/systemtap/SystemTap_Beginners_Guide/systemtapscript-handler.html">visit the doc</a>.</p>
+</section>
+<section>
+<h2>Live Example - the code</h2>
+<pre><code> $ <span class="built_in">cat</span> <span class="transposed_variable">thread_ident.</span>stp
+ probe <span class="transposed_variable">kernel.</span><span class="function"><span class="keyword">function</span><span class="params">("*@net/socket.c")</span>.<span class="title">call</span></span>
+ <span class="cell">{
+   printf ("%s -&gt; %s\n", thread_indent(<span class="number">1</span>), probefunc())
+ }</span>
+ probe <span class="transposed_variable">kernel.</span><span class="function"><span class="keyword">function</span><span class="params">("*@net/socket.c")</span>.<span class="title">return</span></span>
+ <span class="cell">{
+   printf ("%s &lt;- %s\n", thread_indent(-<span class="number">1</span>), probefunc())
+ }</span></code></pre>
+</section>
+<section>
+<h2>Live Example - the result</h2>
+<pre><code> <span class="comment">$</span> <span class="comment">sudo</span> <span class="comment">stap</span> <span class="comment">thread_ident</span><span class="string">.</span><span class="comment">stp</span>
+      <span class="comment">0</span> <span class="comment">sshd(10847):</span> <span class="literal">-</span>&gt; <span class="comment">sock_aio_read</span>
+      <span class="comment">6</span> <span class="comment">sshd(10847):</span>  <span class="literal">-</span>&gt; <span class="comment">sock_aio_read</span>
+     <span class="comment">11</span> <span class="comment">sshd(10847):</span>   <span class="literal">-</span>&gt; <span class="comment">alloc_sock_iocb</span>
+     <span class="comment">16</span> <span class="comment">sshd(10847):</span>   &lt;<span class="literal">-</span> <span class="comment">alloc_sock_iocb</span>
+     <span class="comment">40</span> <span class="comment">sshd(10847):</span>  &lt;<span class="literal">-</span> <span class="comment">sock_aio_read</span>
+     <span class="comment">45</span> <span class="comment">sshd(10847):</span> &lt;<span class="literal">-</span> <span class="comment">sock_aio_read</span></code></pre>
+<p> </section></p>
+</section>
+<section>
+<h2>The <code>stap</code> Commandline</h2>
+<ul>
+<li><code>-d</code> to load debug symbol</li>
+<li><code>-g</code> to run (or embed) unsafe C code into the script</li>
+<li><code>-x</code> to attach to a running process</li>
+<li><code>-c</code> to run the process by the stap</li>
+<li><code>-t</code> to collect timing information (for performance purpose)</li>
+<li><code>-L</code> to inspect the code</li>
+<li>...</li>
+</ul>
+</section>
+<section>
+ <section>
+
+<h2>How to use stap in NGSRX?</h2>
+<ul>
+<li>As a replacement to <code>private build</code> which aims to just collect data</li>
+<li>As a good study source to our code (just like python introspection)</li>
+<li>As a complement to <code>gdb</code> for debugging</li>
+<li>As a complement to <code>gperf</code> for performance tuning</li>
+<li>As a complement to <code>jellyfish</code> for unit testing</li>
+</ul>
+</section>
+<section>
+<h2>How to make stap work in NGSRX?</h2>
+</section>
+<section>
+<h2>Approach 1</h2>
+<ul>
+<li>Ships systemtap in the dev/QA envrionment</li>
+<li>Ships systemtap in the domestic image for Dev/QA cycle</li>
+<li>Ship it in released image</li>
+</ul>
+</section>
+<section>
+<h2>Approach 2</h2>
+<p> Do not ship it in the image, but:</p>
+<pre><code> &gt; <span class="comment">mk</span> <span class="comment">jstap</span><span class="literal">-</span><span class="comment">jobs</span>
+ <span class="string">.</span><span class="string">.</span><span class="string">.</span>
+ &gt; <span class="comment">ls</span> <span class="literal">-</span><span class="comment">l</span> <span class="string">.</span><span class="string">.</span><span class="comment">/ship/jstap*</span>
+ <span class="literal">-</span><span class="comment">rw</span><span class="literal">-</span><span class="comment">r</span><span class="literal">-</span><span class="literal">-</span><span class="comment">r</span><span class="literal">-</span><span class="literal">-</span>  <span class="comment">1</span> <span class="comment">tchen</span>  <span class="comment">wheel</span>  <span class="comment">442143</span> <span class="comment">Jan</span>  <span class="comment">6</span> <span class="comment">17:08</span> <span class="string">.</span><span class="string">.</span><span class="comment">/ship/jstap</span><span class="literal">-</span><span class="comment">i386</span><span class="literal">-</span><span class="comment">12</span><span class="string">.</span><span class="comment">1I20140107_0107_tchen</span><span class="literal">-</span><span class="comment">signed</span><span class="string">.</span><span class="comment">tgz</span>
+ <span class="literal">-</span><span class="comment">rw</span><span class="literal">-</span><span class="comment">r</span><span class="literal">-</span><span class="literal">-</span><span class="comment">r</span><span class="literal">-</span><span class="literal">-</span>  <span class="comment">1</span> <span class="comment">tchen</span>  <span class="comment">wheel</span>  <span class="comment">411014</span> <span class="comment">Jan</span>  <span class="comment">6</span> <span class="comment">17:08</span> <span class="string">.</span><span class="string">.</span><span class="comment">/ship/jstap</span><span class="literal">-</span><span class="comment">i386</span><span class="literal">-</span><span class="comment">12</span><span class="string">.</span><span class="comment">1I20140107_0107_tchen</span><span class="string">.</span><span class="comment">tgz</span>
+ <span class="literal">-</span><span class="comment">rw</span><span class="literal">-</span><span class="comment">r</span><span class="literal">-</span><span class="literal">-</span><span class="comment">r</span><span class="literal">-</span><span class="literal">-</span>  <span class="comment">1</span> <span class="comment">tchen</span>  <span class="comment">wheel</span>      <span class="comment">41</span> <span class="comment">Jan</span>  <span class="comment">6</span> <span class="comment">17:08</span> <span class="string">.</span><span class="string">.</span><span class="comment">/ship/jstap</span><span class="literal">-</span><span class="comment">i386</span><span class="literal">-</span><span class="comment">12</span><span class="string">.</span><span class="comment">1I20140107_0107_tchen</span><span class="string">.</span><span class="comment">tgz</span><span class="string">.</span><span class="comment">sha1</span></code></pre>
+<pre><code> <span class="comment">cli</span>&gt; <span class="comment">request</span> <span class="comment">system</span> <span class="comment">software</span> <span class="comment">add</span> <span class="comment">jstap</span><span class="literal">-</span><span class="comment">i386</span><span class="literal">-</span><span class="comment">12</span><span class="string">.</span><span class="comment">1I20140107_0107_tchen</span><span class="literal">-</span><span class="comment">signed</span><span class="string">.</span><span class="comment">tgz</span></code></pre>
+<p> </section></p>
+</section>
+<section>
+ <section>
+
+<h1>DEMOs</h1>
+</section>
+<section>
+<h2>Live Example with flowd</h2>
+<pre><code> (poc)tchen@ngsrx<span class="attribute">-build04</span>:~<span class="subst">/</span>ngsrx<span class="subst">/</span><span class="literal">new</span><span class="subst">/</span>obj_sa<span class="subst">/</span>sdk<span class="subst">/</span>lib<span class="subst">/</span>fandf$ 
+ sudo stap <span class="attribute">-d</span> flowd <span class="attribute">-x</span> <span class="number">32525</span> ~<span class="subst">/</span>arena<span class="subst">/</span>stap<span class="subst">/</span>flow_fn_parser<span class="built_in">.</span>stp
+  <span class="number">0x412930</span> : flowd_parser<span class="subst">+</span><span class="number">0x0</span><span class="subst">/</span><span class="number">0x88</span> <span class="preprocessor">[</span><span class="attribute">...</span>volume<span class="subst">/</span>junosv<span class="attribute">-storage02</span><span class="subst">/</span>tchen<span class="subst">/</span><span class="literal">new</span><span class="subst">/</span>obj_sa<span class="subst">/</span>sdk<span class="subst">/</span>lib<span class="subst">/</span>fandf<span class="subst">/</span>flowd<span class="preprocessor">]</span><span class="markup">
+  0x79425a : parser_sub_parse_end_of_line+0x6a/0x87 </span><span class="preprocessor">[</span><span class="attribute">...</span>volume<span class="subst">/</span>junosv<span class="attribute">-storage02</span><span class="subst">/</span>tchen<span class="subst">/</span><span class="literal">new</span><span class="subst">/</span>obj_sa<span class="subst">/</span>sdk<span class="subst">/</span>lib<span class="subst">/</span>fandf<span class="subst">/</span>flowd<span class="preprocessor">]</span><span class="markup">
+  0x79069f : parser_parse_node+0xfe/0x105 </span><span class="preprocessor">[</span><span class="attribute">...</span>volume<span class="subst">/</span>junosv<span class="attribute">-storage02</span><span class="subst">/</span>tchen<span class="subst">/</span><span class="literal">new</span><span class="subst">/</span>obj_sa<span class="subst">/</span>sdk<span class="subst">/</span>lib<span class="subst">/</span>fandf<span class="subst">/</span>flowd<span class="preprocessor">]</span><span class="markup">
+  0x7922ea : parser_parse_words+0x3c3/0x53a </span><span class="preprocessor">[</span><span class="attribute">...</span>volume<span class="subst">/</span>junosv<span class="attribute">-storage02</span><span class="subst">/</span>tchen<span class="subst">/</span><span class="literal">new</span><span class="subst">/</span>obj_sa<span class="subst">/</span>sdk<span class="subst">/</span>lib<span class="subst">/</span>fandf<span class="subst">/</span>flowd<span class="preprocessor">]</span><span class="markup">
+  0x7924c4 : parser_parse_string+0x63/0x6b </span><span class="preprocessor">[</span><span class="attribute">...</span>volume<span class="subst">/</span>junosv<span class="attribute">-storage02</span><span class="subst">/</span>tchen<span class="subst">/</span><span class="literal">new</span><span class="subst">/</span>obj_sa<span class="subst">/</span>sdk<span class="subst">/</span>lib<span class="subst">/</span>fandf<span class="subst">/</span>flowd<span class="preprocessor">]</span><span class="markup">
+  0x78f540 : editor_read_and_parse+0xa6/0xd4 </span><span class="preprocessor">[</span><span class="attribute">...</span>volume<span class="subst">/</span>junosv<span class="attribute">-storage02</span><span class="subst">/</span>tchen<span class="subst">/</span><span class="literal">new</span><span class="subst">/</span>obj_sa<span class="subst">/</span>sdk<span class="subst">/</span>lib<span class="subst">/</span>fandf<span class="subst">/</span>flowd<span class="preprocessor">]</span><span class="markup">
+  0x795660 : system_console_create+0x30f/0x3bc </span><span class="preprocessor">[</span><span class="attribute">...</span>volume<span class="subst">/</span>junosv<span class="attribute">-storage02</span><span class="subst">/</span>tchen<span class="subst">/</span><span class="literal">new</span><span class="subst">/</span>obj_sa<span class="subst">/</span>sdk<span class="subst">/</span>lib<span class="subst">/</span>fandf<span class="subst">/</span>flowd<span class="preprocessor">]</span><span class="markup">
+  0x59c2c1 : console_server+0x2d/0x2f </span><span class="preprocessor">[</span><span class="attribute">...</span>volume<span class="subst">/</span>junosv<span class="attribute">-storage02</span><span class="subst">/</span>tchen<span class="subst">/</span><span class="literal">new</span><span class="subst">/</span>obj_sa<span class="subst">/</span>sdk<span class="subst">/</span>lib<span class="subst">/</span>fandf<span class="subst">/</span>flowd<span class="preprocessor">]</span><span class="markup">
+  0x59c6cd : vty_daemon+0x385/0x3e3 </span><span class="preprocessor">[</span><span class="attribute">...</span>volume<span class="subst">/</span>junosv<span class="attribute">-storage02</span><span class="subst">/</span>tchen<span class="subst">/</span><span class="literal">new</span><span class="subst">/</span>obj_sa<span class="subst">/</span>sdk<span class="subst">/</span>lib<span class="subst">/</span>fandf<span class="subst">/</span>flowd<span class="preprocessor">]</span><span class="markup">
+  0x7bfa0e : thread_suicide+0x0/0x7b </span><span class="preprocessor">[</span><span class="attribute">...</span>volume<span class="subst">/</span>junosv<span class="attribute">-storage02</span><span class="subst">/</span>tchen<span class="subst">/</span><span class="literal">new</span><span class="subst">/</span>obj_sa<span class="subst">/</span>sdk<span class="subst">/</span>lib<span class="subst">/</span>fandf<span class="subst">/</span>flowd<span class="preprocessor">]</span><span class="markup">
+ config={.buffer_area="&lt;unknown&gt;", .buffer_size=9892429799577096428, .buffer_end=-1958154123, .security_level=-1177104635, .words=</span><span class="preprocessor">[</span><span class="attribute">...</span><span class="preprocessor">]</span><span class="markup">, .positions=</span><span class="preprocessor">[</span><span class="attribute">...</span><span class="preprocessor">]</span><span class="markup">, .word_count=-55163, .tree_top=0x418908b48ff, .stack=</span><span class="preprocessor">[</span><span class="attribute">...</span><span class="preprocessor">]</span><span class="markup">, .current_stack_level=-1914419829, .stop_at_index=-1065156092, .current_word="&lt;unknown&gt;", .current_word_index=-947304296, .current_level=0x7d8348e845894800, .current_result=0xbbd818bf147500e8, .current_crumbs=0x71e800000000b800, .match=0x10be9fffffc, .possible_match=0x10508d48e8458b48, .expand_resu</span></code></pre>
+<p> </section></p>
+</section>
+<section>
+<h2>Limitations</h2>
+<ul>
+<li>Inline functions</li>
+<li>Systemtap itself and its friends (utrace, ...)</li>
+<li>Initialization code</li>
+</ul>
+</section>
+<section>
+<h2>References</h2>
+<ul>
+<li><a href="../research/improving-debugability.html">Improving the debugability with systemtap</a></li>
+<li><a href="http://sourceware.org/systemtap/documentation.html">Systemtap online document</a></li>
+</ul>
+</section>
+<section>
+<h2>Thanks - questions?</h2>
+</section>
+
+      </div>
+    </div>
+    <script src="/assets/slides/reveal.js/lib/js/head.min.js"></script>
+    <script src="/assets/slides/reveal.js/js/reveal.min.js"></script>
+    <script>
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+        
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: '/assets/slides/reveal.js/plugin/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '/assets/slides/reveal.js/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '/assets/slides/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '/assets/slides/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: '/assets/slides/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+          // { src: '/assets/reveal/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+      
+    </script>
+  </body>
+</html>

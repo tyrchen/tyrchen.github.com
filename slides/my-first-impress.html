@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=1024">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>我第一个impress.js演示稿 - </title>
+    <meta name="author" content="Tyr Chen">
+    <link href="http://fonts.googleapis.com/css?family=Arbutus+Slab|Josefin+Slab:400,700|Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/slides/code/github.css">
+    <link href="/assets/slides/impress.js/css/impress-demo.css" rel="stylesheet">
+  </head>
+  <body class="impress-not-supported">
+    <div class="fallback-message">
+      <p>Your browser doesn't support the features required by impress.js. so you are presented with a simplified version of this presentation.</p>
+      <p>For the best experience please use the latest Chrome, Safari or Firefox browser. </p>
+    </div>
+    <div id="impress">
+      <div data-x="0" data-y="-1500" data-z="0" data-rotate="0" data-scale="1" class="step slide">
+<h2>这是impress.js的测试文稿</h2>
+<p>头两页是传统的演示效果</p>
+      </div>
+      <div data-x="1000" data-y="-1500" data-z="0" data-rotate="0" data-scale="1" class="step slide">
+<h2>我们总是喜欢这么写</h2>
+<ul>
+  <li>这是第一点</li>
+  <li>这是第二点</li>
+  <li>这是第三点</li>
+</ul>
+<p class="center big">是不是很boring</p>
+<p class="center">想换个口味？？</p>
+      </div>
+      <div data-x="0" data-y="0" data-z="0" data-rotate="0" data-scale="4" class="step"><span class="try">You can try</span>
+<h1>impress.js</h1>
+      </div>
+      <div data-x="1000" data-y="4000" data-z="0" data-rotate="90" data-scale="5" class="step">
+<p>这是个NB的presentation tool</p>
+<p>使用html/css3创造出媲美<a href="http://prezi.com">prezi</a>的好东东</p>
+      </div>
+      <div data-x="4000" data-y="4000" data-z="0" data-rotate="180" data-scale="6" class="step">
+<p>更好地展现你的<br/><b>伟大想法</b></p>
+      </div>
+      <div data-x="5000" data-y="3700" data-z="-3000" data-rotate="300" data-scale="1" class="step">
+<p>和那些微不足道，但同样动人的点子</p>
+      </div>
+    </div>
+    <div class="hint">
+      <p>Use space or arrow key to control the presentation</p>
+    </div>
+    <!---->
+    <script>
+      if ("ontouchstart" in document.documentElement) { 
+          document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
+      }
+    </script>
+    <script src="/assets/slides/impress.js/js/impress.js"></script>
+    <script>impress().init();</script>
+  </body>
+</html>

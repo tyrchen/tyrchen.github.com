@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Golang in two weeks - </title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="../../_static/components/reveal.js/css/reveal.min.css">
+    <link rel="stylesheet" href="../../_static/components/reveal.js/css/theme/default.css" id="theme">
+    <link href="http://fonts.googleapis.com/css?family=Arbutus+Slab|Josefin+Slab:400,700|Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet">
+    <link rel="stylesheet" href="../../_static/css/code/github.css">
+    <link rel="stylesheet" href="../../_static/slides/custom.css">
+    <style>
+      .reveal p {text-align: justify;}
+      
+    </style>
+  </head>
+  <body class="reveal">
+    <div class="reveal">
+      <div class="slides">
+<section>
+  <h1>Golang in two weeks (10 hours)</h1><br/>
+  <h3>Tyr Chen</h3><br/>
+  <div>Stay hungry, stay foolish </div>
+  <div>2014-01-20</div>
+</section>
+<section>
+  <section>
+    <h2>Week One</h2>
+    <ul>
+      <li>Day 1 - Installation and keywords</li>
+      <li>Day 2 - Basic data types, control flow and function (closure)</li>
+      <li>Day 3 - OOP - struct, method and coding by convention</li>
+      <li>Day 4 - Concurrency (go and chan)</li>
+      <li>Day 5 - Exception handling and introspection (through interface)</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Week Two</h2>
+    <ul>
+      <li>Day 1 - Common Libraries and go test</li>
+      <li>Day 2 - String manipulation and regular expression</li>
+      <li>Day 3 - Networking</li>
+      <li>Day 4 - Dos and Donts</li>
+      <li>Day 5 - Writing a go application</li>
+    </ul>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Day 1</h2>
+    <h4>Installation and Keywords</h4>
+  </section>
+  <section>
+    <h3>Installation</h3>
+  </section>
+  <section>
+    <div class="fragment">
+      <p>In CentOS 6:</p>
+      <pre><code>$ sudo yum install -y golang</code></pre>
+    </div>
+    <div class="fragment">
+      <p>In Ubuntu:</p>
+      <pre><code>$ sudo apt-get install -y golang</code></pre>
+    </div>
+    <div class="fragment">
+      <p>don't forget to set <code>$GOPATH</code></p>
+      <pre><code>export GOPATH=$HOME/go</code></pre>
+    </div>
+  </section>
+  <section>
+    <h3>Keywords</h3>
+  </section>
+  <section>
+    <pre><code>break        default      func         interface    select
+case         defer        go           map          struct
+chan         else         goto         package      switch
+const        fallthrough  if           range        type
+continue     for          import       return       var</code></pre>
+  </section>
+  <section>
+    <h2>First go program</h2>
+    <div class="fragment">
+      <pre><code class="coderunner-content">package main
+
+import (
+ "fmt"
+)
+
+const HELLO = "Hello world!"
+
+func main() {
+ hello := HELLO // equal to "var hello string = HELLO"
+ fmt.Printf("Greeting from golang: %s\n", hello)
+ return
+}</code>
+        <button suffix="go" class="coderunner btn btn-default">Run!</button></pre>
+      <hr/>
+      <pre class="result"><code class="coderunner-result">code execution result</code></pre>
+    </div>
+  </section>
+  <section>
+    <h2>TBD</h2>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Day 2</h2>
+    <h4>Basic data types, control flow and function (closure)</h4>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Day 3</h2>
+    <h4>OOP - struct, method and coding by convention</h4>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Day 4</h2>
+    <h4>Concurrency (go and chan)</h4>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Day 5</h2>
+    <h4>Exception handling and introspection (through interface)</h4>
+  </section>
+  <section>
+    <h2>Agenda</h2>
+    <p>Exception handling</p>
+    <ul>
+      <li>Error handling</li>
+      <li>Runtime exceptions and panic</li>
+      <li></li>
+    </ul>
+    <p>Introspection with interface</p>
+  </section>
+  <section>
+    <h3>Exception handling</h3>
+  </section>
+  <section>
+    <h3></h3>
+  </section>
+  <section>
+    <h3>Introspection</h3>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Day 6</h2>
+    <h4>Common Libraries and go test</h4>
+  </section>
+  <section>
+    <h2>Agenda</h2>
+    <p>builtin types and functions</p>
+    <p>standard I/O</p>
+    <p>networking</p>
+    <p>misc</p>
+    <blockquote>for a list of packages, see <a href="http://golang.org/pkg/">go packages</a></blockquote>
+  </section>
+  <section>
+    <h3>Builtin types and functions</h3>
+  </section>
+  <section>
+    <h2>types</h2>
+    <p>(u)int(8/16/32/64), rune</p>
+    <p>string, bool, byte</p>
+    <p>float(32/64)</p>
+    <p>error</p>
+    <pre><code>type error interface {
+ Error() string
+}</code></pre>
+  </section>
+  <section>
+    <h2>functions</h2>
+    <p>make, append, cap, len, copy</p>
+    <p>new, delete, close</p>
+    <p>panic, recover</p>
+  </section>
+  <section>
+    <h3>Standard I/O</h3>
+  </section>
+  <section>
+    <h2>fmt</h2>
+    <p>fmt.Printf(ln)</p>
+    <p>fmt.Sprintf(ln)</p>
+    <blockquote>see <a href="http://golang.org/pkg/fmt">fmt package</a></blockquote>
+  </section>
+  <section>
+    <h2>io</h2>
+    <p>basic way to deal with file IO</p>
+    <div class="fragment">
+      <pre><code class="coderunner-content">package main
+
+import (
+ "io"
+ "os"
+ "io/ioutil"
+ "log"
+ "fmt"
+)
+
+func prepare() {
+ if err := ioutil.WriteFile("input.txt", []byte("Hello world\n"), 0666); err != nil {
+  log.Fatal(err)
+  return
+ }
+}
+
+func show() {
+ if b, err := ioutil.ReadFile("output.txt"); err != nil {
+  log.Fatal(err)
+  return
+ } else {
+  fmt.Printf("%s", string(b))
+ }
+}
+
+func main() {
+ // open input file
+ prepare()
+ 
+ defer func() {
+  os.Remove("input.txt")
+  os.Remove("output.txt")
+ }()
+ 
+ fi, err := os.Open("input.txt")
+ if err != nil { panic(err) }
+ // close fi on exit and check for its returned error
+ defer func() {
+  if err := fi.Close(); err != nil {
+   panic(err)
+  }
+ }()
+ 
+ // open output file
+ fo, err := os.Create("output.txt")
+ if err != nil { panic(err) }
+ // close fo on exit and check for its returned error
+ defer func() {
+  if err := fo.Close(); err != nil {
+   panic(err)
+  }
+ }()
+ 
+ // make a buffer to keep chunks that are read
+ buf := make([]byte, 1024)
+ for {
+  // read a chunk
+  n, err := fi.Read(buf)
+  if err != nil && err != io.EOF { panic(err) }
+  if n == 0 { break }
+  
+  // write a chunk
+  if _, err := fo.Write(buf[:n]); err != nil {
+   panic(err)
+  }
+ }
+ show()
+}</code>
+        <button suffix="go" class="coderunner btn btn-default">Run!</button></pre>
+      <hr/>
+      <pre class="result"><code class="coderunner-result">code execution result</code></pre>
+    </div>
+  </section>
+  <section>
+    <h2>bufio</h2>
+    <p>very useful, typical buffer reader and writer</p>
+    <div class="fragment">
+      <pre><code class="coderunner-content">package main
+
+import (
+ "bufio"
+ "io"
+ "os"
+ "io/ioutil"
+ "log"
+ "fmt"
+)
+
+func prepare() {
+ if err := ioutil.WriteFile("input.txt", []byte("Hello world\n"), 0666); err != nil {
+  log.Fatal(err)
+  return
+ }
+}
+
+func show() {
+ if b, err := ioutil.ReadFile("output.txt"); err != nil {
+  log.Fatal(err)
+  return
+ } else {
+  fmt.Printf("%s", string(b))
+ }
+}
+
+func main() {
+ // open input file
+ prepare()
+ 
+ defer func() {
+  os.Remove("input.txt")
+  os.Remove("output.txt")
+ }()
+ 
+ // open input file
+ fi, err := os.Open("input.txt")
+ if err != nil { panic(err) }
+ // close fi on exit and check for its returned error
+ defer func() {
+  if err := fi.Close(); err != nil {
+   panic(err)
+  }
+ }()
+ // make a read buffer
+ r := bufio.NewReader(fi)
+ 
+ // open output file
+ fo, err := os.Create("output.txt")
+ if err != nil { panic(err) }
+ // close fo on exit and check for its returned error
+ defer func() {
+  if err := fo.Close(); err != nil {
+   panic(err)
+  }
+ }()
+ // make a write buffer
+ w := bufio.NewWriter(fo)
+ 
+ // make a buffer to keep chunks that are read
+ buf := make([]byte, 1024)
+ for {
+  // read a chunk
+  n, err := r.Read(buf)
+  if err != nil && err != io.EOF { panic(err) }
+  if n == 0 { break }
+  
+  // write a chunk
+  if _, err := w.Write(buf[:n]); err != nil {
+   panic(err)
+  }
+ }
+ 
+ if err = w.Flush(); err != nil { panic(err) }
+ show()
+}</code>
+        <button suffix="go" class="coderunner btn btn-default">Run!</button></pre>
+      <hr/>
+      <pre class="result"><code class="coderunner-result">code execution result</code></pre>
+    </div>
+  </section>
+  <section>
+    <h2>ioutil</h2>
+    <p>it is simple but use it only for small files!</p>
+    <div class="fragment">
+      <pre><code class="coderunner-content">package main
+
+import (
+ "os"
+ "io/ioutil"
+ "log"
+ "fmt"
+)
+
+func prepare() {
+ if err := ioutil.WriteFile("input.txt", []byte("Hello world\n"), 0666); err != nil {
+  log.Fatal(err)
+  return
+ }
+}
+
+func show() {
+ if b, err := ioutil.ReadFile("output.txt"); err != nil {
+  log.Fatal(err)
+  return
+ } else {
+  fmt.Printf("%s", string(b))
+ }
+}
+
+func main() {
+ // open input file
+ prepare()
+ 
+ defer func() {
+  os.Remove("input.txt")
+  os.Remove("output.txt")
+ }()
+ // read whole the file
+ b, err := ioutil.ReadFile("input.txt")
+ if err != nil { panic(err) }
+ 
+ // write whole the body
+ err = ioutil.WriteFile("output.txt", b, 0644)
+ if err != nil { panic(err) }
+ 
+ show()
+}</code>
+        <button suffix="go" class="coderunner btn btn-default">Run!</button></pre>
+      <hr/>
+      <pre class="result"><code class="coderunner-result">code execution result</code></pre>
+    </div>
+  </section>
+  <section>
+    <h3>Networking</h3>
+  </section>
+  <section>
+    <h2>net</h2>
+    <p>for a complete list of functions, read <a href="http://golang.org/pkg/net/">net package</a></p>
+  </section>
+  <section>
+    <h2>tcpclient</h2>
+    <div class="fragment">
+      <pre><code class="coderunner-content">package main
+
+import (
+ "fmt"
+ "net"
+ "bufio"
+)
+
+func main() {
+ conn, err := net.Dial("tcp", "google.com:80")
+ if err != nil {
+  // handle error
+ }
+ fmt.Fprintf(conn, "GET / HTTP/1.0\r\n\r\n")
+ status, err := bufio.NewReader(conn).ReadString('\n')
+ fmt.Println(status)
+}				</code>
+        <button suffix="go" class="coderunner btn btn-default">Run!</button></pre>
+      <hr/>
+      <pre class="result"><code class="coderunner-result">code execution result		</code></pre>
+    </div>
+  </section>
+  <section>
+    <h2>tcpserver</h2>
+    <div class="fragment">
+      <pre><code class="coderunner-content">package main
+
+import (
+ "bufio"
+ "fmt"
+ "log"
+ "net"
+ "os"
+ "strings"
+)
+
+func client() {
+ conn, err := net.Dial("tcp", "localhost:3000")
+ writer := bufio.NewWriter(conn)
+ reader := bufio.NewReader(conn)
+ msg := "Hello world!\n"
+ fmt.Printf("client:send: %s\n", msg)
+ if _, err := writer.WriteString(msg); err != nil {
+  log.Fatal(err)
+ }
+ 
+ if err = writer.Flush(); err != nil {
+  panic(err)
+ }
+ 
+ reply, err := reader.ReadString('\n')
+ fmt.Printf("client:receive: %s\n", reply)
+ 
+ fmt.Printf("client:send: %s\n", "close")
+ writer.WriteString("close\n")
+ if err = writer.Flush(); err != nil {
+  panic(err)
+ }
+ 
+}
+
+func main() {
+ l, err := net.Listen("tcp", ":3000")
+ if err != nil {
+  log.Fatal(err)
+ }
+ defer l.Close()
+ go client()
+ for {
+  conn, err := l.Accept()
+  if err != nil {
+   log.Fatal(err)
+  }
+  go func(c net.Conn) {
+   for {
+    reader := bufio.NewReader(c)
+    writer := bufio.NewWriter(c)
+    msg, err := reader.ReadString('\n')
+    fmt.Printf("server:receive: %s\n", msg)
+    if strings.Contains(msg, "close") {
+     fmt.Printf("close client and ternimate server\n")
+     c.Close()
+     os.Exit(0)
+    }
+    
+    fmt.Printf("server:send: %s\n", msg)
+    if _, err := writer.WriteString(msg); err != nil {
+     log.Fatal(err)
+    }
+    
+    if err = writer.Flush(); err != nil {
+     panic(err)
+    }
+   }
+  }(conn)
+ }
+}			</code>
+        <button suffix="go" class="coderunner btn btn-default">Run!</button></pre>
+      <hr/>
+      <pre class="result"><code class="coderunner-result">code execution result		</code></pre>
+    </div>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Day 7</h2>
+    <h4>String manipulation and regular expression</h4>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Day 8</h2>
+    <h4>Networking</h4>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Day 9</h2>
+    <h4>Dos and Donts</h4>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Day 10</h2>
+    <h4>Writing a go application</h4>
+  </section>
+</section>
+      </div>
+    </div>
+    <script src="../../_static/jquery.js"></script>
+    <script>
+      $(function() {
+        $('div.white, img').addClass('img-thumbnail stretch');
+      })
+    </script>
+    <script src="../../_static/components/reveal.js/lib/js/head.min.js"></script>
+    <script src="../../_static/components/reveal.js/js/reveal.min.js"></script>
+    <script src="../../_static/slides/reconnecting-websocket.js"></script>
+    <script src="../../_static/slides/coderunner.js"></script>
+    <script>
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+        
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: '../../_static/components/reveal.js/plugin/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../../_static/components/reveal.js/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '../../_static/components/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '../../_static/components/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: '../../_static/components/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+          // { src: '../../_static/reveal/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+      CodeRunner('ws://jcnrd.us:7100/', 'section');
+      
+    </script>
+  </body>
+</html>

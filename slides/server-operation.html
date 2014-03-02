@@ -1,254 +1,81 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-
+  <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="本博客提供我个人的想法，创意，经验，心得。你不必认同博主观点。" />
-    <meta name="keywords" content="创业, 思想, 点子, 经验, python, erlang, node, javascript, 服务器, devops, meteor" />
-    <meta name="author" content="Tyr Chen" />
-	<meta property="wb:webmaster" content="5968ef7c5b42fefc" />
-
-    <!-- Output DocPad produced meta elements -->
-    
-
-    <!-- Styles -->
-    <link  rel="stylesheet" href="/assets/css/app.min.css" />
-
-    <link href="/assets/favicon.ico" rel="shortcut icon">
-    <link href="/assets/apple-touch-icon.png" rel="apple-touch-icon">
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
-      <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.3.0/respond.js"></script>
-
-    <![endif]-->
-
-    <title>server operation | 觅珠人 | Tyr Chen的个人博客 | 创意 | 心得 | 经验</title>
-
-</head>
-
-
-<body>
-
-<!-- Contact Modal -->
-<div aria-hidden='true' aria-labelledby='contactModalLabel' class='modal fade' id='contactModal' role='dialog' tabindex='-1'>
-    <div class='modal-dialog'>
-        <div class='modal-content'>
-            <div class='modal-header'>
-                <button aria-hidden='true' class='close' data-dismiss='modal' type='button'>×</button>
-                <h4 class='modal-title'>Contact Us Form</h4>
-            </div>
-            <div class='modal-body'>
-                <form action='#' role='form'>
-                    <div class='form-group'>
-                        <div class='row'>
-                            <div class='col-md-6'>
-                                <label class='control-label' for=''>Your Name</label>
-                                <input class='form-control' placeholder='your username' type='text'>
-                            </div>
-                            <div class='col-md-6'>
-                                <label class='control-label' for=''>Your Email</label>
-                                <input class='form-control' placeholder='your password' type='text'>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='form-group'>
-                        <div class='row'>
-                            <div class='col-md-12'>
-                                <label class='control-label' for=''>Your Message</label>
-                                <textarea class='form-control' name='' rows='4'></textarea>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class='modal-footer'>
-                <button class='btn btn-default' data-dismiss='modal' type='button'>Cancel</button>
-                <button class='btn btn-primary' type='button'>Send Message</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div class='header-main'>
-    <div class='container'>
-        <nav class='navbar navbar-default' role='navigation'>
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class='navbar-header'>
-                <button class='navbar-toggle' data-target='.navbar-ex1-collapse' data-toggle='collapse' type='button'>
-                    <span class='sr-only'>Toggle navigation</span>
-                    <span class='icon-bar'></span>
-                    <span class='icon-bar'></span>
-                    <span class='icon-bar'></span>
-                </button>
-                <a class='navbar-brand' href='/'>
-                    <img alt='' height='45px' src='/assets/images/tyr.png'> <span>觅珠人</span>
-                </a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class='collapse navbar-collapse navbar-ex1-collapse'>
-
-                <ul class='nav navbar-nav navbar-right'>
-                    <li class="">
-                        <a href="/">首页</a>
-                    </li>
-                    
-                        
-                        <li
-                            about="/pages/posts.html"
-                            class=""
-                        >
-                            <a href="/pages/posts.html">
-                                文章随笔
-                            </a>
-                        </li>
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                        <li
-                            about="/pages/canvases.html"
-                            class=""
-                        >
-                            <a href="/pages/canvases.html">
-                                奇思妙想
-                            </a>
-                        </li>
-                        
-                    
-                        
-                        <li
-                            about="/pages/aboutme.html"
-                            class=""
-                        >
-                            <a href="/pages/aboutme.html">
-                                关于我
-                            </a>
-                        </li>
-                        
-                    
-                    <!--
-                    <li>
-                        <a data-toggle='modal' href='#contactModal'>联系我</a>
-                    </li>
-                    -->
-                </ul>
-            </div>
-        </nav>
-    </div>
-</div>
-</div>
-
-<div class='separator-shadow-bottom'>
-    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
-</div>
-
-# Supervisor and Nginx
-    ### Tyr Chen
-
-    2013-01-11
-
-
+    <title>server operation - </title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/assets/slides/reveal.js/css/reveal.min.css">
+    <link rel="stylesheet" href="/assets/slides/reveal.js/css/theme/sky.css" id="theme">
+    <link href="http://fonts.googleapis.com/css?family=Arbutus+Slab|Josefin+Slab:400,700|Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/slides/code/github.css">
+    <link rel="stylesheet" href="/assets/slides/custom.css">
+  </head>
+  <body class="reveal">
+    <div class="reveal">
+      <div class="slides"><section>
+<h1>Supervisor and Nginx</h1>
+<h3>Tyr Chen</h3>
+<p> 2013-01-11</p>
+</section>
 <!--more-->
 
 
-    ## Supervisor Conf
+<section>
+<h2>Supervisor Conf</h2>
+<p> /et/supervisor/supervisor.conf</p>
+<pre><code> [program:babble]
+ <span class="built_in">directory</span>=/home/tchen/deployment/babble
+ user=tchen
+ <span class="command"><span class="keyword">command</span>=<span class="title">node</span> <span class="title">main</span>.<span class="title">js</span></span>
+ environment=PORT=<span class="number">7003</span>,ROOT_URL=<span class="string">"http://tchen.me"</span>,MONGO_URL=<span class="string">"mongodb://localhost:27017/babble"</span>
+ redirect_stderr=<span class="constant">true</span>
+ stderr_logfile=<span class="constant">none</span>
+ stdout_logfile=/var/<span class="built_in">log</span>/supervisor/babble.<span class="built_in">log</span>
+ autostart=<span class="constant">true</span>
+ autorestart=<span class="constant">true</span></code></pre>
+</section>
+<section>
+<h2>Supervisor command</h2>
+<pre><code> $ <span class="tag">supervisorctl</span>
+ <span class="tag">babble</span>                           <span class="tag">RUNNING</span>    <span class="tag">pid</span> 11486, <span class="tag">uptime</span> 39 <span class="tag">days</span>, 10<span class="pseudo">:42</span><span class="pseudo">:25</span>
+ <span class="tag">blog</span><span class="pseudo">:celeryd</span>                     <span class="tag">RUNNING</span>    <span class="tag">pid</span> 17088, <span class="tag">uptime</span> 47 <span class="tag">days</span>, 8<span class="pseudo">:59</span><span class="pseudo">:25</span>
+ <span class="tag">blog</span><span class="pseudo">:server</span>                      <span class="tag">FATAL</span>      <span class="tag">Exited</span> <span class="tag">too</span> <span class="tag">quickly</span> (<span class="tag">process</span> <span class="tag">log</span> <span class="tag">may</span> <span class="tag">have</span> <span class="tag">details</span>)
+ <span class="tag">dmall</span>                            <span class="tag">STOPPED</span>    <span class="tag">Dec</span> 27 10<span class="pseudo">:17</span> <span class="tag">AM</span>
+ <span class="tag">projects</span>                         <span class="tag">RUNNING</span>    <span class="tag">pid</span> 24040, <span class="tag">uptime</span> 36 <span class="tag">days</span>, 0<span class="pseudo">:05</span><span class="pseudo">:09</span>
+ <span class="tag">teamspark</span>                        <span class="tag">STOPPED</span>    <span class="tag">Dec</span> 04 08<span class="pseudo">:34</span> <span class="tag">AM</span>
+ $ <span class="tag">rearead</span>
+ $ <span class="tag">update</span>
+ $ <span class="tag">restart</span> <span class="tag">babble</span></code></pre>
+</section>
 
-    /et/supervisor/supervisor.conf
-
-    ```
-    [program:babble]
-    directory=/home/tchen/deployment/babble
-    user=tchen
-    command=node main.js
-    environment=PORT=7003,ROOT_URL="http://tchen.me",MONGO_URL="mongodb://localhost:27017/babble"
-    redirect_stderr=true
-    stderr_logfile=none
-    stdout_logfile=/var/log/supervisor/babble.log
-    autostart=true
-    autorestart=true
-    ```
-
-
-    ## Supervisor command
-    ```
-    $ supervisorctl
-    babble                           RUNNING    pid 11486, uptime 39 days, 10:42:25
-    blog:celeryd                     RUNNING    pid 17088, uptime 47 days, 8:59:25
-    blog:server                      FATAL      Exited too quickly (process log may have details)
-    dmall                            STOPPED    Dec 27 10:17 AM
-    projects                         RUNNING    pid 24040, uptime 36 days, 0:05:09
-    teamspark                        STOPPED    Dec 04 08:34 AM
-    $ rearead
-    $ update
-    $ restart babble
-    ```
-
-<footer id="main-footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <ul class="footer-menu">
-                    <li><a href="/pages/privacy.html">隐私策略</a></li>
-                    <li><a href="/pages/license.html">版权说明</a></li>
-                    <li><a href="/pages/disclaimer.html">免责声明</a></li>
-                    <li><a href="#">联系我们</a></li>
-                </ul>
-                <div class="copyright">
-                    2014 &copy; Tyr Chen. 保留一切权利.
-                    <script>
-                        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-                        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F639096b5979f5825515e0f88f871f56c' type='text/javascript'%3E%3C/script%3E"));
-                    </script>
-                </div>
-                <div class="links">
-                    <ul class="footer-menu">
-                        <li><a>友情链接：</a></li>
-                        <li><a href="http://zhuanlan.zhihu.com/prattle">迷思</li>
-                        <li><a href="http://data12345.com">老读悟</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <ul class="footer-social">
-                
-                    <li><a href="tyr.chen{#}gmail.com" target="_blank"><i class="icon-envelope"></i></a></li>
-                
-                    <li><a href="http://weibo.com/tchen82" target="_blank"><i class="icon-weibo"></i></a></li>
-                
-                    <li><a href="http://github.com/tyrchen" target="_blank"><i class="icon-github"></i></a></li>
-                
-                    <li><a href="http://linkedin.com/in/tyrchen/" target="_blank"><i class="icon-linkedin"></i></a></li>
-                
-                    <li><a href="https://twitter.com/tyrchen" target="_blank"><i class="icon-twitter"></i></a></li>
-                
-                    <li><a href="https://www.facebook.com/tyrchen" target="_blank"><i class="icon-facebook"></i></a></li>
-                
-                    <li><a href="https://plus.google.com/114684266209262341260/" target="_blank"><i class="icon-google-plus"></i></a></li>
-                
-                </ul>
-            </div>
-        </div>
+      </div>
     </div>
-</footer>
-
-<!-- Scripts -->
-<script defer="defer"  src="/assets/js/app.min.js"></script>
-
-
-
-
-
-</body>
-
+    <script src="/assets/slides/reveal.js/lib/js/head.min.js"></script>
+    <script src="/assets/slides/reveal.js/js/reveal.min.js"></script>
+    <script>
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+        
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: '/assets/slides/reveal.js/plugin/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '/assets/slides/reveal.js/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '/assets/slides/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '/assets/slides/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: '/assets/slides/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+          // { src: '/assets/reveal/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+      
+    </script>
+  </body>
 </html>

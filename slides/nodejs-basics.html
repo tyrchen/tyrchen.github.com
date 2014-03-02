@@ -1,360 +1,167 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-
+  <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="本博客提供我个人的想法，创意，经验，心得。你不必认同博主观点。" />
-    <meta name="keywords" content="创业, 思想, 点子, 经验, python, erlang, node, javascript, 服务器, devops, meteor" />
-    <meta name="author" content="Tyr Chen" />
-	<meta property="wb:webmaster" content="5968ef7c5b42fefc" />
-
-    <!-- Output DocPad produced meta elements -->
-    
-
-    <!-- Styles -->
-    <link  rel="stylesheet" href="/assets/css/app.min.css" />
-
-    <link href="/assets/favicon.ico" rel="shortcut icon">
-    <link href="/assets/apple-touch-icon.png" rel="apple-touch-icon">
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
-      <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.3.0/respond.js"></script>
-
-    <![endif]-->
-
-    <title>Nodejs basics | 觅珠人 | Tyr Chen的个人博客 | 创意 | 心得 | 经验</title>
-
-</head>
-
-
-<body>
-
-<!-- Contact Modal -->
-<div aria-hidden='true' aria-labelledby='contactModalLabel' class='modal fade' id='contactModal' role='dialog' tabindex='-1'>
-    <div class='modal-dialog'>
-        <div class='modal-content'>
-            <div class='modal-header'>
-                <button aria-hidden='true' class='close' data-dismiss='modal' type='button'>×</button>
-                <h4 class='modal-title'>Contact Us Form</h4>
-            </div>
-            <div class='modal-body'>
-                <form action='#' role='form'>
-                    <div class='form-group'>
-                        <div class='row'>
-                            <div class='col-md-6'>
-                                <label class='control-label' for=''>Your Name</label>
-                                <input class='form-control' placeholder='your username' type='text'>
-                            </div>
-                            <div class='col-md-6'>
-                                <label class='control-label' for=''>Your Email</label>
-                                <input class='form-control' placeholder='your password' type='text'>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='form-group'>
-                        <div class='row'>
-                            <div class='col-md-12'>
-                                <label class='control-label' for=''>Your Message</label>
-                                <textarea class='form-control' name='' rows='4'></textarea>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class='modal-footer'>
-                <button class='btn btn-default' data-dismiss='modal' type='button'>Cancel</button>
-                <button class='btn btn-primary' type='button'>Send Message</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div class='header-main'>
-    <div class='container'>
-        <nav class='navbar navbar-default' role='navigation'>
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class='navbar-header'>
-                <button class='navbar-toggle' data-target='.navbar-ex1-collapse' data-toggle='collapse' type='button'>
-                    <span class='sr-only'>Toggle navigation</span>
-                    <span class='icon-bar'></span>
-                    <span class='icon-bar'></span>
-                    <span class='icon-bar'></span>
-                </button>
-                <a class='navbar-brand' href='/'>
-                    <img alt='' height='45px' src='/assets/images/tyr.png'> <span>觅珠人</span>
-                </a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class='collapse navbar-collapse navbar-ex1-collapse'>
-
-                <ul class='nav navbar-nav navbar-right'>
-                    <li class="">
-                        <a href="/">首页</a>
-                    </li>
-                    
-                        
-                        <li
-                            about="/pages/posts.html"
-                            class=""
-                        >
-                            <a href="/pages/posts.html">
-                                文章随笔
-                            </a>
-                        </li>
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                        <li
-                            about="/pages/canvases.html"
-                            class=""
-                        >
-                            <a href="/pages/canvases.html">
-                                奇思妙想
-                            </a>
-                        </li>
-                        
-                    
-                        
-                        <li
-                            about="/pages/aboutme.html"
-                            class=""
-                        >
-                            <a href="/pages/aboutme.html">
-                                关于我
-                            </a>
-                        </li>
-                        
-                    
-                    <!--
-                    <li>
-                        <a data-toggle='modal' href='#contactModal'>联系我</a>
-                    </li>
-                    -->
-                </ul>
-            </div>
-        </nav>
-    </div>
-</div>
-</div>
-
-<div class='separator-shadow-bottom'>
-    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
-</div>
-
-# Nodejs Basics
-    ### Tyr Chen
-    2013-01-20
-
-
+    <title>Nodejs basics - </title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/assets/slides/reveal.js/css/reveal.min.css">
+    <link rel="stylesheet" href="/assets/slides/reveal.js/css/theme/default.css" id="theme">
+    <link href="http://fonts.googleapis.com/css?family=Arbutus+Slab|Josefin+Slab:400,700|Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/slides/code/github.css">
+    <link rel="stylesheet" href="/assets/slides/custom.css">
+  </head>
+  <body class="reveal">
+    <div class="reveal">
+      <div class="slides"><section>
+<h1>Nodejs Basics</h1>
+<h3>Tyr Chen</h3>
+<p> 2013-01-20</p>
+</section>
 <!--more-->
 
 
-    ## What is Node?
-    * server side javascript
-    * Driven by V8 engine
-    * Non blocking
-    * Event driven
-    * Single thread
+<section>
+<h2>What is Node?</h2>
+<ul>
+<li>server side javascript</li>
+<li>Driven by V8 engine</li>
+<li>Non blocking</li>
+<li>Event driven</li>
+<li>Single thread</li>
+</ul>
+</section>
+<section>
+<h2>Non blocking?</h2>
+<pre><code> <span class="typedef"><span class="keyword">data</span> = open<span class="container">('<span class="title">very</span>-<span class="title">big</span>-<span class="title">file</span>.<span class="title">younameit'</span>)</span>.read<span class="container">()</span></span>
+ complexOperation(<span class="keyword">data</span>)</code></pre>
+<h4>I/O blocking, poor performance</h4>
+<h4>Python, ruby, java is I/O blocking by default</h4>
+</section>
+<section>
+<h2>Why I/O blocking bad?</h2>
+</section>
+<section>
+<p> <img src="/assets/img/snapshots/iowait.jpg" alt="IO wait"></p>
+</section>
+<section>
+<h2>The Node Way</h2>
+<pre><code> fs.read(<span class="string">'very-big-file.younameit'</span>, <span class="function"><span class="keyword">function</span><span class="params">(data)</span></span> {
+ complexOperation(data);
+ });
 
+ // you can <span class="keyword">do</span> a lot when waiting <span class="keyword">for</span> data
+ doOtherStuff();</code></pre>
+<h4>Do a lot more while waiting for I/O</h4>
+</section>
+<section>
+<h2>Event Driven?</h2>
+<pre><code> deploy()
+ <span class="keyword">while</span> <span class="keyword">not</span> deployed:
+   <span class="built_in">os</span>.sleep(<span class="number">1000</span>)
 
+ # deployed, now we can <span class="keyword">do</span> auto test
+ run_test()</code></pre>
+<h3>ugly</h3>
+</section>
+<section>
+<h2>The Node Way</h2>
+<pre><code> deploy(<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+ run_test();
+ });</code></pre>
+<h3>elegant code, different way of thinking</h3>
+</section>
+<section>
+<h2>How does this work?</h2>
+</section>
+<section>
+<p> <img src="/assets/img/snapshots/eventloop.jpg" alt="Nodejs event loop"></p>
+</section>
+<section>
+<h2>Single Thread</h2>
+<h3>Node runs on single thread</h3>
+<pre><code> fs.read(<span class="string">'very-big-file.younameit'</span>, function(data) {
+ complexOperation(data); <span class="regexp">//</span> never fired
+ });
 
-    ## Non blocking?
+ <span class="regexp">//</span> you can <span class="keyword">do</span> a lot <span class="keyword">when</span> waiting <span class="keyword">for</span> data
+ <span class="keyword">while</span>(<span class="keyword">true</span>) {
+ doOtherStuff(); <span class="regexp">//</span> hogging the <span class="constant">CPU</span>
+ }</code></pre>
+</section>
+<section>
+<h2>The Node Way</h2>
+<ul>
+<li>Frontend node farm</li>
+<li>for providing great user experience</li>
+<li>e.g. dealing with image uploading</li>
+<li>Backend node workers</li>
+<li>for dealing with heavy processing</li>
+<li>e.g. dealing with image encoding</li>
+</ul>
+</section>
+<section>
+<h2>Node Package Manager (NPM)</h2>
+<ul>
+<li>Ship with nodejs since v0.6.x</li>
+<li>Help with the package management</li>
+<li>gem for ruby, pip for python</li>
+<li>Resolve the dependencies for you</li>
+<li>package.json</li>
+</ul>
+</section>
+<section>
+<h2>An example of package.json</h2>
+<pre><code> {
+   "<span class="attribute">name</span>": <span class="value"><span class="string">"barr"</span></span>,
+   "<span class="attribute">description</span>": <span class="value"><span class="string">""</span></span>,
+   "<span class="attribute">version</span>": <span class="value"><span class="string">"0.1.0"</span></span>,
+   "<span class="attribute">dependencies</span>": <span class="value">{
+     "<span class="attribute">wrench</span>": <span class="value"><span class="string">"latest"</span>
+   </span>}</span>,
+   "<span class="attribute">engines</span>": <span class="value">{
+     "<span class="attribute">node</span>": <span class="value"><span class="string">"0.8.16"</span></span>,
+     "<span class="attribute">npm</span>": <span class="value"><span class="string">"1.1.x"</span>
+   </span>}</span>,
+   "<span class="attribute">devDependencies</span>" : <span class="value">{
+     "<span class="attribute">coffee-script</span>": <span class="value"><span class="string">"latest"</span></span>,
+     "<span class="attribute">simple-http-server</span>": <span class="value"><span class="string">"latest"</span></span>,
+     "<span class="attribute">jade</span>": <span class="value"><span class="string">"latest"</span></span>,
+     "<span class="attribute">jake</span>": <span class="value"><span class="string">"latest"</span>
+   </span>}
+ </span>}</code></pre>
+</section>
+<section>
+<h2>Not The End - To Be Con...</h2>
+</section>
 
-    ```
-    data = open('very-big-file.younameit').read()
-    complexOperation(data)
-    ```
-
-    #### I/O blocking, poor performance
-    #### Python, ruby, java is I/O blocking by default
-
-    
-
-    ## Why I/O blocking bad?
-
-
-
-    ![IO wait](/assets/img/snapshots/iowait.jpg)
-
-
-
-    ## The Node Way
-
-    ```
-    fs.read('very-big-file.younameit', function(data) {
-    complexOperation(data);
-    });
-
-    // you can do a lot when waiting for data
-    doOtherStuff();
-    ```
-
-    #### Do a lot more while waiting for I/O
-
-
-
-    ## Event Driven?
-
-    ```
-    deploy()
-    while not deployed:
-      os.sleep(1000)
-
-    # deployed, now we can do auto test
-    run_test()
-    ```
-
-    ### ugly
-
-
-
-    ## The Node Way
-
-    ```
-    deploy(function() {
-    run_test();
-    });
-    ```
-
-    ### elegant code, different way of thinking
-
-
-
-    ## How does this work?
-
-
-
-    ![Nodejs event loop](/assets/img/snapshots/eventloop.jpg)
-
-
-
-    ## Single Thread
-    ### Node runs on single thread
-
-    ```
-    fs.read('very-big-file.younameit', function(data) {
-    complexOperation(data); // never fired
-    });
-
-    // you can do a lot when waiting for data
-    while(true) {
-    doOtherStuff(); // hogging the CPU
-    }
-    ```
-
-
-    ## The Node Way
-    * Frontend node farm
-    * for providing great user experience
-    * e.g. dealing with image uploading
-    * Backend node workers
-    * for dealing with heavy processing
-    * e.g. dealing with image encoding
-
-
-
-    ## Node Package Manager (NPM)
-
-    * Ship with nodejs since v0.6.x
-    * Help with the package management
-    * gem for ruby, pip for python
-    * Resolve the dependencies for you
-    * package.json
-
-
-
-    ## An example of package.json
-    ```
-    {
-      "name": "barr",
-      "description": "",
-      "version": "0.1.0",
-      "dependencies": {
-        "wrench": "latest"
-      },
-      "engines": {
-        "node": "0.8.16",
-        "npm": "1.1.x"
-      },
-      "devDependencies" : {
-        "coffee-script": "latest",
-        "simple-http-server": "latest",
-        "jade": "latest",
-        "jake": "latest"
-      }
-    }
-    ```
-
-
-    ## Not The End - To Be Con...
-
-<footer id="main-footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <ul class="footer-menu">
-                    <li><a href="/pages/privacy.html">隐私策略</a></li>
-                    <li><a href="/pages/license.html">版权说明</a></li>
-                    <li><a href="/pages/disclaimer.html">免责声明</a></li>
-                    <li><a href="#">联系我们</a></li>
-                </ul>
-                <div class="copyright">
-                    2014 &copy; Tyr Chen. 保留一切权利.
-                    <script>
-                        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-                        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F639096b5979f5825515e0f88f871f56c' type='text/javascript'%3E%3C/script%3E"));
-                    </script>
-                </div>
-                <div class="links">
-                    <ul class="footer-menu">
-                        <li><a>友情链接：</a></li>
-                        <li><a href="http://zhuanlan.zhihu.com/prattle">迷思</li>
-                        <li><a href="http://data12345.com">老读悟</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <ul class="footer-social">
-                
-                    <li><a href="tyr.chen{#}gmail.com" target="_blank"><i class="icon-envelope"></i></a></li>
-                
-                    <li><a href="http://weibo.com/tchen82" target="_blank"><i class="icon-weibo"></i></a></li>
-                
-                    <li><a href="http://github.com/tyrchen" target="_blank"><i class="icon-github"></i></a></li>
-                
-                    <li><a href="http://linkedin.com/in/tyrchen/" target="_blank"><i class="icon-linkedin"></i></a></li>
-                
-                    <li><a href="https://twitter.com/tyrchen" target="_blank"><i class="icon-twitter"></i></a></li>
-                
-                    <li><a href="https://www.facebook.com/tyrchen" target="_blank"><i class="icon-facebook"></i></a></li>
-                
-                    <li><a href="https://plus.google.com/114684266209262341260/" target="_blank"><i class="icon-google-plus"></i></a></li>
-                
-                </ul>
-            </div>
-        </div>
+      </div>
     </div>
-</footer>
-
-<!-- Scripts -->
-<script defer="defer"  src="/assets/js/app.min.js"></script>
-
-
-
-
-
-</body>
-
+    <script src="/assets/slides/reveal.js/lib/js/head.min.js"></script>
+    <script src="/assets/slides/reveal.js/js/reveal.min.js"></script>
+    <script>
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'cube', // default/cube/page/concave/zoom/linear/none
+        
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: '/assets/slides/reveal.js/plugin/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '/assets/slides/reveal.js/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '/assets/slides/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '/assets/slides/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: '/assets/slides/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+          // { src: '/assets/reveal/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+      
+    </script>
+  </body>
 </html>

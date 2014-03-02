@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>NGSRX - How things work - </title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/assets/slides/reveal.js/css/reveal.min.css">
+    <link rel="stylesheet" href="/assets/slides/reveal.js/css/theme/default.css" id="theme">
+    <link href="http://fonts.googleapis.com/css?family=Arbutus+Slab|Josefin+Slab:400,700|Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/slides/code/github.css">
+    <link rel="stylesheet" href="./assets/slides/custom.css">
+    <style>
+      .reveal p {text-align: justify;}
+      
+    </style>
+  </head>
+  <body class="reveal">
+    <div class="reveal">
+      <div class="slides">
+<section>
+  <h1>NGSRX: How things work</h1><br/>
+  <h3>Tyr Chen</h3><br/>
+  <div>Stay hungry, stay foolish </div>
+  <div>2014-01-10</div>
+</section>
+<section>
+  <h2>Agenda</h2>
+  <ul>
+    <li>Dev env</li>
+    <li>Compile and run ngsrx software</li>
+    <li>Demo</li>
+  </ul>
+</section>
+<section>
+  <section>
+    <h2>Daybreak - the dev env</h2>
+  </section>
+  <section>
+    <h2>NGSRX software</h2>
+    <p class="fragment">CentOS (and linux TCP/IP stack)</p>
+    <p class="fragment">vre-srx (whole JUNOS RE encapsulated into a virtual machine)</p>
+    <p class="fragment">linux daemons (flowd, serviced, lmd, etc.)</p>
+  </section>
+  <section>
+    <h2>The ECO system</h2>
+    <p>(Ideally) every dev has her own dev machine to play with</p>
+  </section>
+  <section>
+    <h2>Dev tools</h2><img src="../../_static/ngsrx/eclipse.png"/>
+  </section>
+  <section>
+    <h2>Traffic generators</h2><img src="../../_static/ngsrx/ostinato.png" class="stretch"/>
+    <p class="fragment">In future we will switch to scapy to provide fine-grained control</p>
+  </section>
+  <section>
+    <h2>Traffic capture tools</h2><img src="../../_static/ngsrx/wireshark.png"/>
+  </section>
+  <section>
+    <h2>Flowd</h2><img src="../../_static/ngsrx/flowd.png"/>
+  </section>
+  <section>
+    <h2>vre</h2><img src="../../_static/ngsrx/vre.png"/>
+  </section>
+  <section>
+    <h2>Unit testing tools - jellyfish (1)</h2><img src="../../_static/ngsrx/jellyfish1.png"/>
+  </section>
+  <section>
+    <h2>Unit testing tools - jellyfish (2)</h2><img src="../../_static/ngsrx/jellyfish2.png"/>
+  </section>
+  <section>
+    <h2>Dev machine, all integrated</h2><img src="../../_static/ngsrx/full_dev_machine.png" class="white"/>
+  </section>
+  <section>
+    <h2>Control path & Data path</h2><img src="../../_static/ngsrx/dev_control_data_path.png"/>
+  </section>
+  <section>
+    <h2>Packet path, detailed view</h2><img src="../../_static/ngsrx/packet_path.png" class="white"/>
+  </section>
+  <section>
+    <p>for more information, please visit Dongsheng's <a href="https://matrix.juniper.net/docs/DOC-165950">The Developer Setup, for Daybreak</a></p>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Compile and run NGSRX software</h2>
+  </section>
+  <section>
+    <h2>Compile vre-srx</h2>
+    <p class="fragment">You need the PVT tarball</p>
+    <pre class="fragment"><code>$ mksb -n ngb -r PVT_SBU_NGSRX_X46_BRANCH</code></pre>
+    <p class="fragment">to build vre (under src):</p>
+    <pre class="fragment"><code>$ mk -j 24 vre-srx</code></pre>
+  </section>
+  <section>
+    <h2>Compile flowd</h2>
+    <p class="fragment">You need to <a href="https://matrix.juniper.net/docs/DOC-149409">setup ngsrx env</a></p>
+    <p class="fragment">to build flowd (under the sandbox):</p>
+    <pre class="fragment"><code>$ cd junossdk
+$ mk -j 8
+$ cd ../thirdparty
+$ mk -j 8
+$ cd ../fandf
+$ mk -j 8</code></pre>
+  </section>
+  <section>
+    <h2>Run vre-srx</h2>
+    <p class="fragment">vre-srx is running by default in dev env</p>
+    <p class="fragment">most-likely you don't need to build and rerun it</p>
+    <p class="fragment">use virsh tool to rerun/terminate it:</p>
+    <pre class="fragment"><code>$ sudo virsh list --all
+$ sudo virsh destroy vre
+$ sudo virsh start --console</code></pre>
+  </section>
+  <section>
+    <h2>Run flowd</h2>
+    <p class="fragment">You can run flowd in this way:</p>
+    <pre class="fragment"><code>$ cd obj_sa/sdk/lib/fandf
+$ ./flowd</code></pre>
+    <p class="fragment">then in another console:</p>
+    <pre class="fragment"><code>$ telnet 128.0.0.2 6023
+Trying 128.0.0.2...
+Connected to 128.0.0.2.
+Escape character is '^]'.
+
+
+LINUX platform (x86 processor, 2048MB memory, 16384KB flash)
+
+[flowd-linux64](vty)# show ver
+show ver
+====== NGSRX System ======
+
+LINUX platform (x86 processor, 2048MB memory, 16384KB flash)
+Current time   : Mon Jan 13 19:02:23 2014
+
+Elapsed time   :      0+00:02:43
+
+[flowd-linux64](vty)#
+</code></pre>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Demo</h2>
+  </section>
+  <section>
+    <h2>NGSRX dev environment</h2>
+  </section>
+  <section>
+    <h2>vre and flowd</h2>
+    <aside class="notes">
+      <p>use a tool called "ngsrx" to do code pull, compile</p>
+    </aside>
+  </section>
+  <section>
+    <h2>scapy</h2>
+  </section>
+</section>
+<section>
+  <h2>Thanks, Q&A</h2>
+</section>
+      </div>
+    </div>
+    <script src="/assets/jquery.js"></script>
+    <script src="/assets/slides/reveal.js/lib/js/head.min.js"></script>
+    <script src="/assets/slides/reveal.js/js/reveal.min.js"></script>
+    <script src="/assets/highlight.pack.js"></script>
+    <!--script(src="/assets/slides/reconnecting-websocket.js")-->
+    <!--script(src="/assets/slides/coderunner.js")-->
+    <script>
+      $(function() {
+        hljs.initHighlightingOnLoad();
+        $('div.white, img').addClass('img-thumbnail stretch');
+        
+        // Full list of configuration options available here:
+        // https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+          controls: true,
+          progress: true,
+          history: true,
+          center: true,
+          
+          theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+          transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+          
+          // Optional libraries used to extend on reveal.js
+          dependencies: [
+            { src: '/assets/slides/reveal.js/plugin/classList.js', condition: function() { return !document.body.classList; } },
+            { src: '/assets/slides/reveal.js/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: '/assets/slides/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: '/assets/slides/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+            { src: '/assets/slides/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+            // { src: '../../_static/reveal/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+          ]
+        });
+        /*
+        $.CodeRunner({
+          wsuri: 'ws://jcnrd.us:7100/',
+          buttonContainer: 'pre.main',
+          codeContainer: 'code'
+        });
+        $('div.coderunner').CodeRunner();
+        */
+      });
+      
+    </script>
+  </body>
+</html>
