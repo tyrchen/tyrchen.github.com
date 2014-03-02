@@ -28,10 +28,8 @@
   <h2>Agenda</h2>
   <ul>
     <li class="fragment">What is docker</li>
-    <li class="fragment">Docker in 10 minutes</li>
-    <li class="fragment">Dev Env - Requirements</li>
-    <li class="fragment">Dev Env - Thoughts</li>
-    <li class="fragment">Dev Env - Implementation</li>
+    <li class="fragment">Docker in 20 minutes</li>
+    <li class="fragment">Build a dev env with docker</li>
     <li class="fragment">Conclusion and summary</li>
     <li class="fragment">What can I do with docker?</li>
   </ul>
@@ -50,7 +48,7 @@
 </section>
 <section>
   <section>
-    <h2>Docker in 10 minutes</h2>
+    <h2>Docker in 20 minutes</h2>
   </section>
   <section>
     <h2>Install docker</h2>
@@ -112,8 +110,12 @@ hello world!</code></pre>
     <h2>Let's play with docker</h2>
   </section>
   <section>
+    <p>Disclaimer: the following live operations are highly interactive (subject to change during the demo), so please sharpen your docker environment and follow me!</p>
+  </section>
+  <section>
     <h2>First of all, get a image</h2>
-    <div class="fragment"><code>docker search tchen</code>
+    <div class="fragment">
+      <p><code>docker search tchen</code></p>
       <pre class="main"><code>tchen@docker:~$ docker search tchen
 NAME                                       DESCRIPTION                                     STARS     OFFICIAL   TRUSTED
 codingforce/gitlab-ci-runner-testkitchen   Runner for gitlab-ci with fully installed ...   1                    [OK]
@@ -124,7 +126,8 @@ jdharrington/ubuntu                        The official Docker Ubuntu image with
   </section>
   <section>
     <h2>Let's pull base-server</h2>
-    <div class="fragment"><code>docker pull tchen/base-server</code>
+    <div class="fragment">
+      <p><code>docker pull tchen/base-server</code></p>
       <pre class="main"><code>tchen@docker:~$ docker pull tchen/base-server
 Pulling repository tchen/base-server
 8552614f23cd: Download complete
@@ -148,7 +151,8 @@ e39f1b7212c8: Download complete</code></pre>
   </section>
   <section>
     <h2>Show what we have</h2>
-    <div class="fragment"><code>docker images</code>
+    <div class="fragment">
+      <p><code>docker images</code></p>
       <pre class="main"><code>tchen@docker:~$ docker images
 REPOSITORY               TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
 tchen/base-server        0.2                 e8f376b3c2c0        40 hours ago        1.049 GB
@@ -174,8 +178,9 @@ phusion/passenger-full   0.9.3               2819727a3f88        3 weeks ago    
   </section>
   <section>
     <h2>Let's do something interesting</h2>
-    <p>Task: make a basic ipython environment</p>
-    <div class="fragment"><code>docker run -i -t tchen/base-server bash</code>
+    <p class="fragment">Task: make a basic ipython environment</p>
+    <div class="fragment">
+      <p><code>docker run -i -t tchen/base-server bash</code></p>
       <pre class="main"><code>$ docker run -i -t tchen/base-server bash
 root@d06327b20658:/# ipython
 bash: ipython: command not found
@@ -200,7 +205,8 @@ In [1]: exit</code></pre>
   <section>
     <h2>Now share this to your coworkers</h2>
     <div class="fragment">
-      <p>step 1: quit and get container id</p><code>docker ps -l</code>
+      <p>step 1: quit and get container id</p>
+      <p><code>docker ps -l</code></p>
       <pre class="main"><code>root@d06327b20658:/# exit
 exit
 tchen@docker:~$ docker ps -l
@@ -211,7 +217,9 @@ d06327b20658        tchen/base-server:0.1   bash                6 minutes ago   
   <section>
     <h2>Now share (Cont.)</h2>
     <div class="fragment">
-      <p>step 2: Commit and push</p><code>docker commit d063 tchen/base-server:0.3</code><code>docker push tchen/base-server</code>
+      <p>step 2: Commit and push</p>
+      <p><code>docker commit d063 tchen/base-server:0.3</code></p>
+      <p><code>docker push tchen/base-server</code></p>
       <pre class="main"><code>tchen@docker:~$ docker commit d063 tchen/base-server:0.3
 b9e6eefe596f9bdbc933926e2098165e83a78e49370d865867a591a314113da5
 tchen@docker:~$ docker push tchen/base-server
@@ -245,7 +253,8 @@ Pushing tag for rev [b9e6eefe596f] on {https://registry-1.docker.io/v1/repositor
   <section>
     <h2>Now it's your 小伙伴's turn</h2>
     <div class="fragment">
-      <p>step 1: Get the image</p><code>docker pull tchen/base-server</code>
+      <p>step 1: Get the image</p>
+      <p><code>docker pull tchen/base-server</code></p>
       <pre class="main"><code>vagrant@ubuntu-12:~$ docker pull tchen/base-server
 Pulling repository tchen/base-server
 e8f376b3c2c0: Download complete
@@ -271,7 +280,8 @@ e39f1b7212c8: Download complete</code></pre>
   <section>
     <div class="fragment">
       <h2>Now it's your 小伙伴's turn (Cont.)</h2>
-      <p>step 2: Run the container</p><code>docker run -i -t tchen/base-server:0.3 bash</code>
+      <p>step 2: Run the container</p>
+      <p><code>docker run -i -t tchen/base-server:0.3 bash</code></p>
       <pre class="main"><code>vagrant@ubuntu-12:~$ docker run -i -t tchen/base-server:0.3 bash
 root@f57d5d94933c:/# ipython
 Python 2.7.3 (default, Sep 26 2013, 20:03:06)
@@ -299,9 +309,28 @@ In [1]: exit</code></pre>
   </section>
 </section>
 <section>
+  <h2>Ready with some new challenges? Let's talk about building a development environment!</h2>
+</section>
+<section>
+  <h2>Dev Env - Requirements</h2>
+</section>
+<section>
   <section>
-    <p>/assets/files/slides/docker/</p>
+    <h2>Build a dev env with docker (will add later)</h2>
   </section>
+  <section>
+    <h2>Dev Env - Requirements</h2>
+  </section>
+  <section>
+    <h2></h2>
+  </section>
+  <section>
+    <h2>Dev Env - Thoughts</h2>
+  </section>
+  <section>
+    <h2>Dev Env - Implementations</h2>
+  </section>
+  <h2></h2>
 </section>
 <section>
   <section>
@@ -322,6 +351,9 @@ In [1]: exit</code></pre>
   <section>
     <h3>and a lot...use your imagination, luke!</h3>
   </section>
+</section>
+<section>
+  <h2>Thanks, Q&A</h2>
 </section>
       </div>
     </div>
