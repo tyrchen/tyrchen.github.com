@@ -174,6 +174,84 @@
   <div class='col-md-8 col-md-offset-2'>
     <div class='post-loop-content'>
       <h2 class='has-sub-header'>
+        <a href='/posts/2013-06-12-use-makefile-to-automate-deployment.html'>使用Makefile自动化部署</a>
+      </h2>
+      <div class='post-loop-meta'>
+        <span>
+          <i class='icon-calendar'></i>
+          9个月前
+        </span>
+        <span class='hidden-mobile-ib tags'>
+          <i class='icon-tags'></i>
+          
+            <a href='/tags/automation.html'>automation</a>
+          
+            <a href='/tags/technology.html'>technology</a>
+          
+        </span>
+        <span>
+          <i class='icon-time'></i>
+          8 分钟
+        </span>
+        <!--
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-comments'></i>
+            24
+          </a>
+        </span>
+        <span class='hidden-mobile-ib'>
+          <a href='#'>
+            <i class='icon-heart'></i>
+            15
+          </a>
+        </span>
+        -->
+      </div>
+      <p>有时候，写个小app，部署是件麻烦的事情 —— 你需要登录到服务器上，手工编辑nginx，supervisor等配置文件，然后重启相关的服务。这些配置都不在版本库中，所以也无法记录历史修订。<code>puppet</code> 是个不错的解决方案，但对于小项目来说，使用puppet是个负担。</p>
+<p>本文讨论如何通过写个简单的 <code>makefile</code> 来达到自动化部署的目的。</p>
+
+      <!--
+      <div class='under-post'>
+        <div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-weibo'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+      </div>
+      <br/>
+      -->
+      <div class='slogan-buttons'>
+          <a class='btn btn-primary btn-cta btn-lg animated-when-hover' data-animation-type="swing" href='/posts/2013-06-12-use-makefile-to-automate-deployment.html'>
+              继续阅读 ->
+          </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+        <div class='row post-loop'>
+  <!--
+  <div class='col-md-2 col-md-offset-1'>
+    <div class='post-loop-author-info'>
+      <div class='author-avatar'>
+        <img alt='' src='/assets/images/tyr.png'>
+      </div>
+      <div class='author-meta'>
+        <h4 class='author-name'>Tyr Chen</h4>
+        <i class='icon-calendar'></i>
+        9个月前
+      </div>
+    </div>
+  </div>
+  -->
+  <div class='col-md-8 col-md-offset-2'>
+    <div class='post-loop-content'>
+      <h2 class='has-sub-header'>
         <a href='/posts/2013-06-10-use-scrapyd-to-serve-scrapy-projects.html'>用scrapyd来提供crawler服务</a>
       </h2>
       <div class='post-loop-meta'>
@@ -864,88 +942,6 @@
       -->
       <div class='slogan-buttons'>
           <a class='btn btn-primary btn-cta btn-lg animated-when-hover' data-animation-type="swing" href='/posts/2013-02-21-openflow-introduction.html'>
-              继续阅读 ->
-          </a>
-      </div>
-    </div>
-  </div>
-</div>
-
-    
-        <div class='row post-loop'>
-  <!--
-  <div class='col-md-2 col-md-offset-1'>
-    <div class='post-loop-author-info'>
-      <div class='author-avatar'>
-        <img alt='' src='/assets/images/tyr.png'>
-      </div>
-      <div class='author-meta'>
-        <h4 class='author-name'>Tyr Chen</h4>
-        <i class='icon-calendar'></i>
-        1年前
-      </div>
-    </div>
-  </div>
-  -->
-  <div class='col-md-8 col-md-offset-2'>
-    <div class='post-loop-content'>
-      <h2 class='has-sub-header'>
-        <a href='/posts/2013-02-18-sdn-elementatory-introduction.html'>SDN浅谈</a>
-      </h2>
-      <div class='post-loop-meta'>
-        <span>
-          <i class='icon-calendar'></i>
-          1年前
-        </span>
-        <span class='hidden-mobile-ib tags'>
-          <i class='icon-tags'></i>
-          
-            <a href='/tags/SDN.html'>SDN</a>
-          
-            <a href='/tags/technology.html'>technology</a>
-          
-        </span>
-        <span>
-          <i class='icon-time'></i>
-          10 分钟
-        </span>
-        <!--
-        <span class='hidden-mobile-ib'>
-          <a href='#'>
-            <i class='icon-comments'></i>
-            24
-          </a>
-        </span>
-        <span class='hidden-mobile-ib'>
-          <a href='#'>
-            <i class='icon-heart'></i>
-            15
-          </a>
-        </span>
-        -->
-      </div>
-      <p>SDN（Software Defined Network）是个有意思的概念。<a href="https://www.opennetworking.org">ONF</a>（Open Network Foundation）这样定义SDN：</p>
-<blockquote>
-<p>In the SDN architecture, the control and data planes are decoupled, network intelligence and state are <strong>logically</strong> centralized, and the underlying network infrastructure is abstracted from the applications.</p>
-</blockquote>
-<p><img src="/assets/files/snapshots/sdn-arch.jpg" alt="SDN architecture"></p>
-<p>用普通话说就是软件独立于硬件，让硬件标准化，软件平台化，信息中心化。</p>
-
-      <!--
-      <div class='under-post'>
-        <div class='post-social text-center'>
-  <a class='social-link' href='#'>
-    <i class='icon-weibo'></i>
-  </a>
-  <a class='social-link' href='#'>
-    <i class='icon-envelope'></i>
-  </a>
-</div>
-      </div>
-      <br/>
-      -->
-      <div class='slogan-buttons'>
-          <a class='btn btn-primary btn-cta btn-lg animated-when-hover' data-animation-type="swing" href='/posts/2013-02-18-sdn-elementatory-introduction.html'>
               继续阅读 ->
           </a>
       </div>

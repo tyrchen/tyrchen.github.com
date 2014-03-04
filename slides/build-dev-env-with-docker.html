@@ -52,7 +52,7 @@
     <h2>Docker in 15 minutes</h2>
   </section>
   <section>
-    <p class="well">To try docker in a clean environment, I recommend you to use <a href="https://www.digitalocean.com/?refcode=b0e273c7d740">Digital Ocean </a>($5 per month only)</p>
+    <div class="well">To try docker in a clean environment, I recommend you to use <a href="https://www.digitalocean.com/?refcode=b0e273c7d740">Digital Ocean </a>($5 per month only)</div>
   </section>
   <section>
     <h2>Install docker</h2>
@@ -91,9 +91,9 @@ hello world!</code></pre>
     </div>
   </section>
   <section>
-    <h2>Wait...what the fuck is this?</h2>
+    <h2>Wait...what the fuck is this?</h2><img src="/assets/files/slides/docker/docker_pull.jpg"/>
+    <div class="fragment">docker is fast, and smart.</div>
   </section>
-  <section><img src="/assets/files/slides/docker/docker_pull.jpg"/></section>
   <section>
     <h2>AUFS</h2><img src="/assets/files/slides/docker/aufs.jpg"/>
   </section>
@@ -114,7 +114,7 @@ hello world!</code></pre>
     <h2>Let's play with docker</h2>
   </section>
   <section>
-    <p>Disclaimer: the following live operations are highly interactive (subject to change during the demo), so please sharpen your docker environment and follow me!</p>
+    <div>Disclaimer: the following live operations are highly interactive (subject to change during the demo), so please sharpen your docker environment and follow me!</div>
   </section>
   <section>
     <h2>First of all, get a image</h2>
@@ -198,7 +198,7 @@ Python 2.7.3 (default, Sep 26 2013, 20:03:06)
 
 In [1]: exit</code></pre>
     </div>
-    <p class="well fragment">Mission accomplished!</p>
+    <div class="well fragment">Mission accomplished!</div>
   </section>
   <section>
     <h2>Now share this to your coworkers</h2>
@@ -293,12 +293,15 @@ In [1]: exit</code></pre>
     <h2>How do you feel?</h2>
   </section>
   <section>
-    <p class="well fragment">it's fucking like git!!!!!!</p>
-    <p></p>
-    <p class="well fragment">That's why it is called <b>"git for deployment"</b></p>
+    <div class="well fragment">it's fucking like git!!!!!!</div><br/>
+    <div class="well fragment">That's why it is called <b>"git for deployment"</b></div>
   </section>
   <section>
-    <p class="well">Hats off and bow down to docker's creators!</p><img src="/assets/files/slides/docker/bowdown.jpg"/>
+    <h2>Retrospection</h2><img src="/assets/files/slides/docker/functions.jpg"/>
+  </section>
+  <section>
+    <h2>Now you have basic ideas...</h2><img src="/assets/files/slides/docker/bowdown.jpg"/>
+    <div class="well fragment">Hats off and bow down to docker's creators!</div>
   </section>
 </section>
 <section>
@@ -319,60 +322,82 @@ In [1]: exit</code></pre>
     </div>
   </section>
   <section>
-    <div>Let's try it! (To be finished)</div>
+    <div>Let's try it! (DEMO)</div>
   </section>
 </section>
 <section>
   <h2>Ready with some new challenges? </h2>
-  <h3>Let's talk about building a development environment!</h3>
+  <div>Let's talk about building a development environment!</div>
 </section>
 <section>
   <section>
-    <h2>Build a dev env with docker </h2>
-    <h4>(will add later)</h4>
+    <h2>Build a dev env with docker</h2>
   </section>
   <section>
-    <h2>Dev Env - Requirements</h2>
+    <h2>Problem</h2>
+    <p>I have an application that consists of:</p>
+    <ul>
+      <li>my application (django) + dependencies</li>
+      <li>my database (mysql)</li>
+      <li>my cache server (redis)</li>
+    </ul>
+    <p>We have 24 developers working on 3 different releases</p>
+    <div class="fragment well">How should I build an efficient dev env?</div>
   </section>
   <section>
-    <h2></h2>
+    <h2>Previous solution</h2>
+    <ul>
+      <li class="fragment">each dev has their own separated dev env</li>
+      <li class="fragment">all dev shares several dev env</li>
+    </ul>
   </section>
   <section>
-    <h2>Dev Env - Thoughts</h2>
+    <h2>The docker way</h2>
+    <ul>
+      <li>build an image for your django app + dependencies</li>
+      <li>build an image for mysql + dependencies</li>
+      <li>build an image for redis + dependencies</li>
+      <li>Each dev starts their own containers (and linked together)</li>
+    </ul>
   </section>
   <section>
-    <h2>Dev Env - Implementations</h2>
+    <h2>Let's do it! (DEMO)</h2>
   </section>
-  <h2></h2>
 </section>
-<!--section
-section
- h2 What can I do with docker?
-section
- h3 flexible application deployment
-section
- h3 shared deveopment environment setup
-section
- h3 throwaway test setup
-section
- h3 parallel continuous integration
-section
- h3 and a lot...use your imagination, luke!
- 
--->
-<!--section
-section
- h2 What have you learned?
-section
- h2 How to operate with docker? no!
-section
- div
-  p.fragment To operate docker is easy, just practice. But don't be an op.
-  br
-  div.well.fragment Think wise. Treat docker as python.
-  
-  
--->
+<section>
+  <section>
+    <h2>What can I do with docker?</h2>
+  </section>
+  <section>
+    <h3>flexible application deployment</h3>
+  </section>
+  <section>
+    <h3>shared deveopment environment setup</h3>
+  </section>
+  <section>
+    <h3>throwaway test setup</h3>
+  </section>
+  <section>
+    <h3>parallel continuous integration</h3>
+  </section>
+  <section>
+    <h3>and a lot...use your imagination, luke!</h3>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>What have you learned?</h2>
+  </section>
+  <section>
+    <h2>How to operate with docker? no!</h2>
+  </section>
+  <section>
+    <div>
+      <p class="fragment">To operate docker is easy, just practice. But don't be an op.</p><br/>
+      <div class="well fragment">Think wise. Treat docker as python.</div>
+    </div>
+  </section>
+</section>
 <section>
   <h2>Thanks, Q&A</h2>
 </section>

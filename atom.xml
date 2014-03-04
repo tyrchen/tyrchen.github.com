@@ -3,13 +3,22 @@
         <title>觅珠人</title>
 		<link href="http://tchen.me/atom.xml" rel="self"/>
 		<link href="http://tchen.me"/>
-        <updated>2014-03-02T03:00:35.296Z</updated>
+        <updated>2014-03-04T23:55:38.097Z</updated>
 		<id>http://tchen.me</id>
         <author>
 			<name>Tyr Chen</name>
 			<email></email>
         </author>
 
+        
+        	<entry>
+            	<title>高效能程序员的七个习惯</title>
+				<link href="http://tchen.me/posts/2014-03-05-highly-effective-programmer.html"/>
+                <updated>2014-03-04T23:50:00.000Z</updated>
+				<id>http://tchen.me/posts/2014-03-05-highly-effective-programmer.html</id>
+                <content type="html">&lt;p&gt;昨天收到一个读者留言，问作为程序员，有什么学习和工作上的好习惯可以借鉴？想了想，干脆附庸风雅一下，总结个『高效能程序员的七个习惯』吧。Disclaimer：一家之言，可不信，但不可全信。&lt;/p&gt;
+</content>
+            </entry>
         
         	<entry>
             	<title>程序员混日子不完全手册</title>
