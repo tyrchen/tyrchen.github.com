@@ -337,8 +337,8 @@ In [1]: exit</code></pre>
     <h2>Problem</h2>
     <p>I have an application that consists of:</p>
     <ul>
-      <li>my application (django) + dependencies</li>
-      <li>my database (mysql)</li>
+      <li>my application (sinatra) + dependencies</li>
+      <li>my database (postgres)</li>
       <li>my cache server (redis)</li>
     </ul>
     <p>We have 24 developers working on 3 different releases</p>
@@ -354,9 +354,9 @@ In [1]: exit</code></pre>
   <section>
     <h2>The docker way</h2>
     <ul>
-      <li>build an image for your django app + dependencies</li>
-      <li>build an image for mysql + dependencies</li>
-      <li>build an image for redis + dependencies</li>
+      <li>build an image for your app + dependencies</li>
+      <li>build an image for db + dependencies</li>
+      <li>build an image for cache server + dependencies</li>
       <li>Each dev starts their own containers (and linked together)</li>
     </ul>
   </section>
