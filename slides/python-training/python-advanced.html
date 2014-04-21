@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Python advanced - </title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/assets/slides/reveal.js/css/reveal.min.css">
+    <link rel="stylesheet" href="/assets/slides/reveal.js/css/theme/default.css" id="theme">
+    <link href="http://fonts.googleapis.com/css?family=Arbutus+Slab|Josefin+Slab:400,700|Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/slides/code/github.css">
+    <link rel="stylesheet" href="/assets/slides/custom.css">
+    <style>
+      .reveal p {text-align: justify;}
+      
+    </style>
+  </head>
+  <body class="reveal">
+    <div class="reveal">
+      <div class="slides">
+<section>
+  <h1>Python advanced</h1><br/>
+  <h3>Tyr Chen</h3><br/>
+  <div>Stay hungry, stay foolish </div>
+  <div>2014-03-23</div>
+</section>
+<section>
+  <h2>Agenda</h2>
+  <ul>
+    <li class="fragment">Data structure</li>
+    <li class="fragment">A little more about python</li>
+    <li class="fragment">Functional Programming</li>
+    <li class="fragment">Metaprogramming</li>
+  </ul>
+</section>
+<section>
+  <section>
+    <h3>Data structure</h3>
+  </section>
+  <section>
+    <h3>Number</h3>
+    <div class="fragment">
+      <pre><code># basic
+In [1]: a = 123456789123456789123456789 # any big number
+
+In [287]: dir(a)
+Out[287]:
+['__abs__',
+ '__add__',
+ '__and__',
+ '__class__',
+ '__cmp__',
+ '__coerce__',
+ '__delattr__',
+ '__div__',
+ '__divmod__',
+ '__doc__',
+ '__float__',
+ '__floordiv__',
+ '__format__',
+ '__getattribute__',
+ '__getnewargs__',
+ '__hash__',
+ '__hex__',
+ '__index__',
+ '__init__',
+ '__int__',
+ '__invert__',
+ '__long__',
+ '__lshift__',
+ '__mod__',
+ '__mul__',
+ '__neg__',
+ '__new__',
+ '__nonzero__',
+ '__oct__',
+ '__or__',
+ '__pos__',
+ '__pow__',
+ '__radd__',
+ '__rand__',
+ '__rdiv__',
+ '__rdivmod__',
+ '__reduce__',
+ '__reduce_ex__',
+ '__repr__',
+ '__rfloordiv__',
+ '__rlshift__',
+ '__rmod__',
+ '__rmul__',
+ '__ror__',
+ '__rpow__',
+ '__rrshift__',
+ '__rshift__',
+ '__rsub__',
+ '__rtruediv__',
+ '__rxor__',
+ '__setattr__',
+ '__sizeof__',
+ '__str__',
+ '__sub__',
+ '__subclasshook__',
+ '__truediv__',
+ '__trunc__',
+ '__xor__',
+ 'bit_length',
+ 'conjugate',
+ 'denominator',
+ 'imag',
+ 'numerator',
+ 'real']
+ 
+In [2]: pi = 3.1415926</code></pre>
+    </div>
+  </section>
+  <section>
+    <h3>list</h3>
+    <div class="fragment">
+      <pre><code>In [27]: l = [1,2,3,4,5]
+
+In [28]: l
+Out[28]: [1, 2, 3, 4, 5]
+
+In [273]: len(l)
+Out[273]: 5
+
+In [274]: l.append(6)
+
+In [275]: l
+Out[275]: [1, 2, 3, 4, 5, 6]
+
+In [276]: l[3]
+Out[276]: 4
+
+In [277]: map(lambda x: x*2, l)
+Out[277]: [2, 4, 6, 8, 10, 12]
+
+In [279]: reduce(lambda x,y: x+y, l)
+Out[279]: 21
+
+In [360]: ' '.join(['This', 'is', 'a', 'string'])
+Out[360]: 'This is a string'                    </code></pre>
+    </div>
+  </section>
+  <section>
+    <h3>dict</h3>
+    <div class="fragment">
+      <pre>    <code>In [29]: point = {"x": 10, "y": -20}
+
+In [30]: point["x"]
+Out[30]: 10
+
+In [31]: point["y"]
+Out[31]: -20
+
+In [281]: point.keys()
+Out[281]: ['y', 'x']
+
+In [282]: point.has_key('x')
+Out[282]: True
+
+In [283]: point.items()
+Out[283]: [('y', -20), ('x', 10)]
+
+In [32]: s = "This is a string"
+
+In [33]: s.split(' ')
+Out[33]: ['This', 'is', 'a', 'string']
+</code></pre>
+    </div>
+  </section>
+  <section>
+    <h3>tuple</h3>
+    <div class="fragment">
+      <pre><code>In [1]: s = (1,2,3)
+
+In [2]: s[0]
+Out[2]: 1
+
+In [3]: s[0] = 1
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-3-99b35ed5371c> in <module>()
+----> 1 s[0] = 1
+
+TypeError: 'tuple' object does not support item assignment</code></pre>
+    </div>
+  </section>
+  <section>
+    <h3>set</h3>
+    <div class="fragment">
+      <pre><code>In [4]: s1 = set([1,2,3,4,1])
+
+In [5]: s1
+Out[5]: set([1, 2, 3, 4])
+
+In [6]: s1.add(5)
+
+In [7]: s1
+Out[7]: set([1, 2, 3, 4, 5])
+
+In [8]: 3 in s1
+Out[8]: True
+
+In [9]: len(s1)
+Out[9]: 5
+
+In [10]: map(lambda x: x*2, s1)
+Out[10]: [2, 4, 6, 8, 10]               
+</code></pre>
+    </div>
+  </section>
+</section>
+<section>
+  <section>
+    <h3>A little more about python    </h3>
+  </section>
+  <section>
+    <h3>iterator</h3>
+    <div class="fragment">
+      <pre><code>In [10]: for i in range(1, 5):
+   ....:     print i
+   ....:
+1
+2
+3
+4
+5
+
+In [11]: d = ["hello", "world"]
+
+In [12]: for i, item in enumerate(d):
+   ....:     print i, item
+   ....:
+0 hello
+1 world</code></pre>
+    </div>
+  </section>
+  <section>
+    <h3>generator</h3>
+    <div class="fragment">
+      <pre><code>In [40]: def fabonacci(): # generator
+   ....:     a, b = 1, 2
+   ....:     while True:
+   ....:         a, b = b, a+b
+   ....:         yield b
+   ....:
+   
+In [56]: f = fabonacci()
+
+In [57]: f.next()
+Out[57]: 3
+
+In [58]: f.next()
+Out[58]: 5
+
+In [59]: f.next()
+Out[59]: 8
+
+In [60]: f.next()
+Out[60]: 13
+
+In [61]: f.next()
+Out[61]: 21 </code></pre>
+    </div>
+  </section>
+  <section>
+    <h3>Magic functions</h3>
+    <p>You have already seen them with "dir(a)" before!!</p>
+    <p class="well"><code>__len__, __str(unicode)__, __getitem__, __setitem__, ...</code></p>
+    <p>You can always use "dir()" to explore more</p>
+  </section>
+  <section>
+    <h3>useless examples</h3>
+    <div class="fragment">
+      <pre><code>In [65]: class Iterable: # make object work like a list
+   ....:     def __iter__(self):
+   ....:         return self
+   ....:     def next(self):
+   ....:         if self.has_next():
+   ....:             return self.next_value()
+   ....:         else:
+   ....:             raise StopIteration
+   ....:     def __init__(self, items):
+   ....:         self.items = items
+   ....:         self.cur = 0
+   ....:     def has_next(self):
+   ....:         return self.cur < len(self.items)
+   ....:     def next_value(self):
+   ....:         value = self.items[self.cur]
+   ....:         self.cur += 1
+   ....:         return value
+   
+In [67]: i = Iterable([1,2,3,4])
+
+In [68]: for item in i:
+   ....:     print item
+   ....:
+1
+2
+3
+4       
+
+In [69]: class Indexable:
+   ....:     def __getitem__(self, index):
+   ....:         return index * 2
+   ....:
+   
+In [70]: i = Indexable()
+
+In [71]: i[3]
+Out[71]: 6
+
+In [72]: i["Hello"]
+Out[72]: 'HelloHello'                </code></pre>
+    </div>
+  </section>
+  <section>
+    <h3>dotdict example</h3>
+    <div class="fragment">
+      <pre><code>class dotdict(dict):
+  def __getattr__(self, attr):
+    return self.get(attr, None)
+    
+  __setattr__ = dict.__setitem__
+  __delattr__ = dict.__delitem__</code></pre>
+    </div>
+    <p class="fragment">Usage:</p>
+    <div class="fragment">
+      <pre><code>In [6]: d = {'a': 'hello', 'b':'world'}
+
+In [7]: dd = dotdict(d)
+
+In [8]: dd.
+dd.clear       dd.fromkeys    dd.has_key     dd.iteritems   dd.itervalues  dd.pop         dd.setdefault  dd.values      dd.viewkeys
+dd.copy        dd.get         dd.items       dd.iterkeys    dd.keys        dd.popitem     dd.update      dd.viewitems   dd.viewvalues
+
+In [8]: dd.a
+Out[8]: 'hello'
+
+In [9]: dd.b
+Out[9]: 'world'</code></pre>
+    </div>
+  </section>
+  <section>
+    <h3>Case time: implement a haskell list (head, tail, init, last, drop, and take)</h3>
+  </section>
+  <section>
+    <h3>The implementation</h3>
+    <div class="fragment">
+      <pre><code>class FunctionalList:
+    '''A class wrapping a list with some extra functional magic, like head,
+    tail, init, last, drop, and take.'''
+    
+    def __init__(self, values=None):
+        if values is None:
+            self.values = []
+        else:
+            self.values = values
+            
+    def __len__(self):
+        return len(self.values)
+        
+    def __getitem__(self, key):
+        # if key is of invalid type or value, the list values will raise the error
+        return self.values[key]
+        
+    def __setitem__(self, key, value):
+        self.values[key] = value
+        
+    def __delitem__(self, key):
+        del self.values[key]
+        
+    def __iter__(self):
+        return iter(self.values)
+        
+    def __reversed__(self):
+        return FunctionalList(reversed(self.values))
+        
+    def append(self, value):
+        self.values.append(value)
+    def head(self):
+        # get the first element
+        return self.values[0]
+    def tail(self):
+        # get all elements after the first
+        return self.values[1:]
+    def init(self):
+        # get elements up to the last
+        return self.values[:-1]
+    def last(self):
+        # get last element
+        return self.values[-1]
+    def drop(self, n):
+        # get all elements except first n
+        return self.values[n:]
+    def take(self, n):
+        # get first n elements
+        return self.values[:n]</code></pre>
+    </div>
+  </section>
+  <section>
+    <h3>Context manager</h3>
+  </section>
+  <section>
+    <h3>The problem</h3>
+    <div class="fragment">
+      <pre><code>writer = open(filename, mode)
+try:
+    writer.write('Hello ')
+    writer.write('World')
+finally:
+    writer.close()</code></pre>
+    </div>
+  </section>
+  <section>
+    <h3>Quite ugly!</h3>
+  </section>
+  <section>
+    <h3>The python way</h3>
+    <div class="fragment">
+      <pre><code>with open(filename, mode) as writer:
+    writer.write('Hello ') 
+    writer.write('World')                </code></pre>
+    </div>
+  </section>
+  <section>
+    <h3>What is context manager?</h3>
+  </section>
+  <section>
+    <h3>Magic functions again</h3>
+    <div class="fragment">
+      <pre><code>In [45]: class MyContext:
+   ....:     def __enter__(self):
+   ....:         print 'Entering the block'
+   ....:     def __exit__(self, *unused):
+   ....:         print 'Exiting the block'
+   ....:
+   
+In [46]: with MyContext():
+   ....:     print 'Hello world!'
+   ....:
+Entering the block
+Hello world!
+Exiting the block                </code></pre>
+    </div>
+  </section>
+  <section>
+    <h3>How to write your own context manager</h3>
+    <div class="fragment">
+      <pre><code>In [56]: class MyOpen:
+    def __init__(self, filename, mode):
+        self.filename = filename
+        self.mode = mode
+    def __enter__(self):
+        self.f = open(self.filename, self.mode)
+        return self.f
+    def __exit__(self, **unused):
+        self.f.close()                </code></pre>
+    </div>
+  </section>
+  <section>
+    <h3>contextlib</h3>
+    <div class="fragment">
+      <pre><code>In [62]: with contextlib.closing(sqlite3.connect("test.db")) as db:
+   ....:     db.execute("create table log (id integer primary key, content varchar(255))") 
+In [64]: dir(contextlib)
+Out[64]:
+['GeneratorContextManager',
+ '__all__',
+ '__builtins__',
+ '__doc__',
+ '__file__',
+ '__name__',
+ '__package__',
+ 'closing',
+ 'contextmanager',
+ 'nested',
+ 'sys',
+ 'warn',
+ 'wraps']
+ 
+In [66]: help(contextlib.nested)               </code></pre>
+    </div>
+  </section>
+  <section>
+    <h3>contextlib.contextmanager</h3>
+    <div class="fragment">
+      <pre><code>In [67]: help(contextlib.contextmanager)
+@contextlib.contextmanager
+def myLock():
+    print "Beging"
+    lock.acquire()
+    try:
+        yield "hello world"
+    finally:
+        print "release lock"
+        lock.release()
+In [74]: with myLock() as l:
+    print "lock is locked: %s" % lock.locked()
+    print l
+....:
+Beging
+lock is locked: True
+hello world
+release lock</code></pre>
+    </div>
+  </section>
+  <section>
+    <h3>a little more about decorator</h3>
+    <p class="fragment">decorator is just a grammar sugar to make your code more elegant</p>
+    <p class="fragment">think about how to time a function?</p>
+  </section>
+  <section>
+    <h3>decorator example</h3>
+    <div class="fragment">
+      <pre><code>def timeit(func):
+    def __decorator(*args, **kwargs):
+        t1 = time.time()
+        func(*args, **kwargs)
+        t2 = time.time()
+        print('TIMING:%s took %0.3f ms' % (func.__name__, (t2 - t1) * 1000.0))
+    return __decorator                    
+@timeit
+def hello():
+    print("hello world")
+    time.sleep(1)
+In [87]: hello()
+hello world
+TIMING:hello took 1001.089 ms                        </code></pre>
+    </div>
+  </section>
+</section>
+<section>
+  <section>
+    <h3>Functional programming</h3>
+  </section>
+  <section>
+    <h3>What is functional programming</h3>
+    <p class="fragment">let's see a haskell example</p>
+    <div class="fragment">
+      <pre><code>boomBangs xs = [if x < 10 then "BOOM!" else "BANG!" | x <- xs, odd x]
+
+length' xs = sum [1|_ <- xs]
+
+removeUpperCase xs = [x|x <- xs, not (x `elem` ['A'..'Z'])]
+
+multList n [] = []
+multList n (x:xs) = n*x : multList n xs
+
+multList' f [] = []
+multList' f (x:xs) = f(x) : multList' f xs
+
+doubleList = multList' (2*)
+tripleList = multList 3</code></pre>
+    </div>
+  </section>
+  <section>
+    <h3>Python implementation</h3>
+    <div class="fragment">
+      <pre><code>In [23]: boomBangs = lambda l: ["Boom" if x < 10 else "Bang" for x in l if x % 2 == 1]
+
+In [24]: boomBangs([6, 8,9,10,11,12])
+Out[24]: ['Boom', 'Boom', 'Bang']
+...
+In [40]: def multList(x):
+    def func(l):
+        return [item * x for item in l]
+    return func
+....:
+
+In [41]: f = multList(2)
+
+In [42]: f([1,2,3,4])
+Out[42]: [2, 4, 6, 8]                    </code></pre>
+    </div>
+  </section>
+  <section>
+    <h3>lambda</h3>
+  </section>
+  <section>
+    <h3>High ordered function</h3>
+  </section>
+  <section>
+    <h3>Tail recursive</h3>
+    <div class="fragment">
+      <pre><code>fac 0 = 1
+fac n = n * fac (n-1)        </code></pre>
+    </div>
+  </section>
+  <section>
+    <h3>Lazy evaluation</h3>
+    <div class="fragment">
+      <pre><code>*Main> take 5 [1..]
+[1,2,3,4,5]
+
+</code></pre>
+    </div>
+  </section>
+</section>
+<!-- --
+Python advanced (Day 1)
+Data structure advanced
+Functional programming
+Closure, high ordered functions and decorator
+Iterator and generator
+Itertools library
+Metaprogramming
+Concurrency (Day 1)
+Threading
+Coroutine (gevent)
+Networking (Day 2)
+Socket
+TCP client / server
+Web service
+Email service
+Other services
+Build server side application (Day 2 & Day 3)
+Web application architecture
+Web server (nginx)
+Application server (gunicorn / django)
+Database server (mysql / mongodb)
+Cache server (redis / memcached)
+MQ server (RabbitMQ & Celery)
+Other servers and services
+Scale up and scale out
+Case studies (Day 3)
+how to build zhihu.com
+build a static site generator
+-->
+      </div>
+    </div>
+    <script src="/assets/slides/jquery.js"></script>
+    <script src="/assets/slides/reveal.js/lib/js/head.min.js"></script>
+    <script src="/assets/slides/reveal.js/js/reveal.min.js"></script>
+    <script src="/assets/slides/highlight.pack.js"></script>
+    <!--script(src="/assets/slides/reconnecting-websocket.js")-->
+    <!--script(src="/assets/slides/coderunner.js")-->
+    <script>
+      $(function() {
+        hljs.initHighlightingOnLoad();
+        $('div.white, img').addClass('img-thumbnail stretch');
+        
+        // Full list of configuration options available here:
+        // https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+          controls: true,
+          progress: true,
+          history: true,
+          center: true,
+          
+          theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+          transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+          
+          // Optional libraries used to extend on reveal.js
+          dependencies: [
+            { src: '/assets/slides/reveal.js/plugin/classList.js', condition: function() { return !document.body.classList; } },
+            { src: '/assets/slides/reveal.js/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: '/assets/slides/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: '/assets/slides/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+            { src: '/assets/slides/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+            // { src: '../../_static/reveal/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+          ]
+        });
+        /*
+        $.CodeRunner({
+          wsuri: 'ws://jcnrd.us:7100/',
+          buttonContainer: 'pre.main',
+          codeContainer: 'code'
+        });
+        $('div.coderunner').CodeRunner();
+        */
+      });
+      
+    </script>
+  </body>
+</html>
