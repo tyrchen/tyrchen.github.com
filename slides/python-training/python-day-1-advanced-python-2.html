@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Python advanced - functional / meta programming - </title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/assets/slides/reveal.js/css/reveal.min.css">
+    <link rel="stylesheet" href="/assets/slides/reveal.js/css/theme/default.css" id="theme">
+    <link href="http://fonts.googleapis.com/css?family=Arbutus+Slab|Josefin+Slab:400,700|Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/slides/code/github.css">
+    <link rel="stylesheet" href="/assets/slides/custom.css">
+    <style>
+      .reveal p {text-align: justify;}
+      
+    </style>
+  </head>
+  <body class="reveal">
+    <div class="reveal">
+      <div class="slides">
+<section>
+  <h1>Python advanced</h1>
+  <h2>functional and meta programming</h2><br/>
+  <h3>Tyr Chen</h3><br/>
+  <div>Stay hungry, stay foolish </div>
+  <div>2014-04-16</div>
+</section>
+<section>
+  <h2>Agenda</h2>
+  <ul>
+    <li class="fragment">What is functional programming</li>
+    <li class="fragment">Python functional programming</li>
+    <li class="fragment">itertools</li>
+    <li class="fragment">functools</li>
+    <li class="fragment">kachayev/fn.py</li>
+    <li class="fragment">Python metaprogramming</li>
+  </ul>
+</section>
+<section>
+  <section>
+    <h3>What is functional programming</h3>
+  </section>
+  <section>
+    <h3>Classification of languages</h3>
+    <ul>
+      <li class="fragment">Imperative programming (С/C++, Java, Python)</li>
+      <li class="fragment">Declarative programming
+        <ul>
+          <li>Functional programming (Haskell, Erlang, Scheme, OCaml)</li>
+          <li>Logic programming (Prolog)        </li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+  <section>
+    <h3>What is functional programming about </h3>
+    <ul>
+      <li class="fragment">Avoid state</li>
+      <li class="fragment">Immutable data</li>
+      <li class="fragment">First-class functions</li>
+      <li class="fragment">Higher-order functions</li>
+      <li class="fragment">Pure functions (no side effects)</li>
+      <li class="fragment">Recursion & tail recursion</li>
+      <li class="fragment">Iterators, sequences</li>
+      <li class="fragment">Lazy evaluation</li>
+      <li class="fragment">Pattern matching</li>
+      <li class="fragment">Monads....</li>
+    </ul>
+  </section>
+  <section>
+    <h3>Let's see a haskell example</h3>
+    <div class="fragment">
+      <pre><code>boomBangs xs = [if x < 10 then "BOOM!" else "BANG!" | x <- xs, odd x]
+
+length1 xs = sum [1|_ <- xs]
+
+removeUpperCase xs = [x|x <- xs, not (x `elem` ['A'..'Z'])]
+
+multList n [] = []
+multList n (x:xs) = n*x : multList n xs
+
+multList1 f [] = []
+multList1 f (x:xs) = f(x) : multList1 f xs
+
+doubleList = multList1 (2*)
+tripleList = multList 3</code></pre>
+    </div>
+  </section>
+  <section>
+    <h3>Python implementation</h3>
+    <div class="fragment">
+      <pre><code>In [23]: boomBangs = lambda l: ["Boom" if x < 10 else "Bang" for x in l if x % 2 == 1]
+
+In [24]: boomBangs([6, 8,9,10,11,12])
+Out[24]: ['Boom', 'Boom', 'Bang']
+...
+def multList(x):
+    def func(l):
+        return [item * x for item in l]
+    return func
+    
+In [41]: f = multList(2)
+
+In [42]: f([1,2,3,4])
+Out[42]: [2, 4, 6, 8]                    </code></pre>
+    </div>
+  </section>
+  <section>
+    <h3>lambda</h3>
+  </section>
+  <section>
+    <h3>High ordered function</h3>
+  </section>
+  <section>
+    <h3>Tail recursive</h3>
+    <div class="fragment">
+      <pre><code>fac 0 = 1
+fac n = n * fac (n-1)        </code></pre>
+    </div>
+  </section>
+  <section>
+    <h3>Lazy evaluation</h3>
+    <div class="fragment">
+      <pre><code>*Main> take 5 [1..]
+[1,2,3,4,5]
+</code></pre>
+    </div>
+  </section>
+</section>
+<section>
+  <section>
+    <h3>Python functional programming</h3>
+  </section>
+  <section>
+    <h3>Case study</h3>
+    <p class="well">Please write a program to calculate a string expression, like this "3*20*7*48"</p>
+  </section>
+  <section>
+    <h3>Implementation</h3>
+    <div class="fragment">
+      <p>The imperative way</p>
+      <pre><code>In [89]: s = "3*20*7*48"
+
+In [90]: r = 1
+
+In [91]: for t in s.split("*"):
+    if t != "":
+        r *= int(t)
+....:
+
+In [92]: r
+Out[92]: 20160</code></pre>
+    </div>
+    <div class="fragment">
+      <p>The functional way</p>
+      <pre><code>In [94]: import operator
+
+In [95]: reduce(operator.mul, map(int, filter(bool, s.split('*'))))
+Out[95]: 20160</code></pre>
+    </div>
+  </section>
+  <section>
+    <h3>Let's start with factorial</h3>
+    <div class="fragment">
+      <p>the imperative way</p>
+      <pre><code>def factorial(n):
+    num = 1
+    while n >= 1:
+        num = num * n
+        n = n - 1
+    return num</code></pre>
+    </div>
+    <div class="fragment">
+      <p>the function way</p>
+      <pre><code>def factorial(n):
+    return n * factorial(n-1)</code></pre>
+    </div>
+    <p class="well fragment">NOTE: python doesn't do any optimization on tail recursive</p>
+  </section>
+  <section>
+    <h3>high order function</h3>
+    <div class="fragment">
+      <pre><code>class MyPerson():
+       def __init__(self, name, age):
+              self.name = name
+              self.age = age
+       def __unicode__(self):
+              return '%s: %d' % (self.name, self.age)
+       def __repr__(self):
+           return self.__unicode__()
+....:
+
+In [22]: my_cmp = lambda x,y: cmp(x.age, y.age)
+In [23]: people = [MyPerson('tyr', 32), MyPerson('Grandpa', 80), MyPerson('Susan', 49)]
+
+In [24]: sorted(people, my_cmp)
+Out[24]: [tyr: 32, Susan: 49, Grandpa: 80]</code></pre>
+    </div>
+  </section>
+  <section>
+    <h3>closure</h3>
+    <div class="fragment">
+      <pre><code>In [1]: def add(x):
+   ...:     def __fun(y):
+   ...:         return x + y
+   ...:     return __fun
+   ...:
+   
+In [2]: add2 = add(2)
+
+In [3]: add2(3)
+Out[3]: 5</code></pre>
+    </div>
+  </section>
+  <section>
+    <h3>curry</h3>
+    <div class="fragment">
+      <p>traditional way to program</p>
+      <pre><code>In [123]: list_sum = lambda l: reduce(operator.add, l)
+
+In [124]: list_mul = lambda l: reduce(operator.mul, l)
+
+In [125]: list_sum([1,2,3,4])
+Out[125]: 10
+
+In [126]: list_mul([1,2,3,4])
+Out[126]: 24</code></pre>
+    </div>
+  </section>
+  <section>
+    <h3>curry</h3>
+    <div class="fragment">
+      <p>currying</p>
+      <pre><code>In [127]: def list_op(f):
+   .....:     def apply(l):
+   .....:         return reduce(f, l)
+   .....:     return apply
+   .....:
+   
+In [128]: list_sum1 = list_op(operator.add)
+
+In [129]: list_mul1 = list_op(operator.mul)
+
+In [130]: list_sum1([1,2,3,4])
+Out[130]: 10
+
+In [131]: list_mul1([1,2,3,4])
+Out[131]: 24                </code></pre>
+    </div>
+  </section>
+  <section>
+    <h3>builtin functional programming functions</h3>
+    <p><code>map, reduce, filter, zip, all, any, max, min, ...</code></p>
+    <div class="fragment">
+      <pre><code>In [29]: map(lambda x: x*2, [1,2,3,4])
+Out[29]: [2, 4, 6, 8]
+
+In [30]: filter(lambda x: x > 10, [8,9,10,11,12])
+Out[30]: [11, 12]
+
+In [31]: reduce(lambda x, y: x+y, [1,2,3,4], 0)
+Out[31]: 10
+
+In [32]: all([1,2,3,4])
+Out[32]: True
+
+In [33]: all([False, None, 1])
+Out[33]: False
+
+In [34]: any([False, None, 1])
+Out[34]: True
+
+In [36]: max(people, key = lambda x: x.age)
+Out[36]: Grandpa: 80
+
+In [37]: min(people, key = lambda x: x.age)
+Out[37]: tyr: 32      
+
+In [38]: zip([1,2],[3,4])
+Out[38]: [(1, 3), (2, 4)]       
+</code></pre>
+    </div>
+  </section>
+</section>
+<section>
+  <section>
+    <h3>itertools</h3>
+  </section>
+  <section>
+    <h3>What does it contain?</h3>
+    <div class="fragment">
+      <pre><code>In [39]: import itertools
+
+In [40]: dir(iter
+iter       itertools
+
+In [40]: dir(itertools)
+Out[40]:
+['__doc__',
+ '__file__',
+ '__name__',
+ '__package__',
+ 'chain',
+ 'combinations',
+ 'combinations_with_replacement',
+ 'compress',
+ 'count',
+ 'cycle',
+ 'dropwhile',
+ 'groupby',
+ 'ifilter',
+ 'ifilterfalse',
+ 'imap',
+ 'islice',
+ 'izip',
+ 'izip_longest',
+ 'permutations',
+ 'product',
+ 'repeat',
+ 'starmap',
+ 'takewhile',
+ 'tee']         </code></pre>
+    </div>
+  </section>
+  <section>
+    <h3>Examples</h3>
+    <div class="fragment">
+      <pre><code>In [104]: list(itertools.chain([1,2,3], [10,20,30]))
+Out[104]: [1, 2, 3, 10, 20, 30]
+
+In [105]: list(itertools.chain('abc', 'def', 'ghi'))
+Out[105]: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
+
+In [107]: list(itertools.takewhile(lambda x: x < 1000, fabonacci()))
+Out[107]: [3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987]
+
+In [109]: dict(itertools.izip("ABCD", [1,2,3,4]))
+Out[109]: {'A': 1, 'B': 2, 'C': 3, 'D': 4}
+
+In [110]: list(itertools.imap(pow, (2,5,10), (10,5,2)))
+Out[110]: [1024, 3125, 100]
+
+In [113]: list(itertools.starmap(lambda k,v: "%s: %s" % (k,v), {'a':1, 'b':2}.items()))
+Out[113]: ['a: 1', 'b: 2']              </code></pre>
+    </div>
+  </section>
+  <section>
+    <h3>Case study</h3>
+    <p>let's try these functions one by one! (use "help()" when needed)     </p>
+  </section>
+</section>
+<section>
+  <section>
+    <h3>functools</h3>
+  </section>
+  <section>
+    <h3>What does it contain?</h3>
+    <div class="fragment">
+      <pre><code>In [60]: dir(functools)
+Out[60]:
+['WRAPPER_ASSIGNMENTS',
+ 'WRAPPER_UPDATES',
+ '__builtins__',
+ '__doc__',
+ '__file__',
+ '__name__',
+ '__package__',
+ 'cmp_to_key',
+ 'partial',
+ 'reduce',
+ 'total_ordering',
+ 'update_wrapper',
+ 'wraps']       </code></pre>
+    </div>
+  </section>
+  <section>
+    <h3>wraps</h3>
+    <div class="fragment">
+      <p>the problem of the decorator</p>
+      <pre><code>In [65]: def timeit(func):
+   ....:     def __decorator(*args, **kwargs):
+   ....:         t1 = time.time()
+   ....:         func(*args, **kwargs)
+   ....:         t2 = time.time()
+   ....:         print('TIMING:%s took %0.3f ms' % (func.__name__, (t2 - t1) * 1000.0))
+   ....:     return __decorator
+   ....:
+   
+In [66]: @timeit
+   ....: def hello():
+   ....:     print("Hello world")
+   ....:     time.sleep(1)
+   ....:
+   
+In [68]: hello()
+Hello world
+TIMING:hello took 1000.851 ms
+
+In [69]: hello.__name__
+Out[69]: '__decorator'</code></pre>
+    </div>
+  </section>
+  <section>
+    <h3>wraps</h3>
+    <div class="fragment">
+      <p>fix it with wraps decorator</p>
+      <pre><code>In [70]: def timeit(func):
+   ....:     @functools.wraps(func)
+   ....:     def __decorator(*args, **kwargs):
+   ....:         t1 = time.time()
+   ....:         func(*args, **kwargs)
+   ....:         t2 = time.time()
+   ....:         print('TIMING:%s took %0.3f ms' % (func.__name__, (t2 - t1) * 1000.0))
+   ....:     return __decorator
+   ....:
+   
+In [71]: @timeit
+   ....: def hello():
+   ....:     print("Hello world")
+   ....:     time.sleep(1)
+   ....:
+   
+In [72]: hello()
+Hello world
+TIMING:hello took 1000.851 ms
+
+In [73]: hello.__name__
+Out[73]: 'hello'        </code></pre>
+    </div>
+  </section>
+  <section>
+    <h3>partial</h3>
+    <div class="fragment">
+      <pre><code>In [114]: def log(level, message):
+   .....:     print("[{level}]: {msg}".format(level=level, msg=message))
+   .....:
+   
+In [115]: log("debug", "hello")
+[debug]: hello
+
+In [116]: def debug(message):
+   .....:     log("debug", message)
+   .....:
+   
+In [117]: debug("world")
+[debug]: world
+
+In [118]: debug1 = functools.partial(log, "debug")
+
+In [119]: debug1("hello world!")
+[debug]: hello world!     </code></pre>
+    </div>
+  </section>
+</section>
+<section>
+  <section>
+    <h3>kachayev/fn.py</h3>
+  </section>
+  <section>
+    <p>Fn.py library provides you with missing "batteries" to get maximum from functional approach even in mostly-imperative program.</p>
+    <p class="well"><a href="https://github.com/kachayev/fn.py">kachayev/fn.py</a></p>
+  </section>
+</section>
+<section>
+  <section>
+    <h3>What did python miss on functional programming?</h3>
+    <ul>
+      <li class="fragment">Errors handling without exceptions</li>
+      <li class="fragment">Pattern matching</li>
+      <li class="fragment">Message passing</li>
+      <li class="fragment">Lazy evaluation (generator is a kind of ...)</li>
+    </ul>
+  </section>
+</section>
+<section>
+  <section>
+    <h3>Metaprogramming</h3>
+    <p>metaprogramming is the writing of computer programs that write or manipulate other programs (or themselves) as their data, <b>or that do part of the work at compile time that would otherwise be done at runtime</b></p>
+  </section>
+  <section>
+    <h3>classes are objects</h3>
+    <div class="fragment">
+      <pre><code>In [134]: class Foo:
+   .....:     pass
+   .....:
+   
+In [135]: x = Foo()
+
+In [136]: Foo.field = 1
+
+In [137]: x.field
+Out[137]: 1
+
+In [140]: Foo.say = lambda self: "hello world!"
+
+In [141]: x.say()
+Out[141]: 'hello world!'                </code></pre>
+    </div>
+  </section>
+  <section>
+    <h3>Another way to create class</h3>
+    <div class="fragment">
+      <pre><code>In [142]: def say(self):
+   .....:     print("Hello, {name}".format(name=self.name))
+   .....:
+   
+In [143]: def foo_init(self, name):
+   .....:     self.name = name
+   .....:
+   
+In [144]: Foo = type("Foo", (object,), dict(say=say, __init__=foo_init))
+
+In [145]: f = Foo("Tyr")
+
+In [146]: f.say()
+Hello, Tyr
+
+In [147]: f.__class__
+Out[147]: __main__.Foo</code></pre>
+    </div>
+  </section>
+  <section>
+    <h3>metaclass hook</h3>
+    <div class="fragment">
+      <pre><code>In [149]: class MyMeta(type):
+   .....:     def __init__(cls, name, bases, dct):
+   .....:         super(MyMeta, cls).__init__(name, bases, dct)
+   .....:         cls.say = lambda self : "Hello {name}".format(name=self.name)
+   .....:
+   
+In [150]: class Foo(object):
+   .....:     __metaclass__ = MyMeta
+   .....:     def foo(self): pass
+   .....:     @staticmethod
+   .....:     def bar(): pass
+   .....:
+   
+In [151]: f = Foo()
+
+In [152]: print([m for m in dir(f) if not m.startswith('__')])
+['bar', 'foo', 'say']
+
+In [153]: f.name = "Tyr"
+
+In [154]: print f.say()
+Hello Tyr</code></pre>
+    </div>
+  </section>
+  <section>
+    <h3>__new__ and __init__</h3>
+    <div class="fragment">
+      <pre><code>In [158]: class MyMeta1(type):
+   .....:     def __new__(m, name, bases, dct):
+   .....:         print('MyMeta1.__new__: {name}'.format(name=name))
+   .....:         name += '_haha'
+   .....:         if 'foo' in dct: dct.pop('foo')
+   .....:         dct['bar'] = True
+   .....:         return super(MyMeta1, m).__new__(m, name, bases, dct)
+   .....:     def __init__(cls, name, bases, dct):
+   .....:         print('MyMeta1.__init__: {name}'.format(name=name))
+   .....:         if 'bar' in dct: dct.pop('bar')  # no effect
+   .....:         name += '_heihei' # no effect
+   .....:         dct['name'] = 'Tyr' # no effect
+   .....:         return super(MyMeta1, cls).__init__(name, bases, dct)
+   .....:
+   
+In [159]: class Foo1(object):
+   .....:     __metaclass__ = MyMeta1
+   .....:     foo = 100
+   .....:     bar = False
+   .....:
+MyMeta1.__new__: Foo1
+MyMeta1.__init__: Foo1
+
+In [160]: Foo1.__name__
+Out[160]: 'Foo1_haha'
+
+In [161]: Foo1.foo
+
+AttributeError: type object 'Foo1_haha' has no attribute 'foo'
+
+In [163]: Foo1.bar
+Out[163]: True
+
+In [164]: Foo1.name
+
+AttributeError: type object 'Foo1_haha' has no attribute 'name'
+</code></pre>
+    </div>
+    <p class="well fragment">__new__ is called for the creation of a new class, while __init__ is called after the class is created, to perform additional initialization before the class is handed to the caller</p>
+  </section>
+  <section>
+    <h3>__call__</h3>
+    <div class="fragment">
+      <pre><code>In [168]: class MyMeta2(type):
+   .....:     def __call__(cls, *args, **kwargs):
+   .....:         print("MyMeta2.__call__", args, kwargs)
+   .....:
+   
+In [171]: class Foo2(object):
+   .....:     __metaclass__ = MyMeta2
+   .....:     def __init__(self, name, foo=1):
+   .....:         self.name = name
+   .....:
+   
+In [172]: f = Foo2("Tyr")
+('MyMeta2.__call__', ('Tyr',), {})                </code></pre>
+    </div>
+  </section>
+  <section>
+    <h3>Intercepting class creation</h3>
+    <div class="fragment">
+      <pre><code>In [173]: class Singleton(type):
+   .....:     inst = None
+   .....:     def __call__(cls, *args, **kwargs):
+   .....:         if not cls.inst:
+   .....:             cls.inst = super(Singleton, cls).__call__(*args, **kwargs)
+   .....:         return cls.inst
+   .....:
+   
+In [174]: class Foo3(object):
+   .....:     __metaclass__ = Singleton
+   .....:     def __init__(self, name):
+   .....:         self.name = name
+   .....:         print("Foo3.__init__")
+   .....:
+   
+In [175]: f1 = Foo3("Tyr")
+Foo3.__init__
+
+In [176]: f2 = Foo3("Cynthia")
+
+In [177]: f1 is f2
+Out[177]: True                </code></pre>
+    </div>
+  </section>
+</section>
+      </div>
+    </div>
+    <script src="/assets/slides/jquery.js"></script>
+    <script src="/assets/slides/reveal.js/lib/js/head.min.js"></script>
+    <script src="/assets/slides/reveal.js/js/reveal.min.js"></script>
+    <script src="/assets/slides/highlight.pack.js"></script>
+    <!--script(src="/assets/slides/reconnecting-websocket.js")-->
+    <!--script(src="/assets/slides/coderunner.js")-->
+    <script>
+      $(function() {
+        hljs.initHighlightingOnLoad();
+        $('div.white, img').addClass('img-thumbnail stretch');
+        
+        // Full list of configuration options available here:
+        // https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+          controls: true,
+          progress: true,
+          history: true,
+          center: true,
+          
+          theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+          transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+          
+          // Optional libraries used to extend on reveal.js
+          dependencies: [
+            { src: '/assets/slides/reveal.js/plugin/classList.js', condition: function() { return !document.body.classList; } },
+            { src: '/assets/slides/reveal.js/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: '/assets/slides/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: '/assets/slides/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+            { src: '/assets/slides/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+            // { src: '../../_static/reveal/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+          ]
+        });
+        /*
+        $.CodeRunner({
+          wsuri: 'ws://jcnrd.us:7100/',
+          buttonContainer: 'pre.main',
+          codeContainer: 'code'
+        });
+        $('div.coderunner').CodeRunner();
+        */
+      });
+      
+    </script>
+  </body>
+</html>

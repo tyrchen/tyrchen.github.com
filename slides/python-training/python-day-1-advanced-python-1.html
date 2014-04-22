@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Python advanced - </title>
+    <title>Python advanced - a little more about python - </title>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="stylesheet" href="/assets/slides/reveal.js/css/reveal.min.css">
@@ -19,18 +19,22 @@
     <div class="reveal">
       <div class="slides">
 <section>
-  <h1>Python advanced</h1><br/>
+  <h1>Python advanced 1</h1>
+  <h2>a little more about python</h2><br/>
   <h3>Tyr Chen</h3><br/>
   <div>Stay hungry, stay foolish </div>
-  <div>2014-03-23</div>
+  <div>2014-04-16</div>
 </section>
 <section>
   <h2>Agenda</h2>
   <ul>
     <li class="fragment">Data structure</li>
-    <li class="fragment">A little more about python</li>
-    <li class="fragment">Functional Programming</li>
-    <li class="fragment">Metaprogramming</li>
+    <li class="fragment">Iterator</li>
+    <li class="fragment">Generator</li>
+    <li class="fragment">Magic functions</li>
+    <li class="fragment">Case study</li>
+    <li class="fragment">Context manager</li>
+    <li class="fragment">Decorator</li>
   </ul>
 </section>
 <section>
@@ -206,12 +210,11 @@ Out[10]: [2, 4, 6, 8, 10]
     </div>
   </section>
 </section>
-<section>
-  <section>
-    <h3>A little more about python    </h3>
-  </section>
+<section> 
   <section>
     <h3>iterator</h3>
+  </section>
+  <section>
     <div class="fragment">
       <pre><code>In [10]: for i in range(1, 5):
    ....:     print i
@@ -228,11 +231,16 @@ In [12]: for i, item in enumerate(d):
    ....:     print i, item
    ....:
 0 hello
-1 world</code></pre>
+1 world
+</code></pre>
     </div>
   </section>
+</section>
+<section>
   <section>
     <h3>generator</h3>
+  </section>
+  <section>
     <div class="fragment">
       <pre><code>In [40]: def fabonacci(): # generator
    ....:     a, b = 1, 2
@@ -256,11 +264,16 @@ In [60]: f.next()
 Out[60]: 13
 
 In [61]: f.next()
-Out[61]: 21 </code></pre>
+Out[61]: 21 
+</code></pre>
     </div>
   </section>
+</section>
+<section>
   <section>
     <h3>Magic functions</h3>
+  </section>
+  <section>
     <p>You have already seen them with "dir(a)" before!!</p>
     <p><code>__len__, __str(unicode)__, __getitem__, __setitem__, ...</code></p>
     <p>You can always use "dir()" and "help()" to explore more</p>
@@ -337,8 +350,11 @@ In [9]: dd.b
 Out[9]: 'world'</code></pre>
     </div>
   </section>
+</section>
+<section>
   <section>
-    <h3>Case time: implement a haskell list (head, tail, init, last, drop, and take)</h3>
+    <h3>Case time!</h3>
+    <p class="well">implement a haskell list (head, tail, init, last, drop, and take)</p>
   </section>
   <section>
     <h3>The implementation</h3>
@@ -391,9 +407,12 @@ Out[9]: 'world'</code></pre>
         return self.values[n:]
     def take(self, n):
         # get first n elements
-        return self.values[:n]</code></pre>
+        return self.values[:n]
+        </code></pre>
     </div>
   </section>
+</section>
+<section>
   <section>
     <h3>Context manager</h3>
   </section>
@@ -499,11 +518,17 @@ In [74]: with myLock() as l:
 Beging
 lock is locked: True
 hello world
-release lock</code></pre>
+release lock
+</code></pre>
     </div>
   </section>
+</section>
+<section>
   <section>
     <h3>a little more about decorator</h3>
+  </section>
+  <section>
+    <h3>Decorator</h3>
     <p class="fragment">just a grammar sugar to make your code more elegant</p>
     <p class="well fragment">think about how to time a function?</p>
   </section>
@@ -523,72 +548,7 @@ def hello():
     time.sleep(1)
 In [87]: hello()
 hello world
-TIMING:hello took 1001.089 ms                        </code></pre>
-    </div>
-  </section>
-</section>
-<section>
-  <section>
-    <h3>Functional programming</h3>
-  </section>
-  <section>
-    <h3>What is functional programming</h3>
-    <p class="fragment">let's see a haskell example</p>
-    <div class="fragment">
-      <pre><code>boomBangs xs = [if x < 10 then "BOOM!" else "BANG!" | x <- xs, odd x]
-
-length1 xs = sum [1|_ <- xs]
-
-removeUpperCase xs = [x|x <- xs, not (x `elem` ['A'..'Z'])]
-
-multList n [] = []
-multList n (x:xs) = n*x : multList n xs
-
-multList1 f [] = []
-multList1 f (x:xs) = f(x) : multList1 f xs
-
-doubleList = multList1 (2*)
-tripleList = multList 3</code></pre>
-    </div>
-  </section>
-  <section>
-    <h3>Python implementation</h3>
-    <div class="fragment">
-      <pre><code>In [23]: boomBangs = lambda l: ["Boom" if x < 10 else "Bang" for x in l if x % 2 == 1]
-
-In [24]: boomBangs([6, 8,9,10,11,12])
-Out[24]: ['Boom', 'Boom', 'Bang']
-...
-In [40]: def multList(x):
-    def func(l):
-        return [item * x for item in l]
-    return func
-....:
-
-In [41]: f = multList(2)
-
-In [42]: f([1,2,3,4])
-Out[42]: [2, 4, 6, 8]                    </code></pre>
-    </div>
-  </section>
-  <section>
-    <h3>lambda</h3>
-  </section>
-  <section>
-    <h3>High ordered function</h3>
-  </section>
-  <section>
-    <h3>Tail recursive</h3>
-    <div class="fragment">
-      <pre><code>fac 0 = 1
-fac n = n * fac (n-1)        </code></pre>
-    </div>
-  </section>
-  <section>
-    <h3>Lazy evaluation</h3>
-    <div class="fragment">
-      <pre><code>*Main> take 5 [1..]
-[1,2,3,4,5]
+TIMING:hello took 1001.089 ms                        
 
 </code></pre>
     </div>
