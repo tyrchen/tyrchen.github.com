@@ -634,6 +634,40 @@ In [177]: f1 is f2
 Out[177]: True                </code></pre>
     </div>
   </section>
+  <section>
+    <h3>Methods on the fly</h3>
+    <div class="fragment">
+      <pre><code>import random
+
+class MetaAutoProperty(type):
+    def __init__(cls, name, bases, attrs):
+        super(MetaAutoProperty, cls).__init__(name, bases, attrs)
+        for key in attrs:
+            if not key.startswith('_') and not hasattr(attrs[key], '__call__'):
+                new_key = 'find_by_%s' % key
+                setattr(cls, new_key, classmethod(lambda c, value: "look up %s...find %d records"
+                        % (value, random.randint(0, 10))))
+                        
+class AutoProperty(object):
+    __metaclass__ = MetaAutoProperty
+    
+class User(AutoProperty):
+    name = "Tyr"
+    _password = "won't tell you"
+    title = "Software Engineer"
+    
+    def change_password(self, password):
+        self._password = password
+        
+if __name__ == '__main__':
+    print User.find_by_name("Hello World")
+    print User.find_by_title("MTS")
+    
+$ python  ./metatest.py
+look up Hello World...find 8 records
+look up MTS...find 6 records</code></pre>
+    </div>
+  </section>
 </section>
       </div>
     </div>

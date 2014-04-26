@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>networking - </title>
+    <title>scrapy - </title>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="stylesheet" href="/assets/slides/reveal.js/css/reveal.min.css">
@@ -19,7 +19,7 @@
     <div class="reveal">
       <div class="slides">
 <section>
-  <h1>Python Concurrency</h1><br/>
+  <h1>Practical Python</h1><br/>
   <h3>Tyr Chen</h3><br/>
   <div>Stay hungry, stay foolish </div>
   <div>2014-04-16</div>
@@ -27,27 +27,128 @@
 <section>
   <h2>Agenda</h2>
   <ul>
-    <li class="fragment">Socket</li>
-    <li class="fragment">Echo Server</li>
-    <li class="fragment">Chat Server</li>
-    <li class="fragment">Case Study</li>
+    <li class="fragment">requests</li>
+    <li class="fragment">beautifulsoup</li>
+    <li class="fragment">Case Study: write a crawler</li>
+    <li class="fragment">scrapy</li>
+    <li class="fragment">How to release my own package?</li>
   </ul>
 </section>
 <section>
-  <h3>Socket</h3>
+  <section>
+    <h3>Python packages</h3>
+    <ul>
+      <li class="fragment">What is a package?</li>
+      <li class="fragment">easy_install</li>
+      <li class="fragment">pip install</li>
+    </ul>
+  </section>
 </section>
 <section>
-  <h3>Echo server</h3>
+  <section>
+    <h3>requests</h3>
+  </section>
 </section>
 <section>
-  <h3>Chat Server</h3>
+  <section>
+    <h3>beautifulsoup</h3>
+  </section>
 </section>
 <section>
-  <h3>Socket Server</h3>
+  <section>
+    <h3>Case study</h3>
+    <p>use beautifulsoup to parse anchors in <a href="http://tchen.me/pages/posts.html">http://tchen.me/pages/posts.html</a></p>
+    <p>and crawl all the posts in it</p>
+  </section>
 </section>
 <section>
-  <h3>Case study</h3>
-  <p>Write a file server - when client send a filename, send back the file content to client, so client can "download" it.</p>
+  <section>
+    <h3>scrapy</h3>
+  </section>
+  <section>
+    <h3>What is scrapy?</h3>
+    <ul>
+      <li class="fragment">a framework to create crawler</li>
+      <li class="fragment">pip install scrapy</li>
+      <li class="fragment">scrapy startproject test</li>
+    </ul>
+  </section>
+  <section>
+    <h3>case study</h3>
+    <ul>
+      <ol>Let's rewrite the crawler we just wrote</ol>
+    </ul>
+  </section>
+</section>
+<section>
+  <section>
+    <h3>how to release a package?</h3>
+  </section>
+  <section>
+    <h3>setup.py</h3>
+    <div class="fragment">
+      <pre><code>#!/usr/bin/env python
+# coding: utf-8
+
+import os
+import sys
+import re
+import vint
+
+try:
+    from setuptools import setup
+except ImportError:
+    from distutils.core import setup
+    
+    
+def get_version():
+    VERSIONFILE = 'vint/__init__.py'
+    initfile_lines = open(VERSIONFILE, 'rt').readlines()
+    VSRE = r"^__version__ = ['\"]([^'\"]*)['\"]"
+    for line in initfile_lines:
+        mo = re.search(VSRE, line, re.M)
+        if mo:
+            return mo.group(1)
+    raise RuntimeError('Unable to find version string in %s.' % (VERSIONFILE,))
+    
+if sys.argv[-1] == 'publish':
+    os.system('python setup.py sdist upload')
+    sys.exit()
+    
+    
+def long_description():
+    return '''
+    The command line client for cerf exam service.
+    '''
+    
+setup(
+    name='vint',
+    version=get_version(),
+    description='Cerf exam service client to let the applicant to start/finish the exam',
+    long_description=long_description(),
+    license=vint.__license__,
+    author=vint.__author__,
+    author_email=vint.__email__,
+    url='http://tchen.me',
+    download_url='https://github.com/tyrchen/vint',
+    keywords="python cerf exam",
+    packages=['vint'],
+    scripts=['bin/vint'],
+    install_requires=['requests', 'docopt', 'python-dateutil'],
+    module='vint',
+    test_suite='tests',
+    classifiers=[
+        'Intended Audience :: Developers',
+        'Natural Language :: English',
+        'Development Status :: 3 - Alpha',
+        'License :: OSI Approved :: MIT License',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 2.6',
+        'Programming Language :: Python :: 2.7']
+)</code></pre>
+    </div>
+  </section>
 </section>
       </div>
     </div>

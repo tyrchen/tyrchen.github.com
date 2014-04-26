@@ -18,7 +18,228 @@
   <body class="reveal">
     <div class="reveal">
       <div class="slides">
-<section></section>
+<section>
+  <h1>Python Concurrency</h1><br/>
+  <h3>Tyr Chen</h3><br/>
+  <div>Stay hungry, stay foolish </div>
+  <div>2014-04-16</div>
+</section>
+<section>
+  <h2>Agenda</h2>
+  <ul>
+    <li class="fragment">Concurrency is not parallelism</li>
+    <li class="fragment">Threading</li>
+    <li class="fragment">Gevent</li>
+  </ul>
+</section>
+<section>
+  <section>
+    <h3>Concurrency is not parrallelism (4:30)</h3>
+    <iframe width="560" height="315" src="//www.youtube.com/embed/cN_DpYBzKso" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+  </section>
+</section>
+<section>
+  <section>
+    <h3>Threading</h3>
+  </section>
+  <section>
+    <h3>Threading exmaple</h3>
+    <div class="fragment">
+      <pre><code>import threading
+
+class ListProcessor(threading.Thread):
+    def __init__(self, l, f):
+        self.l = l
+        self.f = f
+        super(ListProcessor, self).__init__()
+        
+    def run(self):
+        self.l = map(self.f, self.l)
+        
+def chunks(l, n):
+    for i in xrange(0, len(l), n):
+        yield l[i:i+n]
+        
+def calcBigList():
+    bigList = range(1, 100)
+    threads = []
+    for l in chunks(bigList, 10):
+        lp = ListProcessor(l, lambda x: x * 2)
+        lp.start()
+        threads.append(lp)
+        
+    for t in threads:
+        t.join()
+        print t.l
+        
+calcBigList()</code></pre>
+    </div>
+  </section>
+  <section>
+    <h3>Multiprocessing</h3>
+    <div class="fragment">
+      <pre><code>import multiprocessing
+
+class ListProcessor(multiprocessing.Process):
+    def __init__(self, l, f):
+        self.l = l
+        self.f = f
+        super(ListProcessor, self).__init__()
+        
+    def run(self):
+        self.l = map(self.f, self.l)
+        
+def chunks(l, n):
+    for i in xrange(0, len(l), n):
+        yield l[i:i+n]
+        
+def calcBigList():
+    bigList = range(1, 100)
+    processes = []
+    for l in chunks(bigList, 10):
+        lp = ListProcessor(l, lambda x: x * 2)
+        lp.start()
+        processes.append(lp)
+        
+    for t in processes:
+        t.join()
+        print t.l
+        
+calcBigList()        </code></pre>
+    </div>
+  </section>
+  <section>
+    <h3>GIL</h3>
+  </section>
+  <section>
+    <h3>Threading deadloop</h3>
+    <div class="fragment">
+      <pre><code>import threading
+
+def dead_loop():
+    while True:
+        pass
+        
+# new dead loop thread
+t = threading.Thread(target=dead_loop)
+t.start()
+
+# dead loop on main thread
+dead_loop()
+
+t.join()                                </code></pre>
+    </div>
+  </section>
+  <section>
+    <h3>Processing deadloop</h3>
+    <div class="fragment">
+      <pre><code>import multiprocessing
+
+def dead_loop():
+    while True:
+        pass
+        
+# new dead loop process
+p = multiprocessing.Process(target=dead_loop)
+p.start()
+
+# dead loop on main process
+dead_loop()
+
+p.join()                </code></pre>
+    </div>
+  </section>
+  <section>
+    <h3>threading.lock</h3>
+    <pre><code>lock = threading.Lock()
+lock.acquire()
+# critical section
+lock.release()</code></pre>
+  </section>
+  <section>
+    <h3>Timer</h3>
+    <div class="fragment">
+      <pre><code>In [12]: import threading
+
+In [13]: def hello():
+   ....:     print "Hello world!"
+   ....:
+   
+In [14]: t = threading.Timer(3, hello)
+
+In [15]: t.start()
+
+In [16]: Hello world!</code></pre>
+    </div>
+  </section>
+  <section>
+    <h3>Other functions</h3>
+    <div class="fragment">
+      <pre><code>In [21]: threading.currentThread()
+Out[21]: <_MainThread(MainThread, started 140735199609216)>
+
+In [22]: threading.activeCount()
+Out[22]: 2
+
+In [23]: threading.enumerate()
+Out[23]:
+[<_MainThread(MainThread, started 140735199609216)>,
+ <HistorySavingThread(Thread-1, started 4454400000)>]                
+ </code></pre>
+    </div>
+  </section>
+</section>
+<section>
+  <section>
+    <h3>gevent</h3>
+  </section>
+  <section>
+    <h3>first of all, what is coroutine?</h3>
+  </section>
+  <section>
+    <h3>gevent introduction</h3>
+    <ul>
+      <li class="fragment">Based on libev - <a href="http://libev.schmorp.de/bench.html">benchmark</a></li>
+      <li class="fragment">Used for IO intensive tasks</li>
+      <li class="fragment">Need </li>
+    </ul>
+  </section>
+  <section>
+    <h3>gevent example</h3>
+    <div class="fragment">
+      <pre><code>In [1]: import gevent
+
+In [2]: def foo():
+   ...:     print "Running foo"
+   ...:     gevent.sleep(0)
+   ...:     print "Explicit context switch to foo again"
+   ...:
+   
+In [3]: def bar():
+   ...:     print "Explicit context switch to bar"
+   ...:     gevent.sleep(0)
+   ...:     print "Implicit context switch to bar"
+   ...:
+   
+In [4]: gevent.joinall([
+   ...: gevent.spawn(foo),
+   ...: gevent.spawn(bar)
+   ...: ])</code></pre>
+    </div>
+  </section>
+  <section>
+    <h3>result</h3>
+    <div class="fragment">
+      <pre><code>Running foo
+Explicit context switch to bar
+Explicit context switch to foo again
+Implicit context switch to bar                </code></pre><img src="/assets/files/slides/flow.gif"/>
+    </div>
+  </section>
+  <section>
+    <p class="well">more on gevent: <a href="http://sdiehl.github.io/gevent-tutorial/">gevent for developer</a></p>
+  </section>
+</section>
       </div>
     </div>
     <script src="/assets/slides/jquery.js"></script>
