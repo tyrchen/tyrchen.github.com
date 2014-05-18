@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="本博客提供我个人的想法，创意，经验，心得。你不必认同博主观点。" />
+    <meta name="keywords" content="创业, 思想, 点子, 经验, python, erlang, node, javascript, 服务器, devops, meteor" />
+    <meta name="author" content="Tyr Chen" />
+	<meta property="wb:webmaster" content="5968ef7c5b42fefc" />
+
+    <!-- Output DocPad produced meta elements -->
+    
+
+    <!-- Styles -->
+    <link  rel="stylesheet" href="/assets/css/app.min.css" />
+
+    <link href="/assets/favicon.ico" rel="shortcut icon">
+    <link href="/assets/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.3.0/respond.js"></script>
+
+    <![endif]-->
+
+    <title>高效能程序员的七个习惯 | 觅珠人 | Tyr Chen的个人博客 | 创意 | 心得 | 经验</title>
+
+</head>
+
+
+<body>
+
+<!-- Contact Modal -->
+<div aria-hidden='true' aria-labelledby='contactModalLabel' class='modal fade' id='contactModal' role='dialog' tabindex='-1'>
+    <div class='modal-dialog'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <button aria-hidden='true' class='close' data-dismiss='modal' type='button'>×</button>
+                <h4 class='modal-title'>Contact Us Form</h4>
+            </div>
+            <div class='modal-body'>
+                <form action='#' role='form'>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Name</label>
+                                <input class='form-control' placeholder='your username' type='text'>
+                            </div>
+                            <div class='col-md-6'>
+                                <label class='control-label' for=''>Your Email</label>
+                                <input class='form-control' placeholder='your password' type='text'>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <div class='row'>
+                            <div class='col-md-12'>
+                                <label class='control-label' for=''>Your Message</label>
+                                <textarea class='form-control' name='' rows='4'></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class='modal-footer'>
+                <button class='btn btn-default' data-dismiss='modal' type='button'>Cancel</button>
+                <button class='btn btn-primary' type='button'>Send Message</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="header-image-wrapper">
+  <img alt="" src="/assets/files/posts/world.jpg">
+</div>
+
+<div class='header-main'>
+    <div class='container'>
+        <nav class='navbar navbar-default' role='navigation'>
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class='navbar-header'>
+                <button class='navbar-toggle' data-target='.navbar-ex1-collapse' data-toggle='collapse' type='button'>
+                    <span class='sr-only'>Toggle navigation</span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                </button>
+                <a class='navbar-brand' href='/'>
+                    <img alt='' height='45px' src='/assets/images/tyr.png'> <span>觅珠人</span>
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class='collapse navbar-collapse navbar-ex1-collapse'>
+
+                <ul class='nav navbar-nav navbar-right'>
+                    <li class="">
+                        <a href="/">首页</a>
+                    </li>
+                    
+                        
+                        <li
+                            about="/pages/posts.html"
+                            class=""
+                        >
+                            <a href="/pages/posts.html">
+                                文章随笔
+                            </a>
+                        </li>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                        <li
+                            about="/pages/canvases.html"
+                            class=""
+                        >
+                            <a href="/pages/canvases.html">
+                                奇思妙想
+                            </a>
+                        </li>
+                        
+                    
+                        
+                        <li
+                            about="/pages/aboutme.html"
+                            class=""
+                        >
+                            <a href="/pages/aboutme.html">
+                                关于我
+                            </a>
+                        </li>
+                        
+                    
+                    <!--
+                    <li>
+                        <a data-toggle='modal' href='#contactModal'>联系我</a>
+                    </li>
+                    -->
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+</div>
+
+<div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+
+<div class='container'>
+  <div class='row'>
+    <div class="col-md-3">
+      <div class="post-side-bar">
+        <!--
+        <div class="widget widget-author">
+          <div class="author-avatar">
+            <img alt="" src="/assets/images/tyr.png">
+          </div>
+          <div class="author-meta">
+            <h4 class="author-name">Tyr Chen</h4>
+            <p class="author-bio">Progressively maintain extensive infomediaries via extensible niches.</p>
+            
+            <a class="author-more" href="#">
+              read more posts
+              <i class="icon-angle-right"></i>
+            </a>
+          </div>
+        </div>
+        -->
+        <div class="widget widget-cats tags">
+          <h4 class="widget-title">标签</h4>
+          <ul>
+          
+            <li><a href='/tags/vagrant.html'>vagrant</a></li>
+          
+            <li><a href='/tags/technology.html'>technology</a></li>
+          
+          </ul>
+        </div>
+        <div class="widget widget-cats">
+          <h4 class="widget-title">
+            相关文章
+          </h4>
+          <ul>
+            
+            
+              <li><a href="/posts/2012-12-31-atanasoff-product-design.html">进一步思考Atanasoff (Octopress client) (2)</a></li>
+            
+              <li><a href="/posts/2013-06-23-come-to-origin-for-embedded-applications.html">Come to Origins for Embedded Applications</a></li>
+            
+              <li><a href="/posts/2013-02-18-sdn-elementatory-introduction.html">SDN浅谈</a></li>
+            
+              <li><a href="/posts/2013-02-21-openflow-introduction.html">Openflow简介</a></li>
+            
+              <li><a href="/posts/2013-04-08-trying-to-extract-the-thoughts-behind-lockitron.html">胡思乱想之Lockitron的技术架构</a></li>
+            
+              <li><a href="/posts/2013-04-25-engineering-environment-for-smart-team.html">自动化的高效团队开发环境</a></li>
+            
+              <li><a href="/posts/2013-06-10-use-scrapyd-to-serve-scrapy-projects.html">用scrapyd来提供crawler服务</a></li>
+            
+              <li><a href="/posts/2013-06-12-use-makefile-to-automate-deployment.html">使用Makefile自动化部署</a></li>
+            
+              <li><a href="/posts/2012-12-18-octopress-client-a-better-composition-tool.html">产品随想：octopress客户端 —— Atanasoff</a></li>
+            
+              <li><a href="/posts/2013-07-18-c-grammar-you-cannot-imagine.html">你无法想象的C语法</a></li>
+            
+              <li><a href="/posts/2013-07-22-why-should-c-programmers-learn-erlang.html">Why should C programmers learn Erlang?</a></li>
+            
+              <li><a href="/posts/2013-10-28-blog-reborn.html">觅珠人：浴火重生</a></li>
+            
+              <li><a href="/posts/2013-10-30-the-hatch-project.html">Hatch: 又一个建站工具</a></li>
+            
+              <li><a href="/posts/2013-11-03-hatch-experiment.html">Hatch: 实验</a></li>
+            
+              <li><a href="/posts/2013-11-11-https.html">使用HTTPS</a></li>
+            
+              <li><a href="/posts/2013-11-13-local-docker-repo-en.html">Build Your Own Docker Registry with DigitalOcean</a></li>
+            
+              <li><a href="/posts/2013-11-13-local-docker-repo.html">建立自己的docker repository</a></li>
+            
+            
+          </ul>
+        </div>
+      </div>
+    </div>      
+    <div class='col-md-9'>
+      <div class='post-single'>
+        <!--
+        <div class='pre-post-meta'>
+          <span>
+            <i class='icon-tags'></i>
+            in
+            <a href='#'>Web Development</a>
+          </span>
+          <span>
+            <i class='icon-user'></i>
+            by
+            <a href='#'>Tyr Chen</a>
+          </span>
+          <span>
+            <i class='icon-bookmark'></i>
+            16 分钟
+          </span>
+        </div>
+        -->
+        <h1 class='has-sub-header'>高效能程序员的七个习惯</h1>
+        <div class='post-single-meta'>
+          <span class='meta-item'>
+            <i class='icon-calendar'></i>
+            2个月前
+          </span>
+          <!--
+          <span class='meta-item'>
+            <a href='#'>
+              <i class='icon-comments'></i>
+              24
+            </a>
+          </span>
+          <span class='meta-item'>
+            <a href='#'>
+              <i class='icon-heart'></i>
+              15
+            </a>
+          </span>
+          -->
+          <span class="meta-item">
+          	
+            <i class='icon-time'></i>
+            16 分钟
+          </span>
+        </div>
+        <h1>Vagrant share浅析</h1>
+<p>最近vagrant 1.5升级力度空前，增加了很多新功能，其中最令人瞩目的当属 <code>vagrant share</code>。啥子意思呢？就是把你的虚拟机share给地球另一端的人。这功能很高大上啊，简直是居家旅行，远程办公的必备武器。你正在做的web app出bug了，需要帮忙？没问题，亲，把虚拟机share一下。</p>
+<!--more-->
+
+<pre><code>➜  dockerbox  vagrant share
+==&gt; default: Detecting network information for machine...
+    default: Local machine address: 127.0.0.1
+    default:
+    default: Note: With the local address (127.0.0.1), Vagrant Share can only
+    default: share any ports you have forwarded. Assign an IP or addres to your
+    default: machine to expose all TCP ports. Consult the documentation
+    default: for your provider (&#39;virtualbox&#39;) for more information.
+    default:
+    default: Local HTTP port: 3000
+    default: Local HTTPS port: disabled
+    default: Port: 2200
+    default: Port: 3000
+==&gt; default: Checking authentication and authorization...
+==&gt; default: Creating Vagrant Share session...
+    default: Share will be at: cheerful-beaver-2087
+==&gt; default: Your Vagrant Share is running! Name: cheerful-beaver-2087
+==&gt; default: URL: http://cheerful-beaver-2087.vagrantshare.com
+==&gt; default:
+==&gt; default: You&#39;re sharing your Vagrant machine in &quot;restricted&quot; mode. This
+==&gt; default: means that only the ports listed above will be accessible by
+==&gt; default: other users (either via the web URL or using `vagrant connect`).</code></pre>
+<p>我的虚机里开放了3000端口，是个web app。share好以后，别人就可以使用这个链接：<code>http://cheerful-beaver-2087.vagrantshare.com</code>，访问程序君正在调试开发的app了。（别试了，当您看到本文时，程序君已经把共享关闭喽）。</p>
+<p>很神奇吧？</p>
+<h2>这是怎么做到的？</h2>
+<p>估计你有和程序君一样的问题。程序君开始捣鼓。</p>
+<p>首先tcp dump抓包。</p>
+<pre><code>➜  appshare git:(master) ✗ tcpdump -i en0</code></pre>
+<p>内容很多，就不在这里呈现了。没有太多实质的内容，主要是下面几个步骤：</p>
+<p>(1) DNS请求 vagrantcloud.com 获得两个IP: 107.23.21.165, 54.85.101.30</p>
+<p>(2) 分别进行https握手</p>
+<pre><code>20:46:06.357551 IP 10.0.0.6.61158 &gt; ec2-107-23-21-165.compute-1.amazonaws.com.https: Flags [S], seq 3383705821, win 65535, options [mss 1460,nop,wscale 4,nop,nop,TS val 922128202 ecr 0,sackOK,eol], length 0
+20:46:06.968517 IP ec2-107-23-21-165.compute-1.amazonaws.com.https &gt; 10.0.0.6.61158: Flags [S.], seq 2369287401, ack 3383705822, win 14480, options [mss 1460,sackOK,TS val 132138929 ecr 922128202,nop,wscale 8], length 0
+20:46:06.968607 IP 10.0.0.6.61158 &gt; ec2-107-23-21-165.compute-1.amazonaws.com.https: Flags [.], ack 1, win 8235, options [nop,nop,TS val 922128810 ecr 132138929], length 0</code></pre>
+<pre><code>20:46:08.502461 IP 10.0.0.6.61159 &gt; ec2-54-85-101-30.compute-1.amazonaws.com.https: Flags [S], seq 3557617978, win 65535, options [mss 1460,nop,wscale 4,nop,nop,TS val 922130332 ecr 0,sackOK,eol], length 0
+20:46:09.316782 IP ec2-54-85-101-30.compute-1.amazonaws.com.https &gt; 10.0.0.6.61159: Flags [S.], seq 1741334642, ack 3557617979, win 14480, options [mss 1460,sackOK,TS val 132128867 ecr 922130332,nop,wscale 8], length 0
+20:46:09.316849 IP 10.0.0.6.61159 &gt; ec2-54-85-101-30.compute-1.amazonaws.com.https: Flags [.], ack 1, win 8235, options [nop,nop,TS val 922131145 ecr 132128867], length 0</code></pre>
+<p>(3) 传输数据 blablabla（这不废话么）</p>
+<p>郁闷的是vagrant考虑到数据安全性，全部采用https，所以无法窥探里面的究竟。</p>
+<p>为什么不用Fiddler来偷窥？好吧，fillder基于.net，程序君不想在mac上装mono...</p>
+<p>所以程序君只能靠脑子生猜这个功能是怎么实现的了。</p>
+<h2>我猜我猜...</h2>
+<p>可能的实现手段：</p>
+<p>(1) 使用p2p（但vagrant显然不是这么实现的）。先放在一边。</p>
+<p>(2) 使用tcp proxy。具体做法：</p>
+<pre><code>local http server --- local proxy --- cloud proxy ---- cloud http server</code></pre>
+<p>用户从url过来的http请求，被负载到cloud proxy，然后cloud proxy再将其relay给local proxy，local proxy再relay给local http server；http响应反之。</p>
+<p>这个想法比较靠谱。</p>
+<p>试着用go简单实现了一下，主要是为了验证想法。结果证实了这个方案可行：</p>
+<pre><code>local http server (8000) --- local proxy (7000) --- cloud proxy (9000) ---- cloud http server</code></pre>
+<p>由于我在本机测试，所以不需要放一个nginx在cloud http server侧，直接访问：<code>http://localhost:9000</code>即可。经过两层proxy，local http server的内容被转到浏览器上。当然，目前的代码有问题，local proxy和cloud proxy间只有一个connection，遇到keep-alive的http connection就阻塞住了...所以你看到的页面是这样(local http server跑的是我的博客）：</p>
+<p><img src="../assets/week12/proxy.jpg" alt="proxy proxy"></p>
+<p>代码见：<a href="https://github.com/tyrchen/appshare">appshare</a></p>
+<p>首先用Python起一个simple http server:</p>
+<pre><code>➜  out git:(master) simpleweb
+Serving HTTP on 0.0.0.0 port 8000 ...
+127.0.0.1 - - [20/Mar/2014 22:08:06] &quot;GET / HTTP/1.1&quot; 200 -
+127.0.0.1 - - [20/Mar/2014 22:08:06] &quot;GET /assets/css/app.min.css HTTP/1.1&quot; 200 -
+127.0.0.1 - - [20/Mar/2014 22:08:06] &quot;GET /assets/images/tyr.png HTTP/1.1&quot; 200 -
+127.0.0.1 - - [20/Mar/2014 22:08:06] &quot;GET /assets/images/shadow-separator-wide-bottom.png HTTP/1.1&quot; 200 -
+127.0.0.1 - - [20/Mar/2014 22:08:06] &quot;GET /assets/files/posts/busy.jpg HTTP/1.1&quot; 200 -
+127.0.0.1 - - [20/Mar/2014 22:08:06] &quot;GET /assets/js/app.min.js HTTP/1.1&quot; 200 -
+127.0.0.1 - - [20/Mar/2014 22:08:33] &quot;GET /assets/favicon.ico HTTP/1.1&quot; 200 -
+127.0.0.1 - - [20/Mar/2014 22:08:33] &quot;GET /assets/js/app.min.js HTTP/1.1&quot; 200 -</code></pre>
+<p>然后启动cloud proxy：</p>
+<pre><code>➜  appshare git:(master) ✗ bin/server :7000 :9000
+2014/03/20 22:07:10 Listening to clients
+2014/03/20 22:07:14 A client connection &amp;{{0x1062f280}} kicks
+2014/03/20 22:07:14 Listening to webserver
+2014/03/20 22:08:06 A web server connection &amp;{{0x1062f400}} kicks
+2014/03/20 22:08:06 A web server connection &amp;{{0x1062f4c0}} kicks
+2014/03/20 22:08:06 A web server connection &amp;{{0x1062f640}} kicks
+2014/03/20 22:08:06 A web server connection &amp;{{0x1062f700}} kicks
+2014/03/20 22:08:06 A web server connection &amp;{{0x1062f7c0}} kicks
+2014/03/20 22:08:06 A web server connection &amp;{{0x1062f880}} kicks
+2014/03/20 22:08:06 A web server connection &amp;{{0x1062f940}} kicks
+2014/03/20 22:08:33 A web server connection &amp;{{0x1062fa00}} kicks
+2014/03/20 22:08:33 A web server connection &amp;{{0x1062fac0}} kicks</code></pre>
+<p>然后启动local proxy：</p>
+<pre><code>➜  appshare git:(master) ✗ bin/client :7000 :8000
+2014/03/20 22:07:14 Dial to server: &amp;{{0x1062f100}}
+Request bytes:  1207
+GET / HTTP/1.1
+Host: localhost:8000
+Connection: keep-alive
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.152 Safari/537.36
+Accept-Encoding: gzip,deflate,sdch
+Accept-Language: zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4
+Cookie: bdshare_firstime=1367059155378; sessionID=b33172c1ee44d1cc188c63393cbd4f4e235fc0a9; sails.sid=s%3Axyk6QFXHoeqR15ybvL4Z1dX7.QaNFa5nuM6derKoIjTMGLr5OH9DAI10xmXuLHO65iew; connect.sid=s%3Ai0O%2F4CQPGaQ27glzc7XoGDOu.pCIlLwDcK1NCNaPguY8zVFAJsKTu5I4Ri4StI5Cd0Ps; REVEL_FLASH=; REVEL_SESSION=9d3d9559107e87236af7279c814d0dee026bd376-%00_TS%3A1395459175%00; request_method=GET; _dockernotes_session=WjRrWUx6aDhNVHVCUmtWUHJVSnZnbzdhV2h5emJ3ZFJiY3NYdlA0S3NqcnZFaDUwWGwwOFVQWGxzbkVnWmU4MXErT3Jkd0kzQTA1WEdyMVlRby9kdThCMFNISlNtZVlHRE5wMGQwVmZkWk1CNHRqZGZKVzlneVo5RG1CZzRQZnM2Tm0wNmdpSVhGMndZTjZLT0JJeEZ3VkhCSUNUdkhNTnlOR093YjdDM3V3UE1OWmNUdGtmYjdkMDNWTE1vLzY5LS01WFNEcEExOHM1VHNQYkx5ZDlUb2lRPT0%3D--0ad6871648be9dce51901555efc81f075f2d78fb; sessionid=hlgkc4638sl2eza80jmgpofvckq3ctkd; djdt=hide; csrftoken=NtojvfH3vbpOdEwyAFMG4ATKML3w6gkl
+
+
+2014/03/20 22:08:06 Dial to web server: &amp;{{0x1062f300}}
+Request bytes:  1206
+GET /assets/css/app.min.css HTTP/1.1
+Host: localhost:8000
+...
+
+
+2014/03/20 22:08:06 Dial to web server: &amp;{{0x1062f580}}
+Request bytes:  1207
+GET /assets/images/tyr.png HTTP/1.1
+Host: localhost:8000
+...
+
+
+2014/03/20 22:08:06 Dial to web server: &amp;{{0x1062f6c0}}
+Request bytes:  1232
+GET /assets/images/shadow-separator-wide-bottom.png HTTP/1.1
+Host: localhost:8000
+...
+
+
+2014/03/20 22:08:06 Dial to web server: &amp;{{0x1062f840}}
+Request bytes:  2427
+GET /assets/files/posts/busy.jpg HTTP/1.1
+Host: localhost:8000
+...
+
+GET /assets/files/posts/world.jpg HTTP/1.1
+Host: localhost:8000
+...
+
+
+2014/03/20 22:08:06 Dial to web server: &amp;{{0x1062f980}}
+Request bytes:  1189
+GET /assets/js/app.min.js HTTP/1.1
+Host: localhost:8000
+...
+
+
+2014/03/20 22:08:06 Dial to web server: &amp;{{0x1062fac0}}
+Request bytes:  1154
+GET /assets/favicon.ico HTTP/1.1
+Host: localhost:8000
+。。。
+
+
+2014/03/20 22:08:33 Dial to web server: &amp;{{0x1062fc00}}
+Request bytes:  1189
+GET /assets/js/app.min.js HTTP/1.1
+Host: localhost:8000
+...</code></pre>
+
+        <div class="subscribe">
+          <p>如果您对本站的文章感兴趣，欢迎订阅我的微博公共账号：程序人生。每次博文发表时，您都能获得通知。此外，公共账号还会不定期推送一些短文，技术心得，供您参考。</p>
+          <img src="/assets/files/weixin.jpg" width="150px" />
+        </div>
+        <div class='under-post'>
+          
+          
+            
+          
+            
+                
+                  <div class='pull-left'>
+                    <a class='read-previous-link' href='/posts/2014-03-05-highly-effective-programmer.html'>
+                      <i class='icon-angle-left'></i>
+                      上一篇
+                    </a>
+                  </div>                  
+                
+                
+                  <div class='pull-right'>
+                    <a class='read-next-link' href='/posts/2014-05-17-stanford.html'>
+                      下一篇
+                      <i class='icon-angle-right'></i>
+                    </a>
+                  </div>
+                         
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+          <div class='post-social text-center'>
+  <a class='social-link' href='#'>
+    <i class='icon-weibo'></i>
+  </a>
+  <a class='social-link' href='#'>
+    <i class='icon-envelope'></i>
+  </a>
+</div>
+        </div>
+        <div class='separator-shadow-bottom'>
+    <img alt='' src='/assets/images/shadow-separator-wide-bottom.png'>
+</div>
+        
+  <div class="ds-thread">
+    <script>
+        var duoshuoQuery = {short_name:"tyrchen"};
+        (function() {
+          var ds = document.createElement('script');
+          ds.type = 'text/javascript';ds.async = true;
+          ds.src = 'http://static.duoshuo.com/embed.js';
+          ds.charset = 'UTF-8';
+          (document.getElementsByTagName('head')[0]
+          || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+  </div>
+
+    
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+<footer id="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="footer-menu">
+                    <li><a href="/pages/privacy.html">隐私策略</a></li>
+                    <li><a href="/pages/license.html">版权说明</a></li>
+                    <li><a href="/pages/disclaimer.html">免责声明</a></li>
+                    <li><a href="#">联系我们</a></li>
+                </ul>
+                <div class="copyright">
+                    2014 &copy; Tyr Chen. 保留一切权利.
+                    <script>
+                        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+                        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F639096b5979f5825515e0f88f871f56c' type='text/javascript'%3E%3C/script%3E"));
+                    </script>
+                </div>
+                <div class="links">
+                    <ul class="footer-menu">
+                        <li><a>友情链接：</a></li>
+                        <li><a href="http://zhuanlan.zhihu.com/prattle">迷思</li>
+                        <li><a href="http://data12345.com">老读悟</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <ul class="footer-social">
+                
+                    <li><a href="tyr.chen{#}gmail.com" target="_blank"><i class="icon-envelope"></i></a></li>
+                
+                    <li><a href="http://weibo.com/tchen82" target="_blank"><i class="icon-weibo"></i></a></li>
+                
+                    <li><a href="http://github.com/tyrchen" target="_blank"><i class="icon-github"></i></a></li>
+                
+                    <li><a href="http://linkedin.com/in/tyrchen/" target="_blank"><i class="icon-linkedin"></i></a></li>
+                
+                    <li><a href="https://twitter.com/tyrchen" target="_blank"><i class="icon-twitter"></i></a></li>
+                
+                    <li><a href="https://www.facebook.com/tyrchen" target="_blank"><i class="icon-facebook"></i></a></li>
+                
+                    <li><a href="https://plus.google.com/114684266209262341260/" target="_blank"><i class="icon-google-plus"></i></a></li>
+                
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script defer="defer"  src="/assets/js/app.min.js"></script>
+
+<script defer="defer" language="javascript">
+
+</script>
+</body>
+
+</html>

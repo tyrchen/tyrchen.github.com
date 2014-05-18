@@ -5,10 +5,194 @@
         <description><![CDATA[本博客提供我个人的想法，创意，经验，心得。你不必认同博主观点。]]></description>
         <link>http://tchen.me</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Tue, 04 Mar 2014 23:56:25 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 17 May 2014 23:36:05 GMT</lastBuildDate>
         <atom:link href="http://tchen.me/rss.xml" rel="self" type="application/rss+xml"/>
         <author><![CDATA[Tyr Chen]]></author>
-        <pubDate>Tue, 04 Mar 2014 23:55:38 GMT</pubDate>
+        <pubDate>Sat, 17 May 2014 23:35:12 GMT</pubDate>
+        <item>
+            <title><![CDATA[Stanford guided tour]]></title>
+            <description><![CDATA[<p>今天参加了早上的一个Stanford guided tour，非常建议来Stanford转转的人参加。早上11点，下午3:15在Stanford visitor center集合。</p>
+<p>Tour结束后我即兴采访了一下给我们讲解的二年级（Sophomore）学生Nicale（不知道是不是这么拼），让他讲讲Stanford的生活。本来时间紧不想写东西，直接把采访录音发公众号，结果公众号不允许超过60s的语音文件，知乎也不能传mp3，郁闷中只好用博客了。不多写，放两段录音，放一些图片，大家自己欣赏。</p>
+<!--more-->
+
+<p>我发现我私底下说话还不算太磕巴，怎么一正式起来这么矬 —— 尤其周围有人一起凑热闹。这是我<a href="/assets/files/mp3/interview.mp3">即兴采访的录音</a></p>
+<p><a href="/assets/files/mp3/guided_tour.mp3">这个是我在guided tour中的录音</a></p>
+<p>下面是一些照片，这是我第三次去Stanford，所以没怎么照，主要听讲来着。</p>
+<p><img src="/assets/files/posts/stanford/IMG_5565.JPG" alt="Stanford"></p>
+<p><img src="/assets/files/posts/stanford/IMG_5571.JPG" alt="Stanford"></p>
+<p><img src="/assets/files/posts/stanford/IMG_5576.JPG" alt="Stanford"></p>
+<p><img src="/assets/files/posts/stanford/IMG_5579.JPG" alt="Stanford"></p>
+<p><img src="/assets/files/posts/stanford/IMG_5585.JPG" alt="Stanford"></p>
+<p><img src="/assets/files/posts/stanford/IMG_5592.JPG" alt="Stanford"></p>
+<p><img src="/assets/files/posts/stanford/IMG_5569.JPG" alt="Stanford"></p>
+<p><img src="/assets/files/posts/stanford/IMG_5573.JPG" alt="Stanford"></p>
+<p><img src="/assets/files/posts/stanford/IMG_5578.JPG" alt="Stanford"></p>
+<p><img src="/assets/files/posts/stanford/IMG_5584.JPG" alt="Stanford"></p>
+<p><img src="/assets/files/posts/stanford/IMG_5588.JPG" alt="Stanford"></p>
+<p><img src="/assets/files/posts/stanford/IMG_5595.JPG" alt="Stanford"></p>
+]]></description>
+            <link>http://tchen.me/posts/2014-05-17-stanford.html</link>
+            <guid isPermaLink="true">
+                http://tchen.me/posts/2014-05-17-stanford.html            </guid>
+            <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
+            <pubDate>Sat, 17 May 2014 18:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[高效能程序员的七个习惯]]></title>
+            <description><![CDATA[<h1>Vagrant share浅析</h1>
+<p>最近vagrant 1.5升级力度空前，增加了很多新功能，其中最令人瞩目的当属 <code>vagrant share</code>。啥子意思呢？就是把你的虚拟机share给地球另一端的人。这功能很高大上啊，简直是居家旅行，远程办公的必备武器。你正在做的web app出bug了，需要帮忙？没问题，亲，把虚拟机share一下。</p>
+<!--more-->
+
+<pre><code>➜  dockerbox  vagrant share
+==&gt; default: Detecting network information for machine...
+    default: Local machine address: 127.0.0.1
+    default:
+    default: Note: With the local address (127.0.0.1), Vagrant Share can only
+    default: share any ports you have forwarded. Assign an IP or addres to your
+    default: machine to expose all TCP ports. Consult the documentation
+    default: for your provider (&#39;virtualbox&#39;) for more information.
+    default:
+    default: Local HTTP port: 3000
+    default: Local HTTPS port: disabled
+    default: Port: 2200
+    default: Port: 3000
+==&gt; default: Checking authentication and authorization...
+==&gt; default: Creating Vagrant Share session...
+    default: Share will be at: cheerful-beaver-2087
+==&gt; default: Your Vagrant Share is running! Name: cheerful-beaver-2087
+==&gt; default: URL: http://cheerful-beaver-2087.vagrantshare.com
+==&gt; default:
+==&gt; default: You&#39;re sharing your Vagrant machine in &quot;restricted&quot; mode. This
+==&gt; default: means that only the ports listed above will be accessible by
+==&gt; default: other users (either via the web URL or using `vagrant connect`).</code></pre>
+<p>我的虚机里开放了3000端口，是个web app。share好以后，别人就可以使用这个链接：<code>http://cheerful-beaver-2087.vagrantshare.com</code>，访问程序君正在调试开发的app了。（别试了，当您看到本文时，程序君已经把共享关闭喽）。</p>
+<p>很神奇吧？</p>
+<h2>这是怎么做到的？</h2>
+<p>估计你有和程序君一样的问题。程序君开始捣鼓。</p>
+<p>首先tcp dump抓包。</p>
+<pre><code>➜  appshare git:(master) ✗ tcpdump -i en0</code></pre>
+<p>内容很多，就不在这里呈现了。没有太多实质的内容，主要是下面几个步骤：</p>
+<p>(1) DNS请求 vagrantcloud.com 获得两个IP: 107.23.21.165, 54.85.101.30</p>
+<p>(2) 分别进行https握手</p>
+<pre><code>20:46:06.357551 IP 10.0.0.6.61158 &gt; ec2-107-23-21-165.compute-1.amazonaws.com.https: Flags [S], seq 3383705821, win 65535, options [mss 1460,nop,wscale 4,nop,nop,TS val 922128202 ecr 0,sackOK,eol], length 0
+20:46:06.968517 IP ec2-107-23-21-165.compute-1.amazonaws.com.https &gt; 10.0.0.6.61158: Flags [S.], seq 2369287401, ack 3383705822, win 14480, options [mss 1460,sackOK,TS val 132138929 ecr 922128202,nop,wscale 8], length 0
+20:46:06.968607 IP 10.0.0.6.61158 &gt; ec2-107-23-21-165.compute-1.amazonaws.com.https: Flags [.], ack 1, win 8235, options [nop,nop,TS val 922128810 ecr 132138929], length 0</code></pre>
+<pre><code>20:46:08.502461 IP 10.0.0.6.61159 &gt; ec2-54-85-101-30.compute-1.amazonaws.com.https: Flags [S], seq 3557617978, win 65535, options [mss 1460,nop,wscale 4,nop,nop,TS val 922130332 ecr 0,sackOK,eol], length 0
+20:46:09.316782 IP ec2-54-85-101-30.compute-1.amazonaws.com.https &gt; 10.0.0.6.61159: Flags [S.], seq 1741334642, ack 3557617979, win 14480, options [mss 1460,sackOK,TS val 132128867 ecr 922130332,nop,wscale 8], length 0
+20:46:09.316849 IP 10.0.0.6.61159 &gt; ec2-54-85-101-30.compute-1.amazonaws.com.https: Flags [.], ack 1, win 8235, options [nop,nop,TS val 922131145 ecr 132128867], length 0</code></pre>
+<p>(3) 传输数据 blablabla（这不废话么）</p>
+<p>郁闷的是vagrant考虑到数据安全性，全部采用https，所以无法窥探里面的究竟。</p>
+<p>为什么不用Fiddler来偷窥？好吧，fillder基于.net，程序君不想在mac上装mono...</p>
+<p>所以程序君只能靠脑子生猜这个功能是怎么实现的了。</p>
+<h2>我猜我猜...</h2>
+<p>可能的实现手段：</p>
+<p>(1) 使用p2p（但vagrant显然不是这么实现的）。先放在一边。</p>
+<p>(2) 使用tcp proxy。具体做法：</p>
+<pre><code>local http server --- local proxy --- cloud proxy ---- cloud http server</code></pre>
+<p>用户从url过来的http请求，被负载到cloud proxy，然后cloud proxy再将其relay给local proxy，local proxy再relay给local http server；http响应反之。</p>
+<p>这个想法比较靠谱。</p>
+<p>试着用go简单实现了一下，主要是为了验证想法。结果证实了这个方案可行：</p>
+<pre><code>local http server (8000) --- local proxy (7000) --- cloud proxy (9000) ---- cloud http server</code></pre>
+<p>由于我在本机测试，所以不需要放一个nginx在cloud http server侧，直接访问：<code>http://localhost:9000</code>即可。经过两层proxy，local http server的内容被转到浏览器上。当然，目前的代码有问题，local proxy和cloud proxy间只有一个connection，遇到keep-alive的http connection就阻塞住了...所以你看到的页面是这样(local http server跑的是我的博客）：</p>
+<p><img src="../assets/week12/proxy.jpg" alt="proxy proxy"></p>
+<p>代码见：<a href="https://github.com/tyrchen/appshare">appshare</a></p>
+<p>首先用Python起一个simple http server:</p>
+<pre><code>➜  out git:(master) simpleweb
+Serving HTTP on 0.0.0.0 port 8000 ...
+127.0.0.1 - - [20/Mar/2014 22:08:06] &quot;GET / HTTP/1.1&quot; 200 -
+127.0.0.1 - - [20/Mar/2014 22:08:06] &quot;GET /assets/css/app.min.css HTTP/1.1&quot; 200 -
+127.0.0.1 - - [20/Mar/2014 22:08:06] &quot;GET /assets/images/tyr.png HTTP/1.1&quot; 200 -
+127.0.0.1 - - [20/Mar/2014 22:08:06] &quot;GET /assets/images/shadow-separator-wide-bottom.png HTTP/1.1&quot; 200 -
+127.0.0.1 - - [20/Mar/2014 22:08:06] &quot;GET /assets/files/posts/busy.jpg HTTP/1.1&quot; 200 -
+127.0.0.1 - - [20/Mar/2014 22:08:06] &quot;GET /assets/js/app.min.js HTTP/1.1&quot; 200 -
+127.0.0.1 - - [20/Mar/2014 22:08:33] &quot;GET /assets/favicon.ico HTTP/1.1&quot; 200 -
+127.0.0.1 - - [20/Mar/2014 22:08:33] &quot;GET /assets/js/app.min.js HTTP/1.1&quot; 200 -</code></pre>
+<p>然后启动cloud proxy：</p>
+<pre><code>➜  appshare git:(master) ✗ bin/server :7000 :9000
+2014/03/20 22:07:10 Listening to clients
+2014/03/20 22:07:14 A client connection &amp;{{0x1062f280}} kicks
+2014/03/20 22:07:14 Listening to webserver
+2014/03/20 22:08:06 A web server connection &amp;{{0x1062f400}} kicks
+2014/03/20 22:08:06 A web server connection &amp;{{0x1062f4c0}} kicks
+2014/03/20 22:08:06 A web server connection &amp;{{0x1062f640}} kicks
+2014/03/20 22:08:06 A web server connection &amp;{{0x1062f700}} kicks
+2014/03/20 22:08:06 A web server connection &amp;{{0x1062f7c0}} kicks
+2014/03/20 22:08:06 A web server connection &amp;{{0x1062f880}} kicks
+2014/03/20 22:08:06 A web server connection &amp;{{0x1062f940}} kicks
+2014/03/20 22:08:33 A web server connection &amp;{{0x1062fa00}} kicks
+2014/03/20 22:08:33 A web server connection &amp;{{0x1062fac0}} kicks</code></pre>
+<p>然后启动local proxy：</p>
+<pre><code>➜  appshare git:(master) ✗ bin/client :7000 :8000
+2014/03/20 22:07:14 Dial to server: &amp;{{0x1062f100}}
+Request bytes:  1207
+GET / HTTP/1.1
+Host: localhost:8000
+Connection: keep-alive
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.152 Safari/537.36
+Accept-Encoding: gzip,deflate,sdch
+Accept-Language: zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4
+Cookie: bdshare_firstime=1367059155378; sessionID=b33172c1ee44d1cc188c63393cbd4f4e235fc0a9; sails.sid=s%3Axyk6QFXHoeqR15ybvL4Z1dX7.QaNFa5nuM6derKoIjTMGLr5OH9DAI10xmXuLHO65iew; connect.sid=s%3Ai0O%2F4CQPGaQ27glzc7XoGDOu.pCIlLwDcK1NCNaPguY8zVFAJsKTu5I4Ri4StI5Cd0Ps; REVEL_FLASH=; REVEL_SESSION=9d3d9559107e87236af7279c814d0dee026bd376-%00_TS%3A1395459175%00; request_method=GET; _dockernotes_session=WjRrWUx6aDhNVHVCUmtWUHJVSnZnbzdhV2h5emJ3ZFJiY3NYdlA0S3NqcnZFaDUwWGwwOFVQWGxzbkVnWmU4MXErT3Jkd0kzQTA1WEdyMVlRby9kdThCMFNISlNtZVlHRE5wMGQwVmZkWk1CNHRqZGZKVzlneVo5RG1CZzRQZnM2Tm0wNmdpSVhGMndZTjZLT0JJeEZ3VkhCSUNUdkhNTnlOR093YjdDM3V3UE1OWmNUdGtmYjdkMDNWTE1vLzY5LS01WFNEcEExOHM1VHNQYkx5ZDlUb2lRPT0%3D--0ad6871648be9dce51901555efc81f075f2d78fb; sessionid=hlgkc4638sl2eza80jmgpofvckq3ctkd; djdt=hide; csrftoken=NtojvfH3vbpOdEwyAFMG4ATKML3w6gkl
+
+
+2014/03/20 22:08:06 Dial to web server: &amp;{{0x1062f300}}
+Request bytes:  1206
+GET /assets/css/app.min.css HTTP/1.1
+Host: localhost:8000
+...
+
+
+2014/03/20 22:08:06 Dial to web server: &amp;{{0x1062f580}}
+Request bytes:  1207
+GET /assets/images/tyr.png HTTP/1.1
+Host: localhost:8000
+...
+
+
+2014/03/20 22:08:06 Dial to web server: &amp;{{0x1062f6c0}}
+Request bytes:  1232
+GET /assets/images/shadow-separator-wide-bottom.png HTTP/1.1
+Host: localhost:8000
+...
+
+
+2014/03/20 22:08:06 Dial to web server: &amp;{{0x1062f840}}
+Request bytes:  2427
+GET /assets/files/posts/busy.jpg HTTP/1.1
+Host: localhost:8000
+...
+
+GET /assets/files/posts/world.jpg HTTP/1.1
+Host: localhost:8000
+...
+
+
+2014/03/20 22:08:06 Dial to web server: &amp;{{0x1062f980}}
+Request bytes:  1189
+GET /assets/js/app.min.js HTTP/1.1
+Host: localhost:8000
+...
+
+
+2014/03/20 22:08:06 Dial to web server: &amp;{{0x1062fac0}}
+Request bytes:  1154
+GET /assets/favicon.ico HTTP/1.1
+Host: localhost:8000
+。。。
+
+
+2014/03/20 22:08:33 Dial to web server: &amp;{{0x1062fc00}}
+Request bytes:  1189
+GET /assets/js/app.min.js HTTP/1.1
+Host: localhost:8000
+...</code></pre>
+]]></description>
+            <link>http://tchen.me/posts/2014-03-20-vagrant-share.html</link>
+            <guid isPermaLink="true">
+                http://tchen.me/posts/2014-03-20-vagrant-share.html            </guid>
+            <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
+            <pubDate>Fri, 21 Mar 2014 05:50:00 GMT</pubDate>
+        </item>
         <item>
             <title><![CDATA[高效能程序员的七个习惯]]></title>
             <description><![CDATA[<p>昨天收到一个读者留言，问作为程序员，有什么学习和工作上的好习惯可以借鉴？想了想，干脆附庸风雅一下，总结个『高效能程序员的七个习惯』吧。Disclaimer：一家之言，可不信，但不可全信。</p>
@@ -100,7 +284,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!</code></pre
             <guid isPermaLink="true">
                 http://tchen.me/posts/2014-03-05-highly-effective-programmer.html            </guid>
             <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
-            <pubDate>Tue, 04 Mar 2014 23:50:00 GMT</pubDate>
+            <pubDate>Wed, 05 Mar 2014 15:50:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[程序员混日子不完全手册]]></title>
@@ -180,7 +364,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!</code></pre
             <guid isPermaLink="true">
                 http://tchen.me/posts/2014-02-28-programmer-life.html            </guid>
             <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
-            <pubDate>Fri, 28 Feb 2014 00:00:00 GMT</pubDate>
+            <pubDate>Fri, 28 Feb 2014 16:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[闲扯code review]]></title>
@@ -230,7 +414,7 @@ You must run &quot;git review &lt;review-id&gt;&quot; to do review.</code></pre>
             <guid isPermaLink="true">
                 http://tchen.me/posts/2014-02-24-codereview.html            </guid>
             <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
-            <pubDate>Mon, 24 Feb 2014 14:00:00 GMT</pubDate>
+            <pubDate>Tue, 25 Feb 2014 06:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[公司成长之殇]]></title>
@@ -261,7 +445,7 @@ You must run &quot;git review &lt;review-id&gt;&quot; to do review.</code></pre>
             <guid isPermaLink="true">
                 http://tchen.me/posts/2014-02-18-pain-of-grow.html            </guid>
             <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
-            <pubDate>Wed, 19 Feb 2014 00:00:00 GMT</pubDate>
+            <pubDate>Wed, 19 Feb 2014 16:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[Plan for taking coursera courses 1F 2014]]></title>
@@ -406,7 +590,7 @@ You must run &quot;git review &lt;review-id&gt;&quot; to do review.</code></pre>
             <guid isPermaLink="true">
                 http://tchen.me/posts/2014-02-14-knowing-by-learning.html            </guid>
             <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
-            <pubDate>Thu, 13 Feb 2014 23:40:00 GMT</pubDate>
+            <pubDate>Fri, 14 Feb 2014 15:40:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[Golang之chan/goroutine]]></title>
@@ -962,7 +1146,7 @@ func MatchAll(r *regexp.Regexp, data string) (captures []KVPair, ok bool) {
             <guid isPermaLink="true">
                 http://tchen.me/posts/2014-01-27-golang-chatroom.html            </guid>
             <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
-            <pubDate>Wed, 29 Jan 2014 23:40:00 GMT</pubDate>
+            <pubDate>Thu, 30 Jan 2014 15:40:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[2014年年会节目脚本 - Branch取经记]]></title>
@@ -1135,7 +1319,7 @@ func MatchAll(r *regexp.Regexp, data string) (captures []KVPair, ok bool) {
             <guid isPermaLink="true">
                 http://tchen.me/posts/2014-01-14-my-annual-festival-script.html            </guid>
             <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
-            <pubDate>Mon, 13 Jan 2014 23:40:00 GMT</pubDate>
+            <pubDate>Tue, 14 Jan 2014 15:40:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[Sunnyvale trip - 所见，所聊，所感]]></title>
@@ -1188,442 +1372,7 @@ func MatchAll(r *regexp.Regexp, data string) (captures []KVPair, ok bool) {
             <guid isPermaLink="true">
                 http://tchen.me/posts/2014-01-11-sunnyvale-trip.html            </guid>
             <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
-            <pubDate>Sat, 11 Jan 2014 14:40:00 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[盘点我的2013]]></title>
-            <description><![CDATA[<p>提笔（确切地说，敲下键盘）开始盘点我的2013时，我感觉 <a href="http://tchen.me/posts/2012-12-28-retrospect-of-the-year-2012.html">回顾我的2012</a> 和 <a href="http://tchen.me/posts/2012-12-29-2013-things-to-do.html">展望2013</a> 似乎就在眼前。都说岁月催人，这哪是催，这是赶。无论心智是否更成熟，知识经验是否更丰富，过了一年，就老了一岁，去年的那支影子也渐行渐远。多愁善感并不单是文人的专利，年过三十后，我也染上了这臭毛病。太白说『白发三千丈，缘愁似个长。不知明镜里，何处得秋香！』（好吧，是秋霜 ^_^），本不大懂，但经历了2013这奇特，曲折，煎熬，仿佛过去的十年职场都被挤压收缩的一年后，我很能理解他那种年过半百，壮志未酬，人已衰老的那种痛苦。</p>
-<!--more-->
-
-<p>这一年经历了太多太多。</p>
-<h2>大事记</h2>
-<ul>
-<li>1月：创业公司走到十字路口，向左走寻不到『生机』，向右转看不到『光明』。两权相害取其轻，不得已放弃『光明』选择『生机』，忍痛送别一个又一个战友。月底站完最后一班岗，正式自我放逐。</li>
-<li>2月：拒绝了不少创业团队的邀请后，整天泡在国图看书，写书（创业回忆录『途客们的旅行梦』），同时思考未来，寻求出国工作的机会，但四处碰壁。离开的战友开始一个个找到工作，看在眼里，暖在心头。</li>
-<li>3月：两年来在收入上对自己的吝啬让家里的经济状况开始触及红线，考虑到孩子的奶粉钱，无法留出哪怕一个 gap month。就业之紧迫感，为人父之责任感，应『劫』而生。在老领导的奔走帮忙下，虽应聘PLM无疾而终，但阴差阳错被AK激励重回旧地，重操旧业。一切尘埃落定后，当晚订机票酒店，第二天带着四个月大的小宝飞海南度假。</li>
-<li>4月：两年前的3月31日离开，这月8日回归。打开邮箱，看到两年前的goodbye邮件的各种回复，有种时空错乱的感觉。人还是那群人，事还是那些事，仿佛我从未离开，仅仅是休了一周的PTO。那逝去的两年时光，就像一滴水汇入大海，瞬间消散地无影无踪。</li>
-<li>5月：为了给小宝做视频，看了几个imovie的教程，拿team building和CNRD spring event练手，阴差阳错地被视为视频编辑能手。所谓劳者多能，我的视频编辑能力就这样一步步成长起来。此外，公司要求招聘要做code exam，于是我便花了个周末（及后续的n个晚上），做了 <a href="https://github.com/tyrchen/vint">vint</a> &amp; <a href="https://github.com/tyrchen/cerf">cerf</a> 这对鸳鸯来提供code exam。自此我个人的开源项目都使用计算机科学家的名字来命名，如：church，kahn，karp，etc.</li>
-<li>6月：感觉Cliff track PR很辛苦，team用excel汇报PR状态也很痛苦，做了个爬虫，及其衍生出的网站，来减轻这一负担。同月得到机会去美国出差参加global TL meeting。Staybridge没有变化，North Mathilda似乎还是老样子，不过公司搬到了新楼，会议室门口都挂着ipad，有种土豪的感觉。</li>
-<li>7月：迷恋上erlang。飞内蒙给老婆的爷爷过九十大寿。写下长文 <a href="http://tchen.me/posts/2013-07-27-the-remains-of-the-day.html">长日无痕</a>，平日门可罗雀的博客变得宾客盈门。</li>
-<li>8月：人生中第一次恐怕也是最后一次因公出差去印度。由于种种原因，停止更新正在写的『途客们的旅行梦』。已写的很多内容也一直未能对外开放。也许明年下半年，这些文档才能逐渐解密。</li>
-<li>9月：在茫茫bug中迷茫与彷徨。创业圈离我渐行渐远。更新了 <a href="https://github.com/tyrchen/teamspark">teamspark</a>，让其终于赶上 <a href="http://meteor.com">meteor</a> 0.6.x 的脚步。</li>
-<li>10月：和美国一个team吵得不可开交。人生中还从未因工作的事如此愤怒。</li>
-<li>11月：小宝满周岁，越南芽庄庆生。度假前后的三周里我每周完成一个feature，找到些成就感，也一扫十月的阴霾。</li>
-<li>12月：出乎意料地在reorg中换了老板。接下来的至少一个季度，我将不得不与彼得定律『在一个等级制度中，每个职工趋向于上升到他所不能胜任的地位』抗争，来证明自己还未上升到不能胜任的地位。因为工作的需要，学习golang，一股脑写下了千余行代码，演练各种语言特性。</li>
-</ul>
-<h2>数字来说话</h2>
-<h3>博客和文章</h3>
-<p>对比2012年末做的2013展望，除了涉及的计算机书籍基本没读外，其他都做得还可以。博客当然没达到每周更新的频率，但也在抽风似地螺旋前进。</p>
-<table>
-<thead>
-<tr>
-<th align="center">Month</th>
-<th align="center">Posts</th>
-<th align="center">Published</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center">Jan</td>
-<td align="center">7</td>
-<td align="center">7</td>
-</tr>
-<tr>
-<td align="center">Feb</td>
-<td align="center">6</td>
-<td align="center">5</td>
-</tr>
-<tr>
-<td align="center">Mar</td>
-<td align="center">4</td>
-<td align="center">3</td>
-</tr>
-<tr>
-<td align="center">Apr</td>
-<td align="center">2</td>
-<td align="center">2</td>
-</tr>
-<tr>
-<td align="center">May</td>
-<td align="center">2</td>
-<td align="center">1</td>
-</tr>
-<tr>
-<td align="center">Jun</td>
-<td align="center">4</td>
-<td align="center">4</td>
-</tr>
-<tr>
-<td align="center">Jul</td>
-<td align="center">3</td>
-<td align="center">3</td>
-</tr>
-<tr>
-<td align="center">Aug</td>
-<td align="center">0</td>
-<td align="center">0</td>
-</tr>
-<tr>
-<td align="center">Sep</td>
-<td align="center">2</td>
-<td align="center">0</td>
-</tr>
-<tr>
-<td align="center">Oct</td>
-<td align="center">4</td>
-<td align="center">2</td>
-</tr>
-<tr>
-<td align="center">Nov</td>
-<td align="center">9</td>
-<td align="center">4</td>
-</tr>
-<tr>
-<td align="center">Dec</td>
-<td align="center">4*</td>
-<td align="center">4*</td>
-</tr>
-<tr>
-<td align="center">Total</td>
-<td align="center">45</td>
-<td align="center">35</td>
-</tr>
-</tbody>
-</table>
-<p>实际发表数在每周 0.67 的水平，2014年争取达到 1。此外在 <a href="http://medium.com">Medium</a> 撰写五篇文章，发表两篇：<a href="https://medium.com/i-m-h-o/231d7499a75">Programmer&#39;s Dilemma</a> 和 <a href="https://medium.com/this-happened-to-me/8b2607eed960">Having a harse boss</a>。</p>
-<table>
-<thead>
-<tr>
-<th align="left">Title</th>
-<th align="center">Views</th>
-<th align="center">Reads</th>
-<th align="center">Recs</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">Programmer&#39;s dilemma</td>
-<td align="center">54.1K</td>
-<td align="center">45.2K</td>
-<td align="center">123</td>
-</tr>
-<tr>
-<td align="left">Having a Harsh boss</td>
-<td align="center">911</td>
-<td align="center">672</td>
-<td align="center">6</td>
-</tr>
-</tbody>
-</table>
-<p>两者悬殊巨大，原因在于 [P] 被读者推到了 <a href="https://news.ycombinator.com/item?id=6221117">hacker news</a> 上，并引发激烈讨论。另外，此文更容易引发争议，而争议引发激辩，是眼球的重要来源。</p>
-<h2>项目及代码</h2>
-<p>2013新创建了不少项目，完成的项目或者说基本功能可用的大致如下：</p>
-<table>
-<thead>
-<tr>
-<th align="right">Projects</th>
-<th align="right">Commits</th>
-<th align="right">LOC</th>
-<th align="center">Lang</th>
-<th align="left">Intro</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="right">Vint</td>
-<td align="right">22</td>
-<td align="right">707</td>
-<td align="center">python</td>
-<td align="left">exam client</td>
-</tr>
-<tr>
-<td align="right">Cerf</td>
-<td align="right">54</td>
-<td align="right">26534</td>
-<td align="center">python</td>
-<td align="left">exam server</td>
-</tr>
-<tr>
-<td align="right">Church</td>
-<td align="right">40</td>
-<td align="right">24218</td>
-<td align="center">python</td>
-<td align="left">team bug tracking system</td>
-</tr>
-<tr>
-<td align="right">Gnats</td>
-<td align="right">19</td>
-<td align="right">350</td>
-<td align="center">python</td>
-<td align="left">gnats crawler for church</td>
-</tr>
-<tr>
-<td align="right">jd</td>
-<td align="right">17</td>
-<td align="right">394</td>
-<td align="center">python</td>
-<td align="left">company directory crawler for church</td>
-</tr>
-<tr>
-<td align="right">kahn</td>
-<td align="right">39</td>
-<td align="right">421</td>
-<td align="center">nodejs</td>
-<td align="left">company directory and gnats api for church</td>
-</tr>
-<tr>
-<td align="right">karp</td>
-<td align="right">12</td>
-<td align="right">6840</td>
-<td align="center">python</td>
-<td align="left">a set of tools for internal use</td>
-</tr>
-<tr>
-<td align="right">matrix</td>
-<td align="right">4</td>
-<td align="right">515</td>
-<td align="center">python</td>
-<td align="left">a hackathon project for downloading internal resources</td>
-</tr>
-<tr>
-<td align="right">tracker</td>
-<td align="right">31</td>
-<td align="right">33781</td>
-<td align="center">python</td>
-<td align="left">a hackathon project for easing management tracking problems</td>
-</tr>
-<tr>
-<td align="right">calcapp</td>
-<td align="right">45</td>
-<td align="right">16540</td>
-<td align="center">golang</td>
-<td align="left">a breakable project for learning golang</td>
-</tr>
-</tbody>
-</table>
-<p>注意: </p>
-<p>[1] 获取git diff:</p>
-<pre><code>$ git log --author=&quot;YOUR NAME&quot; --pretty=tformat: --numstat | gawk &#39;{ add += $1 ; subs += $2 ; loc += $1 - $2 } END { printf &quot;added lines: %s removed lines : %s total lines: %s\n&quot;,add,subs,loc }&#39;</code></pre>
-<p>这条命令需要gawk，如果你的系统中没有，可以使用 <code>apt-get</code> (ubuntu) or <code>brew</code> (osx) 来安装.</p>
-<p>[2] 获取git commits数量:</p>
-<pre><code>$ git shortlog --numbered --summary</code></pre>
-<p>[3] 代码行数不太准确，有几个web项目偏大。这是因为把第三方的javascript也包含进去了。所以那些超过万行代码的，把前边的一位数去掉就差不多。</p>
-<h2>个人奥斯卡颁奖</h2>
-<p>以下各大奖项都和我有关，和您无关。我评我的奖，自娱我的乐。</p>
-<h3>最刻骨铭心</h3>
-<p>没有任何悬念，最刻骨铭心当属我亲手裁去一半的team，并随后离开途客圈。个中滋味，外人是体会不到的。</p>
-<p>本想将当时我发的邮件和日记在此公开，但考虑到保密协议，一年后再补吧（如果我还记得的话）。</p>
-<h3>最深刻教训</h3>
-<p>全年我领悟了很多教训，包括但不限于：</p>
-<ul>
-<li>北美找工作。如果想申请美国的工作机会，在前一年11月就要动手。近些年H1B基本4月初就被抢光，倒推下来能为你申请H1B的公司，他们内部可能1-2月就已经对H1B申请freeze了，所以早动手没坏处。</li>
-<li>创业投融资。（见下）</li>
-<li>工作生活的平衡。去年末小宝降临（源于去年初的意外）打破了我工作（创业）与生活的平衡。每周80小时的工作必然引发家庭中的诸多矛盾，这种状态是不可持续的。工作（创业）不是一个人的事，它与家庭息息相关。</li>
-<li>...</li>
-</ul>
-<p>入围教训：创业投融资，工作生活的平衡</p>
-<p>获奖教训：创业投融资</p>
-<p>在创业投融资方面，刻骨铭心的教训是：</p>
-<ol>
-<li>如果你投入自有资金创业，在找到 product/market fit 前不要着急融资。对我和我的创业伙伴而言，50万人民币的自有资金只能给我们差不多半年的试错机会。我们要么在挣扎中找到收入来源，建立可持续的商业模式，要么破产清算。前者自不必说，后者能让我们更早更快地失败，最小化时间成本。而在没有做到 product/market fit 前的盲目融资，会让一切变得不再紧迫，大家的专注力下降（因为各种可能性，各种方向增多了），有种温水煮青蛙的感觉。</li>
-<li>如果在创业之初有了产品后就奔着融资去，则不要投入自有资金，即使投入，也将其作为公司的债务。相对于融资额而言，个人投入的资金对公司后期的发展而言杯水车薪，而往往对自己的家庭影响巨大。以我为例，25万元人民币的投资在50万美元前不值一提，但这确是我当时家庭可动用的全部积蓄。之前自己有没有投钱，在融资时对创始人的股份，地位影响基本为零，而融资时投资条款中100%会出现的各种优先条款会让你个人的投入变成毫无意义的数字。</li>
-<li>目前还不便透露，也许一两年后可以解密。</li>
-</ol>
-<p>综合以上，更合理的创业公司设置是：使用尽可能少的钱作为公司的注册资本（最新的法规应该已取消最低注册资本的要求，所以理论上1元钱可以注册公司），然后将要投入的钱作为公司向个人的短期借贷，也就是债务。当公司运作良好，融资与否债务都可以收回；当公司破产清算，债权清偿后才轮到股权清偿。这样能最大程度保护创始人自己的利益，不至于一次创业失败，失血过多，短期内很难东山再起。</p>
-<p>所以，创业投融资获得最深刻教训奖绝对众望所归。</p>
-<h3>最意外事件</h3>
-<p>入围事件：</p>
-<ul>
-<li>回到Juniper。</li>
-<li>google I/O 抢到票，行程已定，却在可退票的最后关头因种种原因取消。</li>
-<li>在芽庄度假即将结束前一天，小宝高烧至39度。</li>
-<li>reorg后被更换老板。</li>
-<li>08年和09年申请的两个invention disclosure在今年正式成为US patent。</li>
-</ul>
-<p>获奖事件：回到Juniper</p>
-<p>回归需要勇气，也需要运气。</p>
-<h3>最佳阅读</h3>
-<p>2013读了不少书，哲学，小说和创业相关的书最多。我有意减少了技术书籍的阅读，一来 online document，<code>wikipedia</code> 和 <code>stackoverflow</code> 足以弥补 99% 的知识，二来我希望涉猎更广些。</p>
-<p>入围书籍：『长日留痕』，『西游论心』+ 『西游记』，『Programming Erlang』，『中国哲学史大纲』</p>
-<p>获奖书籍：『西游论心』+ 『西游记』</p>
-<p>以前读过好几遍『西游记』，但最后一次读西游还在高中。看完吴闲云的『解读西游记』和『再探西游记』，总觉见解虽很新奇，但有诸多漏洞，戏谑成分大些。而我无意中拾起的『西游论心』，从儒释道，易医巫几方面解读西游，很有滋味。边读『西游论心』边对着原文一点点啃，劲道十足。不得不说，是『西游论心』促使我十几年后重拾『西游记』这部巨著。</p>
-<h3>最佳个人项目</h3>
-<p>入围项目：</p>
-<ul>
-<li>代码机考系统。<a href="https://github.com/tyrchen/vint">vint</a> &amp; <a href="https://github.com/tyrchen/cerf">cerf</a>.</li>
-<li>matrix。一个提供类似git命令行的下载工具。用于下载jive space里的文档。（内部项目）。</li>
-</ul>
-<p>获奖项目：matrix</p>
-<p>vint &amp; cerf 很可惜，虽然我们已经使用它管理和组织了上百次code interview，但它还不是理想中的产品。功能稍嫌薄弱，也不足够简单。所以这个奖项给了matrix —— 这个从产品构想到实现我仅仅花了两三个小时就完成的项目。它足够简单，非常实用。TTI（Time to implementation）趋近于零，而ROI（Return on investment）却非同小可（省了我很多时间）。</p>
-<h3>最有价值文章</h3>
-<p>入围文章：<a href="http://tchen.me/posts/2013-07-27-the-remains-of-the-day.html">长日无痕</a>，<a href="http://tchen.me/posts/2013-07-22-why-should-c-programmers-learn-erlang.html">Erlang</a>，<a href="http://tchen.me/posts/2013-03-08-career-path-for-software-engineer.html">瞎扯软件工程师的职业生涯</a>，<a href="http://tchen.me/posts/2013-02-06-Making-a-next-generation-home-security-device.html">创建下一代家用防火墙</a></p>
-<p>获奖文章：创建下一代家用防火墙</p>
-<p>这是年初的一篇文章，大胆地构想了一种全新的智能家用网络（安全）产品的商业模式。从市场的角度来看，一个家庭基本上只会有一个网络设备，所以带有安全功能的网络连接设备最终会不可逆地取代单一功能的路由产品；从可用性来说，家用网络设备要尽可能地将IP/MAC，各种网络协议等术语隐藏起来，代之以人性化的命名。一条安全策略应该是：<code>孩子的ipad 禁止访问 黄色网站</code>，而不是只有专家才能看懂的配置；从智能化角度来说，利用云计算和大数据处理能力，将复杂计算，预测，防护和各种高级功能都云端化；从商业角度来看，硬件厂商最终不通过硬件本身赚钱（甚至免费为用户定期更新硬件），而通过ARPU持续产生收入。</p>
-<h3>最有价值知识</h3>
-<p>入围知识：<a href="http://en.wikipedia.org/wiki/Lean_Startup">lean startup</a>，<a href="http://steveblank.com/category/customer-development/">Customer development method</a>，<a href="http://paulgraham.com/ds.html">Do things that don&#39;t scale</a>，<a href="http://www.triz40.com/aff_Principles.htm">Triz 40 principles</a></p>
-<p>获奖知识：Triz 40 principles</p>
-<p>Triz背后的研究团队研究了40, 000个patents，从各个patent中和已有patent的delta中，试图找到创新活动的特征。最终他们得到了这40组principle，对创新很有指导意义。对我而言，知道这个结论产生的过程远比知道这个结论要震撼得多 —— 研究40,000个patents，这得花多大的功夫和毅力？</p>
-<h3>最佳程序语言</h3>
-<p>入围语言：c，python，golang，javascript，erlang</p>
-<p>获奖程序语言：python</p>
-<p>这些语言是我在2013年来写过有意义的项目的语言，玩票性质的 io，scala，elixir，emacslisp 不在此列。python获奖实至名归，我这一年来写的80%的代码都是python。尽管我倾注了不少精力向javascript倾斜，但真要甩着膀子大干一场，指尖下流出的还是python。（这就是爱啊）</p>
-<p>什么？我的工作语言是C？好吧，大多数时间里C让我有钱花，而Python让我快乐。</p>
-<h3>最佳社区贡献</h3>
-<p>2013我对社区的贡献少得可怜，虽然写了不少开源的项目，但要么自娱自乐，要么为某一特定目的而作，对社区基本没什么价值。下面两个算是矮子里拔将军，勉强可以充数。</p>
-<p>入围社区贡献：<a href="https://github.com/tyrchen/teamspark">teamspark</a>，<a href="http://stackoverflow.com/questions/20671535/why-this-code-generate-very-big-executable-in-go-around-81m">go compiler bug</a></p>
-<p>获奖社区贡献：go compiler bug</p>
-<p>在学习go语言的过程中，无意中发现在某种特定情况下，go的编译器会生成非常巨大的可执行文件。在stackoverflow上发问后，得到了有意思的答案，并促使我进一步去研究问题的原因和workaround。twitter上有人<a href="https://twitter.com/davecheney/status/413794697966936064">对此讨论</a>，并建议我给go <a href="https://code.google.com/p/go/issues/detail?id=6993">提交bug</a>。所以这个对社区的价值要比我用 <a href="http://meteor.com">Meteor</a> 写的 teamspark 要高。</p>
-<h3>最佳进步</h3>
-<p>入围事件：</p>
-<ul>
-<li>从golang hello world新手到写下有价值代码的 <strong>学徒</strong>，仅仅花了一周多的业余时间。在为一个项目写下1339行代码后，我已经正式步入golang学徒生涯。</li>
-<li>从对编剧一无所知到写下一个自我感觉还过得去（比百度文档中找到的那些强多了），有故事，有笑点，结合公司内外大小诸事的剧本，仅花了半天时间。从此我正式跨入业余编剧的行列。</li>
-<li>看了几个youtube教程后，我便走上了视频制作和剪辑之路。全年产出9个质量还过得去的视频。</li>
-</ul>
-<p>获奖事件：一周多学会golang</p>
-<p>如果说C和python是我的现金奶牛事业部，那么golang则是我的未来发展事业部。至于编剧和视频剪辑嘛，在可预见的未来，他们都还是cost center。所以 &quot;一周多学会golang&quot; 拿下最佳进步奖当之无愧。</p>
-<h3>最美滋味</h3>
-<p>在劳碌了一天，拖着疲惫的身子回家，有什么能比得上我的心肝宝贝一句酥麻入骨的『爸爸』来得美妙？毫无悬念，这一年最美的滋味就是我那宝贝女儿。从学会翻身，到能坐起来，从勉强行走到奔走如飞，从只会叫大大，到十几个单词量，她带给我数不胜数的美妙感受。工作郁闷且又无法发泄时，想想她萌萌的表情，想想她动听的声音，快乐就从心底涌出，融掉了一切烦恼……</p>
-<p>太久没放她的照片，这下一次就是五张！我会努力做一个称职的父亲滴！</p>
-<p><img src="/assets/files/photos/baby20131224-1.jpg" alt="小宝">
-<img src="/assets/files/photos/baby20131224-2.jpg" alt="小宝">
-<img src="/assets/files/photos/baby20131224-3.jpg" alt="小宝">
-<img src="/assets/files/photos/baby20131224-4.jpg" alt="小宝">
-<img src="/assets/files/photos/baby20131224-5.jpg" alt="小宝"></p>
-<h2>尾声</h2>
-<p>啰啰唆唆写了这么多，还意犹未尽。暂且停笔，日后再慢慢修葺。千言万语都道不尽的2013，即将从指尖溜走；而我的2014，则注定会多姿多彩。</p>
-]]></description>
-            <link>http://tchen.me/posts/2013-12-23-my-year-2013.html</link>
-            <guid isPermaLink="true">
-                http://tchen.me/posts/2013-12-23-my-year-2013.html            </guid>
-            <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
-            <pubDate>Mon, 23 Dec 2013 14:40:00 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[Build Your Own Docker Registry with DigitalOcean]]></title>
-            <description><![CDATA[<h1>Build Your Own Docker Registry with DigitalOcean</h1>
-<p><a href="http://www.slideshare.net/dotCloud/why-docker">Docker</a> might be the most attracting open source technologies in 2013. By providing a higher level API and management UI, it make linux container much more usable. If you haven&#39;t tried it, <a href="http://www.docker.io/gettingstarted/">try it</a>. You will then feel it is &quot;<a href="http://blog.scoutapp.com/articles/2013/08/28/docker-git-for-deployment">the git for deployment</a>&quot;.</p>
-<p>After you played with it for a while, enjoying the git like operation for your software and their dependencies, a natural question will appear: how can I build my own private docker registry that I could leverage for my own IT infrastructure? </p>
-<p>The docker-registry comes to help you. docker-registry is a software to provide similar functionality as <a href="http://index.docker.io/">official docker index</a>, which is a central registry for you to commit your new images, pull existing ones, etc. It can let you to build your own docker registry that is private, secure and speedy.</p>
-<h2>Install docker-registry</h2>
-<p>First of all, let&#39;s clone docker-registry：</p>
-<pre><code>git clone https://github.com/dotcloud/docker-registry
-cd docker-registry
-cp config_sample.yml config.yml</code></pre>
-<p>You need then to open config.yml to set the dev (the default profile) storage to something like <code>/var/docker/registry</code>:</p>
-<pre><code># This is the default configuration when no flavor is specified
-dev:
-    storage: local
-    storage_path: /var/docker/registry
-    loglevel: debug</code></pre>
-<p>Then create this directory and grant </p>
-<pre><code>sudo mkdir -p /var/docker/registry
-sudo chown -R `whoami` /var/docker</code></pre>
-<p>As docker-registry uses python and ssl, you need to install the following libraries:</p>
-<pre><code>sudo apt-get install build-essential python-dev libevent-dev python-pip libssl-dev</code></pre>
-<p>Then you can setup your virtualenv and install requirements:</p>
-<p>(optional) install virtualenv if you haven&#39;t:</p>
-<pre><code>sudo pip install virtualenv</code></pre>
-<p>setup virtualenv:</p>
-<pre><code>virtualenv --no-site-packages venv
-. venv/bin/activate
-pip install -r requirements.txt</code></pre>
-<p>Now your docker-registry should be run via:</p>
-<pre><code>gunicorn -k gevent --max-requests 100 --graceful-timeout 3600 -t 3600 -b localhost:8080 -w 8 wsgi:application</code></pre>
-<p>You can open your browser on <code>http://localhost:8080</code> to see if it works. It should show you:</p>
-<pre><code>&quot;docker-registry server (dev)&quot;</code></pre>
-<p>Congratulations! The minimum installation is done. However, if you want to run it like a normal service, you need to configure supervisor and nginx. Let&#39;s continue our journey.</p>
-<h2>Run docker-registry as a service</h2>
-<p>If you don&#39;t have supervisor installed, please install it firstly:</p>
-<pre><code>sudo apt-get install supervisor</code></pre>
-<p>Then add a new configuration file:</p>
-<pre><code>sudo vim /etc/supervisor/conf.d/docker-registry.conf</code></pre>
-<p>In the opened vim editor, copy and paste the following content, save and quit (you need to change dev to your local user):</p>
-<pre><code>[program:docker-registry]
-directory=/home/dev/deployment/docker-registry
-user=dev
-command=/home/dev/deployment/docker-registry/venv/bin/gunicorn -b 0.0.0.0:7030 -k gevent --max-requests 100 --graceful-timeout 3600 -t 3600 -w 8 wsgi:application
-redirect_stderr=true
-stderr_logfile=none
-stdout_logfile=/var/log/supervisor/docker-registry.log
-autostart=true
-autorestart=true</code></pre>
-<p>Then reload supervisor to make it take effects.</p>
-<pre><code>$ sudo supervisorctl
-supervisor&gt; reread
-docker-registry: available
-supervisor&gt; update
-docker-registry: added process group
-supervisor&gt; status
-docker-registry                  RUNNING    pid 4371, uptime 0:00:01</code></pre>
-<p>If you see RUNNING int the status output, then it means your docker-registry is up and running normally. If not, please got to <code>/var/log/supervisor/docker-registry.log</code> to see what happened.</p>
-<p>Next you need to use nginx to proxy the requests to docker-registry. If you don&#39;t have nginx installed, please install it firstly:</p>
-<pre><code>sudo apt-get install nginx</code></pre>
-<p>Then add a new configuration file:</p>
-<pre><code>sudo vim /etc/nginx/sites-available/docker-registry</code></pre>
-<p>Copy and paste the following content, then save and quite:</p>
-<pre><code>server {
-  listen 80;
-  client_max_body_size 200m;
-  server_name your-domain.com;
-  access_log /var/log/nginx/docker-registry.access.log;
-  error_log /var/log/nginx/docker-registry.error.log;
-  location / {
-    proxy_pass http://localhost:8080;
-    include /etc/nginx/proxy_params;
-  }
-}</code></pre>
-<p>Note that you need <code>client_max_body_size 200m</code> to allow big file post. If later your found error like:</p>
-<pre><code>2013/11/12 03:35:18 Received HTTP code 413 while uploading layer</code></pre>
-<p>You need to enlarge this value.</p>
-<p>Then you need to soft link this file to <code>sites-enabled</code> and restart nginx:</p>
-<pre><code>cd /etc/nginx/sites-enabled/
-sudo ln -s ../sites-available/docker-registry docker-registry
-sudo service nginx restart</code></pre>
-<p>Open your browser to visit <code>http://your-domain.com</code>, you should see the same result as previous step:</p>
-<pre><code>&quot;docker-registry server (dev)&quot;</code></pre>
-<h2>Use your private docker registry</h2>
-<p>First of all, let&#39;s see what images we have so far:</p>
-<pre><code>$ sudo docker images
-REPOSITORY                            TAG                   IMAGE ID            CREATED             SIZE
-ubuntu                                12.04                 8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
-ubuntu                                latest                8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
-ubuntu                                precise               8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
-ubuntu                                12.10                 b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-base                                  latest                b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-ubuntu                                quantal               b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-base                                  ubuntu-12.10          b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-base                                  ubuntu-quantal        b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-base                                  ubuntu-quantl         b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)</code></pre>
-<p>If you don&#39;t have any docker images, please use <code>sudo docker pull base</code> to pull base images from docker repository.</p>
-<p>We would like to push the base image to our own shiny registry. First of all, tag it to push to your own server:</p>
-<pre><code>sudo docker tag b750fe79269d your-domain.com/yourname/base</code></pre>
-<p>Then push:</p>
-<pre><code>sudo docker push your-domain.com/yourname/base</code></pre>
-<p>If push succeeded, you will see your images with <code>docker images</code>:</p>
-<pre><code>$ sudo docker images
-REPOSITORY                            TAG                   IMAGE ID            CREATED             SIZE
-ubuntu                                12.04                 8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
-ubuntu                                latest                8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
-ubuntu                                precise               8dbd9e392a96        7 months ago        131.5 MB (virtual 131.5 MB)
-ubuntu                                12.10                 b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-base                                  latest                b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-your-domain.com/yourname/base        latest                b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-ubuntu                                quantal               b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-base                                  ubuntu-12.10          b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-base                                  ubuntu-quantal        b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)
-base                                  ubuntu-quantl         b750fe79269d        7 months ago        24.65 kB (virtual 180.1 MB)</code></pre>
-<p>It is already available locally, so you can try it：</p>
-<pre><code>sudo docker run -i -t your-domain.com/yourname/base /bin/bash</code></pre>
-<p>If you want to pull this image from other machine, just use:</p>
-<pre><code>sudo docker pull your-domain.com/yourname/base</code></pre>
-<p>Have fun!</p>
-]]></description>
-            <link>http://tchen.me/posts/2013-11-13-local-docker-repo-en.html</link>
-            <guid isPermaLink="true">
-                http://tchen.me/posts/2013-11-13-local-docker-repo-en.html            </guid>
-            <dc:creator><![CDATA[Tyr Chen]]></dc:creator>
-            <pubDate>Wed, 13 Nov 2013 14:40:00 GMT</pubDate>
+            <pubDate>Sun, 12 Jan 2014 06:40:00 GMT</pubDate>
         </item>
     </channel>
 </rss>
